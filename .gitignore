@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Generated
+scripts/articles/
+scripts/topics.json
+scripts/config.json
+
+# Temp
+/tmp/

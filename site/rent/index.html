@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fukuoka Camper Rental — VanTripJapan</title>
+    <meta name="description"
+        content="Rent a campervan in Fukuoka, Japan. All-inclusive pricing from ¥16,500/day. 10 minutes from the airport. Multilingual support in English, French, German, and Chinese.">
+    <meta property="og:title" content="Fukuoka Camper Rental — VanTripJapan">
+    <meta property="og:description"
+        content="Rent a campervan in Fukuoka. All-inclusive from ¥16,500/day. 10 min from airport.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/rent.css">
+</head>
+
+<body>
+
+    <!-- ═══ Navigation ═══ -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <div class="logo-icon">V</div>
+                <div>
+                    <span>VAN TRIP JAPAN</span>
+                    <span class="magazine-tag">Magazine</span>
+                </div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="/">Stories</a>
+                <a href="/category/">Destinations</a>
+                <a href="/category/">Tips</a>
+                <a href="/writer/">Writers</a>
+                <a href="/contact/">Contact</a>
+                <a href="/rent/" class="nav-cta">Rent a Van →</a>
+            </div>
+            <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══ Language Switcher ═══ -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="switchLang('en')">EN</button>
+        <button class="lang-btn" onclick="switchLang('fr')">FR</button>
+        <button class="lang-btn" onclick="switchLang('de')">DE</button>
+        <button class="lang-btn" onclick="switchLang('zh')">繁中</button>
+    </div>
+
+    <div class="rent-page">
+
+        <!-- ═══ HERO ═══ -->
+        <section class="rent-hero" id="top">
+            <div class="rent-hero-inner">
+                <div class="rent-hero-text">
+                    <h1>
+                        <span data-i18n="hero.title1">Explore Kyushu</span><br>
+                        <span class="hero-highlight" data-i18n="hero.title2">by Campervan</span>
+                    </h1>
+                    <p class="hero-tagline" data-i18n="hero.tagline">All-inclusive pricing. Safe & direct route to
+                        Kyushu's nature. Skip the city traffic — start your adventure from Fukuoka Airport in 10
+                        minutes.</p>
+
+                    <div class="rent-hero-stats">
+                        <div class="rent-hero-stat">
+                            <span class="stat-number">10 min</span>
+                            <span class="stat-label" data-i18n="hero.stat1">from Airport</span>
+                        </div>
+                        <div class="rent-hero-stat">
+                            <span class="stat-number">¥16,500〜</span>
+                            <span class="stat-label" data-i18n="hero.stat2">per day</span>
+                        </div>
+                        <div class="rent-hero-stat">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label" data-i18n="hero.stat3">Support</span>
+                        </div>
+                    </div>
+
+                    <div class="rent-hero-buttons">
+                        <a href="https://wa.me/819012345678?text=Hi!%20I'm%20interested%20in%20renting%20a%20campervan%20in%20Fukuoka."
+                            class="btn-whatsapp" target="_blank">
+                            💬 <span data-i18n="hero.whatsapp">Check Availability on WhatsApp</span>
+                        </a>
+                        <a href="https://line.me/R/ti/p/@vantripjapan" class="btn-line" target="_blank">
+                            💚 <span data-i18n="hero.line">Chat on LINE</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="rent-hero-images">
+                    <div class="hero-img">🚐</div>
+                    <div class="hero-img">⛺</div>
+                    <div class="hero-img">🏔️</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ WHY HAKOZAKI ═══ -->
+        <section class="rent-section" id="why">
+            <div class="rent-container">
+                <div class="rent-section-header">
+                    <span class="rent-badge">📍 <span data-i18n="why.badge">Location Advantage</span></span>
+                    <h2 class="rent-section-title" data-i18n="why.title">Why Start from Hakozaki Base?</h2>
+                    <p class="rent-section-subtitle" data-i18n="why.subtitle">The key difference from city center
+                        rentals</p>
+                </div>
+
+                <div class="comparison-grid">
+                    <!-- City Center — Danger -->
+                    <div class="comparison-card danger">
+                        <h3>⚠️ <span data-i18n="why.city.title">Hakata / Tenjin Area</span></h3>
+                        <p class="card-desc" data-i18n="why.city.desc">Starting from the city center</p>
+                        <div class="comparison-item">
+                            <span class="icon">🚗💨</span>
+                            <span data-i18n="why.city.item1">Heavy traffic, narrow roads, high accident risk</span>
+                        </div>
+                        <div class="comparison-item">
+                            <span class="icon">😰</span>
+                            <span data-i18n="why.city.item2">First-time left-side driving in a dangerous
+                                environment</span>
+                        </div>
+                        <div class="comparison-item">
+                            <span class="icon">⏰</span>
+                            <span data-i18n="why.city.item3">30-60 min just to get out of the city</span>
+                        </div>
+                        <div
+                            style="text-align: center; margin-top: 20px; padding: 16px; background: #FEE2E2; border-radius: 12px;">
+                            <span style="font-size: 32px;">🚗💨</span><br>
+                            <strong style="color: #DC2626;" data-i18n="why.city.verdict">❌ High Stress</strong>
+                        </div>
+                    </div>
+
+                    <!-- Hakozaki — Safe -->
+                    <div class="comparison-card safe">
+                        <h3>🛡️ <span data-i18n="why.hako.title">Hakozaki Base (Us)</span></h3>
+                        <p class="card-desc" data-i18n="why.hako.desc">Safe & fastest route</p>
+                        <div class="comparison-item">
+                            <span class="icon">📍</span>
+                            <span data-i18n="why.hako.item1">Just 10 minutes from the airport!</span>
+                        </div>
+                        <div class="comparison-item">
+                            <span class="icon">🛣️</span>
+                            <span data-i18n="why.hako.item2">Easy highway access, no city traffic</span>
+                        </div>
+                        <div class="comparison-item">
+                            <span class="icon">🏕️</span>
+                            <span data-i18n="why.hako.item3">Start your road trip from day one — zero wasted time</span>
+                        </div>
+                        <div
+                            style="text-align: center; margin-top: 20px; padding: 16px; background: #DCFCE7; border-radius: 12px;">
+                            <span style="font-size: 32px;">🏕️⛰️</span><br>
+                            <strong style="color: #16A34A;" data-i18n="why.hako.verdict">✅ Safe & Easy</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#pricing" class="comparison-cta" data-i18n="why.cta">Safe departure even for first-time drivers
+                    in Japan →</a>
+            </div>
+        </section>
+
+        <!-- ═══ LICENSE CHECK ═══ -->
+        <section class="rent-section" id="license" style="background: white;">
+            <div class="rent-container">
+                <div class="rent-section-header">
+                    <span class="rent-badge">🪪 <span data-i18n="license.badge">Driving License Guide</span></span>
+                    <h2 class="rent-section-title" data-i18n="license.title">Can You Drive in Japan?</h2>
+                    <p class="rent-section-subtitle" data-i18n="license.subtitle">Check before you depart</p>
+                </div>
+
+                <div class="license-cards">
+                    <div class="license-card blue">
+                        <div class="flags">🇦🇺 🇩🇪 🇫🇷 🇺🇸 🇬🇧</div>
+                        <h3 data-i18n="license.geneva.title">Geneva Convention Countries</h3>
+                        <p data-i18n="license.geneva.desc">International Driving Permit (IDP) required. Get it from your
+                            local automobile association before traveling.</p>
+                        <ul>
+                            <li data-i18n="license.geneva.item1">Australia, France, Germany, UK, USA, etc.</li>
+                            <li data-i18n="license.geneva.item2">IDP valid for 1 year from issue date</li>
+                            <li data-i18n="license.geneva.item3">Must carry both IDP and original license</li>
+                        </ul>
+                    </div>
+                    <div class="license-card orange">
+                        <div class="flags">🇹🇼 🇩🇪 🇫🇷 🇮🇹</div>
+                        <h3 data-i18n="license.special.title">Special Countries (Taiwan & Select EU)</h3>
+                        <p data-i18n="license.special.desc">Official Japanese translation of your license is required
+                            instead of an IDP.</p>
+                        <ul>
+                            <li data-i18n="license.special.item1">Taiwan, Switzerland, Belgium, etc.</li>
+                            <li data-i18n="license.special.item2">Translation available at JAF offices</li>
+                            <li data-i18n="license.special.item3">We can help arrange this — just ask!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ PRICING ═══ -->
+        <section class="rent-section" id="pricing">
+            <div class="rent-container">
+                <div class="rent-section-header">
+                    <span class="rent-badge">💰 <span data-i18n="pricing.badge">Transparent Pricing</span></span>
+                    <h2 class="rent-section-title" data-i18n="pricing.title">All-Inclusive, No Surprises</h2>
+                    <p class="rent-section-subtitle" data-i18n="pricing.subtitle">Everything you need for your road trip
+                        is included</p>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <p class="pricing-from" data-i18n="pricing.from">Starting from</p>
+                        <p class="pricing-amount">¥16,500<small data-i18n="pricing.perday"> /day〜</small></p>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-includes">
+                            <li><span class="check">✅</span> <span data-i18n="pricing.item1">Vehicle Insurance (CDW)
+                                    included</span></li>
+                            <li><span class="check">✅</span> <span data-i18n="pricing.item2">ETC Card rental</span></li>
+                            <li><span class="check">✅</span> <span data-i18n="pricing.item3">English navigation</span>
+                            </li>
+                            <li><span class="check">✅</span> <span data-i18n="pricing.item4">Basic camping gear
+                                    set</span></li>
+                            <li><span class="check">✅</span> <span data-i18n="pricing.item5">24-hour roadside
+                                    assistance</span></li>
+                            <li><span class="check">✅</span> <span data-i18n="pricing.item6">Multilingual support</span>
+                            </li>
+                        </ul>
+
+                        <div class="pricing-notice">
+                            🛡️ <span data-i18n="pricing.notice">No hidden fees. Ever.</span>
+                        </div>
+
+                        <p class="pricing-note" data-i18n="pricing.note">* Above is PROBOX weekday rate. BONGO /
+                            weekends may differ.</p>
+
+                        <a href="https://wa.me/819012345678?text=Hi!%20I'd%20like%20a%20quote%20for%20campervan%20rental."
+                            class="pricing-cta" data-i18n="pricing.cta">💬 Get a Quote on WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ VEHICLES ═══ -->
+        <section class="rent-section" id="vehicles" style="background: white;">
+            <div class="rent-container">
+                <div class="rent-section-header">
+                    <span class="rent-badge">🚐 <span data-i18n="vehicles.badge">Our Fleet</span></span>
+                    <h2 class="rent-section-title" data-i18n="vehicles.title">Which Vehicle Fits You?</h2>
+                    <p class="rent-section-subtitle" data-i18n="vehicles.subtitle">Compare our two vehicles and find
+                        your perfect match</p>
+                </div>
+
+                <div class="vehicles-grid">
+                    <!-- Probox -->
+                    <div class="vehicle-card popular">
+                        <span class="vehicle-number">01</span>
+                        <h3>Roof Tent Probox</h3>
+                        <div class="vehicle-img">🚗⛺</div>
+                        <div class="vehicle-specs">
+                            <div class="spec-item">👥 2 guests</div>
+                            <div class="spec-item">🛏️ Roof tent</div>
+                            <div class="spec-item">⛽ Great fuel economy</div>
+                            <div class="spec-item">🅿️ Easy to park</div>
+                            <div class="spec-item">📱 Portable power</div>
+                            <div class="spec-item">🪑 Camping chairs</div>
+                        </div>
+                        <p class="vehicle-price">¥16,500〜 <small data-i18n="vehicles.perday">/day</small></p>
+                    </div>
+
+                    <!-- Bongo -->
+                    <div class="vehicle-card">
+                        <span class="vehicle-number">02</span>
+                        <h3>Bed Bongo Brawny</h3>
+                        <div class="vehicle-img">🚐🛏️</div>
+                        <div class="vehicle-specs">
+                            <div class="spec-item">👥 2-3 guests</div>
+                            <div class="spec-item">🛏️ Built-in bed</div>
+                            <div class="spec-item">🏠 More interior space</div>
+                            <div class="spec-item">🔌 Power inverter</div>
+                            <div class="spec-item">💡 LED lighting</div>
+                            <div class="spec-item">🪑 Camping chairs</div>
+                        </div>
+                        <p class="vehicle-price">¥22,000〜 <small data-i18n="vehicles.perday">/day</small></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ COMPETITOR COMPARISON ═══ -->
+        <section class="rent-section" id="compare">
+            <div class="rent-container">
+                <div class="rent-section-header">
+                    <span class="rent-badge">🏆 <span data-i18n="compare.badge">Clear Advantage</span></span>
+                    <h2 class="rent-section-title" data-i18n="compare.title">Why Choose Us?</h2>
+                    <p class="rent-section-subtitle" data-i18n="compare.subtitle">Compared with major camper rental
+                        companies in Fukuoka</p>
+                </div>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="compare.col.category">Category</th>
+                                <th class="highlight">★ <span data-i18n="compare.col.us">Us</span></th>
+                                <th data-i18n="compare.col.compA">Company A</th>
+                                <th data-i18n="compare.col.compB">Company B</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-i18n="compare.row.distance">Distance from Airport</td>
+                                <td class="highlight-col"><strong>8 min</strong></td>
+                                <td>45 min</td>
+                                <td>30 min</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="compare.row.language">Multilingual Support</td>
+                                <td class="highlight-col"><strong data-i18n="compare.val.100lang">100+
+                                        languages</strong></td>
+                                <td data-i18n="compare.val.jpEn">JP & EN only</td>
+                                <td data-i18n="compare.val.jpEn">JP & EN only</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="compare.row.emergency">24h Emergency Support</td>
+                                <td class="highlight-col">✅</td>
+                                <td>❌</td>
+                                <td data-i18n="compare.val.partial">Partial</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="compare.row.dropoff">Flexible Drop-off</td>
+                                <td class="highlight-col">✅</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td data-i18n="compare.row.price">Starting Price</td>
+                                <td class="highlight-col"><strong>¥16,500〜</strong></td>
+                                <td>¥22,000〜</td>
+                                <td>¥19,800〜</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ FAQ ═══ -->
+        <section class="rent-section" id="faq" style="background: white;">
+            <div class="rent-container">
+                <div class="rent-section-header">
+                    <span class="rent-badge">❓ FAQ</span>
+                    <h2 class="rent-section-title" data-i18n="faq.title">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" data-i18n="faq.q1">Do I need a special license to drive a campervan
+                            in Japan?</button>
+                        <div class="faq-answer" data-i18n="faq.a1">No special license is needed. Our campervans are
+                            regular-sized vehicles that can be driven with a standard International Driving Permit (IDP)
+                            or a translated license for certain countries. See the License section above for details.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" data-i18n="faq.q2">Where can I pick up and return the
+                            campervan?</button>
+                        <div class="faq-answer" data-i18n="faq.a2">Pick-up and return is at our Hakozaki Base, just 10
+                            minutes from Fukuoka Airport. We can also arrange airport pick-up by prior arrangement.
+                            Flexible drop-off locations may be available — just ask!</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" data-i18n="faq.q3">What is included in the rental price?</button>
+                        <div class="faq-answer" data-i18n="faq.a3">Everything you need: vehicle insurance (CDW), ETC
+                            card, English navigation, basic camping gear (chairs, table, cooking set), portable power
+                            station, 24/7 roadside assistance, and multilingual support. No hidden fees!</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" data-i18n="faq.q4">What is the cancellation policy?</button>
+                        <div class="faq-answer" data-i18n="faq.a4">Free cancellation up to 7 days before your
+                            reservation. Cancellations within 7 days may incur a fee. Please contact us via WhatsApp or
+                            LINE for details.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" data-i18n="faq.q5">Can I sleep in the campervan anywhere?</button>
+                        <div class="faq-answer" data-i18n="faq.a5">Japan has many great options: auto-campsites, RV
+                            parks, and "Michi-no-Eki" roadside stations. While you can't camp just anywhere, there are
+                            hundreds of spots across Kyushu. We'll provide a recommended spot guide when you pick up!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ ACCESS / MAP ═══ -->
+        <section class="rent-section" id="access">
+            <div class="rent-container">
+                <div class="rent-section-header">
+                    <span class="rent-badge">📍 <span data-i18n="access.badge">Access</span></span>
+                    <h2 class="rent-section-title" data-i18n="access.title">Hakozaki Base Location</h2>
+                    <p class="rent-section-subtitle" data-i18n="access.subtitle">Just 10 minutes from Fukuoka Airport,
+                        right next to the highway entrance</p>
+                </div>
+
+                <div
+                    style="background: var(--rent-surface); border-radius: var(--rent-radius); padding: 32px; box-shadow: var(--rent-card-shadow);">
+                    <div
+                        style="background: #E5E7EB; height: 300px; border-radius: var(--rent-radius-sm); display: flex; align-items: center; justify-content: center; font-size: 48px; margin-bottom: 20px;">
+                        🗺️ <span style="font-size: 18px; margin-left: 12px;" data-i18n="access.mapPlaceholder">Map will
+                            be embedded here</span>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <h4 style="font-weight: 700; margin-bottom: 8px;" data-i18n="access.pickup">📍 Pick-up /
+                                Return</h4>
+                            <p style="font-size: 14px; color: var(--rent-text-secondary);" data-i18n="access.address">
+                                Hakozaki, Higashi-ku, Fukuoka<br>(Hakata / Airport Area)</p>
+                        </div>
+                        <div>
+                            <h4 style="font-weight: 700; margin-bottom: 8px;" data-i18n="access.hours">🕐 Hours</h4>
+                            <p style="font-size: 14px; color: var(--rent-text-secondary);"
+                                data-i18n="access.hoursDetail">Pick-up: 9:00 - 17:00<br>Return: 9:00 -
+                                17:00<br>(Flexible by arrangement)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div><!-- end .rent-page -->
+
+    <!-- ═══ Sticky Bottom Bar ═══ -->
+    <div class="sticky-bar">
+        <div class="sticky-bar-info">
+            <span class="rating">⭐ 4.9 (1,247)</span>
+            <span class="availability" data-i18n="sticky.availability">⚡ 3 vans left</span>
+            <span class="viewers" data-i18n="sticky.viewers">● 9 people viewing</span>
+        </div>
+        <div class="sticky-bar-buttons">
+            <a href="https://wa.me/819012345678" class="btn-whatsapp" target="_blank">📅 WhatsApp</a>
+            <a href="https://line.me/R/ti/p/@vantripjapan" class="btn-line" target="_blank">💚 LINE</a>
+        </div>
+    </div>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer" style="margin-bottom: 60px;">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">VAN TRIP JAPAN</div>
+                <p>A travel blog featuring road trips & van life in Japan. Real stories, practical tips, and campervan
+                    rental in Fukuoka.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/vantripjapan" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="WhatsApp">💬</a>
+                    <a href="#" aria-label="LINE">💚</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="/">Stories</a>
+                <a href="/category/">Destinations</a>
+                <a href="/category/">Tips</a>
+            </div>
+            <div class="footer-col">
+                <h4>Rental</h4>
+                <a href="/rent/">Overview</a>
+                <a href="/rent/#vehicles">Vehicles</a>
+                <a href="/rent/#pricing">Pricing</a>
+                <a href="/rent/#faq">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4>
+                <a href="/writer/">Writers</a>
+                <a href="/contact/">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 VanTripJapan Magazine. All rights reserved.</span>
+            <span>Fukuoka, Japan 🇯🇵</span>
+        </div>
+    </footer>
+
+    <!-- ═══ Scripts ═══ -->
+    <script src="../js/i18n.js"></script>
+    <script>
+        // Navbar scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Mobile menu
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const wasOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!wasOpen) item.classList.add('open');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
