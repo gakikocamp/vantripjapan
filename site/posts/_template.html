@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}} — VanTripJapan</title>
+    <meta name="description" content="{{DESCRIPTION}}">
+    <meta property="og:title" content="{{TITLE}} — VanTripJapan">
+    <meta property="og:description" content="{{DESCRIPTION}}">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="https://vantripjapan.jp/images/{{IMAGE_FILE}}">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/article.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "{{TITLE}}",
+      "description": "{{DESCRIPTION}}",
+      "image": "https://vantripjapan.jp/images/{{IMAGE_FILE}}",
+      "author": { "@type": "Organization", "name": "VanTripJapan" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "VanTripJapan",
+        "logo": { "@type": "ImageObject", "url": "https://vantripjapan.jp/images/hero-vanlife.png" }
+      },
+      "datePublished": "{{DATE_ISO}}",
+      "dateModified": "{{DATE_ISO}}"
+    }
+    </script>
+</head>
+
+<body>
+
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <div class="logo-icon">V</div>
+                <div><span>VAN TRIP JAPAN</span><span class="magazine-tag">Magazine</span></div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="/">Stories</a>
+                <a href="/category/">Destinations</a>
+                <a href="/category/">Tips</a>
+                <a href="/contact/">Contact</a>
+                <a href="/rent/" class="nav-cta">Rent a Van</a>
+            </div>
+            <button class="nav-hamburger" id="hamburger"
+                aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="article-hero">
+        <img src="/images/{{IMAGE_FILE}}" loading="lazy" alt="{{TITLE}}">
+        <div class="article-hero-overlay"></div>
+    </div>
+
+    <div class="article-header">
+        <div class="article-meta">
+            <span class="article-category-tag">{{CATEGORY}}</span>
+            <span class="article-date">{{DATE_DISPLAY}}</span>
+        </div>
+        <h1 class="article-page-title">{{TITLE}}</h1>
+        <p class="article-excerpt-text">{{EXCERPT}}</p>
+        <div class="article-author-info">
+            <div class="article-author-avatar">✍️</div>
+            <div>
+                <div class="article-author-name">VANTRIPJAPAN Team</div>
+                <div class="article-author-role">{{READ_TIME}} min read</div>
+            </div>
+        </div>
+    </div>
+
+    <article class="article-body">
+        {{ARTICLE_CONTENT}}
+    </article>
+
+    <div class="article-cta">
+        <div class="article-cta-box">
+            <h3>Ready to explore Japan by campervan?</h3>
+            <p>All-inclusive rental from Fukuoka. 10 min from the airport.</p>
+            <a href="/rent/" class="article-cta-btn">View Rental Options →</a>
+        </div>
+    </div>
+
+    <div class="related-section">
+        <h3 class="related-title">More Stories</h3>
+        <div class="related-grid">
+            {{RELATED_ARTICLES}}
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">VAN TRIP JAPAN</div>
+                <p>Real stories from the road.</p>
+                <div class="footer-social"><a href="https://instagram.com/vantripjapan">📷</a><a href="#">💬</a><a
+                        href="#">💚</a></div>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4><a href="/">Stories</a><a href="/category/">Destinations</a>
+            </div>
+            <div class="footer-col">
+                <h4>Rental</h4><a href="/rent/">Campervan Rentals</a><a href="/rent/#pricing">Pricing</a>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4><a href="/contact/">Contact</a><a href="#">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 VanTripJapan. All rights reserved.</span><span>Fukuoka, Japan</span>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
+        document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('active'); });
+        // Reading progress bar
+        const progress = document.createElement('div');
+        progress.className = 'reading-progress';
+        document.body.prepend(progress);
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement.scrollHeight - window.innerHeight;
+            progress.style.width = (window.scrollY / h * 100) + '%';
+        });
+    </script>
+</body>
+
+</html>

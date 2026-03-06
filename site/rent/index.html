@@ -13,6 +13,31 @@
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/rent.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRental",
+      "name": "VanTripJapan",
+      "description": "Campervan rental in Fukuoka, Japan. All-inclusive pricing from ¥16,500/day.",
+      "url": "https://vantripjapan.jp/rent/",
+      "telephone": "+81-XXX-XXX-XXXX",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Fukuoka",
+        "addressRegion": "Fukuoka",
+        "addressCountry": "JP"
+      },
+      "priceRange": "¥16,500〜",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    }
+    </script>
 </head>
 
 <body>

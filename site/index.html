@@ -13,6 +13,22 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vantripjapan.jp/">
     <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VanTripJapan",
+      "url": "https://vantripjapan.jp",
+      "description": "Discover Japan's hidden gems by campervan. Travel guides, insider tips, and camper rental in Fukuoka.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "VanTripJapan",
+        "logo": { "@type": "ImageObject", "url": "https://vantripjapan.jp/images/hero-vanlife.png" }
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -44,8 +60,7 @@
 
     <!-- ═══ Hero ═══ -->
     <section class="hero" id="hero">
-        <div class="hero-bg"
-            style="background: linear-gradient(135deg, #1D1D1F 0%, #2C3E50 40%, #34495E 80%, #3A506B 100%); background-size: cover;">
+        <div class="hero-bg" style="background: url('/images/hero-vanlife.png') center/cover no-repeat;">
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -69,8 +84,7 @@
 
             <!-- Featured Article (Large) -->
             <a href="/posts/what-is-a-michi-no-eki/" class="featured-article animate-in">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'%3E%3Crect fill='%23E8D5C4' width='1200' height='600'/%3E%3Ctext x='600' y='280' text-anchor='middle' fill='%23A08060' font-size='80'%3E🏪%3C/text%3E%3Ctext x='600' y='360' text-anchor='middle' fill='%23A08060' font-size='24'%3EMichi-no-Eki%3C/text%3E%3C/svg%3E"
-                    alt="Michi-no-Eki Japanese roadside station">
+                <img src="/images/article-michinoeki.png" loading="lazy" alt="Michi-no-Eki Japanese roadside station">
                 <div class="featured-article-overlay">
                     <span class="featured-article-category">How-To</span>
                     <h3 class="featured-article-title">What Is a Michi-no-Eki? Everything You Need to Know About
@@ -86,8 +100,7 @@
                 <!-- Article 2 -->
                 <a href="/posts/how-to-enjoy-japanese-hot-springs/" class="article-card animate-in">
                     <div class="article-card-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23C4D5E8' width='600' height='400'/%3E%3Ctext x='300' y='200' text-anchor='middle' fill='%236080A0' font-size='48'%3E♨️%3C/text%3E%3C/svg%3E"
-                            alt="Japanese hot springs onsen">
+                        <img src="/images/article-onsen.png" loading="lazy" alt="Japanese hot springs onsen">
                         <span class="article-card-category">Culture</span>
                     </div>
                     <div class="article-card-body">
@@ -106,8 +119,7 @@
                 <!-- Article 3 -->
                 <a href="/posts/japan-road-rules-for-campervan/" class="article-card animate-in">
                     <div class="article-card-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23D5E8C4' width='600' height='400'/%3E%3Ctext x='300' y='200' text-anchor='middle' fill='%2360A060' font-size='48'%3E🚗%3C/text%3E%3C/svg%3E"
-                            alt="Driving in Japan">
+                        <img src="/images/article-roadrules.png" loading="lazy" alt="Driving in Japan">
                         <span class="article-card-category">Tips</span>
                     </div>
                     <div class="article-card-body">
@@ -126,8 +138,7 @@
                 <!-- Article 4 -->
                 <a href="/posts/etc-card-guide/" class="article-card animate-in">
                     <div class="article-card-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23E8E0C4' width='600' height='400'/%3E%3Ctext x='300' y='200' text-anchor='middle' fill='%23A09060' font-size='48'%3E💳%3C/text%3E%3C/svg%3E"
-                            alt="ETC Card Japan">
+                        <img src="/images/article-etc.png" loading="lazy" alt="ETC Card Japan">
                         <span class="article-card-category">How-To</span>
                     </div>
                     <div class="article-card-body">
@@ -146,8 +157,7 @@
                 <!-- Article 5 -->
                 <a href="/posts/campground-and-campervan-guide/" class="article-card animate-in">
                     <div class="article-card-image">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23C4E8D5' width='600' height='400'/%3E%3Ctext x='300' y='200' text-anchor='middle' fill='%2360A080' font-size='48'%3E⛺%3C/text%3E%3C/svg%3E"
-                            alt="Campground in Japan">
+                        <img src="/images/article-campground.png" loading="lazy" alt="Campground in Japan">
                         <span class="article-card-category">Guide</span>
                     </div>
                     <div class="article-card-body">
@@ -168,7 +178,7 @@
             <!-- Category Blocks -->
             <div class="category-blocks" style="margin-top: var(--space-3xl);">
                 <a href="/category/#travel-guide" class="category-block animate-in"
-                    style="background: linear-gradient(135deg, #2C3E50, #4A6B8A);">
+                    style="background: linear-gradient(135deg, rgba(44,62,80,0.75), rgba(74,107,138,0.75)), url('/images/category-tips.png') center/cover;">
                     <div class="category-block-content">
                         <h3 class="category-block-title">Van Travel Guide</h3>
                         <p class="category-block-desc">Tips, routes, and how to rent — the essentials for van travel.
@@ -176,7 +186,7 @@
                     </div>
                 </a>
                 <a href="/category/#destinations" class="category-block animate-in"
-                    style="background: linear-gradient(135deg, #6B4226, #8B6914);">
+                    style="background: linear-gradient(135deg, rgba(107,66,38,0.75), rgba(139,105,20,0.75)), url('/images/category-destinations.png') center/cover;">
                     <div class="category-block-content">
                         <h3 class="category-block-title">Explore Destinations</h3>
                         <p class="category-block-desc">Scenic spots and hidden gems across Kyushu and beyond.</p>
@@ -280,6 +290,18 @@
             el.style.animationPlayState = 'paused';
             observer.observe(el);
         });
+    </script>
+
+    <!-- Back to Top -->
+    <button id="backToTop" aria-label="Back to top"
+        style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;border:none;background:var(--color-text);color:white;font-size:18px;cursor:pointer;opacity:0;transition:all 0.3s;z-index:90;box-shadow:0 4px 16px rgba(0,0,0,0.15);">&uarr;</button>
+    <script>
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backBtn.style.opacity = window.scrollY > 600 ? '1' : '0';
+            backBtn.style.pointerEvents = window.scrollY > 600 ? 'auto' : 'none';
+        });
+        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     </script>
 
 </body>
