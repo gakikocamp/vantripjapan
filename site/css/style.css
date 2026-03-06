@@ -964,3 +964,239 @@ ol {
     font-size: 22px;
   }
 }
+
+/* ══════════════════════════════════════════════
+   IMPROVEMENTS — Media Page (5 Enhancements)
+   ══════════════════════════════════════════════ */
+
+/* 1. Hero background animated gradient */
+.hero-bg {
+  background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533483, #2C3E50) !important;
+  background-size: 400% 400% !important;
+  animation: heroGradient 15s ease infinite;
+}
+
+@keyframes heroGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 2. Article cards — elevated hover with shadow */
+.article-card {
+  transition: all 0.4s var(--ease);
+  border-radius: var(--radius);
+  padding-bottom: var(--space-md);
+}
+
+.article-card:hover {
+  opacity: 1;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  background: var(--color-surface);
+}
+
+.featured-article {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  transition: all 0.5s var(--ease);
+}
+
+.featured-article:hover {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  transform: scale(1.01);
+}
+
+/* 3. Category blocks — glass texture overlay */
+.category-block::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 40%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.category-block::after {
+  content: '→';
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+  transition: all 0.3s;
+}
+
+.category-block:hover::after {
+  color: white;
+  transform: translateX(4px);
+}
+
+/* 4. Rental banner — subtle pulse glow */
+.rental-banner {
+  transition: all 0.4s var(--ease);
+}
+
+.rental-banner:hover {
+  box-shadow: 0 0 60px rgba(191, 78, 48, 0.15);
+}
+
+.rental-banner::after {
+  animation: pulseGlow 4s ease infinite;
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.25;
+    transform: scale(1.1);
+  }
+}
+
+/* 5. Page load fade-in */
+body {
+  animation: pageLoad 0.6s ease forwards;
+}
+
+@keyframes pageLoad {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Staggered scroll animations */
+.animate-in:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.animate-in:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.animate-in:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.animate-in:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.animate-in:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.animate-in:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+/* ══════════════════════════════════════════════
+   IMPROVEMENTS — Rental Page (5 Enhancements)
+   ══════════════════════════════════════════════ */
+
+/* 1. Smooth section transitions */
+.rent-section {
+  transition: background 0.5s;
+}
+
+/* 2. FAQ smooth accordion animation */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+  padding: 0 var(--space-lg);
+}
+
+.faq-item.open .faq-answer {
+  max-height: 400px;
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+}
+
+.faq-question {
+  transition: all 0.3s ease;
+}
+
+.faq-question::after {
+  content: '+';
+  font-size: 20px;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-question::after {
+  transform: rotate(45deg);
+}
+
+/* 3. Vehicle cards — hover lift effect */
+.vehicle-card {
+  transition: all 0.4s var(--ease);
+}
+
+.vehicle-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
+}
+
+/* 4. Comparison table — row hover highlight */
+.comparison-table tbody tr {
+  transition: background 0.2s;
+}
+
+.comparison-table tbody tr:hover {
+  background: rgba(191, 78, 48, 0.04);
+}
+
+.comparison-table .highlight-col {
+  position: relative;
+}
+
+.comparison-table .highlight-col::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(191, 78, 48, 0.04);
+  pointer-events: none;
+}
+
+/* 5. Sticky bar enhanced animation */
+.sticky-bar {
+  transition: transform 0.5s var(--ease), box-shadow 0.3s;
+}
+
+.sticky-bar:hover {
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Reading progress bar for articles */
+.reading-progress {
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  height: 2px;
+  background: var(--color-accent);
+  z-index: 999;
+  transition: width 0.1s;
+  width: 0%;
+}
