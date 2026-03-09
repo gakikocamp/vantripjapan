@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — VanTripJapan</title>
+    <meta name="description"
+        content="Get in touch with VanTripJapan. Questions about campervan rental, road trips in Kyushu, or planning your Japan adventure? We're here to help.">
+    <meta property="og:title" content="Contact VanTripJapan">
+    <meta property="og:description"
+        content="Questions about campervan rental in Kyushu, Japan? Contact us via form, WhatsApp, or LINE.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vantripjapan.jp/contact/">
+    <link rel="canonical" href="https://vantripjapan.jp/contact/">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/article.css">
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 120px 20px 60px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .contact-hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-hero p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-wrapper {
+            max-width: 800px;
+            margin: -30px auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-form-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+            grid-column: 1 / -1;
+        }
+
+        .contact-form-card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-form-card .subtitle {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+            font-family: inherit;
+            background: #fafafa;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #e07a5f;
+            background: #fff;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 500px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #e07a5f, #f2a65a);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 8px;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(224, 122, 95, 0.4);
+        }
+
+        .contact-channel {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .contact-channel:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-channel .icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .contact-channel h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .contact-channel p {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 12px;
+        }
+
+        .contact-channel a {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+
+        .contact-channel a:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .btn-line {
+            background: #06C755;
+            color: #fff;
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .form-success .check {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+
+        .form-success h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .form-success p {
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <div class="logo-icon">V</div>
+                <div><span>VAN TRIP JAPAN</span><span class="magazine-tag">Magazine</span></div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="/">Stories</a>
+                <a href="/rent/" class="nav-cta">Rent a Van</a>
+            </div>
+            <button class="nav-hamburger" id="hamburger"
+                aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <div class="contact-hero">
+        <h1>Get in Touch</h1>
+        <p>Questions about campervan rental, road trips, or planning your Kyushu adventure? We'd love to hear from you.
+        </p>
+    </div>
+
+    <div class="contact-wrapper">
+        <div class="contact-form-card">
+            <h2>Send us a message</h2>
+            <p class="subtitle">We'll reply within 24 hours in your language.</p>
+
+            <form id="contactForm" action="https://formsubmit.co/info@camjyo.com" method="POST">
+                <input type="hidden" name="_subject" value="VanTripJapan — New Contact Form Message">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://vantripjapan.jp/contact/?sent=true">
+                <input type="text" name="_honey" style="display:none">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Smith" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject">
+                        <option value="Campervan Rental Inquiry">Campervan Rental Inquiry</option>
+                        <option value="Trip Planning Question">Trip Planning Question</option>
+                        <option value="License Translation (JDLTC)">License Translation (JDLTC)</option>
+                        <option value="Partnership / Collaboration">Partnership / Collaboration</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message"
+                        placeholder="Tell us about your trip plans, questions, or anything else..." required></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Send Message →</button>
+            </form>
+
+            <div class="form-success" id="formSuccess">
+                <div class="check">✅</div>
+                <h3>Message Sent!</h3>
+                <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
+            </div>
+        </div>
+
+        <div class="contact-channel">
+            <div class="icon">💬</div>
+            <h3>WhatsApp</h3>
+            <p>Quick questions? Chat with us directly.</p>
+            <a href="https://wa.me/817093757129" target="_blank" class="btn-whatsapp">Open WhatsApp</a>
+        </div>
+
+        <div class="contact-channel">
+            <div class="icon">💚</div>
+            <h3>LINE</h3>
+            <p>Prefer LINE? We're here too.</p>
+            <a href="https://lin.ee/YYyRz2f" target="_blank" class="btn-line">Open LINE</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">VAN TRIP JAPAN</div>
+                <p>Real stories from the road.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/vantripjapan" aria-label="Instagram">📷</a>
+                    <a href="https://pinterest.com/vantripjapan" aria-label="Pinterest">📌</a>
+                    <a href="https://wa.me/817093757129" aria-label="WhatsApp">💬</a>
+                    <a href="https://lin.ee/YYyRz2f" aria-label="LINE">💚</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4><a href="/">Stories</a>
+            </div>
+            <div class="footer-col">
+                <h4>Rental</h4><a href="/rent/">Campervan Rentals</a><a href="/rent/#pricing">Pricing</a>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4><a href="/contact/">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© 2025 VanTripJapan. A service by JDLTC. All rights
+                reserved.</span><span>Fukuoka, Japan</span></div>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
+        document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('active'); });
+
+        // Show success message if redirected back after form submission
+        if (window.location.search.includes('sent=true')) {
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>
