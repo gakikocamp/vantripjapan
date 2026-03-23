@@ -1,0 +1,11 @@
+# wrangler.toml — VanTripJapan Cloudflare Pages configuration
+name = "vantripjapan"
+pages_build_output_dir = "site"
+compatibility_date = "2024-01-01"
+
+# Shared D1 database with camjyo.com CMS
+# Articles with site='vantrip' belong to VanTripJapan
+[[d1_databases]]
+binding = "DB"
+database_name = "camjyo-cms"
+database_id = "36a71050-35e1-4f12-95cd-4280994cc68d"
