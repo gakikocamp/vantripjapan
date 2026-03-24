@@ -24,16 +24,18 @@
 .article-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.5) 100%);
+    background: linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.35) 60%, rgba(0, 0, 0, 0.72) 100%);
 }
 
 /* Article Header */
 .article-header {
     max-width: var(--max-width-narrow);
-    margin: -80px auto 0;
+    margin: -140px auto 0;
     padding: 0 var(--space-lg);
     position: relative;
     z-index: 2;
+    /* transparent over image → white below image */
+    background: linear-gradient(to bottom, transparent 0px, transparent 100px, white 170px);
 }
 
 .article-meta {
@@ -57,18 +59,24 @@
 
 .article-date {
     font-size: 13px;
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .article-page-title {
     font-family: var(--font-serif);
     font-size: clamp(28px, 4vw, 44px);
     font-weight: 600;
-    line-height: 1.15;
+    line-height: 1.25;
     letter-spacing: -1px;
     color: var(--color-text);
     margin-bottom: var(--space-md);
+    /* white glow: readable on dark image, invisible on white bg */
+    text-shadow:
+        0 0 24px rgba(255, 255, 255, 1),
+        0 0 10px rgba(255, 255, 255, 0.95),
+        0 2px 6px rgba(255, 255, 255, 0.8);
 }
 
 .article-excerpt-text {
