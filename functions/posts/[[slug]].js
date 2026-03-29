@@ -45,7 +45,9 @@ function renderArticlePage(article) {
   <meta property="og:image" content="${escHtml(article.cover_image)}">
   <meta property="og:url" content="${canonicalUrl}">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="${canonicalUrl}">
+  <link rel="icon" type="image/png" href="/images/favicon.png">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/article.css">
   <script type="application/ld+json">
@@ -113,6 +115,15 @@ function renderArticlePage(article) {
     ${article.body || ''}
   </article>
 
+  <!-- CTA -->
+  <div class="article-cta">
+    <div class="article-cta-box">
+      <h3>Ready to explore Japan by campervan?</h3>
+      <p>All-inclusive rental from Fukuoka. 10 min from the airport.</p>
+      <a href="/rent/" class="article-cta-btn">View Rental Options →</a>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
@@ -141,36 +152,16 @@ function renderArticlePage(article) {
       <div class="footer-col">
         <h4>About</h4>
         <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy Policy</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 VanTripJapan. A service by JDLTC. All rights reserved.</span>
+      <span>© 2026 VanTripJapan. A service by JDLTC. All rights reserved.</span>
       <span>Fukuoka, Japan</span>
     </div>
   </footer>
 
-  <script>
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-    const backBtn = document.createElement('button');
-    backBtn.id = 'backToTop';
-    backBtn.innerHTML = '&uarr;';
-    backBtn.setAttribute('aria-label', 'Back to top');
-    backBtn.style.cssText = 'position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;border:none;background:var(--color-text);color:white;font-size:18px;cursor:pointer;opacity:0;transition:all 0.3s;z-index:90;box-shadow:0 4px 16px rgba(0,0,0,0.15);';
-    document.body.appendChild(backBtn);
-    window.addEventListener('scroll', () => {
-      backBtn.style.opacity = window.scrollY > 600 ? '1' : '0';
-      backBtn.style.pointerEvents = window.scrollY > 600 ? 'auto' : 'none';
-    });
-    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  </script>
+  <script src="/js/nav.js"></script>
 
 </body>
 </html>`;
