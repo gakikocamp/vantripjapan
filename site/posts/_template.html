@@ -10,6 +10,7 @@
     <meta property="og:description" content="{{DESCRIPTION}}">
     <meta property="og:type" content="article">
     <meta property="og:image" content="https://vantripjapan.jp/images/{{IMAGE_FILE}}">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/article.css">
 
@@ -110,23 +111,11 @@
                 <h4>About</h4><a href="/contact/">Contact</a>
             </div>
         </div>
-        <div class="footer-bottom"><span>© 2025 VanTripJapan. All rights reserved.</span><span>Fukuoka, Japan</span>
+        <div class="footer-bottom"><span>© 2026 VanTripJapan. All rights reserved.</span><span>Fukuoka, Japan</span>
         </div>
     </footer>
 
-    <script>
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
-        document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('active'); });
-        // Reading progress bar
-        const progress = document.createElement('div');
-        progress.className = 'reading-progress';
-        document.body.prepend(progress);
-        window.addEventListener('scroll', () => {
-            const h = document.documentElement.scrollHeight - window.innerHeight;
-            progress.style.width = (window.scrollY / h * 100) + '%';
-        });
-    </script>
+    <script src="/js/nav.js"></script>
 </body>
 
 </html>
