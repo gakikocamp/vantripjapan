@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <title>VanTripJapan — Campervan Rental Fukuoka | Kyushu Road Trip Guide</title>
     <meta name="description"
         content="Rent a campervan in Fukuoka and explore Kyushu, Japan. All-inclusive from ¥16,500/day. Travel guides, road trip itineraries, hot springs, and insider tips for your Japan van life adventure.">
@@ -17,6 +18,7 @@
     <meta property="og:image" content="https://vantripjapan.jp/images/hero-vanlife.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://vantripjapan.jp/">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/style.css">
 
     <!-- Structured Data -->
@@ -219,12 +221,14 @@
         </div>
 
         <div class="footer-bottom">
-            <span>© 2025 VanTripJapan. A service by JDLTC. All rights reserved.</span>
+            <span>© 2026 VanTripJapan. A service by JDLTC. All rights reserved.</span>
             <span>Fukuoka, Japan</span>
         </div>
     </footer>
 
-    <!-- ═══ CMS Article Loader ═══ -->
+    <script src="/js/nav.js"></script>
+
+    <!-- CMS Article Loader -->
     <script>
     (function () {
         function esc(str) {
@@ -273,19 +277,16 @@
                 const articles = await res.json();
                 if (!Array.isArray(articles) || articles.length === 0) return;
 
-                // Featured: first (newest) article
                 const featuredWrap = document.getElementById('featured-article-wrap');
                 if (featuredWrap) {
                     featuredWrap.innerHTML = renderFeatured(articles[0]);
                 }
 
-                // Grid: remaining articles
                 const grid = document.getElementById('articles-grid');
                 if (grid && articles.length > 1) {
                     grid.innerHTML = articles.slice(1).map(renderCard).join('');
                 }
 
-                // Trigger scroll animations on new elements
                 if (window._vtjObserver) {
                     document.querySelectorAll('#articles-grid .animate-in, #featured-article-wrap .animate-in').forEach(el => {
                         el.style.animationPlayState = 'paused';
@@ -300,24 +301,9 @@
     })();
     </script>
 
-    <!-- ═══ Scripts ═══ -->
+    <!-- Scroll Animations -->
     <script>
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 20);
-        });
-
-        // Mobile menu
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Scroll animations (expose globally for CMS loader)
         const observer = new IntersectionObserver((entries) => {
-
             entries.forEach((entry, i) => {
                 if (entry.isIntersecting) {
                     entry.target.style.animationDelay = `${i * 0.1}s`;
@@ -331,18 +317,6 @@
             el.style.animationPlayState = 'paused';
             observer.observe(el);
         });
-    </script>
-
-    <!-- Back to Top -->
-    <button id="backToTop" aria-label="Back to top"
-        style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;border:none;background:var(--color-text);color:white;font-size:18px;cursor:pointer;opacity:0;transition:all 0.3s;z-index:90;box-shadow:0 4px 16px rgba(0,0,0,0.15);">&uarr;</button>
-    <script>
-        const backBtn = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            backBtn.style.opacity = window.scrollY > 600 ? '1' : '0';
-            backBtn.style.pointerEvents = window.scrollY > 600 ? 'auto' : 'none';
-        });
-        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     </script>
 
 </body>

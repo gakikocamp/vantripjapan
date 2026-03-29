@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
     <title>Contact Us — VanTripJapan</title>
     <meta name="description"
         content="Get in touch with VanTripJapan. Questions about campervan rental, road trips in Kyushu, or planning your Japan adventure? We're here to help.">
@@ -15,6 +16,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta property="og:url" content="https://vantripjapan.jp/contact/">
     <link rel="canonical" href="https://vantripjapan.jp/contact/">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/article.css">
     <style>
@@ -323,15 +325,12 @@
                 <h4>About</h4><a href="/contact/">Contact</a><a href="/privacy/">Privacy Policy</a>
             </div>
         </div>
-        <div class="footer-bottom"><span>© 2025 VanTripJapan. A service by JDLTC. All rights
+        <div class="footer-bottom"><span>© 2026 VanTripJapan. A service by JDLTC. All rights
                 reserved.</span><span>Fukuoka, Japan</span></div>
     </footer>
 
+    <script src="/js/nav.js"></script>
     <script>
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
-        document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('active'); });
-
         // Show success message if redirected back after form submission
         if (window.location.search.includes('sent=true')) {
             document.getElementById('contactForm').style.display = 'none';
