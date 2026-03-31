@@ -71,17 +71,16 @@
         <div class="hero-overlay"></div>
         <div class="hero-content hero-content--split">
             <div class="hero-left">
-                <span class="hero-badge">🇯🇵 Fukuoka-based Campervan Rental & Magazine</span>
-                <h1 class="hero-title">Your Kyushu<br>Adventure<br>Starts Here</h1>
-                <p class="hero-description">Travel guides, insider tips, and campervan rentals in Fukuoka — everything
-                    you need to explore Japan's most beautiful island by van.</p>
+                <span class="hero-badge">🇯🇵 Kyushu Travel Magazine from Fukuoka</span>
+                <h1 class="hero-title">Discover<br>Kyushu<br>By Van</h1>
+                <p class="hero-description">Road trip itineraries, hidden onsen, local food, and everything you need to explore Japan's most stunning island at your own pace.</p>
                 <div class="hero-actions">
-                    <a href="/rent/" class="hero-cta">Rent a Campervan →</a>
+                    <a href="/#stories" class="hero-cta">Read Latest Stories →</a>
                     <a href="/posts/kyushu-road-trip-itinerary/" class="hero-cta hero-cta--ghost">7-Day Itinerary</a>
                 </div>
                 <div class="hero-trust">
-                    <span>✅ All-inclusive from ¥16,500/day</span>
-                    <span>✅ 10 min from Fukuoka Airport</span>
+                    <span>📖 New guides every week</span>
+                    <span>🌸 Seasonal travel tips</span>
                 </div>
             </div>
             <div class="hero-right">
@@ -174,13 +173,44 @@
             <!-- Newsletter -->
             <div class="newsletter">
                 <h3 class="newsletter-title">Stay in the loop</h3>
-                <p class="newsletter-desc">Get the latest travel stories delivered to your inbox.</p>
-                <form class="newsletter-form"
-                    onsubmit="event.preventDefault(); this.querySelector('button').textContent = '✓ Sent!'">
-                    <input type="email" placeholder="Email address" required>
-                    <button type="submit">Subscribe</button>
+                <p class="newsletter-desc">Road trip guides, hidden Kyushu spots, and campervan tips — straight to your inbox.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" id="newsletter-email" placeholder="Email address" required>
+                    <button type="submit" id="newsletter-btn">Subscribe</button>
                 </form>
+                <p id="newsletter-msg" style="display:none; margin-top:12px; font-size:14px;"></p>
             </div>
+            <script>
+            document.getElementById('newsletter-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const btn = document.getElementById('newsletter-btn');
+                const msg = document.getElementById('newsletter-msg');
+                const email = document.getElementById('newsletter-email').value;
+                btn.disabled = true;
+                btn.textContent = '...';
+                try {
+                    const res = await fetch('/api/newsletter', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email }),
+                    });
+                    if (res.ok) {
+                        btn.textContent = '✓ Subscribed!';
+                        msg.style.display = 'block';
+                        msg.style.color = '#BF4E30';
+                        msg.textContent = 'Thanks! Check your inbox for a welcome email.';
+                    } else {
+                        throw new Error();
+                    }
+                } catch {
+                    btn.disabled = false;
+                    btn.textContent = 'Subscribe';
+                    msg.style.display = 'block';
+                    msg.style.color = '#888';
+                    msg.textContent = 'Something went wrong. Please try again.';
+                }
+            });
+            </script>
 
         </div>
     </section>
