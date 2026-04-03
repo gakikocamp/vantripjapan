@@ -49,6 +49,9 @@ function renderArticlePage(article) {
   <link rel="canonical" href="${canonicalUrl}">
   <link rel="icon" type="image/png" href="/images/favicon.png">
   <link rel="stylesheet" href="/css/style.css">
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
   <link rel="stylesheet" href="/css/article.css">
   <script type="application/ld+json">
   {
