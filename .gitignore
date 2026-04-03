@@ -22,3 +22,48 @@ scripts/config.json
 pinterest-tool/input/
 pinterest-tool/node_modules/
 .credentials/
+
+# Virtual environments
+.venv/
+venv/
+
+# Wrangler state
+.wrangler/
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+
+# Data directory
+data/
+
+# Reports
+*.md
+!README.md
+
+# Python scripts (keep ga4_report.py)
+admin_server.py
+customer_db.py
+db.py
+security.py
+seed_*.py
+setup_*.py
+server.py
+tracker.py
+test_*.py
+
+# Mail app
+mail-app/
+
+# Static (unused)
+static/
+
+# JDLTC (separate repo)
+jdltc-site/
+
+# Misc
+HANDOFF_*.md
+vantrip-seo-title-ideas.md
+*.sql
+run.sh

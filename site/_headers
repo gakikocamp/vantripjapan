@@ -1,5 +1,5 @@
 # Cloudflare Pages — Security & Cache Headers
-# Updated: 2026-04-03
+# Updated: 2026-04-04
 
 /*
   X-Frame-Options: DENY
@@ -8,11 +8,47 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   X-XSS-Protection: 1; mode=block
 
+# Static assets — aggressive caching
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 
 /css/*
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=2592000, s-maxage=31536000
 
 /js/*
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=2592000, s-maxage=31536000
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Favicons
+/images/favicon.png
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML pages — cache but revalidate
+/*.html
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600
+
+/
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600
+
+/rent/
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600
+
+/posts/*
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600
+
+/category/
+  Cache-Control: public, max-age=1800, s-maxage=43200, stale-while-revalidate=1800
+
+# API — no cache
+/api/*
+  Cache-Control: no-store, no-cache, must-revalidate
+
+# Sitemap & robots — moderate cache
+/sitemap.xml
+  Cache-Control: public, max-age=3600, s-maxage=86400
+  Content-Type: application/xml
+
+/robots.txt
+  Cache-Control: public, max-age=86400
