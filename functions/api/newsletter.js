@@ -5,7 +5,6 @@
 
 const RESEND_API = 'https://api.resend.com/emails';
 const FROM = 'VanTripJapan <newsletter@vantripjapan.jp>';
-const REPLY_TO = 'info@vantripjapan.jp';
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -98,7 +97,6 @@ export async function onRequest(context) {
       },
       body: JSON.stringify({
         from: FROM,
-        reply_to: REPLY_TO,
         to: [email],
         subject: 'Welcome to VanTripJapan 🚐',
         html: WELCOME_HTML(name),
