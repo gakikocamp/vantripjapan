@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>Categories — VanTripJapan</title>
+    <meta name="description"
+        content="Browse travel guides by category: destinations, tips, itineraries, food, onsen, and more. Your complete Kyushu travel resource.">
+    <meta property="og:title" content="Categories — VanTripJapan">
+    <meta property="og:description"
+        content="Browse travel guides by category: destinations, tips, itineraries, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vantripjapan.jp/category/">
+    <meta property="og:image" content="https://vantripjapan.jp/images/hero-vanlife.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://vantripjapan.jp/category/">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .cat-hero {
+            padding: calc(var(--nav-height) + var(--space-3xl)) var(--space-lg) var(--space-2xl);
+            text-align: center;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .cat-hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--space-sm);
+        }
+
+        .cat-hero p {
+            font-size: 1.1rem;
+            color: var(--color-muted);
+            line-height: 1.7;
+        }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            max-width: var(--max-width);
+            margin: 0 auto var(--space-3xl);
+            padding: 0 var(--space-lg);
+        }
+
+        .cat-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            align-items: flex-end;
+            text-decoration: none;
+            color: #fff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .cat-card-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s;
+        }
+
+        .cat-card:hover .cat-card-bg {
+            transform: scale(1.05);
+        }
+
+        .cat-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.7));
+        }
+
+        .cat-card-content {
+            position: relative;
+            padding: var(--space-lg);
+            z-index: 1;
+        }
+
+        .cat-card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .cat-card-count {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        .cat-articles {
+            max-width: var(--max-width);
+            margin: 0 auto var(--space-3xl);
+            padding: 0 var(--space-lg);
+        }
+
+        .cat-section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .cat-articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .cat-loading {
+            text-align: center;
+            padding: var(--space-3xl);
+            color: var(--color-muted);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <div class="logo-icon">V</div>
+                <div>
+                    <span>VAN TRIP JAPAN</span>
+                    <span class="magazine-tag">Magazine</span>
+                </div>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="/">Stories</a>
+                <a href="/category/" class="active">Destinations</a>
+                <a href="/category/">Tips</a>
+                <a href="/contact/">Contact</a>
+                <a href="/rent/" class="nav-cta">Rent a Van</a>
+            </div>
+
+            <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="cat-hero">
+        <h1>Explore by Category</h1>
+        <p>Browse our guides, tips, and stories by topic. From road trip itineraries to hidden onsen, find what inspires your next Kyushu adventure.</p>
+    </div>
+
+    <!-- Category Cards -->
+    <div class="cat-grid" id="cat-grid">
+        <div class="cat-loading">Loading categories…</div>
+    </div>
+
+    <!-- Articles by Category -->
+    <div class="cat-articles" id="cat-articles"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">VAN TRIP JAPAN</div>
+                <p>Real stories from the road. Travel guides, tips, and campervan rental in Fukuoka, Japan.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/vantripjapan" aria-label="Instagram">📷</a>
+                    <a href="https://pinterest.com/vantripjapan" aria-label="Pinterest">📌</a>
+                    <a href="https://wa.me/817093757129" target="_blank" aria-label="WhatsApp">💬</a>
+                    <a href="https://lin.ee/YYyRz2f" target="_blank" aria-label="LINE">💚</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="/">Stories</a>
+                <a href="/category/">Destinations</a>
+                <a href="/category/">Tips</a>
+            </div>
+            <div class="footer-col">
+                <h4>Rental</h4>
+                <a href="/rent/">Campervan Rentals</a>
+                <a href="/rent/#vehicles">Our Vehicles</a>
+                <a href="/rent/#pricing">Pricing</a>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4>
+                <a href="/contact/">Contact</a>
+                <a href="/privacy/">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 VanTripJapan. A service by JDLTC. All rights reserved.</span>
+            <span>Fukuoka, Japan</span>
+        </div>
+    </footer>
+
+    <script src="/js/nav.js"></script>
+    <script>
+        const CAT_COLORS = {
+            'Guide':       'linear-gradient(135deg, rgba(44,62,80,0.8), rgba(52,73,94,0.8))',
+            'Tips':        'linear-gradient(135deg, rgba(39,60,117,0.8), rgba(25,42,86,0.8))',
+            'Destination': 'linear-gradient(135deg, rgba(107,66,38,0.8), rgba(139,105,20,0.8))',
+            'Itinerary':   'linear-gradient(135deg, rgba(44,80,62,0.8), rgba(20,83,45,0.8))',
+            'Stories':     'linear-gradient(135deg, rgba(120,40,31,0.8), rgba(176,58,46,0.8))',
+            'Culture':     'linear-gradient(135deg, rgba(85,45,100,0.8), rgba(128,57,153,0.8))',
+            'Food':        'linear-gradient(135deg, rgba(160,64,0,0.8), rgba(200,100,20,0.8))',
+            'Onsen':       'linear-gradient(135deg, rgba(0,77,128,0.8), rgba(0,119,182,0.8))',
+            'FAQ':         'linear-gradient(135deg, rgba(60,60,60,0.8), rgba(90,90,90,0.8))',
+            'Day Trip':    'linear-gradient(135deg, rgba(0,100,80,0.8), rgba(0,150,100,0.8))',
+            'How-To':      'linear-gradient(135deg, rgba(100,50,20,0.8), rgba(140,80,40,0.8))',
+        };
+        const CAT_ICONS = {
+            'Guide': '📖', 'Tips': '💡', 'Destination': '📍', 'Itinerary': '🗺️',
+            'Stories': '✍️', 'Culture': '⛩️', 'Food': '🍜', 'Onsen': '♨️',
+            'FAQ': '❓', 'Day Trip': '🚗', 'How-To': '🔧',
+        };
+
+        function esc(str) {
+            if (!str) return '';
+            return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+        function fmtDate(d) {
+            if (!d) return '';
+            return String(d).slice(0, 10).replace(/-/g, '.');
+        }
+
+        async function loadCategories() {
+            try {
+                const res = await fetch('/api/articles');
+                if (!res.ok) return;
+                const articles = await res.json();
+                if (!Array.isArray(articles) || articles.length === 0) {
+                    document.getElementById('cat-grid').innerHTML = '<p class="cat-loading">No articles found.</p>';
+                    return;
+                }
+
+                // Group by category
+                const groups = {};
+                articles.forEach(a => {
+                    const cat = a.category || 'Guide';
+                    if (!groups[cat]) groups[cat] = [];
+                    groups[cat].push(a);
+                });
+
+                // Render category cards
+                const gridHtml = Object.entries(groups)
+                    .sort((a, b) => b[1].length - a[1].length)
+                    .map(([cat, items]) => {
+                        const bg = CAT_COLORS[cat] || CAT_COLORS['Guide'];
+                        const icon = CAT_ICONS[cat] || '📄';
+                        const coverImg = items[0].cover_image || '';
+                        const bgStyle = coverImg
+                            ? `background-image: ${bg}, url('${esc(coverImg)}'); background-size: cover; background-position: center;`
+                            : `background: ${bg};`;
+                        return `<a href="#cat-${esc(cat.toLowerCase().replace(/\s+/g,'-'))}" class="cat-card" style="${bgStyle}">
+                            <div class="cat-card-overlay"></div>
+                            <div class="cat-card-content">
+                                <div class="cat-card-title">${icon} ${esc(cat)}</div>
+                                <div class="cat-card-count">${items.length} article${items.length > 1 ? 's' : ''}</div>
+                            </div>
+                        </a>`;
+                    }).join('');
+                document.getElementById('cat-grid').innerHTML = gridHtml;
+
+                // Render article lists per category
+                const sectionsHtml = Object.entries(groups)
+                    .sort((a, b) => b[1].length - a[1].length)
+                    .map(([cat, items]) => {
+                        const icon = CAT_ICONS[cat] || '📄';
+                        const id = `cat-${cat.toLowerCase().replace(/\s+/g,'-')}`;
+                        const cardsHtml = items.map(a => `
+                            <a href="/posts/${esc(a.slug)}/" class="article-card">
+                                <div class="article-card-image">
+                                    <img src="${esc(a.cover_image)}" loading="lazy" alt="${esc(a.title)}">
+                                    <span class="article-card-category">${esc(a.category)}</span>
+                                </div>
+                                <div class="article-card-body">
+                                    <span class="article-card-date">${fmtDate(a.published_at)}</span>
+                                    <h3 class="article-card-title">${esc(a.title)}</h3>
+                                    <p class="article-card-excerpt">${esc(a.excerpt)}</p>
+                                    <div class="article-card-footer">
+                                        <span class="article-card-author">VANTRIPJAPAN</span>
+                                        <span class="article-card-read">Read →</span>
+                                    </div>
+                                </div>
+                            </a>`).join('');
+                        return `<div id="${id}" style="margin-bottom: var(--space-3xl);">
+                            <h2 class="cat-section-title">${icon} ${esc(cat)}</h2>
+                            <div class="cat-articles-grid">${cardsHtml}</div>
+                        </div>`;
+                    }).join('');
+                document.getElementById('cat-articles').innerHTML = sectionsHtml;
+
+                // Smooth scroll to category if URL hash
+                if (window.location.hash) {
+                    const target = document.querySelector(window.location.hash);
+                    if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+                }
+            } catch (e) {
+                document.getElementById('cat-grid').innerHTML = '<p class="cat-loading">Could not load categories.</p>';
+                console.warn('Category load error:', e);
+            }
+        }
+        loadCategories();
+    </script>
+
+</body>
+
+</html>
