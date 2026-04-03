@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VanTripJapan 管理ダッシュボード</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/admin/style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-van-shuttle"></i>
+                <span>VanTrip</span>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item active" data-page="dashboard">
+                <i class="fas fa-chart-pie"></i>
+                <span>ダッシュボード</span>
+            </li>
+            <li class="nav-item" data-page="bookings">
+                <i class="fas fa-calendar-check"></i>
+                <span>予約管理</span>
+            </li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>管理者</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-content" id="mainContent">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
+                <h1 id="pageTitle">ダッシュボード</h1>
+            </div>
+            <div class="date-display">
+                <i class="fas fa-calendar"></i>
+                <span id="currentDate"></span>
+            </div>
+        </header>
+
+        <!-- Dashboard Page -->
+        <section class="page active" id="page-dashboard">
+            <div class="stats-grid">
+                <div class="stat-card stat-customers">
+                    <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="statBookings">0</span>
+                        <span class="stat-label">予約総数</span>
+                    </div>
+                </div>
+                <div class="stat-card stat-rentals">
+                    <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="statDocs">0</span>
+                        <span class="stat-label">書類総数</span>
+                    </div>
+                </div>
+                <div class="stat-card stat-countries">
+                    <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="statUnverified">0</span>
+                        <span class="stat-label">未確認書類</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list"></i> ステータス別</h3>
+                    </div>
+                    <div class="card-body" id="statusBreakdown">
+                        <p class="empty-state">読み込み中...</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-clock"></i> 最近の予約</h3>
+                    </div>
+                    <div class="card-body" id="recentBookings">
+                        <p class="empty-state">読み込み中...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bookings Page -->
+        <section class="page" id="page-bookings">
+            <div class="page-actions">
+                <a href="/book/" target="_blank" class="btn btn-secondary">
+                    <i class="fas fa-external-link-alt"></i> 予約フォームを開く
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="status-tabs" id="statusTabs">
+                    <button class="status-tab active" data-status="all">全て</button>
+                    <button class="status-tab" data-status="form_submitted">📩 新規</button>
+                    <button class="status-tab" data-status="docs_requested">📋 書類待ち</button>
+                    <button class="status-tab" data-status="docs_received">✅ 書類受領</button>
+                    <button class="status-tab" data-status="payment_sent">💳 決済待ち</button>
+                    <button class="status-tab" data-status="confirmed">🎉 確定</button>
+                    <button class="status-tab" data-status="active">🚐 利用中</button>
+                    <button class="status-tab" data-status="completed">✨ 完了</button>
+                </div>
+                <div class="card-header">
+                    <h3><i class="fas fa-calendar-check"></i> 予約一覧</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>名前</th>
+                                    <th>車種</th>
+                                    <th>ピックアップ</th>
+                                    <th>返却</th>
+                                    <th>ステータス</th>
+                                    <th>書類</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bookingsBody"></tbody>
+                        </table>
+                    </div>
+                    <p class="empty-state" id="bookingsEmpty" style="display:none;">予約がありません</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Booking Detail Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal" style="max-width:700px;">
+            <div class="modal-header">
+                <h3 id="bookingModalTitle">予約詳細</h3>
+                <button class="modal-close" onclick="$('#bookingModal').classList.remove('active')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="bookingModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toastContainer" style="position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;"></div>
+
+    <script src="/admin/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000000;
+            --surface: #1C1C1E;
+            --surface-2: #2C2C2E;
+            --surface-3: #3A3A3C;
+            --border: rgba(255,255,255,0.08);
+            --border-focus: rgba(255,255,255,0.2);
+            --text: #FFFFFF;
+            --text-2: rgba(255,255,255,0.6);
+            --text-3: rgba(255,255,255,0.35);
+            --blue: #0A84FF;
+            --blue-subtle: rgba(10,132,255,0.12);
+            --green: #30D158;
+            --green-subtle: rgba(48,209,88,0.12);
+            --orange: #FF9F0A;
+            --orange-subtle: rgba(255,159,10,0.12);
+            --red: #FF453A;
+            --purple: #BF5AF2;
+            --purple-subtle: rgba(191,90,242,0.12);
+            --terra: #BF4E30;
+            --terra-subtle: rgba(191,78,48,0.12);
+            --r: 12px;
+            --r-sm: 8px;
+            --r-lg: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            padding: 8px 16px; border-radius: var(--r-sm); font-size: 13px; font-weight: 500;
+            border: none; cursor: pointer; transition: all 0.15s; font-family: inherit;
+        }
+        .btn-blue { background: var(--blue); color: #fff; }
+        .btn-blue:hover { filter: brightness(1.15); }
+        .btn-green { background: var(--green); color: #000; font-weight: 600; }
+        .btn-green:hover { filter: brightness(1.1); }
+        .btn-fill { background: var(--surface-2); color: var(--text); }
+        .btn-fill:hover { background: var(--surface-3); }
+        .btn-ghost { background: transparent; color: var(--text-2); }
+        .btn-ghost:hover { color: var(--text); }
+        .btn-sm { padding: 5px 10px; font-size: 11px; }
+        .btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .btn-icon { width: 30px; height: 30px; padding: 0; border-radius: 7px; font-size: 14px; }
+
+        /* ── Segmented Control (Apple style) ── */
+        .segmented {
+            display: inline-flex; background: var(--surface); border-radius: var(--r-sm);
+            padding: 2px; gap: 1px;
+        }
+        .seg-btn {
+            padding: 6px 16px; font-size: 12px; font-weight: 500; border-radius: 6px;
+            border: none; cursor: pointer; font-family: inherit; transition: all 0.2s;
+            background: transparent; color: var(--text-2);
+        }
+        .seg-btn.active { background: var(--surface-2); color: var(--text); box-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+        .seg-btn:hover:not(.active) { color: var(--text); }
+
+        /* ── Header ── */
+        .header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 20px; height: 52px;
+            background: rgba(28,28,30,0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .header-left { display: flex; align-items: center; gap: 16px; }
+        .header-title { font-size: 16px; font-weight: 600; letter-spacing: -0.3px; }
+
+        /* ── Layout ── */
+        .main { display: grid; grid-template-columns: 260px 1fr 340px; min-height: calc(100vh - 52px); }
+
+        /* ── Sidebar ── */
+        .sidebar { background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
+        .sidebar-header { padding: 16px 16px 12px; display: flex; justify-content: space-between; align-items: center; }
+        .sidebar-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-3); }
+        .sidebar-body { flex: 1; overflow-y: auto; padding: 0 12px 12px; }
+
+        .drop-zone {
+            border: 1.5px dashed var(--surface-3); border-radius: var(--r); padding: 24px 12px;
+            text-align: center; cursor: pointer; transition: all 0.2s;
+            display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 10px;
+        }
+        .drop-zone:hover, .drop-zone.dragover { border-color: var(--blue); background: var(--blue-subtle); }
+        .drop-zone-icon { font-size: 28px; opacity: 0.6; }
+        .drop-zone-text { font-size: 11px; color: var(--text-3); }
+        .drop-zone input[type="file"] { display: none; }
+
+        .img-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+        .img-card {
+            position: relative; border-radius: 6px; overflow: hidden; cursor: pointer;
+            transition: all 0.15s; border: 2px solid transparent; aspect-ratio: 1;
+        }
+        .img-card:hover { opacity: 0.85; }
+        .img-card.selected { border-color: var(--blue); }
+        .img-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .img-card-x {
+            position: absolute; top: 2px; right: 2px; width: 16px; height: 16px;
+            background: rgba(0,0,0,0.7); border-radius: 50%; border: none; color: white;
+            font-size: 8px; cursor: pointer; display: none; align-items: center; justify-content: center;
+        }
+        .img-card:hover .img-card-x { display: flex; }
+
+        /* ── Editor (center) ── */
+        .editor { display: flex; flex-direction: column; background: var(--bg); }
+        .editor-canvas { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+        .preview-card {
+            position: relative; width: 260px; height: 390px; background: var(--surface);
+            border-radius: var(--r-lg); overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px var(--border);
+        }
+        .preview-card canvas { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .preview-empty {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            height: 100%; color: var(--text-3); font-size: 12px; gap: 6px;
+        }
+        .preview-empty span { font-size: 22px; }
+        .preview-badge {
+            position: absolute; top: 6px; right: 6px; background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px); color: var(--text-2); padding: 2px 6px;
+            border-radius: 4px; font-size: 9px; font-weight: 500;
+        }
+
+        .editor-toolbar {
+            border-top: 1px solid var(--border); background: var(--surface); padding: 14px 16px;
+        }
+        .toolbar-row { margin-bottom: 10px; }
+        .toolbar-row:last-child { margin-bottom: 0; }
+        .toolbar-label { font-size: 10px; font-weight: 500; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; display: block; }
+
+        .field {
+            width: 100%; padding: 7px 10px; background: var(--surface-2); border: 1px solid transparent;
+            border-radius: 6px; color: var(--text); font-size: 12px; font-family: inherit; outline: none;
+            transition: border-color 0.15s;
+        }
+        .field:focus { border-color: var(--blue); }
+        .field::placeholder { color: var(--text-3); }
+        textarea.field { resize: vertical; min-height: 40px; }
+        select.field { -webkit-appearance: none; appearance: none; cursor: pointer; }
+
+        .toolbar-actions { display: flex; gap: 6px; }
+        .toolbar-actions .btn { flex: 1; }
+
+        /* ── Right panel ── */
+        .right { border-left: 1px solid var(--border); display: flex; flex-direction: column; }
+
+        .right-tabs {
+            display: flex; padding: 8px 12px; gap: 4px; border-bottom: 1px solid var(--border);
+        }
+        .right-tab {
+            flex: 1; padding: 7px 0; text-align: center; font-size: 11px; font-weight: 500;
+            color: var(--text-3); cursor: pointer; border: none; background: none;
+            border-radius: 6px; font-family: inherit; transition: all 0.15s;
+        }
+        .right-tab:hover { color: var(--text-2); background: var(--surface); }
+        .right-tab.active { color: var(--text); background: var(--surface); }
+
+        .right-body { flex: 1; overflow-y: auto; }
+        .right-section { padding: 12px 14px; display: none; }
+        .right-section.active { display: block; }
+
+        .form-field { margin-bottom: 10px; }
+        .form-label { font-size: 10px; font-weight: 500; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 3px; display: block; }
+
+        .action-bar { padding: 10px 14px; border-top: 1px solid var(--border); display: flex; gap: 6px; }
+        .action-bar .btn { flex: 1; }
+
+        /* ── Queue ── */
+        .q-filters { display: flex; gap: 3px; padding: 8px 12px; border-bottom: 1px solid var(--border); }
+        .q-filter {
+            padding: 3px 8px; font-size: 10px; font-weight: 500; border-radius: 100px;
+            border: none; background: transparent; color: var(--text-3);
+            cursor: pointer; font-family: inherit; transition: all 0.12s;
+        }
+        .q-filter.active { background: var(--blue-subtle); color: var(--blue); }
+        .q-filter:hover:not(.active) { color: var(--text-2); }
+
+        .q-item {
+            display: flex; gap: 8px; padding: 8px 12px;
+            border-bottom: 1px solid var(--border); transition: background 0.1s;
+        }
+        .q-item:hover { background: var(--surface); }
+        .q-thumb { width: 36px; height: 54px; border-radius: 5px; overflow: hidden; flex-shrink: 0; }
+        .q-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .q-info { flex: 1; min-width: 0; }
+        .q-title { font-size: 11px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+        .q-meta { font-size: 9px; color: var(--text-3); display: flex; gap: 6px; align-items: center; margin-bottom: 3px; }
+        .q-actions { display: flex; gap: 3px; }
+
+        .badge { padding: 1px 6px; border-radius: 100px; font-size: 9px; font-weight: 600; }
+        .badge-draft { background: var(--surface-3); color: var(--text-2); }
+        .badge-approved { background: var(--green-subtle); color: var(--green); }
+        .badge-posted { background: var(--blue-subtle); color: var(--blue); }
+        .badge-error { background: rgba(255,69,58,0.12); color: var(--red); }
+
+        /* ── Modal ── */
+        .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 999; }
+        .modal-bg.open { display: flex; }
+        .modal-box { background: var(--surface); border-radius: var(--r-lg); padding: 24px; max-width: 380px; width: 90%; box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
+        .modal-box h2 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .modal-box p { font-size: 12px; color: var(--text-2); margin-bottom: 14px; line-height: 1.5; }
+        .modal-box .field { margin-bottom: 12px; }
+        .modal-btns { display: flex; gap: 8px; justify-content: flex-end; }
+
+        /* ── Toast ── */
+        .toasts { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 9999; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .toast {
+            padding: 8px 16px; background: var(--surface-2); border-radius: 100px;
+            font-size: 12px; font-weight: 500; box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            animation: toastIn 0.25s ease; white-space: nowrap;
+        }
+        @keyframes toastIn { from { opacity: 0; transform: translateY(8px) scale(0.95); } }
+
+        .spinner { width: 12px; height: 12px; border: 2px solid var(--surface-3); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.7s linear infinite; display: inline-block; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        #pinCanvas { display: none; }
+
+        @media (max-width: 1000px) { .main { grid-template-columns: 200px 1fr 280px; } }
+        @media (max-width: 700px) {
+            .main { grid-template-columns: 1fr; }
+            .sidebar, .right { border: none; border-bottom: 1px solid var(--border); }
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="pinCanvas" width="1000" height="1500"></canvas>
+
+<!-- API Modal -->
+<div class="modal-bg" id="apiModal">
+    <div class="modal-box">
+        <h2>🔑 API Key</h2>
+        <p>AIキャプション生成に使います。ブラウザに保存されます。</p>
+        <input class="field" type="password" id="apiKeyInput" placeholder="gsk_...">
+        <div class="modal-btns">
+            <button class="btn btn-ghost" onclick="closeApiModal()">あとで</button>
+            <button class="btn btn-blue" onclick="saveApiKey()">保存</button>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+    <div class="header-left">
+        <span class="header-title">📌 Pinterest Studio</span>
+        <div class="segmented" id="brandSeg">
+            <button class="seg-btn active" onclick="switchBrand('vantripjapan')" id="segVT">🏔 VanTrip</button>
+            <button class="seg-btn" onclick="switchBrand('crystalincense')" id="segCI">🔮 Crystal</button>
+        </div>
+    </div>
+    <button class="btn btn-ghost btn-sm" onclick="showApiModal()">🔑</button>
+</header>
+
+<div class="main">
+
+    <!-- Sidebar: Images -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-title">ライブラリ</span>
+            <span class="sidebar-title" id="imgCount" style="color:var(--text-2)">0枚</span>
+        </div>
+        <div class="sidebar-body">
+            <div class="drop-zone" id="dropZone">
+                <div class="drop-zone-icon">📁</div>
+                <div class="drop-zone-text">ドロップ or クリック</div>
+                <input type="file" id="fileInput" accept="image/*" multiple>
+            </div>
+            <div class="img-grid" id="imgGrid"></div>
+        </div>
+    </div>
+
+    <!-- Center: Editor -->
+    <div class="editor">
+        <div class="editor-canvas">
+            <div class="preview-card" id="previewCard">
+                <div class="preview-empty" id="previewEmpty"><span>🖼</span>画像を選択</div>
+                <canvas id="previewCanvas" style="display:none" width="1000" height="1500"></canvas>
+                <div class="preview-badge">2:3</div>
+            </div>
+        </div>
+        <div class="editor-toolbar">
+            <div class="toolbar-row">
+                <div class="segmented" style="width:100%">
+                    <button class="seg-btn active" style="flex:1" onclick="selectTemplate('overlay',this)">🖼 オーバーレイ</button>
+                    <button class="seg-btn" style="flex:1" onclick="selectTemplate('magazine',this)">📰 マガジン</button>
+                    <button class="seg-btn" style="flex:1" onclick="selectTemplate('list',this)">📋 リスト</button>
+                </div>
+            </div>
+            <div class="toolbar-row">
+                <input class="field" id="pinTitle" placeholder="タイトル" oninput="livePreview()">
+            </div>
+            <div class="toolbar-row" id="subtitleRow">
+                <input class="field" id="pinSubtitle" placeholder="サブタイトル" oninput="livePreview()">
+            </div>
+            <div class="toolbar-row" id="listRow" style="display:none">
+                <textarea class="field" id="pinListItems" placeholder="リスト項目（改行区切り）" oninput="livePreview()"></textarea>
+            </div>
+            <div class="toolbar-actions">
+                <button class="btn btn-fill" onclick="downloadPin()" id="dlBtn" disabled>💾 保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right: Caption & Queue -->
+    <div class="right">
+        <div class="right-tabs">
+            <button class="right-tab active" onclick="switchTab('caption',this)">キャプション</button>
+            <button class="right-tab" onclick="switchTab('queue',this)">キュー <span id="qCount" style="opacity:0.5">0</span></button>
+        </div>
+
+        <div class="right-body">
+            <!-- Caption Tab -->
+            <div class="right-section active" id="captionTab">
+                <button class="btn btn-blue" style="width:100%; margin-bottom:12px" onclick="generateCaptionAI()" id="aiBtn">
+                    ✨ AI生成
+                </button>
+                <div class="form-field">
+                    <label class="form-label">タイトル</label>
+                    <input class="field" id="captionTitle" placeholder="English title...">
+                </div>
+                <div class="form-field">
+                    <label class="form-label">説明文</label>
+                    <textarea class="field" id="captionDesc" placeholder="Description..." style="min-height:55px"></textarea>
+                </div>
+                <div class="form-field">
+                    <label class="form-label">ハッシュタグ</label>
+                    <textarea class="field" id="captionTags" placeholder="#VanLifeJapan ..." style="min-height:40px"></textarea>
+                </div>
+                <div class="form-field">
+                    <label class="form-label">ボード</label>
+                    <select class="field" id="boardSel"></select>
+                </div>
+                <div class="form-field">
+                    <label class="form-label">リンク</label>
+                    <input class="field" id="captionLink" value="https://vantripjapan.com">
+                </div>
+            </div>
+
+            <!-- Queue Tab -->
+            <div class="right-section" id="queueTab">
+                <div class="q-filters">
+                    <button class="q-filter active" onclick="filterQ('all',this)">すべて</button>
+                    <button class="q-filter" onclick="filterQ('draft',this)">下書き</button>
+                    <button class="q-filter" onclick="filterQ('approved',this)">承認済</button>
+                    <button class="q-filter" onclick="filterQ('posted',this)">投稿済</button>
+                </div>
+                <div id="qList"></div>
+            </div>
+        </div>
+
+        <!-- Action bar (always visible) -->
+        <div class="action-bar" id="captionActions">
+            <button class="btn btn-fill" onclick="addToQueue('draft')">📝 下書き</button>
+            <button class="btn btn-green" onclick="addToQueue('approved')">✅ 承認</button>
+        </div>
+        <div class="action-bar" id="queueActions" style="display:none">
+            <button class="btn btn-fill" onclick="exportQueue()" id="exportBtn" disabled>📥 エクスポート</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script>
+// ══════════════════════════════════
+//  BRANDS
+// ══════════════════════════════════
+const BRANDS = {
+    vantripjapan: {
+        name: 'VanTripJapan', emoji: '🏔', color: '#BF4E30', dark: '#1D1D1F',
+        url: 'https://vantripjapan.com', brandBar: '🚐  VanTripJapan',
+        boards: [
+            { v: 'japan-van-life', l: 'Japan Van Life' },
+            { v: 'kyushu-road-trip', l: 'Kyushu Road Trip' },
+            { v: 'japan-hot-springs', l: 'Japan Hot Springs' },
+            { v: 'japanese-camping', l: 'Japanese Camping' },
+            { v: 'japan-travel-tips', l: 'Japan Travel Tips' },
+        ],
+        prompt: 'Pinterest marketing expert for Japan van life travel. Target: German/French travelers. Include German (Wohnmobil, Reise) and French (voyage, aventure) keywords.',
+    },
+    crystalincense: {
+        name: 'CrystalIncense', emoji: '🔮', color: '#BF5AF2', dark: '#1A1625',
+        url: 'https://crystalincense.jp', brandBar: '🔮  CrystalIncense',
+        boards: [
+            { v: 'crystal-incense', l: 'Crystal Incense' },
+            { v: 'meditation-wellness', l: 'Meditation & Wellness' },
+            { v: 'japanese-incense', l: 'Japanese Incense' },
+            { v: 'spiritual-lifestyle', l: 'Spiritual Lifestyle' },
+            { v: 'mindfulness', l: 'Mindfulness' },
+        ],
+        prompt: 'Pinterest marketing expert for premium Japanese crystal incense. Target: wellness/spirituality enthusiasts. Calming, elegant tone.',
+    }
+};
+
+// ══════════════════════════════════
+//  STATE
+// ══════════════════════════════════
+let brand = 'vantripjapan';
+let imgs = [];
+let sel = -1;
+let tpl = 'overlay';
+let queue = JSON.parse(localStorage.getItem('ps_queue') || '[]');
+let qFilter = 'all';
+let activeTab = 'caption';
+
+// ══════════════════════════════════
+//  BRAND
+// ══════════════════════════════════
+function switchBrand(b) {
+    brand = b;
+    const c = BRANDS[b];
+    document.querySelectorAll('#brandSeg .seg-btn').forEach(e => e.classList.remove('active'));
+    document.getElementById(b === 'crystalincense' ? 'segCI' : 'segVT').classList.add('active');
+    const s = document.getElementById('boardSel');
+    s.innerHTML = c.boards.map(x => `<option value="${x.v}">${x.l}</option>`).join('');
+    document.getElementById('captionLink').value = c.url;
+    renderQ();
+    updateCount();
+    if (sel >= 0) livePreview();
+    toast(`${c.emoji} ${c.name}`);
+}
+
+// ══════════════════════════════════
+//  API KEY
+// ══════════════════════════════════
+function getKey() { return localStorage.getItem('ps_groq') || ''; }
+function showApiModal() { document.getElementById('apiModal').classList.add('open'); document.getElementById('apiKeyInput').value = getKey(); }
+function closeApiModal() { document.getElementById('apiModal').classList.remove('open'); }
+function saveApiKey() {
+    const k = document.getElementById('apiKeyInput').value.trim();
+    if (k) { localStorage.setItem('ps_groq', k); toast('✅ 保存しました'); }
+    closeApiModal();
+}
+
+// ══════════════════════════════════
+//  IMAGES
+// ══════════════════════════════════
+const dz = document.getElementById('dropZone');
+const fi = document.getElementById('fileInput');
+dz.addEventListener('click', () => fi.click());
+dz.addEventListener('dragover', e => { e.preventDefault(); dz.classList.add('dragover'); });
+dz.addEventListener('dragleave', () => dz.classList.remove('dragover'));
+dz.addEventListener('drop', e => { e.preventDefault(); dz.classList.remove('dragover'); addFiles(e.dataTransfer.files); });
+fi.addEventListener('change', e => addFiles(e.target.files));
+
+function addFiles(files) {
+    Array.from(files).forEach(f => {
+        if (!f.type.startsWith('image/')) return;
+        const r = new FileReader();
+        r.onload = e => {
+            const img = new Image();
+            img.onload = () => { imgs.push({ name: f.name, url: e.target.result, obj: img }); renderImgs(); if (imgs.length === 1) pickImg(0); };
+            img.src = e.target.result;
+        };
+        r.readAsDataURL(f);
+    });
+}
+
+function renderImgs() {
+    document.getElementById('imgCount').textContent = imgs.length + '枚';
+    document.getElementById('imgGrid').innerHTML = imgs.map((m, i) =>
+        `<div class="img-card ${i===sel?'selected':''}" onclick="pickImg(${i})">
+            <img src="${m.url}"><button class="img-card-x" onclick="event.stopPropagation();rmImg(${i})">✕</button>
+        </div>`).join('');
+}
+function rmImg(i) { imgs.splice(i,1); if(sel===i){sel=-1;resetPrev();}else if(sel>i)sel--; renderImgs(); }
+function pickImg(i) { sel=i; renderImgs(); document.getElementById('dlBtn').disabled=false; livePreview(); }
+function resetPrev() { document.getElementById('previewCanvas').style.display='none'; document.getElementById('previewEmpty').style.display='flex'; document.getElementById('dlBtn').disabled=true; }
+
+// ══════════════════════════════════
+//  TEMPLATE
+// ══════════════════════════════════
+function selectTemplate(t, el) {
+    document.querySelectorAll('.editor-toolbar .seg-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active'); tpl = t;
+    document.getElementById('listRow').style.display = t==='list' ? 'block' : 'none';
+    document.getElementById('subtitleRow').style.display = t==='list' ? 'none' : 'block';
+    if (sel >= 0) livePreview();
+}
+
+// ══════════════════════════════════
+//  CANVAS
+// ══════════════════════════════════
+function cover(ctx,img,x,y,w,h) {
+    const ir=img.width/img.height, br=w/h; let sx,sy,sw,sh;
+    if(ir>br){sh=img.height;sw=sh*br;sx=(img.width-sw)/2;sy=0;}else{sw=img.width;sh=sw/br;sx=0;sy=(img.height-sh)/2;}
+    ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);
+}
+function wrap(ctx,t,mw) { const w=t.split(' '),l=[]; let c=''; for(const x of w){const n=c?c+' '+x:x; if(ctx.measureText(n).width>mw&&c){l.push(c);c=x;}else c=n;} if(c)l.push(c); return l; }
+
+function bBar(ctx,W,H) { ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.font='600 14px Inter,sans-serif'; ctx.textAlign='center'; ctx.fillText(BRANDS[brand].brandBar,W/2,H-18); }
+function bColor() { return BRANDS[brand].color; }
+function bDark() { return BRANDS[brand].dark; }
+
+function drawOverlay(c,img,o) {
+    const W=1000,H=1500; c.width=W; c.height=H; const x=c.getContext('2d');
+    const t=o.title||'Title', s=o.subtitle||'';
+    cover(x,img,0,0,W,H);
+    const g=x.createLinearGradient(0,H*0.55,0,H);
+    g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(0.4,'rgba(0,0,0,0.4)'); g.addColorStop(1,'rgba(0,0,0,0.85)');
+    x.fillStyle=g; x.fillRect(0,H*0.55,W,H*0.45);
+    x.fillStyle='#FFF'; x.textAlign='left';
+    const sz=t.length>30?48:t.length>20?56:64; x.font=`800 ${sz}px Inter,sans-serif`;
+    const ln=wrap(x,t,W-120), lh=sz*1.15; let y=H-160-(ln.length-1)*lh;
+    for(const l of ln){x.fillText(l,60,y);y+=lh;}
+    if(s){x.font='300 24px Inter,sans-serif';x.fillStyle='rgba(255,255,255,0.7)';x.fillText(s,60,y+12);}
+    bBar(x,W,H);
+}
+function drawMag(c,img,o) {
+    const W=1000,H=1500; c.width=W; c.height=H; const x=c.getContext('2d');
+    const t=o.title||'TITLE', s=o.subtitle||''; const hH=H*0.38;
+    x.fillStyle=bDark(); x.fillRect(0,0,W,hH);
+    x.fillStyle=bColor(); x.fillRect(60,80,60,5);
+    if(s){x.font='500 15px Inter,sans-serif';x.fillStyle='rgba(255,255,255,0.45)';x.textAlign='left';x.fillText(s.toUpperCase(),60,128);}
+    x.fillStyle='#FFF'; x.textAlign='left';
+    const sz=t.length>30?44:t.length>20?52:60; x.font=`800 ${sz}px Inter,sans-serif`;
+    const ln=wrap(x,t.toUpperCase(),W-120), lh=sz*1.1; let y=176;
+    for(const l of ln){x.fillText(l,60,y);y+=lh;}
+    const p=20,iy=hH+10,iw=W-p*2,ih=H-hH-70;
+    x.save();x.beginPath();x.roundRect(p,iy,iw,ih,16);x.clip();cover(x,img,p,iy,iw,ih);x.restore();
+    x.fillStyle=bDark();x.fillRect(0,H-60,W,60); bBar(x,W,H);
+}
+function drawList(c,img,o) {
+    const W=1000,H=1500; c.width=W; c.height=H; const x=c.getContext('2d');
+    const t=o.title||'LIST'; const items=o.items||['1','2','3'];
+    cover(x,img,0,0,W,H); x.fillStyle='rgba(0,0,0,0.78)'; x.fillRect(0,0,W,H);
+    x.fillStyle=bColor(); x.fillRect(60,80,60,5);
+    x.fillStyle='#FFF'; x.textAlign='left';
+    const sz=t.length>25?48:58; x.font=`800 ${sz}px Inter,sans-serif`;
+    const ln=wrap(x,t.toUpperCase(),W-120), lh=sz*1.1; let y=140;
+    for(const l of ln){x.fillText(l,60,y);y+=lh;} y+=50;
+    const mx=Math.min(items.length,8), iH=Math.min(130,(H-y-100)/mx);
+    for(let i=0;i<mx;i++){
+        const iy=y+i*iH;
+        x.beginPath();x.arc(100,iy+5,26,0,Math.PI*2);x.fillStyle=bColor();x.fill();
+        x.fillStyle='#FFF';x.font='700 20px Inter,sans-serif';x.textAlign='center';x.fillText(''+(i+1),100,iy+13);
+        x.textAlign='left';x.font='500 26px Inter,sans-serif';x.fillStyle='#FFF';x.fillText(items[i],150,iy+13);
+        if(i<mx-1){x.strokeStyle='rgba(255,255,255,0.12)';x.lineWidth=1;x.beginPath();x.moveTo(60,iy+iH-12);x.lineTo(W-60,iy+iH-12);x.stroke();}
+    }
+    bBar(x,W,H);
+}
+
+function livePreview() {
+    if(sel<0)return;
+    const c=document.getElementById('previewCanvas'), img=imgs[sel].obj;
+    const t=document.getElementById('pinTitle').value||'Title';
+    const s=document.getElementById('pinSubtitle').value||'';
+    const lr=document.getElementById('pinListItems').value;
+    const items=lr?lr.split('\n').filter(x=>x.trim()):undefined;
+    const o={title:t,subtitle:s,items};
+    if(tpl==='magazine')drawMag(c,img,o);else if(tpl==='list')drawList(c,img,o);else drawOverlay(c,img,o);
+    c.style.display='block'; document.getElementById('previewEmpty').style.display='none';
+}
+
+// ══════════════════════════════════
+//  DOWNLOAD
+// ══════════════════════════════════
+function downloadPin() {
+    if(sel<0)return; livePreview();
+    const c=document.getElementById('previewCanvas'), a=document.createElement('a');
+    a.download=imgs[sel].name.replace(/\.[^.]+$/,'')+'_pin.png';
+    a.href=c.toDataURL('image/png'); a.click(); toast('💾 保存しました');
+}
+
+// ══════════════════════════════════
+//  AI CAPTION
+// ══════════════════════════════════
+async function generateCaptionAI() {
+    const key=getKey(); if(!key){showApiModal();return;}
+    const cfg=BRANDS[brand];
+    const t=document.getElementById('pinTitle').value||document.getElementById('captionTitle').value||'Pin';
+    const btn=document.getElementById('aiBtn');
+    btn.disabled=true; btn.innerHTML='<span class="spinner"></span> 生成中...';
+    try {
+        const res=await fetch('https://api.groq.com/openai/v1/chat/completions',{
+            method:'POST',
+            headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
+            body:JSON.stringify({model:'llama-3.3-70b-versatile',messages:[
+                {role:'system',content:cfg.prompt+' Respond in valid JSON only.'},
+                {role:'user',content:`Generate Pinterest caption for: "${t}". Return JSON: {"title":"max 100 chars","description":"200-300 chars","hashtags":["15-20"],"board":"best board"}`}
+            ],temperature:0.7,max_tokens:1000})
+        });
+        const d=await res.json(); if(d.error)throw new Error(d.error.message);
+        const m=d.choices[0].message.content.match(/\{[\s\S]*\}/);
+        const r=m?JSON.parse(m[0]):{};
+        document.getElementById('captionTitle').value=r.title||t;
+        document.getElementById('captionDesc').value=r.description||'';
+        document.getElementById('captionTags').value=(r.hashtags||[]).map(h=>h.startsWith('#')?h:'#'+h).join(' ');
+        toast('✨ 生成完了');
+    } catch(e) { toast('❌ '+e.message); }
+    btn.disabled=false; btn.innerHTML='✨ AI生成';
+}
+
+// ══════════════════════════════════
+//  TABS
+// ══════════════════════════════════
+function switchTab(name, el) {
+    activeTab = name;
+    document.querySelectorAll('.right-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.right-section').forEach(t=>t.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById(name+'Tab').classList.add('active');
+    document.getElementById('captionActions').style.display = name==='caption' ? 'flex' : 'none';
+    document.getElementById('queueActions').style.display = name==='queue' ? 'flex' : 'none';
+}
+
+// ══════════════════════════════════
+//  QUEUE
+// ══════════════════════════════════
+function addToQueue(status) {
+    if(sel<0){toast('⚠️ 画像を選んでください');return;}
+    livePreview();
+    const c=document.getElementById('previewCanvas');
+    queue.push({
+        id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),
+        brand, status,
+        img:c.toDataURL('image/png',0.8),
+        title:document.getElementById('captionTitle').value||document.getElementById('pinTitle').value,
+        desc:document.getElementById('captionDesc').value,
+        tags:document.getElementById('captionTags').value,
+        board:document.getElementById('boardSel').value,
+        link:document.getElementById('captionLink').value,
+        tpl, src:imgs[sel].name, at:new Date().toISOString()
+    });
+    save(); renderQ();
+    switchTab('queue',document.querySelectorAll('.right-tab')[1]);
+    toast(status==='approved'?'✅ 承認済みに追加':'📝 下書き保存');
+}
+
+function save() {
+    const s=queue.map(q=>{const c={...q}; if(c.img&&c.img.length>200)c.img=c.img.slice(0,150)+'...'; return c;});
+    try{localStorage.setItem('ps_queue',JSON.stringify(s));}catch(e){}
+    updateCount();
+}
+function updateCount() {
+    const n=queue.filter(q=>q.brand===brand).length;
+    document.getElementById('qCount').textContent=n;
+    document.getElementById('exportBtn').disabled=n===0;
+}
+
+function filterQ(f,el) { qFilter=f; document.querySelectorAll('.q-filter').forEach(b=>b.classList.remove('active')); el.classList.add('active'); renderQ(); }
+
+function renderQ() {
+    const el=document.getElementById('qList');
+    let items=queue.filter(q=>q.brand===brand);
+    if(qFilter!=='all')items=items.filter(q=>q.status===qFilter);
+    if(!items.length){el.innerHTML=`<div style="text-align:center;padding:30px;color:var(--text-3);font-size:11px">キューは空です</div>`;return;}
+    el.innerHTML=items.map(q=>{
+        const i=queue.indexOf(q);
+        const sl={draft:'下書き',approved:'承認済',posted:'投稿済',error:'エラー'}[q.status]||q.status;
+        return `<div class="q-item">
+            <div class="q-thumb"><img src="${q.img}"></div>
+            <div class="q-info">
+                <div class="q-title">${q.title||'Untitled'}</div>
+                <div class="q-meta"><span class="badge badge-${q.status}">${sl}</span> ${q.board}</div>
+                <div class="q-actions">
+                    ${q.status==='draft'?`<button class="btn btn-green btn-sm" style="padding:3px 8px;font-size:10px" onclick="approve(${i})">✅</button>`:''}
+                    ${q.status==='approved'?`<button class="btn btn-fill btn-sm" style="padding:3px 8px;font-size:10px" onclick="unapprove(${i})">↩</button>`:''}
+                    <button class="btn btn-fill btn-sm" style="padding:3px 8px;font-size:10px" onclick="copyQ(${i})">📋</button>
+                    <button class="btn btn-fill btn-sm" style="padding:3px 8px;font-size:10px" onclick="rmQ(${i})">🗑</button>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+function approve(i){queue[i].status='approved';save();renderQ();toast('✅ 承認しました');}
+function unapprove(i){queue[i].status='draft';save();renderQ();toast('↩ 下書きに戻しました');}
+function rmQ(i){queue.splice(i,1);save();renderQ();toast('🗑 削除');}
+function copyQ(i){const q=queue[i];navigator.clipboard.writeText(`${q.title}\n\n${q.desc}\n\n${q.tags}`).then(()=>toast('📋 コピー'));}
+function exportQueue(){
+    const d=queue.filter(q=>q.brand===brand&&q.status==='approved').map(q=>({id:q.id,brand:q.brand,status:q.status,title:q.title,description:q.desc,hashtags:q.tags,board:q.board,link:q.link,created:q.at}));
+    const b=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+    const a=document.createElement('a'); a.download=`${brand}_approved.json`; a.href=URL.createObjectURL(b); a.click();
+    toast('📥 エクスポート完了');
+}
+
+// ══════════════════════════════════
+//  TOAST
+// ══════════════════════════════════
+function toast(m){const c=document.getElementById('toasts'),t=document.createElement('div');t.className='toast';t.textContent=m;c.appendChild(t);setTimeout(()=>t.remove(),2500);}
+
+// INIT
+switchBrand('vantripjapan');
+if(!getKey()) showApiModal();
+</script>
+</body>
+</html>

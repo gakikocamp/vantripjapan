@@ -1,0 +1,11 @@
+{
+    "name": "vantrip-pinterest-tool",
+    "version": "1.0.0",
+    "description": "Pinterest auto-posting tool for VanTripJapan",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js"
+    },
+    "dependencies": {}
+}

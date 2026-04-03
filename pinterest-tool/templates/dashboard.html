@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📌 VanTripJapan Pinterest Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0B0D11;
+            --surface: #13161D;
+            --surface-hover: #1A1E28;
+            --border: #23272F;
+            --text: #E8ECF4;
+            --text-secondary: #8B92A5;
+            --text-muted: #555C6E;
+            --accent: #BF4E30;
+            --accent-hover: #D4593A;
+            --accent-subtle: rgba(191, 78, 48, 0.15);
+            --success: #34D399;
+            --warning: #FBBF24;
+            --danger: #EF4444;
+            --radius: 14px;
+            --radius-sm: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* Login */
+        .login-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 48px 40px;
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-card .logo {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .login-card h1 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .login-card .subtitle {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 32px;
+        }
+
+        .login-card input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            font-size: 14px;
+            margin-bottom: 16px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .login-card input:focus {
+            border-color: var(--accent);
+        }
+
+        .login-error {
+            color: var(--danger);
+            font-size: 13px;
+            margin-bottom: 12px;
+            display: none;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px 22px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--surface-hover);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-muted);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-secondary);
+        }
+
+        .btn-ghost:hover {
+            color: var(--text);
+        }
+
+        .btn-sm {
+            padding: 7px 14px;
+            font-size: 12px;
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Layout */
+        .app {
+            display: none;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 28px;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-logo {
+            font-size: 24px;
+        }
+
+        .header-title {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .header-tag {
+            font-size: 10px;
+            background: var(--accent-subtle);
+            color: var(--accent);
+            padding: 3px 10px;
+            border-radius: 100px;
+            font-weight: 600;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .pinterest-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .pinterest-badge.connected {
+            background: rgba(52, 211, 153, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+
+        .pinterest-badge.disconnected {
+            background: rgba(251, 191, 36, 0.1);
+            color: var(--warning);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+        }
+
+        /* 3-column layout */
+        .main {
+            display: grid;
+            grid-template-columns: 300px 1fr 360px;
+            min-height: calc(100vh - 57px);
+        }
+
+        /* Panels */
+        .panel {
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel:last-child {
+            border-right: none;
+        }
+
+        .panel-header {
+            padding: 18px 20px 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .panel-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .panel-count {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .panel-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 14px;
+        }
+
+        /* Image grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .image-card {
+            position: relative;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            aspect-ratio: 1;
+        }
+
+        .image-card:hover {
+            border-color: var(--accent);
+            transform: scale(1.02);
+        }
+
+        .image-card.selected {
+            border-color: var(--accent);
+            box-shadow: 0 0 16px rgba(191, 78, 48, 0.3);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-card-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 5px 7px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.8);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 16px;
+            color: var(--text-muted);
+        }
+
+        .empty-state-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .empty-state-text {
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .empty-state-path {
+            font-size: 11px;
+            background: var(--bg);
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            margin-top: 10px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+
+        /* Editor */
+        .editor {
+            display: flex;
+            flex-direction: column;
+            background: var(--bg);
+        }
+
+        .editor-preview {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            min-height: 420px;
+            position: relative;
+        }
+
+        .preview-frame {
+            position: relative;
+            width: 300px;
+            height: 450px;
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+        }
+
+        .preview-frame canvas,
+        .preview-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .preview-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: var(--text-muted);
+            font-size: 13px;
+            gap: 8px;
+        }
+
+        .preview-placeholder span {
+            font-size: 28px;
+        }
+
+        .preview-ratio {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            color: rgba(255, 255, 255, 0.5);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .preview-actions {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Controls */
+        .editor-controls {
+            border-top: 1px solid var(--border);
+            background: var(--surface);
+            padding: 20px;
+        }
+
+        .control-group {
+            margin-bottom: 14px;
+        }
+
+        .control-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .template-tabs {
+            display: flex;
+            gap: 6px;
+        }
+
+        .template-tab {
+            flex: 1;
+            padding: 9px 10px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .template-tab:hover {
+            border-color: var(--text-muted);
+            color: var(--text);
+        }
+
+        .template-tab.active {
+            border-color: var(--accent);
+            background: var(--accent-subtle);
+            color: var(--accent);
+        }
+
+        .control-input {
+            width: 100%;
+            padding: 9px 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            font-size: 13px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .control-input:focus {
+            border-color: var(--accent);
+        }
+
+        textarea.control-input {
+            resize: vertical;
+            min-height: 55px;
+        }
+
+        .editor-actions {
+            display: flex;
+            gap: 8px;
+            padding-top: 6px;
+        }
+
+        .editor-actions .btn {
+            flex: 1;
+        }
+
+        /* Right panel */
+        .right-panel {
+            border-left: 1px solid var(--border);
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border: none;
+            border-bottom: 2px solid transparent;
+            background: none;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .tab:hover {
+            color: var(--text-secondary);
+        }
+
+        .tab.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Caption */
+        .caption-section {
+            padding: 16px;
+        }
+
+        .caption-field {
+            margin-bottom: 14px;
+        }
+
+        .caption-field label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .caption-field input,
+        .caption-field textarea {
+            width: 100%;
+            padding: 9px 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            font-size: 12px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .caption-field textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+
+        .caption-field input:focus,
+        .caption-field textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .hashtag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+
+        .hashtag {
+            display: inline-block;
+            padding: 3px 9px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+
+        .board-select {
+            width: 100%;
+            padding: 9px 12px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            font-size: 12px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .caption-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .caption-actions .btn {
+            flex: 1;
+        }
+
+        /* Queue */
+        .queue-item {
+            display: flex;
+            gap: 10px;
+            padding: 12px;
+            background: var(--surface-hover);
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .queue-item-thumb {
+            width: 50px;
+            height: 75px;
+            border-radius: 6px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .queue-item-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .queue-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .queue-item-title {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .queue-item-board {
+            font-size: 10px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .queue-item-actions .btn-sm {
+            padding: 3px 8px;
+            font-size: 10px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-dot.queued {
+            background: var(--warning);
+        }
+
+        .status-dot.posted {
+            background: var(--success);
+        }
+
+        /* Loading */
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loading-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(11, 13, 17, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 10px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            border-radius: var(--radius);
+            z-index: 10;
+        }
+
+        /* Toast */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .toast {
+            padding: 10px 18px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            animation: slideIn 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 360px;
+        }
+
+        .toast.success {
+            border-color: var(--success);
+        }
+
+        .toast.error {
+            border-color: var(--danger);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+        }
+
+        /* Hidden canvas for generation */
+        #pinCanvas {
+            display: none;
+        }
+
+        @media (max-width: 1100px) {
+            .main {
+                grid-template-columns: 240px 1fr 300px;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .main {
+                grid-template-columns: 1fr;
+            }
+
+            .panel,
+            .editor,
+            .right-panel {
+                border: none;
+                border-bottom: 1px solid var(--border);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hidden Canvas for pin generation -->
+    <canvas id="pinCanvas" width="1000" height="1500"></canvas>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-card">
+            <div class="logo">📌</div>
+            <h1>Pinterest Studio</h1>
+            <p class="subtitle">VanTripJapan ピン管理ツール</p>
+            <div class="login-error" id="loginError">パスワードが違います</div>
+            <form onsubmit="login(event)">
+                <input type="password" id="loginPassword" placeholder="パスワード" autocomplete="current-password">
+                <button type="submit" class="btn btn-primary" style="width:100%">ログイン</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- App -->
+    <div class="app" id="app">
+        <header class="header">
+            <div class="header-left">
+                <span class="header-logo">📌</span>
+                <span class="header-title">Pinterest Studio</span>
+                <span class="header-tag">VanTripJapan</span>
+            </div>
+            <div class="header-right">
+                <div class="pinterest-badge disconnected" id="pinterestBadge">
+                    <span class="status-dot queued"></span> API未設定
+                </div>
+                <button class="btn btn-ghost btn-sm" onclick="refreshImages()">🔄 更新</button>
+            </div>
+        </header>
+
+        <div class="main">
+            <!-- Left: Image Library -->
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title">📷 画像ライブラリ</div>
+                    <div class="panel-count" id="imageCount">読み込み中...</div>
+                </div>
+                <div class="panel-body" id="imageGrid">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📁</div>
+                        <div class="empty-state-text">画像が見つかりません<br>input/ フォルダに画像を追加</div>
+                        <div class="empty-state-path">pinterest-tool/input/</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center: Editor -->
+            <div class="editor">
+                <div class="editor-preview">
+                    <div class="preview-frame" id="previewFrame">
+                        <div class="preview-placeholder" id="previewPlaceholder">
+                            <span>🎨</span> ← 画像を選んでください
+                        </div>
+                        <canvas id="previewCanvas" style="display:none" width="1000" height="1500"></canvas>
+                        <img id="previewImg" style="display:none" alt="Preview">
+                        <div class="preview-ratio">2:3</div>
+                    </div>
+                </div>
+
+                <div class="editor-controls">
+                    <div class="control-group">
+                        <label class="control-label">テンプレート</label>
+                        <div class="template-tabs">
+                            <button class="template-tab active" data-t="overlay"
+                                onclick="selectTemplate('overlay',this)">🖼 オーバーレイ</button>
+                            <button class="template-tab" data-t="magazine" onclick="selectTemplate('magazine',this)">📰
+                                マガジン</button>
+                            <button class="template-tab" data-t="list" onclick="selectTemplate('list',this)">📋
+                                リスト</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">タイトル（画像に表示）</label>
+                        <input type="text" class="control-input" id="pinTitle" placeholder="例: Van Life in Kyushu"
+                            oninput="livePreview()">
+                    </div>
+                    <div class="control-group" id="subtitleGroup">
+                        <label class="control-label">サブタイトル</label>
+                        <input type="text" class="control-input" id="pinSubtitle"
+                            placeholder="例: Discover Japan's hidden gems" oninput="livePreview()">
+                    </div>
+                    <div class="control-group" id="listItemsGroup" style="display:none">
+                        <label class="control-label">リスト項目（改行で区切る）</label>
+                        <textarea class="control-input" id="pinListItems"
+                            placeholder="Aso Volcano&#10;Takachiho Gorge&#10;Beppu Onsen&#10;Nagasaki Coast&#10;Itoshima Beach"
+                            oninput="livePreview()"></textarea>
+                    </div>
+                    <div class="editor-actions">
+                        <button class="btn btn-secondary" onclick="livePreview()" id="previewBtn" disabled>👁
+                            プレビュー</button>
+                        <button class="btn btn-primary" onclick="saveGeneratedPin()" id="saveBtn" disabled>💾
+                            保存&キャプション生成</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Caption & Queue -->
+            <div class="panel right-panel">
+                <div class="tabs">
+                    <button class="tab active" data-tab="caption" onclick="switchTab('caption',this)">💬 キャプション</button>
+                    <button class="tab" data-tab="queue" onclick="switchTab('queue',this)">📋 キュー</button>
+                </div>
+
+                <div class="panel-body tab-content active" id="captionTab">
+                    <div class="caption-section">
+                        <button class="btn btn-secondary" style="width:100%; margin-bottom:16px"
+                            onclick="generateCaptionAI()" id="captionGenBtn" disabled>
+                            ✨ AIでキャプション自動生成
+                        </button>
+                        <div class="caption-field">
+                            <label>タイトル (EN)</label>
+                            <input type="text" id="captionTitle" placeholder="Pinterest title...">
+                        </div>
+                        <div class="caption-field">
+                            <label>説明文 (EN + DE/FR)</label>
+                            <textarea id="captionDescription" placeholder="英語メイン＋ドイツ語・フランス語キーワード"></textarea>
+                        </div>
+                        <div class="caption-field">
+                            <label>ハッシュタグ</label>
+                            <div class="hashtag-cloud" id="hashtagCloud"></div>
+                            <textarea id="captionHashtags" style="margin-top:6px; min-height:50px"
+                                placeholder="#VanLifeJapan #KyushuRoadTrip ..."></textarea>
+                        </div>
+                        <div class="caption-field">
+                            <label>ボード</label>
+                            <select class="board-select" id="boardSelect">
+                                <option value="japan-van-life">Japan Van Life</option>
+                                <option value="kyushu-road-trip">Kyushu Road Trip</option>
+                                <option value="japan-hot-springs">Japan Hot Springs</option>
+                                <option value="japanese-camping-spots">Japanese Camping Spots</option>
+                                <option value="japan-travel-tips">Japan Travel Tips</option>
+                            </select>
+                        </div>
+                        <div class="caption-field">
+                            <label>リンク先URL</label>
+                            <input type="url" id="captionLink" value="https://vantripjapan.com"
+                                placeholder="https://...">
+                        </div>
+                        <div class="caption-actions">
+                            <button class="btn btn-secondary" onclick="addToQueue()">📋 キューに追加</button>
+                            <button class="btn btn-primary" onclick="postToPinterest()" id="postBtn">📌 投稿</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-body tab-content" id="queueTab">
+                    <div id="queueList">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📋</div>
+                            <div class="empty-state-text">キューは空です</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toasts"></div>
+
+    <script>
+// ── State ──
+let selectedImage = null;
+let selectedImageObj = null; // loaded Image object
+let selectedTemplate = 'overlay';
+let generatedOutputName = null;
+
+// ── Brand ──
+const BRAND_COLOR = '#BF4E30';
+const BRAND_DARK = '#1D1D1F';
+
+// ── Auth ──
+async function login(e) {
+  e.preventDefault();
+  const pw = document.getElementById('loginPassword').value;
+  const res = await fetch('/api/login', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({password:pw}) });
+  if (res.ok) { document.getElementById('loginScreen').style.display='none'; document.getElementById('app').style.display='block'; init(); }
+  else { document.getElementById('loginError').style.display='block'; }
+}
+
+async function init() { await refreshImages(); checkPinterestStatus(); loadQueue(); }
+
+async function checkPinterestStatus() {
+  try {
+    const res = await fetch('/api/pinterest-status');
+    const d = await res.json();
+    const b = document.getElementById('pinterestBadge');
+    if (d.configured) { b.className='pinterest-badge connected'; b.innerHTML='<span class="status-dot posted"></span> API接続済み'; }
+    else { b.className='pinterest-badge disconnected'; b.innerHTML='<span class="status-dot queued"></span> API未設定'; }
+  } catch(e) {}
+}
+
+// ── Images ──
+async function refreshImages() {
+  try {
+    const res = await fetch('/api/images');
+    if (res.status===401) { document.getElementById('loginScreen').style.display='flex'; document.getElementById('app').style.display='none'; return; }
+    const d = await res.json();
+    renderImageGrid(d.input);
+  } catch(e) { console.error(e); }
+}
+
+function renderImageGrid(images) {
+  const grid = document.getElementById('imageGrid');
+  const count = document.getElementById('imageCount');
+  if (!images || images.length === 0) {
+    grid.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📁</div><div class="empty-state-text">画像が見つかりません<br>input/ フォルダに画像を追加</div><div class="empty-state-path">pinterest-tool/input/</div></div>';
+    count.textContent = '0 枚';
+    return;
+  }
+  count.textContent = images.length + ' 枚';
+  grid.innerHTML = '<div class="image-grid">' + images.map(img =>
+    `<div class="image-card" onclick="selectImage('${img.name}',this)" data-name="${img.name}"><img src="${img.path}" alt="${img.name}" loading="lazy"><div class="image-card-name">${img.name}</div></div>`
+  ).join('') + '</div>';
+}
+
+// ── Select Image ──
+function selectImage(name, el) {
+  document.querySelectorAll('.image-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedImage = name;
+
+  // Load image for canvas
+  const img = new Image();
+  img.crossOrigin = 'anonymous';
+  img.onload = function() {
+    selectedImageObj = img;
+    document.getElementById('previewBtn').disabled = false;
+    document.getElementById('saveBtn').disabled = false;
+    document.getElementById('captionGenBtn').disabled = false;
+    livePreview();
+    showToast('📷 画像を選択: ' + name, 'success');
+  };
+  img.src = `/api/input-image/${encodeURIComponent(name)}`;
+}
+
+// ── Template ──
+function selectTemplate(t, el) {
+  document.querySelectorAll('.template-tab').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  selectedTemplate = t;
+  document.getElementById('listItemsGroup').style.display = t==='list' ? 'block' : 'none';
+  document.getElementById('subtitleGroup').style.display = t==='list' ? 'none' : 'block';
+  if (selectedImageObj) livePreview();
+}
+
+// ══════════════════════════════════
+//  CANVAS PIN GENERATION (Browser)
+// ══════════════════════════════════
+
+function drawImageCover(ctx, img, x, y, w, h) {
+  const imgRatio = img.width / img.height;
+  const boxRatio = w / h;
+  let sx, sy, sw, sh;
+  if (imgRatio > boxRatio) { sh = img.height; sw = sh * boxRatio; sx = (img.width - sw) / 2; sy = 0; }
+  else { sw = img.width; sh = sw / boxRatio; sx = 0; sy = (img.height - sh) / 2; }
+  ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+}
+
+function wrapText(ctx, text, maxWidth) {
+  const words = text.split(' ');
+  const lines = [];
+  let line = '';
+  for (const word of words) {
+    const test = line ? line + ' ' + word : word;
+    if (ctx.measureText(test).width > maxWidth && line) { lines.push(line); line = word; }
+    else { line = test; }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
+function drawBrandBar(ctx, W, H) {
+  ctx.fillStyle = 'rgba(255,255,255,0.55)';
+  ctx.font = '600 14px Inter, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('🚐  VanTripJapan', W / 2, H - 18);
+}
+
+// Template A: Overlay
+function renderOverlay(canvas, img, opts) {
+  const W = 1000, H = 1500;
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  const title = opts.title || 'Van Life in Kyushu';
+  const subtitle = opts.subtitle || '';
+
+  drawImageCover(ctx, img, 0, 0, W, H);
+
+  // Gradient
+  const g = ctx.createLinearGradient(0, H*0.55, 0, H);
+  g.addColorStop(0, 'rgba(0,0,0,0)');
+  g.addColorStop(0.4, 'rgba(0,0,0,0.4)');
+  g.addColorStop(1, 'rgba(0,0,0,0.85)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, H*0.55, W, H*0.45);
+
+  // Title
+  ctx.fillStyle = '#FFFFFF';
+  ctx.textAlign = 'left';
+  const sz = title.length > 30 ? 48 : title.length > 20 ? 56 : 64;
+  ctx.font = `800 ${sz}px Inter, sans-serif`;
+  const lines = wrapText(ctx, title, W - 120);
+  const lh = sz * 1.15;
+  let y = H - 160 - (lines.length - 1) * lh;
+  for (const line of lines) { ctx.fillText(line, 60, y); y += lh; }
+
+  // Subtitle
+  if (subtitle) {
+    ctx.font = '300 24px Inter, sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    ctx.fillText(subtitle, 60, y + 12);
+  }
+
+  drawBrandBar(ctx, W, H);
+}
+
+// Template B: Magazine
+function renderMagazine(canvas, img, opts) {
+  const W = 1000, H = 1500;
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  const title = opts.title || 'TOP 5 HOT SPRINGS';
+  const subtitle = opts.subtitle || 'A complete guide';
+  const headerH = H * 0.38;
+
+  // Header bg
+  ctx.fillStyle = BRAND_DARK;
+  ctx.fillRect(0, 0, W, headerH);
+
+  // Accent line
+  ctx.fillStyle = BRAND_COLOR;
+  ctx.fillRect(60, 80, 60, 5);
+
+  // Subtitle
+  if (subtitle) {
+    ctx.font = '500 15px Inter, sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.45)';
+    ctx.textAlign = 'left';
+    ctx.fillText(subtitle.toUpperCase(), 60, 128);
+  }
+
+  // Title
+  ctx.fillStyle = '#FFFFFF';
+  ctx.textAlign = 'left';
+  const sz = title.length > 30 ? 44 : title.length > 20 ? 52 : 60;
+  ctx.font = `800 ${sz}px Inter, sans-serif`;
+  const lines = wrapText(ctx, title.toUpperCase(), W - 120);
+  const lh = sz * 1.1;
+  let y = 176;
+  for (const line of lines) { ctx.fillText(line, 60, y); y += lh; }
+
+  // Image area
+  const pad = 20, imgY = headerH + 10;
+  const imgW = W - pad * 2, imgH = H - headerH - 70;
+  ctx.save();
+  ctx.beginPath();
+  ctx.roundRect(pad, imgY, imgW, imgH, 16);
+  ctx.clip();
+  drawImageCover(ctx, img, pad, imgY, imgW, imgH);
+  ctx.restore();
+
+  // Bottom bar
+  ctx.fillStyle = BRAND_DARK;
+  ctx.fillRect(0, H - 60, W, 60);
+  drawBrandBar(ctx, W, H);
+}
+
+// Template C: List
+function renderList(canvas, img, opts) {
+  const W = 1000, H = 1500;
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  const title = opts.title || '5 MUST-DO ROAD TRIPS';
+  const items = opts.items || ['Aso Volcano', 'Takachiho Gorge', 'Beppu Onsen', 'Nagasaki Coast', 'Itoshima Beach'];
+
+  drawImageCover(ctx, img, 0, 0, W, H);
+  ctx.fillStyle = 'rgba(0,0,0,0.78)';
+  ctx.fillRect(0, 0, W, H);
+
+  // Accent line
+  ctx.fillStyle = BRAND_COLOR;
+  ctx.fillRect(60, 80, 60, 5);
+
+  // Title
+  ctx.fillStyle = '#FFFFFF';
+  ctx.textAlign = 'left';
+  const sz = title.length > 25 ? 48 : 58;
+  ctx.font = `800 ${sz}px Inter, sans-serif`;
+  const lines = wrapText(ctx, title.toUpperCase(), W - 120);
+  const lh = sz * 1.1;
+  let y = 140;
+  for (const line of lines) { ctx.fillText(line, 60, y); y += lh; }
+
+  // Items
+  y += 50;
+  const maxItems = Math.min(items.length, 8);
+  const itemH = Math.min(130, (H - y - 100) / maxItems);
+
+  for (let i = 0; i < maxItems; i++) {
+    const iy = y + i * itemH;
+
+    // Number circle
+    ctx.beginPath();
+    ctx.arc(100, iy + 5, 26, 0, Math.PI * 2);
+    ctx.fillStyle = BRAND_COLOR;
+    ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '700 20px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(`${i + 1}`, 100, iy + 13);
+
+    // Item text
+    ctx.textAlign = 'left';
+    ctx.font = '500 26px Inter, sans-serif';
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillText(items[i], 150, iy + 13);
+
+    // Divider
+    if (i < maxItems - 1) {
+      ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(60, iy + itemH - 12);
+      ctx.lineTo(W - 60, iy + itemH - 12);
+      ctx.stroke();
+    }
+  }
+
+  drawBrandBar(ctx, W, H);
+}
+
+// ── Live Preview ──
+function livePreview() {
+  if (!selectedImageObj) return;
+
+  const canvas = document.getElementById('previewCanvas');
+  const placeholder = document.getElementById('previewPlaceholder');
+  const previewImg = document.getElementById('previewImg');
+
+  previewImg.style.display = 'none';
+
+  const title = document.getElementById('pinTitle').value || 'Van Life in Kyushu';
+  const subtitle = document.getElementById('pinSubtitle').value || '';
+  const listItemsRaw = document.getElementById('pinListItems').value;
+  const items = listItemsRaw ? listItemsRaw.split('\n').filter(s => s.trim()) : undefined;
+
+  const opts = { title, subtitle, items };
+
+  switch (selectedTemplate) {
+    case 'magazine': renderMagazine(canvas, selectedImageObj, opts); break;
+    case 'list': renderList(canvas, selectedImageObj, opts); break;
+    default: renderOverlay(canvas, selectedImageObj, opts); break;
+  }
+
+  canvas.style.display = 'block';
+  placeholder.style.display = 'none';
+}
+
+// ── Save Generated Pin ──
+async function saveGeneratedPin() {
+  if (!selectedImageObj) { showToast('先に画像を選んでください', 'error'); return; }
+
+  livePreview(); // ensure latest
+
+  const canvas = document.getElementById('previewCanvas');
+  const btn = document.getElementById('saveBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> 保存中...';
+
+  try {
+    const dataUrl = canvas.toDataURL('image/png');
+    const baseName = selectedImage.replace(/\.[^.]+$/, '');
+    const filename = `${baseName}_${selectedTemplate}_${Date.now()}.png`;
+
+    const res = await fetch('/api/save-pin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ imageData: dataUrl, filename })
+    });
+    const d = await res.json();
+
+    if (d.ok) {
+      generatedOutputName = d.outputName;
+
+      // Auto-fill caption
+      const title = document.getElementById('pinTitle').value || 'Van Life in Kyushu';
+      document.getElementById('captionTitle').value = title;
+
+      showToast('✅ ピン画像を保存しました！', 'success');
+
+      // Auto-generate caption
+      await generateCaptionAI();
+    } else {
+      showToast('エラー: ' + d.error, 'error');
+    }
+  } catch (e) {
+    showToast('保存に失敗: ' + e.message, 'error');
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '💾 保存&キャプション生成';
+}
+
+// ── Caption AI ──
+async function generateCaptionAI() {
+  const title = document.getElementById('pinTitle').value || document.getElementById('captionTitle').value || 'Van Life in Kyushu';
+  const description = document.getElementById('pinSubtitle').value || '';
+
+  const btn = document.getElementById('captionGenBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> AI生成中...';
+
+  try {
+    const res = await fetch('/api/generate-caption', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, description, template: selectedTemplate })
+    });
+    const d = await res.json();
+
+    document.getElementById('captionTitle').value = d.title || title;
+    document.getElementById('captionDescription').value = d.description || '';
+
+    const hashtags = d.hashtags || [];
+    document.getElementById('captionHashtags').value = hashtags.join(' ');
+    document.getElementById('hashtagCloud').innerHTML = hashtags.map(h => {
+      const tag = h.startsWith('#') ? h : '#' + h;
+      return `<span class="hashtag">${tag}</span>`;
+    }).join('');
+
+    if (d.board_suggestion) {
+      const boardMap = {
+        'Japan Van Life': 'japan-van-life',
+        'Kyushu Road Trip': 'kyushu-road-trip',
+        'Japan Hot Springs': 'japan-hot-springs',
+        'Japanese Camping Spots': 'japanese-camping-spots',
+        'Japan Travel Tips': 'japan-travel-tips'
+      };
+      const val = boardMap[d.board_suggestion];
+      if (val) document.getElementById('boardSelect').value = val;
+    }
+
+    switchTab('caption', document.querySelector('[data-tab="caption"]'));
+    showToast('✅ キャプションを生成しました', 'success');
+  } catch (e) {
+    showToast('キャプション生成失敗: ' + e.message, 'error');
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = '✨ AIでキャプション自動生成';
+}
+
+// ── Tabs ──
+function switchTab(name, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(name + 'Tab').classList.add('active');
+}
+
+// ── Queue ──
+async function addToQueue() {
+  if (!generatedOutputName) { showToast('先にピン画像を保存してください', 'error'); return; }
+  const entry = {
+    outputImage: generatedOutputName,
+    title: document.getElementById('captionTitle').value,
+    description: document.getElementById('captionDescription').value + '\n\n' + document.getElementById('captionHashtags').value,
+    board: document.getElementById('boardSelect').value,
+    link: document.getElementById('captionLink').value,
+    template: selectedTemplate,
+    sourceName: selectedImage,
+  };
+  try {
+    const res = await fetch('/api/queue', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(entry) });
+    if (res.ok) { showToast('✅ キューに追加', 'success'); loadQueue(); switchTab('queue', document.querySelector('[data-tab="queue"]')); }
+  } catch(e) { showToast('失敗: '+e.message, 'error'); }
+}
+
+async function loadQueue() {
+  try {
+    const res = await fetch('/api/queue');
+    const q = await res.json();
+    renderQueue(q);
+  } catch(e) {}
+}
+
+function renderQueue(q) {
+  const el = document.getElementById('queueList');
+  if (!q || q.length===0) { el.innerHTML='<div class="empty-state"><div class="empty-state-icon">📋</div><div class="empty-state-text">キューは空です</div></div>'; return; }
+  el.innerHTML = q.map(i => `
+    <div class="queue-item" data-id="${i.id}">
+      <div class="queue-item-thumb"><img src="/api/output-image/${encodeURIComponent(i.outputImage)}" alt=""></div>
+      <div class="queue-item-info">
+        <div class="queue-item-title">${i.title||'Untitled'}</div>
+        <div class="queue-item-board"><span class="status-dot ${i.status}"></span> ${i.board||''} · ${i.status}</div>
+        <div class="queue-item-actions"><button class="btn btn-secondary btn-sm" onclick="deleteQueue('${i.id}')">🗑 削除</button></div>
+      </div>
+    </div>`).join('');
+}
+
+async function deleteQueue(id) {
+  await fetch(`/api/queue/${id}`, {method:'DELETE'});
+  showToast('削除しました', 'success');
+  loadQueue();
+}
+
+function postToPinterest() {
+  showToast('Pinterest APIが未設定です。.envにアクセストークンを追加してください', 'error');
+}
+
+// ── Toast ──
+function showToast(msg, type='info') {
+  const c = document.getElementById('toasts');
+  const t = document.createElement('div');
+  t.className = 'toast ' + type;
+  t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+}
+
+// ── Auto-login ──
+(async function() {
+  try {
+    const r = await fetch('/api/images');
+    if (r.ok) { document.getElementById('loginScreen').style.display='none'; document.getElementById('app').style.display='block'; init(); }
+  } catch(e) {}
+})();
+    </script>
+</body>
+
+</html>

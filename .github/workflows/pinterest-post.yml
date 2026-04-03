@@ -1,0 +1,49 @@
+name: 📌 Pinterest Auto-Post
+
+on:
+  # 毎日2回自動実行（日本時間 9:00 と 15:00）
+  schedule:
+    - cron: '0 0 * * *'   # UTC 0:00 = JST 9:00
+    - cron: '0 6 * * *'   # UTC 6:00 = JST 15:00
+  
+  # 手動実行（テスト用）
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'テスト実行（実際には投稿しない）'
+        type: boolean
+        default: true
+      max_posts:
+        description: '最大投稿数'
+        type: string
+        default: '3'
+
+jobs:
+  post-pins:
+    runs-on: ubuntu-latest
+    name: Post pins to Pinterest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 📌 Run auto-post
+        env:
+          PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+          MAX_POSTS: ${{ github.event.inputs.max_posts || '5' }}
+        run: node pinterest-tool/auto-post.js
+
+      - name: 📝 Commit queue updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add pinterest-tool/data/post-queue.json
+          git diff --cached --quiet || git commit -m "📌 Update post queue [auto]"
+          git push

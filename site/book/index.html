@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Request — VANTRIPJAPAN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f5f0e8;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --bg-input: rgba(0,0,0,0.04);
+            --bg-input-focus: rgba(0,0,0,0.06);
+            --text: #2d3436;
+            --text-sec: #636e72;
+            --text-muted: #a0a8ad;
+            --accent: #2d6a4f;
+            --accent-glow: rgba(45,106,79,0.12);
+            --green: #2d6a4f;
+            --green-glow: rgba(45,106,79,0.1);
+            --orange: #e17055;
+            --border: rgba(0,0,0,0.08);
+            --radius: 12px;
+        }
+        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        body::before {
+            content:''; position:fixed; top:-200px; right:-200px;
+            width:500px; height:500px;
+            background:radial-gradient(circle, rgba(45,106,79,0.08) 0%, transparent 70%);
+            pointer-events:none; z-index:0;
+        }
+        .container {
+            width: 100%; max-width: 640px; position: relative; z-index: 1;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+            padding-top: 20px;
+        }
+        .header .logo {
+            font-size: 1.6rem; font-weight: 700; color: var(--accent);
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-bottom: 8px;
+        }
+        .header p {
+            color: var(--text-sec); font-size: 0.95rem; line-height: 1.5;
+        }
+        .header .notice {
+            background: var(--accent-glow);
+            border: 1px solid rgba(45,106,79,0.25);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 1rem; font-weight: 600;
+            margin-bottom: 20px;
+            display: flex; align-items: center; gap: 8px;
+            color: var(--text);
+        }
+        .section-title i { color: var(--accent); }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 0;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group.full { grid-column: 1 / -1; }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem; font-weight: 500;
+            color: var(--text-sec);
+            margin-bottom: 6px;
+        }
+        .form-group label .req { color: #e17055; }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 11px 14px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.9rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--accent);
+            background: var(--bg-input-focus);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238b92a8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 32px;
+        }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        .checkbox-group {
+            display: flex; flex-wrap: wrap; gap: 8px;
+        }
+        .checkbox-item {
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 14px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .checkbox-item:hover { border-color: var(--accent); }
+        .checkbox-item input { display: none; }
+        .checkbox-item.checked {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .vehicle-option {
+            padding: 14px;
+            background: var(--bg-input);
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .vehicle-option:hover { border-color: var(--accent); }
+        .vehicle-option.selected {
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+        .vehicle-option input { display: none; }
+        .vehicle-option .name { font-weight: 600; font-size: 0.9rem; }
+        .vehicle-option .type { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+        .translation-toggle {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 18px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+        .translation-toggle .info { font-size: 0.85rem; }
+        .translation-toggle .info small { color: var(--text-muted); display:block; margin-top:2px; }
+        .toggle-switch {
+            position:relative; width:48px; height:26px;
+        }
+        .toggle-switch input { display:none; }
+        .toggle-switch .slider {
+            position:absolute; inset:0; background:var(--text-muted);
+            border-radius:13px; cursor:pointer; transition:0.3s;
+        }
+        .toggle-switch .slider::before {
+            content:''; position:absolute; width:20px; height:20px;
+            left:3px; bottom:3px; background:white;
+            border-radius:50%; transition:0.3s;
+        }
+        .toggle-switch input:checked + .slider { background:var(--green); }
+        .toggle-switch input:checked + .slider::before { transform:translateX(22px); }
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--accent), #40916c);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+        .btn-submit:disabled {
+            opacity: 0.5; cursor: not-allowed; transform: none;
+        }
+        .success-screen {
+            display: none;
+            text-align: center;
+            padding: 60px 30px;
+        }
+        .success-screen.show { display: block; }
+        .success-screen .icon {
+            width: 80px; height: 80px;
+            background: var(--green-glow);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem; color: var(--green);
+        }
+        .success-screen h2 { margin-bottom: 10px; }
+        .success-screen p { color: var(--text-sec); line-height: 1.6; }
+        .doc-upload-section {
+            margin-top: 24px;
+            padding: 20px;
+            background: var(--accent-glow);
+            border: 1px solid rgba(45,106,79,0.2);
+            border-radius: var(--radius);
+        }
+        .doc-upload-section h4 { font-size: 0.95rem; margin-bottom: 12px; }
+        .doc-upload-grid {
+            display: grid; gap: 10px;
+        }
+        .doc-upload-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px 14px;
+            background: var(--bg-input);
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            position: relative;
+        }
+        .doc-upload-item input[type="file"] {
+            position:absolute; inset:0; opacity:0; cursor:pointer;
+        }
+        .doc-upload-item i { color: var(--accent); font-size: 1.1rem; }
+        .doc-upload-item .uploaded { color: var(--green); }
+        .doc-upload-item .filename { color: var(--text-muted); font-size: 0.8rem; margin-left: auto; }
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+            .vehicle-grid { grid-template-columns: 1fr; }
+            .card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo">
+            <i class="fas fa-van-shuttle"></i>
+            VANTRIPJAPAN
+        </div>
+        <p>Booking Request Form</p>
+        <div class="notice">
+            <i class="fas fa-info-circle"></i>
+            The vehicle is not confirmed yet. Complete this form to secure your booking. We'll send a payment link after review.
+        </div>
+    </div>
+
+    <form id="bookingForm">
+        <!-- Contact Info -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-user"></i> Your Information</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Full Name <span class="req">*</span></label>
+                    <input type="text" name="full_name" required placeholder="As shown on your passport">
+                </div>
+                <div class="form-group">
+                    <label>Email Address <span class="req">*</span></label>
+                    <input type="email" name="email" required placeholder="your@email.com">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone" placeholder="Contact number in Japan">
+                </div>
+                <div class="form-group">
+                    <label>Address <span class="req">*</span></label>
+                    <input type="text" name="address" required placeholder="Your home address">
+                </div>
+            </div>
+        </div>
+
+        <!-- Vehicle -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-car"></i> Vehicle Selection</div>
+            <div class="form-group">
+                <label>Choose your vehicle <span class="req">*</span></label>
+                <div class="vehicle-grid" id="vehicleGrid">
+                    <label class="vehicle-option" onclick="selectVehicle(this)">
+                        <input type="radio" name="vehicle_type" value="MAZDA BONGO" required>
+                        <div class="name">🚐 MAZDA BONGO</div>
+                        <div class="type">Campervan</div>
+                    </label>
+                    <label class="vehicle-option" onclick="selectVehicle(this)">
+                        <input type="radio" name="vehicle_type" value="TOYOTA PROBOX">
+                        <div class="name">🏕️ TOYOTA PROBOX</div>
+                        <div class="type">with RoofTent</div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dates -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-calendar"></i> Rental Period</div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Pickup Date & Time <span class="req">*</span></label>
+                    <input type="datetime-local" name="pickup_datetime" required>
+                </div>
+                <div class="form-group">
+                    <label>Return Date & Time (by 6 PM) <span class="req">*</span></label>
+                    <input type="datetime-local" name="return_datetime" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Number of Drivers <span class="req">*</span></label>
+                    <select name="num_drivers" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- How found + Extras -->
+        <div class="card">
+            <div class="section-title"><i class="fas fa-magnifying-glass"></i> Additional Info</div>
+            <div class="form-group">
+                <label>How did you find VANTRIPJAPAN? <span class="req">*</span></label>
+                <div class="checkbox-group" id="referralGroup">
+                    <label class="checkbox-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" value="Website/Search Engine"> 🌐 Website
+                    </label>
+                    <label class="checkbox-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" value="Social Media"> 📱 Social Media
+                    </label>
+                    <label class="checkbox-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" value="Word of Mouth"> 🗣️ Word of Mouth
+                    </label>
+                    <label class="checkbox-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" value="Travel Platforms"> ✈️ Travel Apps
+                    </label>
+                    <label class="checkbox-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" value="Influencer"> 🎥 Influencer
+                    </label>
+                    <label class="checkbox-item" onclick="toggleCheck(this)">
+                        <input type="checkbox" value="Other"> 💡 Other
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Additional camping gear to rent</label>
+                <textarea name="camping_gear_notes" placeholder="Any extra gear you'd like? Check: camcierge.com"></textarea>
+            </div>
+            <div class="form-group">
+                <label>License Translation <span style="color:#e17055;font-size:0.8rem;font-weight:400;">(Additional fee)</span></label>
+                <div class="translation-toggle">
+                    <div class="info">
+                        Do you need a Japanese translation of your license?
+                        <small>Required for 6 specific countries (Switzerland, Germany, France, Belgium, Taiwan, Monaco)</small>
+                        <small style="color:#e17055;">⚠️ This is a paid service with an additional fee</small>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" name="translation_needed" id="translationToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Submit Booking Request
+        </button>
+    </form>
+
+    <!-- Success Screen -->
+    <div class="card success-screen" id="successScreen">
+        <div class="icon"><i class="fas fa-check"></i></div>
+        <h2>Booking Request Received! 🎉</h2>
+        <p>Thank you! We'll review your request and send a payment link via WhatsApp or email.</p>
+
+        <div class="doc-upload-section">
+            <h4><i class="fas fa-id-card"></i> Please upload your documents</h4>
+            <p style="font-size:0.85rem; color:var(--text-sec); margin-bottom:14px;">
+                We need these to process your booking:
+            </p>
+            <div class="doc-upload-grid">
+                <div class="doc-upload-item" id="doc-license_front">
+                    <i class="fas fa-id-card"></i>
+                    <span>Driver's License (Front)</span>
+                    <span class="filename" id="fn-license_front"></span>
+                    <input type="file" accept="image/*" onchange="uploadDoc(this, 'license_front')" capture="environment">
+                </div>
+                <div class="doc-upload-item" id="doc-license_back">
+                    <i class="fas fa-id-card-clip"></i>
+                    <span>Driver's License (Back)</span>
+                    <span class="filename" id="fn-license_back"></span>
+                    <input type="file" accept="image/*" onchange="uploadDoc(this, 'license_back')" capture="environment">
+                </div>
+                <div class="doc-upload-item" id="doc-international_license">
+                    <i class="fas fa-passport"></i>
+                    <span>International Driving Permit</span>
+                    <span class="filename" id="fn-international_license"></span>
+                    <input type="file" accept="image/*" onchange="uploadDoc(this, 'international_license')" capture="environment">
+                </div>
+                <div class="doc-upload-item" id="doc-passport" style="display:none;">
+                    <i class="fas fa-book"></i>
+                    <span>Passport (ID page)</span>
+                    <span class="filename" id="fn-passport"></span>
+                    <input type="file" accept="image/*" onchange="uploadDoc(this, 'passport')" capture="environment">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let bookingId = null;
+
+function selectVehicle(el) {
+    document.querySelectorAll('.vehicle-option').forEach(v => v.classList.remove('selected'));
+    el.classList.add('selected');
+}
+
+function toggleCheck(el) {
+    el.classList.toggle('checked');
+    el.querySelector('input').checked = el.classList.contains('checked');
+}
+
+document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+    const form = e.target;
+    const data = {
+        full_name: form.full_name.value,
+        email: form.email.value,
+        phone: form.phone.value || null,
+        address: form.address.value,
+        vehicle_type: form.vehicle_type.value,
+        pickup_datetime: form.pickup_datetime.value,
+        return_datetime: form.return_datetime.value,
+        num_drivers: parseInt(form.num_drivers.value),
+        camping_gear_notes: form.camping_gear_notes.value || null,
+        translation_needed: form.translation_needed.checked,
+    };
+
+    // Collect referral sources
+    const checked = document.querySelectorAll('#referralGroup input:checked');
+    data.referral_source = Array.from(checked).map(c => c.value).join(', ');
+
+    try {
+        const res = await fetch('/api/booking', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        });
+        const result = await res.json();
+        if (res.ok) {
+            bookingId = result.booking_id;
+            document.getElementById('bookingForm').style.display = 'none';
+            document.getElementById('successScreen').classList.add('show');
+        } else {
+            alert('Error: ' + (result.detail || 'Submission failed'));
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
+        }
+    } catch (err) {
+        alert('Network error. Please try again.');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
+    }
+});
+
+async function uploadDoc(input, docType) {
+    if (!input.files.length || !bookingId) return;
+    const file = input.files[0];
+    const fnEl = document.getElementById('fn-' + docType);
+    const itemEl = document.getElementById('doc-' + docType);
+
+    fnEl.textContent = 'Uploading...';
+
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('doc_type', docType);
+    fd.append('booking_id', bookingId);
+
+    try {
+        const res = await fetch('/api/documents', { method: 'POST', body: fd });
+        if (res.ok) {
+            fnEl.innerHTML = '<span class="uploaded"><i class="fas fa-check-circle"></i> Uploaded</span>';
+            itemEl.style.borderColor = 'var(--green)';
+        } else {
+            fnEl.textContent = 'Failed — try again';
+        }
+    } catch {
+        fnEl.textContent = 'Error — try again';
+    }
+}
+</script>
+</body>
+</html>
