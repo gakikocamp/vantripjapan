@@ -17,3 +17,8 @@ scripts/config.json
 
 # Temp
 /tmp/
+
+# Pinterest tool
+pinterest-tool/input/
+pinterest-tool/node_modules/
+.credentials/
