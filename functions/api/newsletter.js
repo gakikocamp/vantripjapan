@@ -84,7 +84,7 @@ export async function onRequest(context) {
        ON CONFLICT(site, email) DO NOTHING`
     ).bind(email, name || null).run();
   } catch (err) {
-    // Table may not exist yet — still send welcome email
+    console.error('Newsletter DB error:', err.message, { email });
   }
 
   // Send welcome email via Resend

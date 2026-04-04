@@ -64,7 +64,9 @@ function renderArticlePage(article) {
     "publisher": {"@type": "Organization", "name": "VanTripJapan", "logo": {"@type": "ImageObject", "url": "https://vantripjapan.jp/images/hero-vanlife.png"}},
     "datePublished": "${article.published_at || ''}",
     "dateModified": "${article.updated_at || article.published_at || ''}",
-    "url": "${canonicalUrl}"
+    "url": "${canonicalUrl}",
+    "articleSection": "${escHtml(article.category || '').replace(/"/g, '\\"')}",
+    "inLanguage": "en"
   }
   </script>
 </head>
