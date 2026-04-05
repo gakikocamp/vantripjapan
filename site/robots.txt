@@ -4,11 +4,10 @@
 # ═══════════════════════════════════════════
 
 # Default: Allow all crawlers
+# Note: CSS and JS must be accessible so Google can render pages correctly
 User-agent: *
 Allow: /
 Disallow: /scripts/
-Disallow: /css/
-Disallow: /js/
 
 # Sitemap
 Sitemap: https://vantripjapan.jp/sitemap.xml
