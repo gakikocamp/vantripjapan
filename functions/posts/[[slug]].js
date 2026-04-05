@@ -81,8 +81,8 @@ function renderArticlePage(article) {
       </a>
       <div class="nav-links" id="navLinks">
         <a href="/">Stories</a>
-        <a href="/#stories">Destinations</a>
-        <a href="/#tips">Tips</a>
+        <a href="/category/">Destinations</a>
+        <a href="/category/">Tips</a>
         <a href="/contact/">Contact</a>
         <a href="/rent/" class="nav-cta">Rent a Van</a>
       </div>
