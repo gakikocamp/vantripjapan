@@ -524,6 +524,222 @@
 }
 
 /* ══════════════════════════════════════════════
+   Price Calculator
+   ══════════════════════════════════════════════ */
+
+.calc-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    background: var(--rent-surface);
+    border-radius: var(--rent-radius);
+    padding: 28px 32px;
+    box-shadow: var(--rent-card-shadow);
+    margin-bottom: 24px;
+}
+
+.calc-control label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--rent-text-secondary);
+    margin-bottom: 12px;
+}
+
+.calc-slider-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.calc-slider-wrap input[type=range] {
+    flex: 1;
+    accent-color: var(--rent-accent);
+    height: 6px;
+    cursor: pointer;
+}
+
+.calc-days-display {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--rent-accent);
+    white-space: nowrap;
+    min-width: 64px;
+}
+
+.calc-veh-btn, .calc-ppl-btn {
+    background: var(--rent-bg);
+    border: 2px solid var(--rent-border);
+    border-radius: var(--rent-radius-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--rent-text-secondary);
+    transition: all 0.2s;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.calc-veh-btn:hover, .calc-ppl-btn:hover {
+    border-color: var(--rent-accent);
+    color: var(--rent-accent);
+}
+
+.calc-veh-btn.active, .calc-ppl-btn.active {
+    background: var(--rent-accent);
+    border-color: var(--rent-accent);
+    color: white;
+}
+
+.calc-veh-btns {
+    display: flex;
+    gap: 8px;
+}
+
+.calc-ppl-btns {
+    display: flex;
+    gap: 8px;
+}
+
+.calc-ppl-btn {
+    flex: 1;
+    padding: 10px 8px;
+}
+
+.calc-results {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+}
+
+.calc-vs {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--rent-text-muted);
+    text-align: center;
+}
+
+.calc-card {
+    background: var(--rent-surface);
+    border-radius: var(--rent-radius);
+    padding: 28px;
+    box-shadow: var(--rent-card-shadow);
+}
+
+.calc-card--van {
+    border: 2px solid #A7F3D0;
+    background: #F0FDF4;
+    position: relative;
+}
+
+.calc-card--van::before {
+    content: '★ CAMPERVAN';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--rent-safe);
+    color: white;
+    padding: 4px 16px;
+    border-radius: var(--rent-radius-pill);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.calc-card--hotel {
+    border: 2px solid #FECACA;
+    background: #FFF5F5;
+}
+
+.calc-card-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--rent-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.calc-total {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+    color: var(--rent-text);
+}
+
+.calc-card--van .calc-total { color: var(--rent-safe); }
+.calc-card--hotel .calc-total { color: var(--rent-danger); }
+
+.calc-breakdown {
+    font-size: 13px;
+    color: var(--rent-text-secondary);
+    margin-bottom: 16px;
+}
+
+.calc-perks {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--rent-text-secondary);
+    line-height: 1.4;
+}
+
+.calc-savings {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #1A2332, #2C3E50);
+    color: white;
+    border-radius: var(--rent-radius);
+    padding: 20px 28px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.calc-savings strong {
+    color: #FBBF24;
+    font-size: 22px;
+}
+
+.calc-nature-badge {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+.calc-nature-badge span {
+    background: rgba(255,255,255,0.12);
+    padding: 6px 14px;
+    border-radius: var(--rent-radius-pill);
+    font-size: 13px;
+}
+
+@media (max-width: 768px) {
+    .calc-controls {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    .calc-results {
+        grid-template-columns: 1fr;
+    }
+    .calc-vs {
+        text-align: center;
+        font-size: 20px;
+    }
+}
+
+/* ══════════════════════════════════════════════
    Vehicles
    ══════════════════════════════════════════════ */
 

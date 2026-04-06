@@ -473,6 +473,12 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
     // Collect referral sources
     const checked = document.querySelectorAll('#referralGroup input:checked');
     data.referral_source = Array.from(checked).map(c => c.value).join(', ');
+    if (!data.referral_source) {
+        alert('Please select at least one referral source.');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
+        return;
+    }
 
     try {
         const res = await fetch('/api/booking', {
@@ -486,7 +492,7 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
             document.getElementById('bookingForm').style.display = 'none';
             document.getElementById('successScreen').classList.add('show');
         } else {
-            alert('Error: ' + (result.detail || 'Submission failed'));
+            alert('Error: ' + (result.error || result.detail || 'Submission failed'));
             btn.disabled = false;
             btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
         }

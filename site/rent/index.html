@@ -289,6 +289,84 @@
             </div>
         </section>
 
+        <!-- ═══ PRICE CALCULATOR ═══ -->
+        <section class="rent-section" id="calculator">
+            <div class="rent-container">
+                <div class="rent-section-header">
+                    <span class="rent-badge">🧮 <span data-i18n="calc.badge">Price Calculator</span></span>
+                    <h2 class="rent-section-title" data-i18n="calc.title">How Much Does Your Trip Cost?</h2>
+                    <p class="rent-section-subtitle" data-i18n="calc.subtitle">Longer stays = better value per day. Compare with hotels.</p>
+                </div>
+
+                <!-- Controls -->
+                <div class="calc-controls">
+                    <div class="calc-control">
+                        <label data-i18n="calc.days_label">Number of days</label>
+                        <div class="calc-slider-wrap">
+                            <input type="range" id="calc-days" min="1" max="14" value="7">
+                            <span class="calc-days-display"><span id="calc-days-val">7</span> <span data-i18n="calc.days_unit">days</span></span>
+                        </div>
+                    </div>
+                    <div class="calc-control">
+                        <label data-i18n="calc.vehicle_label">Vehicle</label>
+                        <div class="calc-veh-btns">
+                            <button class="calc-veh-btn active" onclick="setVehicle(this,16500)">Probox<br><small>¥16,500/day</small></button>
+                            <button class="calc-veh-btn" onclick="setVehicle(this,22000)">Bongo<br><small>¥22,000/day</small></button>
+                        </div>
+                    </div>
+                    <div class="calc-control">
+                        <label data-i18n="calc.people_label">Travelers</label>
+                        <div class="calc-ppl-btns">
+                            <button class="calc-ppl-btn" onclick="setPeople(this,1)">1</button>
+                            <button class="calc-ppl-btn active" onclick="setPeople(this,2)">2</button>
+                            <button class="calc-ppl-btn" onclick="setPeople(this,3)">3</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="calc-results">
+                    <div class="calc-card calc-card--van">
+                        <div class="calc-card-label">🚐 VanTripJapan</div>
+                        <div class="calc-total" id="calc-van-total">¥115,500</div>
+                        <div class="calc-breakdown" id="calc-van-breakdown">¥57,750 / person</div>
+                        <div class="calc-perks">
+                            <div>✅ <span data-i18n="calc.perk1">Sleep in nature — mountains, coast, hot springs</span></div>
+                            <div>✅ <span data-i18n="calc.perk2">No check-in times. Go anywhere, anytime.</span></div>
+                            <div>✅ <span data-i18n="calc.perk3">Kitchen included. Save on meals.</span></div>
+                            <div>✅ <span data-i18n="calc.perk4">All-inclusive. Zero hidden costs.</span></div>
+                        </div>
+                    </div>
+
+                    <div class="calc-vs">VS</div>
+
+                    <div class="calc-card calc-card--hotel">
+                        <div class="calc-card-label">🏨 <span data-i18n="calc.hotel_note">Budget hotel + transport</span></div>
+                        <div class="calc-total" id="calc-hotel-total">¥154,000〜</div>
+                        <div class="calc-breakdown" id="calc-hotel-breakdown">¥77,000 / person</div>
+                        <div class="calc-perks">
+                            <div>❌ <span data-i18n="calc.hotel1">~¥8,000/person/night (budget hotel)</span></div>
+                            <div>❌ <span data-i18n="calc.hotel2">Transport between cities: +¥3,000/person/day</span></div>
+                            <div>❌ <span data-i18n="calc.hotel3">Check-in/out times limit your freedom</span></div>
+                            <div>❌ <span data-i18n="calc.hotel4">Meals, transport, fees add up fast</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Savings Banner -->
+                <div class="calc-savings" id="calc-savings">
+                    <span data-i18n="calc.savings_prefix">You save approx.</span>
+                    <strong id="calc-save-amt">¥38,500</strong>
+                    <span data-i18n="calc.savings_suffix">vs a budget hotel — and sleep in nature.</span>
+                    <div class="calc-nature-badge">
+                        <span data-i18n="calc.badge_nature1">🏔️ Mountains</span>
+                        <span data-i18n="calc.badge_nature2">🌊 Coast</span>
+                        <span data-i18n="calc.badge_nature3">♨️ Hot Springs</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ═══ VEHICLES ═══ -->
         <section class="rent-section" id="vehicles" style="background: white;">
             <div class="rent-container">
@@ -535,6 +613,63 @@
     <script src="/js/nav.js"></script>
     <script src="/js/i18n.js"></script>
     <script>
+        // ── Price Calculator ──
+        var _calcDays = 7, _calcVehicle = 16500, _calcPeople = 2;
+        var HOTEL_ROOM = { 1: 16000, 2: 16000, 3: 32000 };
+        var TRANSPORT_PER_PERSON_DAY = 3000;
+
+        function _fmtYen(n) { return '¥' + n.toLocaleString(); }
+
+        function _updateCalc() {
+            var vanTotal = _calcDays * _calcVehicle;
+            var hotelTotal = (_calcDays * HOTEL_ROOM[_calcPeople]) + (_calcDays * TRANSPORT_PER_PERSON_DAY * _calcPeople);
+            var perPersonVan = Math.round(vanTotal / _calcPeople);
+            var perPersonHotel = Math.round(hotelTotal / _calcPeople);
+            var savings = hotelTotal - vanTotal;
+
+            var dict = translations[currentLang] || translations.en;
+
+            document.getElementById('calc-van-total').textContent = _fmtYen(vanTotal);
+            document.getElementById('calc-van-breakdown').textContent = _fmtYen(perPersonVan) + ' ' + (dict['calc.per_person'] || '/ person');
+            document.getElementById('calc-hotel-total').textContent = _fmtYen(hotelTotal) + '〜';
+            document.getElementById('calc-hotel-breakdown').textContent = _fmtYen(perPersonHotel) + ' ' + (dict['calc.per_person'] || '/ person');
+
+            var savingsEl = document.getElementById('calc-savings');
+            var saveAmtEl = document.getElementById('calc-save-amt');
+            if (savings > 0) {
+                saveAmtEl.textContent = _fmtYen(savings);
+                savingsEl.style.display = 'block';
+            } else {
+                savingsEl.style.display = 'none';
+            }
+        }
+
+        function setVehicle(btn, price) {
+            document.querySelectorAll('.calc-veh-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            _calcVehicle = price;
+            _updateCalc();
+        }
+
+        function setPeople(btn, num) {
+            document.querySelectorAll('.calc-ppl-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            _calcPeople = num;
+            _updateCalc();
+        }
+
+        document.getElementById('calc-days').addEventListener('input', function() {
+            _calcDays = parseInt(this.value);
+            document.getElementById('calc-days-val').textContent = _calcDays;
+            _updateCalc();
+        });
+
+        // Re-run calc on language switch so "/ person" label updates
+        var _origSwitchLang = switchLang;
+        switchLang = function(lang) { _origSwitchLang(lang); _updateCalc(); };
+
+        _updateCalc();
+
         // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', () => {

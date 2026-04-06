@@ -123,10 +123,10 @@ export async function onRequest(context) {
   // Admin authentication check
   if (!isPublicRequest(request)) {
     const email = getCFAccessEmail(request);
-    const referer = request.headers.get('Referer') || '';
-    const isFromAdminPage = referer.includes('/admin');
+    const isLocalDev = ['localhost', '127.0.0.1'].includes(url.hostname);
 
-    if (!email && !isFromAdminPage) {
+    // Never trust Referer for auth. Only CF Access (or explicit local dev) is accepted.
+    if (!email && !isLocalDev) {
       return new Response(JSON.stringify({ error: 'Authentication required' }), {
         status: 403,
         headers: { 'Content-Type': 'application/json', ...corsHeaders(request) },

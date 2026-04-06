@@ -8,8 +8,19 @@
 
 import { encrypt, decrypt } from './_crypto.js';
 
+function ensureBookingBindings(env) {
+  if (!env?.CUSTOMERS_DB) return 'Missing binding: CUSTOMERS_DB';
+  if (!env?.ENCRYPTION_KEY) return 'Missing secret: ENCRYPTION_KEY';
+  return null;
+}
+
 // POST: Public — create a new booking
 async function handlePost(request, env) {
+  const bindingError = ensureBookingBindings(env);
+  if (bindingError) {
+    return Response.json({ error: 'Booking service misconfigured', detail: bindingError }, { status: 500 });
+  }
+
   const data = await request.json();
 
   // Validate required fields
@@ -18,6 +29,16 @@ async function handlePost(request, env) {
     if (!data[field]?.trim()) {
       return Response.json({ error: `Missing: ${field}` }, { status: 400 });
     }
+  }
+
+  // Validate rental period consistency
+  const pickup = new Date(data.pickup_datetime);
+  const returns = new Date(data.return_datetime);
+  if (Number.isNaN(pickup.getTime()) || Number.isNaN(returns.getTime())) {
+    return Response.json({ error: 'Invalid pickup/return datetime' }, { status: 400 });
+  }
+  if (returns <= pickup) {
+    return Response.json({ error: 'return_datetime must be after pickup_datetime' }, { status: 400 });
   }
 
   // Encrypt PII fields
@@ -49,6 +70,11 @@ async function handlePost(request, env) {
 
 // GET: Admin — list bookings or get single booking
 async function handleGet(request, env) {
+  const bindingError = ensureBookingBindings(env);
+  if (bindingError) {
+    return Response.json({ error: 'Booking service misconfigured', detail: bindingError }, { status: 500 });
+  }
+
   const url = new URL(request.url);
   const id = url.searchParams.get('id');
 
@@ -104,6 +130,11 @@ async function handleGet(request, env) {
 
 // PUT: Admin — update booking
 async function handlePut(request, env, data) {
+  const bindingError = ensureBookingBindings(env);
+  if (bindingError) {
+    return Response.json({ error: 'Booking service misconfigured', detail: bindingError }, { status: 500 });
+  }
+
   const body = await request.json();
   const url = new URL(request.url);
   const id = url.searchParams.get('id');

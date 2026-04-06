@@ -5,6 +5,12 @@
 
 export async function onRequestGet(context) {
   const { env } = context;
+  if (!env?.CUSTOMERS_DB) {
+    return Response.json(
+      { error: 'Admin dashboard misconfigured', detail: 'Missing binding: CUSTOMERS_DB' },
+      { status: 500 }
+    );
+  }
   const db = env.CUSTOMERS_DB;
 
   // Booking counts by status

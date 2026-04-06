@@ -7,8 +7,20 @@
 
 import { encryptFile, decryptFile, hashBytes } from './_crypto.js';
 
+function ensureDocumentBindings(env) {
+  if (!env?.CUSTOMERS_DB) return 'Missing binding: CUSTOMERS_DB';
+  if (!env?.DOCUMENTS) return 'Missing binding: DOCUMENTS';
+  if (!env?.ENCRYPTION_KEY) return 'Missing secret: ENCRYPTION_KEY';
+  return null;
+}
+
 // POST: Public — upload a document
 async function handlePost(request, env) {
+  const bindingError = ensureDocumentBindings(env);
+  if (bindingError) {
+    return Response.json({ error: 'Document service misconfigured', detail: bindingError }, { status: 500 });
+  }
+
   const formData = await request.formData();
   const file = formData.get('file');
   const docType = formData.get('doc_type');
@@ -21,6 +33,17 @@ async function handlePost(request, env) {
   const allowedTypes = ['license_front', 'license_back', 'international_license', 'translation', 'passport'];
   if (!allowedTypes.includes(docType)) {
     return Response.json({ error: 'Invalid doc_type' }, { status: 400 });
+  }
+
+  // Basic upload hardening: only images/PDF and cap file size.
+  const maxFileSize = 10 * 1024 * 1024; // 10MB
+  const fileType = file?.type || '';
+  const isAllowedMime = fileType.startsWith('image/') || fileType === 'application/pdf';
+  if (!isAllowedMime) {
+    return Response.json({ error: 'Unsupported file type' }, { status: 400 });
+  }
+  if (typeof file?.size === 'number' && file.size > maxFileSize) {
+    return Response.json({ error: 'File too large (max 10MB)' }, { status: 413 });
   }
 
   // Verify booking exists
@@ -57,6 +80,11 @@ async function handlePost(request, env) {
 
 // GET: Admin — view a document (decrypted)
 async function handleGet(request, env) {
+  const bindingError = ensureDocumentBindings(env);
+  if (bindingError) {
+    return Response.json({ error: 'Document service misconfigured', detail: bindingError }, { status: 500 });
+  }
+
   const url = new URL(request.url);
   const id = url.searchParams.get('id');
 
@@ -91,6 +119,11 @@ async function handleGet(request, env) {
 
 // PUT: Admin — verify a document
 async function handlePut(request, env, data) {
+  const bindingError = ensureDocumentBindings(env);
+  if (bindingError) {
+    return Response.json({ error: 'Document service misconfigured', detail: bindingError }, { status: 500 });
+  }
+
   const url = new URL(request.url);
   const id = url.searchParams.get('id');
 
