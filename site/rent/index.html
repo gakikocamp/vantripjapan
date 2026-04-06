@@ -303,7 +303,7 @@
                     <div class="calc-control">
                         <label data-i18n="calc.days_label">Number of days</label>
                         <div class="calc-slider-wrap">
-                            <input type="range" id="calc-days" min="1" max="14" value="7">
+                            <input type="range" id="calc-days" min="1" max="30" value="7">
                             <span class="calc-days-display"><span id="calc-days-val">7</span> <span data-i18n="calc.days_unit">days</span></span>
                         </div>
                     </div>
@@ -328,8 +328,13 @@
                 <div class="calc-results">
                     <div class="calc-card calc-card--van">
                         <div class="calc-card-label">🚐 VanTripJapan</div>
-                        <div class="calc-total" id="calc-van-total">¥115,500</div>
-                        <div class="calc-breakdown" id="calc-van-breakdown">¥57,750 / person</div>
+                        <div class="calc-perday">
+                            <span id="calc-van-perday">¥8,250</span><span class="calc-perday-unit" data-i18n="calc.per_person_day">/person/day</span>
+                        </div>
+                        <div class="calc-total-row">
+                            <span class="calc-total-small" id="calc-van-total">¥115,500</span>
+                            <span class="calc-total-note" id="calc-van-total-note">total · 7 days</span>
+                        </div>
                         <div class="calc-perks">
                             <div>✅ <span data-i18n="calc.perk1">Sleep in nature — mountains, coast, hot springs</span></div>
                             <div>✅ <span data-i18n="calc.perk2">No check-in times. Go anywhere, anytime.</span></div>
@@ -341,14 +346,19 @@
                     <div class="calc-vs">VS</div>
 
                     <div class="calc-card calc-card--hotel">
-                        <div class="calc-card-label">🏨 <span data-i18n="calc.hotel_note">Budget hotel + transport</span></div>
-                        <div class="calc-total" id="calc-hotel-total">¥154,000〜</div>
-                        <div class="calc-breakdown" id="calc-hotel-breakdown">¥77,000 / person</div>
+                        <div class="calc-card-label">🏨 <span data-i18n="calc.hotel_note">Hotel + inter-city transport</span></div>
+                        <div class="calc-perday">
+                            <span id="calc-hotel-perday">¥13,000</span><span class="calc-perday-unit" data-i18n="calc.per_person_day">/person/day</span>
+                        </div>
+                        <div class="calc-total-row">
+                            <span class="calc-total-small" id="calc-hotel-total">¥182,000〜</span>
+                            <span class="calc-total-note" id="calc-hotel-total-note">total · 7 days</span>
+                        </div>
                         <div class="calc-perks">
-                            <div>❌ <span data-i18n="calc.hotel1">~¥8,000/person/night (budget hotel)</span></div>
-                            <div>❌ <span data-i18n="calc.hotel2">Transport between cities: +¥3,000/person/day</span></div>
+                            <div>❌ <span data-i18n="calc.hotel1">¥20,000/night per room (Fukuoka avg.)</span></div>
+                            <div>❌ <span data-i18n="calc.hotel2">Inter-city transport: +¥3,000/person/day</span></div>
                             <div>❌ <span data-i18n="calc.hotel3">Check-in/out times limit your freedom</span></div>
-                            <div>❌ <span data-i18n="calc.hotel4">Meals, transport, fees add up fast</span></div>
+                            <div>❌ <span data-i18n="calc.hotel4">Meals & incidentals add up fast</span></div>
                         </div>
                     </div>
                 </div>
@@ -615,24 +625,33 @@
     <script>
         // ── Price Calculator ──
         var _calcDays = 7, _calcVehicle = 16500, _calcPeople = 2;
-        var HOTEL_ROOM = { 1: 16000, 2: 16000, 3: 32000 };
-        var TRANSPORT_PER_PERSON_DAY = 3000;
+        // Hotel room/night (Fukuoka 2026 average): 1p single, 2p double, 3p two rooms
+        var HOTEL_ROOM = { 1: 16000, 2: 20000, 3: 36000 };
+        var TRANSPORT_PER_PERSON_DAY = 3000; // conservative inter-city estimate
 
         function _fmtYen(n) { return '¥' + n.toLocaleString(); }
 
         function _updateCalc() {
             var vanTotal = _calcDays * _calcVehicle;
-            var hotelTotal = (_calcDays * HOTEL_ROOM[_calcPeople]) + (_calcDays * TRANSPORT_PER_PERSON_DAY * _calcPeople);
-            var perPersonVan = Math.round(vanTotal / _calcPeople);
-            var perPersonHotel = Math.round(hotelTotal / _calcPeople);
+            var hotelPerDay = HOTEL_ROOM[_calcPeople] + (TRANSPORT_PER_PERSON_DAY * _calcPeople);
+            var hotelTotal = _calcDays * hotelPerDay;
+            var vanPerPersonDay = Math.round(_calcVehicle / _calcPeople);
+            var hotelPerPersonDay = Math.round(hotelPerDay / _calcPeople);
             var savings = hotelTotal - vanTotal;
 
             var dict = translations[currentLang] || translations.en;
+            var daysStr = _calcDays + ' ' + (dict['calc.days_unit'] || 'days');
+            var totalNote = (dict['calc.total_note'] || 'total') + ' · ' + daysStr;
 
+            // Leading per-person/day numbers
+            document.getElementById('calc-van-perday').textContent = _fmtYen(vanPerPersonDay);
+            document.getElementById('calc-hotel-perday').textContent = _fmtYen(hotelPerPersonDay);
+
+            // Totals + day note
             document.getElementById('calc-van-total').textContent = _fmtYen(vanTotal);
-            document.getElementById('calc-van-breakdown').textContent = _fmtYen(perPersonVan) + ' ' + (dict['calc.per_person'] || '/ person');
             document.getElementById('calc-hotel-total').textContent = _fmtYen(hotelTotal) + '〜';
-            document.getElementById('calc-hotel-breakdown').textContent = _fmtYen(perPersonHotel) + ' ' + (dict['calc.per_person'] || '/ person');
+            document.getElementById('calc-van-total-note').textContent = totalNote;
+            document.getElementById('calc-hotel-total-note').textContent = totalNote;
 
             var savingsEl = document.getElementById('calc-savings');
             var saveAmtEl = document.getElementById('calc-save-amt');
