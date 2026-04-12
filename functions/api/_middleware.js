@@ -51,10 +51,14 @@ function isPublicRequest(request) {
   const path = url.pathname;
   const method = request.method;
 
+  // Public: GET articles listing (homepage, category page)
+  if (path === '/api/articles' && method === 'GET') return true;
   // Public: POST new booking
   if (path === '/api/booking' && method === 'POST') return true;
   // Public: POST document upload
   if (path === '/api/documents' && method === 'POST') return true;
+  // Public: POST newsletter signup
+  if (path === '/api/newsletter' && method === 'POST') return true;
   // Public: OPTIONS (CORS preflight)
   if (method === 'OPTIONS') return true;
 
