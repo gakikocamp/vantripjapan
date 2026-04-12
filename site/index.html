@@ -24,6 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="preload" as="image" href="/images/hero-vanlife.png">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
@@ -101,11 +102,11 @@
             </a>
 
             <div class="nav-links" id="navLinks">
-                <a href="/">Stories</a>
-                <a href="/category/">Destinations</a>
-                <a href="/category/">Tips</a>
+                <a href="/">Home</a>
+                <a href="/category/">Guides</a>
+                <a href="/rent/">Rental</a>
                 <a href="/contact/">Contact</a>
-                <a href="/rent/" class="nav-cta">Rent a Van</a>
+                <a href="/rent/" class="nav-cta">Rent a Van →</a>
             </div>
 
             <button class="nav-hamburger" id="hamburger" aria-label="Menu">
@@ -120,16 +121,17 @@
         <div class="hero-overlay"></div>
         <div class="hero-content hero-content--split">
             <div class="hero-left">
-                <span class="hero-badge">🇯🇵 Kyushu Travel Magazine from Fukuoka</span>
-                <h1 class="hero-title">Discover<br>Kyushu<br>By Van</h1>
-                <p class="hero-description">Road trip itineraries, hidden onsen, local food, and everything you need to explore Japan's most stunning island at your own pace.</p>
+                <span class="hero-badge">🇯🇵 Campervan Road Trips from Fukuoka</span>
+                <h1 class="hero-title">Your Kyushu<br>Road Trip<br>Starts Here</h1>
+                <p class="hero-description">Campervan rental + travel guides for exploring Japan's most beautiful island. All-inclusive from ¥16,500/day.</p>
                 <div class="hero-actions">
-                    <a href="/#stories" class="hero-cta">Read Latest Stories →</a>
-                    <a href="/posts/kyushu-onsen-road-trip/" class="hero-cta hero-cta--ghost">7-Day Itinerary</a>
+                    <a href="/rent/" class="hero-cta">Rent a Campervan →</a>
+                    <a href="/#stories" class="hero-cta hero-cta--ghost">Read Travel Guides</a>
                 </div>
                 <div class="hero-trust">
-                    <span>📖 New guides every week</span>
-                    <span>🌸 Seasonal travel tips</span>
+                    <span>🚐 From ¥16,500/day</span>
+                    <span>📍 10 min from Airport</span>
+                    <span>🌏 100+ Languages</span>
                 </div>
             </div>
             <div class="hero-right">
@@ -151,6 +153,35 @@
             </div>
         </div>
     </section>
+
+    <!-- ═══ Singapore Callout ═══ -->
+    <section class="sg-callout" id="sg-callout" style="display:none;">
+        <div class="sg-callout-inner">
+            <span class="sg-flag">🇸🇬</span>
+            <div class="sg-callout-text">
+                <strong>Popular with Singapore travellers!</strong>
+                <span>Direct flights from Changi. IDP from AA Singapore (~SGD 20). We handle the rest.</span>
+            </div>
+            <a href="https://wa.me/817093757129?text=Hi!%20I'm%20from%20Singapore%20and%20interested%20in%20renting%20a%20campervan%20in%20Fukuoka." class="sg-callout-cta" target="_blank">Get a Quote →</a>
+        </div>
+    </section>
+    <script>
+    (function(){
+        // Show SG callout for Singapore visitors (browser language or always show as social proof)
+        var show = false;
+        try {
+            var lang = (navigator.language || '').toLowerCase();
+            var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+            if (tz.indexOf('Singapore') !== -1 || lang === 'en-sg') show = true;
+        } catch(e) {}
+        // Also show for all English speakers as social proof (Singapore is #1 traffic source)
+        show = true;
+        if (show) {
+            var el = document.getElementById('sg-callout');
+            if (el) el.style.display = 'block';
+        }
+    })();
+    </script>
 
     <!-- ═══ Featured Story ═══ -->
     <section class="section" id="stories">
@@ -221,8 +252,8 @@
 
             <!-- Newsletter -->
             <div class="newsletter">
-                <h3 class="newsletter-title">Stay in the loop</h3>
-                <p class="newsletter-desc">Road trip guides, hidden Kyushu spots, and campervan tips — straight to your inbox.</p>
+                <h3 class="newsletter-title">Plan Your Kyushu Road Trip</h3>
+                <p class="newsletter-desc">Get our free Kyushu driving guide, hidden onsen map, and campervan tips — straight to your inbox.</p>
                 <form class="newsletter-form" id="newsletter-form">
                     <input type="email" id="newsletter-email" placeholder="Email address" required>
                     <button type="submit" id="newsletter-btn">Subscribe</button>
@@ -283,9 +314,10 @@
 
             <div class="footer-col">
                 <h4>Explore</h4>
-                <a href="/">Stories</a>
-                <a href="/category/">Destinations</a>
-                <a href="/category/">Tips</a>
+                <a href="/">Home</a>
+                <a href="/category/">Travel Guides</a>
+                <a href="/posts/best-scenic-drives-kyushu/">Scenic Drives</a>
+                <a href="/posts/kyushu-road-trip-7-days/">7-Day Itinerary</a>
             </div>
 
             <div class="footer-col">
@@ -293,6 +325,7 @@
                 <a href="/rent/">Campervan Rentals</a>
                 <a href="/rent/#vehicles">Our Vehicles</a>
                 <a href="/rent/#pricing">Pricing</a>
+                <a href="/rent/#faq">FAQ</a>
             </div>
 
             <div class="footer-col">
@@ -400,6 +433,12 @@
             observer.observe(el);
         });
     </script>
+
+    <!-- ═══ Floating WhatsApp Button ═══ -->
+    <a href="https://wa.me/817093757129?text=Hi!%20I'm%20interested%20in%20renting%20a%20campervan%20in%20Fukuoka." 
+       class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+        💬
+    </a>
 
 </body>
 

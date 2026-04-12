@@ -385,6 +385,12 @@
     background: #FFF7ED;
 }
 
+.license-card.green {
+    border-color: #86EFAC;
+    background: #F0FDF4;
+    grid-column: 1 / -1;
+}
+
 .license-card .flags {
     font-size: 24px;
     margin-bottom: 12px;

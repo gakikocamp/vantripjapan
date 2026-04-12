@@ -48,6 +48,14 @@ const translations = {
         "license.special.item2": "Translation available at JAF offices",
         "license.special.item3": "We can help arrange this — just ask!",
 
+        // License — Singapore
+        "license.sg.title": "Singapore Travellers",
+        "license.sg.desc": "Great news! Singapore is a Geneva Convention country. Get your IDP before you fly — it's easy and affordable.",
+        "license.sg.item1": "✅ IDP from AA Singapore (~SGD 20, same-day)",
+        "license.sg.item2": "✈️ Direct flights: Changi ↔ Fukuoka (3.5 hours)",
+        "license.sg.item3": "🚐 Pick up your van 10 min from Fukuoka Airport",
+        "license.sg.item4": "💰 From ~SGD 150/day all-inclusive",
+
         // Pricing
         "pricing.badge": "Transparent Pricing",
         "pricing.title": "All-Inclusive, No Surprises",
@@ -102,6 +110,8 @@ const translations = {
         "faq.a5": "Japan has many great options: auto-campsites, RV parks, and \"Michi-no-Eki\" roadside stations. While you can't camp just anywhere, there are hundreds of spots across Kyushu. We'll provide a recommended spot guide when you pick up!",
         "faq.q6": "Can I drop off the campervan in Tokyo or Osaka?",
         "faq.a6": "Yes! One-way trips are available. Pick up in Fukuoka and drop off in Tokyo or Osaka (or vice versa). A surcharge applies depending on the destination. Contact us via WhatsApp or LINE for a quote — we'll work out the best route for your itinerary!",
+        "faq.q7": "I'm from Singapore. What do I need to drive in Japan?",
+        "faq.a7": "Singapore is a Geneva Convention country, so you need an International Driving Permit (IDP). Get it from AA Singapore for about SGD 20 — it's available same-day at their offices. Bring both your original Singapore driving licence and the IDP. Direct flights from Changi to Fukuoka take just 3.5 hours, and our base is 10 minutes from the airport!",
 
         // Calculator
         "calc.badge": "Price Calculator",
@@ -185,6 +195,14 @@ const translations = {
         "license.special.item2": "Traduction disponible aux bureaux JAF",
         "license.special.item3": "Nous pouvons vous aider — demandez-nous !",
 
+        // License — Singapore
+        "license.sg.title": "Voyageurs de Singapour",
+        "license.sg.desc": "Bonne nouvelle ! Singapour est un pays signataire de la Convention de Genève. Obtenez votre PCI avant de partir.",
+        "license.sg.item1": "✅ PCI auprès d'AA Singapore (~SGD 20, le jour même)",
+        "license.sg.item2": "✈️ Vols directs : Changi ↔ Fukuoka (3h30)",
+        "license.sg.item3": "🚐 Récupérez votre van à 10 min de l'aéroport",
+        "license.sg.item4": "💰 À partir de ~SGD 150/jour tout compris",
+
         "pricing.badge": "Tarifs Transparents",
         "pricing.title": "Tout Compris, Sans Surprises",
         "pricing.subtitle": "Tout ce dont vous avez besoin est inclus",
@@ -235,6 +253,8 @@ const translations = {
         "faq.a5": "Le Japon offre de nombreuses options : campings auto, parcs RV et stations routières « Michi-no-Eki ». Nous vous fournirons un guide des meilleurs spots lors de la prise en charge !",
         "faq.q6": "Puis-je rendre le camping-car à Tokyo ou Osaka ?",
         "faq.a6": "Oui ! Les trajets aller simple sont disponibles. Prise en charge à Fukuoka et retour à Tokyo ou Osaka (ou vice versa). Un supplément s'applique selon la destination. Contactez-nous via WhatsApp ou LINE pour un devis !",
+        "faq.q7": "Je viens de Singapour. De quoi ai-je besoin pour conduire au Japon ?",
+        "faq.a7": "Singapour est un pays signataire de la Convention de Genève, vous avez donc besoin d'un PCI. Obtenez-le auprès d'AA Singapore pour environ SGD 20 — disponible le jour même. Apportez votre permis original et le PCI. Les vols directs Changi-Fukuoka ne durent que 3h30 !",
 
         // Calculator
         "calc.badge": "Calculateur de Prix",
@@ -315,6 +335,14 @@ const translations = {
         "license.special.item2": "Übersetzung bei JAF-Büros erhältlich",
         "license.special.item3": "Wir helfen gerne — frag uns!",
 
+        // License — Singapore
+        "license.sg.title": "Reisende aus Singapur",
+        "license.sg.desc": "Gute Nachricht! Singapur ist ein Land des Genfer Abkommens. Hole dir deinen IFÜ vor der Abreise.",
+        "license.sg.item1": "✅ IFÜ bei AA Singapore (~SGD 20, sofort)",
+        "license.sg.item2": "✈️ Direktflüge: Changi ↔ Fukuoka (3,5 Std.)",
+        "license.sg.item3": "🚐 Van abholen 10 Min. vom Flughafen",
+        "license.sg.item4": "💰 Ab ~SGD 150/Tag all-inclusive",
+
         "pricing.badge": "Transparente Preise",
         "pricing.title": "All-Inclusive, Keine Überraschungen",
         "pricing.subtitle": "Alles was du für deinen Roadtrip brauchst ist inklusive",
@@ -365,6 +393,8 @@ const translations = {
         "faq.a5": "Japan bietet viele Optionen: Auto-Campingplätze, Wohnmobilparks und „Michi-no-Eki" Raststationen. Wir geben dir einen Spot-Guide bei der Abholung!",
         "faq.q6": "Kann ich den Campervan in Tokyo oder Osaka zurückgeben?",
         "faq.a6": "Ja! Einwegfahrten sind möglich. Abholung in Fukuoka, Rückgabe in Tokyo oder Osaka (oder umgekehrt). Ein Aufpreis fällt je nach Zielort an. Kontaktiere uns via WhatsApp oder LINE für ein Angebot!",
+        "faq.q7": "Ich komme aus Singapur. Was brauche ich zum Autofahren in Japan?",
+        "faq.a7": "Singapur ist ein Land des Genfer Abkommens, du brauchst also einen IFÜ. Hole ihn bei AA Singapore für ca. SGD 20 — am selben Tag erhältlich. Bringe deinen Originalfuhrerschein und den IFÜ mit. Direktflüge Changi-Fukuoka dauern nur 3,5 Stunden!",
 
         // Calculator
         "calc.badge": "Preisrechner",
@@ -445,6 +475,14 @@ const translations = {
         "license.special.item2": "可在JAF事務所取得翻譯",
         "license.special.item3": "我們可以協助安排——歡迎詢問！",
 
+        // License — Singapore
+        "license.sg.title": "新加坡旅客",
+        "license.sg.desc": "好消息！新加坡是日內瓦公約國家。出發前取得IDP即可。",
+        "license.sg.item1": "✅ 在AA Singapore取得IDP（約SGD 20，當天取件）",
+        "license.sg.item2": "✈️ 直飛：樟宜 ↔ 福岡（3.5小時）",
+        "license.sg.item3": "🚐 距福岡機場僅10分鐘取車",
+        "license.sg.item4": "💰 每天約SGD 150起（全包）",
+
         "pricing.badge": "透明定價",
         "pricing.title": "全包價格，沒有驚喜",
         "pricing.subtitle": "旅行所需的一切都已包含在內",
@@ -495,6 +533,8 @@ const translations = {
         "faq.a5": "日本有很多選擇：汽車露營場、RV停車場和「道之驛」休息站。我們會在取車時提供推薦景點指南！",
         "faq.q6": "可以在東京或大阪還車嗎？",
         "faq.a6": "可以！提供單程服務。在福岡取車，在東京或大阪還車（或反向）。依目的地收取附加費用。請通過WhatsApp或LINE聯繫我們取得報價！",
+        "faq.q7": "我來自新加坡，在日本開車需要什麼？",
+        "faq.a7": "新加坡是日內瓦公約國家，您需要國際駕照（IDP）。在AA Singapore取得，約SGD 20，當天可取。攜帶您的原始新加坡駕照和IDP。樟宜到福岡的直飛僅3.5小時，我們的基地距機場僅10分鐘！",
 
         // Calculator
         "calc.badge": "費用試算",

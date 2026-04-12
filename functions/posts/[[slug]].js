@@ -80,11 +80,11 @@ function renderArticlePage(article) {
         <div><span>VAN TRIP JAPAN</span><span class="magazine-tag">Magazine</span></div>
       </a>
       <div class="nav-links" id="navLinks">
-        <a href="/">Stories</a>
-        <a href="/category/">Destinations</a>
-        <a href="/category/">Tips</a>
+        <a href="/">Home</a>
+        <a href="/category/">Guides</a>
+        <a href="/rent/">Rental</a>
         <a href="/contact/">Contact</a>
-        <a href="/rent/" class="nav-cta">Rent a Van</a>
+        <a href="/rent/" class="nav-cta">Rent a Van →</a>
       </div>
       <button class="nav-hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -144,15 +144,17 @@ function renderArticlePage(article) {
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
-        <a href="/">Stories</a>
-        <a href="/#stories">Destinations</a>
-        <a href="/#tips">Tips</a>
+        <a href="/">Home</a>
+        <a href="/category/">Travel Guides</a>
+        <a href="/posts/best-scenic-drives-kyushu/">Scenic Drives</a>
+        <a href="/posts/kyushu-road-trip-7-days/">7-Day Itinerary</a>
       </div>
       <div class="footer-col">
         <h4>Rental</h4>
         <a href="/rent/">Campervan Rentals</a>
         <a href="/rent/#vehicles">Our Vehicles</a>
         <a href="/rent/#pricing">Pricing</a>
+        <a href="/rent/#faq">FAQ</a>
       </div>
       <div class="footer-col">
         <h4>About</h4>
@@ -165,6 +167,12 @@ function renderArticlePage(article) {
       <span>Fukuoka, Japan</span>
     </div>
   </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/817093757129?text=Hi!%20I'm%20interested%20in%20renting%20a%20campervan%20in%20Fukuoka." 
+     class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+    💬
+  </a>
 
   <script src="/js/nav.js"></script>
 
