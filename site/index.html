@@ -387,7 +387,11 @@
         }
         async function loadArticles() {
             try {
-                const res = await fetch('/api/articles');
+                // Try public endpoint first (bypasses /api middleware), then fallback
+                let res = await fetch('/public-articles');
+                if (!res.ok) {
+                    res = await fetch('/api/articles');
+                }
                 if (!res.ok) return;
                 const articles = await res.json();
                 if (!Array.isArray(articles) || articles.length === 0) return;

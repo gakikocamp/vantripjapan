@@ -248,7 +248,10 @@
 
         async function loadCategories() {
             try {
-                const res = await fetch('/api/articles');
+                let res = await fetch('/public-articles');
+                if (!res.ok) {
+                    res = await fetch('/api/articles');
+                }
                 if (!res.ok) return;
                 const articles = await res.json();
                 if (!Array.isArray(articles) || articles.length === 0) {
