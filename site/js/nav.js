@@ -18,11 +18,31 @@
   const navLinks = document.getElementById('navLinks');
   if (hamburger && navLinks) {
     hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+      const isOpen = navLinks.classList.toggle('active');
+      hamburger.classList.toggle('active', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
+    });
+
+    // Close menu when a nav link is tapped
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      });
+    });
+
+    // Close menu on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
     });
   }
 
-  // Back to Top button (auto-create if not present)
+  // Back to Top button — positioned above WhatsApp button
   let backBtn = document.getElementById('backToTop');
   if (!backBtn) {
     backBtn = document.createElement('button');
@@ -30,10 +50,10 @@
     backBtn.innerHTML = '&uarr;';
     backBtn.setAttribute('aria-label', 'Back to top');
     backBtn.style.cssText =
-      'position:fixed;bottom:24px;right:24px;width:44px;height:44px;' +
+      'position:fixed;bottom:90px;right:24px;width:40px;height:40px;' +
       'border-radius:50%;border:none;background:var(--color-text);' +
-      'color:white;font-size:18px;cursor:pointer;opacity:0;' +
-      'transition:all 0.3s;z-index:90;' +
+      'color:white;font-size:16px;cursor:pointer;opacity:0;' +
+      'transition:all 0.3s;z-index:90;pointer-events:none;' +
       'box-shadow:0 4px 16px rgba(0,0,0,0.15);';
     document.body.appendChild(backBtn);
   }
