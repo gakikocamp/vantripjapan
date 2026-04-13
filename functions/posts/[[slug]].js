@@ -48,7 +48,7 @@ function renderArticlePage(article) {
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="${canonicalUrl}">
   <link rel="icon" type="image/png" href="/images/favicon.png">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/style.css?v=20260413">
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
@@ -174,7 +174,7 @@ function renderArticlePage(article) {
     💬
   </a>
 
-  <script src="/js/nav.js"></script>
+  <script src="/js/nav.js?v=20260413"></script>
 
 </body>
 </html>`;
