@@ -376,7 +376,7 @@
                 <!-- Savings Banner -->
                 <div class="calc-savings" id="calc-savings">
                     <span data-i18n="calc.savings_prefix">You save approx.</span>
-                    <strong id="calc-save-amt">¥38,500</strong>
+                    <strong id="calc-save-amt">¥66,500</strong>
                     <span data-i18n="calc.savings_suffix">vs a budget hotel — and sleep in nature.</span>
                     <div class="calc-nature-badge">
                         <span data-i18n="calc.badge_nature1">🏔️ Mountains</span>
@@ -643,7 +643,7 @@
         var HOTEL_ROOM = { 1: 16000, 2: 20000, 3: 36000 };
         var TRANSPORT_PER_PERSON_DAY = 3000; // conservative inter-city estimate
 
-        function _fmtYen(n) { return '¥' + n.toLocaleString(); }
+        function _fmtYen(n) { return '¥' + n.toLocaleString('en-US'); }
 
         function _updateCalc() {
             var vanTotal = _calcDays * _calcVehicle;
