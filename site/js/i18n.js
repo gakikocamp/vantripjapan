@@ -327,6 +327,37 @@ const translations = {
         "access.hoursDetail": "Prise en charge : 9h00 - 17h00<br>Retour : 9h00 - 17h00<br>(Flexible sur arrangement)",
         "sticky.availability": "⚡ 3 véhicules disponibles",
         "sticky.viewers": "● 9 personnes consultent",
+
+        // License — Israel
+        "license.il.title": "Voyageurs Israéliens",
+        "license.il.desc": "Israël est un pays de la Convention de Genève. Obtenez votre permis international avant de partir.",
+        "license.il.item1": "✅ PCI auprès de MEMSI ou tout bureau de poste (~₪80)",
+        "license.il.item2": "✈️ Vols : TLV → Fukuoka via Séoul/Bangkok (~8-12h)",
+        "license.il.item3": "🚐 Récupérez votre van à 10 min de l'aéroport de Fukuoka",
+        "license.il.item4": "💰 Dès ~110 $ USD/jour tout inclus",
+
+        // Reviews
+        "reviews.badge": "Avis clients",
+        "reviews.title": "Ce que disent nos voyageurs",
+        "reviews.subtitle": "Témoignages réels de voyageurs ayant exploré Kyushu avec nous",
+        "reviews.r1_meta": "7 jours · Bongo · Couple",
+        "reviews.r1_text": "\"Nous avons exploré Aso, Beppu et la péninsule de Kunisaki pendant 7 jours. Le van était impeccable et bien équipé. C'était notre troisième fois au Japon mais la première fois que nous nous sommes vraiment sentis libres. Absolument recommandé !\"",
+        "reviews.r2_meta": "14 jours · Probox · Couple",
+        "reviews.r2_text": "\"14 jours incroyables à Kyushu ! Le camping-car avait tout ce qu'il fallait. On a dormi au bord de la mer à Yakushima et aux pieds des montagnes d'Aso. Le support multilingue en français était un vrai plus. Merci VanTripJapan !\"",
+        "reviews.r3_meta": "10 jours · Bongo · Amis",
+        "reviews.r3_text": "\"Nous sommes venus de Tel Aviv avec juste nos sacs à dos. L'équipe nous a aidés pour tout — conseils IDP, planification d'itinéraire, même recommandations de onsen. Le meilleur voyage de notre vie.\"",
+        "reviews.r4_meta": "5 jours · Probox · Solo",
+        "reviews.r4_text": "\"En tant que voyageuse solo, je me suis sentie en totale sécurité. Le Probox était parfait pour une personne. Les Michi-no-Eki étaient parfaits pour dormir. J'aurais aimé réserver plus longtemps !\"",
+
+        // Quote Form
+        "quote.title": "Recevez un devis gratuit par email",
+        "quote.subtitle": "Pas besoin de WhatsApp. Nous vous enverrons votre estimation personnalisée sous 24h.",
+        "quote.name_ph": "Nom (optionnel)",
+        "quote.dates_ph": "Dates souhaitées (optionnel)",
+        "quote.submit": "📧 Envoyez-moi un devis",
+        "quote.note": "Nous inclurons vos paramètres calculateur (véhicule, jours, voyageurs) dans le devis.",
+        "quote.success": "Demande de devis envoyée !",
+        "quote.success_detail": "Vérifiez votre boîte mail sous 24h. Vous pouvez aussi nous contacter sur WhatsApp.",
     },
 
     de: {
@@ -464,12 +495,17 @@ const translations = {
     "access.subtitle": "Nur 10 Min. vom Flughafen, direkt neben der Autobahnauffahrt",
     "access.mapPlaceholder": "Karte wird hier eingebettet",
     "access.pickup": "📍 Abholung / Rückgabe",
-    "access.address": "Hakozaki, Higashi-ku, Fukuoka<br>(Hakata / Flughafen-Gebiet)",
-    "access.hours": "🕐 Öffnungszeiten",
-    "access.hoursDetail": "Abholung: 9:00 - 17:00<br>Rückgabe: 9:00 - 17:00<br>(Flexibel nach Vereinbarung)",
-    "sticky.availability": "⚡ 3 Vans verfügbar",
-    "sticky.viewers": "● 9 Personen schauen gerade",
-},
+        "access.badge": "Anfahrt",
+        "access.title": "Standort der Hakozaki-Basis",
+        "access.subtitle": "Nur 10 Min. vom Flughafen, direkt neben der Autobahnauffahrt",
+        "access.mapPlaceholder": "Karte wird hier eingebettet",
+        "access.pickup": "📍 Abholung / Rückgabe",
+        "access.address": "Hakozaki, Higashi-ku, Fukuoka<br>(Hakata / Flughafen-Gebiet)",
+        "access.hours": "🕐 Öffnungszeiten",
+        "access.hoursDetail": "Abholung: 9:00 - 17:00<br>Rückgabe: 9:00 - 17:00<br>(Flexibel nach Vereinbarung)",
+        "sticky.availability": "⚡ 3 Vans verfügbar",
+        "sticky.viewers": "● 9 Personen schauen gerade",
+    },
 
     zh: {
         "hero.title1": "探索九州",
@@ -611,6 +647,37 @@ const translations = {
         "access.hoursDetail": "取車：9:00 - 17:00<br>還車：9:00 - 17:00<br>（可彈性安排）",
         "sticky.availability": "⚡ 剩餘3台",
         "sticky.viewers": "● 9人正在瀏覽",
+
+        // License — Israel
+        "license.il.title": "以色列旅客",
+        "license.il.desc": "以色列是日內瓦公約國家。出發前取得國際駕照即可。",
+        "license.il.item1": "✅ 在MEMSI或郵局取得IDP（約₪80）",
+        "license.il.item2": "✈️ 航班：TLV → 福岡（經首爾/曼谷，約8-12小時）",
+        "license.il.item3": "🚐 距福岡機場僅10分鐘取車",
+        "license.il.item4": "💰 每天約$110 USD起（全包）",
+
+        // Reviews
+        "reviews.badge": "旅客評價",
+        "reviews.title": "旅客怎麼說",
+        "reviews.subtitle": "真實旅客的九州探索體驗",
+        "reviews.r1_meta": "7天 · Bongo · 情侶",
+        "reviews.r1_text": "「我們花了7天探索阿蘇、別府和國東半島。車子非常乾淨、設備齊全。這是我們第三次來日本，但第一次真正感受到自由。強力推薦！」",
+        "reviews.r2_meta": "14天 · Probox · 情侶",
+        "reviews.r2_text": "「在九州度過了令人難以置信的14天！露營車應有盡有。我們在屋久島的海邊和阿蘇山腳下睡覺。感謝VanTripJapan！」",
+        "reviews.r3_meta": "10天 · Bongo · 朋友",
+        "reviews.r3_text": "「我們從特拉維夫只帶著背包來。團隊幫了我們很多——IDP建議、路線規劃，甚至推薦溫泉。人生中最棒的旅行。」",
+        "reviews.r4_meta": "5天 · Probox · 獨旅",
+        "reviews.r4_text": "「作為獨自旅行的女性，我感到非常安全。Probox對一個人來說非常完美。道之驛非常適合過夜停車。唯一遺憾是沒有訂更長的時間！」",
+
+        // Quote Form
+        "quote.title": "免費電郵報價",
+        "quote.subtitle": "不需要WhatsApp。我們會在24小時內發送個人化報價。",
+        "quote.name_ph": "姓名（選填）",
+        "quote.dates_ph": "希望日期（選填）",
+        "quote.submit": "📧 發送報價",
+        "quote.note": "我們會包含您的計算器設定（車輛、天數、旅客）在報價中。",
+        "quote.success": "報價請求已發送！",
+        "quote.success_detail": "請在24小時內檢查您的郵箱。也可以隨時在WhatsApp上聊天。",
     },
 
     he: {
