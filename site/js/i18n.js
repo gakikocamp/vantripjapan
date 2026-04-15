@@ -171,8 +171,8 @@ const translations = {
         "reviews.r1_text": "\"We explored Aso, Beppu, and the Kunisaki Peninsula over 7 days. The van was spotless, well-equipped, and the pickup at Hakozaki was incredibly smooth. This was our third time in Japan but the first time we truly felt free. Absolutely recommend!\"",
         "reviews.r2_meta": "14 days · Probox · Couple",
         "reviews.r2_text": "\"14 incredible days in Kyushu! The campervan had everything we needed. We slept by the sea in Yakushima and at the foot of the Aso mountains. The multilingual support in French was a real plus. Thank you VanTripJapan!\"",
-        "reviews.r3_meta": "10 days · Bongo · Friends",
-        "reviews.r3_text": "\"We came from Tel Aviv with just our backpacks. The team helped us with everything — IDP advice, route planning, even onsen recommendations. Sleeping next to active volcanoes and waking up to ocean views... this was the best trip of our lives.\"",
+        "reviews.r3_meta": "10 days · Bongo · Couple",
+        "reviews.r3_text": "\"We drove from Fukuoka all the way to Kagoshima and back through the mountains. The onsen stops along the way were incredible — nothing beats a hot spring after a full day of driving. The team helped us plan the whole route. Best holiday we've ever had!\"",
         "reviews.r4_meta": "5 days · Probox · Solo",
         "reviews.r4_text": "\"As a solo female traveler, I felt completely safe. The Probox was perfect for one person — compact but had everything I needed. The roadside stations (Michi-no-Eki) were amazing for parking overnight. Only wish I'd booked longer!\"",
 
@@ -344,8 +344,8 @@ const translations = {
         "reviews.r1_text": "\"Nous avons exploré Aso, Beppu et la péninsule de Kunisaki pendant 7 jours. Le van était impeccable et bien équipé. C'était notre troisième fois au Japon mais la première fois que nous nous sommes vraiment sentis libres. Absolument recommandé !\"",
         "reviews.r2_meta": "14 jours · Probox · Couple",
         "reviews.r2_text": "\"14 jours incroyables à Kyushu ! Le camping-car avait tout ce qu'il fallait. On a dormi au bord de la mer à Yakushima et aux pieds des montagnes d'Aso. Le support multilingue en français était un vrai plus. Merci VanTripJapan !\"",
-        "reviews.r3_meta": "10 jours · Bongo · Amis",
-        "reviews.r3_text": "\"Nous sommes venus de Tel Aviv avec juste nos sacs à dos. L'équipe nous a aidés pour tout — conseils IDP, planification d'itinéraire, même recommandations de onsen. Le meilleur voyage de notre vie.\"",
+        "reviews.r3_meta": "10 jours · Bongo · Couple",
+        "reviews.r3_text": "\"Nous avons conduit de Fukuoka jusqu'à Kagoshima et retour par les montagnes. Les arrêts onsen en chemin étaient incroyables — rien ne vaut une source chaude après une journée de conduite. L'équipe nous a aidés à planifier tout l'itinéraire. Les meilleures vacances de notre vie !\"",
         "reviews.r4_meta": "5 jours · Probox · Solo",
         "reviews.r4_text": "\"En tant que voyageuse solo, je me suis sentie en totale sécurité. Le Probox était parfait pour une personne. Les Michi-no-Eki étaient parfaits pour dormir. J'aurais aimé réserver plus longtemps !\"",
 
@@ -664,8 +664,8 @@ const translations = {
         "reviews.r1_text": "「我們花了7天探索阿蘇、別府和國東半島。車子非常乾淨、設備齊全。這是我們第三次來日本，但第一次真正感受到自由。強力推薦！」",
         "reviews.r2_meta": "14天 · Probox · 情侶",
         "reviews.r2_text": "「在九州度過了令人難以置信的14天！露營車應有盡有。我們在屋久島的海邊和阿蘇山腳下睡覺。感謝VanTripJapan！」",
-        "reviews.r3_meta": "10天 · Bongo · 朋友",
-        "reviews.r3_text": "「我們從特拉維夫只帶著背包來。團隊幫了我們很多——IDP建議、路線規劃，甚至推薦溫泉。人生中最棒的旅行。」",
+        "reviews.r3_meta": "10天 · Bongo · 情侶",
+        "reviews.r3_text": "「我們從福岡一路開到鹿兒島，途中經過山區返回。沿途的溫泉站令人難以置信——開了一整天車後泡溫泉太棒了。團隊幫我們規劃了整條路線。我們有過最棒的假期！」",
         "reviews.r4_meta": "5天 · Probox · 獨旅",
         "reviews.r4_text": "「作為獨自旅行的女性，我感到非常安全。Probox對一個人來說非常完美。道之驛非常適合過夜停車。唯一遺憾是沒有訂更長的時間！」",
 
@@ -820,8 +820,8 @@ const translations = {
         "reviews.r1_text": "\"חקרנו את אסו, בפו וחצי האי קוניסאקי במשך 7 ימים. הוואן היה נקי מצוין ומצויד היטב. ממליצים בחום!\"",
         "reviews.r2_meta": "14 ימים · Probox · זוג",
         "reviews.r2_text": "\"14 ימים מדהימים בקיושו! ישנו ליד הים ביאקושימה ולמרגלות הרי אסו. תודה VanTripJapan!\"",
-        "reviews.r3_meta": "10 ימים · Bongo · חברים",
-        "reviews.r3_text": "\"הגענו מתל אביב עם תרמילים. הצוות עזר בהכל — ייעוץ IDP, תכנון מסלול, המלצות אונסן. הטיול הכי טוב בחיינו.\"",
+        "reviews.r3_meta": "10 ימים · Bongo · זוג",
+        "reviews.r3_text": "\"נסענו מפוקואוקה עד קגושימה וחזרה דרך ההרים. עצירות האונסן בדרך היו מדהימות — אין כמו מעיין חם אחרי יום שלם של נהיגה. הצוות עזר לנו לתכנן את כל המסלול. החופשה הכי טובה שהייתה לנו!\"",
         "reviews.r4_meta": "5 ימים · Probox · לבד",
         "reviews.r4_text": "\"כמטיילת בודדת הרגשתי בטוחה לגמרי. הפרובוקס מושלם לאדם אחד. חבל שלא הזמנתי יותר ימים!\"",
 
@@ -862,6 +862,10 @@ function switchLang(lang) {
     // Update html lang attribute
     const langMap = { en: 'en', fr: 'fr', de: 'de', zh: 'zh-Hant', he: 'he' };
     document.documentElement.lang = langMap[lang] || 'en';
+
+    // Show Israel license card only for Hebrew
+    var ilCard = document.getElementById('license-card-il');
+    if (ilCard) ilCard.style.display = (lang === 'he') ? '' : 'none';
 
     // Save preference
     try { localStorage.setItem('vtj_lang', lang); } catch (e) { }
