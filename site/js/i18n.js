@@ -154,6 +154,27 @@ const translations = {
         // Sticky
         "sticky.availability": "⚡ 3 vans left",
         "sticky.viewers": "● 9 people viewing",
+
+        // License — Israel
+        "license.il.title": "Israeli Travellers",
+        "license.il.desc": "Israel is a Geneva Convention country. Get your International Driving Permit before you fly — it's quick and easy.",
+        "license.il.item1": "✅ IDP from MEMSI or any post office (~₪80)",
+        "license.il.item2": "✈️ Flights: TLV → Fukuoka via Seoul/Bangkok (~8-12h)",
+        "license.il.item3": "🚐 Pick up your van 10 min from Fukuoka Airport",
+        "license.il.item4": "💰 From ~$110 USD/day all-inclusive",
+
+        // Reviews
+        "reviews.badge": "Guest Reviews",
+        "reviews.title": "What Our Guests Say",
+        "reviews.subtitle": "Real experiences from travelers who explored Kyushu with us",
+        "reviews.r1_meta": "7 days · Bongo · Couple",
+        "reviews.r1_text": "\"We explored Aso, Beppu, and the Kunisaki Peninsula over 7 days. The van was spotless, well-equipped, and the pickup at Hakozaki was incredibly smooth. This was our third time in Japan but the first time we truly felt free. Absolutely recommend!\"",
+        "reviews.r2_meta": "14 days · Probox · Couple",
+        "reviews.r2_text": "\"14 incredible days in Kyushu! The campervan had everything we needed. We slept by the sea in Yakushima and at the foot of the Aso mountains. The multilingual support in French was a real plus. Thank you VanTripJapan!\"",
+        "reviews.r3_meta": "10 days · Bongo · Friends",
+        "reviews.r3_text": "\"We came from Tel Aviv with just our backpacks. The team helped us with everything — IDP advice, route planning, even onsen recommendations. Sleeping next to active volcanoes and waking up to ocean views... this was the best trip of our lives.\"",
+        "reviews.r4_meta": "5 days · Probox · Solo",
+        "reviews.r4_text": "\"As a solo female traveler, I felt completely safe. The Probox was perfect for one person — compact but had everything I needed. The roadside stations (Michi-no-Eki) were amazing for parking overnight. Only wish I'd booked longer!\"",
     },
 
     fr: {
@@ -580,6 +601,152 @@ const translations = {
         "access.hoursDetail": "取車：9:00 - 17:00<br>還車：9:00 - 17:00<br>（可彈性安排）",
         "sticky.availability": "⚡ 剩餘3台",
         "sticky.viewers": "● 9人正在瀏覽",
+    },
+
+    he: {
+        "hero.title1": "גלו את קיושו",
+        "hero.title2": "בקמפרוואן",
+        "hero.tagline": "מחיר הכל כלול. מסלול בטוח וישיר לטבע של קיושו. דלגו על תנועה עירונית — התחילו 10 דקות משדה התעופה פוקואוקה.",
+        "hero.stat1": "משדה התעופה",
+        "hero.stat2": "ליום",
+        "hero.stat3": "תמיכה",
+        "hero.whatsapp": "בדקו זמינות בוואטסאפ",
+        "hero.line": "צ'אט ב-LINE",
+        "why.badge": "יתרון מיקום",
+        "why.title": "למה להתחיל מבסיס האקוזאקי?",
+        "why.subtitle": "ההבדל המרכזי מהשכרה במרכז העיר",
+        "why.city.title": "אזור האקאטה / טנג'ין",
+        "why.city.desc": "התחלה ממרכז העיר",
+        "why.city.item1": "תנועה כבדה, כבישים צרים, סיכון גבוה לתאונות",
+        "why.city.item2": "נהיגה ראשונה בצד שמאל בסביבה מסוכנת",
+        "why.city.item3": "30-60 דקות רק לצאת מהעיר",
+        "why.city.verdict": "❌ לחץ גבוה",
+        "why.hako.title": "בסיס האקוזאקי (אנחנו)",
+        "why.hako.desc": "המסלול הבטוח והמהיר ביותר",
+        "why.hako.item1": "רק 10 דקות משדה התעופה!",
+        "why.hako.item2": "גישה קלה לכביש המהיר, בלי תנועה עירונית",
+        "why.hako.item3": "התחילו את הטיול כבר מהיום הראשון",
+        "why.hako.verdict": "✅ בטוח וקל",
+        "why.cta": "יציאה בטוחה גם לנהגים חדשים ביפן →",
+        "license.badge": "מדריך רישיון נהיגה",
+        "license.title": "אפשר לנהוג ביפן?",
+        "license.subtitle": "בדקו לפני הטיסה",
+        "license.geneva.title": "מדינות אמנת ז'נבה",
+        "license.geneva.desc": "נדרש רישיון נהיגה בינלאומי (IDP). השיגו אותו לפני הנסיעה.",
+        "license.geneva.item1": "אוסטרליה, צרפת, גרמניה, בריטניה, ארה\"ב ועוד",
+        "license.geneva.item2": "IDP תקף לשנה מיום ההנפקה",
+        "license.geneva.item3": "יש לשאת IDP ורישיון מקורי",
+        "license.special.title": "מדינות מיוחדות (טייוואן ו-EU)",
+        "license.special.desc": "נדרש תרגום רשמי ליפנית של הרישיון שלכם.",
+        "license.special.item1": "טייוואן, שווייץ, בלגיה ועוד",
+        "license.special.item2": "תרגום זמין במשרדי JAF",
+        "license.special.item3": "אנחנו יכולים לעזור — פשוט שאלו!",
+        "license.sg.title": "נוסעים מסינגפור",
+        "license.sg.desc": "סינגפור היא מדינת אמנת ז'נבה. השיגו IDP לפני הטיסה.",
+        "license.sg.item1": "✅ IDP מ-AA סינגפור (~SGD 20, באותו יום)",
+        "license.sg.item2": "✈️ טיסות ישירות: צ'אנגי ↔ פוקואוקה (3.5 שעות)",
+        "license.sg.item3": "🚐 אספו את הוואן 10 דק' משדה התעופה",
+        "license.sg.item4": "💰 החל מ-~SGD 150/יום הכל כלול",
+        "license.il.title": "נוסעים ישראלים",
+        "license.il.desc": "ישראל היא מדינת אמנת ז'נבה. השיגו רישיון בינלאומי לפני הטיסה.",
+        "license.il.item1": "✅ IDP מ-MEMSI או כל סניף דואר (~₪80)",
+        "license.il.item2": "✈️ טיסות: TLV → פוקואוקה דרך סיאול/בנגקוק (~8-12 שעות)",
+        "license.il.item3": "🚐 אספו את הוואן 10 דק' משדה התעופה",
+        "license.il.item4": "💰 החל מ-~$110 USD ליום הכל כלול",
+        "pricing.badge": "תמחור שקוף",
+        "pricing.title": "הכל כלול, בלי הפתעות",
+        "pricing.subtitle": "כל מה שצריך לטיול כלול במחיר",
+        "pricing.from": "החל מ-",
+        "pricing.perday": " /יום〜",
+        "pricing.item1": "ביטוח רכב (CDW) כלול",
+        "pricing.item2": "כרטיס ETC — חינם (רישום מוקדם)",
+        "pricing.item3": "ניווט באנגלית",
+        "pricing.item4": "ציוד קמפינג בסיסי",
+        "pricing.item5": "סיוע דרכים 24 שעות",
+        "pricing.item6": "תמיכה רב-לשונית",
+        "pricing.item7": "החזרה בטוקיו / אוסקה (בתוספת תשלום)",
+        "pricing.notice": "בלי עלויות נסתרות. אף פעם.",
+        "pricing.note": "* מחיר PROBOX בימי חול. BONGO / סופ\"ש עשוי להשתנות.",
+        "pricing.cta": "💬 קבלו הצעת מחיר בוואטסאפ",
+        "vehicles.badge": "הצי שלנו",
+        "vehicles.title": "איזה רכב מתאים לכם?",
+        "vehicles.subtitle": "השוו בין שני הרכבים שלנו",
+        "vehicles.perday": "/יום",
+        "compare.badge": "יתרון ברור",
+        "compare.title": "למה לבחור בנו?",
+        "compare.subtitle": "בהשוואה לחברות השכרת קמפרים בפוקואוקה",
+        "compare.col.category": "קטגוריה",
+        "compare.col.us": "אנחנו",
+        "compare.col.compA": "חברה A",
+        "compare.col.compB": "חברה B",
+        "compare.row.distance": "מרחק משדה התעופה",
+        "compare.row.language": "תמיכה רב-לשונית",
+        "compare.row.emergency": "תמיכת חירום 24 שעות",
+        "compare.row.dropoff": "החזרה גמישה",
+        "compare.row.price": "מחיר התחלתי",
+        "compare.val.100lang": "100+ שפות",
+        "compare.val.jpEn": "יפנית ואנגלית בלבד",
+        "compare.val.partial": "חלקי",
+        "faq.title": "שאלות נפוצות",
+        "faq.q1": "צריך רישיון מיוחד לנהוג בקמפרוואן ביפן?",
+        "faq.a1": "לא. הקמפרוואנים שלנו הם רכבים בגודל רגיל שאפשר לנהוג עם IDP.",
+        "faq.q2": "איפה אוספים ומחזירים את הקמפרוואן?",
+        "faq.a2": "בבסיס האקוזאקי שלנו, 10 דקות משדה התעופה פוקואוקה.",
+        "faq.q3": "מה כלול במחיר ההשכרה?",
+        "faq.a3": "הכל: ביטוח, כרטיס ETC, ניווט, ציוד קמפינג, סיוע דרכים 24/7 ותמיכה רב-לשונית.",
+        "faq.q4": "מהי מדיניות הביטול?",
+        "faq.a4": "ביטול חינם עד 7 ימים לפני. תוך 7 ימים עשויה להיות עמלה.",
+        "faq.q5": "אפשר לישון בכל מקום בקמפרוואן?",
+        "faq.a5": "ביפן יש אפשרויות מצוינות: קמפינגים, חניות RV ותחנות דרכים (מיצ'י-נו-אקי).",
+        "faq.q6": "אפשר להחזיר בטוקיו או אוסקה?",
+        "faq.a6": "כן! נסיעות חד-כיווניות זמינות בתוספת תשלום.",
+        "faq.q7": "אני מישראל. מה צריך כדי לנהוג ביפן?",
+        "faq.a7": "ישראל היא מדינת אמנת ז'נבה. השיגו IDP ב-MEMSI או דואר ישראל (~₪80). טיסות לפוקואוקה דרך סיאול/בנגקוק, והבסיס שלנו 10 דקות מהנחיתה!",
+        "calc.badge": "מחשבון מחירים",
+        "calc.title": "כמה עולה הטיול שלכם?",
+        "calc.subtitle": "שהייה ארוכה יותר = ערך טוב יותר ליום.",
+        "calc.days_label": "מספר ימים",
+        "calc.days_unit": "ימים",
+        "calc.vehicle_label": "רכב",
+        "calc.people_label": "נוסעים",
+        "calc.per_person_day": "/אדם/יום",
+        "calc.total_note": "סה\"כ",
+        "calc.hotel_note": "מלון + תחבורה",
+        "calc.perk1": "ישנו בטבע — הרים, חוף, מעיינות חמים",
+        "calc.perk2": "בלי שעות צ'ק-אין. לכו לכל מקום, בכל זמן.",
+        "calc.perk3": "מטבח כלול. חסכו על ארוחות.",
+        "calc.perk4": "הכל כלול. אפס עלויות נסתרות.",
+        "calc.hotel1": "¥20,000/לילה לחדר (ממוצע פוקואוקה)",
+        "calc.hotel2": "תחבורה: +¥3,000/אדם/יום",
+        "calc.hotel3": "שעות צ'ק-אין/אאוט מגבילות את החופש שלכם",
+        "calc.hotel4": "ארוחות והוצאות נלוות מצטברות מהר",
+        "calc.savings_prefix": "אתם חוסכים בערך",
+        "calc.savings_suffix": "לעומת מלון + תחבורה — ויישנים בטבע.",
+        "calc.badge_nature1": "🏔️ הרים",
+        "calc.badge_nature2": "🌊 חוף",
+        "calc.badge_nature3": "♨️ מעיינות חמים",
+        "calc.discount_prefix": "הנחת שהייה ארוכה",
+        "calc.discount_save": "אתם חוסכים",
+        "access.badge": "הגעה",
+        "access.title": "מיקום בסיס האקוזאקי",
+        "access.subtitle": "רק 10 דקות משדה התעופה, ליד הכניסה לכביש המהיר",
+        "access.pickup": "📍 איסוף / החזרה",
+        "access.address": "האקוזאקי, הגאשי-קו, פוקואוקה<br>(אזור האקאטה / שדה התעופה)",
+        "access.hours": "🕐 שעות פעילות",
+        "access.hoursDetail": "איסוף: 9:00 - 17:00<br>החזרה: 9:00 - 17:00<br>(גמיש בתיאום מראש)",
+        "sticky.availability": "⚡ 3 וואנים זמינים",
+        "sticky.viewers": "● 9 אנשים צופים",
+        "reviews.badge": "ביקורות אורחים",
+        "reviews.title": "מה אומרים האורחים שלנו",
+        "reviews.subtitle": "חוויות אמיתיות ממטיילים שחקרו את קיושו",
+        "reviews.r1_meta": "7 ימים · Bongo · זוג",
+        "reviews.r1_text": "\"חקרנו את אסו, בפו וחצי האי קוניסאקי במשך 7 ימים. הוואן היה נקי מצוין ומצויד היטב. ממליצים בחום!\"",
+        "reviews.r2_meta": "14 ימים · Probox · זוג",
+        "reviews.r2_text": "\"14 ימים מדהימים בקיושו! ישנו ליד הים ביאקושימה ולמרגלות הרי אסו. תודה VanTripJapan!\"",
+        "reviews.r3_meta": "10 ימים · Bongo · חברים",
+        "reviews.r3_text": "\"הגענו מתל אביב עם תרמילים. הצוות עזר בהכל — ייעוץ IDP, תכנון מסלול, המלצות אונסן. הטיול הכי טוב בחיינו.\"",
+        "reviews.r4_meta": "5 ימים · Probox · לבד",
+        "reviews.r4_text": "\"כמטיילת בודדת הרגשתי בטוחה לגמרי. הפרובוקס מושלם לאדם אחד. חבל שלא הזמנתי יותר ימים!\"",
     }
 };
 
@@ -606,7 +773,7 @@ function switchLang(lang) {
     });
 
     // Update html lang attribute
-    const langMap = { en: 'en', fr: 'fr', de: 'de', zh: 'zh-Hant' };
+    const langMap = { en: 'en', fr: 'fr', de: 'de', zh: 'zh-Hant', he: 'he' };
     document.documentElement.lang = langMap[lang] || 'en';
 
     // Save preference
@@ -615,7 +782,6 @@ function switchLang(lang) {
 
 // Auto-detect language on load
 (function () {
-    // Check saved preference
     try {
         const saved = localStorage.getItem('vtj_lang');
         if (saved && translations[saved]) {
@@ -624,10 +790,9 @@ function switchLang(lang) {
         }
     } catch (e) { }
 
-    // Check browser language
     const browserLang = (navigator.language || '').toLowerCase();
     if (browserLang.startsWith('fr')) switchLang('fr');
     else if (browserLang.startsWith('de')) switchLang('de');
     else if (browserLang.startsWith('zh')) switchLang('zh');
-    // else keep English (default)
+    else if (browserLang.startsWith('he')) switchLang('he');
 })();

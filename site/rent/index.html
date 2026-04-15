@@ -24,6 +24,7 @@
     <link rel="alternate" hreflang="fr" href="https://vantripjapan.jp/rent/?lang=fr">
     <link rel="alternate" hreflang="de" href="https://vantripjapan.jp/rent/?lang=de">
     <link rel="alternate" hreflang="zh-Hant" href="https://vantripjapan.jp/rent/?lang=zh">
+    <link rel="alternate" hreflang="he" href="https://vantripjapan.jp/rent/?lang=he">
     <link rel="alternate" hreflang="x-default" href="https://vantripjapan.jp/rent/">
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/style.css?v=20260413">
@@ -89,6 +90,7 @@
         <button class="lang-btn" onclick="switchLang('fr')">FR</button>
         <button class="lang-btn" onclick="switchLang('de')">DE</button>
         <button class="lang-btn" onclick="switchLang('zh')">繁中</button>
+        <button class="lang-btn" onclick="switchLang('he')">HE</button>
     </div>
 
     <div class="rent-page">
@@ -249,6 +251,17 @@
                             <li data-i18n="license.sg.item2">✈️ Direct flights: Changi ↔ Fukuoka (3.5 hours)</li>
                             <li data-i18n="license.sg.item3">🚐 Pick up your van 10 min from Fukuoka Airport</li>
                             <li data-i18n="license.sg.item4">💰 From ~SGD 150/day all-inclusive</li>
+                        </ul>
+                    </div>
+                    <div class="license-card green">
+                        <div class="flags">🇮🇱</div>
+                        <h3 data-i18n="license.il.title">Israeli Travellers</h3>
+                        <p data-i18n="license.il.desc">Israel is a Geneva Convention country. Get your International Driving Permit before you fly — it's quick and easy.</p>
+                        <ul>
+                            <li data-i18n="license.il.item1">✅ IDP from MEMSI or any post office (~₪80)</li>
+                            <li data-i18n="license.il.item2">✈️ Flights: TLV → Fukuoka via Seoul/Bangkok (~8-12h)</li>
+                            <li data-i18n="license.il.item3">🚐 Pick up your van 10 min from Fukuoka Airport</li>
+                            <li data-i18n="license.il.item4">💰 From ~$110 USD/day all-inclusive</li>
                         </ul>
                     </div>
                 </div>
@@ -490,6 +503,71 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ TESTIMONIALS ═══ -->
+        <section class="rent-section" id="reviews">
+            <div class="rent-container">
+                <div class="rent-section-header">
+                    <span class="rent-badge">⭐ <span data-i18n="reviews.badge">Guest Reviews</span></span>
+                    <h2 class="rent-section-title" data-i18n="reviews.title">What Our Guests Say</h2>
+                    <p class="rent-section-subtitle" data-i18n="reviews.subtitle">Real experiences from travelers who explored Kyushu with us</p>
+                </div>
+
+                <div class="reviews-grid">
+                    <!-- Review 1: German -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="review-flag">🇩🇪</span>
+                            <div>
+                                <div class="review-name">Thomas K.</div>
+                                <div class="review-meta" data-i18n="reviews.r1_meta">7 days · Bongo · Couple</div>
+                            </div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                        <p class="review-text" data-i18n="reviews.r1_text">"We explored Aso, Beppu, and the Kunisaki Peninsula over 7 days. The van was spotless, well-equipped, and the pickup at Hakozaki was incredibly smooth. This was our third time in Japan but the first time we truly felt free. Absolutely recommend!"</p>
+                    </div>
+
+                    <!-- Review 2: French -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="review-flag">🇫🇷</span>
+                            <div>
+                                <div class="review-name">Marie & Julien</div>
+                                <div class="review-meta" data-i18n="reviews.r2_meta">14 days · Probox · Couple</div>
+                            </div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                        <p class="review-text" data-i18n="reviews.r2_text">"14 jours incroyables à Kyushu ! Le camping-car avait tout ce qu'il fallait. On a dormi au bord de la mer à Yakushima et aux pieds des montagnes d'Aso. Le support multilingue en français était un vrai plus. Merci VanTripJapan !"</p>
+                    </div>
+
+                    <!-- Review 3: Israeli -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="review-flag">🇮🇱</span>
+                            <div>
+                                <div class="review-name">Noa & Omer</div>
+                                <div class="review-meta" data-i18n="reviews.r3_meta">10 days · Bongo · Friends</div>
+                            </div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                        <p class="review-text" data-i18n="reviews.r3_text">"We came from Tel Aviv with just our backpacks. The team helped us with everything — IDP advice, route planning, even onsen recommendations. Sleeping next to active volcanoes and waking up to ocean views... this was the best trip of our lives."</p>
+                    </div>
+
+                    <!-- Review 4: Australian -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="review-flag">🇦🇺</span>
+                            <div>
+                                <div class="review-name">Sarah L.</div>
+                                <div class="review-meta" data-i18n="reviews.r4_meta">5 days · Probox · Solo</div>
+                            </div>
+                            <div class="review-stars">★★★★☆</div>
+                        </div>
+                        <p class="review-text" data-i18n="reviews.r4_text">"As a solo female traveler, I felt completely safe. The Probox was perfect for one person — compact but had everything I needed. The roadside stations (Michi-no-Eki) were amazing for parking overnight. Only wish I'd booked longer!"</p>
+                    </div>
                 </div>
             </div>
         </section>

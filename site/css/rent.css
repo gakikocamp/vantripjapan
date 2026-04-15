@@ -1031,6 +1031,67 @@
 }
 
 /* ══════════════════════════════════════════════
+   Reviews / Testimonials
+   ══════════════════════════════════════════════ */
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.review-card {
+    background: var(--rent-surface);
+    border-radius: var(--rent-radius);
+    padding: 28px;
+    border: 1px solid var(--rent-border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.review-flag {
+    font-size: 32px;
+    line-height: 1;
+}
+
+.review-name {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--rent-text);
+}
+
+.review-meta {
+    font-size: 12px;
+    color: var(--rent-text-muted);
+}
+
+.review-stars {
+    margin-left: auto;
+    color: #FBBF24;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.review-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--rent-text-secondary);
+    font-style: italic;
+    margin: 0;
+}
+
+/* ══════════════════════════════════════════════
    Responsive — Rental LP
    ══════════════════════════════════════════════ */
 
@@ -1259,6 +1320,19 @@
         justify-content: center;
         padding: 10px 16px;
         font-size: 13px;
+    }
+
+    /* ── Reviews ── */
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .review-card {
+        padding: 20px;
+    }
+
+    .review-flag {
+        font-size: 28px;
     }
 
     /* ── Access / Map ── */
