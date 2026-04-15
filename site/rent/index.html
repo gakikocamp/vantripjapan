@@ -320,16 +320,16 @@
                     <div class="calc-control">
                         <label data-i18n="calc.vehicle_label">Vehicle</label>
                         <div class="calc-veh-btns">
-                            <button class="calc-veh-btn active" onclick="setVehicle(this,16500)">Probox<br><small>¥16,500/day</small></button>
-                            <button class="calc-veh-btn" onclick="setVehicle(this,22000)">Bongo<br><small>¥22,000/day</small></button>
+                            <button class="calc-veh-btn active" data-price="16500">Probox<br><small>¥16,500/day</small></button>
+                            <button class="calc-veh-btn" data-price="22000">Bongo<br><small>¥22,000/day</small></button>
                         </div>
                     </div>
                     <div class="calc-control">
                         <label data-i18n="calc.people_label">Travelers</label>
                         <div class="calc-ppl-btns">
-                            <button class="calc-ppl-btn" onclick="setPeople(this,1)">1</button>
-                            <button class="calc-ppl-btn active" onclick="setPeople(this,2)">2</button>
-                            <button class="calc-ppl-btn" onclick="setPeople(this,3)">3</button>
+                            <button class="calc-ppl-btn" data-people="1">1</button>
+                            <button class="calc-ppl-btn active" data-people="2">2</button>
+                            <button class="calc-ppl-btn" data-people="3">3</button>
                         </div>
                     </div>
                 </div>
@@ -639,68 +639,81 @@
     <script>
         // ── Price Calculator ──
         var _calcDays = 7, _calcVehicle = 16500, _calcPeople = 2;
-        // Hotel room/night (Fukuoka 2026 average): 1p single, 2p double, 3p two rooms
         var HOTEL_ROOM = { 1: 16000, 2: 20000, 3: 36000 };
-        var TRANSPORT_PER_PERSON_DAY = 3000; // conservative inter-city estimate
+        var TRANSPORT_PER_PERSON_DAY = 3000;
 
         function _fmtYen(n) { return '¥' + n.toLocaleString('en-US'); }
 
         function _updateCalc() {
-            var vanTotal = _calcDays * _calcVehicle;
-            var hotelPerDay = HOTEL_ROOM[_calcPeople] + (TRANSPORT_PER_PERSON_DAY * _calcPeople);
-            var hotelTotal = _calcDays * hotelPerDay;
-            var vanPerPersonDay = Math.round(_calcVehicle / _calcPeople);
-            var hotelPerPersonDay = Math.round(hotelPerDay / _calcPeople);
-            var savings = hotelTotal - vanTotal;
+            try {
+                var vanTotal = _calcDays * _calcVehicle;
+                var hotelPerDay = HOTEL_ROOM[_calcPeople] + (TRANSPORT_PER_PERSON_DAY * _calcPeople);
+                var hotelTotal = _calcDays * hotelPerDay;
+                var vanPerPersonDay = Math.round(_calcVehicle / _calcPeople);
+                var hotelPerPersonDay = Math.round(hotelPerDay / _calcPeople);
+                var savings = hotelTotal - vanTotal;
 
-            var dict = translations[currentLang] || translations.en;
-            var daysStr = _calcDays + ' ' + (dict['calc.days_unit'] || 'days');
-            var totalNote = (dict['calc.total_note'] || 'total') + ' · ' + daysStr;
+                var dict = (typeof translations !== 'undefined' && typeof currentLang !== 'undefined')
+                    ? (translations[currentLang] || translations.en)
+                    : {};
+                var daysStr = _calcDays + ' ' + (dict['calc.days_unit'] || 'days');
+                var totalNote = (dict['calc.total_note'] || 'total') + ' · ' + daysStr;
 
-            // Leading per-person/day numbers
-            document.getElementById('calc-van-perday').textContent = _fmtYen(vanPerPersonDay);
-            document.getElementById('calc-hotel-perday').textContent = _fmtYen(hotelPerPersonDay);
+                document.getElementById('calc-van-perday').textContent = _fmtYen(vanPerPersonDay);
+                document.getElementById('calc-hotel-perday').textContent = _fmtYen(hotelPerPersonDay);
+                document.getElementById('calc-van-total').textContent = _fmtYen(vanTotal);
+                document.getElementById('calc-hotel-total').textContent = _fmtYen(hotelTotal) + '〜';
+                document.getElementById('calc-van-total-note').textContent = totalNote;
+                document.getElementById('calc-hotel-total-note').textContent = totalNote;
 
-            // Totals + day note
-            document.getElementById('calc-van-total').textContent = _fmtYen(vanTotal);
-            document.getElementById('calc-hotel-total').textContent = _fmtYen(hotelTotal) + '〜';
-            document.getElementById('calc-van-total-note').textContent = totalNote;
-            document.getElementById('calc-hotel-total-note').textContent = totalNote;
-
-            var savingsEl = document.getElementById('calc-savings');
-            var saveAmtEl = document.getElementById('calc-save-amt');
-            if (savings > 0) {
-                saveAmtEl.textContent = _fmtYen(savings);
-                savingsEl.style.display = 'block';
-            } else {
-                savingsEl.style.display = 'none';
+                var savingsEl = document.getElementById('calc-savings');
+                var saveAmtEl = document.getElementById('calc-save-amt');
+                if (savings > 0) {
+                    saveAmtEl.textContent = _fmtYen(savings);
+                    savingsEl.style.display = 'block';
+                } else {
+                    savingsEl.style.display = 'none';
+                }
+                console.log('[VTJ Calc]', _calcDays + 'd', _calcVehicle + '¥/d', _calcPeople + 'p', '→ van=' + vanTotal, 'hotel=' + hotelTotal, 'save=' + savings);
+            } catch (e) {
+                console.error('[VTJ Calc Error]', e);
             }
         }
 
-        function setVehicle(btn, price) {
-            document.querySelectorAll('.calc-veh-btn').forEach(function(b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-            _calcVehicle = price;
-            _updateCalc();
-        }
+        // Vehicle buttons
+        document.querySelectorAll('.calc-veh-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.calc-veh-btn').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                _calcVehicle = parseInt(btn.getAttribute('data-price'));
+                _updateCalc();
+            });
+        });
 
-        function setPeople(btn, num) {
-            document.querySelectorAll('.calc-ppl-btn').forEach(function(b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-            _calcPeople = num;
-            _updateCalc();
-        }
+        // People buttons
+        document.querySelectorAll('.calc-ppl-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.calc-ppl-btn').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                _calcPeople = parseInt(btn.getAttribute('data-people'));
+                _updateCalc();
+            });
+        });
 
+        // Days slider
         document.getElementById('calc-days').addEventListener('input', function() {
             _calcDays = parseInt(this.value);
             document.getElementById('calc-days-val').textContent = _calcDays;
             _updateCalc();
         });
 
-        // Re-run calc on language switch so "/ person" label updates
-        var _origSwitchLang = switchLang;
-        switchLang = function(lang) { _origSwitchLang(lang); _updateCalc(); };
+        // Re-run calc on language switch
+        if (typeof switchLang === 'function') {
+            var _origSwitchLang = switchLang;
+            switchLang = function(lang) { _origSwitchLang(lang); _updateCalc(); };
+        }
 
+        // Initial calculation
         _updateCalc();
 
         // FAQ accordion
