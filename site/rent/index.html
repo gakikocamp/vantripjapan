@@ -339,11 +339,13 @@
                     <div class="calc-card calc-card--van">
                         <div class="calc-card-label">🚐 VanTripJapan</div>
                         <div class="calc-perday">
-                            <span id="calc-van-perday">¥8,250</span><span class="calc-perday-unit" data-i18n="calc.per_person_day">/person/day</span>
+                            <span id="calc-van-perday">¥7,838</span><span class="calc-perday-unit" data-i18n="calc.per_person_day">/person/day</span>
                         </div>
                         <div class="calc-total-row">
-                            <span class="calc-total-small" id="calc-van-total">¥115,500</span>
+                            <span class="calc-total-small" id="calc-van-total">¥109,725</span>
                             <span class="calc-total-note" id="calc-van-total-note">total · 7 days</span>
+                        </div>
+                        <div id="calc-discount-badge" style="display:none; margin:8px 0; padding:6px 14px; background:linear-gradient(135deg,#E8F5E9,#C8E6C9); border-radius:20px; font-size:13px; font-weight:600; color:#2E7D32; text-align:center;">
                         </div>
                         <div class="calc-perks">
                             <div>✅ <span data-i18n="calc.perk1">Sleep in nature — mountains, coast, hot springs</span></div>
@@ -376,7 +378,7 @@
                 <!-- Savings Banner -->
                 <div class="calc-savings" id="calc-savings">
                     <span data-i18n="calc.savings_prefix">You save approx.</span>
-                    <strong id="calc-save-amt">¥66,500</strong>
+                    <strong id="calc-save-amt">¥72,275</strong>
                     <span data-i18n="calc.savings_suffix">vs a budget hotel — and sleep in nature.</span>
                     <div class="calc-nature-badge">
                         <span data-i18n="calc.badge_nature1">🏔️ Mountains</span>
@@ -642,14 +644,34 @@
         var HOTEL_ROOM = { 1: 16000, 2: 20000, 3: 36000 };
         var TRANSPORT_PER_PERSON_DAY = 3000;
 
-        function _fmtYen(n) { return '¥' + n.toLocaleString('en-US'); }
+        // Long-stay discount tiers
+        var DISCOUNT_TIERS = [
+            { minDays: 21, rate: 0.15, label: '15% OFF' },
+            { minDays: 14, rate: 0.10, label: '10% OFF' },
+            { minDays: 7,  rate: 0.05, label: '5% OFF'  }
+        ];
+
+        function _fmtYen(n) { return '¥' + Math.round(n).toLocaleString('en-US'); }
+
+        function _getDiscount(days) {
+            for (var i = 0; i < DISCOUNT_TIERS.length; i++) {
+                if (days >= DISCOUNT_TIERS[i].minDays) return DISCOUNT_TIERS[i];
+            }
+            return null;
+        }
 
         function _updateCalc() {
             try {
-                var vanTotal = _calcDays * _calcVehicle;
+                // Apply long-stay discount
+                var discount = _getDiscount(_calcDays);
+                var effectiveRate = discount
+                    ? Math.round(_calcVehicle * (1 - discount.rate))
+                    : _calcVehicle;
+
+                var vanTotal = _calcDays * effectiveRate;
                 var hotelPerDay = HOTEL_ROOM[_calcPeople] + (TRANSPORT_PER_PERSON_DAY * _calcPeople);
                 var hotelTotal = _calcDays * hotelPerDay;
-                var vanPerPersonDay = Math.round(_calcVehicle / _calcPeople);
+                var vanPerPersonDay = Math.round(effectiveRate / _calcPeople);
                 var hotelPerPersonDay = Math.round(hotelPerDay / _calcPeople);
                 var savings = hotelTotal - vanTotal;
 
@@ -666,6 +688,19 @@
                 document.getElementById('calc-van-total-note').textContent = totalNote;
                 document.getElementById('calc-hotel-total-note').textContent = totalNote;
 
+                // Discount badge
+                var discountBadge = document.getElementById('calc-discount-badge');
+                if (discount) {
+                    var originalTotal = _calcDays * _calcVehicle;
+                    var saved = originalTotal - vanTotal;
+                    var discountLabel = dict['calc.discount_prefix'] || 'Long-stay discount';
+                    discountBadge.innerHTML = '🎉 ' + discountLabel + ': <strong>' + discount.label + '</strong> — ' +
+                        (dict['calc.discount_save'] || 'you save') + ' ' + _fmtYen(saved);
+                    discountBadge.style.display = 'block';
+                } else {
+                    discountBadge.style.display = 'none';
+                }
+
                 var savingsEl = document.getElementById('calc-savings');
                 var saveAmtEl = document.getElementById('calc-save-amt');
                 if (savings > 0) {
@@ -674,7 +709,7 @@
                 } else {
                     savingsEl.style.display = 'none';
                 }
-                console.log('[VTJ Calc]', _calcDays + 'd', _calcVehicle + '¥/d', _calcPeople + 'p', '→ van=' + vanTotal, 'hotel=' + hotelTotal, 'save=' + savings);
+                console.log('[VTJ Calc]', _calcDays + 'd', effectiveRate + '¥/d (disc:' + (discount ? discount.label : 'none') + ')', _calcPeople + 'p', '→ van=' + vanTotal, 'hotel=' + hotelTotal, 'save=' + savings);
             } catch (e) {
                 console.error('[VTJ Calc Error]', e);
             }

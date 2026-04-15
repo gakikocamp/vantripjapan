@@ -138,6 +138,8 @@ const translations = {
         "calc.badge_nature1": "🏔️ Mountains",
         "calc.badge_nature2": "🌊 Coast",
         "calc.badge_nature3": "♨️ Hot Springs",
+        "calc.discount_prefix": "Long-stay discount",
+        "calc.discount_save": "you save",
 
         // Access
         "access.badge": "Access",
@@ -281,6 +283,8 @@ const translations = {
         "calc.badge_nature1": "🏔️ Montagnes",
         "calc.badge_nature2": "🌊 Côte",
         "calc.badge_nature3": "♨️ Sources Chaudes",
+        "calc.discount_prefix": "Réduction long séjour",
+        "calc.discount_save": "vous économisez",
 
         "access.badge": "Accès",
         "access.title": "Emplacement de la Base Hakozaki",
@@ -421,6 +425,8 @@ const translations = {
         "calc.badge_nature1": "🏔️ Berge",
         "calc.badge_nature2": "🌊 Küste",
         "calc.badge_nature3": "♨️ Heiße Quellen",
+        "calc.discount_prefix": "Langzeitrabatt",
+        "calc.discount_save": "Sie sparen",
 
     "access.badge": "Anfahrt",
     "access.title": "Standort der Hakozaki-Basis",
@@ -561,6 +567,8 @@ const translations = {
         "calc.badge_nature1": "🏔️ 山脈",
         "calc.badge_nature2": "🌊 海岸",
         "calc.badge_nature3": "♨️ 溫泉",
+        "calc.discount_prefix": "長期優惠",
+        "calc.discount_save": "節省",
 
         "access.badge": "交通方式",
         "access.title": "箱崎基地位置",
