@@ -490,11 +490,6 @@ const translations = {
         "calc.discount_prefix": "Langzeitrabatt",
         "calc.discount_save": "Sie sparen",
 
-    "access.badge": "Anfahrt",
-    "access.title": "Standort der Hakozaki-Basis",
-    "access.subtitle": "Nur 10 Min. vom Flughafen, direkt neben der Autobahnauffahrt",
-    "access.mapPlaceholder": "Karte wird hier eingebettet",
-    "access.pickup": "📍 Abholung / Rückgabe",
         "access.badge": "Anfahrt",
         "access.title": "Standort der Hakozaki-Basis",
         "access.subtitle": "Nur 10 Min. vom Flughafen, direkt neben der Autobahnauffahrt",
@@ -505,6 +500,37 @@ const translations = {
         "access.hoursDetail": "Abholung: 9:00 - 17:00<br>Rückgabe: 9:00 - 17:00<br>(Flexibel nach Vereinbarung)",
         "sticky.availability": "⚡ 3 Vans verfügbar",
         "sticky.viewers": "● 9 Personen schauen gerade",
+
+        // License — Israel
+        "license.il.title": "Israelische Reisende",
+        "license.il.desc": "Israel ist ein Land des Genfer Abkommens. Holen Sie sich Ihren IDP vor der Abreise.",
+        "license.il.item1": "✅ IDP von MEMSI oder Postamt (~₪80)",
+        "license.il.item2": "✈️ Flüge: TLV → Fukuoka via Seoul/Bangkok (~8-12h)",
+        "license.il.item3": "🚐 Abholung 10 Min. vom Flughafen Fukuoka",
+        "license.il.item4": "💰 Ab ~110 $ USD/Tag all-inclusive",
+
+        // Reviews
+        "reviews.badge": "Gästebewertungen",
+        "reviews.title": "Was unsere Gäste sagen",
+        "reviews.subtitle": "Echte Erfahrungen von Reisenden, die Kyushu mit uns erkundet haben",
+        "reviews.r1_meta": "7 Tage · Bongo · Paar",
+        "reviews.r1_text": "\"Wir haben Aso, Beppu und die Kunisaki-Halbinsel 7 Tage lang erkundet. Der Van war tadellos und gut ausgestattet. Absolut empfehlenswert!\"",
+        "reviews.r2_meta": "14 Tage · Probox · Paar",
+        "reviews.r2_text": "\"14 unglaubliche Tage auf Kyushu! Der Campervan hatte alles. Wir schliefen am Meer in Yakushima und am Fuße der Aso-Berge. Danke VanTripJapan!\"",
+        "reviews.r3_meta": "10 Tage · Bongo · Paar",
+        "reviews.r3_text": "\"Wir fuhren von Fukuoka bis nach Kagoshima und zurück durch die Berge. Die Onsen-Stopps unterwegs waren unglaublich. Das Team half uns bei der gesamten Routenplanung. Bester Urlaub, den wir je hatten!\"",
+        "reviews.r4_meta": "5 Tage · Probox · Solo",
+        "reviews.r4_text": "\"Als alleinreisende Frau fühlte ich mich völlig sicher. Der Probox war perfekt für eine Person. Die Michi-no-Eki waren toll zum Übernachten. Ich wünschte, ich hätte länger gebucht!\"",
+
+        // Quote Form
+        "quote.title": "Kostenloses Angebot per E-Mail",
+        "quote.subtitle": "Kein WhatsApp nötig. Wir senden Ihnen Ihr persönliches Angebot innerhalb von 24 Stunden.",
+        "quote.name_ph": "Name (optional)",
+        "quote.dates_ph": "Wunschtermine (optional)",
+        "quote.submit": "📧 Angebot anfordern",
+        "quote.note": "Wir berücksichtigen Ihre Rechner-Einstellungen (Fahrzeug, Tage, Reisende) im Angebot.",
+        "quote.success": "Angebotsanfrage gesendet!",
+        "quote.success_detail": "Prüfen Sie Ihr Postfach innerhalb von 24 Stunden. Sie können uns auch jederzeit über WhatsApp kontaktieren.",
     },
 
     zh: {
