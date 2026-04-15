@@ -400,6 +400,33 @@
                         <span data-i18n="calc.badge_nature3">♨️ Hot Springs</span>
                     </div>
                 </div>
+
+                <!-- Quote Form -->
+                <div class="quote-form-wrap" id="quote-form-wrap">
+                    <div class="quote-form-header">
+                        <span>📧</span>
+                        <div>
+                            <strong data-i18n="quote.title">Get a Free Quote by Email</strong>
+                            <p data-i18n="quote.subtitle">No WhatsApp needed. We'll send your personalized estimate within 24 hours.</p>
+                        </div>
+                    </div>
+                    <form id="quote-form" class="quote-form">
+                        <div class="quote-fields">
+                            <input type="email" id="quote-email" required placeholder="your@email.com" class="quote-input">
+                            <input type="text" id="quote-name" placeholder="Name (optional)" data-i18n-placeholder="quote.name_ph" class="quote-input">
+                            <input type="text" id="quote-dates" placeholder="Preferred dates (optional)" data-i18n-placeholder="quote.dates_ph" class="quote-input">
+                        </div>
+                        <button type="submit" class="quote-submit" id="quote-submit">
+                            <span data-i18n="quote.submit">📧 Send Me a Quote</span>
+                        </button>
+                        <p class="quote-note" data-i18n="quote.note">We'll include your calculator settings (vehicle, days, travelers) in the quote.</p>
+                    </form>
+                    <div id="quote-success" class="quote-success" style="display:none;">
+                        <span>✅</span>
+                        <strong data-i18n="quote.success">Quote request sent!</strong>
+                        <p data-i18n="quote.success_detail">Check your inbox within 24 hours. We can also chat on WhatsApp anytime.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -835,6 +862,77 @@
 
         // Initial calculation
         _updateCalc();
+
+        // ── Quote Form ──
+        var quoteForm = document.getElementById('quote-form');
+        if (quoteForm) {
+            quoteForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var btn = document.getElementById('quote-submit');
+                var email = document.getElementById('quote-email').value.trim();
+                var name = document.getElementById('quote-name').value.trim();
+                var dates = document.getElementById('quote-dates').value.trim();
+
+                if (!email) return;
+
+                btn.disabled = true;
+                btn.textContent = '⏳ Sending...';
+
+                var discount = _getDiscount(_calcDays);
+                var effectiveRate = discount ? Math.round(_calcVehicle * (1 - discount.rate)) : _calcVehicle;
+                var vanTotal = _calcDays * effectiveRate;
+                var vehicleName = _calcVehicle === 16500 ? 'Probox' : 'Bongo';
+
+                var quoteData = {
+                    email: email,
+                    name: name || 'Not provided',
+                    dates: dates || 'Flexible',
+                    days: _calcDays,
+                    vehicle: vehicleName,
+                    dailyRate: effectiveRate,
+                    people: _calcPeople,
+                    total: vanTotal,
+                    discount: discount ? discount.label : 'None',
+                    lang: currentLang || 'en',
+                    timestamp: new Date().toISOString()
+                };
+
+                // Try API first, fallback to mailto
+                fetch('/api/quote', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(quoteData)
+                }).then(function(res) {
+                    if (!res.ok) throw new Error('API error');
+                    return res.json();
+                }).then(function() {
+                    showQuoteSuccess();
+                }).catch(function() {
+                    // Fallback: open mailto
+                    var subject = encodeURIComponent('VanTripJapan Quote Request — ' + vehicleName + ' ' + _calcDays + ' days');
+                    var body = encodeURIComponent(
+                        'Hi VanTripJapan!\n\n' +
+                        'I would like a quote:\n' +
+                        '• Vehicle: ' + vehicleName + '\n' +
+                        '• Days: ' + _calcDays + '\n' +
+                        '• Travelers: ' + _calcPeople + '\n' +
+                        '• Estimated total: ¥' + vanTotal.toLocaleString('en-US') + '\n' +
+                        '• Preferred dates: ' + (dates || 'Flexible') + '\n' +
+                        '• Name: ' + (name || '') + '\n' +
+                        '• Email: ' + email + '\n\n' +
+                        'Please send me a detailed quote. Thanks!'
+                    );
+                    window.open('mailto:info@vantripjapan.jp?subject=' + subject + '&body=' + body, '_blank');
+                    showQuoteSuccess();
+                });
+
+                function showQuoteSuccess() {
+                    quoteForm.style.display = 'none';
+                    document.getElementById('quote-success').style.display = 'block';
+                    console.log('[VTJ Quote]', quoteData);
+                }
+            });
+        }
 
         // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(btn => {

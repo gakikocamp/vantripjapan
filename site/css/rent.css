@@ -1092,6 +1092,131 @@
 }
 
 /* ══════════════════════════════════════════════
+   Quote Form
+   ══════════════════════════════════════════════ */
+
+.quote-form-wrap {
+    margin-top: 24px;
+    background: var(--rent-surface);
+    border-radius: var(--rent-radius);
+    padding: 32px;
+    border: 2px solid var(--rent-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.quote-form-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--rent-accent), #3498DB, var(--rent-accent));
+}
+
+.quote-form-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.quote-form-header > span {
+    font-size: 28px;
+    line-height: 1;
+}
+
+.quote-form-header strong {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.quote-form-header p {
+    font-size: 13px;
+    color: var(--rent-text-muted);
+    margin: 0;
+}
+
+.quote-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.quote-input {
+    padding: 12px 16px;
+    border: 1px solid var(--rent-border);
+    border-radius: var(--rent-radius-sm);
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+    background: #FAFAFA;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.quote-input:focus {
+    outline: none;
+    border-color: var(--rent-accent);
+    background: white;
+}
+
+.quote-submit {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--rent-accent), var(--rent-accent-dark));
+    color: white;
+    border: none;
+    border-radius: var(--rent-radius-sm);
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.quote-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(230, 126, 34, 0.3);
+}
+
+.quote-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.quote-note {
+    font-size: 12px;
+    color: var(--rent-text-muted);
+    text-align: center;
+    margin: 12px 0 0;
+}
+
+.quote-success {
+    text-align: center;
+    padding: 20px;
+}
+
+.quote-success span {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.quote-success strong {
+    font-size: 18px;
+    color: var(--rent-safe);
+}
+
+.quote-success p {
+    font-size: 14px;
+    color: var(--rent-text-secondary);
+    margin: 8px 0 0;
+}
+
+/* ══════════════════════════════════════════════
    Responsive — Rental LP
    ══════════════════════════════════════════════ */
 
@@ -1320,6 +1445,19 @@
         justify-content: center;
         padding: 10px 16px;
         font-size: 13px;
+    }
+
+    /* ── Quote Form ── */
+    .quote-form-wrap {
+        padding: 20px;
+    }
+
+    .quote-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .quote-form-header strong {
+        font-size: 16px;
     }
 
     /* ── Reviews ── */

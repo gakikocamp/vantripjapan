@@ -175,6 +175,16 @@ const translations = {
         "reviews.r3_text": "\"We came from Tel Aviv with just our backpacks. The team helped us with everything — IDP advice, route planning, even onsen recommendations. Sleeping next to active volcanoes and waking up to ocean views... this was the best trip of our lives.\"",
         "reviews.r4_meta": "5 days · Probox · Solo",
         "reviews.r4_text": "\"As a solo female traveler, I felt completely safe. The Probox was perfect for one person — compact but had everything I needed. The roadside stations (Michi-no-Eki) were amazing for parking overnight. Only wish I'd booked longer!\"",
+
+        // Quote Form
+        "quote.title": "Get a Free Quote by Email",
+        "quote.subtitle": "No WhatsApp needed. We'll send your personalized estimate within 24 hours.",
+        "quote.name_ph": "Name (optional)",
+        "quote.dates_ph": "Preferred dates (optional)",
+        "quote.submit": "📧 Send Me a Quote",
+        "quote.note": "We'll include your calculator settings (vehicle, days, travelers) in the quote.",
+        "quote.success": "Quote request sent!",
+        "quote.success_detail": "Check your inbox within 24 hours. We can also chat on WhatsApp anytime.",
     },
 
     fr: {
@@ -747,6 +757,16 @@ const translations = {
         "reviews.r3_text": "\"הגענו מתל אביב עם תרמילים. הצוות עזר בהכל — ייעוץ IDP, תכנון מסלול, המלצות אונסן. הטיול הכי טוב בחיינו.\"",
         "reviews.r4_meta": "5 ימים · Probox · לבד",
         "reviews.r4_text": "\"כמטיילת בודדת הרגשתי בטוחה לגמרי. הפרובוקס מושלם לאדם אחד. חבל שלא הזמנתי יותר ימים!\"",
+
+        // Quote Form
+        "quote.title": "קבלו הצעת מחיר חינם במייל",
+        "quote.subtitle": "בלי וואטסאפ. נשלח לכם הצעה מותאמת אישית תוך 24 שעות.",
+        "quote.name_ph": "שם (אופציונלי)",
+        "quote.dates_ph": "תאריכים מועדפים (אופציונלי)",
+        "quote.submit": "📧 שלחו לי הצעת מחיר",
+        "quote.note": "נכלול את הגדרות המחשבון (רכב, ימים, נוסעים) בהצעה.",
+        "quote.success": "בקשת הצעת מחיר נשלחה!",
+        "quote.success_detail": "בדקו את תיבת הדואר שלכם תוך 24 שעות. אפשר גם לשוחח בוואטסאפ.",
     }
 };
 
