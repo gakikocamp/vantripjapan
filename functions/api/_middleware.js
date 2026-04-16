@@ -59,6 +59,8 @@ function isPublicRequest(request) {
   if (path === '/api/documents' && method === 'POST') return true;
   // Public: POST newsletter signup
   if (path === '/api/newsletter' && method === 'POST') return true;
+  // Public: POST quote request
+  if (path === '/api/quote' && method === 'POST') return true;
   // Public: OPTIONS (CORS preflight)
   if (method === 'OPTIONS') return true;
 
