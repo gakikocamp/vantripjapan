@@ -11,12 +11,10 @@ database_name = "camjyo-cms"
 database_id = "36a71050-35e1-4f12-95cd-4280994cc68d"
 
 # VanTripJapan customer booking database (PII — encrypted)
-# UNCOMMENT after creating: wrangler d1 create vtj-customers
-# Then replace database_id below with the output ID
-# [[d1_databases]]
-# binding = "CUSTOMERS_DB"
-# database_name = "vtj-customers"
-# database_id = "REPLACE_WITH_VTJ_CUSTOMERS_DB_ID"
+[[d1_databases]]
+binding = "CUSTOMERS_DB"
+database_name = "vtj-customers"
+database_id = "7027feae-c667-4908-a67d-ce6cf4486428"
 
 # R2 bucket for encrypted customer documents (license, passport)
 # UNCOMMENT after creating: wrangler r2 bucket create vtj-documents
