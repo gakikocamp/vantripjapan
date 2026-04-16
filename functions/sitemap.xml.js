@@ -13,8 +13,8 @@ const STATIC_PAGES = [
   { loc: '/privacy/',  changefreq: 'yearly',  priority: '0.4', hreflang: false },
 ];
 
-const HREFLANG_LANGS = ['en', 'fr', 'de', 'zh-Hant'];
-const HREFLANG_PARAMS = { en: '', fr: '?lang=fr', de: '?lang=de', 'zh-Hant': '?lang=zh' };
+const HREFLANG_LANGS = ['en', 'fr', 'de', 'zh-Hant', 'he'];
+const HREFLANG_PARAMS = { en: '', fr: '?lang=fr', de: '?lang=de', 'zh-Hant': '?lang=zh', he: '?lang=he' };
 
 function hreflangLinks(loc) {
   return HREFLANG_LANGS.map(lang =>
