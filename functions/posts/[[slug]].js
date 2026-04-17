@@ -27,13 +27,23 @@ function estimateReadTime(body) {
   return `${mins} min read`;
 }
 
+function detectLang(article) {
+  const tags = (article.tags || '').toLowerCase();
+  if (tags.includes('german') || tags.includes('deutschland')) return 'de';
+  if (tags.includes('french') || tags.includes('france')) return 'fr';
+  if (tags.includes('hebrew') || tags.includes('israel')) return 'he';
+  if (tags.includes('chinese') || tags.includes('taiwan')) return 'zh-Hant';
+  return 'en';
+}
+
 function renderArticlePage(article) {
   const dateFormatted = formatDate(article.published_at);
   const readTime = estimateReadTime(article.body);
   const canonicalUrl = `https://vantripjapan.jp/posts/${article.slug}/`;
+  const lang = detectLang(article);
 
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="${lang}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,7 +76,7 @@ function renderArticlePage(article) {
     "dateModified": "${article.updated_at || article.published_at || ''}",
     "url": "${canonicalUrl}",
     "articleSection": "${escHtml(article.category || '').replace(/"/g, '\\"')}",
-    "inLanguage": "en"
+    "inLanguage": "${lang}"
   }
   </script>
 </head>
