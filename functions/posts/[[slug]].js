@@ -29,10 +29,11 @@ function estimateReadTime(body) {
 
 function detectLang(article) {
   const tags = (article.tags || '').toLowerCase();
-  if (tags.includes('german') || tags.includes('deutschland')) return 'de';
-  if (tags.includes('french') || tags.includes('france')) return 'fr';
-  if (tags.includes('hebrew') || tags.includes('israel')) return 'he';
-  if (tags.includes('chinese') || tags.includes('taiwan')) return 'zh-Hant';
+  // Explicit lang tags take priority: lang-de, lang-fr, lang-he, lang-zh
+  if (tags.includes('lang-de')) return 'de';
+  if (tags.includes('lang-fr')) return 'fr';
+  if (tags.includes('lang-he')) return 'he';
+  if (tags.includes('lang-zh')) return 'zh-Hant';
   return 'en';
 }
 
