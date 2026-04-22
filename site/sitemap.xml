@@ -156,4 +156,12 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Onsen Guide — 2026-04-22 -->
+  <url>
+    <loc>https://vantripjapan.jp/posts/oita-tattoo-friendly-onsen-guide/</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
