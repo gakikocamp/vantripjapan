@@ -867,13 +867,15 @@ const translations = {
 
 let currentLang = 'en';
 
-function switchLang(lang) {
+window.switchLang = function(lang) {
     currentLang = lang;
 
     // Update active button
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang ||
-            (lang === 'zh' && btn.textContent.includes('繁')));
+        const text = btn.textContent.trim().toLowerCase();
+        btn.classList.toggle('active', text === lang ||
+            (lang === 'zh' && text.includes('繁')) ||
+            (lang === 'he' && text.includes('he')));
     });
 
     // Update all translatable elements

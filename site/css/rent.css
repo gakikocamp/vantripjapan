@@ -1282,7 +1282,15 @@
     }
 
     .rent-hero-images {
-        display: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 24px;
+    }
+    .rent-hero-images .hero-img:first-child {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        aspect-ratio: 16/9;
     }
 
     /* ── Comparison / Why Hakozaki ── */
