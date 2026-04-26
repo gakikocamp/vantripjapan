@@ -174,7 +174,7 @@ function renderArticlePage(article) {
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 VanTripJapan. A service by JDLTC. All rights reserved.</span>
+      <span>© 2026 VanTripJapan. Operated by <a href="https://www.camjyo.com/" target="_blank" style="color:inherit;text-decoration:underline;">キャンプ女子株式会社</a>. All rights reserved.</span>
       <span>Fukuoka, Japan</span>
     </div>
   </footer>
