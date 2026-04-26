@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title>Categories — VanTripJapan</title>
+    <title>Kyushu Travel Guides — Road Trips, Hot Springs, Campervans & More | VanTripJapan</title>
     <meta name="description"
-        content="Browse travel guides by category: destinations, tips, itineraries, food, onsen, and more. Your complete Kyushu travel resource.">
-    <meta property="og:title" content="Categories — VanTripJapan">
+        content="Browse our complete collection of Kyushu travel guides. Road trip itineraries, hidden onsen, campground reviews, driving tips, food guides & more. Plan your Japan campervan adventure.">
+    <meta property="og:title" content="Kyushu Travel Guides — Road Trips, Hot Springs & Campervan Tips">
     <meta property="og:description"
-        content="Browse travel guides by category: destinations, tips, itineraries, and more.">
+        content="Road trip itineraries, onsen guides, campgrounds & insider tips for exploring Kyushu by campervan.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vantripjapan.jp/category/">
     <meta property="og:image" content="https://vantripjapan.jp/images/hero-vanlife.png">
@@ -211,7 +211,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <span>© 2026 VanTripJapan. A service by JDLTC. All rights reserved.</span>
+            <span>© 2026 VanTripJapan. Operated by <a href="https://www.camjyo.com/" target="_blank" style="color:inherit;text-decoration:underline;">キャンプ女子株式会社</a>. All rights reserved.</span>
             <span>Fukuoka, Japan</span>
         </div>
     </footer>
@@ -249,10 +249,15 @@
         async function loadCategories() {
             try {
                 let res = await fetch('/public-articles');
-                if (!res.ok) {
+                const ct1 = (res.headers.get('content-type') || '');
+                if (!res.ok || !ct1.includes('application/json')) {
                     res = await fetch('/api/articles');
                 }
-                if (!res.ok) return;
+                const ct2 = (res.headers.get('content-type') || '');
+                if (!res.ok || !ct2.includes('application/json')) {
+                    document.getElementById('cat-grid').innerHTML = '<p class="cat-loading">Articles are being updated. <a href="/rent/" style="color:var(--color-accent);text-decoration:underline;">Explore our rental page</a> in the meantime.</p>';
+                    return;
+                }
                 const articles = await res.json();
                 if (!Array.isArray(articles) || articles.length === 0) {
                     document.getElementById('cat-grid').innerHTML = '<p class="cat-loading">No articles found.</p>';

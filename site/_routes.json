@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "include": [
+    "/api/*",
+    "/public-articles",
+    "/posts/*",
+    "/sitemap.xml"
+  ],
+  "exclude": []
+}

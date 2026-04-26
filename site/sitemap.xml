@@ -164,4 +164,12 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Michi-no-Eki Best-of — 2026-04-26 -->
+  <url>
+    <loc>https://vantripjapan.jp/posts/best-michi-no-eki-kyushu/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>

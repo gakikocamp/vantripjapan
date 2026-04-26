@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <title>Campervan Rental Fukuoka — Hire a Van & Explore Kyushu | VanTripJapan</title>
+    <title>Campervan Rental Japan — Explore Kyushu from Fukuoka | From ¥16,500/day</title>
     <meta name="description"
-        content="Rent a campervan in Fukuoka, Japan. All-inclusive from ¥16,500/day — insurance, camping gear, and bedding included. 10 minutes from Fukuoka Airport. Explore Kyushu at your own pace.">
+        content="Rent a fully-equipped campervan in Fukuoka and road trip across Kyushu, Japan. All-inclusive from ¥16,500/day — insurance, bedding & camping gear included. 10 min from Fukuoka Airport. Family-run, hand-built vans since 2022. Book your adventure now.">
     <meta name="keywords"
-        content="campervan rental Fukuoka, campervan hire Japan, Fukuoka camper rental, Kyushu campervan, Japan RV rental, Fukuoka Airport campervan">
-    <meta property="og:title" content="Campervan Rental Fukuoka — All-Inclusive from ¥16,500/day | VanTripJapan">
+        content="campervan rental Japan, campervan rental Fukuoka, campervan hire Kyushu, Japan campervan, Kyushu road trip, van rental Fukuoka, campervan Japan cheap, Fukuoka Airport campervan, Japan RV rental, camper hire Japan, vanlife Japan, road trip Japan">
+    <meta property="og:title" content="Campervan Rental Japan — Road Trip Kyushu from Fukuoka | From ¥16,500/day">
     <meta property="og:description"
-        content="Rent a campervan in Fukuoka, Japan. All-inclusive pricing, 10 min from Fukuoka Airport. Explore Kyushu by van.">
+        content="Explore Kyushu by campervan. All-inclusive from ¥16,500/day — insurance, bedding & gear included. 10 min from Fukuoka Airport. Family-run service.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vantripjapan.jp/rent/">
     <meta property="og:image" content="https://vantripjapan.jp/images/hero-vanlife.png">
@@ -31,39 +31,118 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
-    <link rel="stylesheet" href="/css/rent.css?v=20260416">
+    <!-- AI Referrer Detection & Unassigned Traffic Tracker -->
+    <script>
+    (function(){
+      var ref = document.referrer || '';
+      var url = new URL(window.location.href);
+      // Known AI platform referrers
+      var aiSources = [
+        {pattern: 'chatgpt.com',     name: 'ChatGPT'},
+        {pattern: 'chat.openai.com', name: 'ChatGPT'},
+        {pattern: 'perplexity.ai',   name: 'Perplexity'},
+        {pattern: 'bing.com',        name: 'Bing_AI'},
+        {pattern: 'copilot.microsoft.com', name: 'Copilot'},
+        {pattern: 'gemini.google.com', name: 'Gemini'},
+        {pattern: 'claude.ai',       name: 'Claude'},
+        {pattern: 'you.com',         name: 'You_AI'},
+        {pattern: 'phind.com',       name: 'Phind'},
+        {pattern: 'meta.ai',         name: 'Meta_AI'}
+      ];
+      var detectedSource = 'unknown';
+      var isAI = false;
+      for (var i = 0; i < aiSources.length; i++) {
+        if (ref.indexOf(aiSources[i].pattern) !== -1) {
+          detectedSource = aiSources[i].name;
+          isAI = true;
+          break;
+        }
+      }
+      // Check UTM params for AI attribution
+      var utmSource = url.searchParams.get('utm_source') || '';
+      var utmMedium = url.searchParams.get('utm_medium') || '';
+      if (!isAI && (utmSource.indexOf('ai') !== -1 || utmMedium === 'ai_referral')) {
+        detectedSource = utmSource || 'ai_utm';
+        isAI = true;
+      }
+      // Always log referrer details as custom GA4 event
+      window.addEventListener('load', function(){
+        if (typeof gtag === 'function') {
+          // Track all traffic with full referrer info
+          gtag('event', 'traffic_source_detail', {
+            referrer_full: ref || '(direct)',
+            referrer_domain: ref ? (new URL(ref)).hostname : '(direct)',
+            landing_page: window.location.pathname,
+            is_ai_traffic: isAI,
+            ai_source: detectedSource,
+            user_agent_snippet: navigator.userAgent.substring(0, 100)
+          });
+          // Fire dedicated AI traffic event
+          if (isAI) {
+            gtag('event', 'ai_referral', {
+              ai_platform: detectedSource,
+              referrer_url: ref,
+              landing_page: window.location.pathname
+            });
+          }
+        }
+      });
+    })();
+    </script>
+    <link rel="stylesheet" href="/css/rent.css?v=20260425">
 
-    <!-- Structured Data -->
+    <!-- Structured Data: AutoRental -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "AutoRental",
-      "name": "VanTripJapan",
-      "description": "Campervan rental in Fukuoka, Japan. All-inclusive pricing from ¥16,500/day.",
+      "name": "VanTripJapan — Campervan Rental Fukuoka",
+      "alternateName": "VanTripJapan",
+      "description": "Family-run campervan rental service in Fukuoka, Japan. Explore Kyushu by van with all-inclusive pricing from ¥16,500/day. Insurance, bedding, camping gear & 24/7 support included.",
       "url": "https://vantripjapan.jp/rent/",
       "telephone": "+81-70-9375-7129",
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "Hakozaki, Higashi-ku",
         "addressLocality": "Fukuoka",
-        "addressRegion": "Fukuoka",
+        "addressRegion": "Fukuoka Prefecture",
+        "postalCode": "812-0053",
         "addressCountry": "JP"
       },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 33.6186,
+        "longitude": 130.4267
+      },
+      "areaServed": [
+        {"@type": "Place", "name": "Kyushu"},
+        {"@type": "Place", "name": "Fukuoka"},
+        {"@type": "Place", "name": "Japan"}
+      ],
       "priceRange": "¥16,500〜",
+      "currenciesAccepted": "JPY",
+      "paymentAccepted": "Credit Card, Cash",
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
         "opens": "09:00",
         "closes": "18:00"
-      }
+      },
+      "image": "https://vantripjapan.jp/images/hero-vanlife.png",
+      "sameAs": [
+        "https://www.instagram.com/vantripjapan/"
+      ]
     }
     </script>
+    <!-- Structured Data: Product with Reviews -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Product",
       "name": "Campervan Rental Fukuoka — VanTripJapan",
-      "description": "All-inclusive campervan rental in Fukuoka, Japan. Price includes insurance, camping gear, bedding, and 24/7 support. Pick up 10 min from Fukuoka Airport.",
+      "description": "All-inclusive campervan rental in Fukuoka, Japan. Explore Kyushu with insurance, camping gear, bedding, and 24/7 support. Pick up 10 min from Fukuoka Airport.",
       "brand": {"@type": "Brand", "name": "VanTripJapan"},
+      "image": "https://vantripjapan.jp/images/hero-vanlife.png",
       "offers": {
         "@type": "AggregateOffer",
         "lowPrice": "16500",
@@ -78,6 +157,17 @@
         "ratingValue": "4.9",
         "reviewCount": "47"
       }
+    }
+    </script>
+    <!-- Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://vantripjapan.jp/"},
+        {"@type": "ListItem", "position": 2, "name": "Campervan Rental", "item": "https://vantripjapan.jp/rent/"}
+      ]
     }
     </script>
 </head>
@@ -118,34 +208,57 @@
 
     <div class="rent-page">
 
+        <!-- Scroll Progress Bar -->
+        <div class="scroll-progress" id="scrollProgress"></div>
+
         <!-- ═══ HERO ═══ -->
         <section class="rent-hero" id="top">
+            <!-- Floating ambient particles -->
+            <div class="hero-particles">
+                <div class="hero-particle"></div>
+                <div class="hero-particle"></div>
+                <div class="hero-particle"></div>
+            </div>
+
+            <!-- Animated van driving across -->
+            <div class="hero-van-anim">
+                <svg viewBox="0 0 120 50" fill="none" class="driving-van">
+                    <rect x="10" y="15" width="80" height="30" rx="6" fill="#fff" opacity="0.9"/>
+                    <rect x="70" y="8" width="25" height="22" rx="4" fill="#fff" opacity="0.9"/>
+                    <rect x="73" y="11" width="8" height="10" rx="2" fill="rgba(45,90,61,0.3)"/>
+                    <rect x="83" y="11" width="8" height="10" rx="2" fill="rgba(45,90,61,0.3)"/>
+                    <circle cx="30" cy="47" r="7" fill="#555"/><circle cx="30" cy="47" r="4" fill="#888"/>
+                    <circle cx="75" cy="47" r="7" fill="#555"/><circle cx="75" cy="47" r="4" fill="#888"/>
+                    <rect x="15" y="20" width="18" height="12" rx="2" fill="rgba(196,112,75,0.3)"/>
+                    <rect x="38" y="22" width="25" height="8" rx="2" fill="rgba(45,90,61,0.15)"/>
+                </svg>
+            </div>
+
             <div class="rent-hero-inner">
                 <div class="rent-hero-text">
-                    <h1>
-                        <span data-i18n="hero.title1">Explore Kyushu</span><br>
-                        <span class="hero-highlight" data-i18n="hero.title2">by Campervan</span>
+                    <p class="hero-eyebrow anim-slide-up" data-i18n="hero.eyebrow">Family-Run · Hand-Built Vans · Since 2022</p>
+                    <h1 class="anim-slide-up anim-d2">
+                        <span data-i18n="hero.title1">Your Japanese Road Trip</span><br>
+                        <span class="hero-highlight" data-i18n="hero.title2">Starts Here</span>
                     </h1>
-                    <p class="hero-tagline" data-i18n="hero.tagline">All-inclusive pricing. Safe & direct route to
-                        Kyushu's nature. Skip the city traffic — start your adventure from Fukuoka Airport in 10
-                        minutes.</p>
+                    <p class="hero-tagline anim-slide-up anim-d3" data-i18n="hero.tagline">A small family team in Fukuoka. Hand-built campervans. Local knowledge you can't find online. Real adventures off the beaten path.</p>
 
-                    <div class="rent-hero-stats">
+                    <div class="rent-hero-stats anim-slide-up anim-d4">
                         <div class="rent-hero-stat">
-                            <span class="stat-number">10 min</span>
+                            <span class="stat-number" data-count="10">0</span><span class="stat-suffix"> min</span>
                             <span class="stat-label" data-i18n="hero.stat1">from Airport</span>
                         </div>
                         <div class="rent-hero-stat">
-                            <span class="stat-number">¥16,500〜</span>
+                            <span class="stat-prefix">¥</span><span class="stat-number" data-count="16500">0</span><span class="stat-suffix">〜</span>
                             <span class="stat-label" data-i18n="hero.stat2">per day</span>
                         </div>
                         <div class="rent-hero-stat">
-                            <span class="stat-number">24/7</span>
+                            <span class="stat-number" style="font-variant-numeric: tabular-nums;">24/7</span>
                             <span class="stat-label" data-i18n="hero.stat3">Support</span>
                         </div>
                     </div>
 
-                    <div class="rent-hero-buttons">
+                    <div class="rent-hero-buttons anim-slide-up anim-d5" style="flex-wrap: wrap;">
                         <a href="https://wa.me/817093757129?text=Hi!%20I'm%20interested%20in%20renting%20a%20campervan%20in%20Fukuoka."
                             class="btn-whatsapp" target="_blank">
                             💬 <span data-i18n="hero.whatsapp">Check Availability on WhatsApp</span>
@@ -153,22 +266,90 @@
                         <a href="https://lin.ee/YYyRz2f" class="btn-line" target="_blank">
                             💚 <span data-i18n="hero.line">Chat on LINE</span>
                         </a>
+                        <a href="#calculator" class="btn-email-quote">
+                            📧 <span data-i18n="hero.email">Get a Free Quote by Email</span>
+                        </a>
                     </div>
                 </div>
 
-                <div class="rent-hero-images">
-                    <div class="hero-img"><img src="/images/rent/hero/bongo-onsen.jpg"
-                            alt="Bongo campervan at Hyotan Onsen in Beppu, Kyushu" loading="lazy" style="object-fit: cover;"></div>
-                    <div class="hero-img"><img src="/images/rent/hero/bongo-sunset.jpg"
-                            alt="Campervan parked at mountain viewpoint during sunset" loading="lazy" style="object-fit: cover;"></div>
-                    <div class="hero-img"><img src="/images/rent/hero/interior-ocean-view.jpg"
-                            alt="Ocean view from inside the campervan at sunset" loading="lazy" style="object-fit: cover;"></div>
+                <!-- Photo Slideshow with Ken Burns -->
+                <div class="hero-slideshow">
+                    <div class="hero-slide active">
+                        <img src="/images/rent/hero/bongo-onsen.jpg" alt="Bongo campervan at Hyotan Onsen in Beppu, Kyushu" loading="eager">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="/images/rent/hero/bongo-sunset.jpg" alt="Campervan parked at mountain viewpoint during sunset" loading="eager">
+                    </div>
+                    <div class="hero-slide">
+                        <img src="/images/rent/hero/interior-ocean-view.jpg" alt="Ocean view from inside the campervan at sunset" loading="eager">
+                    </div>
+                    <div class="hero-slide-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+                <span>Scroll</span>
+            </div>
+        </section>
+
+        <!-- Wave Divider: Hero → Story -->
+        <div class="wave-divider" style="background: var(--rent-bg);">
+            <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+                <path d="M0,40 C360,0 720,60 1080,20 C1260,10 1380,30 1440,20 L1440,60 L0,60 Z" fill="var(--rent-bg)" opacity="0.5"/>
+                <path d="M0,50 C300,20 600,55 900,30 C1100,15 1300,40 1440,35 L1440,60 L0,60 Z" fill="var(--rent-bg)"/>
+            </svg>
+        </div>
+
+        <!-- ═══ OUR STORY ═══ -->
+        <section class="story-section reveal" id="story">
+            <div class="story-inner">
+                <div class="story-visual">
+                    <img src="/images/rent/hero/bongo-onsen.jpg" alt="Our family with the Bongo campervan at a hot spring" loading="lazy">
+                    <span class="story-badge-since">Since 2022</span>
+                </div>
+                <div class="story-content">
+                    <span class="story-label" data-i18n="story.label">🏠 Our Story</span>
+                    <h2 data-i18n="story.title">A Family-Run Campervan Adventure</h2>
+                    <p class="story-sub" data-i18n="story.sub">Small business. Big heart. Hand-built vans.</p>
+                    <p class="story-text" data-i18n="story.text">We're a small family team based in Fukuoka. In 2022, we converted our own vans by hand — building beds, installing power systems, and fitting out interiors — because we wanted to create the kind of travel experience we'd love ourselves. No corporate fleet. No call centers. Just us, our hand-built vans, and a genuine passion for helping travelers discover the real Kyushu.</p>
+
+                    <div class="story-pillars">
+                        <div class="story-pillar reveal reveal-delay-1">
+                            <span class="pillar-icon">🏠</span>
+                            <div class="pillar-title" data-i18n="story.p1_title">Family-Run</div>
+                            <div class="pillar-desc" data-i18n="story.p1_desc">Not a corporation. A family who loves road trips.</div>
+                        </div>
+                        <div class="story-pillar reveal reveal-delay-2">
+                            <span class="pillar-icon">🔧</span>
+                            <div class="pillar-title" data-i18n="story.p2_title">Hand-Built</div>
+                            <div class="pillar-desc" data-i18n="story.p2_desc">We designed and converted our vans ourselves.</div>
+                        </div>
+                        <div class="story-pillar reveal reveal-delay-3">
+                            <span class="pillar-icon">🗾</span>
+                            <div class="pillar-title" data-i18n="story.p3_title">Local Knowledge</div>
+                            <div class="pillar-desc" data-i18n="story.p3_desc">We live here. We know the hidden gems.</div>
+                        </div>
+                    </div>
+
+                    <p class="story-quote" data-i18n="story.quote">"We didn't start a rental company. We built vans we'd want to travel in ourselves — and now we share them with you."</p>
                 </div>
             </div>
         </section>
 
         <!-- ═══ WHY HAKOZAKI ═══ -->
-        <section class="rent-section" id="why">
+        <section class="rent-section" id="why" style="position: relative;">
+            <!-- Decorative mountain illustration -->
+            <svg class="deco-mountain" viewBox="0 0 400 200" fill="none">
+                <path d="M0,200 L80,60 L120,100 L200,20 L280,90 L320,50 L400,200 Z" fill="var(--rent-forest)" opacity="0.4"/>
+                <path d="M50,200 L150,80 L200,120 L300,40 L400,200 Z" fill="var(--rent-sage)" opacity="0.3"/>
+                <circle cx="320" cy="40" r="25" fill="var(--rent-terracotta)" opacity="0.2"/>
+            </svg>
             <div class="rent-container">
                 <div class="rent-section-header">
                     <span class="rent-badge">📍 <span data-i18n="why.badge">Location Advantage</span></span>
@@ -454,7 +635,13 @@
         </section>
 
         <!-- ═══ VEHICLES ═══ -->
-        <section class="rent-section" id="vehicles" style="background: white;">
+        <section class="rent-section" id="vehicles" style="background: white; position: relative;">
+            <!-- Decorative tree illustration -->
+            <svg class="deco-tree" viewBox="0 0 120 200" fill="none">
+                <ellipse cx="60" cy="50" rx="50" ry="55" fill="var(--rent-forest)" opacity="0.3"/>
+                <ellipse cx="50" cy="75" rx="40" ry="45" fill="var(--rent-sage)" opacity="0.25"/>
+                <rect x="55" y="95" width="10" height="60" rx="3" fill="var(--rent-earth)" opacity="0.2"/>
+            </svg>
             <div class="rent-container">
                 <div class="rent-section-header">
                     <span class="rent-badge">🚐 <span data-i18n="vehicles.badge">Our Fleet</span></span>
@@ -468,6 +655,7 @@
                     <div class="vehicle-card popular">
                         <span class="vehicle-number">01</span>
                         <h3>Roof Tent Probox</h3>
+                        <p style="font-size: 14px; color: var(--rent-text-secondary); font-style: italic; margin-bottom: 12px;" data-i18n="vehicles.probox_story">Our compact explorer. Nimble enough for mountain passes, cozy enough for starlit nights. Perfect for couples.</p>
                         <div class="vehicle-img" style="margin: 16px 0; aspect-ratio: 16/9; overflow: hidden; border-radius: 12px;"><img src="/images/rent/vehicles/probox.png" alt="Probox Campervan with roof tent" style="width: 100%; height: 100%; object-fit: cover;"></div>
                         <div class="vehicle-specs">
                             <div class="spec-item">👥 2 guests</div>
@@ -484,6 +672,8 @@
                     <div class="vehicle-card">
                         <span class="vehicle-number">02</span>
                         <h3>Bed Bongo Brawny</h3>
+                        <p style="font-size: 14px; color: var(--rent-text-secondary); font-style: italic; margin-bottom: 12px;" data-i18n="vehicles.bongo_story">Our hand-built cruiser. Custom bed, cozy interior — like a tiny home on wheels. Built by us, for the open road.</p>
+                        <div style="display: inline-block; background: var(--rent-forest); color: white; padding: 4px 12px; border-radius: var(--rent-radius-pill); font-size: 11px; font-weight: 700; margin-bottom: 8px;">🔧 HAND-BUILT</div>
                         <div class="vehicle-img" style="margin: 16px 0; aspect-ratio: 16/9; overflow: hidden; border-radius: 12px;"><img src="/images/rent/vehicles/bongo-mountain.jpg" alt="Bongo Brawny Campervan on mountain road" style="width: 100%; height: 100%; object-fit: cover;"></div>
                         <div class="vehicle-specs">
                             <div class="spec-item">👥 2-3 guests</div>
@@ -714,6 +904,21 @@
 
     </div><!-- end .rent-page -->
 
+        <!-- ═══ Final CTA ═══ -->
+        <section class="final-cta">
+            <h2 data-i18n="cta.title">Ready to Start Your Adventure?</h2>
+            <p data-i18n="cta.subtitle">Chat with our family team. We'll help you plan the perfect road trip through Kyushu.</p>
+            <div class="final-cta-buttons">
+                <a href="https://wa.me/817093757129?text=Hi!%20I'm%20interested%20in%20renting%20a%20campervan%20in%20Fukuoka."
+                    class="btn-whatsapp" target="_blank">
+                    💬 <span data-i18n="cta.whatsapp">Chat on WhatsApp</span>
+                </a>
+                <a href="https://lin.ee/YYyRz2f" class="btn-line" target="_blank">
+                    💚 <span data-i18n="cta.line">Chat on LINE</span>
+                </a>
+            </div>
+        </section>
+
     <!-- ═══ Sticky Bottom Bar ═══ -->
     <div class="sticky-bar">
         <div class="sticky-bar-info">
@@ -762,6 +967,7 @@
                 <h4>Related Services</h4>
                 <a href="https://drive-japan-license.com/" target="_blank">JDLTC — License Translation</a>
                 <a href="https://crystalinsence.com/" target="_blank">Crystal Insence — Incense</a>
+                <a href="https://wagyuninja.tokyo/" target="_blank">WAGYU NINJA — Premium Exports</a>
                 <a href="https://www.camjyo.com/" target="_blank">キャンプ女子株式会社</a>
             </div>
         </div>
@@ -964,6 +1170,132 @@
                 const wasOpen = item.classList.contains('open');
                 document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
                 if (!wasOpen) item.classList.add('open');
+            });
+        });
+
+        // ── Scroll Reveal (enhanced) ──
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revealObserver.observe(el));
+
+        // ── Count-Up Animation ──
+        function animateCountUp(el) {
+            const target = parseInt(el.getAttribute('data-count'));
+            if (!target) return;
+            const duration = 2000;
+            const start = performance.now();
+            const format = target >= 1000;
+            function step(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+                const val = Math.round(target * eased);
+                el.textContent = format ? val.toLocaleString('en-US') : val;
+                if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCountUp(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        document.querySelectorAll('.stat-number[data-count]').forEach(el => counterObserver.observe(el));
+
+        // ── Hero Slideshow (Ken Burns) ──
+        (function() {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.hero-slide-dots .dot');
+            if (slides.length === 0) return;
+            let current = 0;
+            const interval = 5000;
+
+            function goTo(idx) {
+                slides[current].classList.remove('active');
+                dots[current].classList.remove('active');
+                current = idx;
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+            }
+
+            setInterval(function() {
+                goTo((current + 1) % slides.length);
+            }, interval);
+
+            dots.forEach(function(dot, i) {
+                dot.addEventListener('click', function() { goTo(i); });
+            });
+        })();
+
+        // ── Scroll Progress Bar ──
+        var progressBar = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', function() {
+            var scrollTop = window.pageYOffset;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var progress = (scrollTop / docHeight) * 100;
+            if (progressBar) progressBar.style.width = progress + '%';
+        });
+
+        // ── Parallax on Scroll ──
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    const scrollY = window.pageYOffset;
+                    const hero = document.querySelector('.rent-hero');
+                    if (hero && scrollY < window.innerHeight * 1.5) {
+                        hero.style.setProperty('--parallax-y', (scrollY * 0.4) + 'px');
+                        // Fade out hero on scroll
+                        var opacity = Math.max(0, 1 - scrollY / (window.innerHeight * 0.8));
+                        hero.style.setProperty('--hero-fade', opacity);
+                    }
+                    // Decorative elements parallax
+                    document.querySelectorAll('.deco-mountain, .deco-tree').forEach(el => {
+                        const rect = el.getBoundingClientRect();
+                        if (rect.top < window.innerHeight && rect.bottom > 0) {
+                            const offset = (window.innerHeight - rect.top) * 0.08;
+                            el.style.transform = 'translateY(' + (-offset) + 'px)';
+                        }
+                    });
+                    // Scroll indicator fade
+                    var scrollInd = document.querySelector('.scroll-indicator');
+                    if (scrollInd) scrollInd.style.opacity = Math.max(0, 1 - scrollY / 200);
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // ── Smooth scroll for anchor links ──
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ── 3D Tilt on Vehicle Cards ──
+        document.querySelectorAll('.vehicle-card').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform = 'perspective(800px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg) translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = 'perspective(800px) rotateY(0) rotateX(0) translateY(0)';
             });
         });
     </script>

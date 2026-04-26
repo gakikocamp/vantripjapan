@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-    <title>VanTripJapan — Kyushu Travel Magazine | Road Trip Guides & Tips</title>
+    <title>VanTripJapan — Campervan Rental & Road Trip Guide | Kyushu, Japan</title>
     <meta name="description"
-        content="Kyushu travel guides, road trip itineraries, hot springs, and insider tips for exploring Japan by campervan. Your complete guide to van life in Kyushu.">
+        content="Rent a campervan in Fukuoka and explore Kyushu, Japan. Road trip itineraries, hot springs, campground guides, and insider tips. All-inclusive rental from ¥16,500/day. Your complete guide to vanlife in Japan.">
     <meta name="keywords"
-        content="campervan rental Fukuoka, Kyushu road trip, Japan campervan, van life Japan, Fukuoka travel, campervan hire Japan">
-    <meta property="og:title" content="VanTripJapan — Kyushu Travel Magazine | Road Trip Guides & Tips">
+        content="campervan rental Fukuoka, Kyushu road trip, Japan campervan, van life Japan, Fukuoka travel, campervan hire Japan, Kyushu travel guide, Japan road trip, vanlife Japan">
+    <meta property="og:title" content="VanTripJapan — Campervan Rental & Road Trip Guide for Kyushu, Japan">
     <meta property="og:description"
-        content="Kyushu travel guides, road trip itineraries, and insider tips for exploring Japan by campervan from Fukuoka.">
+        content="Rent a campervan in Fukuoka. Road trip guides, hot springs, campgrounds & insider tips for Kyushu. All-inclusive from ¥16,500/day.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vantripjapan.jp/">
     <meta property="og:image" content="https://vantripjapan.jp/images/hero-vanlife.png">
@@ -29,6 +29,58 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
+    <!-- AI Referrer Detection & Unassigned Traffic Tracker -->
+    <script>
+    (function(){
+      var ref = document.referrer || '';
+      var url = new URL(window.location.href);
+      var aiSources = [
+        {pattern: 'chatgpt.com', name: 'ChatGPT'},
+        {pattern: 'chat.openai.com', name: 'ChatGPT'},
+        {pattern: 'perplexity.ai', name: 'Perplexity'},
+        {pattern: 'bing.com', name: 'Bing_AI'},
+        {pattern: 'copilot.microsoft.com', name: 'Copilot'},
+        {pattern: 'gemini.google.com', name: 'Gemini'},
+        {pattern: 'claude.ai', name: 'Claude'},
+        {pattern: 'you.com', name: 'You_AI'},
+        {pattern: 'phind.com', name: 'Phind'},
+        {pattern: 'meta.ai', name: 'Meta_AI'}
+      ];
+      var detectedSource = 'unknown';
+      var isAI = false;
+      for (var i = 0; i < aiSources.length; i++) {
+        if (ref.indexOf(aiSources[i].pattern) !== -1) {
+          detectedSource = aiSources[i].name;
+          isAI = true;
+          break;
+        }
+      }
+      var utmSource = url.searchParams.get('utm_source') || '';
+      var utmMedium = url.searchParams.get('utm_medium') || '';
+      if (!isAI && (utmSource.indexOf('ai') !== -1 || utmMedium === 'ai_referral')) {
+        detectedSource = utmSource || 'ai_utm';
+        isAI = true;
+      }
+      window.addEventListener('load', function(){
+        if (typeof gtag === 'function') {
+          gtag('event', 'traffic_source_detail', {
+            referrer_full: ref || '(direct)',
+            referrer_domain: ref ? (new URL(ref)).hostname : '(direct)',
+            landing_page: window.location.pathname,
+            is_ai_traffic: isAI,
+            ai_source: detectedSource
+          });
+          if (isAI) {
+            gtag('event', 'ai_referral', {
+              ai_platform: detectedSource,
+              referrer_url: ref,
+              landing_page: window.location.pathname
+            });
+          }
+        }
+      });
+    })();
+    </script>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -397,12 +449,21 @@
             try {
                 // Try public endpoint first (bypasses /api middleware), then fallback
                 let res = await fetch('/public-articles');
-                if (!res.ok) {
+                // Validate we got JSON, not an HTML fallback
+                const ct1 = (res.headers.get('content-type') || '');
+                if (!res.ok || !ct1.includes('application/json')) {
                     res = await fetch('/api/articles');
                 }
-                if (!res.ok) return;
+                const ct2 = (res.headers.get('content-type') || '');
+                if (!res.ok || !ct2.includes('application/json')) {
+                    showArticleFallback();
+                    return;
+                }
                 const articles = await res.json();
-                if (!Array.isArray(articles) || articles.length === 0) return;
+                if (!Array.isArray(articles) || articles.length === 0) {
+                    showArticleFallback();
+                    return;
+                }
 
                 const featuredWrap = document.getElementById('featured-article-wrap');
                 if (featuredWrap) {
@@ -422,6 +483,16 @@
                 }
             } catch (e) {
                 console.warn('VTJ CMS: could not load articles', e);
+                showArticleFallback();
+            }
+        }
+        function showArticleFallback() {
+            const grid = document.getElementById('articles-grid');
+            if (grid) {
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1;text-align:center;padding:var(--space-2xl) var(--space-lg);">
+                        <p style="color:var(--color-muted);font-size:1rem;">Articles are being updated. Check back soon or explore our <a href="/rent/" style="color:var(--color-accent);text-decoration:underline;">rental page</a>.</p>
+                    </div>`;
             }
         }
         loadArticles();

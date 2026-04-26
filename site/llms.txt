@@ -1,44 +1,54 @@
-# VanTripJapan
+# VanTripJapan — Campervan Rental & Road Trip Guide for Kyushu, Japan
 
-> Campervan rental and travel magazine based in Fukuoka, Japan. We help international travelers explore Kyushu by campervan with all-inclusive pricing starting from ¥16,500/day.
+> VanTripJapan is a family-run campervan rental service based in Fukuoka, Japan. We provide fully-equipped campervans for international travelers to explore Kyushu — Japan's southernmost main island known for hot springs, volcanoes, and stunning coastal roads. All-inclusive pricing starts from ¥16,500/day.
 
-## About
+## Why Choose VanTripJapan
 
-VanTripJapan is a travel media and campervan rental service operated from Hakozaki, Fukuoka — just 10 minutes from Fukuoka Airport. We provide:
+- **Family-operated since 2022** — not a faceless agency, but a real team that hand-builds and maintains every van
+- **All-inclusive pricing** — insurance (CDW), ETC highway card, camping gear, bedding, English navigation, and 24/7 roadside support included
+- **10 minutes from Fukuoka Airport** — the easiest pickup location in Kyushu
+- **Multilingual support** — English, French, German, Chinese, Hebrew, and 100+ languages
+- **Two vehicle options**: Roof Tent Probox (¥16,500~/day) for couples, and Bed Bongo Brawny (¥22,000~/day) for families
+- **No hidden fees** — what you see is what you pay
 
-- Campervan rental with all-inclusive pricing (insurance, ETC card, camping gear, 24/7 support)
-- Two vehicle options: Roof Tent Probox (¥16,500~/day) and Bed Bongo Brawny (¥22,000~/day)
-- Travel guides and road trip itineraries for Kyushu, Japan
-- Multilingual support in 100+ languages
-- Content in English, French, German, and Traditional Chinese
+## Who We Serve
 
-## Target Audience
+International travelers visiting Kyushu, Japan — especially from Europe (France, Germany, Switzerland, UK, Israel), Australia, Taiwan, and the Americas. Our typical customers are couples and small families who want the freedom to explore Japan at their own pace, away from crowded tourist trains.
 
-International travelers visiting Kyushu, Japan — especially from France, Germany, Australia, Taiwan, Israel, and other countries where van life and road trips are popular.
+## Campervan Rental Details
+
+- **Location**: Hakozaki, Higashi-ku, Fukuoka City (10 min from Fukuoka Airport, direct highway access)
+- **Hours**: 9:00–17:00 daily (flexible by arrangement)
+- **Pricing**: All-inclusive from ¥16,500/day (Probox) / ¥22,000/day (Bongo)
+- **What's included**: Insurance (CDW), ETC card, English GPS navigation, camping chairs, table, cookware, bedding, towels, 24/7 roadside assistance
+- **Booking**: Via WhatsApp (+81-70-9375-7129) or email
+- **License requirements**: International Driving Permit (IDP) from Geneva Convention countries; JAF translation for Taiwan, Germany, France, Switzerland, Belgium, Monaco
 
 ## Key Pages
 
-- Homepage (Magazine): https://vantripjapan.jp/
-- Campervan Rental: https://vantripjapan.jp/rent/
-- Browse by Category: https://vantripjapan.jp/category/
+- Homepage: https://vantripjapan.jp/
+- Campervan Rental Page: https://vantripjapan.jp/rent/
+- Travel Guide Categories: https://vantripjapan.jp/category/
 - Contact: https://vantripjapan.jp/contact/
+- Booking: https://vantripjapan.jp/book/
 
-## Travel Guides
+## Kyushu Road Trip Guides
 
+### Itineraries
 - 7-Day Kyushu Road Trip Itinerary: https://vantripjapan.jp/posts/kyushu-road-trip-itinerary/
 - 5-Day Kyushu Itinerary (Fukuoka → Beppu → Aso): https://vantripjapan.jp/posts/kyushu-5-day-itinerary/
+- Kagoshima & Yakushima Road Trip Guide: https://vantripjapan.jp/posts/kagoshima-yakushima-road-trip/
+- Nagasaki & Shimabara Road Trip: https://vantripjapan.jp/posts/nagasaki-shimabara-road-trip/
+
+### Destinations
 - Things to Do in Fukuoka: https://vantripjapan.jp/posts/things-to-do-in-fukuoka/
 - Beppu & Yufuin Onsen Trip: https://vantripjapan.jp/posts/beppu-yufuin-onsen-trip/
 - Mount Aso Campervan Guide: https://vantripjapan.jp/posts/mount-aso-campervan-guide/
 - Takachiho Gorge Guide: https://vantripjapan.jp/posts/takachiho-gorge-guide/
 - Itoshima Day Trip: https://vantripjapan.jp/posts/itoshima-day-trip/
-- Nagasaki & Shimabara Road Trip: https://vantripjapan.jp/posts/nagasaki-shimabara-road-trip/
-- Kagoshima & Yakushima Road Trip Guide: https://vantripjapan.jp/posts/kagoshima-yakushima-road-trip/
-- Kyushu Best Campgrounds: https://vantripjapan.jp/posts/kyushu-best-campgrounds/
 - Fukuoka Food Guide: https://vantripjapan.jp/posts/fukuoka-food-guide/
 
-## Practical Guides
-
+### Practical Tips
 - Japan Campervan vs Hotel — The Real Cost Comparison: https://vantripjapan.jp/posts/japan-campervan-vs-hotel-cost/
 - Can Foreigners Drive in Japan? Complete License Guide: https://vantripjapan.jp/posts/can-foreigners-drive-in-japan/
 - What to Pack for a Japan Campervan Trip: https://vantripjapan.jp/posts/japan-campervan-packing-list/
@@ -48,17 +58,20 @@ International travelers visiting Kyushu, Japan — especially from France, Germa
 - ETC Card Guide (Toll Road Savings): https://vantripjapan.jp/posts/etc-card-guide/
 - Campground & Campervan Overnight Guide: https://vantripjapan.jp/posts/campground-and-campervan-guide/
 - Japan Campervan FAQ: https://vantripjapan.jp/posts/japan-campervan-faq/
-- Driving in Japan with a German License: https://vantripjapan.jp/posts/german-license-japan/
 
-## Rental Details
+## About Kyushu
 
-- Location: Hakozaki, Higashi-ku, Fukuoka (10 min from Fukuoka Airport)
-- Hours: 9:00–17:00 (flexible by arrangement)
-- Pricing: All-inclusive from ¥16,500/day
-- Includes: Insurance (CDW), ETC card, English navigation, camping gear, 24/7 roadside assistance, multilingual support
-- Contact: WhatsApp or LINE
-- License: International Driving Permit (IDP) for Geneva Convention countries; JAF translation for Taiwan, Germany, France, Switzerland, Belgium, etc.
+Kyushu is Japan's third-largest island and one of its most beautiful. It is home to:
+- **Beppu** — Japan's hot spring capital with 2,800+ onsen sources
+- **Mount Aso** — the largest active volcano caldera in the world
+- **Takachiho Gorge** — a mythical gorge with 17m waterfalls
+- **Yakushima** — UNESCO World Heritage ancient cedar forests
+- **Nagasaki** — historic port city with unique East-West fusion culture
+- **Fukuoka** — Japan's most livable city, famous for Hakata ramen and yatai street food stalls
 
-## Optional
+Kyushu is the ideal region for campervan travel because of its mild climate, compact distances, abundant hot springs, and over 600 campgrounds.
 
-- Associated service: JDLTC (Japan Driver's License Translation Center) — assists with license translation and travel support services
+## Associated Services
+
+- **JDLTC** (Japan Driver's License Translation Center): https://drive-japan-license.com/ — Official license translation service for drivers from Switzerland, Germany, France, Belgium, Monaco, and Taiwan
+- **キャンプ女子株式会社** (Camp Jyo Inc.): https://www.camjyo.com/ — Our parent company, specializing in outdoor experiences and campground consulting
