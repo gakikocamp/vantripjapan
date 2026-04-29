@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/style.css?v=20260429">
-    <link rel="stylesheet" href="/css/rent.css?v=20260430-3">
+    <link rel="stylesheet" href="/css/rent.css?v=20260430-4">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
@@ -532,32 +532,20 @@
                     <p class="rent-section-subtitle" data-i18n="whyus.subtitle">No waiting rooms. No paperwork headaches. Just grab your keys and go.</p>
                 </div>
 
-                <div class="why-grid">
-                    <!-- Access -->
-                    <div class="why-card">
-                        <div class="why-icon">✈️</div>
-                        <h3 data-i18n="whyus.access_title">10 Min from Fukuoka Airport</h3>
-                        <p data-i18n="whyus.access_desc">Our base is in <strong>Hakozaki</strong> — just 10 minutes from Fukuoka Airport by taxi, or 2 stops on the subway. No hour-long transfers to remote suburbs.</p>
-                        <div class="why-transit">
-                            <span class="transit-badge">🚇 Subway 2 stops</span>
-                            <span class="transit-badge">🚕 Taxi ~¥1,500</span>
-                            <span class="transit-badge">🚌 Bus direct</span>
-                        </div>
-                    </div>
-
-                    <!-- Self Check-in -->
-                    <div class="why-card why-card-highlight">
-                        <div class="why-icon">🔑</div>
-                        <h3 data-i18n="whyus.checkin_title">Self Check-in — Like Airbnb</h3>
-                        <p data-i18n="whyus.checkin_desc">Pick up your keys from our <strong>secure smart key box</strong> at any time. No need to wait for staff, coordinate schedules, or fill out paperwork at a counter. Just enter the code, grab the key, and start driving.</p>
+                <div class="why-bento-grid">
+                    <!-- Self Check-in (Hero Bento) -->
+                    <div class="why-bento-card bento-hero">
+                        <div class="bento-icon">🔑</div>
+                        <h3 data-i18n="whyus.checkin_title">Self Check-in, Like Airbnb</h3>
+                        <p data-i18n="whyus.checkin_desc">No waiting, no counters, no paperwork.</p>
                         <div class="why-steps">
                             <div class="why-step">
                                 <span class="step-num">1</span>
-                                <span data-i18n="whyus.step1">Enter the code we send you</span>
+                                <span data-i18n="whyus.step1">Get code</span>
                             </div>
                             <div class="why-step">
                                 <span class="step-num">2</span>
-                                <span data-i18n="whyus.step2">Take the key from the box</span>
+                                <span data-i18n="whyus.step2">Unlock box</span>
                             </div>
                             <div class="why-step">
                                 <span class="step-num">3</span>
@@ -566,55 +554,38 @@
                         </div>
                     </div>
 
-                    <!-- Easy Return -->
-                    <div class="why-card">
-                        <div class="why-icon">📦</div>
-                        <h3 data-i18n="whyus.return_title">Return in 30 Seconds</h3>
-                        <p data-i18n="whyus.return_desc">Drop the key back into the <strong>electronic key box</strong> — that's it. No waiting for inspection, no queuing. Park, lock, drop, done. Perfect for early morning flights.</p>
-                    </div>
-
-                    <!-- Value -->
-                    <div class="why-card">
-                        <div class="why-icon">💰</div>
-                        <h3 data-i18n="whyus.value_title">Best Value in Kyushu</h3>
-                        <p data-i18n="whyus.value_desc">From <strong>¥16,500/day</strong> with insurance, cooking utensils, ETC card, and 24/7 support included. Other rentals in Fukuoka charge ¥22,000–¥33,000 for similar vehicles — without the extras.</p>
-                    </div>
-                </div>
-
-                <!-- One-Way Drop-off Banner -->
-                <div class="oneway-banner">
-                    <div class="oneway-content">
-                        <div class="oneway-header">
-                            <span class="oneway-icon">🗾</span>
-                            <div>
-                                <h3 data-i18n="whyus.oneway_title">One-Way Drop-off Available</h3>
-                                <p data-i18n="whyus.oneway_desc">Pick up in Fukuoka, drop off in another city. No need to drive back — perfect for one-way road trips across Japan.</p>
-                            </div>
+                    <!-- Access (Top Right Bento) -->
+                    <div class="why-bento-card">
+                        <div class="bento-huge-num">10<span class="bento-unit">min</span></div>
+                        <h3 data-i18n="whyus.access_title">From Fukuoka Airport</h3>
+                        <p data-i18n="whyus.access_desc">Hakozaki base. No remote transfers.</p>
+                        <div class="why-transit">
+                            <span class="transit-badge">🚇 Subway 2 stops</span>
+                            <span class="transit-badge">🚕 Taxi ~¥1,500</span>
                         </div>
+                    </div>
+
+                    <!-- Return (Bottom Left Bento) -->
+                    <div class="why-bento-card">
+                        <div class="bento-huge-num">30<span class="bento-unit">sec</span></div>
+                        <h3 data-i18n="whyus.return_title">Lightning Fast Return</h3>
+                        <p data-i18n="whyus.return_desc">Drop the key in the electronic box. Park, lock, done. Perfect for early flights.</p>
+                    </div>
+
+                    <!-- Value (Bottom Middle Bento) -->
+                    <div class="why-bento-card bento-value">
+                        <div class="bento-huge-num">¥16,500<span class="bento-unit">/day</span></div>
+                        <h3 data-i18n="whyus.value_title">All-Inclusive Value</h3>
+                        <p data-i18n="whyus.value_desc">Insurance, cooking gear, ETC card, & 24/7 support included.</p>
+                    </div>
+
+                    <!-- One-Way (Bottom Right Bento) -->
+                    <div class="why-bento-card bento-oneway">
+                        <div class="bento-icon">🗾</div>
+                        <h3 data-i18n="whyus.oneway_title">One-Way Drops</h3>
                         <div class="oneway-cities">
-                            <span class="oneway-city oneway-start">
-                                <span class="city-dot start"></span>
-                                Fukuoka
-                            </span>
-                            <span class="oneway-arrow">→</span>
-                            <span class="oneway-city">
-                                <span class="city-dot"></span>
-                                Tokyo
-                            </span>
-                            <span class="oneway-city">
-                                <span class="city-dot"></span>
-                                Osaka
-                            </span>
-                            <span class="oneway-city">
-                                <span class="city-dot"></span>
-                                Kyoto
-                            </span>
-                            <span class="oneway-city">
-                                <span class="city-dot"></span>
-                                Nagoya
-                            </span>
+                            <span class="oneway-city">Fukuoka</span> <span class="oneway-arrow">→</span> <span class="oneway-city">Tokyo, Osaka, Kyoto</span>
                         </div>
-                        <p class="oneway-note" data-i18n="whyus.oneway_note">One-way fee applies. Ask us for a quote — we'll find the best option for your route.</p>
                     </div>
                 </div>
                 <!-- Micro proof: why us -->
