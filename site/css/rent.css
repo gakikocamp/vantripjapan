@@ -2468,25 +2468,48 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     gap: 16px;
-    padding: 20px 24px;
-    scrollbar-width: none; /* Firefox */
+    
+    /* Pull out of container padding to achieve full screen bleed */
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 20px 20px 40px; /* Add bottom padding for shadow */
+    
+    scrollbar-width: none;
+}
+
+@media (max-width: 768px) {
+    .dest-scroll {
+        margin-left: -16px;
+        margin-right: -16px;
+        padding: 20px 16px 40px;
+        gap: 12px;
+    }
 }
 
 .dest-scroll::-webkit-scrollbar {
-    display: none; /* Chrome/Safari/Edge */
+    display: none;
 }
 
 .dest-card {
-    flex: 0 0 calc(100vw - 48px); /* Full width minus padding on mobile */
-    max-width: 400px; /* Cap width on desktop */
-    height: 60vh; /* Make it tall and immersive */
-    min-height: 400px;
+    flex: 0 0 calc(100vw - 40px);
+    max-width: 320px; /* Better size on desktop/tablet */
+    height: 55vh;
+    min-height: 380px;
+    max-height: 480px;
     scroll-snap-align: center;
     position: relative;
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
     background: #000;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+    transform: translateZ(0); /* Hardware acceleration */
+    will-change: transform;
+}
+
+@media (max-width: 768px) {
+    .dest-card {
+        flex: 0 0 calc(100vw - 32px); /* Leaves exactly 16px padding on left/right */
+    }
 }
 
 .dest-card img {
@@ -2494,7 +2517,7 @@
     height: 100%;
     object-fit: cover;
     opacity: 0.85;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .dest-card:hover img {
@@ -2506,9 +2529,10 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 40px 24px 24px;
+    padding: 60px 24px 24px;
     background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
     color: white;
+    pointer-events: none;
 }
 
 .dest-card-tag {
@@ -2516,19 +2540,21 @@
     top: 16px;
     left: 16px;
     background: rgba(255, 255, 255, 0.95);
-    color: var(--rent-text);
+    color: var(--rent-forest);
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 13px;
-    font-weight: 600;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .dest-card-name {
     font-size: 32px;
     font-weight: 700;
     font-family: 'Playfair Display', serif;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
