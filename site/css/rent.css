@@ -2461,42 +2461,99 @@
     box-shadow: 0 12px 30px rgba(44, 44, 44, 0.1);
 }
 
-/* ── Destinations Slideshow ── */
-.dest-scroll {
+/* ── Trust Strip ── */
+.trust-strip-container {
+    padding: 32px 20px;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.trust-strip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    max-width: 100%;
+}
+
+.trust-strip-inner {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 16px;
-    
-    /* Pull out of container padding to achieve full screen bleed */
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: var(--rent-text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.trust-strip-stars {
+    color: #F59E0B;
+    letter-spacing: 2px;
+}
+
+.trust-strip-stars strong {
+    color: var(--rent-text);
+    margin-left: 4px;
+    letter-spacing: normal;
+}
+
+.trust-strip-sep {
+    color: #CBD5E1;
+}
+
+/* ── Destinations Slideshow (Infinite Marquee) ── */
+.dest-scroll {
+    overflow: hidden; /* Hide scrollbars, disable manual scroll */
     margin-left: -20px;
     margin-right: -20px;
-    padding: 20px 20px 40px; /* Add bottom padding for shadow */
-    
-    scrollbar-width: none;
+    padding: 20px 0 40px; /* Top and bottom padding only */
+    position: relative;
+    /* To handle touch devices better */
+    touch-action: pan-y;
 }
 
 @media (max-width: 768px) {
     .dest-scroll {
         margin-left: -16px;
         margin-right: -16px;
-        padding: 20px 16px 40px;
-        gap: 12px;
     }
 }
 
-.dest-scroll::-webkit-scrollbar {
-    display: none;
+.dest-track {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    animation: marquee 35s linear infinite;
+    /* Add starting padding */
+    padding-left: 16px;
+}
+
+/* Pause animation on hover or touch */
+.dest-scroll:hover .dest-track,
+.dest-scroll:active .dest-track {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50% - 8px)); /* 50% of the track minus half the gap */
+    }
 }
 
 .dest-card {
     flex: 0 0 calc(100vw - 40px);
-    max-width: 320px; /* Better size on desktop/tablet */
+    max-width: 320px;
     height: 55vh;
     min-height: 380px;
     max-height: 480px;
-    scroll-snap-align: center;
     position: relative;
     border-radius: 20px;
     overflow: hidden;

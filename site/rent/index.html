@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/style.css?v=20260429">
-    <link rel="stylesheet" href="/css/rent.css?v=20260430-2">
+    <link rel="stylesheet" href="/css/rent.css?v=20260430-3">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
@@ -334,70 +334,127 @@
         </div>
 
         <!-- ═══ TRUST STRIP ═══ -->
-        <div class="trust-strip">
-            <div class="trust-strip-inner">
-                <span class="trust-strip-stars">★★★★★ <strong>4.9</strong></span>
-                <span class="trust-strip-sep">·</span>
-                <span data-i18n="trust.reviews">47+ happy travelers</span>
-                <span class="trust-strip-sep">·</span>
-                <span data-i18n="trust.countries">Guests from 🇩🇪 🇫🇷 🇬🇧 🇦🇺 🇸🇬 🇹🇼 🇮🇱 and more</span>
+        <div class="trust-strip-container">
+            <div class="trust-strip">
+                <div class="trust-strip-inner">
+                    <span class="trust-strip-stars">★★★★★ <strong>4.9</strong></span>
+                    <span class="trust-strip-sep">·</span>
+                    <span data-i18n="trust.reviews">47+ happy travelers</span>
+                    <span class="trust-strip-sep">·</span>
+                    <span data-i18n="trust.countries">Guests from 🇩🇪 🇫🇷 🇬🇧 🇦🇺 🇸🇬 🇹🇼 🇮🇱 and more</span>
+                </div>
             </div>
         </div>
 
         <!-- ═══ KYUSHU DESTINATIONS ═══ -->
-        <section class="kyushu-destinations">
-            <div class="kyushu-dest-header">
-                <span class="rent-badge">🗾 Explore Kyushu</span>
-                <h2 data-i18n="dest.title">Where Will You Go?</h2>
-                <p data-i18n="dest.subtitle">All within a day’s drive from Fukuoka. Swipe to explore →</p>
+        <section class="kyushu-destinations" style="padding: 80px 0; overflow: hidden;">
+            <div class="rent-container">
+                <div class="rent-section-header">
+                    <span class="rent-badge">🗾 Explore Kyushu</span>
+                    <h2 data-i18n="dest.title">Where Will You Go?</h2>
+                    <p data-i18n="dest.subtitle">All within a day’s drive from Fukuoka. Swipe to explore →</p>
+                </div>
             </div>
             <div class="dest-scroll">
-                <div class="dest-card">
-                    <img src="/images/rent/destinations/aso.png" alt="Mount Aso volcanic caldera, Kyushu" loading="lazy">
-                    <span class="dest-card-tag">🌋 <span data-i18n="dest.volcano">Volcano</span></span>
-                    <div class="dest-card-overlay">
-                        <div class="dest-card-name" data-i18n="dest.aso">Aso</div>
-                        <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.aso">2h from Fukuoka</span></div>
+                <div class="dest-track">
+                    <!-- Set 1 -->
+                    <div class="dest-card">
+                        <img src="/images/rent/destinations/aso.png" alt="Mount Aso volcanic caldera, Kyushu" loading="lazy">
+                        <span class="dest-card-tag">🌋 <span data-i18n="dest.volcano">Volcano</span></span>
+                        <div class="dest-card-overlay">
+                            <div class="dest-card-name" data-i18n="dest.aso">Aso</div>
+                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.aso">2h from Fukuoka</span></div>
+                        </div>
                     </div>
-                </div>
-                <div class="dest-card">
-                    <img src="/images/rent/destinations/beppu.png" alt="Beppu hot spring town with steam rising" loading="lazy">
-                    <span class="dest-card-tag">♨️ <span data-i18n="dest.onsen">Onsen</span></span>
-                    <div class="dest-card-overlay">
-                        <div class="dest-card-name" data-i18n="dest.beppu">Beppu</div>
-                        <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.beppu">2.5h from Fukuoka</span></div>
+                    <div class="dest-card">
+                        <img src="/images/rent/destinations/beppu.png" alt="Beppu hot spring town with steam rising" loading="lazy">
+                        <span class="dest-card-tag">♨️ <span data-i18n="dest.onsen">Onsen</span></span>
+                        <div class="dest-card-overlay">
+                            <div class="dest-card-name" data-i18n="dest.beppu">Beppu</div>
+                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.beppu">2.5h from Fukuoka</span></div>
+                        </div>
                     </div>
-                </div>
-                <div class="dest-card">
-                    <img src="/images/rent/destinations/itoshima.png" alt="Itoshima beach sunset with torii gate" loading="lazy">
-                    <span class="dest-card-tag">🌊 <span data-i18n="dest.coast">Coast</span></span>
-                    <div class="dest-card-overlay">
-                        <div class="dest-card-name" data-i18n="dest.itoshima">Itoshima</div>
-                        <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.itoshima">40 min from Fukuoka</span></div>
+                    <div class="dest-card">
+                        <img src="/images/rent/destinations/itoshima.png" alt="Itoshima beach sunset with torii gate" loading="lazy">
+                        <span class="dest-card-tag">🌊 <span data-i18n="dest.coast">Coast</span></span>
+                        <div class="dest-card-overlay">
+                            <div class="dest-card-name" data-i18n="dest.itoshima">Itoshima</div>
+                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.itoshima">40 min from Fukuoka</span></div>
+                        </div>
                     </div>
-                </div>
-                <div class="dest-card">
-                    <img src="/images/rent/destinations/yakushima.png" alt="Ancient cedar forest on Yakushima island" loading="lazy">
-                    <span class="dest-card-tag">🌿 <span data-i18n="dest.unesco">UNESCO</span></span>
-                    <div class="dest-card-overlay">
-                        <div class="dest-card-name" data-i18n="dest.yakushima">Yakushima</div>
-                        <div class="dest-card-drive">⛴️ <span data-i18n="dest.drive.yakushima">Ferry from Kagoshima</span></div>
+                    <div class="dest-card">
+                        <img src="/images/rent/destinations/yakushima.png" alt="Ancient cedar forest on Yakushima island" loading="lazy">
+                        <span class="dest-card-tag">🌿 <span data-i18n="dest.unesco">UNESCO</span></span>
+                        <div class="dest-card-overlay">
+                            <div class="dest-card-name" data-i18n="dest.yakushima">Yakushima</div>
+                            <div class="dest-card-drive">⛴️ <span data-i18n="dest.drive.yakushima">Ferry from Kagoshima</span></div>
+                        </div>
                     </div>
-                </div>
-                <div class="dest-card">
-                    <img src="/images/rent/destinations/takachiho.png" alt="Takachiho Gorge with emerald water and boats" loading="lazy">
-                    <span class="dest-card-tag">⛩️ <span data-i18n="dest.sacred">Sacred</span></span>
-                    <div class="dest-card-overlay">
-                        <div class="dest-card-name" data-i18n="dest.takachiho">Takachiho</div>
-                        <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.takachiho">3h from Fukuoka</span></div>
+                    <div class="dest-card">
+                        <img src="/images/rent/destinations/takachiho.png" alt="Takachiho Gorge with emerald water and boats" loading="lazy">
+                        <span class="dest-card-tag">⛩️ <span data-i18n="dest.sacred">Sacred</span></span>
+                        <div class="dest-card-overlay">
+                            <div class="dest-card-name" data-i18n="dest.takachiho">Takachiho</div>
+                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.takachiho">3h from Fukuoka</span></div>
+                        </div>
                     </div>
-                </div>
-                <div class="dest-card">
-                    <img src="/images/rent/destinations/ibusuki.png" alt="Ibusuki sand bath with Sakurajima volcano" loading="lazy">
-                    <span class="dest-card-tag">🏖️ <span data-i18n="dest.sandbath">Sand Bath</span></span>
-                    <div class="dest-card-overlay">
-                        <div class="dest-card-name" data-i18n="dest.ibusuki">Ibusuki</div>
-                        <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.ibusuki">4h from Fukuoka</span></div>
+                    <div class="dest-card">
+                        <img src="/images/rent/destinations/ibusuki.png" alt="Ibusuki sand bath with Sakurajima volcano" loading="lazy">
+                        <span class="dest-card-tag">🏖️ <span data-i18n="dest.sandbath">Sand Bath</span></span>
+                        <div class="dest-card-overlay">
+                            <div class="dest-card-name" data-i18n="dest.ibusuki">Ibusuki</div>
+                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.ibusuki">4h from Fukuoka</span></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Set 2 (Duplicated for Infinite Marquee) -->
+                    <div class="dest-card" aria-hidden="true">
+                        <img src="/images/rent/destinations/aso.png" alt="Mount Aso volcanic caldera, Kyushu" loading="lazy">
+                        <span class="dest-card-tag">🌋 <span data-i18n="dest.volcano">Volcano</span></span>
+                        <div class="dest-card-overlay">
+                            <div class="dest-card-name" data-i18n="dest.aso">Aso</div>
+                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.aso">2h from Fukuoka</span></div>
+                        </div>
+                    </div>
+                    <div class="dest-card" aria-hidden="true">
+                        <img src="/images/rent/destinations/beppu.png" alt="Beppu hot spring town with steam rising" loading="lazy">
+                        <span class="dest-card-tag">♨️ <span data-i18n="dest.onsen">Onsen</span></span>
+                        <div class="dest-card-overlay">
+                            <div class="dest-card-name" data-i18n="dest.beppu">Beppu</div>
+                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.beppu">2.5h from Fukuoka</span></div>
+                        </div>
+                    </div>
+                    <div class="dest-card" aria-hidden="true">
+                        <img src="/images/rent/destinations/itoshima.png" alt="Itoshima beach sunset with torii gate" loading="lazy">
+                        <span class="dest-card-tag">🌊 <span data-i18n="dest.coast">Coast</span></span>
+                        <div class="dest-card-overlay">
+                            <div class="dest-card-name" data-i18n="dest.itoshima">Itoshima</div>
+                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.itoshima">40 min from Fukuoka</span></div>
+                        </div>
+                    </div>
+                    <div class="dest-card" aria-hidden="true">
+                        <img src="/images/rent/destinations/yakushima.png" alt="Ancient cedar forest on Yakushima island" loading="lazy">
+                        <span class="dest-card-tag">🌿 <span data-i18n="dest.unesco">UNESCO</span></span>
+                        <div class="dest-card-overlay">
+                            <div class="dest-card-name" data-i18n="dest.yakushima">Yakushima</div>
+                            <div class="dest-card-drive">⛴️ <span data-i18n="dest.drive.yakushima">Ferry from Kagoshima</span></div>
+                        </div>
+                    </div>
+                    <div class="dest-card" aria-hidden="true">
+                        <img src="/images/rent/destinations/takachiho.png" alt="Takachiho Gorge with emerald water and boats" loading="lazy">
+                        <span class="dest-card-tag">⛩️ <span data-i18n="dest.sacred">Sacred</span></span>
+                        <div class="dest-card-overlay">
+                            <div class="dest-card-name" data-i18n="dest.takachiho">Takachiho</div>
+                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.takachiho">3h from Fukuoka</span></div>
+                        </div>
+                    </div>
+                    <div class="dest-card" aria-hidden="true">
+                        <img src="/images/rent/destinations/ibusuki.png" alt="Ibusuki sand bath with Sakurajima volcano" loading="lazy">
+                        <span class="dest-card-tag">🏖️ <span data-i18n="dest.sandbath">Sand Bath</span></span>
+                        <div class="dest-card-overlay">
+                            <div class="dest-card-name" data-i18n="dest.ibusuki">Ibusuki</div>
+                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.ibusuki">4h from Fukuoka</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
