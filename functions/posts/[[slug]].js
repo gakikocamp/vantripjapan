@@ -37,11 +37,39 @@ function detectLang(article) {
   return 'en';
 }
 
+function resolveImageUrl(src) {
+  if (!src) return '';
+  if (src.startsWith('http')) return src;
+  return `https://vantripjapan.jp${src.startsWith('/') ? '' : '/'}${src}`;
+}
+
+function extractFaqSchema(body) {
+  if (!body) return '';
+  // Look for FAQ data attribute in article body
+  const faqMatch = body.match(/<!--FAQ_SCHEMA:(.*?)-->/s);
+  if (!faqMatch) return '';
+  try {
+    const faqData = JSON.parse(faqMatch[1]);
+    return `
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": ${JSON.stringify(faqData)}
+  }
+  </script>`;
+  } catch (e) {
+    return '';
+  }
+}
+
 function renderArticlePage(article) {
   const dateFormatted = formatDate(article.published_at);
   const readTime = estimateReadTime(article.body);
   const canonicalUrl = `https://vantripjapan.jp/posts/${article.slug}/`;
   const lang = detectLang(article);
+  const imageUrl = resolveImageUrl(article.cover_image);
+  const faqSchema = extractFaqSchema(article.body);
 
   return `<!DOCTYPE html>
 <html lang="${lang}">
@@ -53,13 +81,14 @@ function renderArticlePage(article) {
   <meta property="og:title" content="${escHtml(article.title)}">
   <meta property="og:description" content="${escHtml(article.excerpt)}">
   <meta property="og:type" content="article">
-  <meta property="og:image" content="${escHtml(article.cover_image)}">
+  <meta property="og:image" content="${imageUrl}">
   <meta property="og:url" content="${canonicalUrl}">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="${imageUrl}">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="${canonicalUrl}">
   <link rel="icon" type="image/png" href="/images/favicon.png">
-  <link rel="stylesheet" href="/css/style.css?v=20260413">
+  <link rel="stylesheet" href="/css/style.css?v=20260504">
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
@@ -70,7 +99,7 @@ function renderArticlePage(article) {
     "@type": "Article",
     "headline": "${escHtml(article.title).replace(/"/g, '\\"')}",
     "description": "${escHtml(article.excerpt).replace(/"/g, '\\"')}",
-    "image": "${escHtml(article.cover_image)}",
+    "image": "${imageUrl}",
     "author": {"@type": "Organization", "name": "VanTripJapan"},
     "publisher": {"@type": "Organization", "name": "VanTripJapan", "logo": {"@type": "ImageObject", "url": "https://vantripjapan.jp/images/hero-vanlife.png"}},
     "datePublished": "${article.published_at || ''}",
@@ -79,7 +108,7 @@ function renderArticlePage(article) {
     "articleSection": "${escHtml(article.category || '').replace(/"/g, '\\"')}",
     "inLanguage": "${lang}"
   }
-  </script>
+  </script>${faqSchema}
 </head>
 <body>
 
