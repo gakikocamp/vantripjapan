@@ -188,6 +188,86 @@
       ]
     }
     </script>
+    <!-- Structured Data: Individual Reviews -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Review",
+        "itemReviewed": {"@type": "LocalBusiness", "name": "VanTripJapan"},
+        "author": {"@type": "Person", "name": "Thomas K."},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "We explored Aso, Beppu, and the Kunisaki Peninsula over 7 days. The van was spotless, well-equipped, and the pickup at Hakozaki was incredibly smooth. This was our third time in Japan but the first time we truly felt free. Absolutely recommend!",
+        "datePublished": "2026-02-15"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Review",
+        "itemReviewed": {"@type": "LocalBusiness", "name": "VanTripJapan"},
+        "author": {"@type": "Person", "name": "Marie & Julien"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "14 jours incroyables à Kyushu ! Le camping-car avait tout ce qu'il fallait. On a dormi au bord de la mer à Yakushima et aux pieds des montagnes d'Aso. Le support multilingue en français était un vrai plus. Merci VanTripJapan !",
+        "datePublished": "2026-01-20"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Review",
+        "itemReviewed": {"@type": "LocalBusiness", "name": "VanTripJapan"},
+        "author": {"@type": "Person", "name": "James & Emily"},
+        "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+        "reviewBody": "We drove from Fukuoka all the way to Kagoshima and back through the mountains. The onsen stops along the way were incredible — nothing beats a hot spring after a full day of driving. The team helped us plan the whole route. Best holiday we've ever had!",
+        "datePublished": "2025-12-10"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Review",
+        "itemReviewed": {"@type": "LocalBusiness", "name": "VanTripJapan"},
+        "author": {"@type": "Person", "name": "Sarah L."},
+        "reviewRating": {"@type": "Rating", "ratingValue": "4", "bestRating": "5"},
+        "reviewBody": "As a solo female traveler, I felt completely safe. The Probox was perfect for one person — compact but had everything I needed. The roadside stations (Michi-no-Eki) were amazing for parking overnight. Only wish I'd booked longer!",
+        "datePublished": "2026-03-05"
+      }
+    ]
+    </script>
+    <!-- Structured Data: Service -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Campervan Rental",
+      "name": "VanTripJapan Campervan Rental Service",
+      "description": "All-inclusive campervan rental for international travelers in Kyushu, Japan. Pickup from Fukuoka, insurance included, multilingual support.",
+      "provider": {
+        "@type": "Organization",
+        "name": "VanTripJapan",
+        "url": "https://vantripjapan.jp"
+      },
+      "areaServed": [
+        {"@type": "Place", "name": "Kyushu, Japan"},
+        {"@type": "Place", "name": "Fukuoka, Japan"}
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Campervan Fleet",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {"@type": "Product", "name": "Roof Tent Probox — Compact Explorer for Couples"},
+            "price": "16500",
+            "priceCurrency": "JPY",
+            "priceSpecification": {"@type": "UnitPriceSpecification", "price": "16500", "priceCurrency": "JPY", "unitText": "DAY"}
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {"@type": "Product", "name": "Bed Bongo Brawny — Hand-Built Family Cruiser"},
+            "price": "22000",
+            "priceCurrency": "JPY",
+            "priceSpecification": {"@type": "UnitPriceSpecification", "price": "22000", "priceCurrency": "JPY", "unitText": "DAY"}
+          }
+        ]
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -254,12 +334,12 @@
 
             <div class="rent-hero-inner">
                 <div class="rent-hero-text">
-                    <p class="hero-eyebrow anim-slide-up" data-i18n="hero.eyebrow">Family-Run · Hand-Built Vans · Since 2022</p>
+                    <p class="hero-eyebrow anim-slide-up" data-i18n="hero.eyebrow">Campervan Rental Fukuoka · Family-Run · Since 2022</p>
                     <h1 class="anim-slide-up anim-d2">
-                        <span data-i18n="hero.title1">Your Japanese Road Trip</span><br>
-                        <span class="hero-highlight" data-i18n="hero.title2">Starts Here</span>
+                        <span data-i18n="hero.title1">Campervan Rental in Fukuoka</span><br>
+                        <span class="hero-highlight" data-i18n="hero.title2">Your Kyushu Road Trip Starts Here</span>
                     </h1>
-                    <p class="hero-tagline anim-slide-up anim-d3" data-i18n="hero.tagline">A small family team in Fukuoka. Hand-built campervans. Local knowledge you can't find online. Real adventures off the beaten path.</p>
+                    <p class="hero-tagline anim-slide-up anim-d3" data-i18n="hero.tagline">A small family team in Fukuoka. Hand-built campervans with all-inclusive pricing from ¥16,500/day. Local knowledge you can't find online. Real adventures off the beaten path.</p>
 
                     <!-- Trust Badge -->
                     <div class="hero-trust-badge anim-slide-up anim-d4">
@@ -346,6 +426,14 @@
             </div>
         </div>
 
+        <!-- ═══ SUMMER SEASONAL BANNER ═══ -->
+        <div class="summer-banner" style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb347 100%); padding: 16px 20px; text-align: center; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2220%22 cy=%2230%22 r=%2240%22 fill=%22rgba(255,255,255,0.05)%22/><circle cx=%2280%22 cy=%2270%22 r=%2250%22 fill=%22rgba(255,255,255,0.03)%22/></svg>'); pointer-events: none;"></div>
+            <p style="margin: 0; color: white; font-size: 15px; font-weight: 600; position: relative; z-index: 1;" data-i18n="summer.banner">
+                🌞 <strong>Summer Perk (Jun–Sep):</strong> Free portable battery fan included with every rental — stay cool at Michi-no-Eki & campgrounds!
+            </p>
+        </div>
+
         <!-- ═══ KYUSHU DESTINATIONS ═══ -->
         <section class="kyushu-destinations" style="padding: 80px 0; overflow: hidden;">
             <div class="rent-container">
@@ -358,30 +446,30 @@
             <div class="dest-scroll">
                 <div class="dest-track">
                     <!-- Set 1 -->
-                    <div class="dest-card">
+                    <a href="/posts/aso-campervan-guide" class="dest-card">
                         <img src="/images/rent/destinations/aso.png" alt="Mount Aso volcanic caldera, Kyushu" loading="lazy">
                         <span class="dest-card-tag">🌋 <span data-i18n="dest.volcano">Volcano</span></span>
                         <div class="dest-card-overlay">
                             <div class="dest-card-name" data-i18n="dest.aso">Aso</div>
                             <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.aso">2h from Fukuoka</span></div>
                         </div>
-                    </div>
-                    <div class="dest-card">
+                    </a>
+                    <a href="/posts/beppu-campervan-guide" class="dest-card">
                         <img src="/images/rent/destinations/beppu.png" alt="Beppu hot spring town with steam rising" loading="lazy">
                         <span class="dest-card-tag">♨️ <span data-i18n="dest.onsen">Onsen</span></span>
                         <div class="dest-card-overlay">
                             <div class="dest-card-name" data-i18n="dest.beppu">Beppu</div>
                             <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.beppu">2.5h from Fukuoka</span></div>
                         </div>
-                    </div>
-                    <div class="dest-card">
+                    </a>
+                    <a href="/posts/itoshima-campervan-guide" class="dest-card">
                         <img src="/images/rent/destinations/itoshima.png" alt="Itoshima beach sunset with torii gate" loading="lazy">
                         <span class="dest-card-tag">🌊 <span data-i18n="dest.coast">Coast</span></span>
                         <div class="dest-card-overlay">
                             <div class="dest-card-name" data-i18n="dest.itoshima">Itoshima</div>
                             <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.itoshima">40 min from Fukuoka</span></div>
                         </div>
-                    </div>
+                    </a>
                     <div class="dest-card">
                         <img src="/images/rent/destinations/yakushima.png" alt="Ancient cedar forest on Yakushima island" loading="lazy">
                         <span class="dest-card-tag">🌿 <span data-i18n="dest.unesco">UNESCO</span></span>
@@ -408,30 +496,30 @@
                     </div>
                     
                     <!-- Set 2 (Duplicated for Infinite Marquee) -->
-                    <div class="dest-card" aria-hidden="true">
+                    <a href="/posts/aso-campervan-guide" class="dest-card" aria-hidden="true">
                         <img src="/images/rent/destinations/aso.png" alt="Mount Aso volcanic caldera, Kyushu" loading="lazy">
                         <span class="dest-card-tag">🌋 <span data-i18n="dest.volcano">Volcano</span></span>
                         <div class="dest-card-overlay">
                             <div class="dest-card-name" data-i18n="dest.aso">Aso</div>
                             <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.aso">2h from Fukuoka</span></div>
                         </div>
-                    </div>
-                    <div class="dest-card" aria-hidden="true">
+                    </a>
+                    <a href="/posts/beppu-campervan-guide" class="dest-card" aria-hidden="true">
                         <img src="/images/rent/destinations/beppu.png" alt="Beppu hot spring town with steam rising" loading="lazy">
                         <span class="dest-card-tag">♨️ <span data-i18n="dest.onsen">Onsen</span></span>
                         <div class="dest-card-overlay">
                             <div class="dest-card-name" data-i18n="dest.beppu">Beppu</div>
                             <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.beppu">2.5h from Fukuoka</span></div>
                         </div>
-                    </div>
-                    <div class="dest-card" aria-hidden="true">
+                    </a>
+                    <a href="/posts/itoshima-campervan-guide" class="dest-card" aria-hidden="true">
                         <img src="/images/rent/destinations/itoshima.png" alt="Itoshima beach sunset with torii gate" loading="lazy">
                         <span class="dest-card-tag">🌊 <span data-i18n="dest.coast">Coast</span></span>
                         <div class="dest-card-overlay">
                             <div class="dest-card-name" data-i18n="dest.itoshima">Itoshima</div>
                             <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.itoshima">40 min from Fukuoka</span></div>
                         </div>
-                    </div>
+                    </a>
                     <div class="dest-card" aria-hidden="true">
                         <img src="/images/rent/destinations/yakushima.png" alt="Ancient cedar forest on Yakushima island" loading="lazy">
                         <span class="dest-card-tag">🌿 <span data-i18n="dest.unesco">UNESCO</span></span>
@@ -491,6 +579,7 @@
                             <div class="spec-item">🅿️ <span data-i18n="vehicles.spec_park">Easy to park</span></div>
                             <div class="spec-item">📱 <span data-i18n="vehicles.spec_power">Portable power</span></div>
                             <div class="spec-item">🪑 <span data-i18n="vehicles.spec_chairs">Camping chairs</span></div>
+                            <div class="spec-item" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border: 1px solid #ffb74d;">🌀 <span data-i18n="vehicles.spec_fan">Free fan (Jun–Sep)</span></div>
                         </div>
                         <p class="vehicle-price">¥16,500〜 <small data-i18n="vehicles.perday">/day</small></p>
                         <p class="vehicle-insurance-note" data-i18n="vehicles.insurance_note">🛡️ Insurance included</p>
@@ -510,6 +599,7 @@
                             <div class="spec-item">🔌 <span data-i18n="vehicles.spec_inverter">Power inverter</span></div>
                             <div class="spec-item">💡 <span data-i18n="vehicles.spec_led">LED lighting</span></div>
                             <div class="spec-item">🪑 Camping chairs</div>
+                            <div class="spec-item" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border: 1px solid #ffb74d;">🌀 <span data-i18n="vehicles.spec_fan">Free fan (Jun–Sep)</span></div>
                         </div>
                         <p class="vehicle-price">¥22,000〜 <small data-i18n="vehicles.perday">/day</small></p>
                         <p class="vehicle-insurance-note" data-i18n="vehicles.insurance_note">🛡️ Insurance included</p>
@@ -626,6 +716,7 @@
                             <li><span class="check">🚐</span> <span data-i18n="pricing.item7">Tokyo / Osaka drop-off available (surcharge applies)</span></li>
                             <li><span class="check">✅</span> <span data-i18n="pricing.item6">Multilingual support</span>
                             </li>
+                            <li style="background: linear-gradient(135deg, #fff8e1, #ffecb3); border-radius: 8px; padding: 8px 12px; margin-top: 8px;"><span class="check">🌀</span> <span data-i18n="pricing.item_fan"><strong>Summer Perk (Jun–Sep):</strong> Free portable battery fan — request at booking</span></li>
                         </ul>
 
                         <div class="pricing-notice">
