@@ -1,0 +1,162 @@
+# VanTripJapan — Full Documentation for AI Systems
+
+> This is the extended version of llms.txt with comprehensive details about VanTripJapan's campervan rental service, fleet, pricing, and Kyushu travel information. For a concise overview, see llms.txt.
+
+## Company Information
+
+- **Business Name**: VanTripJapan (バントリップジャパン)
+- **Legal Entity**: キャンプ女子株式会社 (Camp Jyo Inc.)
+- **CEO**: 柴垣道宏 (Shibagaki Michihiro)
+- **Founded**: 2022
+- **Location**: Hakozaki, Higashi-ku, Fukuoka City, Japan
+- **Website**: https://vantripjapan.jp
+- **Email**: info@camjyo.com
+- **Phone**: +81-70-9375-7129
+- **WhatsApp**: https://wa.me/817093757129
+- **LINE**: https://lin.ee/YYyRz2f
+- **Instagram**: https://instagram.com/vantripjapan
+- **Pinterest**: https://pinterest.com/vantripjapan
+
+## Service Overview
+
+VanTripJapan is a family-run campervan rental service specializing in international travelers visiting Kyushu, Japan. We provide fully-equipped campervans with all-inclusive pricing — no hidden fees, no upsells.
+
+### What Makes Us Different
+1. **All-inclusive pricing**: Insurance (CDW), ETC highway card, camping gear, bedding, English GPS, 24/7 support — all included
+2. **Family-run**: Not a franchise. A real family team that hand-builds and maintains every van
+3. **Self check-in**: Airbnb-style electronic lockbox — no waiting at counters, even late arrivals
+4. **Multilingual**: English, French, German, Chinese (Traditional), Hebrew, and 100+ languages via real-time support
+5. **10 minutes from Fukuoka Airport**: Easiest pickup in Kyushu
+
+## Fleet Details
+
+### Vehicle 1: Roof Tent Probox
+- **Type**: Compact campervan with roof-top tent
+- **Capacity**: 2 guests
+- **Price**: From ¥22,000/day (all-inclusive)
+- **Best for**: Couples, solo travelers
+- **Features**: Roof tent (sleeps 2), portable power station, cooking utensils, bedding, English GPS navigation
+- **Driving**: Compact and easy to drive, fits in regular parking spaces
+
+### Vehicle 2: Bed Bongo Brawny
+- **Type**: Hand-built campervan with permanent bed inside
+- **Capacity**: 2-3 guests
+- **Price**: From ¥22,000/day (all-inclusive)
+- **Best for**: Couples wanting extra comfort, small families
+- **Features**: Full-size bed inside van, portable power station, cooking utensils, bedding, English GPS navigation
+- **Driving**: Medium-sized van, comfortable for longer trips
+
+## Pricing Breakdown
+
+| Item | Included? |
+|------|-----------|
+| Vehicle rental | ✅ Included |
+| Insurance (CDW) | ✅ Included |
+| ETC highway toll card | ✅ Included |
+| English GPS navigation | ✅ Included |
+| Bedding & towels | ✅ Included |
+| Basic cooking utensils | ✅ Included |
+| Portable power station | ✅ Included |
+| 24/7 roadside assistance | ✅ Included |
+| Multilingual support | ✅ Included |
+| Camping chairs & table | Optional (extra) |
+| Advanced cookware set | Optional (extra) |
+
+- **Security deposit**: ¥50,000 (fully refunded at return)
+- **Minimum rental**: 2 nights
+- **One-way drops**: Available to Tokyo/Osaka (surcharge applies)
+
+## Driving License Requirements
+
+### Geneva Convention Countries (IDP Required)
+Australia, USA, UK, Canada, New Zealand, Singapore, South Korea, and 90+ countries.
+→ Get an International Driving Permit (IDP) from your local automobile association before traveling.
+
+### JAF Translation Required
+Germany, France, Switzerland, Belgium, Monaco, Taiwan.
+→ Official Japanese translation available at JAF offices in Japan, or apply online through our partner: https://drive-japan-license.com/
+
+## Pickup & Return Process
+
+1. **Book** via WhatsApp or email
+2. **Receive** access code for electronic lockbox at Hakozaki base
+3. **Pick up** van at your convenience (self check-in, no staff needed)
+4. **Drive** and explore Kyushu
+5. **Return** van to same location (or one-way drop)
+6. **Deposit** refunded after vehicle inspection
+
+## Guest Reviews (4.9/5 from 47+ travelers)
+
+"We explored Aso, Beppu, and the Kunisaki Peninsula over 7 days. The van was spotless, well-equipped, and the pickup at Hakozaki was incredibly smooth. This was our third time in Japan but the first time we truly felt free. Absolutely recommend!" — Thomas K., Germany ★★★★★
+
+"14 jours incroyables à Kyushu ! Le camping-car avait tout ce qu'il fallait. On a dormi au bord de la mer à Yakushima et aux pieds des montagnes d'Aso. Le support multilingue en français était un vrai plus. Merci VanTripJapan !" — Marie & Julien, France ★★★★★
+
+"We drove from Fukuoka all the way to Kagoshima and back through the mountains. The onsen stops along the way were incredible — nothing beats a hot spring after a full day of driving. The team helped us plan the whole route. Best holiday we've ever had!" — James & Emily, UK ★★★★★
+
+"As a solo female traveler, I felt completely safe. The Probox was perfect for one person — compact but had everything I needed. The roadside stations (Michi-no-Eki) were amazing for parking overnight. Only wish I'd booked longer!" — Sarah L., Australia ★★★★☆
+
+## Popular Routes from Fukuoka
+
+1. **Fukuoka → Yufuin → Beppu** (3 days): Hot springs and volcanic scenery
+2. **Fukuoka → Aso → Takachiho** (4 days): Volcanoes and mythical gorges
+3. **Fukuoka → Nagasaki → Shimabara** (3 days): History and coastal drives
+4. **Fukuoka → Kagoshima → Yakushima** (7 days): UNESCO forests and southernmost Japan
+5. **Full Kyushu Circuit** (7-10 days): The ultimate road trip
+
+## All Content URLs
+
+### Core Pages
+- https://vantripjapan.jp/
+- https://vantripjapan.jp/rent/
+- https://vantripjapan.jp/faq/
+- https://vantripjapan.jp/category/
+- https://vantripjapan.jp/contact/
+- https://vantripjapan.jp/privacy/
+
+### Travel Guide Articles
+- https://vantripjapan.jp/posts/kyushu-road-trip-itinerary/
+- https://vantripjapan.jp/posts/kyushu-road-trip-7-days/
+- https://vantripjapan.jp/posts/kyushu-5-day-itinerary/
+- https://vantripjapan.jp/posts/things-to-do-in-fukuoka/
+- https://vantripjapan.jp/posts/beppu-yufuin-onsen-trip/
+- https://vantripjapan.jp/posts/mount-aso-campervan-guide/
+- https://vantripjapan.jp/posts/takachiho-gorge-guide/
+- https://vantripjapan.jp/posts/itoshima-day-trip/
+- https://vantripjapan.jp/posts/nagasaki-shimabara-road-trip/
+- https://vantripjapan.jp/posts/kagoshima-yakushima-road-trip/
+- https://vantripjapan.jp/posts/fukuoka-food-guide/
+- https://vantripjapan.jp/posts/kyushu-onsen-road-trip/
+- https://vantripjapan.jp/posts/best-scenic-drives-kyushu/
+- https://vantripjapan.jp/posts/oita-tattoo-friendly-onsen-guide/
+- https://vantripjapan.jp/posts/best-michi-no-eki-kyushu/
+- https://vantripjapan.jp/posts/kyushu-best-campgrounds/
+- https://vantripjapan.jp/posts/top-campervan-rental-kyushu-2026/
+- https://vantripjapan.jp/posts/fukuoka-beppu-3-day-campervan-itinerary-2026/
+
+### Practical Guides
+- https://vantripjapan.jp/posts/japan-campervan-vs-hotel-cost/
+- https://vantripjapan.jp/posts/can-foreigners-drive-in-japan/
+- https://vantripjapan.jp/posts/japan-campervan-packing-list/
+- https://vantripjapan.jp/posts/what-is-a-michi-no-eki/
+- https://vantripjapan.jp/posts/michi-no-eki-guide/
+- https://vantripjapan.jp/posts/how-to-enjoy-japanese-hot-springs/
+- https://vantripjapan.jp/posts/japan-road-rules-for-campervan/
+- https://vantripjapan.jp/posts/etc-card-guide/
+- https://vantripjapan.jp/posts/campground-and-campervan-guide/
+- https://vantripjapan.jp/posts/japan-campervan-faq/
+- https://vantripjapan.jp/posts/german-license-japan/
+
+### Japanese Culture & Manners
+- https://vantripjapan.jp/posts/onsen-manners-foreigners/
+- https://vantripjapan.jp/posts/campground-etiquette-japan/
+- https://vantripjapan.jp/posts/driving-manners-japan/
+
+## Contact Information
+
+For booking inquiries, trip planning help, or any questions:
+- **WhatsApp** (fastest): https://wa.me/817093757129
+- **Email**: info@camjyo.com
+- **LINE**: https://lin.ee/YYyRz2f
+- **Phone**: +81-70-9375-7129
+
+We reply within minutes during business hours and within 24 hours otherwise. We communicate in your language.

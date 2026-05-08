@@ -144,7 +144,7 @@ const translations = {
         "license.sg.item1": "✅ IDP from AA Singapore (~SGD 20, same-day)",
         "license.sg.item2": "✈️ Direct flights: Changi ↔ Fukuoka (3.5 hours)",
         "license.sg.item3": "🚐 Pick up your van 10 min from Fukuoka Airport",
-        "license.sg.item4": "💰 From ~SGD 150/day all-inclusive",
+        "license.sg.item4": "💰 From ~SGD 200/day all-inclusive",
 
         // Pricing
         "pricing.badge": "Transparent Pricing",
@@ -251,7 +251,7 @@ const translations = {
         "license.il.item1": "✅ IDP from MEMSI or any post office (~₪80)",
         "license.il.item2": "✈️ Flights: TLV → Fukuoka via Seoul/Bangkok (~8-12h)",
         "license.il.item3": "🚐 Pick up your van 10 min from Fukuoka Airport",
-        "license.il.item4": "💰 From ~$110 USD/day all-inclusive",
+        "license.il.item4": "💰 From ~$150 USD/day all-inclusive",
 
         // Reviews
         "reviews.badge": "Guest Reviews",
@@ -437,7 +437,7 @@ const translations = {
         "license.sg.item1": "✅ PCI auprès d'AA Singapore (~SGD 20, le jour même)",
         "license.sg.item2": "✈️ Vols directs : Changi ↔ Fukuoka (3h30)",
         "license.sg.item3": "🚐 Récupérez votre van à 10 min de l'aéroport",
-        "license.sg.item4": "💰 À partir de ~SGD 150/jour tout compris",
+        "license.sg.item4": "💰 À partir de ~SGD 200/jour tout compris",
 
         "pricing.badge": "Tarifs Transparents",
         "pricing.title": "Tout Compris, Sans Surprises",
@@ -537,7 +537,7 @@ const translations = {
         "license.il.item1": "✅ PCI auprès de MEMSI ou tout bureau de poste (~₪80)",
         "license.il.item2": "✈️ Vols : TLV → Fukuoka via Séoul/Bangkok (~8-12h)",
         "license.il.item3": "🚐 Récupérez votre van à 10 min de l'aéroport de Fukuoka",
-        "license.il.item4": "💰 Dès ~110 $ USD/jour tout inclus",
+        "license.il.item4": "💰 Dès ~150 $ USD/jour tout inclus",
 
         // Reviews
         "reviews.badge": "Avis clients",
@@ -717,7 +717,7 @@ const translations = {
         "license.sg.item1": "✅ IFÜ bei AA Singapore (~SGD 20, sofort)",
         "license.sg.item2": "✈️ Direktflüge: Changi ↔ Fukuoka (3,5 Std.)",
         "license.sg.item3": "🚐 Van abholen 10 Min. vom Flughafen",
-        "license.sg.item4": "💰 Ab ~SGD 150/Tag all-inclusive",
+        "license.sg.item4": "💰 Ab ~SGD 200/Tag all-inclusive",
 
         "pricing.badge": "Transparente Preise",
         "pricing.title": "All-Inclusive, Keine Überraschungen",
@@ -817,7 +817,7 @@ const translations = {
         "license.il.item1": "✅ IDP von MEMSI oder Postamt (~₪80)",
         "license.il.item2": "✈️ Flüge: TLV → Fukuoka via Seoul/Bangkok (~8-12h)",
         "license.il.item3": "🚐 Abholung 10 Min. vom Flughafen Fukuoka",
-        "license.il.item4": "💰 Ab ~110 $ USD/Tag all-inclusive",
+        "license.il.item4": "💰 Ab ~150 $ USD/Tag all-inclusive",
 
         // Reviews
         "reviews.badge": "Gästebewertungen",
@@ -997,7 +997,7 @@ const translations = {
         "license.sg.item1": "✅ 在AA Singapore取得IDP（約SGD 20，當天取件）",
         "license.sg.item2": "✈️ 直飛：樟宜 ↔ 福岡（3.5小時）",
         "license.sg.item3": "🚐 距福岡機場僅10分鐘取車",
-        "license.sg.item4": "💰 每天約SGD 150起（全包）",
+        "license.sg.item4": "💰 每天約SGD 200起（全包）",
 
         "pricing.badge": "透明定價",
         "pricing.title": "全包價格，沒有驚喜",
@@ -1097,7 +1097,7 @@ const translations = {
         "license.il.item1": "✅ 在MEMSI或郵局取得IDP（約₪80）",
         "license.il.item2": "✈️ 航班：TLV → 福岡（經首爾/曼谷，約8-12小時）",
         "license.il.item3": "🚐 距福岡機場僅10分鐘取車",
-        "license.il.item4": "💰 每天約$110 USD起（全包）",
+        "license.il.item4": "💰 每天約$150 USD起（全包）",
 
         // Reviews
         "reviews.badge": "旅客評價",
@@ -1273,13 +1273,13 @@ const translations = {
         "license.sg.item1": "✅ IDP מ-AA סינגפור (~SGD 20, באותו יום)",
         "license.sg.item2": "✈️ טיסות ישירות: צ'אנגי ↔ פוקואוקה (3.5 שעות)",
         "license.sg.item3": "🚐 אספו את הוואן 10 דק' משדה התעופה",
-        "license.sg.item4": "💰 החל מ-~SGD 150/יום הכל כלול",
+        "license.sg.item4": "💰 החל מ-~SGD 200/יום הכל כלול",
         "license.il.title": "נוסעים ישראלים",
         "license.il.desc": "ישראל היא מדינת אמנת ז'נבה. השיגו רישיון בינלאומי לפני הטיסה.",
         "license.il.item1": "✅ IDP מ-MEMSI או כל סניף דואר (~₪80)",
         "license.il.item2": "✈️ טיסות: TLV → פוקואוקה דרך סיאול/בנגקוק (~8-12 שעות)",
         "license.il.item3": "🚐 אספו את הוואן 10 דק' משדה התעופה",
-        "license.il.item4": "💰 החל מ-~$110 USD ליום הכל כלול",
+        "license.il.item4": "💰 החל מ-~$150 USD ליום הכל כלול",
         "pricing.badge": "תמחור שקוף",
         "pricing.title": "הכל כלול, בלי הפתעות",
         "pricing.subtitle": "כל מה שצריך לטיול כלול במחיר",

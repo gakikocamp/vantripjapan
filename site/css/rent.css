@@ -2725,6 +2725,9 @@
 }
 
 .dest-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
     flex: 0 0 calc(100vw - 40px);
     max-width: 320px;
     height: 55vh;
