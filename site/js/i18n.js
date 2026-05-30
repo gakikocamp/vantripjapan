@@ -98,7 +98,7 @@ const translations = {
         "pricing.deductible": "<strong>Accident Deductible (免責額):</strong> In case of an accident, the driver is responsible for a deductible amount as specified in the rental agreement.",
         "pricing.noc": "<strong>Non-Operation Charge (NOC):</strong> If the vehicle cannot be used due to damage, an additional non-operation charge will apply. Details provided in the rental agreement.",
         "pricing.disclosure_note": "Full details are provided in our <a href=\"/rent/terms/\">Rental Terms & Conditions</a>. We'll explain everything clearly at pick-up — no surprises.",
-        "pricing.summer_perk": "<strong>Free Summer Perks (Jun-Sep):</strong> Window mosquito screens + USB-powered portable fans are included 100% FREE with every rental. Sleep naturally with cool night breezes.",
+        "pricing.summer_perk": "<strong>Free Summer Perks (Jun-Sep):</strong> Window mosquito screens + USB-powered portable fans are included 100% FREE with every rental (Advance request required). Sleep naturally with cool night breezes.",
         "pricing.summer_ac_bundle": "❄️ <strong>Summer Off-Grid Cooling Bundle:</strong> Premium EcoFlow Wave 3 Portable AC + High-capacity Portable Power Station for <strong>¥4,000/day</strong> (capped at <strong>¥28,000 max</strong> flat per trip). Run silent air conditioning overnight with the engine completely turned OFF!",
 
         "hero.stat1": "from Airport",
@@ -423,7 +423,7 @@ const translations = {
         "pricing.deductible": "<strong>Franchise en cas d'accident (免責額) :</strong> En cas d'accident, le conducteur est responsable d'une franchise, comme spécifié dans le contrat de location.",
         "pricing.noc": "<strong>Frais d'immobilisation (NOC) :</strong> Si le véhicule ne peut être utilisé en raison de dommages, des frais d'immobilisation supplémentaires s'appliqueront. Détails fournis dans le contrat de location.",
         "pricing.disclosure_note": "Tous les détails sont fournis dans nos <a href=\"/rent/terms/\">Conditions générales de location</a>. Nous vous expliquerons tout clairement lors de la prise en charge — pas de surprises.",
-        "pricing.summer_perk": "<strong>Avantages d'été gratuits (Juin-Sept) :</strong> Les moustiquaires de fenêtre + les ventilateurs portables USB sont inclus 100% GRATUITEMENT. Dormez naturellement avec la brise fraîche.",
+        "pricing.summer_perk": "<strong>Avantages d'été gratuits (Juin-Sept) :</strong> Les moustiquaires de fenêtre + les ventilateurs portables USB sont inclus 100% GRATUITEMENT (Demande préalable requise). Dormez naturellement avec la brise fraîche.",
         "pricing.summer_ac_bundle": "❄️ <strong>Pack Fraîcheur Hors-Réseau :</strong> Climatiseur portable EcoFlow Wave 3 Premium + Station d'énergie portable haute capacité pour <strong>4 000 JPY/jour</strong> (plafonné à <strong>28 000 JPY max</strong> par voyage). Climatisation silencieuse toute la nuit, moteur complètement ÉTEINT !",
 
         "hero.stat1": "de l'Aéroport",
@@ -733,7 +733,7 @@ const translations = {
         "pricing.deductible": "<strong>Selbstbeteiligung (免責額):</strong> Im Falle eines Unfalls haftet der Fahrer für einen im Mietvertrag festgelegten Selbstbehalt.",
         "pricing.noc": "<strong>Nutzungsausfallgebühr (NOC):</strong> Kann das Fahrzeug aufgrund von Schäden nicht genutzt werden, fällt eine zusätzliche Nutzungsausfallgebühr an. Details im Mietvertrag.",
         "pricing.disclosure_note": "Alle Details finden Sie in unseren <a href=\"/rent/terms/\">Mietbedingungen</a>. Wir erklären alles bei der Abholung — keine Überraschungen.",
-        "pricing.summer_perk": "<strong>Kostenlose Sommer-Extras (Juni-Sept) :</strong> Fenster-Fliegengitter + USB-Ventilatoren sind zu 100% KOSTENLOS enthalten. Schlafen Sie entspannt bei kühler Nachtbrise.",
+        "pricing.summer_perk": "<strong>Kostenlose Sommer-Extras (Juni-Sept) :</strong> Fenster-Fliegengitter + USB-Ventilatoren sind zu 100% KOSTENLOS enthalten (Vorabanmeldung erforderlich). Schlafen Sie entspannt bei kühler Nachtbrise.",
         "pricing.summer_ac_bundle": "❄️ <strong>Off-Grid Sommer-Klimaanlagen-Paket :</strong> Premium EcoFlow Wave 3 Klimaanlage + Hochleistungs-Powerstation für <strong>4.000 JPY/Tag</strong> (begrenzt auf max. <strong>28.000 JPY</strong> pro Fahrt). Flüsterleise Klimatisierung die ganze Nacht bei komplett ausgeschaltetem Motor!",
 
         "hero.stat1": "vom Flughafen",
@@ -1037,7 +1037,7 @@ const translations = {
         "pricing.deductible": "<strong>意外自負額 (免責額)：</strong> 若發生事故，駕駛人需承擔租賃合約中規定的自負額。",
         "pricing.noc": "<strong>營業損失賠償 (NOC)：</strong> 若車輛因損壞無法使用，將收取額外的營業損失賠償。詳細資訊請參閱租賃合約。",
         "pricing.disclosure_note": "所有詳細資訊皆列於我們的<a href=\"/rent/terms/\">租賃條款</a>。取車時我們會清楚說明 — 絕對沒有隱藏費用。",
-        "pricing.summer_perk": "<strong>免費夏季好禮 (6月-9月) :</strong> 每筆租車皆免費提供車窗防蚊網 + USB便攜風扇。伴隨涼爽的晚風自然入眠。",
+        "pricing.summer_perk": "<strong>免費夏季好禮 (6月-9月) :</strong> 每筆租車皆免費提供車窗防蚊網 + USB便攜風扇（需提前預約）。伴隨涼爽的晚風自然入眠。",
         "pricing.summer_ac_bundle": "❄️ <strong>夏季免發動防暑空調套裝 :</strong> 頂級 EcoFlow Wave 3 移動式冷氣 + 高容量可攜式戶外電源，每日僅需 <strong>¥4,000</strong>（單次行程最高上限 <strong>¥28,000</strong>）。車輛完全熄火熄引擎，整晚享受安靜冷氣！",
 
         "hero.stat1": "距機場",
@@ -1341,7 +1341,7 @@ const translations = {
         "pricing.deductible": "<strong>השתתפות עצמית (免責額):</strong> במקרה של תאונה, הנהג אחראי להשתתפות עצמית כפי שמפורט בהסכם השכירות.",
         "pricing.noc": "<strong>דמי אובדן שימוש (NOC):</strong> אם לא ניתן להשתמש ברכב עקב נזק, יחולו דמי אובדן שימוש. פרטים מלאים מופיעים בהסכם השכירות.",
         "pricing.disclosure_note": "הפרטים המלאים מסופקים ב<a href=\"/rent/terms/\">תנאי ההשכרה</a> שלנו. נסביר הכל בצורה ברורה בעת האיסוף — בלי הפתעות.",
-        "pricing.summer_perk": "<strong>צ'ופר קיץ חינם (יוני-ספט') :</strong> רשתות יתושים לחלונות + מאווררי USB ניידים כלולים 100% בחינם. לישון בטבע עם בריזה נעימה.",
+        "pricing.summer_perk": "<strong>צ'ופר קיץ חינם (יוני-ספט') :</strong> רשתות יתושים לחלונות + מאווררי USB ניידים כלולים 100% בחינם (נדרשת בקשה מראש). לישון בטבע עם בריזה נעימה.",
         "pricing.summer_ac_bundle": "❄️ <strong>חבילת מיזוג אוויר לקיץ :</strong> מזגן נייד פרימיום EcoFlow Wave 3 + תחנת כוח ניידת בקיבולת גבוהה ב-<strong>¥4,000 ליום</strong> (מוגבל ל-<strong>¥28,000 מקסימום</strong> לכל הנסיעה). מיזוג אוויר שקט לאורך כל הלילה כשהמנוע כבוי לחלוטין!",
 
         "hero.stat1": "משדה התעופה",
