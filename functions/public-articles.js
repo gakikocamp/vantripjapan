@@ -36,13 +36,15 @@ export async function onRequest(context) {
       query = `SELECT id, slug, title, excerpt, cover_image, category, published_at, tags 
                FROM articles 
                WHERE site = 'vantrip' AND status = 'published' AND category = ?
+                 AND published_at <= datetime('now')
                ORDER BY published_at DESC 
                LIMIT ?`;
       params = [category, limit];
     } else {
       query = `SELECT id, slug, title, excerpt, cover_image, category, published_at, tags 
                FROM articles 
-               WHERE site = 'vantrip' AND status = 'published' 
+               WHERE site = 'vantrip' AND status = 'published'
+                 AND published_at <= datetime('now')
                ORDER BY published_at DESC 
                LIMIT ?`;
       params = [limit];

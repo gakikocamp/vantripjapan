@@ -1,2 +1,33 @@
-# Redirects for old/renamed article slugs
+# Redirects for old/renamed article slugs (旧slug → 新slug)
+# Format: old-path new-path status-code
+
+# Duplicate articles: redirect thin old versions to full new versions
+/posts/japan-rv-rental-foreigners/ /posts/rv-rental-japan-foreigners-guide/ 301
+/posts/vanlife-japan-beginners/ /posts/vanlife-japan-beginners-guide/ 301
+/posts/solo-female-campervan-japan/ /posts/solo-female-campervan-japan-safety/ 301
+/posts/sakurajima-campervan-guide/ /posts/sakurajima-volcano-campervan-guide/ 301
+/posts/yakushima-road-trip-guide/ /posts/yakushima-complete-campervan-ferry-guide/ 301
+/posts/campervan-rental-fukuoka-guide/ /posts/campervan-rental-fukuoka-guide-2026/ 301
+/posts/japan-campervan-rental-cost-breakdown/ /posts/japan-campervan-trip-cost-breakdown-2026/ 301
+/posts/campervan-vs-train-japan/ /posts/japan-campervan-vs-train-pass/ 301
+/posts/japan-road-trip-budget-2026/ /posts/kyushu-road-trip-budget-2026/ 301
+/posts/campervan-rental-japan-guide-2026/ /posts/campervan-rental-fukuoka-guide-2026/ 301
+
+# Historical slug redirect
+/posts/drive-foreign-license/ /posts/german-license-japan/ 301
+
+# Remove trailing-slash-less versions to canonical with trailing slash
 /posts/drive-foreign-license /posts/german-license-japan/ 301
+/rent /rent/ 301
+/contact /contact/ 301
+/category /category/ 301
+/faq /faq/ 301
+
+# Deprecated pages redirect
+/book/ /rent/ 301
+/book /rent/ 301
+/writer/ /category/ 301
+/writer /category/ 301
+
+# Top-campervan thin article redirect
+/posts/top-campervan-rental-kyushu-2026/ /rent/ 301

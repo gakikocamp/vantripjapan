@@ -8,6 +8,9 @@
 User-agent: *
 Allow: /
 Disallow: /scripts/
+Disallow: /admin/
+Disallow: /book/
+Disallow: /rent/terms/
 
 # Sitemap
 Sitemap: https://vantripjapan.jp/sitemap.xml

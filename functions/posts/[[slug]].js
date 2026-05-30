@@ -109,6 +109,7 @@ function renderArticlePage(article) {
     "inLanguage": "${lang}"
   }
   </script>${faqSchema}
+  ${article.structured_data ? `\n  <script type="application/ld+json">\n  ${article.structured_data}\n  </script>` : ''}
 </head>
 <body>
 
@@ -163,9 +164,10 @@ function renderArticlePage(article) {
   <!-- CTA -->
   <div class="article-cta">
     <div class="article-cta-box">
-      <h3>Ready to explore Japan by campervan?</h3>
-      <p>All-inclusive rental from Fukuoka. 10 min from the airport.</p>
+      <h3>Ready to explore Kyushu by campervan?</h3>
+      <p>All-inclusive campervan rental from Fukuoka — from ¥16,500/day. Insurance, ETC card, bedding, and 24/7 English support included. Pickup 10 min from Fukuoka Airport.</p>
       <a href="/rent/" class="article-cta-btn">View Rental Options →</a>
+      <a href="https://wa.me/817093757129?text=Hi!%20I%20just%20read%20your%20article%20and%20I'm%20interested%20in%20renting%20a%20campervan." class="article-cta-btn" style="background:transparent;border:2px solid rgba(255,255,255,0.5);margin-left:12px;color:#fff;" target="_blank">💬 Ask on WhatsApp</a>
     </div>
   </div>
 
@@ -231,8 +233,39 @@ export async function onRequest(context) {
   const slug = slugParts[0];
 
   try {
+    // First check for redirect articles
+    const redirectArticle = await env.DB.prepare(
+      `SELECT slug FROM articles WHERE site = 'vantrip' AND slug = ? AND status = 'redirect'`
+    ).bind(slug).first();
+
+    if (redirectArticle) {
+      // Let Cloudflare _redirects handle it, or fallback
+      return context.next();
+    }
+
+    // Check for noindex articles — serve them but with noindex
+    const noindexArticle = await env.DB.prepare(
+      `SELECT * FROM articles WHERE site = 'vantrip' AND slug = ? AND status = 'noindex'`
+    ).bind(slug).first();
+
+    if (noindexArticle) {
+      const html = renderArticlePage(noindexArticle).replace(
+        '<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">',
+        '<meta name="robots" content="noindex, follow">'
+      );
+      return new Response(html, {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/html;charset=UTF-8',
+          'X-Robots-Tag': 'noindex, follow',
+          'Cache-Control': 'public, max-age=3600',
+        },
+      });
+    }
+
     const article = await env.DB.prepare(
-      `SELECT * FROM articles WHERE site = 'vantrip' AND slug = ? AND status = 'published'`
+      `SELECT * FROM articles WHERE site = 'vantrip' AND slug = ? AND status = 'published'
+         AND published_at <= datetime('now')`
     ).bind(slug).first();
 
     if (!article) {

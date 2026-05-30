@@ -46,6 +46,14 @@ VanTripJapan is a family-run campervan rental service specializing in internatio
 - **Features**: Full-size bed inside van, portable power station, cooking utensils, bedding, English GPS navigation
 - **Driving**: Medium-sized van, comfortable for longer trips
 
+### Vehicle 3: Pocket Loft (Daihatsu)
+- **Type**: Ultra-compact campervan with roof-top tent built on Daihatsu Hijet Truck
+- **Capacity**: 2-4 guests
+- **Price**: From ¥25,000/day (all-inclusive)
+- **Best for**: Couples seeking extreme driving ease, high fuel economy, and 360° views
+- **Features**: Roof tent (sleeps 2), cabin area (sleeps 2) with direct indoor passage up to the tent, portable power station, cooking utensils, camping gear
+- **Driving**: Easiest to drive on narrow roads, outstanding fuel economy
+
 ## Pricing Breakdown
 
 | Item | Included? |

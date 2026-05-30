@@ -9,6 +9,7 @@ const STATIC_PAGES = [
   { loc: '/',          changefreq: 'weekly',  priority: '1.0', hreflang: false },
   { loc: '/rent/',     changefreq: 'monthly', priority: '0.9', hreflang: true  },
   { loc: '/category/', changefreq: 'monthly', priority: '0.7', hreflang: false },
+  { loc: '/faq/',      changefreq: 'monthly', priority: '0.6', hreflang: false },
   { loc: '/contact/',  changefreq: 'monthly', priority: '0.6', hreflang: false },
   { loc: '/privacy/',  changefreq: 'yearly',  priority: '0.4', hreflang: false },
 ];
@@ -44,6 +45,7 @@ export async function onRequest(context) {
     const result = await env.DB.prepare(
       `SELECT slug, updated_at, published_at FROM articles
        WHERE site = 'vantrip' AND status = 'published'
+         AND published_at <= datetime('now')
        ORDER BY published_at DESC`
     ).all();
     articles = result.results || [];

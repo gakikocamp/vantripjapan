@@ -1179,12 +1179,112 @@
     color: var(--rent-text-secondary);
 }
 
+/* Flexible Pickup */
+.bento-flexible-pickup {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #f0f7f2 0%, #e8f0ea 100%);
+    border: 2px solid rgba(45, 90, 61, 0.12);
+    position: relative;
+    overflow: hidden;
+}
+
+.bento-flexible-pickup::before {
+    content: '24h';
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--rent-primary);
+    opacity: 0.06;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.bento-flexible-pickup h3 {
+    font-size: 24px;
+}
+
+.flexible-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.flexible-col {
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.flexible-col-label {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.flexible-others {
+    background: rgba(254, 202, 202, 0.3);
+    border: 1px solid rgba(239, 68, 68, 0.12);
+}
+
+.flexible-others .flexible-col-label {
+    color: #b91c1c;
+}
+
+.flexible-us {
+    background: rgba(167, 243, 208, 0.3);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.flexible-us .flexible-col-label {
+    color: var(--rent-primary);
+}
+
+.flexible-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.flexible-col ul li {
+    font-size: 14px;
+    padding: 6px 0;
+    color: var(--rent-text-secondary);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    line-height: 1.4;
+}
+
+.flexible-col ul li:last-child {
+    border-bottom: none;
+}
+
+.flexible-others ul li::before {
+    content: '✕ ';
+    color: #ef4444;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.flexible-us ul li::before {
+    content: '✓ ';
+    color: var(--rent-primary);
+    font-weight: 700;
+    font-size: 12px;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 900px) {
     .why-bento-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     .bento-hero {
+        grid-column: span 2;
+    }
+    .bento-flexible-pickup {
         grid-column: span 2;
     }
 }
@@ -1195,6 +1295,16 @@
     }
     .bento-hero {
         grid-column: span 1;
+    }
+    .bento-flexible-pickup {
+        grid-column: span 1;
+    }
+    .bento-flexible-pickup h3 {
+        font-size: 20px;
+    }
+    .flexible-comparison {
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
     .why-steps {
         flex-direction: column;
@@ -2945,4 +3055,4 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-}
+}@keyframes pulse { 0% { transform: scale(1.05); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); } 100% { transform: scale(1.05); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
