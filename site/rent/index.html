@@ -382,13 +382,13 @@
 
                 <!-- Photo Slideshow with Ken Burns -->
                 <div class="hero-slideshow">
-                    <div class="hero-slide active">
+                    <div class="hero-slide active" aria-hidden="false">
                         <img src="/images/rent/hero/bongo-onsen.jpg" alt="Bongo campervan at Hyotan Onsen in Beppu, Kyushu" loading="eager">
                     </div>
-                    <div class="hero-slide">
+                    <div class="hero-slide" aria-hidden="true">
                         <img src="/images/rent/hero/bongo-sunset.jpg" alt="Campervan parked at mountain viewpoint during sunset" loading="lazy">
                     </div>
-                    <div class="hero-slide">
+                    <div class="hero-slide" aria-hidden="true">
                         <img src="/images/rent/hero/interior-ocean-view.jpg" alt="Ocean view from inside the campervan at sunset" loading="lazy">
                     </div>
                     <div class="hero-slide-dots">
@@ -898,6 +898,7 @@
                             <button class="calc-ppl-btn" data-people="4">4</button>
                         </div>
                     </div>
+
                 </div>
 
                 <!-- Currency Selector -->
@@ -1558,6 +1559,7 @@
     <script>
         // ── Price Calculator ──
         var _calcDays = 7, _calcVehicle = 22000, _calcVehicleName = 'Probox', _calcPeople = 2;
+        var _calcPromoRate = 0, _calcPromoCode = '';
         var HOTEL_ROOM = { 1: 16000, 2: 20000, 3: 36000, 4: 40000 };
         var TRANSPORT_PER_PERSON_DAY = 3000;
 
@@ -1611,6 +1613,11 @@
                     ? baseTotal * (1 - discount.rate)
                     : baseTotal;
                 
+                // Apply promo discount (compounded)
+                if (_calcPromoRate > 0) {
+                    discountedTotal = discountedTotal * (1 - _calcPromoRate);
+                }
+                
                 var vanTotal = Math.round(discountedTotal);
                 var effectiveRate = Math.round(vanTotal / _calcDays);
 
@@ -1635,10 +1642,17 @@
 
                 // Discount badge
                 var discountBadge = document.getElementById('calc-discount-badge');
-                if (discount) {
+                if (discount || _calcPromoRate > 0) {
                     var saved = baseTotal - vanTotal;
-                    var discountLabel = dict['calc.discount_prefix'] || 'Long-stay discount';
-                    discountBadge.innerHTML = '🎉 ' + discountLabel + ': <strong>' + discount.label + '</strong> — ' +
+                    var labelParts = [];
+                    if (discount) {
+                        var discountLabel = dict['calc.discount_prefix'] || 'Long-stay discount';
+                        labelParts.push(discountLabel + ': <strong>' + discount.label + '</strong>');
+                    }
+                    if (_calcPromoRate > 0) {
+                        labelParts.push('Promo <strong>' + _calcPromoCode + '</strong>: <strong>' + Math.round(_calcPromoRate * 100) + '% OFF</strong>');
+                    }
+                    discountBadge.innerHTML = '🎉 ' + labelParts.join(' + ') + ' — ' +
                         (dict['calc.discount_save'] || 'you save') + ' ' + _fmtCurrency(saved);
                     discountBadge.style.display = 'block';
                 } else {
@@ -1653,7 +1667,7 @@
                 } else {
                     savingsEl.style.display = 'none';
                 }
-                console.log('[VTJ Calc]', _calcDays + 'd', effectiveRate + '¥/d (disc:' + (discount ? discount.label : 'none') + ')', _calcPeople + 'p', '→ van=' + vanTotal, 'hotel=' + hotelTotal, 'save=' + savings);
+                console.log('[VTJ Calc]', _calcDays + 'd', effectiveRate + '¥/d (disc:' + (discount ? discount.label : 'none') + ', promo:' + _calcPromoCode + ')', _calcPeople + 'p', '→ van=' + vanTotal, 'hotel=' + hotelTotal, 'save=' + savings);
             } catch (e) {
                 console.error('[VTJ Calc Error]', e);
             }
@@ -1698,6 +1712,30 @@
             });
         });
 
+        // Promo Code input and validation logic
+        var promoInput = document.getElementById('calc-promo');
+        var promoStatus = document.getElementById('calc-promo-status');
+
+        function checkPromoCode(code) {
+            _calcPromoRate = 0;
+            _calcPromoCode = '';
+            _updateCalc();
+        }
+
+        if (promoInput) {
+            promoInput.addEventListener('input', function() {
+                checkPromoCode(this.value);
+            });
+        }
+
+        // Initial setup for prefilled promo code
+        var urlParams = new URLSearchParams(window.location.search);
+        var urlPromo = urlParams.get('code') || urlParams.get('promo') || '';
+        if (urlPromo) {
+            if (promoInput) promoInput.value = urlPromo;
+            checkPromoCode(urlPromo);
+        }
+
         // Re-run calc on language switch
         if (typeof switchLang === 'function') {
             var _origSwitchLang = switchLang;
@@ -1729,6 +1767,11 @@
                 var baseTotal = (fullWeeks * weeklyTotal2) + (remainderDays * _calcVehicle);
                 var discount = _getDiscount(_calcDays);
                 var discountedTotal = discount ? baseTotal * (1 - discount.rate) : baseTotal;
+                
+                if (_calcPromoRate > 0) {
+                    discountedTotal = discountedTotal * (1 - _calcPromoRate);
+                }
+                
                 var vanTotal = Math.round(discountedTotal);
                 var vehicleName = _calcVehicleName;
                 var effectiveRate = Math.round(vanTotal / _calcDays);
@@ -1742,7 +1785,7 @@
                     dailyRate: effectiveRate,
                     people: _calcPeople,
                     total: vanTotal,
-                    discount: discount ? discount.label : 'None',
+                    discount: (discount ? discount.label : 'None') + (_calcPromoRate > 0 ? (' + Promo ' + _calcPromoCode + ' ' + Math.round(_calcPromoRate * 100) + '%') : ''),
                     lang: currentLang || 'en',
                     timestamp: new Date().toISOString()
                 };
@@ -1761,16 +1804,17 @@
                     // Fallback: open mailto
                     var subject = encodeURIComponent('VanTripJapan Quote Request — ' + vehicleName + ' ' + _calcDays + ' days');
                     var body = encodeURIComponent(
-                        'Hi VanTripJapan!\n\n' +
-                        'I would like a quote:\n' +
-                        '• Vehicle: ' + vehicleName + '\n' +
-                        '• Days: ' + _calcDays + '\n' +
-                        '• Travelers: ' + _calcPeople + '\n' +
-                        '• Estimated total: ¥' + vanTotal.toLocaleString('en-US') + '\n' +
-                        '• Preferred dates: ' + (dates || 'Flexible') + '\n' +
-                        '• Name: ' + (name || '') + '\n' +
-                        '• Email: ' + email + '\n\n' +
-                        'Please send me a detailed quote. Thanks!'
+                         'Hi VanTripJapan!\n\n' +
+                         'I would like a quote:\n' +
+                         '• Vehicle: ' + vehicleName + '\n' +
+                         '• Days: ' + _calcDays + '\n' +
+                         '• Travelers: ' + _calcPeople + '\n' +
+                         '• Estimated total: ¥' + vanTotal.toLocaleString('en-US') + '\n' +
+                         '• Promo code applied: ' + (_calcPromoCode || 'None') + '\n' +
+                         '• Preferred dates: ' + (dates || 'Flexible') + '\n' +
+                         '• Name: ' + (name || '') + '\n' +
+                         '• Email: ' + email + '\n\n' +
+                         'Please send me a detailed quote. Thanks!'
                     );
                     window.open('mailto:info@vantripjapan.jp?subject=' + subject + '&body=' + body, '_blank');
                     showQuoteSuccess();
@@ -1842,9 +1886,11 @@
 
             function goTo(idx) {
                 slides[current].classList.remove('active');
+                slides[current].setAttribute('aria-hidden', 'true');
                 dots[current].classList.remove('active');
                 current = idx;
                 slides[current].classList.add('active');
+                slides[current].setAttribute('aria-hidden', 'false');
                 dots[current].classList.add('active');
             }
 
