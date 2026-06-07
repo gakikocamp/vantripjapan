@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>Interactive Kyushu Road Trip Planner | VanTripJapan</title>
+    <meta name="description"
+        content="Plan your perfect Kyushu campervan road trip in 30 seconds. Curated itineraries for 3-10 days covering hot springs, Mt. Aso volcano, beaches, and campgrounds.">
+    <meta name="keywords"
+        content="Kyushu road trip planner, route planner Japan, Fukuoka campervan travel, Kyushu campervan itinerary, Japan vanlife route">
+    <meta property="og:title" content="Interactive Kyushu Road Trip Planner | VanTripJapan">
+    <meta property="og:description"
+        content="Plan your perfect Kyushu campervan road trip in 30 seconds. Curated itineraries for 3-10 days covering hot springs, Mt. Aso volcano, beaches, and campgrounds.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vantripjapan.jp/road-trip-planner/">
+    <meta property="og:image" content="https://vantripjapan.jp/images/hero-vanlife.png">
+    <link rel="canonical" href="https://vantripjapan.jp/road-trip-planner/">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=20260413">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
+
+    <!-- Schema for interactive tool -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Kyushu Road Trip Route Generator",
+      "url": "https://vantripjapan.jp/road-trip-planner/",
+      "description": "Interactive wizard to generate curated road trip itineraries across Kyushu, Japan, matched with campervan recommendations and local campsites.",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "JPY"
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --planner-forest: #1b3a24;
+            --planner-earth: #c68a4c;
+            --planner-bg: #f9f7f4;
+            --planner-card-bg: #ffffff;
+            --planner-border: rgba(27, 58, 36, 0.1);
+        }
+
+        .planner-section {
+            padding: calc(var(--space-3xl) + 2rem) 0 var(--space-3xl);
+            background: var(--planner-bg);
+            min-height: 80vh;
+        }
+
+        .planner-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-2xl);
+            padding: 0 var(--space-md);
+        }
+
+        .planner-header h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--planner-forest);
+            margin-bottom: var(--space-xs);
+            line-height: 1.2;
+        }
+
+        .planner-header p {
+            color: var(--color-muted);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .wizard-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--planner-card-bg);
+            border-radius: 16px;
+            padding: var(--space-xl);
+            box-shadow: 0 10px 30px rgba(27, 58, 36, 0.04);
+            border: 1px solid var(--planner-border);
+        }
+
+        .wizard-step {
+            display: none;
+        }
+
+        .wizard-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            color: var(--planner-forest);
+            margin-bottom: var(--space-md);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-number {
+            background: var(--planner-forest);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+        }
+
+        @media (min-width: 500px) {
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .option-card {
+            background: var(--planner-bg);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: var(--space-md);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .option-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(198, 138, 76, 0.4);
+            background: #fffdfa;
+        }
+
+        .option-card.selected {
+            border-color: var(--planner-earth);
+            background: #fffdfa;
+            box-shadow: 0 4px 15px rgba(198, 138, 76, 0.08);
+        }
+
+        .option-card-title {
+            font-weight: 700;
+            color: var(--planner-forest);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .option-card-desc {
+            font-size: 0.82rem;
+            color: var(--color-muted);
+            line-height: 1.4;
+        }
+
+        .wizard-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--planner-border);
+            padding-top: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .btn-wizard {
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-wizard--next {
+            background: var(--planner-forest);
+            color: white;
+        }
+
+        .btn-wizard--next:hover {
+            background: #112517;
+            transform: translateY(-1px);
+        }
+
+        .btn-wizard--prev {
+            background: transparent;
+            color: var(--planner-forest);
+            border: 1px solid var(--planner-forest);
+        }
+
+        .btn-wizard--prev:hover {
+            background: rgba(27, 58, 36, 0.05);
+        }
+
+        .btn-wizard:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Result Styles */
+        .result-container {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--planner-card-bg);
+            border-radius: 16px;
+            padding: var(--space-xl);
+            box-shadow: 0 15px 40px rgba(27, 58, 36, 0.05);
+            border: 1px solid var(--planner-border);
+            animation: fadeIn 0.6s ease;
+        }
+
+        .result-header {
+            border-bottom: 1px solid var(--planner-border);
+            padding-bottom: var(--space-md);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .result-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .result-title h2 {
+            font-family: var(--font-heading);
+            color: var(--planner-forest);
+            font-size: 1.8rem;
+            margin-bottom: 4px;
+        }
+
+        .result-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--planner-earth);
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .btn-reset {
+            background: transparent;
+            border: 1px dashed var(--planner-earth);
+            color: var(--planner-earth);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+            align-self: flex-start;
+            transition: all 0.2s;
+        }
+
+        .btn-reset:hover {
+            background: #fffcf8;
+            border-style: solid;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-xl);
+        }
+
+        @media (min-width: 768px) {
+            .result-grid {
+                grid-template-columns: 3fr 2fr;
+            }
+        }
+
+        .itinerary-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid rgba(198, 138, 76, 0.2);
+        }
+
+        .timeline-day {
+            position: relative;
+        }
+
+        .timeline-day::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--planner-earth);
+            border: 3px solid var(--planner-card-bg);
+            box-shadow: 0 0 0 2px var(--planner-earth);
+        }
+
+        .day-num {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--planner-earth);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .day-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--planner-forest);
+            margin-bottom: 8px;
+        }
+
+        .day-desc {
+            font-size: 0.88rem;
+            color: var(--color-muted);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .day-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .badge-highlight {
+            background: rgba(27, 58, 36, 0.05);
+            color: var(--planner-forest);
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .day-camp {
+            background: #f0f5f1;
+            border: 1px solid rgba(27, 58, 36, 0.06);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            color: var(--planner-forest);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .day-camp strong {
+            color: var(--planner-forest);
+        }
+
+        .result-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sidebar-card {
+            background: var(--planner-bg);
+            border-radius: 12px;
+            padding: var(--space-lg);
+            border: 1px solid var(--planner-border);
+        }
+
+        .sidebar-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--planner-forest);
+            margin-bottom: var(--space-sm);
+            border-bottom: 2px solid rgba(27, 58, 36, 0.08);
+            padding-bottom: 8px;
+        }
+
+        .van-recommendation {
+            text-align: center;
+        }
+
+        .van-recommendation img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            border: 1px solid var(--planner-border);
+        }
+
+        .van-recommendation h3 {
+            font-size: 1.15rem;
+            color: var(--planner-forest);
+            margin-bottom: 6px;
+        }
+
+        .van-recommendation p {
+            font-size: 0.82rem;
+            color: var(--color-muted);
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .btn-book-van {
+            display: block;
+            background: var(--planner-earth);
+            color: white !important;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(198, 138, 76, 0.3);
+        }
+
+        .btn-book-van:hover {
+            background: #b57639;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(198, 138, 76, 0.4);
+        }
+
+        .google-maps-card {
+            background: #fff;
+            border: 1px solid var(--planner-border);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .google-maps-card p {
+            font-size: 0.8rem;
+            color: var(--color-muted);
+            margin-bottom: 10px;
+        }
+
+        .btn-maps {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #4285F4;
+            color: white !important;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-maps:hover {
+            background: #357ae8;
+        }
+
+        .cross-selling-box {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border: 1px dashed var(--planner-earth);
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.8rem;
+            color: #7b552d;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .cross-selling-box strong {
+            color: #5d3f1f;
+        }
+
+        .custom-ai-adjust {
+            margin-top: 10px;
+            border-top: 1px solid var(--planner-border);
+            padding-top: 12px;
+            text-align: center;
+        }
+
+        .custom-ai-adjust p {
+            font-size: 0.78rem;
+            color: var(--color-muted);
+            margin-bottom: 8px;
+        }
+
+        .btn-ai-chat {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--planner-forest);
+            color: white !important;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.76rem;
+            font-weight: 600;
+        }
+
+        .btn-ai-chat:hover {
+            background: #112517;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ Navigation ═══ -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <div class="logo-icon">V</div>
+                <div>
+                    <span>VAN TRIP JAPAN</span>
+                    <span class="magazine-tag">Magazine</span>
+                </div>
+            </a>
+
+            <div class="nav-links" id="navLinks">
+                <a href="/">Home</a>
+                <a href="/category/">Guides</a>
+                <a href="/rent/">Rental</a>
+                <a href="/contact/">Contact</a>
+                <a href="/rent/" class="nav-cta">Rent a Van →</a>
+            </div>
+
+            <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══ Route Planner Tool ═══ -->
+    <section class="planner-section">
+        <div class="planner-header animate-in">
+            <span class="section-tag">Interactive Planner</span>
+            <h1>Kyushu Road Trip Planner</h1>
+            <p>Design your perfect campervan adventure across Kyushu, Japan. Answer 3 quick questions and receive a curated day-by-day itinerary, campsites map, and van recommendation instantly.</p>
+        </div>
+
+        <!-- WIZARD STEP-BY-STEP -->
+        <div class="wizard-container animate-in" id="wizard-box">
+            <!-- Step 1: Duration -->
+            <div class="wizard-step active" id="step-1">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    <span>How many days do you have?</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-card" onclick="selectOption(1, 'days', '3-5')">
+                        <span class="option-card-title">🎒 3 to 5 Days</span>
+                        <span class="option-card-desc">Short road trip. Ideal for quick loops covering highlights like Mount Aso and Beppu hot springs.</span>
+                    </div>
+                    <div class="option-card" onclick="selectOption(1, 'days', '6-8')">
+                        <span class="option-card-title">🚐 6 to 8 Days</span>
+                        <span class="option-card-desc">The Classic Route. Spend ample time hiking volcanoes, gorge rowing, and coastal driving.</span>
+                    </div>
+                    <div class="option-card" onclick="selectOption(1, 'days', '9+')">
+                        <span class="option-card-title">🗺️ 9+ Days</span>
+                        <span class="option-card-desc">Grand Kyushu Explorer. Covers the entire island including Nagasaki, Kagoshima, and beyond.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Theme -->
+            <div class="wizard-step" id="step-2">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    <span>What do you want to experience?</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-card" onclick="selectOption(2, 'theme', 'onsen')">
+                        <span class="option-card-title">♨️ Onsens & Volcanoes</span>
+                        <span class="option-card-desc">Relax in traditional hot spring villages (Beppu, Kurokawa) and explore volcanic peaks.</span>
+                    </div>
+                    <div class="option-card" onclick="selectOption(2, 'theme', 'nature')">
+                        <span class="option-card-title">🌋 Nature & Adventure</span>
+                        <span class="option-card-desc">Row boats in Takachiho Gorge, hike the Kuju trails, and drive scenic mountain passes.</span>
+                    </div>
+                    <div class="option-card" onclick="selectOption(2, 'theme', 'coastal')">
+                        <span class="option-card-title">🌊 Coastal Roads & Surf</span>
+                        <span class="option-card-desc">Cruise the Nichinan coastline, visit seaside shrines, and explore sandy beaches.</span>
+                    </div>
+                    <div class="option-card" onclick="selectOption(2, 'theme', 'food')">
+                        <span class="option-card-title">🍣 Gourmet & Local Culture</span>
+                        <span class="option-card-desc">Eat tonkotsu ramen in Fukuoka, local beef in Kumamoto, and visit samurai castles.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Guests -->
+            <div class="wizard-step" id="step-3">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    <span>Who is traveling?</span>
+                </div>
+                <div class="options-grid">
+                    <div class="option-card" onclick="selectOption(3, 'guests', '1-2')">
+                        <span class="option-card-title">👩‍❤️‍👨 Couple / Duo</span>
+                        <span class="option-card-desc">Perfect for pairs or friends. Compact and easy-to-drive campervans.</span>
+                    </div>
+                    <div class="option-card" onclick="selectOption(3, 'guests', 'family')">
+                        <span class="option-card-title">👨‍👩‍👧‍👦 Family with Kids</span>
+                        <span class="option-card-desc">Need spacious beds, storage space, and multiple seating options.</span>
+                    </div>
+                    <div class="option-card" onclick="selectOption(3, 'guests', 'solo')">
+                        <span class="option-card-title">👤 Solo Traveler</span>
+                        <span class="option-card-desc">Compact vanlife. Easy parking and maximum freedom on narrow mountain tracks.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wizard Controls -->
+            <div class="wizard-footer">
+                <button class="btn-wizard btn-wizard--prev" id="btn-prev" onclick="prevStep()" disabled>Back</button>
+                <button class="btn-wizard btn-wizard--next" id="btn-next" onclick="nextStep()" disabled>Continue →</button>
+            </div>
+        </div>
+
+        <!-- WIZARD RESULT DISPLAY -->
+        <div class="result-container" id="result-box">
+            <div class="result-header">
+                <div class="result-title">
+                    <h2 id="route-name">Kyushu Route</h2>
+                    <div class="result-meta">
+                        <span id="route-duration">7 Days</span>
+                        <span>•</span>
+                        <span id="route-theme">Onsens & Volcanoes</span>
+                    </div>
+                </div>
+                <button class="btn-reset" onclick="resetWizard()">🔄 Plan Another Trip</button>
+            </div>
+
+            <div class="result-grid">
+                <!-- Main Itinerary -->
+                <div>
+                    <h3 style="font-family:var(--font-heading);color:var(--planner-forest);margin-bottom:var(--space-md);font-size:1.3rem;">Day-by-Day Journey</h3>
+                    <div class="itinerary-timeline" id="timeline-list">
+                        <!-- timeline days will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Sidebar Recommendation -->
+                <div class="result-sidebar">
+                    <!-- Recommended Van -->
+                    <div class="sidebar-card van-recommendation">
+                        <div class="sidebar-card-title">Your Recommended Van</div>
+                        <img id="rec-van-img" src="/images/rent/vehicles/probox-front.jpg" alt="Recommended Campervan">
+                        <h3 id="rec-van-name">Roof Tent Probox</h3>
+                        <p id="rec-van-desc">Compact, extremely fuel-efficient, and easy to park on Kyushu's narrow hot-spring roads. Fits up to 2 guests.</p>
+                        <a id="rec-van-link" href="/rent/" class="btn-book-van">Check Prices & Book Now →</a>
+                    </div>
+
+                    <!-- Map Link -->
+                    <div class="sidebar-card google-maps-card">
+                        <div class="sidebar-card-title">Route Map</div>
+                        <p>Open this curated driving loop directly in Google Maps for offline GPS navigation.</p>
+                        <a id="rec-map-link" href="#" target="_blank" class="btn-maps">🗺️ Open in Google Maps</a>
+                    </div>
+
+                    <!-- Cross Selling Promo -->
+                    <div class="cross-selling-box">
+                        🏕️ <strong>Special Partner Offer:</strong><br>
+                        Need an organic scent for your campsite? Get 15% off premium handcrafted incense at <strong><a href="https://crystalinsence.com/" target="_blank" style="color:var(--planner-earth);text-decoration:underline;">Crystal Incense</a></strong> using code <strong>JDLTC15</strong>.
+                    </div>
+
+                    <!-- WhatsApp Live Support -->
+                    <div class="sidebar-card" style="text-align:center;">
+                        <div class="sidebar-card-title">Need Help Customizing?</div>
+                        <p style="font-size:0.8rem;color:var(--color-muted);margin-bottom:12px;">We're a local husband-and-wife team. Chat with us live on WhatsApp to adjust dates or pick the perfect campsite.</p>
+                        <a href="https://wa.me/817093757129?text=Hi!%20I%20just%20used%20your%20Route%20Planner%20and%20need%20some%20help%20adjusting%20my%20itinerary." 
+                           target="_blank" class="btn-wizard btn-wizard--next" style="display:inline-block;text-decoration:none;">💬 Chat with Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ Footer ═══ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">VAN TRIP JAPAN</div>
+                <p>A husband-and-wife campervan rental in Fukuoka. Road trip guides, honest tips, and everything you need for vanlife in Kyushu.</p>
+                <div class="footer-social">
+                    <a href="https://instagram.com/vantripjapan" aria-label="Instagram">📷</a>
+                    <a href="https://pinterest.com/vantripjapan" aria-label="Pinterest">📌</a>
+                    <a href="https://wa.me/817093757129" target="_blank" aria-label="WhatsApp">💬</a>
+                    <a href="https://lin.ee/YYyRz2f" target="_blank" aria-label="LINE">💚</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="/">Home</a>
+                <a href="/category/">Travel Guides</a>
+                <a href="/posts/best-scenic-drives-kyushu/">Scenic Drives</a>
+                <a href="/posts/kyushu-road-trip-7-days/">7-Day Itinerary</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Rental</h4>
+                <a href="/rent/">Campervan Rentals</a>
+                <a href="/rent/#vehicles">Our Vehicles</a>
+                <a href="/rent/#pricing">Pricing</a>
+                <a href="/rent/#faq">FAQ</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>About</h4>
+                <a href="/contact/">Contact</a>
+                <a href="/privacy/">Privacy Policy</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Related Services</h4>
+                <a href="https://drive-japan-license.com/" target="_blank">JDLTC — License Translation</a>
+                <a href="https://crystalinsence.com/" target="_blank">Crystal Insence — Incense</a>
+                <a href="https://wagyuninja.tokyo/" target="_blank">WAGYU NINJA — Premium Exports</a>
+                <a href="https://www.camjyo.com/" target="_blank">キャンプ女子株式会社</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 VanTripJapan. Operated by <a href="https://www.camjyo.com/" target="_blank" style="color:inherit;text-decoration:underline;">キャンプ女子株式会社</a>. All rights reserved.</span>
+            <span>Fukuoka, Japan</span>
+        </div>
+    </footer>
+
+    <script src="/js/nav.js?v=20260413"></script>
+
+    <!-- ROUTE PLANNER WIZARD JS LOGIC -->
+    <script>
+        // Curated Itineraries Data (100% Free, Instant, Hallucination-Free, SEO-Indexable)
+        const itineraries = {
+            // 3-5 Days Loops
+            "3-5_onsen": {
+                name: "3-5 Day Hot Springs & Volcanoes Highlights",
+                days: "4 Days",
+                theme: "Onsens & Volcanoes",
+                van: "probox",
+                map: "https://www.google.com/maps/dir/Fukuoka+Airport/Beppu/Yufuin/Mount+Aso/Kurokawa+Onsen/Fukuoka/",
+                timeline: [
+                    {
+                        day: "Day 1",
+                        title: "Fukuoka Airport to Beppu Hells",
+                        desc: "Pick up your campervan in Fukuoka. Drive east towards Beppu, the hot spring capital. Explore the famous 'Beppu Hells' hot springs and soak in a traditional sandy steam bath.",
+                        highlights: ["Beppu Hells", "Steam Baths", "Coastal highway"],
+                        camp: "Camp at <strong>RV Park Beppu Onsen</strong> (includes electric hookup and onsen access)."
+                    },
+                    {
+                        day: "Day 2",
+                        title: "Mount Aso Caldera & Kurokawa Onsen",
+                        desc: "Drive through the breathtaking Yamanami Highway. Arrive at the active Mount Aso caldera. Hike to the crater rim, then head to Kurokawa Onsen, a beautiful, secluded hot spring village.",
+                        highlights: ["Yamanami Highway", "Mt. Aso Crater", "Kurokawa Onsen walk"],
+                        camp: "Camp at <strong>Michi-no-Eki Aso</strong> (free 24h parking, clean restrooms, stunning mountain views)."
+                    },
+                    {
+                        day: "Day 3",
+                        title: "Kokonoe Yume Bridge & Yufuin Town",
+                        desc: "Walk across Japan's highest pedestrian bridge, Kokonoe Yume, with 360° gorge views. Spend the afternoon strolling along the art-filled streets of Yufuin village under Mt. Yufu.",
+                        highlights: ["Kokonoe Yume Bridge", "Lake Kinrin", "Yufuin boutiques"],
+                        camp: "Camp at <strong>Yufuin Auto Campground</strong> (picturesque views of Mount Yufudake)."
+                    },
+                    {
+                        day: "Day 4",
+                        title: "Return to Fukuoka via Hita Historic Town",
+                        desc: "Visit the historic streets of Hita (Little Kyoto) and try local clay pottery. Drive back to Fukuoka, drop off the campervan, and enjoy Fukuoka's famous open-air Yatai food stalls.",
+                        highlights: ["Hita Little Kyoto", "Fukuoka Yatai Food Stalls"],
+                        camp: "Drop-off day. Stay in Fukuoka city center."
+                    }
+                ]
+            },
+            "3-5_nature": {
+                name: "3-5 Day Volcanic Peaks & Takachiho Nature Loop",
+                days: "5 Days",
+                theme: "Nature & Adventure",
+                van: "bongo",
+                map: "https://www.google.com/maps/dir/Fukuoka+Airport/Mount+Aso/Takachiho+Gorge/Kuju+Plateau/Kokonoe+Yume+Otsurihashi/Yufuin/Fukuoka/",
+                timeline: [
+                    {
+                        day: "Day 1",
+                        title: "Fukuoka to Mount Aso Scenic Drive",
+                        desc: "Pick up your van and head straight to Mount Aso. Drive up the panoramic Daikombo viewpoint for a 360° look at the caldera. Cozy up in your van with Mt. Aso views.",
+                        highlights: ["Daikombo Viewpoint", "Caldera Rim", "Kusasenri Grassland"],
+                        camp: "Camp at <strong>Michi-no-Eki Aso</strong> (excellent free base for hiking Aso)."
+                    },
+                    {
+                        day: "Day 2",
+                        title: "Takachiho Gorge Boat Rowing & Shrines",
+                        desc: "Drive south to the mystical Takachiho Gorge. Row a wooden boat between sheer basalt cliffs and volcanic waterfalls. Visit the sacred Amanoyato Shrine hidden in a cave.",
+                        highlights: ["Takachiho Gorge", "Waterfall Rowing", "Cave Shrine"],
+                        camp: "Camp at <strong>Michi-no-Eki Takachiho</strong> (highly quiet and close to the gorge)."
+                    },
+                    {
+                        day: "Day 3",
+                        title: "Kuju Highlands Trail Hike",
+                        desc: "Drive to the Kuju Highlands. Embark on a 3-hour hike through wild meadows and sulfur vents. Unwind in the evening at a rustic mountain onsen.",
+                        highlights: ["Kuju Ridge Hike", "Sulfur Vents", "Mountain Onsen"],
+                        camp: "Camp at <strong>Kuju Plateau Auto Campsite</strong> (incredible star-gazing spot)."
+                    },
+                    {
+                        day: "Day 4",
+                        title: "Beppu Volcanic Parks & Return Loop",
+                        desc: "See the mud geysers and hot springs of Beppu. Try the local 'Jigoku-mushi' vegetables steamed entirely by natural volcanic steam.",
+                        highlights: ["Mud Geysers", "Volcanic Steamed Food"],
+                        camp: "Camp at <strong>RV Park Beppu</strong>."
+                    },
+                    {
+                        day: "Day 5",
+                        title: "Fukuoka Return & Dropoff",
+                        desc: "Enjoy a leisurely morning drive back to Fukuoka. Return the van and explore the city's parks.",
+                        highlights: ["Fukuoka Castle Ruins", "Ohori Park"],
+                        camp: "Drop-off day."
+                    }
+                ]
+            },
+            // 6-8 Days loops
+            "6-8_onsen": {
+                name: "7 Day Ultimate Kyushu Hot Springs Explorer",
+                days: "7 Days",
+                theme: "Onsens & Volcanoes",
+                van: "bongo",
+                map: "https://www.google.com/maps/dir/Fukuoka+Airport/Beppu/Yufuin/Mount+Aso/Kurokawa+Onsen/Fukuoka/",
+                timeline: [
+                    {
+                        day: "Day 1",
+                        title: "Fukuoka to Ureshino Tea & Onsen",
+                        desc: "Head southwest to Ureshino, famous for its smooth skin-beautifying hot springs and local green tea. Soak in a public bath and try green-tea-infused tofu.",
+                        highlights: ["Green Tea Fields", "Skin-beautifying Onsen"],
+                        camp: "Camp at <strong>RV Park Ureshino Onsen</strong>."
+                    },
+                    {
+                        day: "Day 2",
+                        title: "Unzen Volcanic Hells & Nagasaki Coast",
+                        desc: "Drive around Shimabara Peninsula to Unzen Onsen. Hike through the steaming 'Unzen Hells' sulfur fields where steam rises from the forest floor.",
+                        highlights: ["Unzen Hells", "Shimabara Coastal Road"],
+                        camp: "Camp at <strong>Unzen National Park Auto Campsite</strong>."
+                    },
+                    {
+                        day: "Day 3",
+                        title: "Ferry crossing to Kumamoto & Mount Aso",
+                        desc: "Take the scenic car ferry across Shimabara Bay to Kumamoto. Visit Kumamoto Castle, then drive up into the vast Mount Aso volcanic crater plateau.",
+                        highlights: ["Sea Ferry Crossing", "Kumamoto Castle", "Aso Caldera"],
+                        camp: "Camp at <strong>Michi-no-Eki Aso</strong>."
+                    },
+                    {
+                        day: "Day 4",
+                        title: "Kurokawa Onsen Secluded Bath-Hop",
+                        desc: "Spend the day bath-hopping in Kurokawa Onsen. Buy a wooden pass (Tegata) that gives you access to three different outdoor hot springs of your choice.",
+                        highlights: ["Outdoor Bath-Hop", "Bamboo Forest Walk"],
+                        camp: "Camp at <strong>Kurokawa Onsen Parking Area</strong> (RV friendly)."
+                    },
+                    {
+                        day: "Day 5",
+                        title: "Takachiho Sacred Gorge",
+                        desc: "Row a boat beneath volcanic cliffs in Takachiho Gorge. In the evening, watch a traditional Yokagura dance performance at Takachiho Shrine.",
+                        highlights: ["Takachiho Boat Rowing", "Yokagura Sacred Dance"],
+                        camp: "Camp at <strong>Michi-no-Eki Takachiho</strong>."
+                    },
+                    {
+                        day: "Day 6",
+                        title: "Yamanami Highway to Beppu",
+                        desc: "Drive the iconic Yamanami Highway through rolling hills to Beppu. Visit the sand baths and steam-cook your own dinner.",
+                        highlights: ["Yamanami Highway", "Beppu Sand Baths"],
+                        camp: "Camp at <strong>RV Park Beppu</strong>."
+                    },
+                    {
+                        day: "Day 7",
+                        title: "Return to Fukuoka via Yufuin",
+                        desc: "Browse Yufuin's craft streets, then drive back to Fukuoka for your flight home.",
+                        highlights: ["Lake Kinrin", "Fukuoka return"],
+                        camp: "Drop-off day."
+                    }
+                ]
+            },
+            "6-8_nature": {
+                name: "7 Day Volcanic Ridges & Secret Gorge Adventure",
+                days: "7 Days",
+                theme: "Nature & Adventure",
+                van: "loft",
+                map: "https://www.google.com/maps/dir/Fukuoka+Airport/Mount+Aso/Takachiho+Gorge/Kuju+Plateau/Kokonoe+Yume+Otsurihashi/Yufuin/Fukuoka/",
+                timeline: [
+                    {
+                        day: "Day 1",
+                        title: "Fukuoka to Mount Aso Ascent",
+                        desc: "Drive east from Fukuoka up into the Mount Aso highlands. Pitch your roof tent overlooking the outer crater walls.",
+                        highlights: ["Mt. Aso Ridge Road", "Daikombo Peak"],
+                        camp: "Camp at <strong>Michi-no-Eki Aso</strong>."
+                    },
+                    {
+                        day: "Day 2",
+                        title: "Mt. Aso Volcano Trek & Kusasenri",
+                        desc: "Hike across the volcanic grasslands of Kusasenri and get close to the active Nakadake crater. Enjoy local beef skewers for lunch.",
+                        highlights: ["Volcanic Grasslands", "Active Crater View"],
+                        camp: "Camp at <strong>Aso Shirakawa Campsite</strong>."
+                    },
+                    {
+                        day: "Day 3",
+                        title: "Takachiho Sacred Forest & Waterfalls",
+                        desc: "Head south to Takachiho. Row boats under Minainotaki waterfall and walk the forest trails surrounded by ancient cedar trees.",
+                        highlights: ["Minainotaki Waterfall", "Ancient Cedars"],
+                        camp: "Camp at <strong>Michi-no-Eki Takachiho</strong>."
+                    },
+                    {
+                        day: "Day 4",
+                        title: "Kuju Mountain Range Summit Drive",
+                        desc: "Drive north into the rugged Kuju range. Hike to Mt. Nakadake summit (the highest peak in Kyushu) or walk the flat Kuju marshland paths.",
+                        highlights: ["Nakadake Summit", "Marshland Boardwalks"],
+                        camp: "Camp at <strong>Kuju Plateau Auto Campground</strong>."
+                    },
+                    {
+                        day: "Day 5",
+                        title: "Kokonoe Suspension Bridge & Yufuin",
+                        desc: "Cross the Kokonoe Yume suspension bridge, then drive to Mount Yufudake's foot. Soak in Yufuin's outdoor thermal waters with mountain views.",
+                        highlights: ["Kokonoe Suspension Bridge", "Yufudake Hot Spring"],
+                        camp: "Camp at <strong>Yufuin Country Club RV Park</strong>."
+                    },
+                    {
+                        day: "Day 6",
+                        title: "Beppu Sulfur Springs & Steam Cuisine",
+                        desc: "Explore the steam vents of Beppu. Enjoy local food steamed in geothermal springs.",
+                        highlights: ["Steam Vents", "Geothermal Steamed Lunch"],
+                        camp: "Camp at <strong>RV Park Beppu</strong>."
+                    },
+                    {
+                        day: "Day 7",
+                        title: "Fukuoka Airport Return",
+                        desc: "Return your campervan to the Fukuoka station/airport depot.",
+                        highlights: ["Fukuoka return"],
+                        camp: "Drop-off day."
+                    }
+                ]
+            },
+            // Fallback default loops (applied to food/coastal or other combinations)
+            "default_coastal": {
+                name: "7 Day Sun & Surf Coastal Route (Miyazaki & Kagoshima)",
+                days: "7 Days",
+                theme: "Coastal Roads & Surf",
+                van: "probox",
+                map: "https://www.google.com/maps/dir/Fukuoka+Airport/Miyazaki/Aoshima/Udo+Shrine/Sakurajima/Kirishima/Mount+Aso/Kurokawa+Onsen/Fukuoka/",
+                timeline: [
+                    {
+                        day: "Day 1",
+                        title: "Fukuoka to Miyazaki Sunset Coast",
+                        desc: "Drive south to Miyazaki. Cruise down the Nichinan Coastline, famous for palm trees and surf beaches.",
+                        highlights: ["Nichinan Palm Trees", "Surf beaches"],
+                        camp: "Camp at <strong>Miyazaki Shirahama Campsite</strong> (ocean view camping)."
+                    },
+                    {
+                        day: "Day 2",
+                        title: "Aoshima Island & Devil's Washboard",
+                        desc: "Walk to Aoshima Island, surrounded by the 'Devil's Washboard' geological rock formations. Visit the colorful coastal Udo Shrine built inside a cave.",
+                        highlights: ["Devil's Washboard", "Cave Shrine"],
+                        camp: "Camp at <strong>Miyazaki Auto Camp</strong>."
+                    },
+                    {
+                        day: "Day 3",
+                        title: "Sakurajima Volcano Loop",
+                        desc: "Drive south into Kagoshima. Catch views of Sakurajima, an active volcano smoking across the bay. Walk along the volcanic lava trail.",
+                        highlights: ["Sakurajima Volcano", "Lava trail walk"],
+                        camp: "Camp at <strong>Michi-no-Eki Sakurajima</strong> (view of smoking volcano)."
+                    },
+                    {
+                        day: "Day 4",
+                        title: "Kagoshima Black Pork Feast & Kirishima",
+                        desc: "Try local Kagoshima Kurobuta pork, then drive north into the misty Kirishima volcanic range, home to ancient mythology.",
+                        highlights: ["Kurobuta Pork", "Kirishima Shrine"],
+                        camp: "Camp at <strong>Kirishima Onsen Auto Camp</strong>."
+                    },
+                    {
+                        day: "Day 5",
+                        title: "Mount Aso Highlands Ascent",
+                        desc: "Drive north to the Mt. Aso caldera. Watch the sunset over the giant volcano walls.",
+                        highlights: ["Aso Highlands", "Volcanic sunset"],
+                        camp: "Camp at <strong>Michi-no-Eki Aso</strong>."
+                    },
+                    {
+                        day: "Day 6",
+                        title: "Kurokawa Onsen Bath-Hop",
+                        desc: "Soak in three secret outdoor hot springs in Kurokawa Onsen.",
+                        highlights: ["Outdoor Baths", "Traditional Village"],
+                        camp: "Camp at <strong>Kurokawa Onsen Parking</strong>."
+                    },
+                    {
+                        day: "Day 7",
+                        title: "Fukuoka Station Drop-off",
+                        desc: "Drive back to Fukuoka for departure.",
+                        highlights: ["Fukuoka return"],
+                        camp: "Drop-off day."
+                    }
+                ]
+            },
+            "default_food": {
+                name: "5 Day Kyushu Gourmet & Samurai Culture Road Trip",
+                days: "5 Days",
+                theme: "Gourmet & Local Culture",
+                van: "bongo",
+                map: "https://www.google.com/maps/dir/Fukuoka+Airport/Kumamoto+Castle/Mount+Aso/Kurokawa+Onsen/Hita/Fukuoka/",
+                timeline: [
+                    {
+                        day: "Day 1",
+                        title: "Fukuoka Yatai Stalls & Ramen",
+                        desc: "Pick up your van. Spend the evening food-hopping through Fukuoka's outdoor Yatai stalls, trying Tonkotsu ramen and gyoza.",
+                        highlights: ["Tonkotsu Ramen", "Yatai stalls"],
+                        camp: "Camp at <strong>RV Park Fukuoka Coast</strong>."
+                    },
+                    {
+                        day: "Day 2",
+                        title: "Kumamoto Castle & Akaushi Wagyu Beef",
+                        desc: "Drive south to Kumamoto. Explore Kumamoto Castle, one of Japan's most formidable castles. Try local Akaushi (red wagyu) beef over rice.",
+                        highlights: ["Kumamoto Castle", "Akaushi Wagyu Beef"],
+                        camp: "Camp at <strong>Kumamoto Castle RV Park</strong>."
+                    },
+                    {
+                        day: "Day 3",
+                        title: "Mount Aso Grasslands & Local Dairy",
+                        desc: "Drive into Mt. Aso caldera. Visit a local dairy farm for rich Aso milk ice cream, then try volcanic-stone grilled meats.",
+                        highlights: ["Aso Grasslands", "Dairy farms", "Stone-grilled beef"],
+                        camp: "Camp at <strong>Michi-no-Eki Aso</strong>."
+                    },
+                    {
+                        day: "Day 4",
+                        title: "Kurokawa Kaiseki Dinner & Bathing",
+                        desc: "Soak in Kurokawa's onsens and enjoy a gourmet Japanese Kaiseki dining experience in the village.",
+                        highlights: ["Bath-hopping", "Kaiseki Dinner"],
+                        camp: "Camp at <strong>Kurokawa Auto Campsite</strong>."
+                    },
+                    {
+                        day: "Day 5",
+                        title: "Hita Sake Brewery & Return",
+                        desc: "Visit a historic sake brewery in Hita before driving back to Fukuoka for your flight.",
+                        highlights: ["Sake tasting", "Historic streets"],
+                        camp: "Drop-off day."
+                    }
+                ]
+            }
+        };
+
+        // Vehicles Info Mapping
+        const vehicles = {
+            "probox": {
+                name: "Roof Tent Probox",
+                desc: "Compact, extremely fuel-efficient, and easy to park on Kyushu's narrow hot-spring roads. Perfect for couples or solo travelers (fits 2 guests, roof-tent bed).",
+                img: "/images/rent/vehicles/probox-front.jpg",
+                id: "Probox"
+            },
+            "bongo": {
+                name: "Bed Bongo Brawny",
+                desc: "Our hand-built wood cabin cruiser. Spacious interior to relax inside even on rainy days. Narrow width makes it incredibly easy to drive on mountain passes (fits 2-3 guests).",
+                img: "/images/rent/vehicles/bongo-mountain.jpg",
+                id: "Bongo"
+            },
+            "loft": {
+                name: "Pocket Loft",
+                desc: "Micro-truck explorer with a spacious roof-tent and direct indoor cabin passage. Fits up to 4 guests (2 in tent, 2 inside). Unbeatable fun and easy driving.",
+                img: "/images/rent/vehicles/daihatsu.jpg",
+                id: "Pocket%20Loft"
+            }
+        };
+
+        // Wizard state
+        let currentStep = 1;
+        let selections = {
+            days: "",
+            theme: "",
+            guests: ""
+        };
+
+        function selectOption(step, key, value) {
+            // Update selections
+            selections[key] = value;
+
+            // Highlight chosen option card
+            const stepEl = document.getElementById(`step-${step}`);
+            stepEl.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+            
+            // Find card that was clicked
+            event.currentTarget.classList.add('selected');
+
+            // Enable "Continue" button
+            document.getElementById('btn-next').disabled = false;
+        }
+
+        function nextStep() {
+            if (currentStep < 3) {
+                // Transition steps
+                document.getElementById(`step-${currentStep}`).classList.remove('active');
+                currentStep++;
+                document.getElementById(`step-${currentStep}`).classList.add('active');
+
+                // Update wizard controls
+                document.getElementById('btn-prev').disabled = false;
+                
+                // Check if next selection has already been selected, otherwise disable next button
+                const nextKey = currentStep === 2 ? 'theme' : 'guests';
+                document.getElementById('btn-next').disabled = !selections[nextKey];
+
+                if (currentStep === 3) {
+                    document.getElementById('btn-next').textContent = "Generate Route ✨";
+                }
+            } else {
+                // We are at step 3, compile and display result
+                showResult();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step-${currentStep}`).classList.remove('active');
+                currentStep--;
+                document.getElementById(`step-${currentStep}`).classList.add('active');
+
+                // Update wizard controls
+                document.getElementById('btn-next').disabled = false;
+                document.getElementById('btn-next').textContent = "Continue →";
+                
+                if (currentStep === 1) {
+                    document.getElementById('btn-prev').disabled = true;
+                }
+            }
+        }
+
+        function showResult() {
+            // Determine key
+            let routeKey = `${selections.days}_${selections.theme}`;
+            
+            // Fallbacks
+            if (!itineraries[routeKey]) {
+                // If specific combination doesn't exist, fallback based on theme or duration
+                if (selections.theme === 'coastal') {
+                    routeKey = "default_coastal";
+                } else if (selections.theme === 'food') {
+                    routeKey = "default_food";
+                } else {
+                    // Standard fallback
+                    routeKey = selections.days === '3-5' ? "3-5_onsen" : "6-8_onsen";
+                }
+            }
+
+            const route = itineraries[routeKey];
+            
+            // Map vehicle override based on passenger count
+            let finalVanKey = route.van;
+            if (selections.guests === 'family') {
+                finalVanKey = "loft"; // Micro truck fits 4 guests
+            } else if (selections.guests === 'solo') {
+                finalVanKey = "probox"; // Roof tent probox is perfect for solo
+            }
+            const van = vehicles[finalVanKey];
+
+            // Render text
+            document.getElementById('route-name').textContent = route.name;
+            document.getElementById('route-duration').textContent = route.days;
+            document.getElementById('route-theme').textContent = route.theme;
+
+            // Render timeline
+            const timelineHtml = route.timeline.map(item => `
+                <div class="timeline-day">
+                    <div class="day-num">${item.day}</div>
+                    <div class="day-title">${item.title}</div>
+                    <p class="day-desc">${item.desc}</p>
+                    <div class="day-highlights">
+                        ${item.highlights.map(h => `<span class="badge-highlight">${h}</span>`).join('')}
+                    </div>
+                    <div class="day-camp">
+                        <span>⛺ <strong>Campsite:</strong> ${item.camp}</span>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('timeline-list').innerHTML = timelineHtml;
+
+            // Render sidebar
+            document.getElementById('rec-van-img').src = van.img;
+            document.getElementById('rec-van-name').textContent = van.name;
+            document.getElementById('rec-van-desc').textContent = van.desc;
+            
+            // URL parameter construction for CRO prefill
+            document.getElementById('rec-van-link').href = `/rent/?vehicle=${van.id}&days=${route.days.split(' ')[0]}#calculator`;
+            
+            document.getElementById('rec-map-link').href = route.map;
+
+            // Toggle screens
+            document.getElementById('wizard-box').style.display = 'none';
+            document.getElementById('result-box').style.display = 'block';
+
+            // Scroll to results
+            document.getElementById('result-box').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetWizard() {
+            // Reset state
+            currentStep = 1;
+            selections = { days: "", theme: "", guests: "" };
+
+            // Reset UI options
+            document.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+            document.getElementById('btn-next').disabled = true;
+            document.getElementById('btn-next').textContent = "Continue →";
+            document.getElementById('btn-prev').disabled = true;
+
+            // Toggle active steps
+            document.querySelectorAll('.wizard-step').forEach(step => step.classList.remove('active'));
+            document.getElementById('step-1').classList.add('active');
+
+            // Toggle screens
+            document.getElementById('result-box').style.display = 'none';
+            document.getElementById('wizard-box').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

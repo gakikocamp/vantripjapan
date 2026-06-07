@@ -203,6 +203,13 @@ function renderArticlePage(article) {
         <a href="/contact/">Contact</a>
         <a href="/privacy/">Privacy Policy</a>
       </div>
+      <div class="footer-col">
+        <h4>Related Services</h4>
+        <a href="https://drive-japan-license.com/" target="_blank">JDLTC — License Translation</a>
+        <a href="https://crystalinsence.com/" target="_blank">Crystal Incense — Incense</a>
+        <a href="https://wagyuninja.tokyo/" target="_blank">WAGYU NINJA — Premium Exports</a>
+        <a href="https://www.camjyo.com/" target="_blank">キャンプ女子株式会社</a>
+      </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 VanTripJapan. Operated by <a href="https://www.camjyo.com/" target="_blank" style="color:inherit;text-decoration:underline;">キャンプ女子株式会社</a>. All rights reserved.</span>
@@ -215,6 +222,48 @@ function renderArticlePage(article) {
      class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
     💬
   </a>
+
+  <!-- Floating Sticky CTA for Campervan Rental -->
+  <div class="floating-cta" id="floatingCta">
+    <button class="floating-cta-close" id="closeCta" aria-label="Close CTA">×</button>
+    <div class="floating-cta-content">
+      <span class="floating-cta-badge">Fukuoka Airport Pickup</span>
+      <h4>Explore Japan by Campervan</h4>
+      <p>All-inclusive rental from ¥16,500/day</p>
+    </div>
+    <a href="/rent/" class="floating-cta-btn">View Rates →</a>
+  </div>
+
+  <script>
+    // Floating CTA Visibility & Interaction
+    const floatingCta = document.getElementById('floatingCta');
+    const closeCta = document.getElementById('closeCta');
+    
+    // Hide CTA if user closed it in this session
+    if (sessionStorage.getItem('hideCampervanCta') === 'true') {
+      floatingCta.style.display = 'none';
+    } else {
+      window.addEventListener('scroll', () => {
+        // Show after scrolling 600px
+        if (window.scrollY > 600) {
+          floatingCta.classList.add('visible');
+        } else {
+          floatingCta.classList.remove('visible');
+        }
+      });
+    }
+    
+    closeCta.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      floatingCta.classList.remove('visible');
+      // Store closed state for session to avoid annoying the user on other articles
+      sessionStorage.setItem('hideCampervanCta', 'true');
+      setTimeout(() => {
+        floatingCta.style.display = 'none';
+      }, 300); // Wait for transition
+    });
+  </script>
 
   <script src="/js/nav.js?v=20260413"></script>
 

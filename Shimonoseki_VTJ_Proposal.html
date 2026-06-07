@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下関市×VTJ プレミアム提案書</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --gold: #fbbf24;
+            --gold-dark: #d97706;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(15, 23, 42, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        html, body {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #1e293b;
+            color: var(--text-main);
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .presentation {
+            width: 100%; max-width: 1122px; margin: 0 auto;
+        }
+
+        .slide {
+            background: var(--bg-dark);
+            width: 100%; height: 793px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            margin: 20px auto;
+        }
+
+        .slide-inner {
+            padding: 50px 60px;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        /* 印刷設定 */
+        @media print {
+            @page { size: A4 landscape; margin: 0; }
+            body { background: black; }
+            .presentation { max-width: 100%; margin: 0; }
+            .slide { 
+                margin: 0 !important; box-shadow: none !important; 
+                width: 100vw !important; height: 100vh !important;
+                page-break-after: always !important; page-break-inside: avoid !important;
+            }
+            .slide-inner { transform: scale(0.95); transform-origin: center center; height: 105%; width: 105%; margin-left: -2.5%; margin-top: -2.5%; padding: 40px 50px;}
+        }
+
+        /* 背景画像とオーバーレイ */
+        .bg-img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: 0; opacity: 0.6;
+        }
+        .overlay-gradient {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(2,6,23,0.95) 0%, rgba(15,23,42,0.6) 100%);
+            z-index: 1;
+        }
+        
+        h1, h2, h3, h4, p { margin: 0; }
+        .eng { font-family: 'Outfit', sans-serif; }
+        .mincho { font-family: 'Shippori Mincho', serif; }
+
+        /* グラスモーフィズムパネル */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* ヘッダー */
+        .slide-header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
+        .slide-header h2 { font-size: 2rem; font-weight: 700; letter-spacing: 0.05em; color: #fff; }
+        .slide-header .subtitle { font-size: 1rem; color: var(--gold); letter-spacing: 0.3em; font-weight: 700; text-transform: uppercase;}
+
+        /* タイトルスライド */
+        .title-slide .slide-inner { justify-content: center; align-items: flex-start; }
+        .title-badge { background: var(--gold); color: var(--bg-darker); padding: 5px 15px; font-weight: 900; font-size: 1rem; letter-spacing: 0.2em; border-radius: 4px; margin-bottom: 30px; display: inline-block;}
+        .title-slide h1 { font-size: 4.5rem; line-height: 1.2; letter-spacing: 0.05em; margin-bottom: 20px; text-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .title-slide .sub { font-size: 1.5rem; color: var(--text-muted); letter-spacing: 0.1em; margin-bottom: 50px; font-weight: 300; }
+        
+        /* コンテンツレイアウト */
+        .content { flex-grow: 1; display: flex; flex-direction: column; }
+        .row { display: flex; gap: 30px; height: 100%; }
+        .col { flex: 1; display: flex; flex-direction: column; }
+
+        /* データ見せ方 */
+        .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+        .data-card { text-align: center; padding: 25px 0; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); }
+        .huge-num { font-family: 'Outfit', sans-serif; font-size: 4rem; font-weight: 900; color: var(--gold); line-height: 1; margin-bottom: 5px; text-shadow: 0 0 20px rgba(251,191,36,0.3); }
+        .huge-num span { font-size: 1.2rem; font-weight: 500; color: #fff; margin-left: 5px; }
+
+        /* ツアータイムライン（シネマティック） */
+        .tour-list { display: flex; flex-direction: column; gap: 15px; flex-grow: 1; }
+        .t-row {
+            display: grid; grid-template-columns: 90px 180px 1fr;
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+            border-left: 4px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+            align-items: center;
+        }
+        .t-time { font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); padding-left: 20px; }
+        .t-spot { padding: 15px; border-right: 1px solid rgba(255,255,255,0.1); }
+        .t-spot h4 { font-size: 1.1rem; margin-bottom: 3px; color: #fff; }
+        .t-spot p { font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; }
+        .t-desc { padding: 15px 25px; }
+        .t-desc p { font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); }
+
+        .footer { position: absolute; bottom: 25px; right: 40px; font-family: 'Outfit', sans-serif; font-weight: 700; color: rgba(255,255,255,0.2); font-size: 1rem; z-index: 10; letter-spacing: 0.1em;}
+    </style>
+</head>
+<body>
+
+<div class="presentation">
+
+    <!-- 01 TITLE -->
+    <div class="slide">
+        <!-- 絶景の背景画像 -->
+        <img src="https://images.unsplash.com/photo-1542931287-023b922fa89b?auto=format&fit=crop&w=2000&q=80" class="bg-img" alt="bg">
+        <div class="overlay-gradient"></div>
+        <div class="slide-inner title-slide">
+            <div class="title-badge eng">PROPOSAL FOR SHIMONOSEKI</div>
+            <h1 class="mincho">欧米豪インバウンド層向け<br><span style="color: var(--gold);">滞在型観光ルート</span>の構築</h1>
+            <p class="sub">キャンピングカーが変える、下関市の新たなインバウンド戦略</p>
+            <div style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; width: 100%;">
+                <p style="font-size: 1.2rem; font-weight: 700; letter-spacing: 0.1em;">キャンプ女子株式会社 / VAN TRIP JAPAN</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 02 DATA -->
+    <div class="slide">
+        <div class="slide-inner">
+            <div class="slide-header"><h2>ターゲットインサイト</h2><div class="subtitle eng">CUSTOMER INSIGHTS</div></div>
+            <div class="content row">
+                <div class="col glass-panel" style="flex: 1.2; justify-content: space-between;">
+                    <div>
+                        <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--gold);">彼らが求めるのは「圧倒的な自由とローカル」</h3>
+                        <p style="font-size: 1rem; line-height: 1.8; color: var(--text-muted);">
+                            日本の手付かずの自然、歴史、文化を好む欧米豪の富裕層は、既存のホテルや公共交通機関に縛られた「王道の観光」を好みません。自由に日本中を走り回るサステナブルな旅を提供しています。
+                        </p>
+                    </div>
+                    <div class="data-grid">
+                        <div class="data-card">
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px; font-weight: 700;">平均利用（滞在）日数</p>
+                            <div class="huge-num">12<span>日間</span></div>
+                        </div>
+                        <div class="data-card">
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 5px; font-weight: 700;">現在の山口県訪問率</p>
+                            <div class="huge-num" style="color: #ef4444;">0<span>%</span></div>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); text-align: right; margin-top: 10px;">※VTJ利用者の大半が福岡から大分・長崎へ流出。下関は完全な未開拓のブルーオーシャンです。</p>
+                </div>
+                <div class="col glass-panel" style="align-items: center; justify-content: center;">
+                    <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 20px; letter-spacing: 0.1em;">VTJ利用者の国籍割合</h3>
+                    <div style="width: 100%; height: 350px;"><canvas id="chart"></canvas></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">02</div>
+    </div>
+
+    <!-- 03 VEHICLES -->
+    <div class="slide">
+        <div class="slide-inner">
+            <div class="slide-header"><h2>モビリティソリューション</h2><div class="subtitle eng">OUR VEHICLES</div></div>
+            <!-- 画像を完全に横並び＆最大化 -->
+            <div class="content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; height: 100%;">
+                <div style="border-radius: 16px; background: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                    <img src="車両情報/TOYOTA-PRO%20BOX.png" style="width: 100%; height: 100%; object-fit: contain; object-position: center; background: #fff;">
+                </div>
+                <div style="border-radius: 16px; background: #fff; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                    <img src="車両情報/MAZDA-Bongo%20Browny.png" style="width: 100%; height: 100%; object-fit: contain; object-position: center; background: #fff;">
+                </div>
+            </div>
+        </div>
+        <div class="footer">03</div>
+    </div>
+
+    <!-- 04 PROBLEM & SOLUTION -->
+    <div class="slide">
+        <div class="slide-inner">
+            <div class="slide-header"><h2>下関市の課題と解決策</h2><div class="subtitle eng">PROBLEM & SOLUTION</div></div>
+            <div class="content row">
+                <!-- 課題 -->
+                <div class="col glass-panel" style="border-top: 4px solid #ef4444;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 30px;">
+                        <span class="eng" style="font-size: 2.5rem; font-weight: 900; color: #ef4444; line-height: 1;">01</span>
+                        <h3 style="font-size: 1.4rem;">下関市の構造的課題</h3>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 10px; border-left: 2px solid #ef4444; padding-left: 10px;">日帰り・通過型観光の慢性化</h4>
+                        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-muted);">唐戸市場等での飲食後、市内に宿泊せず他県へ流出。宿泊率の低迷とナイトタイムの消費不足が深刻化。</p>
+                    </div>
+                    
+                    <div>
+                        <h4 style="font-size: 1.1rem; color: #fff; margin-bottom: 10px; border-left: 2px solid #ef4444; padding-left: 10px;">二次交通の決定的な欠落</h4>
+                        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-muted);">豊浦や角島など、高付加価値な自然・ローカル資源があるが、インバウンド客が自力で辿り着く足がない。</p>
+                    </div>
+                </div>
+
+                <!-- 解決策 -->
+                <div class="col glass-panel" style="border-top: 4px solid var(--gold); background: rgba(251, 191, 36, 0.05);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 30px;">
+                        <span class="eng" style="font-size: 2.5rem; font-weight: 900; color: var(--gold); line-height: 1;">02</span>
+                        <h3 style="font-size: 1.4rem;">キャンピングカーによる突破</h3>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="font-size: 1.1rem; color: var(--gold); margin-bottom: 10px; border-left: 2px solid var(--gold); padding-left: 10px;">「動くホテル」による即時滞在化</h4>
+                        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-muted);">新たなハコモノ投資は一切不要。海沿いのRVパーク等に停めるだけで、下関全域が今日から「滞在型リゾート」に変わります。</p>
+                    </div>
+                    
+                    <div>
+                        <h4 style="font-size: 1.1rem; color: var(--gold); margin-bottom: 10px; border-left: 2px solid var(--gold); padding-left: 10px;">「移動」自体が至高のアクティビティ</h4>
+                        <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-muted);">二次交通の整備は不要です。自らハンドルを握り、日本の美しい海岸線や秘境をドライブすること自体が最大の体験価値となります。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">04</div>
+    </div>
+
+    <!-- 05 CONCEPT -->
+    <div class="slide">
+        <!-- 寺院/禅の背景画像 -->
+        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=2000&q=80" class="bg-img" alt="bg">
+        <div class="overlay-gradient" style="background: linear-gradient(135deg, rgba(2,6,23,0.95) 0%, rgba(2,6,23,0.7) 100%);"></div>
+        
+        <div class="slide-inner" style="align-items: center; justify-content: center; text-align: center;">
+            <div class="eng" style="font-size: 1.2rem; letter-spacing: 0.5em; color: var(--gold); margin-bottom: 20px;">EXCLUSIVE ROUTE CONCEPT</div>
+            <h1 class="mincho" style="font-size: 4rem; letter-spacing: 0.1em; line-height: 1.3; margin-bottom: 30px; text-shadow: 0 10px 30px rgba(0,0,0,0.8);">精神性と静寂の西海岸</h1>
+            <p class="eng" style="font-size: 1.5rem; letter-spacing: 0.2em; color: #fff; margin-bottom: 50px; font-weight: 300;">Spiritual, Samurai, and Coastal Silence</p>
+            
+            <div class="glass-panel" style="max-width: 800px;">
+                <p style="font-size: 1.1rem; line-height: 2; letter-spacing: 0.1em; color: #fff;">
+                    行政が推進しがちな「市内中心部での滞在」という固定概念を外し、<br>
+                    欧米豪層が真に熱狂する「歴史」「ローカル」「絶景」を線で繋ぐ。<br>
+                    <span style="color: var(--gold); font-weight: 700; font-size: 1.2rem;">24時間、下関市内に完全滞在し、地方消費を最大化する</span>パーフェクトループ。
+                </p>
+            </div>
+        </div>
+        <div class="footer">05</div>
+    </div>
+
+    <!-- 06 ROUTE 1 -->
+    <div class="slide">
+        <div class="slide-inner">
+            <div class="slide-header"><h2>DAY 1 : 精神性と静寂の西海岸へ</h2><div class="subtitle eng">EXPERIENCE THE SILENCE</div></div>
+            <div class="content">
+                <div class="tour-list">
+                    <div class="t-row">
+                        <div class="t-time">09:00</div>
+                        <div class="t-spot"><p>FUKUOKA ➔ SHIMONOSEKI</p><h4>博多出発 ➔ 長府エリア</h4></div>
+                        <div class="t-desc"><p><strong style="color: #fff;">国宝・功山寺と城下町散策</strong><br>観光地化されすぎない本物の歴史の静寂。高杉晋作ゆかりの寺院と土塀の街並みで、欧米層が好むZenと侍の精神性を体感。</p></div>
+                    </div>
+                    <div class="t-row">
+                        <div class="t-time">12:30</div>
+                        <div class="t-spot"><p>SHIMONOSEKI CITY</p><h4>ローカルカフェ</h4></div>
+                        <div class="t-desc"><p><strong style="color: #fff;">ヴィーガン対応ローカルランチ</strong><br>インバウンド層に必須のオーガニック・ヴィーガン食を体験。地元のサステナブルな取り組みに触れる。</p></div>
+                    </div>
+                    <div class="t-row">
+                        <div class="t-time">14:30</div>
+                        <div class="t-spot"><p>TOYOURA AREA</p><h4>福徳稲荷神社</h4></div>
+                        <div class="t-desc"><p><strong style="color: #fff;">日本海を見下ろす千本鳥居</strong><br>「海×鳥居」というインバウンドが最も熱狂する絶景要素。神秘的なロケーションでスピリチュアルな体験を提供。</p></div>
+                    </div>
+                    <div class="t-row">
+                        <div class="t-time">15:30</div>
+                        <div class="t-spot"><p>KAWATANA ONSEN</p><h4>川棚温泉（貸切風呂）</h4></div>
+                        <div class="t-desc"><p><strong style="color: #fff;">日本庭園と極上のプライベート温泉</strong><br>欧米層の大きなハードルである「タトゥー問題」を貸切風呂でクリア。日本古来の温泉文化をストレスなく堪能。</p></div>
+                    </div>
+                    <div class="t-row">
+                        <div class="t-time">17:30</div>
+                        <div class="t-spot"><p>HOHOKU ➔ TOYOURA</p><h4>角島夕景 ➔ RVパーク</h4></div>
+                        <div class="t-desc"><p><strong style="color: #fff;">絶景ドライブと波音の車中泊</strong><br>黄金に染まる角島大橋を渡り、海沿いのRVパークへ。道の駅で買った地元食材で車内ディナーを楽しみ、地方消費を生み出す。</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">06</div>
+    </div>
+
+    <!-- 07 ROUTE 2 -->
+    <div class="slide">
+        <!-- 朝の海の背景画像 -->
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80" class="bg-img" alt="bg">
+        <div class="overlay-gradient" style="background: linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 100%);"></div>
+
+        <div class="slide-inner">
+            <div class="slide-header"><h2>DAY 2 : 絶景の朝とローカルへの還元</h2><div class="subtitle eng">MORNING GLORY & ECONOMY</div></div>
+            <div class="content" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="tour-list" style="flex-grow: 0; margin-bottom: 30px;">
+                    <div class="t-row glass-panel" style="padding: 0; border: none; background: rgba(15,23,42,0.6); margin-bottom: 10px;">
+                        <div class="t-time">08:00</div>
+                        <div class="t-spot"><p>TOYOURA AREA</p><h4>RVパークの朝</h4></div>
+                        <div class="t-desc"><p><strong style="color: #fff;">波の音で目覚める至高の時間</strong><br>ドアを開ければ目の前は日本海。自分たちで淹れたコーヒーを自然の中で味わうラグジュアリー体験。</p></div>
+                    </div>
+                    <div class="t-row glass-panel" style="padding: 0; border: none; background: rgba(15,23,42,0.6); margin-bottom: 10px;">
+                        <div class="t-time">09:30</div>
+                        <div class="t-spot"><p>HOHOKU AREA</p><h4>角島灯台公園</h4></div>
+                        <div class="t-desc"><p><strong style="color: #fff;">エメラルドの海と歴史的建造物</strong><br>朝陽に輝く海と、英国人技師設計の美しい石造りの灯台。ヨーロッパ層の心に響くストーリー。</p></div>
+                    </div>
+                    <div class="t-row glass-panel" style="padding: 0; border: none; background: rgba(15,23,42,0.6);">
+                        <div class="t-time">11:00</div>
+                        <div class="t-spot"><p>HOHOKU AREA</p><h4>道の駅 北浦街道 豊北</h4></div>
+                        <div class="t-desc"><p><strong style="color: #fff;">特産品の購買とローカルランチ</strong><br>全国屈指の道の駅で購買。通過されがちな外郭エリアに確実な経済効果をもたらす。</p></div>
+                    </div>
+                </div>
+
+                <div class="glass-panel" style="display: flex; gap: 30px; background: rgba(251, 191, 36, 0.1); border-color: rgba(251, 191, 36, 0.3);">
+                    <div style="flex: 1;">
+                        <h4 style="color: var(--gold); font-size: 1.1rem; margin-bottom: 10px;">完全な市域内消費</h4>
+                        <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-main);">外郭エリア（長府・豊浦・豊北）で飲食・温泉・宿泊・買物の全てをコンプリートさせます。</p>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="color: var(--gold); font-size: 1.1rem; margin-bottom: 10px;">ハコモノ投資ゼロ</h4>
+                        <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-main);">新たなホテルや交通網を作らなくても、既存の資源を「車」で結ぶだけで滞在型リゾートが完成します。</p>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="color: var(--gold); font-size: 1.1rem; margin-bottom: 10px;">欧米豪ニーズ合致</h4>
+                        <p style="font-size: 0.9rem; line-height: 1.5; color: var(--text-main);">人混みを避け、Zen（静寂）、Local（暮らし）、Nature（自然）に特化した持続可能な旅の形です。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">07</div>
+    </div>
+
+</div>
+
+<script>
+    const ctx = document.getElementById('chart').getContext('2d');
+    new Chart(ctx, { 
+        type: 'doughnut', 
+        data: { 
+            labels: ['北米', 'ヨーロッパ', 'オセアニア', 'その他'], 
+            datasets: [{ data: [45, 40, 10, 5], backgroundColor: ['#fbbf24', '#0f172a', '#334155', '#e2e8f0'], borderWidth: 2, borderColor: '#1e293b' }] 
+        }, 
+        options: { 
+            responsive: true, maintainAspectRatio: false, 
+            plugins: { legend: { position: 'bottom', labels: { color: '#f8fafc', font: { family: "'Noto Sans JP', sans-serif", size: 12 } } } }, 
+            cutout: '70%' 
+        } 
+    });
+</script>
+</body>
+</html>

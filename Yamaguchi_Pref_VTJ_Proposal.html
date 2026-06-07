@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山口県 スポーツ推進課様向け提案書</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1e293b;
+            --primary: #334155;
+            --gold: #d97706;
+            --gold-light: #fef3c7;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --bg-page: #f8fafc;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        html, body {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #cbd5e1;
+            color: var(--text-main);
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* LP (ランディングページ) フォーマット */
+        .presentation {
+            width: 100%; max-width: 1000px;
+            margin: 40px auto;
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        section {
+            padding: 60px 80px;
+            border-bottom: 1px solid var(--border);
+            page-break-inside: avoid;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+
+        @media print {
+            @page { margin: 15mm; }
+            body { background: white; margin: 0; padding: 0; }
+            .presentation { width: 100%; max-width: 100%; margin: 0; box-shadow: none; border: none; }
+            section { padding: 10mm 5mm; border-bottom: none; }
+            .avoid-break { page-break-inside: avoid; }
+        }
+
+        h1, h2, h3, h4, p { margin: 0; }
+        .eng { font-family: 'Outfit', sans-serif; }
+        .mincho { font-family: 'Shippori Mincho', serif; }
+
+        .section-header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--primary-dark);
+            padding-bottom: 10px;
+            display: flex; justify-content: space-between; align-items: flex-end;
+        }
+        .section-header h2 { font-size: 1.8rem; font-weight: 700; letter-spacing: 0.05em; color: var(--primary-dark); }
+        .section-header .subtitle { font-size: 1rem; color: var(--gold); letter-spacing: 0.2em; font-weight: 700; text-transform: uppercase;}
+
+        /* Hero (Title) Section */
+        .hero { display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 80px; background: var(--bg-page); }
+        .hero-content { flex: 1; }
+        .hero-badge { background: var(--gold); color: #fff; padding: 6px 16px; font-weight: 700; font-size: 1rem; letter-spacing: 0.2em; border-radius: 4px; margin-bottom: 25px; display: inline-block;}
+        .hero-content h1 { font-size: 3rem; line-height: 1.4; letter-spacing: 0.05em; margin-bottom: 20px; color: var(--primary-dark); }
+        .hero-content .sub { font-size: 1.2rem; color: var(--text-muted); letter-spacing: 0.1em; margin-bottom: 40px; font-weight: 500; }
+        .hero-collage { flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; border-radius: 16px; overflow: hidden; height: 400px;}
+        .hero-collage img { width: 100%; height: 100%; object-fit: cover; }
+
+        .row { display: flex; gap: 30px; }
+        .col { flex: 1; display: flex; flex-direction: column; }
+
+        .panel { background: var(--bg-page); border: 1px solid var(--border); border-radius: 12px; padding: 25px; }
+        .panel-gold { background: var(--gold-light); border: 1px solid #fde68a; border-radius: 12px; padding: 25px; }
+        
+        .tag { background: var(--white); border: 1px solid var(--border); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; display: inline-block; margin: 4px 2px; color: var(--primary); font-weight: 500;}
+
+        /* 車両画像レイアウト */
+        .vehicle-showcase { display: flex; gap: 15px; margin-top: 15px; margin-bottom: 25px;}
+        .vehicle-showcase img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); }
+        
+        .interactive-box { border: 2px dashed var(--gold); background: #fffbeb; border-radius: 12px; padding: 30px; text-align: center; margin-top: 20px; }
+    </style>
+</head>
+<body>
+<div class="presentation">
+
+    <!-- HERO SECTION -->
+    <section class="hero avoid-break">
+        <div class="hero-content">
+            <div class="hero-badge eng">SPORTS TOURISM × INBOUND</div>
+            <h1 class="mincho">山口県のアウトドア施設を、<br><span style="color: var(--gold);">『世界のベースキャンプ』</span>へ。</h1>
+            <p style="font-size: 1.3rem; margin-top: 15px; margin-bottom: 40px; color: var(--primary-dark); font-weight: 500;">インバウンドキャンパーと創る、新たな地域活性化</p>
+            <div style="margin-top: 60px; border-top: 2px solid var(--border); padding-top: 20px;">
+                <p style="font-size: 1.1rem; font-weight: 700; letter-spacing: 0.1em; color: var(--primary-dark);">キャンプ女子株式会社 / VAN TRIP JAPAN</p>
+            </div>
+        </div>
+        <div class="hero-collage">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Canoe">
+            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80" alt="Trekking">
+            <img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?auto=format&fit=crop&w=800&q=80" alt="Cycling">
+            <img src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=800&q=80" alt="Camping">
+        </div>
+    </section>
+
+    <!-- COMPANY TRACK RECORD -->
+    <section class="avoid-break" style="background: var(--bg-page);">
+        <div class="section-header"><h2>運営会社の実績</h2><div class="subtitle eng">OUR TRACK RECORD</div></div>
+        <div class="row" style="align-items: center;">
+            <div class="col" style="flex: 1.2;">
+                <h3 style="font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 20px; line-height: 1.4;">
+                    私たちは単なるレンタカー業者ではありません。<br>
+                    <span style="color: var(--gold);">アウトドア施設運営のプロフェッショナル</span>です。
+                </h3>
+                <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-main); margin-bottom: 25px;">
+                    福岡市初のグランピング施設（油山エリア等）の立ち上げ・経営をはじめ、全国のキャンプ場やアウトドア施設の集客支援、再生コンサルティングを数多く手がける「キャンプ女子株式会社」が運営しています。
+                </p>
+                <div style="background: var(--white); padding: 25px; border-radius: 8px; border-left: 4px solid var(--primary-dark); box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                    <h4 style="font-size: 1.1rem; color: var(--primary-dark); margin-bottom: 10px;">行政・指定管理者の皆様の「痛み」を深く理解しています</h4>
+                    <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">
+                        自ら現場の施設運営ノウハウを持つ私たちだからこそ、単なる一過性の観光客誘致ではなく、施設の維持管理や<strong style="color: var(--primary-dark);">「平日稼働の低迷」</strong>といった、皆様が直面するリアルな課題に寄り添った本質的な解決策をご提案できると確信しております。
+                    </p>
+                </div>
+            </div>
+            <div class="col">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div style="position: relative;">
+                        <img src="キャンジョ_サポート実績/南阿蘇あぐりキャンプ場.jpg" alt="南阿蘇あぐりキャンプ場" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                        <div style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.6); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">南阿蘇（熊本）</div>
+                    </div>
+                    <div style="position: relative;">
+                        <img src="キャンジョ_サポート実績/五島市_オートキャンプ.jpeg" alt="五島市オートキャンプ" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                        <div style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.6); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">五島（長崎）</div>
+                    </div>
+                    <div style="position: relative;">
+                        <img src="キャンジョ_サポート実績/平戸市_WEST%20END%20CAMP.jpg" alt="平戸市 WEST END CAMP" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                        <div style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.6); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">平戸（長崎）</div>
+                    </div>
+                    <div style="position: relative;">
+                        <img src="キャンジョ_サポート実績/朝倉オートキャンプ場.avif" alt="朝倉オートキャンプ場" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                        <div style="position: absolute; bottom: 8px; left: 8px; background: rgba(0,0,0,0.6); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">朝倉（福岡）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section class="avoid-break">
+        <div class="section-header"><h2>VAN TRIP JAPAN とは</h2><div class="subtitle eng">ABOUT US</div></div>
+        
+        <!-- 車両商品紹介画像 -->
+        <div class="vehicle-showcase row" style="background: var(--bg-page); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
+            <div class="col" style="display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border);"><img src="車両情報/TOYOTA-PRO%20BOX.png" alt="TOYOTA PROBOX" style="border: none; border-radius: 0; max-height: 150px; width: auto; object-fit: contain;"></div>
+            <div class="col" style="display: flex; align-items: center; justify-content: center;"><img src="車両情報/MAZDA-Bongo%20Browny.png" alt="MAZDA BONGO" style="border: none; border-radius: 0; max-height: 150px; width: auto; object-fit: contain;"></div>
+        </div>
+
+        <div class="row">
+            <div class="col" style="flex: 1.2;">
+                <h3 style="font-size: 1.2rem; color: var(--primary-dark); margin-bottom: 10px; border-left: 4px solid var(--gold); padding-left: 10px;">事業概要とミッション</h3>
+                <p style="font-size: 0.95rem; line-height: 1.8; margin-bottom: 25px;">
+                    訪日外国人向けに特化したキャンピングカーのレンタルサービス。<br>
+                    日本の細い道でも運転しやすい中型バン（PRO BOX等）をDIY仕様に仕上げ提供しています。<br>
+                    「日本の手付かずの自然・四季を大切にしながら、最高の旅体験を提供する」ことをミッションとしています。
+                </p>
+
+
+            </div>
+            <div class="col panel">
+                <h3 class="eng" style="font-size: 1.1rem; color: var(--gold); margin-bottom: 15px;">TARGET USER</h3>
+                <p style="font-size: 0.95rem; color: var(--primary-dark); margin-bottom: 10px; font-weight: 700;">客層（国籍）</p>
+                <div style="margin-bottom: 20px;">
+                    <span class="tag">ドイツ</span><span class="tag">フランス</span><span class="tag">イギリス</span><span class="tag">アメリカ</span><span class="tag">イスラエル</span><span class="tag">ベルギー</span><span class="tag">台湾</span><span class="tag">etc</span>
+                </div>
+                
+                <p style="font-size: 0.95rem; color: var(--primary-dark); margin-bottom: 5px; font-weight: 700;">平均利用日数</p>
+                <p class="eng" style="font-size: 2rem; color: var(--gold); font-weight: 900; margin-bottom: 20px; line-height: 1;">14<span style="font-size: 1rem; font-family: 'Noto Sans JP'; font-weight: 500; color: var(--text-main); margin-left: 5px;">日間</span> <span style="font-size: 0.8rem; color: var(--text-muted);">(最低7日〜)</span></p>
+
+                <p style="font-size: 0.95rem; color: var(--primary-dark); margin-bottom: 5px; font-weight: 700;">現在の主な周遊ルート</p>
+                <p style="font-size: 0.85rem; line-height: 1.6; color: var(--text-muted);">
+                    別府・湯布院・長崎・五島・鹿児島・阿蘇・高千穂・霧島など。<br>
+                    <strong style="color: #ef4444; font-size: 0.95rem; display: block; margin-top: 5px;">※現在、山口県への訪問はゼロです。</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDUSTRY REALITY -->
+    <section class="avoid-break" style="background: #f8fafc; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="section-header"><h2>日本アウトドア業界が直面するリアル</h2><div class="subtitle eng">INDUSTRY REALITY</div></div>
+        <div class="row">
+            <div class="col" style="flex: 1.2;">
+                <h3 style="font-size: 1.4rem; color: var(--primary-dark); margin-bottom: 15px; line-height: 1.4;">
+                    コロナ禍の「特需」は終わり、<br>
+                    国内需要は急激に冷え込んでいます。
+                </h3>
+                <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text-main); margin-bottom: 20px;">
+                    2021〜2022年のキャンプブームをピークに、現在、国内のアウトドア需要は明確な踊り場（減少傾向）を迎えています。<br>
+                    海外旅行の再開や物価高騰の影響により、週末であっても空き枠が目立つ施設が全国で急増しています。
+                </p>
+                <div class="panel" style="border-left: 4px solid #ef4444; background: #fef2f2; border-color: #fca5a5;">
+                    <h4 style="color: #b91c1c; margin-bottom: 10px; font-size: 1.05rem;">最大の課題：絶望的な「平日稼働の低迷」</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-main); line-height: 1.6;">
+                        国内のファミリー層・レジャー層は「土日」に集中します。そのため、週の半分以上（月〜金）は施設が稼働せず、施設の維持管理コストばかりが重くのしかかっているのが、全国のアウトドア施設・指定管理者が抱える共通の「痛み」です。
+                    </p>
+                </div>
+            </div>
+            <div class="col" style="display: flex; align-items: center; justify-content: center;">
+                <div style="background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 30px; text-align: center; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <p style="font-size: 1.1rem; color: var(--primary-dark); font-weight: 700; margin-bottom: 15px;">縮小する国内市場から、次なる市場へ</p>
+                    <p style="font-size: 3rem; margin-bottom: 15px;">📉 ➔ 🌍</p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                        パイが縮小する国内市場の奪い合いから脱却し、<br>
+                        円安を背景に拡大を続ける<strong style="color: var(--primary-dark);">「インバウンド層」</strong>へ<br>
+                        ターゲットを大胆にシフトさせる必要があります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY YAMAGUCHI -->
+    <section class="avoid-break">
+        <div class="section-header"><h2>なぜ山口県の施設か（課題解決）</h2><div class="subtitle eng">WHY YAMAGUCHI?</div></div>
+        <div class="row">
+            <div class="col">
+                <h3 style="font-size: 1.4rem; color: var(--primary-dark); margin-bottom: 15px; line-height: 1.4;">「マナーの良い欧米層」と<br>「スポーツツーリズム」の完璧な一致</h3>
+                <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text-main); margin-bottom: 20px;">
+                    欧米豪のキャンパーは、自然を敬い、地域のルールを守る非常にマナーの良い顧客層です。<br>
+                    彼らが求める「美しい自然の中でのSUP、カヤック、トレッキング」は、まさにスポーツ推進課様が掲げるビジョンと完全に一致します。
+                </p>
+                
+                <div class="panel-gold">
+                    <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+                        <span style="background: var(--gold); color: #fff; width: 24px; height: 24px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 0.9rem;">!</span>
+                        平日稼働の課題に対するソリューション
+                    </h4>
+                    <p style="font-size: 0.9rem; color: var(--text-main); line-height: 1.6;">
+                        平均14日間滞在するインバウンド層に「平日」という概念はありません。週末の国内レジャー層に依存せず、平日から彼らを施設に呼び込むことで、施設の「稼働率の低下」という課題をクリアにします。
+                    </p>
+                </div>
+            </div>
+            <div class="col" style="border-radius: 12px; overflow: hidden; background: var(--bg-page); border: 1px solid var(--border);">
+                <!-- キャンピングカーからの景色 -->
+                <img src="利用者提供画像/BONGO-編集済み/Replace_the_background_view_through_the_van_window-1776867432558.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Camping Scenery">
+            </div>
+        </div>
+    </section>
+
+    <!-- ROUTE -->
+    <section class="avoid-break">
+        <div class="section-header"><h2>VTJが提案する2つのモデルルート</h2><div class="subtitle eng">ROUTE & DISCUSSION</div></div>
+        <div class="row">
+            <div class="col" style="flex: 1.2;">
+                <div class="panel" style="margin-bottom: 20px; border-left: 4px solid var(--primary-dark);">
+                    <h4 style="font-size: 1.1rem; color: var(--primary-dark); margin-bottom: 10px;">【プランA】スポーツフィールド体感（西海岸ルート）</h4>
+                    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
+                        <span style="font-weight: 700; background: var(--border); padding: 4px 8px; border-radius: 4px; font-size: 0.9rem;">福岡</span> ➔
+                        <span style="font-weight: 700; background: var(--bg-page); border: 1px solid var(--border); padding: 4px 8px; border-radius: 4px; font-size: 0.9rem;">秋吉台（トレッキング）</span> ➔
+                        <span style="font-weight: 700; background: var(--bg-page); border: 1px solid var(--border); padding: 4px 8px; border-radius: 4px; font-size: 0.9rem;">ABUキャンプフィールド（宿泊）</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                        秋吉台でのハイキングから、日本海沿いの美しいキャンプ場へと抜けるルート。自然の息吹とダイナミズムを感じる、欧米層に最も刺さるネイチャーツーリズムの王道です。
+                    </p>
+                </div>
+
+                <div class="panel" style="border-left: 4px solid var(--gold);">
+                    <h4 style="font-size: 1.1rem; color: var(--gold); margin-bottom: 10px;">【プランB】瀬戸内インバウンド横断（東海岸ルート）</h4>
+                    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;">
+                        <span style="font-weight: 700; background: var(--border); padding: 4px 8px; border-radius: 4px; font-size: 0.9rem;">福岡</span> ➔
+                        <span style="font-weight: 700; background: var(--bg-page); border: 1px solid var(--border); padding: 4px 8px; border-radius: 4px; font-size: 0.9rem;">下関（市場寿司）</span> ➔
+                        <span style="font-weight: 700; background: var(--bg-page); border: 1px solid var(--border); padding: 4px 8px; border-radius: 4px; font-size: 0.9rem;">周防大島・片添ヶ浜（宿泊）</span> ➔
+                        <span style="font-weight: 700; background: var(--border); padding: 4px 8px; border-radius: 4px; font-size: 0.9rem;">広島（宮島）</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                        世界的に人気の「Setouchi」を横断するハブルート。美しいビーチでのSUPや温泉を楽しんだ後、広島方面へ抜ける・または戻ってくる広域連携を実現します。
+                    </p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="interactive-box">
+                    <span style="font-size: 2rem; margin-bottom: 10px; display: block;">🤝</span>
+                    <h4 style="font-size: 1.1rem; color: var(--gold); margin-bottom: 15px;">野村様へ、ぜひ教えてください！</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.6; text-align: left;">
+                        行政のプロフェッショナルである野村様だからこそご存知の、<strong style="color: var(--primary-dark);">「とっておきの隠れ家施設」</strong>や<strong style="color: var(--primary-dark);">「欧米キャンパーを魅了する未発掘の地域資源」</strong>はありませんか？<br><br>
+                        VTJの顧客に絶対に刺さる山口県のスポットを、ぜひブレストさせてください。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISION -->
+    <section class="avoid-break" style="background: var(--bg-page);">
+        <div class="section-header"><h2>地域の施設が世界と繋がる、そんな未来に向けて</h2><div class="subtitle eng">OUR VISION</div></div>
+        
+        <div style="text-align: center; margin-top: 30px; margin-bottom: 40px;">
+            <p style="font-size: 1.1rem; line-height: 2; color: var(--primary-dark); font-weight: 500;">
+                私たちのキャンパーバンを通じて、世界中の旅人に山口県の「手付かずの自然」を届けたい。<br>
+                そして、平日稼働に悩む地域の施設に、マナーの良いインバウンド客を呼び込みたい。<br><br>
+                そのための第一歩として、まずは現場の知見を交換するパートナーとして<br>
+                私たちにお手伝いできることはありませんか。
+            </p>
+        </div>
+        
+        <div class="row">
+            <div class="col panel" style="display: flex; flex-direction: row; gap: 20px; align-items: center; border-color: var(--gold); background: #fff;">
+                <div style="background: var(--gold-light); color: var(--gold); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; flex-shrink: 0;">1</div>
+                <div>
+                    <h4 style="font-size: 1rem; color: var(--primary-dark); margin-bottom: 5px;">VTJマガジンでの世界発信</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">弊社のインバウンド向け自社メディア（英語）にて、本日教えていただいた施設や山口横断ルートを無償で特集・発信させてください。</p>
+                </div>
+            </div>
+            <div class="col panel" style="display: flex; flex-direction: row; gap: 20px; align-items: center; border-color: var(--gold); background: #fff;">
+                <div style="background: var(--gold-light); color: var(--gold); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; flex-shrink: 0;">2</div>
+                <div>
+                    <h4 style="font-size: 1rem; color: var(--primary-dark); margin-bottom: 5px;">インバウンド施策の伴走支援</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">今後、県としてインバウンド対策を企画される際、現場のリアルな欧米顧客の生の声を持つパートナーとして、いつでも情報提供をさせていただきます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
