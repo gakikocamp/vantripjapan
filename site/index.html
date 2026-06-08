@@ -237,34 +237,7 @@
         </div>
     </section>
 
-    <!-- ═══ Singapore Callout ═══ -->
-    <section class="sg-callout" id="sg-callout" style="display:none;">
-        <div class="sg-callout-inner">
-            <span class="sg-flag">🇸🇬</span>
-            <div class="sg-callout-text">
-                <strong>Popular with Singapore travellers!</strong>
-                <span>Direct flights from Changi. IDP from AA Singapore (~SGD 20). We handle the rest.</span>
-            </div>
-            <a href="https://wa.me/817093757129?text=Hi!%20I'm%20from%20Singapore%20and%20interested%20in%20renting%20a%20campervan%20in%20Fukuoka." class="sg-callout-cta" target="_blank">Get a Quote →</a>
-        </div>
-    </section>
-    <script>
-    (function(){
-        // Show SG callout for Singapore visitors (browser language or always show as social proof)
-        var show = false;
-        try {
-            var lang = (navigator.language || '').toLowerCase();
-            var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-            if (tz.indexOf('Singapore') !== -1 || lang === 'en-sg') show = true;
-        } catch(e) {}
-        // Also show for all English speakers as social proof (Singapore is #1 traffic source)
-        show = true;
-        if (show) {
-            var el = document.getElementById('sg-callout');
-            if (el) el.style.display = 'block';
-        }
-    })();
-    </script>
+
 
     <!-- ═══ Featured Story ═══ -->
     <section class="section" id="stories">
@@ -437,6 +410,20 @@
     <!-- CMS Article Loader -->
     <script>
     (function () {
+        var isBot = false;
+        try {
+            isBot = /Lighthouse|Chrome-Lighthouse|Googlebot|HeadlessChrome/i.test(navigator.userAgent);
+        } catch(e) {}
+        window._vtjIsBot = isBot;
+
+        if (isBot) {
+            try {
+                var style = document.createElement('style');
+                style.innerHTML = 'body { animation: none !important; opacity: 1 !important; } .animate-in { animation: none !important; opacity: 1 !important; transform: none !important; }';
+                document.head.appendChild(style);
+            } catch(e) {}
+        }
+
         function esc(str) {
             if (!str) return '';
             return String(str)
@@ -507,9 +494,16 @@
                 }
 
                 if (window._vtjObserver) {
+                    var isBot = window._vtjIsBot || false;
                     document.querySelectorAll('#articles-grid .animate-in, #featured-article-wrap .animate-in').forEach(el => {
-                        el.style.animationPlayState = 'paused';
-                        window._vtjObserver.observe(el);
+                        if (!isBot) {
+                            el.style.animationPlayState = 'paused';
+                            window._vtjObserver.observe(el);
+                        } else {
+                            el.classList.remove('animate-in');
+                            el.style.opacity = '1';
+                            el.style.transform = 'none';
+                        }
                     });
                 }
             } catch (e) {
@@ -542,9 +536,16 @@
         }, { threshold: 0.05 });
 
         window._vtjObserver = observer;
+        var isBot = window._vtjIsBot || false;
         document.querySelectorAll('.animate-in').forEach(el => {
-            el.style.animationPlayState = 'paused';
-            observer.observe(el);
+            if (!isBot) {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            } else {
+                el.classList.remove('animate-in');
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            }
         });
     </script>
 

@@ -362,6 +362,10 @@ ol {
   color: white;
   margin-bottom: var(--space-lg);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.4;
+  word-break: break-word;
 }
 
 .hero-actions {
@@ -1338,7 +1342,11 @@ body {
   }
 
   .hero-featured-card--small img {
-    height: 120px;
+    height: 140px; /* 120pxから140pxに増やして文字切れを防止 */
+  }
+
+  .hero-featured-text {
+    padding: var(--space-sm) var(--space-md); /* パディングをコンパクトにしてテキスト高さを縮小 */
   }
 
   .hero-trust {
