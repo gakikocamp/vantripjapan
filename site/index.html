@@ -26,6 +26,100 @@
     <link rel="stylesheet" href="/css/style.css?v=20260413">
     <link rel="preload" as="image" href="/images/hero-vanlife.png">
 
+    <!-- 構造化データ: LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "VanTripJapan",
+      "image": "https://vantripjapan.jp/images/hero-vanlife.png",
+      "@id": "https://vantripjapan.jp/#localbusiness",
+      "url": "https://vantripjapan.jp/",
+      "telephone": "+81-92-000-0000",
+      "priceRange": "¥16,500 - ¥40,000",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "博多駅南3-15-30-511",
+        "addressLocality": "福岡市博多区",
+        "addressRegion": "福岡県",
+        "postalCode": "812-0016",
+        "addressCountry": "JP"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 33.5816,
+        "longitude": 130.4285
+      },
+      "sameAs": [
+        "https://www.instagram.com/vantrip_japan/"
+      ]
+    }
+    </script>
+
+    <!-- 構造化データ: Product / Campervan Rental -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Campervan & Camper Rental Fukuoka",
+      "description": "Rent a premium campervan or motorhome in Fukuoka, Japan. Perfect for road trips around Kyushu's hot springs, volcanoes, and coastal roads.",
+      "image": "https://vantripjapan.jp/images/hero-vanlife.png",
+      "brand": {
+        "@type": "Brand",
+        "name": "VanTripJapan"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "16500",
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock",
+        "url": "https://vantripjapan.jp/"
+      }
+    }
+    </script>
+
+    <!-- 構造化データ: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What driver's license is required to rent a campervan in Japan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You need a valid driver's license from your home country and either an International Driving Permit (IDP) issued under the 1949 Geneva Convention, or an official Japanese translation of your license (required for drivers from Germany, Switzerland, France, Belgium, Monaco, and Taiwan)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is the pickup and drop-off location?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our main shop is located in Fukuoka. We offer pickup and return directly at Fukuoka Airport or Hakata Station for your convenience."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the campervans equipped with English navigation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, all our campervans are equipped with English-capable GPS navigation systems and mobile Wi-Fi routers or Bluetooth connectivity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included in the rental price?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The price includes campervan rental, insurance (standard CDW), camping gear (sleeping bags, stove, kitchen set, chairs, table), and free pickup service at Hakata Station/Fukuoka Airport."
+          }
+        }
+      ]
+    }
+    </script>
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
