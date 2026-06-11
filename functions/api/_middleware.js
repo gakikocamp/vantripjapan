@@ -53,6 +53,8 @@ function isPublicRequest(request) {
 
   // Public: GET articles listing (homepage, category page)
   if (path === '/api/articles' && method === 'GET') return true;
+  // Public: GET availability (read-only, no PII — booked date ranges only)
+  if (path === '/api/availability' && method === 'GET') return true;
   // Public: POST new booking
   if (path === '/api/booking' && method === 'POST') return true;
   // Public: POST document upload

@@ -23,9 +23,10 @@
 /category /category/ 301
 /faq /faq/ 301
 
+# /book/ re-enabled 2026-06-11 — direct booking funnel from /rent/ CTAs
+/book /book/ 301
+
 # Deprecated pages redirect
-/book/ /rent/ 301
-/book /rent/ 301
 /writer/ /category/ 301
 /writer /category/ 301
 
