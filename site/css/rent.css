@@ -3078,3 +3078,151 @@
         transition-duration: 0.01ms !important;
     }
 }@keyframes pulse { 0% { transform: scale(1.05); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); } 100% { transform: scale(1.05); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+
+/* ══════════════════════════════════════════════
+   CVR Update 2026-06 — Direct Booking Path
+   Primary action = Book (terracotta). Chat = secondary.
+   ══════════════════════════════════════════════ */
+
+.btn-book {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--rent-terracotta), var(--rent-accent-dark));
+    color: #fff;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 16px 32px;
+    border-radius: var(--rent-radius-pill);
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    box-shadow: 0 6px 20px rgba(196, 112, 75, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-book::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-book:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(196, 112, 75, 0.45);
+    filter: brightness(1.05);
+    color: #fff;
+}
+
+.btn-book:hover::after { left: 160%; }
+.btn-book:active { transform: translateY(0); }
+
+.btn-book--block {
+    display: flex;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.btn-book--lg {
+    font-size: 18px;
+    padding: 18px 40px;
+}
+
+/* Reassurance microcopy under primary CTAs */
+.cta-microcopy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--rent-text-muted);
+    line-height: 1.5;
+}
+
+.rent-hero .cta-microcopy {
+    color: rgba(255, 255, 255, 0.85);
+    justify-content: flex-start;
+}
+
+.final-cta .cta-microcopy {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* Vehicle cards: calmer border, stronger price + CTA hierarchy */
+.vehicle-card {
+    border-color: var(--rent-border);
+    display: flex;
+    flex-direction: column;
+}
+
+.vehicle-card.popular {
+    border-color: var(--rent-terracotta);
+    box-shadow: 0 8px 30px rgba(196, 112, 75, 0.15);
+}
+
+.vehicle-card .vehicle-price {
+    margin-top: auto;
+    font-size: 28px;
+    color: var(--rent-forest);
+}
+
+.vehicle-card .vehicle-insurance-note {
+    font-size: 13px;
+    color: var(--rent-text-muted);
+    margin: 4px 0 0;
+}
+
+.vehicle-card .btn-book--block {
+    margin-top: 14px;
+}
+
+.vehicle-card .vehicle-availability {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--rent-forest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+/* Sticky bar: Book Now is the primary action */
+.sticky-bar .btn-book {
+    padding: 12px 24px;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    .sticky-bar .btn-whatsapp { padding: 12px 16px; }
+    .sticky-bar .btn-book { flex: 1; }
+    .sticky-bar-buttons { flex: 1; justify-content: flex-end; }
+}
+
+/* Pricing card: stack CTAs */
+.pricing-cta-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.pricing-cta-group .pricing-cta {
+    margin-top: 0;
+}
+
+/* Calculator: book at this price */
+.calc-book-cta {
+    text-align: center;
+    margin: 24px 0 8px;
+}

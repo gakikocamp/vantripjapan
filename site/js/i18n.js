@@ -329,6 +329,13 @@ const translations = {
         "cta.subtitle": "Chat with our family team. We'll help you plan the perfect road trip through Kyushu.",
         "cta.whatsapp": "Chat on WhatsApp",
         "cta.line": "Chat on LINE",
+        "cta.book": "Book Now — No Payment Today",
+        "cta.microcopy": "✓ No payment today · ✓ Free cancellation up to 7 days before · ✓ Reply within 24h",
+        "hero.book": "Book Your Van →",
+        "vehicles.book_btn": "Book this van →",
+        "vehicles.no_payment": "No payment today — request first, pay later",
+        "sticky.book": "Book Now →",
+        "calc.book_btn": "Book at this price →",
     },
 
     fr: {
@@ -640,6 +647,13 @@ const translations = {
         "cta.subtitle": "Discutez avec notre équipe familiale. Nous vous aiderons à planifier le road trip parfait.",
         "cta.whatsapp": "Discuter sur WhatsApp",
         "cta.line": "Discuter sur LINE",
+        "cta.book": "Réserver — aucun paiement aujourd'hui",
+        "cta.microcopy": "✓ Aucun paiement aujourd'hui · ✓ Annulation gratuite jusqu'à 7 jours avant · ✓ Réponse sous 24 h",
+        "hero.book": "Réservez votre van →",
+        "vehicles.book_btn": "Réserver ce van →",
+        "vehicles.no_payment": "Aucun paiement aujourd'hui — demande d'abord, paiement ensuite",
+        "sticky.book": "Réserver →",
+        "calc.book_btn": "Réserver à ce prix →",
     },
 
     de: {
@@ -945,6 +959,13 @@ const translations = {
         "cta.subtitle": "Chatte mit unserem Familienteam. Wir helfen dir, den perfekten Roadtrip zu planen.",
         "cta.whatsapp": "Chat auf WhatsApp",
         "cta.line": "Chat auf LINE",
+        "cta.book": "Jetzt buchen — heute keine Zahlung",
+        "cta.microcopy": "✓ Heute keine Zahlung · ✓ Kostenlose Stornierung bis 7 Tage vorher · ✓ Antwort innerhalb von 24 Std.",
+        "hero.book": "Van jetzt buchen →",
+        "vehicles.book_btn": "Diesen Van buchen →",
+        "vehicles.no_payment": "Heute keine Zahlung — erst anfragen, später zahlen",
+        "sticky.book": "Jetzt buchen →",
+        "calc.book_btn": "Zu diesem Preis buchen →",
     },
 
     zh: {
@@ -1250,6 +1271,13 @@ const translations = {
         "cta.subtitle": "與我們的家族團隊聊聊。我們將幫助您規劃完美的九州公路旅行。",
         "cta.whatsapp": "WhatsApp聊天",
         "cta.line": "LINE聊天",
+        "cta.book": "立即預約 — 今天無需付款",
+        "cta.microcopy": "✓ 今天無需付款 · ✓ 出發前7天可免費取消 · ✓ 24小時內回覆",
+        "hero.book": "預約您的露營車 →",
+        "vehicles.book_btn": "預約這台車 →",
+        "vehicles.no_payment": "今天無需付款 — 先申請，之後再付款",
+        "sticky.book": "立即預約 →",
+        "calc.book_btn": "以此價格預約 →",
     },
 
     he: {
@@ -1544,6 +1572,13 @@ const translations = {
         "cta.subtitle": "שוחחו עם הצוות המשפחתי שלנו. נעזור לכם לתכנן את הטיול המושלם.",
         "cta.whatsapp": "צ'אט בוואטסאפ",
         "cta.line": "צ'אט ב-LINE",
+        "cta.book": "הזמינו עכשיו — ללא תשלום היום",
+        "cta.microcopy": "✓ ללא תשלום היום · ✓ ביטול חינם עד 7 ימים לפני · ✓ מענה תוך 24 שעות",
+        "hero.book": "הזמינו את הוואן ←",
+        "vehicles.book_btn": "הזמינו את הרכב הזה ←",
+        "vehicles.no_payment": "ללא תשלום היום — שולחים בקשה, משלמים אחר כך",
+        "sticky.book": "הזמינו עכשיו ←",
+        "calc.book_btn": "הזמינו במחיר זה ←",
     }
 };
 
