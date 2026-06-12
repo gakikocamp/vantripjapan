@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "vtj-site",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-c",
+        "cd /tmp/vtj-site && exec python3 -m http.server 8772"
+      ],
+      "port": 8772
+    }
+  ]
+}

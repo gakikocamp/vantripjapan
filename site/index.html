@@ -73,7 +73,39 @@
         "price": "16500",
         "priceCurrency": "JPY",
         "availability": "https://schema.org/InStock",
-        "url": "https://vantripjapan.jp/"
+        "url": "https://vantripjapan.jp/",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": 0,
+            "currency": "JPY"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "JP"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "d"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "d"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "JP",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        }
       },
       "aggregateRating": {
         "@type": "AggregateRating",
