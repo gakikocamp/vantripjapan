@@ -65,7 +65,92 @@ async function handlePost(request, env) {
     data.translation_needed ? 1 : 0,
   ).run();
 
-  return Response.json({ status: 'ok', booking_id: result.meta.last_row_id });
+  const bookingId = result.meta.last_row_id;
+
+  // Fire-and-forget notifications (never block or fail the booking on email errors)
+  await sendBookingEmails(data, bookingId).catch((e) => console.error('[Booking Mail]', e?.message));
+
+  return Response.json({ status: 'ok', booking_id: bookingId });
+}
+
+// Send confirmation to the customer + alert to the VanTripJapan inbox (MailChannels)
+async function sendBookingEmails(data, bookingId) {
+  const name = (data.full_name || '').trim() || 'there';
+  const email = (data.email || '').trim();
+  const vehicle = data.vehicle_type || 'Campervan';
+  const pickup = data.pickup_datetime || '—';
+  const ret = data.return_datetime || '—';
+  const waLink = "https://wa.me/817093757129?text=" +
+    encodeURIComponent(`Hi Karen! I just submitted booking request #${bookingId}.`);
+
+  const send = (payload) =>
+    fetch('https://api.mailchannels.net/tx/v1/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+  // 1) Customer confirmation — reassurance + WhatsApp, no payment/docs yet
+  const customerBody = [
+    `Hi ${name},`,
+    ``,
+    `Thank you for your booking request with VanTripJapan! 🚐`,
+    ``,
+    `We've received your request (ref #${bookingId}) and Karen will personally`,
+    `check availability and reply within 24 hours — usually much faster.`,
+    ``,
+    `IMPORTANT: No payment and no documents are needed yet. We only ask for`,
+    `those after we've confirmed your dates are free.`,
+    ``,
+    `Your request:`,
+    `  • Vehicle: ${vehicle}`,
+    `  • Pick-up: ${pickup}`,
+    `  • Return:  ${ret}`,
+    ``,
+    `Want a faster reply? Message Karen directly on WhatsApp:`,
+    `  ${waLink}`,
+    ``,
+    `— Karen & the VanTripJapan family`,
+    `Licensed rent-a-car operator (Permit No. 愛運輸第290号)`,
+    `Operated by キャンプ女子株式会社 · Hakozaki, Fukuoka, Japan`,
+    `https://vantripjapan.jp`,
+  ].join('\n');
+
+  const customerMail = email && email.includes('@') ? send({
+    personalizations: [{ to: [{ email, name }] }],
+    from: { email: 'noreply@vantripjapan.jp', name: 'VanTripJapan' },
+    reply_to: { email: 'info@vantripjapan.jp', name: 'VanTripJapan' },
+    subject: `✅ We received your VanTripJapan booking request (#${bookingId})`,
+    content: [{ type: 'text/plain', value: customerBody }],
+  }) : Promise.resolve();
+
+  // 2) Internal alert so Karen can reply fast
+  const adminBody = [
+    `🚐 NEW BOOKING REQUEST #${bookingId}`,
+    ``,
+    `Name:     ${data.full_name || '—'}`,
+    `Email:    ${email || '—'}`,
+    `Phone:    ${data.phone || '—'}`,
+    `Vehicle:  ${vehicle}`,
+    `Pick-up:  ${pickup}`,
+    `Return:   ${ret}`,
+    `Drivers:  ${data.num_drivers || 1}`,
+    `Found us: ${data.referral_source || '—'}`,
+    `Gear:     ${data.camping_gear_notes || '—'}`,
+    `JP license translation needed: ${data.translation_needed ? 'YES' : 'no'}`,
+    ``,
+    `→ Manage: https://vantripjapan.jp/admin/`,
+  ].join('\n');
+
+  const adminMail = send({
+    personalizations: [{ to: [{ email: 'info@vantripjapan.jp', name: 'VanTripJapan' }] }],
+    from: { email: 'noreply@vantripjapan.jp', name: 'VanTripJapan Booking Bot' },
+    reply_to: email && email.includes('@') ? { email, name } : undefined,
+    subject: `🚐 New booking: ${vehicle} — ${data.full_name || ''} (#${bookingId})`,
+    content: [{ type: 'text/plain', value: adminBody }],
+  });
+
+  await Promise.allSettled([customerMail, adminMail]);
 }
 
 // GET: Admin — list bookings or get single booking
