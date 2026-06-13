@@ -290,6 +290,7 @@ const translations = {
         "story.sec1_text2": "VanTripJapan is founded and operated by Karen, a true, passionate lifelong outdoor lover, alongside her husband. We built this small shop because we believe that campervan travel in Japan should feel safe, warm, and authentic. We are here to support your journey with 24/7 personal care, custom routes, and the best local tips you won't find in any guidebook.",
 
         "story.label": "🏠 Our Story",
+        "story.caption": "👋 Karen & her husband — your hosts",
         "story.title": "A Husband & Wife Team of Real Vanlifers",
         "story.sub": "100% Japanese vehicle fleet, curated with passion, safety, and excellent fuel efficiency.",
         "story.text": "We are a small couple-owned camper rental shop in Fukuoka. As experienced vanlifers, we handpick every vehicle from a professional traveler's perspective. Our fleet consists exclusively of high-quality, high-safety Japanese cars (like the ultra-reliable Hijet Truck, Bongo, and Probox)—ensuring the highest safety standards, extreme driving ease on narrow streets, and outstanding fuel economy. Our owner, Karen, is a lifelong, authentic outdoor enthusiast. We designed and built these vans ourselves to give you a safe, warm, and authentic road trip through Japan's hidden gems.",
@@ -618,6 +619,7 @@ const translations = {
         "story.sec1_text2": "VanTripJapan est fondé et géré par Karen, une véritable passionnée de plein air depuis toujours, et son mari. Nous avons créé cette petite boutique car nous croyons que voyager en camping-car au Japon doit être sûr, chaleureux et authentique. Nous sommes là pour soutenir votre voyage avec une assistance personnelle 24h/24 et 7j/7, des itinéraires sur mesure et les meilleurs conseils locaux.",
 
         "story.label": "🏠 Notre Histoire",
+        "story.caption": "👋 Karen & son mari — vos hôtes",
         "story.title": "Un couple de vrais passionnés de Vanlife",
         "story.sub": "Une flotte 100% japonaise, sélectionnée pour sa sécurité et son excellente efficacité énergétique.",
         "story.text": "Nous sommes un petit magasin de location de camping-cars géré en couple à Fukuoka. En tant que vanlifers expérimentés, nous choisissons chaque véhicule du point de vue d'un voyageur professionnel. Notre flotte est composée exclusivement de voitures japonaises de haute qualité et de grande sécurité (telles que les Hijet Truck, Bongo et Probox super fiables)—garantissant les normes de sécurité les plus élevées, une conduite extrêmement facile et une faible consommation de carburant. Notre propriétaire, Karen, est une véritable passionnée de plein air. Nous avons conçu et aménagé ces vans nous-mêmes pour vous offrir un voyage sûr, chaleureux et authentique au cœur du Japon.",
@@ -936,6 +938,7 @@ const translations = {
         "quote.success": "Angebotsanfrage gesendet!",
         "quote.success_detail": "Prüfen Sie Ihr Postfach innerhalb von 24 Stunden. Sie können uns auch jederzeit über WhatsApp kontaktieren.",
         "story.label": "🏠 Unsere Geschichte",
+        "story.caption": "👋 Karen & ihr Mann — eure Gastgeber",
         "story.title": "Ein Familien-Campervan-Abenteuer",
         "story.sub": "Kleines Unternehmen. Großes Herz. Handgebaute Vans.",
         "story.text": "Wir sind ein kleines Familienteam aus Fukuoka. 2022 haben wir unsere Vans selbst umgebaut — Betten gebaut, Stromsysteme installiert, Innenräume gestaltet — weil wir das Reiseerlebnis schaffen wollten, das wir selbst lieben würden.",
@@ -1254,6 +1257,7 @@ const translations = {
         "quote.success": "報價請求已發送！",
         "quote.success_detail": "請在24小時內檢查您的郵箱。也可以隨時在WhatsApp上聊天。",
         "story.label": "🏠 我們的故事",
+        "story.caption": "👋 Karen 與她的先生 — 您的主人",
         "story.title": "家族經營的露營車冒險",
         "story.sub": "小型企業。滿滿熱情。手工改裝。",
         "story.text": "我們是位於福岡的小型家族團隊。2022年，我們親手改裝了自己的車輛——製作床鋪、安裝電力系統、佈置內裝——因為我們想創造自己也會愛上的旅行體驗。",
@@ -1561,6 +1565,7 @@ const translations = {
         "story.sec1_text2": "VanTripJapan הוקמה ומנוהלת על ידי קארן, חובבת מושבעת ואמיתית של שטח ואאוטדור מזה שנים, יחד עם בעלה. הקמנו את החנות הקטנה הזו כי אנחנו מאמינים שטיול קמפרוואן ביפן צריך להרגיש בטוח, חם ואותנטי. אנחנו כאן כדי לתמוך בטיול שלכם עם ליווי אישי 24/7, מסלולים בהתאמה אישית והטיפים המקומיים הכי טובים שלא תמצאו בשום מדריך טיולים.",
 
         "story.label": "🏠 הסיפור שלנו",
+        "story.caption": "👋 קארן ובעלה — המארחים שלכם",
         "story.title": "צוות של בעל ואישה — ואנלייפרים אמיתיים",
         "story.sub": "צי רכבים 100% יפני, שנבחר בקפידה תוך התמקדות בבטיחות מירבית וחיסכון מצוין בדלק.",
         "story.text": "אנחנו סוכנות קטנה להשכרת קמפרים בניהול זוגי בפוקואוקה. כוואנלייפרים מנוסים, אנו בוחרים כל רכב מתוך נקודת המבט המקצועית של מטייל בדרכים. הצי שלנו מורכב אך ורק מרכבים יפניים איכותיים ובטיחותיים ביותר (כמו ה-Hijet Truck, ה-Bongo וה-Probox האמינים במיוחד) — מה שמבטיח עמידה בתקני הבטיחות הגבוהים ביותר, נהיגה קלה במיוחד ברחובות צרים, וחיסכון מצוין בצריכת הדלק. הבעלים שלנו, קארן, היא חובבת שטח ואאוטדור מזה שנים. תכננו ובנינו את הוואנים האלה בעצמנו כדי להעניק לכם טיול בטוח, חם ואותנטי בין פניני החמד הנסתרות של יפן.",

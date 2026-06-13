@@ -1830,6 +1830,20 @@
     box-shadow: 0 4px 12px rgba(45, 90, 61, 0.3);
 }
 
+.story-visual .story-caption {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: var(--rent-radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
 .story-content .story-label {
     display: inline-block;
     background: rgba(45, 90, 61, 0.08);
