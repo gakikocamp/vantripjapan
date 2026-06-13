@@ -105,7 +105,7 @@ const translations = {
         "hero.stat1": "from Airport",
         "hero.stat2": "per day",
         "hero.stat3": "Support",
-        "hero.whatsapp": "Check Availability on WhatsApp",
+        "hero.whatsapp": "Chat with Karen to check availability",
         "hero.line": "Chat on LINE",
 
         // Why Hakozaki
@@ -164,7 +164,7 @@ const translations = {
         "pricing.item7": "Tokyo / Osaka drop-off available (surcharge applies)",
         "pricing.notice": "No hidden fees. Ever.",
         "pricing.note": "* Above is weekday rate for Probox & Bongo. Pocket Loft / weekends may differ.",
-        "pricing.cta": "💬 Get a Quote on WhatsApp",
+        "pricing.cta": "💬 Get a Quote from Karen on WhatsApp",
 
         // Vehicles
         "vehicles.badge": "Our Fleet",
@@ -246,7 +246,7 @@ const translations = {
         "access.hoursDetail": "Pick-up: 9:00 - 17:00<br>Return: 9:00 - 17:00<br>(Flexible by arrangement)",
 
         // Sticky
-        "sticky.availability": "⚡ 3 vans left",
+        "sticky.availability": "Family-run in Fukuoka · From ¥22,000/day",
         "sticky.viewers": "● 9 people viewing",
 
         // License — Israel
@@ -327,15 +327,19 @@ const translations = {
         // Final CTA
         "cta.title": "Ready to Start Your Adventure?",
         "cta.subtitle": "Chat with our family team. We'll help you plan the perfect road trip through Kyushu.",
-        "cta.whatsapp": "Chat on WhatsApp",
+        "cta.whatsapp": "Chat with Karen on WhatsApp",
+        "hero.trust_count": "Verified reviews on Google →",
+        "calc.book_form": "📝 Or request by form",
+        "access.view_on_google": "View on Google Maps & read our reviews →",
+        "reviews.google_link": "Read & verify all our reviews on Google →",
         "cta.line": "Chat on LINE",
-        "cta.book": "Book Now — No Payment Today",
-        "cta.microcopy": "✓ No payment today · ✓ Free cancellation up to 7 days before · ✓ Reply within 24h",
-        "hero.book": "Book Your Van →",
-        "vehicles.book_btn": "Book this van →",
-        "vehicles.no_payment": "No payment today — request first, pay later",
-        "sticky.book": "Book Now →",
-        "calc.book_btn": "Book at this price →",
+        "cta.book": "📝 Prefer not to chat? Request by form",
+        "cta.microcopy": "✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 7 days before",
+        "hero.book": "Prefer not to chat? Request by form",
+        "vehicles.book_btn": "💬 Ask Karen about this van",
+        "vehicles.no_payment": "or request by form — no payment until confirmed",
+        "sticky.book": "📝 Form",
+        "calc.book_btn": "💬 Send these details to Karen on WhatsApp",
     },
 
     fr: {
@@ -438,7 +442,7 @@ const translations = {
         "hero.stat1": "de l'Aéroport",
         "hero.stat2": "par jour",
         "hero.stat3": "Assistance",
-        "hero.whatsapp": "Vérifier la disponibilité sur WhatsApp",
+        "hero.whatsapp": "Discuter avec Karen pour vérifier les disponibilités",
         "hero.line": "Discuter sur LINE",
 
         "why.badge": "Avantage Géographique",
@@ -494,7 +498,7 @@ const translations = {
         "pricing.item7": "Retour à Tokyo / Osaka disponible (supplément applicable)",
         "pricing.notice": "Aucun frais caché. Jamais.",
         "pricing.note": "* Tarif semaine pour Probox & Bongo. Pocket Loft / week-end peut varier.",
-        "pricing.cta": "💬 Obtenir un Devis sur WhatsApp",
+        "pricing.cta": "💬 Obtenir un devis de Karen sur WhatsApp",
 
         "vehicles.badge": "Notre Flotte",
         "vehicles.title": "Quel véhicule vous convient ?",
@@ -570,7 +574,7 @@ const translations = {
         "access.address": "Hakozaki, Higashi-ku, Fukuoka<br>(Zone Hakata / Aéroport)",
         "access.hours": "🕐 Horaires",
         "access.hoursDetail": "Prise en charge : 9h00 - 17h00<br>Retour : 9h00 - 17h00<br>(Flexible sur arrangement)",
-        "sticky.availability": "⚡ 3 véhicules disponibles",
+        "sticky.availability": "Entreprise familiale à Fukuoka · Dès ¥22,000/jour",
         "sticky.viewers": "● 9 personnes consultent",
 
         // License — Israel
@@ -645,15 +649,19 @@ const translations = {
 
         "cta.title": "Prêt à partir à l'aventure ?",
         "cta.subtitle": "Discutez avec notre équipe familiale. Nous vous aiderons à planifier le road trip parfait.",
-        "cta.whatsapp": "Discuter sur WhatsApp",
+        "cta.whatsapp": "Discuter avec Karen sur WhatsApp",
+        "hero.trust_count": "Avis vérifiés sur Google →",
+        "calc.book_form": "📝 Ou demande par formulaire",
+        "access.view_on_google": "Voir sur Google Maps & lire nos avis →",
+        "reviews.google_link": "Lire et vérifier tous nos avis sur Google →",
         "cta.line": "Discuter sur LINE",
-        "cta.book": "Réserver — aucun paiement aujourd'hui",
-        "cta.microcopy": "✓ Aucun paiement aujourd'hui · ✓ Annulation gratuite jusqu'à 7 jours avant · ✓ Réponse sous 24 h",
-        "hero.book": "Réservez votre van →",
-        "vehicles.book_btn": "Réserver ce van →",
-        "vehicles.no_payment": "Aucun paiement aujourd'hui — demande d'abord, paiement ensuite",
-        "sticky.book": "Réserver →",
-        "calc.book_btn": "Réserver à ce prix →",
+        "cta.book": "📝 Vous préférez ne pas discuter ? Demande par formulaire",
+        "cta.microcopy": "✓ La propriétaire répond en personne · ✓ Aucun paiement ni document avant la confirmation de vos dates · ✓ Annulation gratuite jusqu'à 7 jours avant",
+        "hero.book": "Vous préférez ne pas discuter ? Demande par formulaire",
+        "vehicles.book_btn": "💬 Demander à Karen pour ce van",
+        "vehicles.no_payment": "ou demande par formulaire — aucun paiement avant confirmation",
+        "sticky.book": "📝 Formulaire",
+        "calc.book_btn": "💬 Envoyer ces détails à Karen sur WhatsApp",
     },
 
     de: {
@@ -756,7 +764,7 @@ const translations = {
         "hero.stat1": "vom Flughafen",
         "hero.stat2": "pro Tag",
         "hero.stat3": "Support",
-        "hero.whatsapp": "Verfügbarkeit auf WhatsApp prüfen",
+        "hero.whatsapp": "Mit Karen chatten & Verfügbarkeit prüfen",
         "hero.line": "Auf LINE chatten",
 
         "why.badge": "Standortvorteil",
@@ -812,7 +820,7 @@ const translations = {
         "pricing.item7": "Rückgabe in Tokyo / Osaka möglich (Aufpreis gilt)",
         "pricing.notice": "Keine versteckten Kosten. Nie.",
         "pricing.note": "* Oben: Wochentags-Tarif für Probox & Bongo. Pocket Loft / Wochenende kann abweichen.",
-        "pricing.cta": "💬 Angebot auf WhatsApp anfragen",
+        "pricing.cta": "💬 Angebot von Karen auf WhatsApp erhalten",
 
         "vehicles.badge": "Unsere Flotte",
         "vehicles.title": "Welches Fahrzeug passt zu dir?",
@@ -888,7 +896,7 @@ const translations = {
         "access.address": "Hakozaki, Higashi-ku, Fukuoka<br>(Hakata / Flughafen-Gebiet)",
         "access.hours": "🕐 Öffnungszeiten",
         "access.hoursDetail": "Abholung: 9:00 - 17:00<br>Rückgabe: 9:00 - 17:00<br>(Flexibel nach Vereinbarung)",
-        "sticky.availability": "⚡ 3 Vans verfügbar",
+        "sticky.availability": "Familienbetrieb in Fukuoka · Ab ¥22,000/Tag",
         "sticky.viewers": "● 9 Personen schauen gerade",
 
         // License — Israel
@@ -957,15 +965,19 @@ const translations = {
 
         "cta.title": "Bereit für dein Abenteuer?",
         "cta.subtitle": "Chatte mit unserem Familienteam. Wir helfen dir, den perfekten Roadtrip zu planen.",
-        "cta.whatsapp": "Chat auf WhatsApp",
+        "cta.whatsapp": "Mit Karen auf WhatsApp chatten",
+        "hero.trust_count": "Verifizierte Bewertungen auf Google →",
+        "calc.book_form": "📝 Oder per Formular anfragen",
+        "access.view_on_google": "Auf Google Maps ansehen & Bewertungen lesen →",
+        "reviews.google_link": "Alle Bewertungen auf Google lesen & prüfen →",
         "cta.line": "Chat auf LINE",
-        "cta.book": "Jetzt buchen — heute keine Zahlung",
-        "cta.microcopy": "✓ Heute keine Zahlung · ✓ Kostenlose Stornierung bis 7 Tage vorher · ✓ Antwort innerhalb von 24 Std.",
-        "hero.book": "Van jetzt buchen →",
-        "vehicles.book_btn": "Diesen Van buchen →",
-        "vehicles.no_payment": "Heute keine Zahlung — erst anfragen, später zahlen",
-        "sticky.book": "Jetzt buchen →",
-        "calc.book_btn": "Zu diesem Preis buchen →",
+        "cta.book": "📝 Lieber nicht chatten? Per Formular anfragen",
+        "cta.microcopy": "✓ Die Inhaberin antwortet persönlich · ✓ Keine Zahlung & keine Dokumente bis wir deine Termine bestätigen · ✓ Kostenlose Stornierung bis 7 Tage vorher",
+        "hero.book": "Lieber nicht chatten? Per Formular anfragen",
+        "vehicles.book_btn": "💬 Karen zu diesem Van fragen",
+        "vehicles.no_payment": "oder per Formular anfragen — keine Zahlung bis zur Bestätigung",
+        "sticky.book": "📝 Formular",
+        "calc.book_btn": "💬 Diese Angaben an Karen auf WhatsApp senden",
     },
 
     zh: {
@@ -1068,7 +1080,7 @@ const translations = {
         "hero.stat1": "距機場",
         "hero.stat2": "每天",
         "hero.stat3": "支援",
-        "hero.whatsapp": "在WhatsApp上查詢空車",
+        "hero.whatsapp": "與Karen聊聊並確認空車",
         "hero.line": "用LINE聊天（推薦台灣・亞洲旅客）",
 
         "why.badge": "地理優勢",
@@ -1124,7 +1136,7 @@ const translations = {
         "pricing.item7": "可還車至東京／大阪（需額外費用）",
         "pricing.notice": "絕無隱藏費用。",
         "pricing.note": "* 以上為Probox與Bongo平日價格。Pocket Loft/假日價格不同。",
-        "pricing.cta": "💬 在WhatsApp上取得報價",
+        "pricing.cta": "💬 在WhatsApp向Karen索取報價",
 
         "vehicles.badge": "我們的車隊",
         "vehicles.title": "哪款車適合您？",
@@ -1200,7 +1212,7 @@ const translations = {
         "access.address": "福岡市東區箱崎<br>（博多・機場區域）",
         "access.hours": "🕐 營業時間",
         "access.hoursDetail": "取車：9:00 - 17:00<br>還車：9:00 - 17:00<br>（可彈性安排）",
-        "sticky.availability": "⚡ 剩餘3台",
+        "sticky.availability": "福岡家族經營 · ¥22,000/天起",
         "sticky.viewers": "● 9人正在瀏覽",
 
         // License — Israel
@@ -1269,15 +1281,19 @@ const translations = {
 
         "cta.title": "準備好開始您的冒險了嗎？",
         "cta.subtitle": "與我們的家族團隊聊聊。我們將幫助您規劃完美的九州公路旅行。",
-        "cta.whatsapp": "WhatsApp聊天",
+        "cta.whatsapp": "在WhatsApp與Karen聊天",
+        "hero.trust_count": "Google 已驗證評價 →",
+        "calc.book_form": "📝 或用表單申請",
+        "access.view_on_google": "在Google地圖查看並閱讀評價 →",
+        "reviews.google_link": "在Google閱讀並驗證所有評價 →",
         "cta.line": "LINE聊天",
-        "cta.book": "立即預約 — 今天無需付款",
-        "cta.microcopy": "✓ 今天無需付款 · ✓ 出發前7天可免費取消 · ✓ 24小時內回覆",
-        "hero.book": "預約您的露營車 →",
-        "vehicles.book_btn": "預約這台車 →",
-        "vehicles.no_payment": "今天無需付款 — 先申請，之後再付款",
-        "sticky.book": "立即預約 →",
-        "calc.book_btn": "以此價格預約 →",
+        "cta.book": "📝 不想聊天？用表單申請",
+        "cta.microcopy": "✓ 老闆本人親自回覆 · ✓ 確認日期前無需付款、無需證件 · ✓ 出發前7天可免費取消",
+        "hero.book": "不想聊天？用表單申請",
+        "vehicles.book_btn": "💬 向Karen詢問這台車",
+        "vehicles.no_payment": "或用表單申請 — 確認前無需付款",
+        "sticky.book": "📝 表單",
+        "calc.book_btn": "💬 將這些資料用WhatsApp傳給Karen",
     },
 
     he: {
@@ -1380,7 +1396,7 @@ const translations = {
         "hero.stat1": "משדה התעופה",
         "hero.stat2": "ליום",
         "hero.stat3": "תמיכה",
-        "hero.whatsapp": "בדקו זמינות בוואטסאפ",
+        "hero.whatsapp": "דברו עם קארן לבדיקת זמינות",
         "hero.line": "צ'אט ב-LINE",
         "why.badge": "יתרון מיקום",
         "why.title": "למה להתחיל מבסיס האקוזאקי?",
@@ -1437,7 +1453,7 @@ const translations = {
         "pricing.item7": "החזרה בטוקיו / אוסקה (בתוספת תשלום)",
         "pricing.notice": "בלי עלויות נסתרות. אף פעם.",
         "pricing.note": "* מחיר בימי חול עבור Probox ו-Bongo. Pocket Loft / סופ\"ש עשוי להשתנות.",
-        "pricing.cta": "💬 קבלו הצעת מחיר בוואטסאפ",
+        "pricing.cta": "💬 קבלו הצעת מחיר מקארן בוואטסאפ",
         "vehicles.badge": "הצי שלנו",
         "vehicles.title": "איזה רכב מתאים לכם?",
         "vehicles.subtitle": "השוו בין שני הרכבים שלנו",
@@ -1505,7 +1521,7 @@ const translations = {
         "access.address": "האקוזאקי, הגאשי-קו, פוקואוקה<br>(אזור האקאטה / שדה התעופה)",
         "access.hours": "🕐 שעות פעילות",
         "access.hoursDetail": "איסוף: 9:00 - 17:00<br>החזרה: 9:00 - 17:00<br>(גמיש בתיאום מראש)",
-        "sticky.availability": "⚡ 3 וואנים זמינים",
+        "sticky.availability": "עסק משפחתי בפוקואוקה · החל מ-¥22,000 ליום",
         "sticky.viewers": "● 9 אנשים צופים",
         "reviews.badge": "ביקורות אורחים",
         "reviews.title": "מה אומרים האורחים שלנו",
@@ -1570,15 +1586,19 @@ const translations = {
 
         "cta.title": "מוכנים להתחיל את ההרפתקה?",
         "cta.subtitle": "שוחחו עם הצוות המשפחתי שלנו. נעזור לכם לתכנן את הטיול המושלם.",
-        "cta.whatsapp": "צ'אט בוואטסאפ",
+        "cta.whatsapp": "שוחחו עם קארן בוואטסאפ",
+        "hero.trust_count": "ביקורות מאומתות בגוגל ←",
+        "calc.book_form": "📝 או בקשה בטופס",
+        "access.view_on_google": "צפו בגוגל מפות וקראו ביקורות ←",
+        "reviews.google_link": "קראו ואמתו את כל הביקורות בגוגל ←",
         "cta.line": "צ'אט ב-LINE",
-        "cta.book": "הזמינו עכשיו — ללא תשלום היום",
-        "cta.microcopy": "✓ ללא תשלום היום · ✓ ביטול חינם עד 7 ימים לפני · ✓ מענה תוך 24 שעות",
-        "hero.book": "הזמינו את הוואן ←",
-        "vehicles.book_btn": "הזמינו את הרכב הזה ←",
-        "vehicles.no_payment": "ללא תשלום היום — שולחים בקשה, משלמים אחר כך",
-        "sticky.book": "הזמינו עכשיו ←",
-        "calc.book_btn": "הזמינו במחיר זה ←",
+        "cta.book": "📝 מעדיפים לא לשוחח? בקשה בטופס",
+        "cta.microcopy": "✓ הבעלים עונה אישית · ✓ ללא תשלום וללא מסמכים עד שנאשר את התאריכים · ✓ ביטול חינם עד 7 ימים לפני",
+        "hero.book": "מעדיפים לא לשוחח? בקשה בטופס",
+        "vehicles.book_btn": "💬 שאלו את קארן על הרכב הזה",
+        "vehicles.no_payment": "או בקשה בטופס — ללא תשלום עד לאישור",
+        "sticky.book": "📝 טופס",
+        "calc.book_btn": "💬 שלחו את הפרטים לקארן בוואטסאפ",
     }
 };
 

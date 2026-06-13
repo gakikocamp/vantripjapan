@@ -3226,3 +3226,98 @@
     text-align: center;
     margin: 24px 0 8px;
 }
+
+/* ══════════════════════════════════════════════
+   Trust Update 2026-06 — WhatsApp-first + Google proof
+   WhatsApp (talk to real owner) is now the primary action.
+   Form is the secondary "no-chat" fallback (outline style).
+   ══════════════════════════════════════════════ */
+
+/* Larger WhatsApp button for hero / section primaries */
+.btn-whatsapp--lg {
+    font-size: 17px;
+    padding: 16px 32px;
+    font-weight: 800;
+}
+
+/* Secondary "request by form" — calm outline, never competes with WhatsApp */
+.btn-book-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--rent-text-secondary);
+    border: 1.5px solid var(--rent-border);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: var(--rent-radius-pill);
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.btn-book-outline:hover {
+    border-color: var(--rent-forest);
+    color: var(--rent-forest);
+    background: rgba(45, 90, 61, 0.04);
+}
+.rent-hero .btn-book-outline {
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+.rent-hero .btn-book-outline:hover {
+    border-color: #fff;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+.btn-book-outline--ondark {
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.45);
+}
+.btn-book-outline--ondark:hover {
+    border-color: #fff;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+}
+.btn-book-outline--sticky {
+    padding: 12px 18px;
+    font-size: 13px;
+}
+
+/* Google review badge — make the rating look verifiable, not self-reported */
+.trust-google {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    color: #4285F4;
+    font-weight: 900;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+a.hero-trust-badge { transition: transform 0.2s ease; }
+a.hero-trust-badge:hover { transform: translateY(-1px); }
+
+/* Verified-on-Google chip used in Reviews section header */
+.google-verified-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 8px 18px;
+    background: #fff;
+    border: 1px solid var(--rent-border);
+    border-radius: var(--rent-radius-pill);
+    text-decoration: none;
+    color: var(--rent-text);
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: var(--rent-card-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.google-verified-link:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.google-verified-link .trust-google { width: 20px; height: 20px; font-size: 13px; }

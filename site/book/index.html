@@ -275,7 +275,7 @@
         </div>
         <p>Booking Request — takes about 2 minutes</p>
         <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:12px; font-size:0.8rem; color:var(--text-sec);">
-            <span><span style="color:#f5a623;">★★★★★</span> <strong>4.9</strong> (47 reviews)</span>
+            <a href="https://maps.app.goo.gl/3uuep4h3zypPY6UYA" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;"><span style="color:#f5a623;">★★★★★</span> <strong>4.9</strong> on Google →</a>
             <span>·</span>
             <span><i class="fas fa-shield-halved" style="color:var(--accent);"></i> No payment today</span>
             <span>·</span>
@@ -424,41 +424,28 @@
     <!-- Success Screen -->
     <div class="card success-screen" id="successScreen">
         <div class="icon"><i class="fas fa-check"></i></div>
-        <h2>Booking Request Received! 🎉</h2>
-        <p>Thank you! We'll review your request and send a payment link via WhatsApp or email.</p>
+        <h2>Request received — thank you! 🎉</h2>
+        <p>
+            Karen will personally check availability and get back to you, usually within 24 hours.
+            <br><strong>No payment and no documents are needed yet</strong> — we only ask for those
+            after we've confirmed your dates are free.
+        </p>
 
-        <div class="doc-upload-section">
-            <h4><i class="fas fa-id-card"></i> Please upload your documents</h4>
-            <p style="font-size:0.85rem; color:var(--text-sec); margin-bottom:14px;">
-                We need these to process your booking:
+        <div style="margin-top:24px; padding:20px; background:var(--green-glow); border:1px solid rgba(45,106,79,0.2); border-radius:var(--radius); text-align:center;">
+            <p style="font-size:0.9rem; color:var(--text); margin-bottom:14px;">
+                <i class="fas fa-bolt" style="color:var(--accent);"></i> Want a faster reply? Message Karen directly:
             </p>
-            <div class="doc-upload-grid">
-                <div class="doc-upload-item" id="doc-license_front">
-                    <i class="fas fa-id-card"></i>
-                    <span>Driver's License (Front)</span>
-                    <span class="filename" id="fn-license_front"></span>
-                    <input type="file" accept="image/*" onchange="uploadDoc(this, 'license_front')" capture="environment">
-                </div>
-                <div class="doc-upload-item" id="doc-license_back">
-                    <i class="fas fa-id-card-clip"></i>
-                    <span>Driver's License (Back)</span>
-                    <span class="filename" id="fn-license_back"></span>
-                    <input type="file" accept="image/*" onchange="uploadDoc(this, 'license_back')" capture="environment">
-                </div>
-                <div class="doc-upload-item" id="doc-international_license">
-                    <i class="fas fa-passport"></i>
-                    <span>International Driving Permit</span>
-                    <span class="filename" id="fn-international_license"></span>
-                    <input type="file" accept="image/*" onchange="uploadDoc(this, 'international_license')" capture="environment">
-                </div>
-                <div class="doc-upload-item" id="doc-passport" style="display:none;">
-                    <i class="fas fa-book"></i>
-                    <span>Passport (ID page)</span>
-                    <span class="filename" id="fn-passport"></span>
-                    <input type="file" accept="image/*" onchange="uploadDoc(this, 'passport')" capture="environment">
-                </div>
-            </div>
+            <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I%20just%20submitted%20a%20booking%20request%20on%20the%20website." target="_blank"
+               style="display:inline-flex; align-items:center; gap:8px; padding:12px 28px; background:#25D366; color:#fff; border-radius:var(--radius); text-decoration:none; font-weight:600;">
+                <i class="fab fa-whatsapp"></i> Chat with Karen on WhatsApp
+            </a>
         </div>
+
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-top:18px;">
+            <i class="fas fa-shield-halved"></i> What happens next: we confirm availability → send you a secure
+            payment link & request your driver's license / IDP → your van is reserved. Your documents are stored
+            encrypted and used only for the legal rental agreement.
+        </p>
     </div>
 </div>
 
