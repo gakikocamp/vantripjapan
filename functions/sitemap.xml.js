@@ -11,7 +11,6 @@ const STATIC_PAGES = [
   { loc: '/category/', changefreq: 'monthly', priority: '0.7', hreflang: false },
   { loc: '/faq/',      changefreq: 'monthly', priority: '0.6', hreflang: false },
   { loc: '/contact/',  changefreq: 'monthly', priority: '0.6', hreflang: false },
-  { loc: '/privacy/',  changefreq: 'yearly',  priority: '0.4', hreflang: false },
 ];
 
 const HREFLANG_LANGS = ['en', 'fr', 'de', 'zh-Hant', 'he'];

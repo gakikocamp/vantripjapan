@@ -353,7 +353,8 @@
                     <div class="rent-hero-buttons anim-slide-up anim-d5" style="flex-wrap: wrap;">
                         <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20check%20availability%20for%20a%20campervan%20in%20Fukuoka."
                             class="btn-whatsapp btn-whatsapp--lg" target="_blank" data-track="wa_hero">
-                            💬 <span data-i18n="hero.whatsapp">Chat with Karen to check availability</span>
+                            <img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.5);flex-shrink:0;">
+                            <span data-i18n="hero.whatsapp">Chat with Karen to check availability</span>
                         </a>
                         <a href="/book/" class="btn-book-outline" data-track="book_hero">
                             📝 <span data-i18n="hero.book">Prefer not to chat? Request by form</span>
@@ -644,7 +645,10 @@
                         <span class="vehicle-number">03</span>
                         <h3 data-i18n="vehicles.daihatsu_name">Pocket Loft</h3>
                         <p style="font-size: 14px; color: var(--rent-text-secondary); font-style: italic; margin-bottom: 12px;" data-i18n="vehicles.daihatsu_story">Our ultra-compact roof tent explorer, built on the highly safe and reliable Daihatsu Hijet Truck base. Sleeps up to 4 guests (2 in the roof tent, 2 inside the cabin) with direct indoor passage up to the tent. Perfect for couples seeking extreme driving ease, high fuel economy, and 360° views on Japan's narrow roads.</p>
-                        <div style="display: inline-block; background: var(--rent-forest); color: white; padding: 4px 12px; border-radius: var(--rent-radius-pill); font-size: 11px; font-weight: 700; margin-bottom: 8px;">🔧 <span data-i18n="vehicles.handbuilt">HAND-BUILT</span></div>
+                        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px;">
+                            <div style="display: inline-block; background: var(--rent-forest); color: white; padding: 4px 12px; border-radius: var(--rent-radius-pill); font-size: 11px; font-weight: 700;">🔧 <span data-i18n="vehicles.handbuilt">HAND-BUILT</span></div>
+                            <div style="display: inline-block; background: linear-gradient(135deg, #0077b6, #00b4d8); color: white; padding: 4px 12px; border-radius: var(--rent-radius-pill); font-size: 11px; font-weight: 700;">🏝️ <span data-i18n="vehicles.daihatsu_island_badge">ISLAND FERRY FRIENDLY</span></div>
+                        </div>
                         <div class="vehicle-img" style="margin: 16px 0; aspect-ratio: 16/9; overflow: hidden; border-radius: 12px; position: relative; cursor: pointer;" onclick="(function(el){var imgs=el.querySelectorAll('img');var cur=el.dataset.cur||'0';var next=(parseInt(cur)+1)%imgs.length;imgs[cur].style.opacity='0';imgs[next].style.opacity='1';el.dataset.cur=next;})(this)">
                             <img src="/images/rent/vehicles/daihatsu.jpg" alt="Pocket Loft with roof tent" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: opacity 0.5s ease; opacity: 1;">
                             <img src="/images/rent/vehicles/daihatsu-front.webp" alt="Pocket Loft front view" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: opacity 0.5s ease; opacity: 0;">
@@ -657,8 +661,12 @@
                             <div class="spec-item">⛰️ <span data-i18n="vehicles.spec_panorama">Panorama views</span></div>
                             <div class="spec-item">🚗 <span data-i18n="vehicles.spec_easy">Easiest to drive</span></div>
                             <div class="spec-item">⛽ <span data-i18n="vehicles.spec_fuel">Great fuel economy</span></div>
+                            <div class="spec-item" style="background: linear-gradient(135deg, #e0f7fa, #b2ebf2); border: 1px solid #00acc1;">⛴️ <span data-i18n="vehicles.spec_ferry">Cheapest ferry rates</span></div>
                             <div class="spec-item">🪑 <span data-i18n="vehicles.spec_chairs">Camping chairs</span></div>
                             <div class="spec-item" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border: 1px solid #ffb74d;">🌀 <span data-i18n="vehicles.spec_fan">Free fan (Jun–Sep)</span></div>
+                        </div>
+                        <div style="margin: 12px 0; padding: 10px 14px; background: linear-gradient(135deg, #e3f2fd, #e1f5fe); border-left: 3px solid #0288d1; border-radius: 8px; font-size: 13px; color: #01579b; line-height: 1.5;">
+                            🏝️ <span data-i18n="vehicles.daihatsu_island_tip">Popular with Yakushima &amp; Goto Islands travellers! Shortest vehicle = cheapest ferry fare + easiest to book on the ferry. Highly recommended for island hopping.</span>
                         </div>
                         <p class="vehicle-price">¥25,000〜 <small data-i18n="vehicles.perday">/day</small></p>
                         <p class="vehicle-insurance-note" data-i18n="vehicles.insurance_note">🛡️ Insurance included</p>
@@ -849,7 +857,7 @@
 
                         <div class="pricing-cta-group">
                             <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20a%20quote%20for%20a%20campervan%20rental."
-                                class="pricing-cta" data-track="wa_pricing" data-i18n="pricing.cta">💬 Get a Quote from Karen on WhatsApp</a>
+                                class="pricing-cta" data-track="wa_pricing" style="display:inline-flex;align-items:center;gap:10px;"><img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.4);flex-shrink:0;"> <span data-i18n="pricing.cta">Get a Quote from Karen on WhatsApp</span></a>
                             <p class="cta-microcopy"><span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 7 days before</span></p>
                             <a href="/book/" class="btn-book-outline" data-track="book_pricing" data-i18n="cta.book">📝 Prefer not to chat? Request by form</a>
                         </div>
@@ -989,7 +997,7 @@
 
                 <!-- Book at this price -->
                 <div class="calc-book-cta">
-                    <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20book%20a%20campervan." class="btn-whatsapp btn-whatsapp--lg" target="_blank" id="calc-book-btn" data-track="wa_calculator" data-i18n="calc.book_btn">💬 Send these details to Karen on WhatsApp</a>
+                    <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20book%20a%20campervan." class="btn-whatsapp btn-whatsapp--lg" target="_blank" id="calc-book-btn" data-track="wa_calculator"><img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.5);flex-shrink:0;"> <span data-i18n="calc.book_btn">Send these details to Karen on WhatsApp</span></a>
                     <p class="cta-microcopy"><span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 7 days before</span></p>
                     <a href="/book/" class="btn-book-outline" data-track="book_calculator" style="margin-top:4px;"><span data-i18n="calc.book_form">📝 Or request by form</span></a>
                 </div>
@@ -1221,6 +1229,11 @@
                         <span class="proof-icon">📍</span>
                         <h3 data-i18n="reviews.proof4_t">A real base on Google Maps</h3>
                         <p data-i18n="reviews.proof4_d">Hakozaki, Fukuoka — 10 min from the airport. Come see the vans in person anytime.</p>
+                    </div>
+                    <div class="proof-card">
+                        <span class="proof-icon">🌍</span>
+                        <h3 data-i18n="reviews.proof5_t">Booked by travellers worldwide</h3>
+                        <p data-i18n="reviews.proof5_d">Recent guests from 🇳🇱 Netherlands, 🇬🇧 United Kingdom, 🇸🇬 Singapore, 🇫🇷 France, 🇮🇱 Israel, and more — we welcome adventurers from every corner of the world.</p>
                     </div>
                 </div>
 
@@ -1471,7 +1484,8 @@
             <div class="final-cta-buttons">
                 <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20check%20availability%20for%20a%20campervan%20in%20Fukuoka."
                     class="btn-whatsapp btn-whatsapp--lg" target="_blank" data-track="wa_final">
-                    💬 <span data-i18n="cta.whatsapp">Chat with Karen on WhatsApp</span>
+                    <img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.5);flex-shrink:0;">
+                    <span data-i18n="cta.whatsapp">Chat with Karen on WhatsApp</span>
                 </a>
                 <a href="https://lin.ee/YYyRz2f" class="btn-line" target="_blank">
                     💚 <span data-i18n="cta.line">Chat on LINE</span>
