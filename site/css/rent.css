@@ -3,7 +3,6 @@
    VanTripJapan — Earth-tone redesign
    ══════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
     --rent-bg: #FAF6F0;
@@ -3384,4 +3383,19 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
     font-size: 14px;
     color: var(--rent-text-secondary);
     font-weight: 600;
+}
+
+/* ── Accessibility: Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .hero-particle, .hero-van-anim, .driving-van,
+    .dest-track, .scroll-indicator { animation: none !important; }
+    .hero-slide { transition: none !important; }
+    .vehicle-card { transition: none !important; transform: none !important; }
+    .reveal, .reveal-left, .reveal-right, .reveal-scale,
+    .anim-slide-up, .anim-d2, .anim-d3, .anim-d4, .anim-d5 {
+        opacity: 1 !important; transform: none !important;
+        transition: none !important; animation: none !important;
+    }
+    .scroll-progress { display: none; }
+    .stat-number[data-count] { /* Skip count-up animation */ }
 }

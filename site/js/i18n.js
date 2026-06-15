@@ -249,7 +249,6 @@ const translations = {
 
         // Sticky
         "sticky.availability": "Family-run in Fukuoka · From ¥22,000/day",
-        "sticky.viewers": "● 9 people viewing",
 
         // License — Israel
         "license.il.title": "Israeli Travellers",
@@ -598,7 +597,6 @@ const translations = {
         "access.hours": "🕐 Horaires",
         "access.hoursDetail": "Prise en charge : 9h00 - 17h00<br>Retour : 9h00 - 17h00<br>(Flexible sur arrangement)",
         "sticky.availability": "Entreprise familiale à Fukuoka · Dès ¥22,000/jour",
-        "sticky.viewers": "● 9 personnes consultent",
 
         // License — Israel
         "license.il.title": "Voyageurs Israéliens",
@@ -941,7 +939,6 @@ const translations = {
         "access.hours": "🕐 Öffnungszeiten",
         "access.hoursDetail": "Abholung: 9:00 - 17:00<br>Rückgabe: 9:00 - 17:00<br>(Flexibel nach Vereinbarung)",
         "sticky.availability": "Familienbetrieb in Fukuoka · Ab ¥22,000/Tag",
-        "sticky.viewers": "● 9 Personen schauen gerade",
 
         // License — Israel
         "license.il.title": "Israelische Reisende",
@@ -1278,7 +1275,6 @@ const translations = {
         "access.hours": "🕐 營業時間",
         "access.hoursDetail": "取車：9:00 - 17:00<br>還車：9:00 - 17:00<br>（可彈性安排）",
         "sticky.availability": "福岡家族經營 · ¥22,000/天起",
-        "sticky.viewers": "● 9人正在瀏覽",
 
         // License — Israel
         "license.il.title": "以色列旅客",
@@ -1608,7 +1604,6 @@ const translations = {
         "access.hours": "🕐 שעות פעילות",
         "access.hoursDetail": "איסוף: 9:00 - 17:00<br>החזרה: 9:00 - 17:00<br>(גמיש בתיאום מראש)",
         "sticky.availability": "עסק משפחתי בפוקואוקה · החל מ-¥22,000 ליום",
-        "sticky.viewers": "● 9 אנשים צופים",
         "reviews.badge": "אמיתי וניתן לאימות",
         "trust.licensed": "מפעיל השכרת רכב מורשה",
         "trust.reviews": "עסק משפחתי בפוקואוקה מאז 2022",
