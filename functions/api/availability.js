@@ -71,11 +71,11 @@ function mapSummaryToVehicle(summary) {
   const upper = summary.toUpperCase();
   if (upper.includes('[BONGO]') || upper.includes('[HIACE]')) return 'MAZDA BONGO';
   if (upper.includes('[PROBOX]')) return 'TOYOTA PROBOX';
-  if (upper.includes('[LOFT]') || upper.includes('[DAIHATSU]')) return 'DAIHATSU POCKET LOFT';
+  if (upper.includes('[LOFT]') || upper.includes('[DAIHATSU]') || upper.includes('[TENTMUSHI]')) return 'DAIHATSU POCKET LOFT';
   
   if (upper.includes('BONGO') || upper.includes('HIACE')) return 'MAZDA BONGO';
   if (upper.includes('PROBOX')) return 'TOYOTA PROBOX';
-  if (upper.includes('LOFT') || upper.includes('DAIHATSU')) return 'DAIHATSU POCKET LOFT';
+  if (upper.includes('LOFT') || upper.includes('DAIHATSU') || upper.includes('TENTMUSHI')) return 'DAIHATSU POCKET LOFT';
   return null;
 }
 
