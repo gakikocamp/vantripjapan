@@ -46,11 +46,16 @@ async function handlePost(request, env) {
   const phoneEnc = await encrypt(data.phone || null, env);
   const addressEnc = await encrypt(data.address || null, env);
 
+  const status = data.status || 'form_submitted';
+  const gearNotes = data.num_guests
+    ? `[Guests: ${data.num_guests}] ${data.camping_gear_notes || ''}`
+    : data.camping_gear_notes || null;
+
   const result = await env.CUSTOMERS_DB.prepare(`
     INSERT INTO bookings (email_encrypted, full_name, phone_encrypted, address_encrypted,
       vehicle_type, pickup_datetime, return_datetime, num_drivers,
-      referral_source, camping_gear_notes, translation_needed)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      referral_source, camping_gear_notes, translation_needed, status)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).bind(
     emailEnc,
     data.full_name.trim(),
@@ -61,8 +66,9 @@ async function handlePost(request, env) {
     data.return_datetime,
     data.num_drivers || 1,
     data.referral_source || null,
-    data.camping_gear_notes || null,
+    gearNotes,
     data.translation_needed ? 1 : 0,
+    status
   ).run();
 
   const bookingId = result.meta.last_row_id;
@@ -149,6 +155,7 @@ async function sendBookingEmails(data, bookingId, env) {
     `Vehicle:  ${vehicle}`,
     `Pick-up:  ${pickup}`,
     `Return:   ${ret}`,
+    `Guests:   ${data.num_guests || 1}`,
     `Drivers:  ${data.num_drivers || 1}`,
     `Found us: ${data.referral_source || '—'}`,
     `Gear:     ${data.camping_gear_notes || '—'}`,

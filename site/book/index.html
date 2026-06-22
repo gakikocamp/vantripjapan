@@ -367,6 +367,111 @@
         .toggle-switch input:checked + .slider { background: var(--primary); }
         .toggle-switch input:checked + .slider::before { transform: translateX(24px); }
 
+        /* Vehicle card disabled states & status styles */
+        .vehicle-option.disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            border-color: var(--border) !important;
+            background: rgba(0, 0, 0, 0.03) !important;
+        }
+        .vehicle-option.disabled:hover {
+            border-color: var(--border) !important;
+        }
+        .vehicle-option .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+        .vehicle-option .status-badge.available {
+            background: rgba(37, 211, 102, 0.1);
+            color: #1e7b3a;
+        }
+        .vehicle-option .status-badge.unavailable {
+            background: rgba(196, 112, 75, 0.1);
+            color: var(--accent);
+        }
+        .vehicle-option .status-badge.capacity-error {
+            background: rgba(0, 0, 0, 0.05);
+            color: #666;
+        }
+
+        /* Calendar Styles */
+        .calendar-container {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-top: 10px;
+        }
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .calendar-nav-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px 8px;
+            font-size: 1.1rem;
+            color: var(--primary);
+            transition: opacity 0.2s;
+        }
+        .calendar-nav-btn:hover {
+            opacity: 0.7;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        .calendar-day-header {
+            font-weight: 600;
+            color: var(--text-sec);
+            padding: 4px 0;
+        }
+        .calendar-day {
+            padding: 8px 0;
+            border-radius: 6px;
+            background: var(--bg);
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .calendar-day.empty {
+            background: none;
+            cursor: default;
+        }
+        .calendar-day.today {
+            box-shadow: inset 0 0 0 1.5px var(--primary);
+        }
+        .calendar-day:not(.empty):not(.disabled):hover {
+            background: var(--primary-glow);
+            color: var(--primary);
+        }
+        .calendar-day.disabled {
+            background: rgba(196,112,75,0.08);
+            color: var(--text-muted);
+            text-decoration: line-through;
+            cursor: not-allowed;
+        }
+        .calendar-day.selected {
+            background: var(--primary) !important;
+            color: #fff !important;
+            font-weight: 600;
+        }
+        .calendar-day.range-mid {
+            background: var(--primary-glow) !important;
+            color: var(--primary) !important;
+        }
+
         /* Wizard Buttons */
         .wizard-buttons {
             display: flex;
@@ -628,48 +733,10 @@
 
             <form id="bookingForm">
                 
-                <!-- STEP 1: Vehicle & Period -->
+                <!-- STEP 1: Period & Vehicle -->
                 <div class="step-content active" id="step-c-1">
                     <div class="card">
-                        <div class="section-title"><i class="fas fa-car"></i> Vehicle Selection</div>
-                        <div class="form-group">
-                            <label>Choose your vehicle <span class="req">*</span></label>
-                            <div class="vehicle-grid" id="vehicleGrid">
-                                <input type="radio" name="vehicle_type" id="veh-bongo" value="MAZDA BONGO" class="custom-radio" required>
-                                <label class="vehicle-option" for="veh-bongo" data-vehicle="bongo">
-                                    <img src="/images/rent/vehicles/bongo.webp" alt="Mazda Bongo">
-                                    <div class="vehicle-option-info">
-                                        <div class="name">🚐 MAZDA BONGO</div>
-                                        <div class="type">Campervan · 2-3 guests · sleeps 2 inside</div>
-                                        <div class="price">¥22,000〜/day</div>
-                                    </div>
-                                </label>
-
-                                <input type="radio" name="vehicle_type" id="veh-probox" value="TOYOTA PROBOX" class="custom-radio">
-                                <label class="vehicle-option" for="veh-probox" data-vehicle="probox">
-                                    <img src="/images/rent/vehicles/probox.webp" alt="Toyota Probox">
-                                    <div class="vehicle-option-info">
-                                        <div class="name">🏕️ TOYOTA PROBOX</div>
-                                        <div class="type">with RoofTent · 2 guests · sleeps 2 on roof</div>
-                                        <div class="price">¥22,000〜/day</div>
-                                    </div>
-                                </label>
-
-                                <input type="radio" name="vehicle_type" id="veh-loft" value="DAIHATSU POCKET LOFT" class="custom-radio">
-                                <label class="vehicle-option" for="veh-loft" data-vehicle="loft">
-                                    <img src="/images/rent/vehicles/daihatsu-front.webp" alt="Daihatsu Pocket Loft">
-                                    <div class="vehicle-option-info">
-                                        <div class="name">🚐 DAIHATSU POCKET LOFT</div>
-                                        <div class="type">Pocket Loft with RoofTent · 2-4 guests · sleeps 2 inside, 2 on roof</div>
-                                        <div class="price">¥25,000〜/day</div>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="section-title"><i class="fas fa-calendar"></i> Rental Period</div>
+                        <div class="section-title"><i class="fas fa-calendar"></i> 1. Select Rental Period & Guests</div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Pickup Date & Time <span class="req">*</span></label>
@@ -680,9 +747,17 @@
                                 <input type="datetime-local" name="return_datetime" required>
                             </div>
                         </div>
-                        <div id="availabilityStatus" style="display:none; padding:12px 16px; border-radius:8px; font-size:0.85rem; margin-bottom:18px;"></div>
-                        
-                        <div class="form-row">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:12px;">
+                            <div class="form-group">
+                                <label>Number of Guests <span class="req">*</span></label>
+                                <select name="num_guests" required>
+                                    <option value="1">1 Guest</option>
+                                    <option value="2" selected>2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5+ Guests</option>
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label>Number of Drivers <span class="req">*</span></label>
                                 <select name="num_drivers" required>
@@ -694,6 +769,64 @@
                                 </select>
                             </div>
                         </div>
+
+                        <!-- Monthly Calendar wrapper for Flow B & selection -->
+                        <div id="calendarWrapper" style="display:none; margin-top:20px; border-top:1px dashed var(--border); padding-top:16px;">
+                            <label style="font-weight:600; margin-bottom:8px; display:block;"><i class="fas fa-calendar-days"></i> Vehicle Availability Calendar</label>
+                            <div class="calendar-container">
+                                <div class="calendar-header">
+                                    <button type="button" class="calendar-nav-btn" id="prevMonthBtn"><i class="fas fa-chevron-left"></i></button>
+                                    <span id="calendarMonthTitle"></span>
+                                    <button type="button" class="calendar-nav-btn" id="nextMonthBtn"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="calendar-grid" id="calendarGrid"></div>
+                            </div>
+                            <div style="font-size:0.75rem; color:var(--text-sec); margin-top:8px; display:flex; gap:12px; align-items:center; justify-content:center;">
+                                <span><span style="display:inline-block; width:12px; height:12px; background:#fff; border:1px solid var(--border); border-radius:3px; vertical-align:middle; margin-right:4px;"></span> Available</span>
+                                <span><span style="display:inline-block; width:12px; height:12px; background:rgba(196,112,75,0.08); border-radius:3px; vertical-align:middle; text-decoration:line-through; color:var(--text-muted); margin-right:4px; text-align:center; font-size:0.6rem;">1</span> Booked / Blocked</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="section-title"><i class="fas fa-car"></i> 2. Choose Your Vehicle</div>
+                        <div class="form-group">
+                            <div class="vehicle-grid" id="vehicleGrid">
+                                <input type="radio" name="vehicle_type" id="veh-bongo" value="MAZDA BONGO" class="custom-radio" required>
+                                <label class="vehicle-option" for="veh-bongo" data-vehicle="bongo">
+                                    <img src="/images/rent/vehicles/bongo.webp" alt="Mazda Bongo">
+                                    <div class="vehicle-option-info">
+                                        <div class="name">🚐 MAZDA BONGO</div>
+                                        <div class="type">Campervan · Max 3 guests · sleeps 2 inside</div>
+                                        <div class="price" id="price-bongo">¥22,000〜/day</div>
+                                        <div class="status-msg" id="status-bongo" style="font-size:0.8rem; margin-top:4px;"></div>
+                                    </div>
+                                </label>
+
+                                <input type="radio" name="vehicle_type" id="veh-probox" value="TOYOTA PROBOX" class="custom-radio">
+                                <label class="vehicle-option" for="veh-probox" data-vehicle="probox">
+                                    <img src="/images/rent/vehicles/probox.webp" alt="Toyota Probox">
+                                    <div class="vehicle-option-info">
+                                        <div class="name">🏕️ TOYOTA PROBOX</div>
+                                        <div class="type">with RoofTent · Max 2 guests · sleeps 2 on roof</div>
+                                        <div class="price" id="price-probox">¥22,000〜/day</div>
+                                        <div class="status-msg" id="status-probox" style="font-size:0.8rem; margin-top:4px;"></div>
+                                    </div>
+                                </label>
+
+                                <input type="radio" name="vehicle_type" id="veh-loft" value="DAIHATSU POCKET LOFT" class="custom-radio">
+                                <label class="vehicle-option" for="veh-loft" data-vehicle="loft">
+                                    <img src="/images/rent/vehicles/daihatsu-front.webp" alt="Daihatsu Pocket Loft">
+                                    <div class="vehicle-option-info">
+                                        <div class="name">🚐 DAIHATSU POCKET LOFT</div>
+                                        <div class="type">Pocket Loft with RoofTent · Max 4 guests · sleeps 2 inside, 2 on roof</div>
+                                        <div class="price" id="price-loft">¥25,000〜/day</div>
+                                        <div class="status-msg" id="status-loft" style="font-size:0.8rem; margin-top:4px;"></div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div id="availabilityStatus" style="display:none; padding:12px 16px; border-radius:8px; font-size:0.85rem; margin-top:12px;"></div>
                     </div>
 
                     <div class="wizard-buttons">
@@ -913,19 +1046,37 @@ const DISCOUNT_TIERS = [
 ];
 
 const VEHICLE_PRICES = {
-    'MAZDA BONGO': { base: 22000, img: '/images/rent/vehicles/bongo.webp', desc: 'Campervan · Sleeps 2 inside' },
-    'TOYOTA PROBOX': { base: 22000, img: '/images/rent/vehicles/probox.webp', desc: 'with RoofTent · Sleeps 2 on roof' },
-    'DAIHATSU POCKET LOFT': { base: 25000, img: '/images/rent/vehicles/daihatsu-front.webp', desc: 'Pocket Loft with RoofTent · Sleeps 4' }
+    'MAZDA BONGO': { base: 22000, maxGuests: 3, img: '/images/rent/vehicles/bongo.webp', desc: 'Campervan · Sleeps 2 inside' },
+    'TOYOTA PROBOX': { base: 22000, maxGuests: 2, img: '/images/rent/vehicles/probox.webp', desc: 'with RoofTent · Sleeps 2 on roof' },
+    'DAIHATSU POCKET LOFT': { base: 25000, maxGuests: 4, img: '/images/rent/vehicles/daihatsu-front.webp', desc: 'Pocket Loft with RoofTent · Sleeps 4' }
 };
+
+// Global variables for availability state
+let bookedRanges = {};
+let calendarMonth = new Date().getMonth();
+let calendarYear = new Date().getFullYear();
+let currentVehicleCalendar = '';
+
+// Load overall availability on page load
+async function loadBookedRanges() {
+    try {
+        const res = await fetch('/api/availability');
+        if (res.ok) {
+            const data = await res.json();
+            bookedRanges = data.vehicles || {};
+            checkVehiclesFilter();
+        }
+    } catch (e) {
+        console.error("Failed to load availability:", e);
+    }
+}
 
 // Wizard Step Navigation
 function goToStep(stepNum) {
-    // Validate fields before proceeding
     if (stepNum > 1) {
         if (!validateStep(stepNum - 1)) return;
     }
 
-    // Update Stepper UI
     document.querySelectorAll('.step').forEach((el, index) => {
         el.classList.remove('active', 'done');
         const sNum = index + 1;
@@ -936,21 +1087,14 @@ function goToStep(stepNum) {
         }
     });
 
-    // Update Content Visibility
     document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
     document.getElementById('step-c-' + stepNum).classList.add('active');
     
-    // Scroll to top of form
     window.scrollTo({ top: 150, behavior: 'smooth' });
 }
 
 function validateStep(stepNum) {
     if (stepNum === 1) {
-        const vehicle = document.querySelector('input[name="vehicle_type"]:checked');
-        if (!vehicle) {
-            alert('Please select a campervan first.');
-            return false;
-        }
         const pickup = document.querySelector('input[name="pickup_datetime"]').value;
         const dropoff = document.querySelector('input[name="return_datetime"]').value;
         if (!pickup || !dropoff) {
@@ -959,6 +1103,11 @@ function validateStep(stepNum) {
         }
         if (new Date(dropoff) <= new Date(pickup)) {
             alert('Return date & time must be after pickup date & time.');
+            return false;
+        }
+        const vehicle = document.querySelector('input[name="vehicle_type"]:checked');
+        if (!vehicle) {
+            alert('Please choose an available campervan first.');
             return false;
         }
     } else if (stepNum === 2) {
@@ -982,7 +1131,7 @@ function validateStep(stepNum) {
     return true;
 }
 
-// ── Live availability check (read-only, no PII) ──
+// Live availability check (read-only, no PII)
 let availTimer = null;
 function checkAvailability() {
     clearTimeout(availTimer);
@@ -1005,21 +1154,218 @@ function checkAvailability() {
             if (data.available) {
                 box.style.background = 'var(--primary-glow)';
                 box.style.color = 'var(--primary)';
-                box.innerHTML = '<i class="fas fa-circle-check"></i> <strong>No confirmed booking blocks these dates.</strong> Submit request to secure your dates.';
+                box.innerHTML = '<i class="fas fa-circle-check"></i> <strong>This van is available for your dates.</strong> Submit request to secure your booking.';
             } else {
                 box.style.background = 'rgba(196,112,75,0.1)';
                 box.style.color = 'var(--accent)';
-                box.innerHTML = '<i class="fas fa-triangle-exclamation"></i> <strong>This van may already be booked on those dates.</strong> You can still submit — we\'ll suggest another van or nearby dates. Or <a href="https://wa.me/817093757129" target="_blank" style="color:var(--accent); text-decoration:underline;">ask Karen on WhatsApp</a>.';
+                box.innerHTML = '<i class="fas fa-triangle-exclamation"></i> <strong>This van has a scheduling conflict.</strong> You can still submit — we\'ll suggest another van or nearby dates. Or <a href="https://wa.me/817093757129" target="_blank" style="color:var(--accent); text-decoration:underline;">ask Karen on WhatsApp</a>.';
             }
         } catch (e) {
-            box.style.display = 'none'; // fail silently — never block the form
+            box.style.display = 'none';
         }
     }, 400);
 }
 
+// Evaluate capacity & availability for each vehicle
+function checkVehiclesFilter() {
+    const pickupVal = document.querySelector('input[name="pickup_datetime"]').value;
+    const returnVal = document.querySelector('input[name="return_datetime"]').value;
+    const guests = parseInt(document.querySelector('select[name="num_guests"]').value, 10) || 1;
+
+    const fromDate = pickupVal ? pickupVal.slice(0, 10) : null;
+    const toDate = returnVal ? returnVal.slice(0, 10) : null;
+
+    Object.keys(VEHICLE_PRICES).forEach(vKey => {
+        const config = VEHICLE_PRICES[vKey];
+        let disabled = false;
+        let reason = '';
+
+        if (guests > config.maxGuests) {
+            disabled = true;
+            reason = `<span class="status-badge capacity-error"><i class="fas fa-users-slash"></i> Fits max ${config.maxGuests} guests</span>`;
+        }
+
+        if (!disabled && fromDate && toDate && toDate > fromDate) {
+            const ranges = bookedRanges[vKey] || [];
+            const hasConflict = ranges.some(r => r.from < toDate && r.to > fromDate);
+            if (hasConflict) {
+                disabled = true;
+                reason = `<span class="status-badge unavailable"><i class="fas fa-calendar-xmark"></i> Already booked</span>`;
+            }
+        }
+
+        const radio = document.querySelector(`input[name="vehicle_type"][value="${vKey}"]`);
+        if (radio) {
+            const label = document.querySelector(`label[for="${radio.id}"]`);
+            const statusMsg = document.getElementById(`status-${radio.id.replace('veh-', '')}`);
+            const priceMsg = document.getElementById(`price-${radio.id.replace('veh-', '')}`);
+
+            if (disabled) {
+                label.classList.add('disabled');
+                radio.disabled = true;
+                if (radio.checked) {
+                    radio.checked = false;
+                    document.getElementById('calendarWrapper').style.display = 'none';
+                }
+                statusMsg.innerHTML = reason;
+            } else {
+                label.classList.remove('disabled');
+                radio.disabled = false;
+                statusMsg.innerHTML = `<span class="status-badge available"><i class="fas fa-circle-check"></i> Available</span>`;
+
+                if (fromDate && toDate && toDate > fromDate) {
+                    const days = Math.ceil((new Date(toDate) - new Date(fromDate)) / (1000 * 60 * 60 * 24));
+                    if (days > 0) {
+                        const baseTotal = calculateBaseTotal(config.base, days);
+                        const discount = getDiscount(days);
+                        const finalPrice = Math.round(baseTotal * (1 - discount.rate));
+                        priceMsg.innerHTML = `<strong>¥${finalPrice.toLocaleString()}</strong> for ${days} days ${discount.rate > 0 ? `<small style="color:var(--accent); font-weight:700">(${discount.label})</small>` : ''}`;
+                    } else {
+                        priceMsg.innerHTML = `¥${config.base.toLocaleString()}〜/day`;
+                    }
+                } else {
+                    priceMsg.innerHTML = `¥${config.base.toLocaleString()}〜/day`;
+                }
+            }
+        }
+    });
+}
+
+function calculateBaseTotal(baseRate, days) {
+    const weekendRate = Math.round(baseRate * 1.5);
+    const weeklyTotal = (5 * baseRate) + (2 * weekendRate);
+    const fullWeeks = Math.floor(days / 7);
+    const remainderDays = days % 7;
+    return (fullWeeks * weeklyTotal) + (remainderDays * baseRate);
+}
+
+function getDiscount(days) {
+    for (let i = 0; i < DISCOUNT_TIERS.length; i++) {
+        if (days >= DISCOUNT_TIERS[i].minDays) {
+            return DISCOUNT_TIERS[i];
+        }
+    }
+    return { rate: 0, label: '' };
+}
+
+// Render Monthly Calendar (Flow B)
+function renderCalendar(vehicle) {
+    if (!vehicle) {
+        document.getElementById('calendarWrapper').style.display = 'none';
+        return;
+    }
+    currentVehicleCalendar = vehicle;
+    document.getElementById('calendarWrapper').style.display = 'block';
+
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    document.getElementById('calendarMonthTitle').textContent = `${monthNames[calendarMonth]} ${calendarYear}`;
+
+    const grid = document.getElementById('calendarGrid');
+    grid.innerHTML = '';
+
+    const daysOfWeek = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+    daysOfWeek.forEach(day => {
+        const h = document.createElement('div');
+        h.className = 'calendar-day-header';
+        h.textContent = day;
+        grid.appendChild(h);
+    });
+
+    const firstDay = new Date(calendarYear, calendarMonth, 1).getDay();
+    const totalDays = new Date(calendarYear, calendarMonth + 1, 0).getDate();
+
+    for (let i = 0; i < firstDay; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.className = 'calendar-day empty';
+        grid.appendChild(emptyCell);
+    }
+
+    const pickupInputVal = document.querySelector('input[name="pickup_datetime"]').value;
+    const returnInputVal = document.querySelector('input[name="return_datetime"]').value;
+    const pickupDateStr = pickupInputVal ? pickupInputVal.slice(0, 10) : null;
+    const returnDateStr = returnInputVal ? returnInputVal.slice(0, 10) : null;
+
+    const ranges = bookedRanges[vehicle] || [];
+
+    for (let day = 1; day <= totalDays; day++) {
+        const dateStr = `${calendarYear}-${String(calendarMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        const dayCell = document.createElement('div');
+        dayCell.className = 'calendar-day';
+        dayCell.textContent = day;
+        dayCell.dataset.date = dateStr;
+
+        const todayStr = new Date().toISOString().slice(0, 10);
+        const isPast = dateStr < todayStr;
+        const isBlocked = ranges.some(r => dateStr >= r.from && dateStr < r.to);
+
+        if (isPast || isBlocked) {
+            dayCell.classList.add('disabled');
+        } else {
+            if (pickupDateStr && dateStr === pickupDateStr) {
+                dayCell.classList.add('selected');
+            } else if (returnDateStr && dateStr === returnDateStr) {
+                dayCell.classList.add('selected');
+            } else if (pickupDateStr && returnDateStr && dateStr > pickupDateStr && dateStr < returnDateStr) {
+                dayCell.classList.add('range-mid');
+            }
+            dayCell.addEventListener('click', () => handleCalendarDayClick(dateStr));
+        }
+
+        if (dateStr === todayStr) {
+            dayCell.classList.add('today');
+        }
+        grid.appendChild(dayCell);
+    }
+}
+
+function handleCalendarDayClick(dateStr) {
+    const pickupInput = document.querySelector('input[name="pickup_datetime"]');
+    const returnInput = document.querySelector('input[name="return_datetime"]');
+    const pickupVal = pickupInput.value;
+    const returnVal = returnInput.value;
+
+    if (!pickupVal || (pickupVal && returnVal)) {
+        pickupInput.value = `${dateStr}T10:00`;
+        returnInput.value = '';
+    } else {
+        if (dateStr > pickupVal.slice(0, 10)) {
+            const vehicleRadio = document.querySelector('input[name="vehicle_type"]:checked');
+            if (vehicleRadio) {
+                const ranges = bookedRanges[vehicleRadio.value] || [];
+                let hasConflict = false;
+                let cur = new Date(pickupVal.slice(0, 10));
+                const target = new Date(dateStr);
+                
+                while (cur <= target) {
+                    const checkStr = cur.toISOString().slice(0, 10);
+                    if (ranges.some(r => checkStr >= r.from && checkStr < r.to)) {
+                        hasConflict = true;
+                        break;
+                    }
+                    cur.setDate(cur.getDate() + 1);
+                }
+                if (hasConflict) {
+                    alert("There are booked dates in between. Please select a different return date.");
+                    return;
+                }
+            }
+            returnInput.value = `${dateStr}T18:00`;
+        } else {
+            pickupInput.value = `${dateStr}T10:00`;
+            returnInput.value = '';
+        }
+    }
+
+    checkAvailability();
+    updateSummary();
+    checkVehiclesFilter();
+    if (currentVehicleCalendar) {
+        renderCalendar(currentVehicleCalendar);
+    }
+}
+
 // Update Summary Panel & Dynamic Prices
 function updateSummary() {
-    // 1. Vehicle Selection
     const vehicleRadio = document.querySelector('input[name="vehicle_type"]:checked');
     const vehPlaceholder = document.getElementById('summaryVehiclePlaceholder');
     const vehInfo = document.getElementById('summaryVehicle');
@@ -1043,7 +1389,6 @@ function updateSummary() {
         vehInfo.style.display = 'none';
     }
 
-    // 2. Rental Period
     const pickupVal = document.querySelector('input[name="pickup_datetime"]').value;
     const returnVal = document.querySelector('input[name="return_datetime"]').value;
 
@@ -1075,11 +1420,9 @@ function updateSummary() {
         document.getElementById('summaryDuration').textContent = '—';
     }
 
-    // 3. Drivers
     const driversVal = document.querySelector('select[name="num_drivers"]').value;
     document.getElementById('summaryDrivers').textContent = driversVal + (driversVal === '1' ? ' Driver' : ' Drivers');
 
-    // 4. Translation
     const translationVal = document.getElementById('translationToggle').checked;
     const translationRow = document.getElementById('summaryTranslationRow');
     if (translationVal) {
@@ -1088,36 +1431,19 @@ function updateSummary() {
         translationRow.style.display = 'none';
     }
 
-    // 5. Price calculation
     if (baseRate > 0 && days > 0) {
-        // Calculate weekdays vs weekends (average estimation)
-        const weekendRate = Math.round(baseRate * 1.5);
-        const weeklyTotal = (5 * baseRate) + (2 * weekendRate);
-        const fullWeeks = Math.floor(days / 7);
-        const remainderDays = days % 7;
-        const baseTotal = (fullWeeks * weeklyTotal) + (remainderDays * baseRate);
-
-        // Apply discount tiers
-        let discountPct = 0;
-        let discountLabel = '';
-        for (let i = 0; i < DISCOUNT_TIERS.length; i++) {
-            if (days >= DISCOUNT_TIERS[i].minDays) {
-                discountPct = DISCOUNT_TIERS[i].rate;
-                discountLabel = DISCOUNT_TIERS[i].label;
-                break;
-            }
-        }
-        
+        const baseTotal = calculateBaseTotal(baseRate, days);
+        const discount = getDiscount(days);
         let estimatedTotal = baseTotal;
-        if (discountPct > 0) {
-            estimatedTotal = baseTotal * (1 - discountPct);
+        if (discount.rate > 0) {
+            estimatedTotal = baseTotal * (1 - discount.rate);
         }
 
         const finalTotal = Math.round(estimatedTotal);
         document.getElementById('summaryPriceTotal').textContent = '¥' + finalTotal.toLocaleString();
         
-        if (discountPct > 0) {
-            document.getElementById('summaryPriceDesc').innerHTML = `🎉 Includes <strong>${discountLabel}</strong> long-stay discount! Estimated daily rate: ¥${Math.round(finalTotal/days).toLocaleString()}/day.`;
+        if (discount.rate > 0) {
+            document.getElementById('summaryPriceDesc').innerHTML = `🎉 Includes <strong>${discount.label}</strong> long-stay discount! Estimated daily rate: ¥${Math.round(finalTotal/days).toLocaleString()}/day.`;
         } else {
             document.getElementById('summaryPriceDesc').textContent = 'Includes rental fees, standard insurance, and camper gear. Dynamic rates applied for weekends/long-stays.';
         }
@@ -1127,37 +1453,80 @@ function updateSummary() {
     }
 }
 
-// Bind events to update summary and check availability
+// Bind navigation clicks for calendar
+document.getElementById('prevMonthBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    calendarMonth--;
+    if (calendarMonth < 0) {
+        calendarMonth = 11;
+        calendarYear--;
+    }
+    renderCalendar(currentVehicleCalendar);
+});
+document.getElementById('nextMonthBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    calendarMonth++;
+    if (calendarMonth > 11) {
+        calendarMonth = 0;
+        calendarYear++;
+    }
+    renderCalendar(currentVehicleCalendar);
+});
+
+// Bind events to update summary, filters and availability
 document.querySelector('input[name="pickup_datetime"]').addEventListener('change', () => {
     checkAvailability();
+    checkVehiclesFilter();
     updateSummary();
+    if (currentVehicleCalendar) renderCalendar(currentVehicleCalendar);
 });
 document.querySelector('input[name="return_datetime"]').addEventListener('change', () => {
     checkAvailability();
+    checkVehiclesFilter();
     updateSummary();
+    if (currentVehicleCalendar) renderCalendar(currentVehicleCalendar);
+});
+document.querySelector('select[name="num_guests"]').addEventListener('change', () => {
+    checkVehiclesFilter();
+    updateSummary();
+    if (currentVehicleCalendar) renderCalendar(currentVehicleCalendar);
 });
 document.querySelector('select[name="num_drivers"]').addEventListener('change', updateSummary);
 document.getElementById('translationToggle').addEventListener('change', updateSummary);
+
 document.querySelectorAll('input[name="vehicle_type"]').forEach(radio => {
     radio.addEventListener('change', () => {
         checkAvailability();
+        checkVehiclesFilter();
         updateSummary();
+        renderCalendar(radio.value);
     });
 });
 
-// Preselect vehicle from URL param
-(function() {
+// Preselect vehicle and load availability
+(async function() {
+    await loadBookedRanges();
+
     const params = new URLSearchParams(window.location.search);
     const veh = params.get('vehicle');
     if (veh) {
-        const radio = document.getElementById('veh-' + veh);
-        if (radio) {
-            radio.checked = true;
-            checkAvailability();
-            updateSummary();
+        const val = veh.toUpperCase().trim();
+        let targetId = '';
+        if (val.includes('BONGO')) targetId = 'veh-bongo';
+        else if (val.includes('PROBOX')) targetId = 'veh-probox';
+        else if (val.includes('LOFT') || val.includes('DAIHATSU')) targetId = 'veh-loft';
+
+        if (targetId) {
+            const radio = document.getElementById(targetId);
+            if (radio) {
+                radio.checked = true;
+                checkAvailability();
+                updateSummary();
+                renderCalendar(radio.value);
+            }
         }
     }
-    // Don't allow pickup dates in the past
+    
     const today = new Date();
     today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
     const minDt = today.toISOString().slice(0, 16);
@@ -1181,6 +1550,7 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
         vehicle_type: form.vehicle_type.value,
         pickup_datetime: form.pickup_datetime.value,
         return_datetime: form.return_datetime.value,
+        num_guests: parseInt(form.num_guests.value),
         num_drivers: parseInt(form.num_drivers.value),
         camping_gear_notes: form.camping_gear_notes.value || null,
         translation_needed: form.translation_needed.checked,

@@ -97,8 +97,11 @@
 
         <!-- Bookings Page -->
         <section class="page" id="page-bookings">
-            <div class="page-actions">
-                <a href="/book/" target="_blank" class="btn btn-secondary">
+            <div class="page-actions" style="display:flex; gap:12px; justify-content:flex-end; margin-bottom:16px;">
+                <button class="btn btn-primary" onclick="openCreateBookingModal()">
+                    <i class="fas fa-plus"></i> 新規予約登録
+                </button>
+                <a href="/book/" target="_blank" class="btn btn-secondary" style="display:inline-flex; align-items:center; gap:6px;">
                     <i class="fas fa-external-link-alt"></i> 予約フォームを開く
                 </a>
             </div>
@@ -150,6 +153,84 @@
                 </button>
             </div>
             <div class="modal-body" id="bookingModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Create Booking Modal (Manual Booking) -->
+    <div class="modal-overlay" id="createBookingModal">
+        <div class="modal" style="max-width:600px;">
+            <div class="modal-header">
+                <h3><i class="fas fa-plus-circle"></i> 新規予約の直接登録</h3>
+                <button class="modal-close" onclick="$('#createBookingModal').classList.remove('active')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createBookingForm" onsubmit="submitManualBooking(event)">
+                    <div style="display:grid; grid-template-columns:1fr; gap:12px;">
+                        <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
+                            <label style="font-weight:600; font-size:0.85rem;">車種 <span style="color:red;">*</span></label>
+                            <select name="vehicle_type" required style="padding:8px; border:1px solid #ddd; border-radius:6px;">
+                                <option value="MAZDA BONGO">🚐 MAZDA BONGO</option>
+                                <option value="TOYOTA PROBOX">🏕️ TOYOTA PROBOX</option>
+                                <option value="DAIHATSU POCKET LOFT">🚐 DAIHATSU POCKET LOFT</option>
+                            </select>
+                        </div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
+                                <label style="font-weight:600; font-size:0.85rem;">貸出日時 <span style="color:red;">*</span></label>
+                                <input type="datetime-local" name="pickup_datetime" required style="padding:8px; border:1px solid #ddd; border-radius:6px;">
+                            </div>
+                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
+                                <label style="font-weight:600; font-size:0.85rem;">返却日時 <span style="color:red;">*</span></label>
+                                <input type="datetime-local" name="return_datetime" required style="padding:8px; border:1px solid #ddd; border-radius:6px;">
+                            </div>
+                        </div>
+                        <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
+                            <label style="font-weight:600; font-size:0.85rem;">お客様氏名 <span style="color:red;">*</span></label>
+                            <input type="text" name="full_name" required placeholder="例: 山田 太郎" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
+                        </div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
+                                <label style="font-weight:600; font-size:0.85rem;">メールアドレス <span style="color:red;">*</span></label>
+                                <input type="email" name="email" required value="whatsapp@vantripjapan.jp" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
+                            </div>
+                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
+                                <label style="font-weight:600; font-size:0.85rem;">電話番号</label>
+                                <input type="text" name="phone" placeholder="例: +81 90-1234-5678" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
+                            </div>
+                        </div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
+                                <label style="font-weight:600; font-size:0.85rem;">運転者数</label>
+                                <select name="num_drivers" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
+                                    <option value="1">1名</option>
+                                    <option value="2">2名</option>
+                                    <option value="3">3名</option>
+                                    <option value="4">4名</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
+                                <label style="font-weight:600; font-size:0.85rem;">登録ステータス <span style="color:red;">*</span></label>
+                                <select name="status" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
+                                    <option value="confirmed">🎉 確定 (空き状況をブロック)</option>
+                                    <option value="docs_requested">📋 書類待ち (空き状況をブロック)</option>
+                                    <option value="active">🚐 利用中 (空き状況をブロック)</option>
+                                    <option value="form_submitted">📩 新規 (仮押さえしない)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
+                            <label style="font-weight:600; font-size:0.85rem;">メモ・その他要望</label>
+                            <textarea name="camping_gear_notes" placeholder="例: WhatsAppからの予約。オプション品追加予定等" style="padding:8px; border:1px solid #ddd; border-radius:6px; resize:vertical; min-height:60px;"></textarea>
+                        </div>
+                        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:12px;">
+                            <button type="button" class="btn btn-secondary" onclick="$('#createBookingModal').classList.remove('active')">キャンセル</button>
+                            <button type="submit" class="btn btn-primary">登録する</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

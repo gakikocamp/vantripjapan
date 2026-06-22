@@ -310,3 +310,50 @@ document.addEventListener('DOMContentLoaded', () => {
     initBookings();
     loadDashboard();
 });
+
+// --- Manual Booking (WhatsApp / Offline) ---
+window.openCreateBookingModal = function() {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowStr = tomorrow.toISOString().slice(0, 10);
+    
+    $('#createBookingForm').reset();
+    $('#createBookingForm').elements['pickup_datetime'].value = `${tomorrowStr}T10:00`;
+    $('#createBookingForm').elements['return_datetime'].value = `${tomorrowStr}T18:00`;
+    
+    $('#createBookingModal').classList.add('active');
+};
+
+window.submitManualBooking = async function(event) {
+    event.preventDefault();
+    const form = event.target;
+    const data = {
+        vehicle_type: form.elements['vehicle_type'].value,
+        pickup_datetime: form.elements['pickup_datetime'].value.replace('T', ' ') + ':00',
+        return_datetime: form.elements['return_datetime'].value.replace('T', ' ') + ':00',
+        full_name: form.elements['full_name'].value,
+        email: form.elements['email'].value,
+        phone: form.elements['phone'].value || null,
+        num_drivers: parseInt(form.elements['num_drivers'].value, 10) || 1,
+        status: form.elements['status'].value,
+        camping_gear_notes: form.elements['camping_gear_notes'].value || null,
+        translation_needed: false,
+        referral_source: 'WhatsApp/Manual'
+    };
+
+    try {
+        const res = await api('/api/booking', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        if (res.status === 'ok') {
+            showToast('新規予約を登録しました');
+            $('#createBookingModal').classList.remove('active');
+            loadBookings();
+            loadDashboard();
+        }
+    } catch (e) {
+        // shown by api() toast
+    }
+};
