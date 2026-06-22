@@ -9,202 +9,417 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --bg: #f5f0e8;
-            --bg-card: rgba(255, 255, 255, 0.85);
-            --bg-input: rgba(0,0,0,0.04);
-            --bg-input-focus: rgba(0,0,0,0.06);
-            --text: #2d3436;
-            --text-sec: #636e72;
-            --text-muted: #a0a8ad;
-            --accent: #2d6a4f;
-            --accent-glow: rgba(45,106,79,0.12);
-            --green: #2d6a4f;
-            --green-glow: rgba(45,106,79,0.1);
-            --orange: #e17055;
-            --border: rgba(0,0,0,0.08);
-            --radius: 12px;
+            --bg: #FAF6F0;
+            --surface: #FFFFFF;
+            --text: #2C2C2C;
+            --text-sec: #5C5446;
+            --text-muted: #9A8E80;
+            --primary: #2D5A3D;
+            --primary-glow: rgba(45, 90, 61, 0.08);
+            --accent: #C4704B;
+            --accent-glow: rgba(196, 112, 75, 0.08);
+            --green: #25D366;
+            --green-glow: rgba(37, 211, 102, 0.1);
+            --orange: #C4704B;
+            --border: #E8DFD1;
+            --radius: 16px;
+            --radius-sm: 10px;
+            --font-display: 'DM Serif Display', Georgia, serif;
+            --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            --shadow: 0 4px 20px rgba(44, 44, 44, 0.05);
         }
-        *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-body);
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             padding: 20px;
-        }
-        body::before {
-            content:''; position:fixed; top:-200px; right:-200px;
-            width:500px; height:500px;
-            background:radial-gradient(circle, rgba(45,106,79,0.08) 0%, transparent 70%);
-            pointer-events:none; z-index:0;
+            line-height: 1.6;
         }
         .container {
-            width: 100%; max-width: 640px; position: relative; z-index: 1;
+            width: 100%;
+            max-width: 1100px;
+            position: relative;
+            z-index: 1;
         }
+        
+        /* Header styles */
         .header {
             text-align: center;
             margin-bottom: 32px;
-            padding-top: 20px;
+            padding-top: 10px;
+        }
+        .header .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-sec);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            transition: color 0.2s;
+        }
+        .header .back-btn:hover {
+            color: var(--primary);
         }
         .header .logo {
-            font-size: 1.6rem; font-weight: 700; color: var(--accent);
-            display: flex; align-items: center; justify-content: center; gap: 10px;
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
             margin-bottom: 8px;
         }
         .header p {
-            color: var(--text-sec); font-size: 0.95rem; line-height: 1.5;
+            color: var(--text-sec);
+            font-size: 1.05rem;
         }
-        .header .notice {
-            background: var(--accent-glow);
-            border: 1px solid rgba(45,106,79,0.25);
-            border-radius: 8px;
-            padding: 12px 16px;
-            margin-top: 16px;
+        .header-trust {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 14px;
             font-size: 0.85rem;
-            color: var(--accent);
+            color: var(--text-sec);
         }
-        .card {
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
+        .header-trust a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .header-trust a:hover {
+            color: var(--primary);
+        }
+        .header-trust span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Split layout */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        @media (min-width: 900px) {
+            .split-layout {
+                grid-template-columns: 1.4fr 1fr;
+                align-items: start;
+            }
+        }
+
+        /* Stepper Wizard */
+        .stepper {
+            display: flex;
+            justify-content: space-between;
+            background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 20px;
+            border-radius: var(--radius);
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
         }
-        .section-title {
-            font-size: 1rem; font-weight: 600;
-            margin-bottom: 20px;
-            display: flex; align-items: center; gap: 8px;
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+            flex: 1;
+            justify-content: center;
+        }
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -10%;
+            top: 50%;
+            width: 20%;
+            height: 1px;
+            background: var(--border);
+            z-index: 1;
+        }
+        @media (max-width: 600px) {
+            .step-label { display: none; }
+            .step:not(:last-child)::after {
+                right: -20%;
+                width: 40%;
+            }
+        }
+        .step-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            z-index: 2;
+            transition: all 0.3s;
+        }
+        .step.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .step.active .step-num {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-glow);
+        }
+        .step.done {
             color: var(--text);
         }
-        .section-title i { color: var(--accent); }
+        .step.done .step-num {
+            background: var(--primary-glow);
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        /* Wizard Cards */
+        .step-content {
+            display: none;
+        }
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow);
+        }
+        @media (max-width: 600px) {
+            .card { padding: 20px; }
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary);
+        }
+
+        /* Forms Elements */
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 0;
+            gap: 20px;
+        }
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; gap: 0; }
         }
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
         .form-group.full { grid-column: 1 / -1; }
         .form-group label {
             display: block;
-            font-size: 0.85rem; font-weight: 500;
+            font-size: 0.85rem;
+            font-weight: 600;
             color: var(--text-sec);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .form-group label .req { color: #e17055; }
+        .form-group label .req { color: var(--accent); }
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            padding: 11px 14px;
-            background: var(--bg-input);
+            padding: 12px 16px;
+            background: var(--bg);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             color: var(--text);
-            font-size: 0.9rem;
-            font-family: inherit;
+            font-size: 0.95rem;
+            font-family: var(--font-body);
             outline: none;
             transition: all 0.2s;
         }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            border-color: var(--accent);
-            background: var(--bg-input-focus);
-            box-shadow: 0 0 0 3px var(--accent-glow);
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px var(--primary-glow);
         }
         .form-group select {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238b92a8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%235c5446' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 12px center;
-            padding-right: 32px;
+            background-position: right 16px center;
+            padding-right: 40px;
         }
-        .form-group textarea { resize: vertical; min-height: 80px; }
-        .checkbox-group {
-            display: flex; flex-wrap: wrap; gap: 8px;
-        }
-        .checkbox-item {
-            display: flex; align-items: center; gap: 8px;
-            padding: 8px 14px;
-            background: var(--bg-input);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            transition: all 0.2s;
-        }
-        .checkbox-item:hover { border-color: var(--accent); }
-        .checkbox-item input { display: none; }
-        .checkbox-item.checked {
-            background: var(--accent-glow);
-            border-color: var(--accent);
-            color: var(--accent);
+        .form-group textarea { resize: vertical; min-height: 100px; }
+
+        /* Custom radios & checkboxes sibling structure */
+        .custom-radio, .custom-checkbox {
+            display: none;
         }
         .vehicle-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            grid-template-columns: 1fr;
+            gap: 12px;
         }
         .vehicle-option {
-            padding: 14px;
-            background: var(--bg-input);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--bg);
             border: 2px solid var(--border);
             border-radius: var(--radius);
             cursor: pointer;
-            text-align: center;
+            transition: all 0.2s;
+            text-align: left;
+        }
+        .vehicle-option:hover {
+            border-color: var(--primary);
+        }
+        .custom-radio:checked + .vehicle-option {
+            border-color: var(--primary);
+            background: var(--primary-glow);
+        }
+        .vehicle-option img {
+            width: 80px;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .vehicle-option-info {
+            flex: 1;
+        }
+        .vehicle-option .name { font-weight: 700; font-size: 1rem; color: var(--text); }
+        .vehicle-option .type { font-size: 0.8rem; color: var(--text-sec); margin-top: 4px; }
+        .vehicle-option .price { font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-top: 2px; }
+
+        .checkbox-group {
+            display: flex; flex-wrap: wrap; gap: 10px;
+        }
+        .checkbox-item {
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 18px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: all 0.2s;
         }
-        .vehicle-option:hover { border-color: var(--accent); }
-        .vehicle-option.selected {
-            border-color: var(--accent);
-            background: var(--accent-glow);
+        .checkbox-item:hover { border-color: var(--primary); }
+        .custom-checkbox:checked + .checkbox-item {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: var(--primary);
+            font-weight: 600;
         }
-        .vehicle-option input { display: none; }
-        .vehicle-option .name { font-weight: 600; font-size: 0.9rem; }
-        .vehicle-option .type { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
         .translation-toggle {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 14px 18px;
-            background: var(--bg-input);
+            padding: 18px;
+            background: var(--bg);
             border: 1px solid var(--border);
             border-radius: var(--radius);
+            gap: 16px;
         }
-        .translation-toggle .info { font-size: 0.85rem; }
-        .translation-toggle .info small { color: var(--text-muted); display:block; margin-top:2px; }
+        .translation-toggle .info { font-size: 0.9rem; }
+        .translation-toggle .info small { color: var(--text-muted); display: block; margin-top: 4px; }
+        .translation-toggle .info .warn { color: var(--accent); font-weight: 600; }
         .toggle-switch {
-            position:relative; width:48px; height:26px;
+            position: relative; width: 52px; height: 28px; flex-shrink: 0;
         }
-        .toggle-switch input { display:none; }
+        .toggle-switch input { display: none; }
         .toggle-switch .slider {
-            position:absolute; inset:0; background:var(--text-muted);
-            border-radius:13px; cursor:pointer; transition:0.3s;
+            position: absolute; inset: 0; background: var(--text-muted);
+            border-radius: 14px; cursor: pointer; transition: 0.3s;
         }
         .toggle-switch .slider::before {
-            content:''; position:absolute; width:20px; height:20px;
-            left:3px; bottom:3px; background:white;
-            border-radius:50%; transition:0.3s;
+            content: ''; position: absolute; width: 22px; height: 22px;
+            left: 3px; bottom: 3px; background: white;
+            border-radius: 50%; transition: 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
         }
-        .toggle-switch input:checked + .slider { background:var(--green); }
-        .toggle-switch input:checked + .slider::before { transform:translateX(22px); }
-        .btn-submit {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, var(--accent), #40916c);
-            color: white;
-            border: none;
-            border-radius: var(--radius);
-            font-size: 1rem;
+        .toggle-switch input:checked + .slider { background: var(--primary); }
+        .toggle-switch input:checked + .slider::before { transform: translateX(24px); }
+
+        /* Wizard Buttons */
+        .wizard-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .btn-prev {
+            padding: 14px 24px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-sec);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
             font-weight: 600;
             cursor: pointer;
-            font-family: inherit;
             transition: all 0.2s;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-prev:hover {
+            background: rgba(0,0,0,0.02);
+            border-color: var(--text-sec);
+        }
+        .btn-next {
+            flex: 1;
+            padding: 14px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .btn-next:hover {
+            background: #244831;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+        .btn-submit {
+            flex: 1;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, var(--accent), #A85A38);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .btn-submit:hover {
             transform: translateY(-1px);
@@ -213,6 +428,109 @@
         .btn-submit:disabled {
             opacity: 0.5; cursor: not-allowed; transform: none;
         }
+
+        /* Booking Summary Sidebar */
+        .summary-sidebar {
+            position: sticky;
+            top: 20px;
+        }
+        .summary-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+        .summary-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 18px;
+            color: var(--primary);
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .summary-vehicle {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        .summary-vehicle img {
+            width: 70px;
+            height: auto;
+            border-radius: 6px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+        }
+        .summary-vehicle-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .summary-vehicle-desc {
+            font-size: 0.78rem;
+            color: var(--text-sec);
+        }
+        .summary-details {
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .summary-details-row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .summary-details-label {
+            color: var(--text-sec);
+        }
+        .summary-details-val {
+            font-weight: 600;
+            text-align: right;
+        }
+        .summary-price-box {
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            margin-top: 10px;
+            border: 1px dashed var(--border);
+        }
+        .summary-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .summary-price-total {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .summary-price-desc {
+            font-size: 0.75rem;
+            color: var(--text-sec);
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+        .summary-badge-list {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+        .summary-badge-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Success screen card */
         .success-screen {
             display: none;
             text-align: center;
@@ -221,52 +539,55 @@
         .success-screen.show { display: block; }
         .success-screen .icon {
             width: 80px; height: 80px;
-            background: var(--green-glow);
+            background: var(--primary-glow);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 20px;
-            font-size: 2rem; color: var(--green);
+            font-size: 2.2rem; color: var(--primary);
         }
-        .success-screen h2 { margin-bottom: 10px; }
-        .success-screen p { color: var(--text-sec); line-height: 1.6; }
-        .doc-upload-section {
-            margin-top: 24px;
-            padding: 20px;
-            background: var(--accent-glow);
-            border: 1px solid rgba(45,106,79,0.2);
-            border-radius: var(--radius);
-        }
-        .doc-upload-section h4 { font-size: 0.95rem; margin-bottom: 12px; }
-        .doc-upload-grid {
-            display: grid; gap: 10px;
-        }
-        .doc-upload-item {
-            display: flex; align-items: center; gap: 10px;
-            padding: 10px 14px;
-            background: var(--bg-input);
-            border: 1px dashed var(--border);
-            border-radius: 8px;
-            cursor: pointer;
+        .success-screen h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.8rem; margin-bottom: 12px; }
+        .success-screen p { color: var(--text-sec); line-height: 1.6; font-size: 0.95rem; }
+
+        /* Floating WhatsApp assistance */
+        .wa-float {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            background: #25D366;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
             font-size: 0.85rem;
-            position: relative;
+            box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+            transition: all 0.2s;
+            margin-top: 16px;
+            justify-content: center;
         }
-        .doc-upload-item input[type="file"] {
-            position:absolute; inset:0; opacity:0; cursor:pointer;
+        .wa-float:hover {
+            background: #20BA59;
+            transform: translateY(-1px);
         }
-        .doc-upload-item i { color: var(--accent); font-size: 1.1rem; }
-        .doc-upload-item .uploaded { color: var(--green); }
-        .doc-upload-item .filename { color: var(--text-muted); font-size: 0.8rem; margin-left: auto; }
-        @media (max-width: 600px) {
-            .form-row { grid-template-columns: 1fr; }
-            .vehicle-grid { grid-template-columns: 1fr; }
-            .card { padding: 20px; }
+        
+        .form-notice {
+            background: var(--accent-glow);
+            border: 1px solid rgba(196, 112, 75, 0.2);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header">
-        <a href="/rent/" style="display:inline-flex; align-items:center; gap:6px; color:var(--text-sec); text-decoration:none; font-size:0.85rem; margin-bottom:16px;">
+        <a href="/rent/" class="back-btn">
             <i class="fas fa-arrow-left"></i> Back to vehicles & pricing
         </a>
         <div class="logo">
@@ -274,184 +595,309 @@
             VANTRIPJAPAN
         </div>
         <p>Booking Request — takes about 2 minutes</p>
-        <div style="display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:12px; font-size:0.8rem; color:var(--text-sec);">
-            <a href="https://maps.app.goo.gl/3uuep4h3zypPY6UYA" target="_blank" rel="noopener" style="color:inherit; text-decoration:none;">📍 Verified on Google Maps →</a>
+        <div class="header-trust">
+            <a href="https://maps.app.goo.gl/3uuep4h3zypPY6UYA" target="_blank" rel="noopener">
+                <span>📍 Verified on Google Maps</span>
+            </a>
             <span>·</span>
-            <span><i class="fas fa-shield-halved" style="color:var(--accent);"></i> No payment today</span>
+            <span><i class="fas fa-shield-halved" style="color:var(--primary);"></i> No payment today</span>
             <span>·</span>
-            <span><i class="fas fa-calendar-check" style="color:var(--accent);"></i> Free cancellation up to 7 days before</span>
-        </div>
-        <div class="notice">
-            <i class="fas fa-info-circle"></i>
-            No payment is taken now. Send your request, we confirm availability and reply within 24 hours with a payment link.
+            <span><i class="fas fa-calendar-check" style="color:var(--primary);"></i> Free cancellation up to 7 days</span>
         </div>
     </div>
 
-    <form id="bookingForm">
-        <!-- Contact Info -->
-        <div class="card">
-            <div class="section-title"><i class="fas fa-user"></i> Your Information</div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Full Name <span class="req">*</span></label>
-                    <input type="text" name="full_name" required placeholder="As shown on your passport">
+    <!-- Main split pane layout -->
+    <div class="split-layout">
+        
+        <!-- Left Side: Wizard Form -->
+        <div class="forms-pane">
+            <div class="stepper">
+                <div class="step active" id="step-i-1">
+                    <span class="step-num">1</span>
+                    <span class="step-label">Vehicle & Dates</span>
                 </div>
-                <div class="form-group">
-                    <label>Email Address <span class="req">*</span></label>
-                    <input type="email" name="email" required placeholder="your@email.com">
+                <div class="step" id="step-i-2">
+                    <span class="step-num">2</span>
+                    <span class="step-label">Driver Info</span>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" name="phone" placeholder="Contact number in Japan">
-                </div>
-                <div class="form-group">
-                    <label>Address <span class="req">*</span></label>
-                    <input type="text" name="address" required placeholder="Your home address">
+                <div class="step" id="step-i-3">
+                    <span class="step-num">3</span>
+                    <span class="step-label">Extras & Submit</span>
                 </div>
             </div>
-        </div>
 
-        <!-- Vehicle -->
-        <div class="card">
-            <div class="section-title"><i class="fas fa-car"></i> Vehicle Selection</div>
-            <div class="form-group">
-                <label>Choose your vehicle <span class="req">*</span></label>
-                <div class="vehicle-grid" id="vehicleGrid">
-                    <label class="vehicle-option" data-vehicle="bongo" onclick="selectVehicle(this)">
-                        <input type="radio" name="vehicle_type" value="MAZDA BONGO" required>
-                        <div class="name">🚐 MAZDA BONGO</div>
-                        <div class="type">Campervan · 2-3 guests · ¥22,000〜/day</div>
-                    </label>
-                    <label class="vehicle-option" data-vehicle="probox" onclick="selectVehicle(this)">
-                        <input type="radio" name="vehicle_type" value="TOYOTA PROBOX">
-                        <div class="name">🏕️ TOYOTA PROBOX</div>
-                        <div class="type">with RoofTent · 2 guests · ¥22,000〜/day</div>
-                    </label>
-                    <label class="vehicle-option" data-vehicle="loft" onclick="selectVehicle(this)">
-                        <input type="radio" name="vehicle_type" value="DAIHATSU POCKET LOFT">
-                        <div class="name">🚐 DAIHATSU POCKET LOFT</div>
-                        <div class="type">Pocket Loft with RoofTent · 2-4 guests · ¥25,000〜/day</div>
-                    </label>
-                </div>
-            </div>
-        </div>
+            <form id="bookingForm">
+                
+                <!-- STEP 1: Vehicle & Period -->
+                <div class="step-content active" id="step-c-1">
+                    <div class="card">
+                        <div class="section-title"><i class="fas fa-car"></i> Vehicle Selection</div>
+                        <div class="form-group">
+                            <label>Choose your vehicle <span class="req">*</span></label>
+                            <div class="vehicle-grid" id="vehicleGrid">
+                                <input type="radio" name="vehicle_type" id="veh-bongo" value="MAZDA BONGO" class="custom-radio" required>
+                                <label class="vehicle-option" for="veh-bongo" data-vehicle="bongo">
+                                    <img src="/images/rent/vehicles/bongo.webp" alt="Mazda Bongo">
+                                    <div class="vehicle-option-info">
+                                        <div class="name">🚐 MAZDA BONGO</div>
+                                        <div class="type">Campervan · 2-3 guests · sleeps 2 inside</div>
+                                        <div class="price">¥22,000〜/day</div>
+                                    </div>
+                                </label>
 
-        <!-- Dates -->
-        <div class="card">
-            <div class="section-title"><i class="fas fa-calendar"></i> Rental Period</div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Pickup Date & Time <span class="req">*</span></label>
-                    <input type="datetime-local" name="pickup_datetime" required>
-                </div>
-                <div class="form-group">
-                    <label>Return Date & Time (by 6 PM) <span class="req">*</span></label>
-                    <input type="datetime-local" name="return_datetime" required>
-                </div>
-            </div>
-            <div id="availabilityStatus" style="display:none; padding:12px 16px; border-radius:8px; font-size:0.85rem; margin-bottom:18px;"></div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Number of Drivers <span class="req">*</span></label>
-                    <select name="num_drivers" required>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </div>
-            </div>
-        </div>
+                                <input type="radio" name="vehicle_type" id="veh-probox" value="TOYOTA PROBOX" class="custom-radio">
+                                <label class="vehicle-option" for="veh-probox" data-vehicle="probox">
+                                    <img src="/images/rent/vehicles/probox.webp" alt="Toyota Probox">
+                                    <div class="vehicle-option-info">
+                                        <div class="name">🏕️ TOYOTA PROBOX</div>
+                                        <div class="type">with RoofTent · 2 guests · sleeps 2 on roof</div>
+                                        <div class="price">¥22,000〜/day</div>
+                                    </div>
+                                </label>
 
-        <!-- How found + Extras -->
-        <div class="card">
-            <div class="section-title"><i class="fas fa-magnifying-glass"></i> Additional Info</div>
-            <div class="form-group">
-                <label>How did you find VANTRIPJAPAN? <span class="req">*</span></label>
-                <div class="checkbox-group" id="referralGroup">
-                    <label class="checkbox-item" onclick="toggleCheck(this)">
-                        <input type="checkbox" value="Website/Search Engine"> 🌐 Website
-                    </label>
-                    <label class="checkbox-item" onclick="toggleCheck(this)">
-                        <input type="checkbox" value="Social Media"> 📱 Social Media
-                    </label>
-                    <label class="checkbox-item" onclick="toggleCheck(this)">
-                        <input type="checkbox" value="Word of Mouth"> 🗣️ Word of Mouth
-                    </label>
-                    <label class="checkbox-item" onclick="toggleCheck(this)">
-                        <input type="checkbox" value="Travel Platforms"> ✈️ Travel Apps
-                    </label>
-                    <label class="checkbox-item" onclick="toggleCheck(this)">
-                        <input type="checkbox" value="Influencer"> 🎥 Influencer
-                    </label>
-                    <label class="checkbox-item" onclick="toggleCheck(this)">
-                        <input type="checkbox" value="Other"> 💡 Other
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Additional camping gear to rent</label>
-                <textarea name="camping_gear_notes" placeholder="Any extra gear you'd like? Check: camcierge.com"></textarea>
-            </div>
-            <div class="form-group">
-                <label>License Translation <span style="color:#e17055;font-size:0.8rem;font-weight:400;">(Additional fee)</span></label>
-                <div class="translation-toggle">
-                    <div class="info">
-                        Do you need a Japanese translation of your license?
-                        <small>Required for 6 specific countries (Switzerland, Germany, France, Belgium, Taiwan, Monaco)</small>
-                        <small style="color:#e17055;">⚠️ This is a paid service with an additional fee</small>
+                                <input type="radio" name="vehicle_type" id="veh-loft" value="DAIHATSU POCKET LOFT" class="custom-radio">
+                                <label class="vehicle-option" for="veh-loft" data-vehicle="loft">
+                                    <img src="/images/rent/vehicles/daihatsu-front.webp" alt="Daihatsu Pocket Loft">
+                                    <div class="vehicle-option-info">
+                                        <div class="name">🚐 DAIHATSU POCKET LOFT</div>
+                                        <div class="type">Pocket Loft with RoofTent · 2-4 guests · sleeps 2 inside, 2 on roof</div>
+                                        <div class="price">¥25,000〜/day</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    <label class="toggle-switch">
-                        <input type="checkbox" name="translation_needed" id="translationToggle">
-                        <span class="slider"></span>
-                    </label>
+
+                    <div class="card">
+                        <div class="section-title"><i class="fas fa-calendar"></i> Rental Period</div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Pickup Date & Time <span class="req">*</span></label>
+                                <input type="datetime-local" name="pickup_datetime" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Return Date & Time (by 6 PM) <span class="req">*</span></label>
+                                <input type="datetime-local" name="return_datetime" required>
+                            </div>
+                        </div>
+                        <div id="availabilityStatus" style="display:none; padding:12px 16px; border-radius:8px; font-size:0.85rem; margin-bottom:18px;"></div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Number of Drivers <span class="req">*</span></label>
+                                <select name="num_drivers" required>
+                                    <option value="1">1 Driver</option>
+                                    <option value="2">2 Drivers</option>
+                                    <option value="3">3 Drivers</option>
+                                    <option value="4">4 Drivers</option>
+                                    <option value="5">5 Drivers</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wizard-buttons">
+                        <button type="button" class="btn-next" onclick="goToStep(2)">Continue to Driver Details <i class="fas fa-arrow-right"></i></button>
+                    </div>
                 </div>
-            </div>
+
+                <!-- STEP 2: Customer Details -->
+                <div class="step-content" id="step-c-2">
+                    <div class="card">
+                        <div class="section-title"><i class="fas fa-user"></i> Driver Information</div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name <span class="req">*</span></label>
+                                <input type="text" name="full_name" placeholder="As shown on your passport">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address <span class="req">*</span></label>
+                                <input type="email" name="email" placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" name="phone" placeholder="Include country code (e.g. +65 9123 4567)">
+                            </div>
+                            <div class="form-group">
+                                <label>Home Address <span class="req">*</span></label>
+                                <input type="text" name="address" placeholder="Your current home address">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="section-title"><i class="fas fa-file-invoice"></i> License Translation</div>
+                        <div class="form-group">
+                            <div class="translation-toggle">
+                                <div class="info">
+                                    Do you need a Japanese translation of your driver's license?
+                                    <small>Required for 6 specific countries (Switzerland, Germany, France, Belgium, Taiwan, Monaco)</small>
+                                    <small class="warn">⚠️ This is a paid service with an additional fee</small>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" name="translation_needed" id="translationToggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wizard-buttons">
+                        <button type="button" class="btn-prev" onclick="goToStep(1)"><i class="fas fa-arrow-left"></i> Back</button>
+                        <button type="button" class="btn-next" onclick="goToStep(3)">Continue to Final Step <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Extra Info & Submit -->
+                <div class="step-content" id="step-c-3">
+                    <div class="card">
+                        <div class="section-title"><i class="fas fa-magnifying-glass"></i> Additional Information</div>
+                        
+                        <div class="form-group">
+                            <label>How did you find VANTRIPJAPAN? <span class="req">*</span></label>
+                            <div class="checkbox-group" id="referralGroup">
+                                <input type="checkbox" id="ref-web" value="Website/Search Engine" class="custom-checkbox">
+                                <label class="checkbox-item" for="ref-web">🌐 Website</label>
+
+                                <input type="checkbox" id="ref-social" value="Social Media" class="custom-checkbox">
+                                <label class="checkbox-item" for="ref-social">📱 Social Media</label>
+
+                                <input type="checkbox" id="ref-wom" value="Word of Mouth" class="custom-checkbox">
+                                <label class="checkbox-item" for="ref-wom">🗣️ Word of Mouth</label>
+
+                                <input type="checkbox" id="ref-apps" value="Travel Platforms" class="custom-checkbox">
+                                <label class="checkbox-item" for="ref-apps">✈️ Travel Apps</label>
+
+                                <input type="checkbox" id="ref-influencer" value="Influencer" class="custom-checkbox">
+                                <label class="checkbox-item" for="ref-influencer">🎥 Influencer</label>
+
+                                <input type="checkbox" id="ref-other" value="Other" class="custom-checkbox">
+                                <label class="checkbox-item" for="ref-other">💡 Other</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Additional camping gear to rent</label>
+                            <textarea name="camping_gear_notes" placeholder="Any extra camping gear you'd like to add? (Check: camcierge.com)"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-notice">
+                        <i class="fas fa-shield-halved"></i>
+                        No payment details are required now. We will verify dates first.
+                    </div>
+
+                    <div class="wizard-buttons">
+                        <button type="button" class="btn-prev" onclick="goToStep(2)"><i class="fas fa-arrow-left"></i> Back</button>
+                        <button type="submit" class="btn-submit" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> Submit Booking Request
+                        </button>
+                    </div>
+                </div>
+
+            </form>
         </div>
 
-        <button type="submit" class="btn-submit" id="submitBtn">
-            <i class="fas fa-paper-plane"></i> Submit Booking Request — No Payment Now
-        </button>
-        <p style="text-align:center; font-size:0.8rem; color:var(--text-muted); margin-top:12px;">
-            <i class="fas fa-lock"></i> Your details are only used for this booking. We reply within 24 hours.<br>
-            Prefer to chat? <a href="https://wa.me/817093757129?text=Hi!%20I'd%20like%20to%20book%20a%20campervan." target="_blank" style="color:var(--accent); font-weight:600;">WhatsApp us</a>
-        </p>
-    </form>
+        <!-- Right Side: Booking Summary & Trust -->
+        <div class="summary-sidebar">
+            <div class="summary-card">
+                <div class="summary-title">Booking Summary</div>
+                
+                <div class="summary-vehicle" id="summaryVehicle" style="display:none;">
+                    <img src="" id="summaryVehicleImg" alt="Selected campervan">
+                    <div>
+                        <div class="summary-vehicle-name" id="summaryVehicleName">—</div>
+                        <div class="summary-vehicle-desc" id="summaryVehicleDesc">—</div>
+                    </div>
+                </div>
+                <div class="summary-vehicle" id="summaryVehiclePlaceholder">
+                    <i class="fas fa-van-shuttle" style="font-size: 2.5rem; color: var(--border);"></i>
+                    <div style="color:var(--text-sec); font-size:0.9rem;">No vehicle selected yet</div>
+                </div>
 
-    <!-- Success Screen -->
-    <div class="card success-screen" id="successScreen">
-        <div class="icon"><i class="fas fa-check"></i></div>
-        <h2>Request received — thank you! 🎉</h2>
-        <p>
-            Karen will personally check availability and get back to you, usually within 24 hours.
-            <br><strong>No payment and no documents are needed yet</strong> — we only ask for those
-            after we've confirmed your dates are free.
-        </p>
+                <div class="summary-details">
+                    <div class="summary-details-row">
+                        <span class="summary-details-label">Pick-up:</span>
+                        <span class="summary-details-val" id="summaryPickup">—</span>
+                    </div>
+                    <div class="summary-details-row">
+                        <span class="summary-details-label">Return:</span>
+                        <span class="summary-details-val" id="summaryReturn">—</span>
+                    </div>
+                    <div class="summary-details-row">
+                        <span class="summary-details-label">Duration:</span>
+                        <span class="summary-details-val" id="summaryDuration">—</span>
+                    </div>
+                    <div class="summary-details-row">
+                        <span class="summary-details-label">Drivers:</span>
+                        <span class="summary-details-val" id="summaryDrivers">—</span>
+                    </div>
+                    <div class="summary-details-row" id="summaryTranslationRow" style="display:none;">
+                        <span class="summary-details-label">License Translation:</span>
+                        <span class="summary-details-val" style="color:var(--accent);">Requested</span>
+                    </div>
+                </div>
 
-        <div style="margin-top:24px; padding:20px; background:var(--green-glow); border:1px solid rgba(45,106,79,0.2); border-radius:var(--radius); text-align:center;">
-            <p style="font-size:0.9rem; color:var(--text); margin-bottom:14px;">
-                <i class="fas fa-bolt" style="color:var(--accent);"></i> Want a faster reply? Message Karen directly:
-            </p>
-            <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I%20just%20submitted%20a%20booking%20request%20on%20the%20website." target="_blank"
-               style="display:inline-flex; align-items:center; gap:8px; padding:12px 28px; background:#25D366; color:#fff; border-radius:var(--radius); text-decoration:none; font-weight:600;">
-                <i class="fab fa-whatsapp"></i> Chat with Karen on WhatsApp
+                <div class="summary-price-box">
+                    <div class="summary-price-row">
+                        <span style="font-size: 0.85rem; font-weight:600; color: var(--text-sec);">Estimated Total:</span>
+                        <span class="summary-price-total" id="summaryPriceTotal">¥0</span>
+                    </div>
+                    <div class="summary-price-desc" id="summaryPriceDesc">
+                        Includes rental fees, standard insurance, and camper gear. Dynamic rates applied for weekends/long-stays.
+                    </div>
+                </div>
+
+                <div class="summary-badge-list">
+                    <div class="summary-badge-item">
+                        <i class="fas fa-circle-check"></i> No payment due today
+                    </div>
+                    <div class="summary-badge-item">
+                        <i class="fas fa-circle-check"></i> Free cancellation (up to 7d)
+                    </div>
+                    <div class="summary-badge-item">
+                        <i class="fas fa-circle-check"></i> Direct contact with owners
+                    </div>
+                </div>
+            </div>
+
+            <!-- WhatsApp fallback float -->
+            <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20chat%20about%20booking%20a%20campervan." target="_blank" class="wa-float">
+                <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i> Prefer to chat? WhatsApp Karen
             </a>
         </div>
 
-        <p style="font-size:0.8rem; color:var(--text-muted); margin-top:18px;">
-            <i class="fas fa-shield-halved"></i> What happens next: we confirm availability → send you a secure
-            payment link & request your driver's license / IDP → your van is reserved. Your documents are stored
-            encrypted and used only for the legal rental agreement.
+    </div>
+
+    <!-- Success Screen Card -->
+    <div class="card success-screen" id="successScreen">
+        <div class="icon"><i class="fas fa-check"></i></div>
+        <h2>Request Received — Thank You! 🎉</h2>
+        <p>
+            Karen will personally review your request (reference #<span id="displayBookingId">—</span>), check our fleet calendar, and reply within 24 hours (usually much faster!).
+        </p>
+
+        <div style="margin-top:28px; padding:24px; background:var(--primary-glow); border:1px solid rgba(45,90,61,0.15); border-radius:var(--radius); text-align:center;">
+            <p style="font-size:0.95rem; color:var(--text); margin-bottom:16px; font-weight:600;">
+                <i class="fas fa-bolt" style="color:var(--primary);"></i> Want a faster reply? Message Karen directly on WhatsApp:
+            </p>
+            <a href="" id="successWALink" target="_blank"
+               style="display:inline-flex; align-items:center; gap:8px; padding:12px 28px; background:#25D366; color:#fff; border-radius:var(--radius-sm); text-decoration:none; font-weight:700; box-shadow: 0 4px 15px rgba(37,211,102,0.25);">
+                <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i> Message Karen on WhatsApp
+            </a>
+        </div>
+
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-top:24px; line-height:1.5;">
+            <i class="fas fa-shield-halved"></i> What's next: We confirm availability → Send you a secure payment link & request your driver's license/IDP → Your van is reserved. All documents are stored securely and encrypted.
         </p>
     </div>
 
-    <!-- Business registration — verifiable legitimacy -->
-    <p style="text-align:center; font-size:0.72rem; color:var(--text-muted); line-height:1.7; margin:8px auto 24px; max-width:560px;">
+    <!-- Business registration footer -->
+    <p style="text-align:center; font-size:0.75rem; color:var(--text-muted); line-height:1.7; margin:40px auto 24px; max-width:560px;">
         🛡️ Licensed rent-a-car operator — Permit No. 愛運輸第290号<br>
-        Operated by キャンプ女子株式会社 (Canjo Inc.) · Japan Corporate No. 2290001085571 (publicly verifiable)<br>
+        Operated by キャンプ女子株式会社 (Camp Jyoshi Inc.) · Japan Corporate No. 2290001085571 (publicly verified)<br>
         Hakozaki, Higashi-ku, Fukuoka, Japan
     </p>
 </div>
@@ -459,10 +905,81 @@
 <script>
 let bookingId = null;
 
-function selectVehicle(el) {
-    document.querySelectorAll('.vehicle-option').forEach(v => v.classList.remove('selected'));
-    el.classList.add('selected');
-    checkAvailability();
+// Pricing Tiers (Matching rent calculator)
+const DISCOUNT_TIERS = [
+    { minDays: 21, rate: 0.20, label: '20% OFF' },
+    { minDays: 14, rate: 0.15, label: '15% OFF' },
+    { minDays: 7,  rate: 0.10, label: '10% OFF'  }
+];
+
+const VEHICLE_PRICES = {
+    'MAZDA BONGO': { base: 22000, img: '/images/rent/vehicles/bongo.webp', desc: 'Campervan · Sleeps 2 inside' },
+    'TOYOTA PROBOX': { base: 22000, img: '/images/rent/vehicles/probox.webp', desc: 'with RoofTent · Sleeps 2 on roof' },
+    'DAIHATSU POCKET LOFT': { base: 25000, img: '/images/rent/vehicles/daihatsu-front.webp', desc: 'Pocket Loft with RoofTent · Sleeps 4' }
+};
+
+// Wizard Step Navigation
+function goToStep(stepNum) {
+    // Validate fields before proceeding
+    if (stepNum > 1) {
+        if (!validateStep(stepNum - 1)) return;
+    }
+
+    // Update Stepper UI
+    document.querySelectorAll('.step').forEach((el, index) => {
+        el.classList.remove('active', 'done');
+        const sNum = index + 1;
+        if (sNum < stepNum) {
+            el.classList.add('done');
+        } else if (sNum === stepNum) {
+            el.classList.add('active');
+        }
+    });
+
+    // Update Content Visibility
+    document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+    document.getElementById('step-c-' + stepNum).classList.add('active');
+    
+    // Scroll to top of form
+    window.scrollTo({ top: 150, behavior: 'smooth' });
+}
+
+function validateStep(stepNum) {
+    if (stepNum === 1) {
+        const vehicle = document.querySelector('input[name="vehicle_type"]:checked');
+        if (!vehicle) {
+            alert('Please select a campervan first.');
+            return false;
+        }
+        const pickup = document.querySelector('input[name="pickup_datetime"]').value;
+        const dropoff = document.querySelector('input[name="return_datetime"]').value;
+        if (!pickup || !dropoff) {
+            alert('Please select both Pickup and Return dates.');
+            return false;
+        }
+        if (new Date(dropoff) <= new Date(pickup)) {
+            alert('Return date & time must be after pickup date & time.');
+            return false;
+        }
+    } else if (stepNum === 2) {
+        const name = document.querySelector('input[name="full_name"]').value.trim();
+        const email = document.querySelector('input[name="email"]').value.trim();
+        const address = document.querySelector('input[name="address"]').value.trim();
+
+        if (!name) {
+            alert('Please enter your Full Name.');
+            return false;
+        }
+        if (!email || !email.includes('@')) {
+            alert('Please enter a valid Email Address.');
+            return false;
+        }
+        if (!address) {
+            alert('Please enter your Home Address.');
+            return false;
+        }
+    }
+    return true;
 }
 
 // ── Live availability check (read-only, no PII) ──
@@ -477,7 +994,7 @@ function checkAvailability() {
         if (!vehicle || !pickup || !dropoff || dropoff <= pickup) { box.style.display = 'none'; return; }
 
         box.style.display = 'block';
-        box.style.background = 'var(--bg-input)';
+        box.style.background = 'var(--bg)';
         box.style.color = 'var(--text-sec)';
         box.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking availability...';
         try {
@@ -486,31 +1003,158 @@ function checkAvailability() {
             if (!res.ok) throw new Error('unavailable');
             const data = await res.json();
             if (data.available) {
-                box.style.background = 'var(--green-glow)';
-                box.style.color = 'var(--green)';
-                box.innerHTML = '<i class="fas fa-circle-check"></i> <strong>No confirmed booking blocks these dates.</strong> Submit your request and we\'ll confirm within 24 hours.';
+                box.style.background = 'var(--primary-glow)';
+                box.style.color = 'var(--primary)';
+                box.innerHTML = '<i class="fas fa-circle-check"></i> <strong>No confirmed booking blocks these dates.</strong> Submit request to secure your dates.';
             } else {
-                box.style.background = 'rgba(225,112,85,0.1)';
-                box.style.color = 'var(--orange)';
-                box.innerHTML = '<i class="fas fa-triangle-exclamation"></i> <strong>This van may already be booked on those dates.</strong> You can still submit — we\'ll suggest another van or nearby dates. Or <a href="https://wa.me/817093757129" target="_blank" style="color:var(--orange); text-decoration:underline;">ask us on WhatsApp</a>.';
+                box.style.background = 'rgba(196,112,75,0.1)';
+                box.style.color = 'var(--accent)';
+                box.innerHTML = '<i class="fas fa-triangle-exclamation"></i> <strong>This van may already be booked on those dates.</strong> You can still submit — we\'ll suggest another van or nearby dates. Or <a href="https://wa.me/817093757129" target="_blank" style="color:var(--accent); text-decoration:underline;">ask Karen on WhatsApp</a>.';
             }
         } catch (e) {
             box.style.display = 'none'; // fail silently — never block the form
         }
     }, 400);
 }
-document.querySelector('input[name="pickup_datetime"]').addEventListener('change', checkAvailability);
-document.querySelector('input[name="return_datetime"]').addEventListener('change', checkAvailability);
 
-// Preselect vehicle from ?vehicle= (links on /rent/ vehicle cards & calculator)
+// Update Summary Panel & Dynamic Prices
+function updateSummary() {
+    // 1. Vehicle Selection
+    const vehicleRadio = document.querySelector('input[name="vehicle_type"]:checked');
+    const vehPlaceholder = document.getElementById('summaryVehiclePlaceholder');
+    const vehInfo = document.getElementById('summaryVehicle');
+    
+    let baseRate = 0;
+    let days = 0;
+    
+    if (vehicleRadio) {
+        const vKey = vehicleRadio.value;
+        const info = VEHICLE_PRICES[vKey];
+        if (info) {
+            baseRate = info.base;
+            vehPlaceholder.style.display = 'none';
+            vehInfo.style.display = 'flex';
+            document.getElementById('summaryVehicleImg').src = info.img;
+            document.getElementById('summaryVehicleName').textContent = vKey;
+            document.getElementById('summaryVehicleDesc').textContent = info.desc;
+        }
+    } else {
+        vehPlaceholder.style.display = 'flex';
+        vehInfo.style.display = 'none';
+    }
+
+    // 2. Rental Period
+    const pickupVal = document.querySelector('input[name="pickup_datetime"]').value;
+    const returnVal = document.querySelector('input[name="return_datetime"]').value;
+
+    if (pickupVal) {
+        const pDate = new Date(pickupVal);
+        document.getElementById('summaryPickup').textContent = pDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'});
+    } else {
+        document.getElementById('summaryPickup').textContent = '—';
+    }
+
+    if (returnVal) {
+        const rDate = new Date(returnVal);
+        document.getElementById('summaryReturn').textContent = rDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'});
+    } else {
+        document.getElementById('summaryReturn').textContent = '—';
+    }
+
+    if (pickupVal && returnVal) {
+        const pDate = new Date(pickupVal);
+        const rDate = new Date(returnVal);
+        const diffMs = rDate - pDate;
+        if (diffMs > 0) {
+            days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+            document.getElementById('summaryDuration').textContent = days + (days === 1 ? ' day' : ' days');
+        } else {
+            document.getElementById('summaryDuration').textContent = '—';
+        }
+    } else {
+        document.getElementById('summaryDuration').textContent = '—';
+    }
+
+    // 3. Drivers
+    const driversVal = document.querySelector('select[name="num_drivers"]').value;
+    document.getElementById('summaryDrivers').textContent = driversVal + (driversVal === '1' ? ' Driver' : ' Drivers');
+
+    // 4. Translation
+    const translationVal = document.getElementById('translationToggle').checked;
+    const translationRow = document.getElementById('summaryTranslationRow');
+    if (translationVal) {
+        translationRow.style.display = 'flex';
+    } else {
+        translationRow.style.display = 'none';
+    }
+
+    // 5. Price calculation
+    if (baseRate > 0 && days > 0) {
+        // Calculate weekdays vs weekends (average estimation)
+        const weekendRate = Math.round(baseRate * 1.5);
+        const weeklyTotal = (5 * baseRate) + (2 * weekendRate);
+        const fullWeeks = Math.floor(days / 7);
+        const remainderDays = days % 7;
+        const baseTotal = (fullWeeks * weeklyTotal) + (remainderDays * baseRate);
+
+        // Apply discount tiers
+        let discountPct = 0;
+        let discountLabel = '';
+        for (let i = 0; i < DISCOUNT_TIERS.length; i++) {
+            if (days >= DISCOUNT_TIERS[i].minDays) {
+                discountPct = DISCOUNT_TIERS[i].rate;
+                discountLabel = DISCOUNT_TIERS[i].label;
+                break;
+            }
+        }
+        
+        let estimatedTotal = baseTotal;
+        if (discountPct > 0) {
+            estimatedTotal = baseTotal * (1 - discountPct);
+        }
+
+        const finalTotal = Math.round(estimatedTotal);
+        document.getElementById('summaryPriceTotal').textContent = '¥' + finalTotal.toLocaleString();
+        
+        if (discountPct > 0) {
+            document.getElementById('summaryPriceDesc').innerHTML = `🎉 Includes <strong>${discountLabel}</strong> long-stay discount! Estimated daily rate: ¥${Math.round(finalTotal/days).toLocaleString()}/day.`;
+        } else {
+            document.getElementById('summaryPriceDesc').textContent = 'Includes rental fees, standard insurance, and camper gear. Dynamic rates applied for weekends/long-stays.';
+        }
+    } else {
+        document.getElementById('summaryPriceTotal').textContent = '¥0';
+        document.getElementById('summaryPriceDesc').textContent = 'Includes rental fees, standard insurance, and camper gear. Dynamic rates applied for weekends/long-stays.';
+    }
+}
+
+// Bind events to update summary and check availability
+document.querySelector('input[name="pickup_datetime"]').addEventListener('change', () => {
+    checkAvailability();
+    updateSummary();
+});
+document.querySelector('input[name="return_datetime"]').addEventListener('change', () => {
+    checkAvailability();
+    updateSummary();
+});
+document.querySelector('select[name="num_drivers"]').addEventListener('change', updateSummary);
+document.getElementById('translationToggle').addEventListener('change', updateSummary);
+document.querySelectorAll('input[name="vehicle_type"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+        checkAvailability();
+        updateSummary();
+    });
+});
+
+// Preselect vehicle from URL param
 (function() {
     const params = new URLSearchParams(window.location.search);
     const veh = params.get('vehicle');
     if (veh) {
-        const opt = document.querySelector('.vehicle-option[data-vehicle="' + veh + '"]');
-        if (opt) {
-            opt.querySelector('input').checked = true;
-            selectVehicle(opt);
+        const radio = document.getElementById('veh-' + veh);
+        if (radio) {
+            radio.checked = true;
+            checkAvailability();
+            updateSummary();
         }
     }
     // Don't allow pickup dates in the past
@@ -521,11 +1165,7 @@ document.querySelector('input[name="return_datetime"]').addEventListener('change
     document.querySelector('input[name="return_datetime"]').min = minDt;
 })();
 
-function toggleCheck(el) {
-    el.classList.toggle('checked');
-    el.querySelector('input').checked = el.classList.contains('checked');
-}
-
+// Submit Booking request form
 document.getElementById('bookingForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
@@ -546,7 +1186,7 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
         translation_needed: form.translation_needed.checked,
     };
 
-    // Collect referral sources
+    // Collect referral sources (Fixed Checkbox Selection)
     const checked = document.querySelectorAll('#referralGroup input:checked');
     data.referral_source = Array.from(checked).map(c => c.value).join(', ');
     if (!data.referral_source) {
@@ -565,9 +1205,23 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
         const result = await res.json();
         if (res.ok) {
             bookingId = result.booking_id;
-            document.getElementById('bookingForm').style.display = 'none';
+            
+            // Hide form and stepper
+            document.querySelector('.forms-pane').style.display = 'none';
+            document.querySelector('.summary-sidebar').style.display = 'none';
+            
+            // Show success screen details
+            document.getElementById('displayBookingId').textContent = bookingId;
+            
+            // Configure WhatsApp link
+            const waMsg = `Hi Karen! I just submitted booking request #${bookingId} for the ${data.vehicle_type}.`;
+            const waLink = "https://wa.me/817093757129?text=" + encodeURIComponent(waMsg);
+            document.getElementById('successWALink').href = waLink;
+            
+            // Display success screen
             document.getElementById('successScreen').classList.add('show');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            
             if (typeof gtag === 'function') {
                 gtag('event', 'generate_lead', {
                     lead_type: 'booking_request',
@@ -585,32 +1239,6 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
         btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
     }
 });
-
-async function uploadDoc(input, docType) {
-    if (!input.files.length || !bookingId) return;
-    const file = input.files[0];
-    const fnEl = document.getElementById('fn-' + docType);
-    const itemEl = document.getElementById('doc-' + docType);
-
-    fnEl.textContent = 'Uploading...';
-
-    const fd = new FormData();
-    fd.append('file', file);
-    fd.append('doc_type', docType);
-    fd.append('booking_id', bookingId);
-
-    try {
-        const res = await fetch('/api/documents', { method: 'POST', body: fd });
-        if (res.ok) {
-            fnEl.innerHTML = '<span class="uploaded"><i class="fas fa-check-circle"></i> Uploaded</span>';
-            itemEl.style.borderColor = 'var(--green)';
-        } else {
-            fnEl.textContent = 'Failed — try again';
-        }
-    } catch {
-        fnEl.textContent = 'Error — try again';
-    }
-}
 </script>
 </body>
 </html>

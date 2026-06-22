@@ -53,40 +53,49 @@ export async function onRequest(context) {
       }
     }
 
-    // Send notification email via MailChannels (Cloudflare Workers integration)
+    // Send notification email via Resend API
     try {
-      const emailBody = [
-        `📧 New Quote Request from VanTripJapan`,
-        ``,
-        `👤 Name: ${quote.name}`,
-        `📧 Email: ${quote.email}`,
-        `📅 Dates: ${quote.dates}`,
-        `🚐 Vehicle: ${quote.vehicle}`,
-        `📆 Days: ${quote.days}`,
-        `👥 People: ${quote.people}`,
-        `💰 Daily Rate: ¥${quote.daily_rate.toLocaleString()}`,
-        `💰 Total: ¥${quote.total.toLocaleString()}`,
-        `🎉 Discount: ${quote.discount}`,
-        `🌐 Language: ${quote.lang}`,
-        `🕐 Time: ${quote.created_at}`,
-        `🌍 IP: ${quote.ip}`,
-      ].join('\n');
+      const resendApiKey = env.RESEND_API_KEY;
+      if (!resendApiKey) {
+        console.error('Missing env.RESEND_API_KEY. Quote email notification skipped.');
+      } else {
+        const emailBody = [
+          `📧 New Quote Request from VanTripJapan`,
+          ``,
+          `👤 Name: ${quote.name}`,
+          `📧 Email: ${quote.email}`,
+          `📅 Dates: ${quote.dates}`,
+          `🚐 Vehicle: ${quote.vehicle}`,
+          `📆 Days: ${quote.days}`,
+          `👥 People: ${quote.people}`,
+          `💰 Daily Rate: ¥${quote.daily_rate.toLocaleString()}`,
+          `💰 Total: ¥${quote.total.toLocaleString()}`,
+          `🎉 Discount: ${quote.discount}`,
+          `🌐 Language: ${quote.lang}`,
+          `🕐 Time: ${quote.created_at}`,
+          `🌍 IP: ${quote.ip}`,
+        ].join('\n');
 
-      await fetch('https://api.mailchannels.net/tx/v1/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          personalizations: [{
-            to: [{ email: 'info@vantripjapan.jp', name: 'VanTripJapan' }],
-          }],
-          from: { email: 'noreply@vantripjapan.jp', name: 'VanTripJapan Quote Bot' },
-          subject: `🚐 Quote: ${quote.vehicle} ${quote.days}d — ${quote.name} (${quote.email})`,
-          content: [{
-            type: 'text/plain',
-            value: emailBody,
-          }],
-        }),
-      });
+        const res = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${resendApiKey}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: 'VanTripJapan Quote Bot <quote@vantripjapan.jp>',
+            reply_to: quote.email,
+            to: ['info@vantripjapan.jp'],
+            subject: `🚐 Quote: ${quote.vehicle} ${quote.days}d — ${quote.name} (${quote.email})`,
+            text: emailBody,
+          }),
+        });
+
+        if (!res.ok) {
+          const errText = await res.text();
+          console.error('[Quote Resend API Error]', errText);
+        }
+      }
     } catch (mailErr) {
       console.error('[Quote Mail]', mailErr.message);
       // Non-critical — quote is still saved in DB

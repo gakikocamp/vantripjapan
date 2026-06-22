@@ -68,13 +68,13 @@ async function handlePost(request, env) {
   const bookingId = result.meta.last_row_id;
 
   // Fire-and-forget notifications (never block or fail the booking on email errors)
-  await sendBookingEmails(data, bookingId).catch((e) => console.error('[Booking Mail]', e?.message));
+  await sendBookingEmails(data, bookingId, env).catch((e) => console.error('[Booking Mail]', e?.message));
 
   return Response.json({ status: 'ok', booking_id: bookingId });
 }
 
-// Send confirmation to the customer + alert to the VanTripJapan inbox (MailChannels)
-async function sendBookingEmails(data, bookingId) {
+// Send confirmation to the customer + alert to the VanTripJapan inbox (Resend API)
+async function sendBookingEmails(data, bookingId, env) {
   const name = (data.full_name || '').trim() || 'there';
   const email = (data.email || '').trim();
   const vehicle = data.vehicle_type || 'Campervan';
@@ -83,12 +83,27 @@ async function sendBookingEmails(data, bookingId) {
   const waLink = "https://wa.me/817093757129?text=" +
     encodeURIComponent(`Hi Karen! I just submitted booking request #${bookingId}.`);
 
-  const send = (payload) =>
-    fetch('https://api.mailchannels.net/tx/v1/send', {
+  const resendApiKey = env.RESEND_API_KEY;
+  if (!resendApiKey) {
+    console.error('Missing env.RESEND_API_KEY. Booking email notifications skipped.');
+    return;
+  }
+
+  const sendResend = async (payload) => {
+    const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Authorization': `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify(payload),
     });
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(`Resend API failed: ${errText}`);
+    }
+    return res.json();
+  };
 
   // 1) Customer confirmation — reassurance + WhatsApp, no payment/docs yet
   const customerBody = [
@@ -116,12 +131,12 @@ async function sendBookingEmails(data, bookingId) {
     `https://vantripjapan.jp`,
   ].join('\n');
 
-  const customerMail = email && email.includes('@') ? send({
-    personalizations: [{ to: [{ email, name }] }],
-    from: { email: 'noreply@vantripjapan.jp', name: 'VanTripJapan' },
-    reply_to: { email: 'info@vantripjapan.jp', name: 'VanTripJapan' },
+  const customerMail = email && email.includes('@') ? sendResend({
+    from: 'VanTripJapan <booking@vantripjapan.jp>',
+    reply_to: 'info@vantripjapan.jp',
+    to: [email],
     subject: `✅ We received your VanTripJapan booking request (#${bookingId})`,
-    content: [{ type: 'text/plain', value: customerBody }],
+    text: customerBody,
   }) : Promise.resolve();
 
   // 2) Internal alert so Karen can reply fast
@@ -142,12 +157,12 @@ async function sendBookingEmails(data, bookingId) {
     `→ Manage: https://vantripjapan.jp/admin/`,
   ].join('\n');
 
-  const adminMail = send({
-    personalizations: [{ to: [{ email: 'info@vantripjapan.jp', name: 'VanTripJapan' }] }],
-    from: { email: 'noreply@vantripjapan.jp', name: 'VanTripJapan Booking Bot' },
-    reply_to: email && email.includes('@') ? { email, name } : undefined,
+  const adminMail = sendResend({
+    from: 'VanTripJapan Booking Bot <booking@vantripjapan.jp>',
+    reply_to: email && email.includes('@') ? email : 'info@vantripjapan.jp',
+    to: ['info@vantripjapan.jp'],
     subject: `🚐 New booking: ${vehicle} — ${data.full_name || ''} (#${bookingId})`,
-    content: [{ type: 'text/plain', value: adminBody }],
+    text: adminBody,
   });
 
   await Promise.allSettled([customerMail, adminMail]);
