@@ -3385,6 +3385,61 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
     font-weight: 600;
 }
 
+/* ── CVR: Mobile Hero Simplification ── */
+@media (max-width: 768px) {
+    .search-widget--light,
+    .rent-hero-stats,
+    .hero-alt-contact,
+    .scroll-indicator,
+    .hero-particles,
+    .hero-van-anim { display: none !important; }
+
+    .hero-tagline {
+        font-size: 15px !important;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .rent-hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    .rent-hero-buttons .btn-whatsapp--lg,
+    .rent-hero-buttons .btn-book-outline {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+/* ── CVR: Sticky Bar — Compact Horizontal on Mobile ── */
+@media (max-width: 640px) {
+    .sticky-bar {
+        flex-direction: row !important;
+        gap: 8px;
+        padding: 8px 12px;
+        align-items: center;
+    }
+    .sticky-bar-info {
+        display: none !important;
+    }
+    .sticky-bar-buttons {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+    }
+    .sticky-bar .btn-whatsapp,
+    .sticky-bar .btn-book-outline--sticky {
+        flex: 1;
+        justify-content: center;
+        padding: 12px 8px;
+        font-size: 14px;
+        font-weight: 700;
+    }
+}
+
 /* ── Accessibility: Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
     .hero-particle, .hero-van-anim, .driving-van,

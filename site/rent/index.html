@@ -209,7 +209,7 @@
         {"@type": "Question", "name": "Do I need a special license to drive a campervan in Japan?", "acceptedAnswer": {"@type": "Answer", "text": "No special license is needed. Our campervans are regular-sized vehicles that can be driven with a standard International Driving Permit (IDP). If you're from Switzerland, Germany, France, Belgium, Monaco, or Taiwan, you'll need a JAF translation instead of an IDP. Our partner JDLTC (drive-japan-license.com) can handle the entire process for you."}},
         {"@type": "Question", "name": "Where can I pick up and return the campervan?", "acceptedAnswer": {"@type": "Answer", "text": "Pick-up and return is at our Hakozaki Base, just 10 minutes from Fukuoka Airport. We can also arrange airport pick-up. Flexible drop-off locations including Tokyo and Osaka are available."}},
         {"@type": "Question", "name": "What is included in the rental price?", "acceptedAnswer": {"@type": "Answer", "text": "Everything you need: vehicle insurance (CDW), English navigation, basic camping gear, portable power station, 24/7 roadside assistance, and multilingual support. No hidden fees."}},
-        {"@type": "Question", "name": "What is the cancellation policy?", "acceptedAnswer": {"@type": "Answer", "text": "Free cancellation up to 7 days before your reservation. Cancellations within 7 days may incur a fee."}},
+        {"@type": "Question", "name": "What is the cancellation policy?", "acceptedAnswer": {"@type": "Answer", "text": "Free cancellation up to 8 days before scheduled pick-up. Cancellations within 7 days incur a fee: 30% (7-5 days before), 50% (4-2 days before), 100% (1 day before/on the day)."}},
         {"@type": "Question", "name": "Can I sleep in the campervan anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "Japan has many great options: auto-campsites, RV parks, and Michi-no-Eki roadside stations. There are hundreds of spots across Kyushu. We provide a recommended spot guide at pickup."}},
         {"@type": "Question", "name": "Can I drop off the campervan in Tokyo or Osaka?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! One-way trips are available. Pick up in Fukuoka and drop off in Tokyo or Osaka. A surcharge applies depending on the destination."}}
       ]
@@ -253,6 +253,52 @@
         ]
       }
     }
+    </script>
+
+    <style>
+        @media (max-width: 600px) {
+            form.search-widget--light {
+                flex-direction: column !important;
+                align-items: stretch !important;
+            }
+            form.search-widget--light .search-widget-group {
+                width: 100% !important;
+            }
+            form.search-widget--light button {
+                align-self: stretch !important;
+                margin-top: 8px !important;
+            }
+        }
+    </style>
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pickupInput = document.getElementById('sw-pickup');
+        const returnInput = document.getElementById('sw-return');
+        if (pickupInput && returnInput) {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowStr = tomorrow.toISOString().slice(0, 10);
+            
+            const defaultReturn = new Date();
+            defaultReturn.setDate(tomorrow.getDate() + 5);
+            const defaultReturnStr = defaultReturn.toISOString().slice(0, 10);
+            
+            pickupInput.value = tomorrowStr;
+            pickupInput.min = new Date().toISOString().slice(0, 10);
+            
+            returnInput.value = defaultReturnStr;
+            returnInput.min = tomorrowStr;
+            
+            pickupInput.addEventListener('change', () => {
+                returnInput.min = pickupInput.value;
+                if (returnInput.value < pickupInput.value) {
+                    const newReturn = new Date(pickupInput.value);
+                    newReturn.setDate(newReturn.getDate() + 5);
+                    returnInput.value = newReturn.toISOString().slice(0, 10);
+                }
+            });
+        }
+    });
     </script>
 </head>
 
@@ -325,7 +371,7 @@
                         <span data-i18n="hero.title1">Campervan Rental in Fukuoka</span><br>
                         <span class="hero-highlight" data-i18n="hero.title2">Your Kyushu Road Trip Starts Here</span>
                     </h1>
-                    <p class="hero-tagline anim-slide-up anim-d3" data-i18n="hero.tagline">We're a married couple who fell in love with Kyushu's back roads and never stopped exploring. Our campervans are hand-built, our pricing is honest, and we'll share every shortcut, onsen, and campsite we know.</p>
+                    <p class="hero-tagline anim-slide-up anim-d3" data-i18n="hero.tagline">Hand-built campervans · All-inclusive from ¥22,000/day · 10 min from Fukuoka Airport</p>
 
                     <!-- Trust Badge — verifiable business, links to real Google Business Profile -->
                     <a class="hero-trust-badge anim-slide-up anim-d4" href="https://maps.app.goo.gl/3uuep4h3zypPY6UYA" target="_blank" rel="noopener" style="text-decoration: none; cursor: pointer;">
@@ -349,6 +395,34 @@
                         </div>
                     </div>
 
+                    <!-- Search Widget -->
+                    <div class="anim-slide-up anim-d5" style="margin: 24px 0 16px;">
+                        <form class="search-widget search-widget--light" action="/book/" method="GET" style="display: flex; flex-wrap: wrap; background: #ffffff; border: 1px solid #E8DFD1; border-radius: 16px; padding: 16px 20px; gap: 16px; align-items: center; box-shadow: 0 8px 30px rgba(44, 44, 44, 0.06); width: 100%; max-width: 650px;">
+                            <div class="search-widget-group" style="flex: 1; min-width: 130px; display: flex; flex-direction: column; gap: 4px;">
+                                <label for="sw-pickup" style="font-size: 0.7rem; font-weight: 700; color: #5C5446; text-transform: uppercase; letter-spacing: 0.5px;">Pickup Date</label>
+                                <input type="date" id="sw-pickup" name="from" required style="padding: 8px 12px; border: 1px solid #E8DFD1; border-radius: 8px; font-size: 0.9rem; background: #FAF6F0; color: #2C2C2C; outline: none; transition: all 0.2s;">
+                            </div>
+                            <div class="search-widget-group" style="flex: 1; min-width: 130px; display: flex; flex-direction: column; gap: 4px;">
+                                <label for="sw-return" style="font-size: 0.7rem; font-weight: 700; color: #5C5446; text-transform: uppercase; letter-spacing: 0.5px;">Return Date</label>
+                                <input type="date" id="sw-return" name="to" required style="padding: 8px 12px; border: 1px solid #E8DFD1; border-radius: 8px; font-size: 0.9rem; background: #FAF6F0; color: #2C2C2C; outline: none; transition: all 0.2s;">
+                            </div>
+                            <div class="search-widget-group" style="flex: 0.8; min-width: 100px; display: flex; flex-direction: column; gap: 4px;">
+                                <label for="sw-guests" style="font-size: 0.7rem; font-weight: 700; color: #5C5446; text-transform: uppercase; letter-spacing: 0.5px;">Guests</label>
+                                <select id="sw-guests" name="guests" required style="padding: 8px 12px; border: 1px solid #E8DFD1; border-radius: 8px; font-size: 0.9rem; background: #ffffff; color: #2C2C2C; outline: none; transition: all 0.2s; -webkit-appearance: none; appearance: none; background-image: url(&quot;data:image/svg+xml;utf8,<svg fill='%235c5446' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>&quot;); background-repeat: no-repeat; background-position: right 8px center; padding-right: 28px;">
+                                    <option value="1">1 Guest</option>
+                                    <option value="2" selected>2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5+ Guests</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="search-widget-btn" style="align-self: flex-end; padding: 10px 20px; background: #2D5A3D; color: #FFFFFF; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; height: 38px; justify-content: center; margin-top: auto; border: 1px solid #2D5A3D;">
+                                <span>Search</span>
+                                <span class="btn-icon">→</span>
+                            </button>
+                        </form>
+                    </div>
+
                     <div class="rent-hero-buttons anim-slide-up anim-d5" style="flex-wrap: wrap;">
                         <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20check%20availability%20for%20a%20campervan%20in%20Fukuoka."
                             class="btn-whatsapp btn-whatsapp--lg" target="_blank" data-track="wa_hero">
@@ -356,11 +430,14 @@
                             <span data-i18n="hero.whatsapp">Chat with Karen to check availability</span>
                         </a>
                         <a href="/book/" class="btn-book-outline" data-track="book_hero">
-                            📝 <span data-i18n="hero.book">Prefer not to chat? Request by form</span>
+                            📝 <span data-i18n="hero.book">Book by Form</span>
+                        </a>
+                        <a href="#calculator" class="btn-book-outline" data-track="calc_hero" style="border-color: var(--rent-earth); color: var(--rent-earth);">
+                            💰 <span data-i18n="hero.calc">Calculate Your Price</span>
                         </a>
                     </div>
                     <p class="cta-microcopy anim-slide-up anim-d5">
-                        <span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 7 days before</span>
+                        <span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 8 days before</span>
                     </p>
                     <div class="hero-alt-contact anim-slide-up anim-d5">
                         <span data-i18n="hero.or_contact">Or reach us on</span>
@@ -425,7 +502,7 @@
             </p>
         </div>
 
-        <!-- ═══ KYUSHU DESTINATIONS ═══ -->
+        <!-- ═══ KYUSHU DESTINATIONS (moved below FAQ for CVR flow) ═══ -->
         <section class="kyushu-destinations" style="padding: 80px 0; overflow: hidden;">
             <div class="rent-container">
                 <div class="rent-section-header">
@@ -857,7 +934,7 @@
                         <div class="pricing-cta-group">
                             <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20a%20quote%20for%20a%20campervan%20rental."
                                 class="pricing-cta" data-track="wa_pricing" style="display:inline-flex;align-items:center;gap:10px;"><img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.4);flex-shrink:0;"> <span data-i18n="pricing.cta">Get a Quote from Karen on WhatsApp</span></a>
-                            <p class="cta-microcopy"><span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 7 days before</span></p>
+                            <p class="cta-microcopy"><span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 8 days before</span></p>
                             <a href="/book/" class="btn-book-outline" data-track="book_pricing" data-i18n="cta.book">📝 Prefer not to chat? Request by form</a>
                         </div>
                     </div>
@@ -997,7 +1074,7 @@
                 <!-- Book at this price -->
                 <div class="calc-book-cta">
                     <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20book%20a%20campervan." class="btn-whatsapp btn-whatsapp--lg" target="_blank" id="calc-book-btn" data-track="wa_calculator"><img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.5);flex-shrink:0;"> <span data-i18n="calc.book_btn">Send these details to Karen on WhatsApp</span></a>
-                    <p class="cta-microcopy"><span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 7 days before</span></p>
+                    <p class="cta-microcopy"><span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 8 days before</span></p>
                     <a href="/book/" class="btn-book-outline" data-track="book_calculator" style="margin-top:4px;"><span data-i18n="calc.book_form">📝 Or request by form</span></a>
                 </div>
 
@@ -1088,42 +1165,7 @@
             </div>
         </section>
 
-        <!-- ═══ OUR STORY ═══ -->
-        <section class="story-section reveal" id="story">
-            <div class="story-inner">
-                <div class="story-visual">
-                    <img src="/images/rent/story/owners-fuji.webp" alt="Karen and her husband, the owners of VanTripJapan, smiling at a campsite with Mount Fuji behind them" loading="lazy" width="1400" height="1050">
-                    <span class="story-badge-since">Since 2022</span>
-                    <span class="story-caption" data-i18n="story.caption">👋 Karen &amp; her husband — your hosts</span>
-                </div>
-                <div class="story-content">
-                    <span class="story-label" data-i18n="story.label">🏠 Our Story</span>
-                    <h2 data-i18n="story.title">A Family-Run Campervan Adventure</h2>
-                    <p class="story-sub" data-i18n="story.sub">Small business. Big heart. Hand-built vans.</p>
-                    <p class="story-text" data-i18n="story.text">We're a small family team based in Fukuoka. In 2022, we converted our own vans by hand — building beds, installing power systems, and fitting out interiors — because we wanted to create the kind of travel experience we'd love ourselves. No corporate fleet. No call centers. Just us, our hand-built vans, and a genuine passion for helping travelers discover the real Kyushu.</p>
-
-                    <div class="story-pillars">
-                        <div class="story-pillar reveal reveal-delay-1">
-                            <span class="pillar-icon">🏠</span>
-                            <div class="pillar-title" data-i18n="story.p1_title">Family-Run</div>
-                            <div class="pillar-desc" data-i18n="story.p1_desc">Not a corporation. A family who loves road trips.</div>
-                        </div>
-                        <div class="story-pillar reveal reveal-delay-2">
-                            <span class="pillar-icon">🔧</span>
-                            <div class="pillar-title" data-i18n="story.p2_title">Hand-Built</div>
-                            <div class="pillar-desc" data-i18n="story.p2_desc">We designed and converted our vans ourselves.</div>
-                        </div>
-                        <div class="story-pillar reveal reveal-delay-3">
-                            <span class="pillar-icon">🗾</span>
-                            <div class="pillar-title" data-i18n="story.p3_title">Local Knowledge</div>
-                            <div class="pillar-desc" data-i18n="story.p3_desc">We live here. We know the hidden gems.</div>
-                        </div>
-                    </div>
-
-                    <p class="story-quote" data-i18n="story.quote">"We didn't start a rental company. We built vans we'd want to travel in ourselves — and now we share them with you."</p>
-                </div>
-            </div>
-        </section>
+        <!-- Story #2 removed (duplicate of #our-story) -->
 
         <!-- ═══ WHY HAKOZAKI ═══ -->
         <section class="rent-section" id="why" style="position: relative;">
@@ -1411,9 +1453,8 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-question" data-i18n="faq.q4">What is the cancellation policy?</button>
-                        <div class="faq-answer" data-i18n="faq.a4">Free cancellation up to 7 days before your
-                            reservation. Cancellations within 7 days may incur a fee. Please contact us via WhatsApp or
-                            LINE for details.</div>
+                        <div class="faq-answer" data-i18n="faq.a4">Free cancellation up to 8 days before your
+                            scheduled pick-up. Cancellations within 7 days incur a tiered cancellation fee. Please see our Rental Terms & Conditions page for details.</div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-question" data-i18n="faq.q5">Can I sleep in the campervan anywhere?</button>
@@ -1493,17 +1534,17 @@
                     📝 <span data-i18n="cta.book">Prefer not to chat? Request by form</span>
                 </a>
             </div>
-            <p class="cta-microcopy"><span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 7 days before</span></p>
+            <p class="cta-microcopy"><span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 8 days before</span></p>
         </section>
 
     <!-- ═══ Sticky Bottom Bar ═══ -->
     <div class="sticky-bar">
         <div class="sticky-bar-info">
-            <span class="availability-live" data-i18n="sticky.availability">Family-run in Fukuoka · From ¥22,000/day</span>
-            <a class="sticky-rating" href="https://maps.app.goo.gl/3uuep4h3zypPY6UYA" target="_blank" rel="noopener" style="text-decoration:none;" data-i18n="sticky.google">📍 On Google ↗</a>
+            <span class="availability-live" data-i18n="sticky.availability">From ¥22,000/day · All-inclusive · Only 3 vans</span>
+            <a class="sticky-rating" href="https://maps.app.goo.gl/3uuep4h3zypPY6UYA" target="_blank" rel="noopener" style="text-decoration:none;" data-i18n="sticky.google">📍 Google ↗</a>
         </div>
         <div class="sticky-bar-buttons">
-            <a href="/book/" class="btn-book-outline btn-book-outline--sticky" data-track="book_sticky" data-i18n="sticky.book">📝 Form</a>
+            <a href="/book/" class="btn-book-outline btn-book-outline--sticky" data-track="book_sticky" data-i18n="sticky.book">📝 Book Now</a>
             <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20check%20availability%20for%20a%20campervan%20in%20Fukuoka." class="btn-whatsapp" target="_blank" data-track="wa_sticky">💬 WhatsApp</a>
         </div>
     </div>
@@ -1552,12 +1593,12 @@
         <div class="footer-legal">
             <span class="footer-legal-item" data-i18n="footer.licensed">🛡️ Licensed rent-a-car operator — Permit No. 愛運輸第290号</span>
             <span class="footer-legal-sep">·</span>
-            <span class="footer-legal-item">Operated by キャンプ女子株式会社 (Canjo Inc.)</span>
+            <span class="footer-legal-item">Operated by Camp Jyoshi Inc. — Tenjin HQ, Fukuoka</span>
             <span class="footer-legal-sep">·</span>
             <span class="footer-legal-item" data-i18n="footer.corpno">Japan Corporate No. 2290001085571 (publicly verifiable)</span>
         </div>
         <div class="footer-bottom">
-            <span data-i18n="footer.rights">© 2026 VanTripJapan. Operated by <a href="https://www.camjyo.com/" target="_blank" style="color:inherit;text-decoration:underline;">キャンプ女子株式会社</a>. All rights reserved.</span>
+            <span data-i18n="footer.rights">© 2026 VanTripJapan. Operated by <a href="https://www.camjyo.com/" target="_blank" style="color:inherit;text-decoration:underline;">Camp Jyoshi Inc.</a> — Tenjin HQ, Fukuoka. All rights reserved.</span>
             <span>Fukuoka, Japan 🇯🇵</span>
         </div>
     </footer>
@@ -1982,17 +2023,38 @@
             });
         });
 
-        // ── Booking CTA click tracking (CVR funnel) ──
-        document.querySelectorAll('.btn-book').forEach(function(btn) {
-            btn.addEventListener('click', function() {
+        // ── CTA click tracking (all CTAs including WhatsApp) ──
+        document.querySelectorAll('[data-track]').forEach(function(el) {
+            el.addEventListener('click', function() {
                 if (typeof gtag === 'function') {
-                    gtag('event', 'begin_booking', {
-                        cta_location: btn.getAttribute('data-track') || 'unknown',
+                    var trackId = el.getAttribute('data-track') || 'unknown';
+                    var isWhatsApp = trackId.indexOf('wa_') === 0;
+                    gtag('event', isWhatsApp ? 'generate_lead' : 'begin_booking', {
+                        cta_type: trackId,
+                        cta_text: el.textContent.trim().slice(0, 50),
+                        page_section: (el.closest('section') || {}).id || 'sticky',
                         page: window.location.pathname
                     });
                 }
             });
         });
+
+        // ── Scroll depth tracking ──
+        (function() {
+            var milestones = [25, 50, 75, 100];
+            var fired = {};
+            window.addEventListener('scroll', function() {
+                var scrollPct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+                milestones.forEach(function(m) {
+                    if (scrollPct >= m && !fired[m]) {
+                        fired[m] = true;
+                        if (typeof gtag === 'function') {
+                            gtag('event', 'scroll_depth', { percent: m, page: window.location.pathname });
+                        }
+                    }
+                });
+            });
+        })();
     </script>
 
 </body>

@@ -398,6 +398,52 @@
             color: #666;
         }
 
+        /* Vehicle Preview Card */
+        .vehicle-preview-card {
+            display: none;
+            margin-top: 16px;
+            padding: 16px 20px;
+            background: var(--primary-glow);
+            border: 1px solid rgba(45, 90, 61, 0.15);
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease;
+        }
+        .vehicle-preview-card.show {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .vehicle-preview-card .vp-icon {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+        }
+        .vehicle-preview-card .vp-info {
+            flex: 1;
+        }
+        .vehicle-preview-card .vp-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--primary);
+        }
+        .vehicle-preview-card .vp-spec {
+            font-size: 0.82rem;
+            color: var(--text-sec);
+            margin-top: 2px;
+        }
+        .vehicle-preview-card .vp-rate {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--primary);
+            text-align: right;
+            white-space: nowrap;
+        }
+        .vehicle-preview-card .vp-rate small {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
         /* Calendar Styles */
         .calendar-container {
             background: var(--surface);
@@ -653,6 +699,52 @@
         .success-screen h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.8rem; margin-bottom: 12px; }
         .success-screen p { color: var(--text-sec); line-height: 1.6; font-size: 0.95rem; }
 
+        /* Referral dropdown on success screen */
+        .referral-followup {
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        .referral-followup label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-sec);
+            margin-bottom: 10px;
+        }
+        .referral-followup select {
+            width: 100%;
+            max-width: 320px;
+            padding: 10px 14px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%235c5446' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 36px;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .referral-followup select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-glow);
+        }
+        .referral-followup .referral-thanks {
+            display: none;
+            margin-top: 8px;
+            font-size: 0.82rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
         /* Floating WhatsApp assistance */
         .wa-float {
             display: flex;
@@ -687,6 +779,77 @@
             align-items: center;
             gap: 8px;
         }
+        .wizard-buttons--step1 {
+            display: flex;
+            gap: 12px;
+            flex-direction: row;
+        }
+        .btn-wa-secondary {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 24px;
+            border: 2px solid #25D366;
+            color: #25D366;
+            background: rgba(37, 211, 102, 0.03);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+            text-align: center;
+            cursor: pointer;
+        }
+        .btn-wa-secondary:hover {
+            background: rgba(37, 211, 102, 0.08);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.1);
+        }
+        .form-row--dates {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (min-width: 601px) {
+            #step1WALink {
+                display: none !important;
+            }
+        }
+        @media (max-width: 600px) {
+            .wizard-buttons--step1 {
+                flex-direction: column;
+            }
+            .form-row--dates {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+            .vehicle-grid {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                gap: 12px !important;
+                padding: 4px 4px 12px 4px !important;
+                -webkit-overflow-scrolling: touch !important;
+            }
+            .vehicle-option {
+                flex: 0 0 88% !important;
+                scroll-snap-align: start !important;
+                margin-bottom: 0 !important;
+                padding: 12px !important;
+                gap: 12px !important;
+            }
+            .vehicle-option img {
+                width: 60px !important;
+            }
+        }
+
+        /* Inline field error styles */
+        .field-error {
+            color: #e74c3c;
+            font-size: 13px;
+            margin-top: 4px;
+        }
     </style>
 </head>
 <body>
@@ -699,7 +862,7 @@
             <i class="fas fa-van-shuttle"></i>
             VANTRIPJAPAN
         </div>
-        <p>Booking Request — takes about 2 minutes</p>
+        <p>Booking Request — takes about 1 minute</p>
         <div class="header-trust">
             <a href="https://maps.app.goo.gl/3uuep4h3zypPY6UYA" target="_blank" rel="noopener">
                 <span>📍 Verified on Google Maps</span>
@@ -707,7 +870,7 @@
             <span>·</span>
             <span><i class="fas fa-shield-halved" style="color:var(--primary);"></i> No payment today</span>
             <span>·</span>
-            <span><i class="fas fa-calendar-check" style="color:var(--primary);"></i> Free cancellation up to 7 days</span>
+            <span><i class="fas fa-calendar-check" style="color:var(--primary);"></i> Free cancellation up to 8 days</span>
         </div>
     </div>
 
@@ -719,32 +882,28 @@
             <div class="stepper">
                 <div class="step active" id="step-i-1">
                     <span class="step-num">1</span>
-                    <span class="step-label">Vehicle & Dates</span>
+                    <span class="step-label">Trip & Vehicle</span>
                 </div>
                 <div class="step" id="step-i-2">
                     <span class="step-num">2</span>
-                    <span class="step-label">Driver Info</span>
-                </div>
-                <div class="step" id="step-i-3">
-                    <span class="step-num">3</span>
-                    <span class="step-label">Extras & Submit</span>
+                    <span class="step-label">Details & Submit</span>
                 </div>
             </div>
 
             <form id="bookingForm">
                 
-                <!-- STEP 1: Period & Vehicle -->
+                <!-- STEP 1: Period, Vehicle, Name & Email -->
                 <div class="step-content active" id="step-c-1">
                     <div class="card">
                         <div class="section-title"><i class="fas fa-calendar"></i> 1. Select Rental Period & Guests</div>
-                        <div class="form-row">
+                        <div class="form-row form-row--dates">
                             <div class="form-group">
                                 <label>Pickup Date & Time <span class="req">*</span></label>
-                                <input type="datetime-local" name="pickup_datetime" required>
+                                <input type="datetime-local" name="pickup_datetime" id="pickup_datetime" required>
                             </div>
                             <div class="form-group">
                                 <label>Return Date & Time (by 6 PM) <span class="req">*</span></label>
-                                <input type="datetime-local" name="return_datetime" required>
+                                <input type="datetime-local" name="return_datetime" id="return_datetime" required>
                             </div>
                         </div>
                         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:12px;">
@@ -772,18 +931,22 @@
 
                         <!-- Monthly Calendar wrapper for Flow B & selection -->
                         <div id="calendarWrapper" style="display:none; margin-top:20px; border-top:1px dashed var(--border); padding-top:16px;">
-                            <label style="font-weight:600; margin-bottom:8px; display:block;"><i class="fas fa-calendar-days"></i> Vehicle Availability Calendar</label>
-                            <div class="calendar-container">
-                                <div class="calendar-header">
-                                    <button type="button" class="calendar-nav-btn" id="prevMonthBtn"><i class="fas fa-chevron-left"></i></button>
-                                    <span id="calendarMonthTitle"></span>
-                                    <button type="button" class="calendar-nav-btn" id="nextMonthBtn"><i class="fas fa-chevron-right"></i></button>
+                            <button type="button" id="toggleCalendarBtn" style="width:100%; padding:10px; background:var(--bg); border:1px solid var(--border); border-radius:8px; font-weight:600; color:var(--primary); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; font-family:inherit;">
+                                <i class="fas fa-calendar-days"></i> <span id="toggleCalendarBtnText">Show Availability Calendar</span>
+                            </button>
+                            <div id="calendarContent" style="display:none; margin-top:12px;">
+                                <div class="calendar-container">
+                                    <div class="calendar-header">
+                                        <button type="button" class="calendar-nav-btn" id="prevMonthBtn"><i class="fas fa-chevron-left"></i></button>
+                                        <span id="calendarMonthTitle"></span>
+                                        <button type="button" class="calendar-nav-btn" id="nextMonthBtn"><i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="calendar-grid" id="calendarGrid"></div>
                                 </div>
-                                <div class="calendar-grid" id="calendarGrid"></div>
-                            </div>
-                            <div style="font-size:0.75rem; color:var(--text-sec); margin-top:8px; display:flex; gap:12px; align-items:center; justify-content:center;">
-                                <span><span style="display:inline-block; width:12px; height:12px; background:#fff; border:1px solid var(--border); border-radius:3px; vertical-align:middle; margin-right:4px;"></span> Available</span>
-                                <span><span style="display:inline-block; width:12px; height:12px; background:rgba(196,112,75,0.08); border-radius:3px; vertical-align:middle; text-decoration:line-through; color:var(--text-muted); margin-right:4px; text-align:center; font-size:0.6rem;">1</span> Booked / Blocked</span>
+                                <div style="font-size:0.75rem; color:var(--text-sec); margin-top:8px; display:flex; gap:12px; align-items:center; justify-content:center;">
+                                    <span><span style="display:inline-block; width:12px; height:12px; background:#fff; border:1px solid var(--border); border-radius:3px; vertical-align:middle; margin-right:4px;"></span> Available</span>
+                                    <span><span style="display:inline-block; width:12px; height:12px; background:rgba(196,112,75,0.08); border-radius:3px; vertical-align:middle; text-decoration:line-through; color:var(--text-muted); margin-right:4px; text-align:center; font-size:0.6rem;">1</span> Booked / Blocked</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -826,37 +989,50 @@
                                 </label>
                             </div>
                         </div>
+                        <!-- Vehicle Preview Card -->
+                        <div class="vehicle-preview-card" id="vehiclePreviewCard">
+                            <div class="vp-icon" id="vpIcon">🚐</div>
+                            <div class="vp-info">
+                                <div class="vp-name" id="vpName"></div>
+                                <div class="vp-spec" id="vpSpec"></div>
+                            </div>
+                            <div class="vp-rate">
+                                <span id="vpRate"></span>
+                                <small>per day</small>
+                            </div>
+                        </div>
                         <div id="availabilityStatus" style="display:none; padding:12px 16px; border-radius:8px; font-size:0.85rem; margin-top:12px;"></div>
                     </div>
 
-                    <div class="wizard-buttons">
-                        <button type="button" class="btn-next" onclick="goToStep(2)">Continue to Driver Details <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- STEP 2: Customer Details -->
-                <div class="step-content" id="step-c-2">
                     <div class="card">
-                        <div class="section-title"><i class="fas fa-user"></i> Driver Information</div>
+                        <div class="section-title"><i class="fas fa-user"></i> 3. Your Details</div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Full Name <span class="req">*</span></label>
-                                <input type="text" name="full_name" placeholder="As shown on your passport">
+                                <input type="text" name="full_name" id="full_name" placeholder="As shown on your passport">
                             </div>
                             <div class="form-group">
                                 <label>Email Address <span class="req">*</span></label>
-                                <input type="email" name="email" placeholder="your@email.com">
+                                <input type="email" name="email" id="email" placeholder="your@email.com">
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label>Phone Number</label>
-                                <input type="tel" name="phone" placeholder="Include country code (e.g. +65 9123 4567)">
-                            </div>
-                            <div class="form-group">
-                                <label>Home Address <span class="req">*</span></label>
-                                <input type="text" name="address" placeholder="Your current home address">
-                            </div>
+                    </div>
+
+                    <div class="wizard-buttons wizard-buttons--step1">
+                        <button type="button" class="btn-next" onclick="goToStep(2)">Continue to Final Step <i class="fas fa-arrow-right"></i></button>
+                        <a id="step1WALink" href="#" target="_blank" class="btn-wa-secondary">
+                            <i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i> Inquire via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Phone (optional), License, Camping gear & Submit -->
+                <div class="step-content" id="step-c-2">
+                    <div class="card">
+                        <div class="section-title"><i class="fas fa-sliders"></i> Optional Details</div>
+                        <div class="form-group">
+                            <label>Phone Number <span style="font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-muted);">(optional)</span></label>
+                            <input type="tel" name="phone" id="phone" placeholder="Include country code (e.g. +65 9123 4567)">
                         </div>
                     </div>
 
@@ -877,42 +1053,10 @@
                         </div>
                     </div>
 
-                    <div class="wizard-buttons">
-                        <button type="button" class="btn-prev" onclick="goToStep(1)"><i class="fas fa-arrow-left"></i> Back</button>
-                        <button type="button" class="btn-next" onclick="goToStep(3)">Continue to Final Step <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-
-                <!-- STEP 3: Extra Info & Submit -->
-                <div class="step-content" id="step-c-3">
                     <div class="card">
-                        <div class="section-title"><i class="fas fa-magnifying-glass"></i> Additional Information</div>
-                        
+                        <div class="section-title"><i class="fas fa-campground"></i> Camping Gear</div>
                         <div class="form-group">
-                            <label>How did you find VANTRIPJAPAN? <span class="req">*</span></label>
-                            <div class="checkbox-group" id="referralGroup">
-                                <input type="checkbox" id="ref-web" value="Website/Search Engine" class="custom-checkbox">
-                                <label class="checkbox-item" for="ref-web">🌐 Website</label>
-
-                                <input type="checkbox" id="ref-social" value="Social Media" class="custom-checkbox">
-                                <label class="checkbox-item" for="ref-social">📱 Social Media</label>
-
-                                <input type="checkbox" id="ref-wom" value="Word of Mouth" class="custom-checkbox">
-                                <label class="checkbox-item" for="ref-wom">🗣️ Word of Mouth</label>
-
-                                <input type="checkbox" id="ref-apps" value="Travel Platforms" class="custom-checkbox">
-                                <label class="checkbox-item" for="ref-apps">✈️ Travel Apps</label>
-
-                                <input type="checkbox" id="ref-influencer" value="Influencer" class="custom-checkbox">
-                                <label class="checkbox-item" for="ref-influencer">🎥 Influencer</label>
-
-                                <input type="checkbox" id="ref-other" value="Other" class="custom-checkbox">
-                                <label class="checkbox-item" for="ref-other">💡 Other</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Additional camping gear to rent</label>
+                            <label>Additional camping gear to rent <span style="font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-muted);">(optional)</span></label>
                             <textarea name="camping_gear_notes" placeholder="Any extra camping gear you'd like to add? (Check: camcierge.com)"></textarea>
                         </div>
                     </div>
@@ -923,7 +1067,7 @@
                     </div>
 
                     <div class="wizard-buttons">
-                        <button type="button" class="btn-prev" onclick="goToStep(2)"><i class="fas fa-arrow-left"></i> Back</button>
+                        <button type="button" class="btn-prev" onclick="goToStep(1)"><i class="fas fa-arrow-left"></i> Back</button>
                         <button type="submit" class="btn-submit" id="submitBtn">
                             <i class="fas fa-paper-plane"></i> Submit Booking Request
                         </button>
@@ -983,12 +1127,17 @@
                     </div>
                 </div>
 
+                <!-- Prominent WhatsApp Inquiry Button -->
+                <a id="summaryWALink" href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20chat%20about%20booking%20a%20campervan." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; padding: 12px; background: #25D366; color: white; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(37,211,102,0.15); transition: all 0.2s;">
+                    <i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i> Inquire on WhatsApp
+                </a>
+
                 <div class="summary-badge-list">
                     <div class="summary-badge-item">
                         <i class="fas fa-circle-check"></i> No payment due today
                     </div>
                     <div class="summary-badge-item">
-                        <i class="fas fa-circle-check"></i> Free cancellation (up to 7d)
+                        <i class="fas fa-circle-check"></i> Free cancellation (up to 8d)
                     </div>
                     <div class="summary-badge-item">
                         <i class="fas fa-circle-check"></i> Direct contact with owners
@@ -996,10 +1145,6 @@
                 </div>
             </div>
 
-            <!-- WhatsApp fallback float -->
-            <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20chat%20about%20booking%20a%20campervan." target="_blank" class="wa-float">
-                <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i> Prefer to chat? WhatsApp Karen
-            </a>
         </div>
 
     </div>
@@ -1020,6 +1165,23 @@
                style="display:inline-flex; align-items:center; gap:8px; padding:12px 28px; background:#25D366; color:#fff; border-radius:var(--radius-sm); text-decoration:none; font-weight:700; box-shadow: 0 4px 15px rgba(37,211,102,0.25);">
                 <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i> Message Karen on WhatsApp
             </a>
+        </div>
+
+        <!-- Referral source (optional, fires GA4 event) -->
+        <div class="referral-followup" id="referralFollowup">
+            <label for="referralDropdown">How did you find us? <span style="font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-muted);">(optional)</span></label>
+            <select id="referralDropdown">
+                <option value="">— Select —</option>
+                <option value="Website/Search Engine">🌐 Website / Search Engine</option>
+                <option value="Social Media">📱 Social Media</option>
+                <option value="Word of Mouth">🗣️ Word of Mouth</option>
+                <option value="Travel Platforms">✈️ Travel Apps / Platforms</option>
+                <option value="Influencer">🎥 Influencer / YouTuber</option>
+                <option value="Other">💡 Other</option>
+            </select>
+            <div class="referral-thanks" id="referralThanks">
+                <i class="fas fa-heart"></i> Thanks for letting us know!
+            </div>
         </div>
 
         <p style="font-size:0.8rem; color:var(--text-muted); margin-top:24px; line-height:1.5;">
@@ -1051,11 +1213,88 @@ const VEHICLE_PRICES = {
     'DAIHATSU POCKET LOFT': { base: 25000, maxGuests: 4, img: '/images/rent/vehicles/daihatsu-front.webp', desc: 'Pocket Loft with RoofTent · Sleeps 4' }
 };
 
+// Vehicle preview card data
+const VEHICLE_PREVIEW = {
+    'MAZDA BONGO': { icon: '🚐', name: 'Mazda Bongo', rate: '¥22,000', spec: '3 people · Campervan' },
+    'TOYOTA PROBOX': { icon: '🏕️', name: 'Toyota Probox', rate: '¥22,000', spec: '2 people · Compact' },
+    'DAIHATSU POCKET LOFT': { icon: '🚐', name: 'Daihatsu Pocket Loft', rate: '¥35,000', spec: '4 people · Pocket Loft' }
+};
+
 // Global variables for availability state
 let bookedRanges = {};
 let calendarMonth = new Date().getMonth();
 let calendarYear = new Date().getFullYear();
 let currentVehicleCalendar = '';
+
+// ── Inline Validation Helper ────────────────────────────────────────
+function showFieldError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    if (!field) return;
+    field.style.borderColor = '#e74c3c';
+    let errEl = field.parentElement.querySelector('.field-error');
+    if (!errEl) {
+        errEl = document.createElement('div');
+        errEl.className = 'field-error';
+        errEl.style.cssText = 'color:#e74c3c;font-size:13px;margin-top:4px;';
+        field.parentElement.appendChild(errEl);
+    }
+    errEl.textContent = message;
+    field.addEventListener('input', () => {
+        field.style.borderColor = '';
+        if (errEl) errEl.remove();
+    }, { once: true });
+}
+
+function clearFieldError(fieldId) {
+    const field = document.getElementById(fieldId);
+    if (!field) return;
+    field.style.borderColor = '';
+    const errEl = field.parentElement.querySelector('.field-error');
+    if (errEl) errEl.remove();
+}
+
+function clearAllFieldErrors() {
+    document.querySelectorAll('.field-error').forEach(el => el.remove());
+    document.querySelectorAll('[style*="border-color"]').forEach(el => {
+        if (el.style.borderColor === 'rgb(231, 76, 60)') el.style.borderColor = '';
+    });
+}
+
+// Show a vehicle-grid-level error (for radio buttons)
+function showVehicleError(message) {
+    const grid = document.getElementById('vehicleGrid');
+    if (!grid) return;
+    let errEl = grid.parentElement.querySelector('.field-error');
+    if (!errEl) {
+        errEl = document.createElement('div');
+        errEl.className = 'field-error';
+        errEl.style.cssText = 'color:#e74c3c;font-size:13px;margin-top:4px;';
+        grid.parentElement.appendChild(errEl);
+    }
+    errEl.textContent = message;
+    // Clear on radio change
+    document.querySelectorAll('input[name="vehicle_type"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (errEl) errEl.remove();
+        }, { once: true });
+    });
+}
+
+// ── Vehicle Preview Card ────────────────────────────────────────────
+function updateVehiclePreview() {
+    const vehicleRadio = document.querySelector('input[name="vehicle_type"]:checked');
+    const card = document.getElementById('vehiclePreviewCard');
+    if (!vehicleRadio || !VEHICLE_PREVIEW[vehicleRadio.value]) {
+        card.classList.remove('show');
+        return;
+    }
+    const info = VEHICLE_PREVIEW[vehicleRadio.value];
+    document.getElementById('vpIcon').textContent = info.icon;
+    document.getElementById('vpName').textContent = info.name;
+    document.getElementById('vpSpec').textContent = info.spec;
+    document.getElementById('vpRate').textContent = info.rate;
+    card.classList.add('show');
+}
 
 // Load overall availability on page load
 async function loadBookedRanges() {
@@ -1071,7 +1310,7 @@ async function loadBookedRanges() {
     }
 }
 
-// Wizard Step Navigation
+// Wizard Step Navigation (2 steps)
 function goToStep(stepNum) {
     if (stepNum > 1) {
         if (!validateStep(stepNum - 1)) return;
@@ -1094,41 +1333,45 @@ function goToStep(stepNum) {
 }
 
 function validateStep(stepNum) {
+    clearAllFieldErrors();
+    let isValid = true;
+
     if (stepNum === 1) {
         const pickup = document.querySelector('input[name="pickup_datetime"]').value;
         const dropoff = document.querySelector('input[name="return_datetime"]').value;
-        if (!pickup || !dropoff) {
-            alert('Please select both Pickup and Return dates.');
-            return false;
+
+        if (!pickup) {
+            showFieldError('pickup_datetime', 'Please select a pickup date.');
+            isValid = false;
         }
-        if (new Date(dropoff) <= new Date(pickup)) {
-            alert('Return date & time must be after pickup date & time.');
-            return false;
+        if (!dropoff) {
+            showFieldError('return_datetime', 'Please select a return date.');
+            isValid = false;
         }
+        if (pickup && dropoff && new Date(dropoff) <= new Date(pickup)) {
+            showFieldError('return_datetime', 'Return date & time must be after pickup.');
+            isValid = false;
+        }
+
         const vehicle = document.querySelector('input[name="vehicle_type"]:checked');
         if (!vehicle) {
-            alert('Please choose an available campervan first.');
-            return false;
+            showVehicleError('Please choose an available campervan.');
+            isValid = false;
         }
-    } else if (stepNum === 2) {
+
         const name = document.querySelector('input[name="full_name"]').value.trim();
         const email = document.querySelector('input[name="email"]').value.trim();
-        const address = document.querySelector('input[name="address"]').value.trim();
 
         if (!name) {
-            alert('Please enter your Full Name.');
-            return false;
+            showFieldError('full_name', 'Please enter your full name.');
+            isValid = false;
         }
         if (!email || !email.includes('@')) {
-            alert('Please enter a valid Email Address.');
-            return false;
-        }
-        if (!address) {
-            alert('Please enter your Home Address.');
-            return false;
+            showFieldError('email', 'Please enter a valid email address.');
+            isValid = false;
         }
     }
-    return true;
+    return isValid;
 }
 
 // Live availability check (read-only, no PII)
@@ -1158,7 +1401,8 @@ function checkAvailability() {
             } else {
                 box.style.background = 'rgba(196,112,75,0.1)';
                 box.style.color = 'var(--accent)';
-                box.innerHTML = '<i class="fas fa-triangle-exclamation"></i> <strong>This van has a scheduling conflict.</strong> You can still submit — we\'ll suggest another van or nearby dates. Or <a href="https://wa.me/817093757129" target="_blank" style="color:var(--accent); text-decoration:underline;">ask Karen on WhatsApp</a>.';
+                const waUrl = getWhatsAppURL();
+                box.innerHTML = `<i class="fas fa-triangle-exclamation"></i> <strong>This van has a scheduling conflict.</strong> You can still submit — we'll suggest another van or nearby dates. Or <a href="${waUrl}" target="_blank" style="color:var(--accent); text-decoration:underline;">ask Karen on WhatsApp</a>.`;
             }
         } catch (e) {
             box.style.display = 'none';
@@ -1206,6 +1450,7 @@ function checkVehiclesFilter() {
                 if (radio.checked) {
                     radio.checked = false;
                     document.getElementById('calendarWrapper').style.display = 'none';
+                    updateVehiclePreview();
                 }
                 statusMsg.innerHTML = reason;
             } else {
@@ -1345,7 +1590,13 @@ function handleCalendarDayClick(dateStr) {
                     cur.setDate(cur.getDate() + 1);
                 }
                 if (hasConflict) {
-                    alert("There are booked dates in between. Please select a different return date.");
+                    // Show inline notification instead of alert
+                    const box = document.getElementById('availabilityStatus');
+                    box.style.display = 'block';
+                    box.style.background = 'rgba(196,112,75,0.1)';
+                    box.style.color = 'var(--accent)';
+                    box.innerHTML = '<i class="fas fa-triangle-exclamation"></i> There are booked dates in between. Please select a different return date.';
+                    setTimeout(() => { box.style.display = 'none'; }, 5000);
                     return;
                 }
             }
@@ -1451,6 +1702,69 @@ function updateSummary() {
         document.getElementById('summaryPriceTotal').textContent = '¥0';
         document.getElementById('summaryPriceDesc').textContent = 'Includes rental fees, standard insurance, and camper gear. Dynamic rates applied for weekends/long-stays.';
     }
+
+    // Update WhatsApp link text with selected conditions
+    const summaryWALinkEl = document.getElementById('summaryWALink');
+    if (summaryWALinkEl) {
+        summaryWALinkEl.href = getWhatsAppURL();
+    }
+    const step1WALinkEl = document.getElementById('step1WALink');
+    if (step1WALinkEl) {
+        step1WALinkEl.href = getWhatsAppURL();
+    }
+}
+
+// Generate dynamic WhatsApp inquiry link based on current form choices
+function getWhatsAppURL() {
+    const vehicleRadio = document.querySelector('input[name="vehicle_type"]:checked');
+    const pickupVal = document.querySelector('input[name="pickup_datetime"]').value;
+    const returnVal = document.querySelector('input[name="return_datetime"]').value;
+    const driversVal = document.querySelector('select[name="num_drivers"]').value;
+    const guestsSelect = document.querySelector('select[name="num_guests"]');
+    const guestsVal = guestsSelect ? guestsSelect.value : '2';
+    
+    let days = 0;
+    if (pickupVal && returnVal) {
+        const pDate = new Date(pickupVal);
+        const rDate = new Date(returnVal);
+        const diffMs = rDate - pDate;
+        if (diffMs > 0) {
+            days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+        }
+    }
+
+    let waMsg = "Hi Karen! I'd like to check availability / inquire about booking:\n";
+    if (vehicleRadio) {
+        waMsg += `- Vehicle: ${vehicleRadio.value}\n`;
+    } else {
+        waMsg += `- Vehicle: Not selected yet\n`;
+    }
+    if (pickupVal) {
+        const pDate = new Date(pickupVal);
+        waMsg += `- Pickup: ${pDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'})}\n`;
+    }
+    if (returnVal) {
+        const rDate = new Date(returnVal);
+        waMsg += `- Return: ${rDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'})}\n`;
+    }
+    if (days > 0) {
+        waMsg += `- Duration: ${days} days\n`;
+    }
+    waMsg += `- Travelers: ${driversVal === '1' ? '1 Driver' : driversVal + ' Drivers'}, ${guestsVal} Guests\n`;
+
+    if (vehicleRadio && days > 0) {
+        const info = VEHICLE_PRICES[vehicleRadio.value];
+        if (info) {
+            const baseTotal = calculateBaseTotal(info.base, days);
+            const discount = getDiscount(days);
+            let estimatedTotal = baseTotal;
+            if (discount.rate > 0) {
+                estimatedTotal = baseTotal * (1 - discount.rate);
+            }
+            waMsg += `- Estimated Total: ¥${Math.round(estimatedTotal).toLocaleString()}\n`;
+        }
+    }
+    return "https://wa.me/817093757129?text=" + encodeURIComponent(waMsg);
 }
 
 // Bind navigation clicks for calendar
@@ -1494,13 +1808,43 @@ document.querySelector('select[name="num_guests"]').addEventListener('change', (
 document.querySelector('select[name="num_drivers"]').addEventListener('change', updateSummary);
 document.getElementById('translationToggle').addEventListener('change', updateSummary);
 
+// Calendar expand/collapse toggle
+document.getElementById('toggleCalendarBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    const content = document.getElementById('calendarContent');
+    const btnText = document.getElementById('toggleCalendarBtnText');
+    if (content.style.display === 'none') {
+        content.style.display = 'block';
+        btnText.textContent = 'Hide Availability Calendar';
+    } else {
+        content.style.display = 'none';
+        btnText.textContent = 'Show Availability Calendar';
+    }
+});
+
 document.querySelectorAll('input[name="vehicle_type"]').forEach(radio => {
     radio.addEventListener('change', () => {
         checkAvailability();
         checkVehiclesFilter();
         updateSummary();
+        updateVehiclePreview();
         renderCalendar(radio.value);
     });
+});
+
+// Referral dropdown on success screen — fires GA4 event
+document.getElementById('referralDropdown').addEventListener('change', function() {
+    const val = this.value;
+    if (!val) return;
+    // Fire GA4 event
+    if (typeof gtag === 'function') {
+        gtag('event', 'referral_source', {
+            source: val,
+            booking_id: bookingId || 'unknown'
+        });
+    }
+    // Show thanks message
+    document.getElementById('referralThanks').style.display = 'block';
 });
 
 // Preselect vehicle and load availability
@@ -1508,6 +1852,31 @@ document.querySelectorAll('input[name="vehicle_type"]').forEach(radio => {
     await loadBookedRanges();
 
     const params = new URLSearchParams(window.location.search);
+    
+    // Parse pickup and return dates
+    const fromParam = params.get('from');
+    const toParam = params.get('to');
+    const guestsParam = params.get('guests');
+
+    if (fromParam) {
+        const pickupVal = fromParam.includes('T') ? fromParam : `${fromParam}T10:00`;
+        document.querySelector('input[name="pickup_datetime"]').value = pickupVal;
+    }
+    if (toParam) {
+        const returnVal = toParam.includes('T') ? toParam : `${toParam}T18:00`;
+        document.querySelector('input[name="return_datetime"]').value = returnVal;
+    }
+    if (guestsParam) {
+        const selectGuests = document.querySelector('select[name="num_guests"]');
+        if (selectGuests) {
+            if (selectGuests.querySelector(`option[value="${guestsParam}"]`)) {
+                selectGuests.value = guestsParam;
+            } else if (parseInt(guestsParam, 10) >= 5) {
+                selectGuests.value = "5";
+            }
+        }
+    }
+
     const veh = params.get('vehicle');
     if (veh) {
         const val = veh.toUpperCase().trim();
@@ -1520,9 +1889,15 @@ document.querySelectorAll('input[name="vehicle_type"]').forEach(radio => {
             const radio = document.getElementById(targetId);
             if (radio) {
                 radio.checked = true;
-                checkAvailability();
-                updateSummary();
+                updateVehiclePreview();
                 renderCalendar(radio.value);
+                // Auto-expand calendar for Flow B (preselected vehicle)
+                const content = document.getElementById('calendarContent');
+                const btnText = document.getElementById('toggleCalendarBtnText');
+                if (content && btnText) {
+                    content.style.display = 'block';
+                    btnText.textContent = 'Hide Availability Calendar';
+                }
             }
         }
     }
@@ -1532,11 +1907,23 @@ document.querySelectorAll('input[name="vehicle_type"]').forEach(radio => {
     const minDt = today.toISOString().slice(0, 16);
     document.querySelector('input[name="pickup_datetime"]').min = minDt;
     document.querySelector('input[name="return_datetime"]').min = minDt;
+
+    // Trigger updates to calculate price and check availability for loaded dates
+    checkAvailability();
+    checkVehiclesFilter();
+    updateSummary();
 })();
 
 // Submit Booking request form
 document.getElementById('bookingForm').addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Final validation of step 1 fields (in case user navigated directly)
+    if (!validateStep(1)) {
+        goToStep(1);
+        return;
+    }
+
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
@@ -1546,7 +1933,6 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
         full_name: form.full_name.value,
         email: form.email.value,
         phone: form.phone.value || null,
-        address: form.address.value,
         vehicle_type: form.vehicle_type.value,
         pickup_datetime: form.pickup_datetime.value,
         return_datetime: form.return_datetime.value,
@@ -1555,16 +1941,6 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
         camping_gear_notes: form.camping_gear_notes.value || null,
         translation_needed: form.translation_needed.checked,
     };
-
-    // Collect referral sources (Fixed Checkbox Selection)
-    const checked = document.querySelectorAll('#referralGroup input:checked');
-    data.referral_source = Array.from(checked).map(c => c.value).join(', ');
-    if (!data.referral_source) {
-        alert('Please select at least one referral source.');
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
-        return;
-    }
 
     try {
         const res = await fetch('/api/booking', {
@@ -1599,12 +1975,29 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
                 });
             }
         } else {
-            alert('Error: ' + (result.error || result.detail || 'Submission failed'));
+            // Show inline error instead of alert for API errors
+            const errorMsg = result.error || result.detail || 'Submission failed. Please try again.';
+            const notice = document.querySelector('.form-notice');
+            if (notice) {
+                notice.innerHTML = `<i class="fas fa-triangle-exclamation"></i> ${errorMsg}`;
+                notice.style.background = 'rgba(231,76,60,0.08)';
+                notice.style.borderColor = 'rgba(231,76,60,0.2)';
+                notice.style.color = '#e74c3c';
+                notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
             btn.disabled = false;
             btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
         }
     } catch (err) {
-        alert('Network error. Please try again.');
+        // Show inline error instead of alert for network errors
+        const notice = document.querySelector('.form-notice');
+        if (notice) {
+            notice.innerHTML = '<i class="fas fa-triangle-exclamation"></i> Network error. Please check your connection and try again.';
+            notice.style.background = 'rgba(231,76,60,0.08)';
+            notice.style.borderColor = 'rgba(231,76,60,0.2)';
+            notice.style.color = '#e74c3c';
+            notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
         btn.disabled = false;
         btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
     }
