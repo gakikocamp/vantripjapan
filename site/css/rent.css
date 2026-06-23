@@ -29,8 +29,8 @@
     --rent-cream: #FAF6F0;
     --rent-forest: #2D5A3D;
     --rent-terracotta: #C4704B;
-    --font-display: 'DM Serif Display', Georgia, serif;
-    --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ── Base ── */
@@ -51,7 +51,7 @@
 }
 
 .rent-container {
-    max-width: 960px;
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -185,10 +185,10 @@
     transform: translateY(40px);
     animation: cinematic-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-.anim-d2 { animation-delay: 0.2s; }
-.anim-d3 { animation-delay: 0.4s; }
-.anim-d4 { animation-delay: 0.6s; }
-.anim-d5 { animation-delay: 0.8s; }
+.anim-d2 { animation-delay: 0.08s; }
+.anim-d3 { animation-delay: 0.15s; }
+.anim-d4 { animation-delay: 0.22s; }
+.anim-d5 { animation-delay: 0.30s; }
 
 @keyframes cinematic-up {
     from { opacity: 0; transform: translateY(40px); }
@@ -1392,7 +1392,7 @@
 }
 
 .vehicle-card .vehicle-img {
-    height: 180px;
+    height: 280px;
     background: var(--rent-bg);
     border-radius: var(--rent-radius-sm);
     margin-bottom: 20px;
@@ -2245,7 +2245,7 @@
     }
 
     .vehicle-card .vehicle-img {
-        height: 140px;
+        height: 220px;
     }
 
     /* ── Comparison Table ── */
@@ -2279,17 +2279,13 @@
     }
 
     .lang-btn {
-        padding: 6px 10px;
-        font-size: 11px;
+        padding: 10px 14px;
+        font-size: 12px;
     }
 
     /* ── Raise floating WhatsApp above sticky bar ── */
     .floating-whatsapp {
-        bottom: 80px !important;
-        right: 14px !important;
-        width: 48px !important;
-        height: 48px !important;
-        font-size: 24px !important;
+        display: none !important; /* Hidden on mobile — sticky bar has WhatsApp CTA */
     }
 
     /* ── Sticky Bar ── */
@@ -2437,11 +2433,11 @@
     opacity: 0;
     animation: heroFadeUp 0.8s ease forwards;
 }
-.rent-hero-text > *:nth-child(1) { animation-delay: 0.1s; }
-.rent-hero-text > *:nth-child(2) { animation-delay: 0.3s; }
-.rent-hero-text > *:nth-child(3) { animation-delay: 0.5s; }
-.rent-hero-text > *:nth-child(4) { animation-delay: 0.7s; }
-.rent-hero-text > *:nth-child(5) { animation-delay: 0.9s; }
+.rent-hero-text > *:nth-child(1) { animation-delay: 0.05s; }
+.rent-hero-text > *:nth-child(2) { animation-delay: 0.10s; }
+.rent-hero-text > *:nth-child(3) { animation-delay: 0.15s; }
+.rent-hero-text > *:nth-child(4) { animation-delay: 0.20s; }
+.rent-hero-text > *:nth-child(5) { animation-delay: 0.25s; }
 
 /* Hero images stagger */
 .rent-hero-images .hero-img {

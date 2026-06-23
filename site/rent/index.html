@@ -495,160 +495,12 @@
         </div>
 
         <!-- ═══ SUMMER SEASONAL BANNER ═══ -->
-        <div class="summer-banner" style="background: linear-gradient(135deg, #ff6b35 0%, #f7931e 50%, #ffb347 100%); padding: 16px 20px; text-align: center; position: relative; overflow: hidden;">
+        <div class="summer-banner" style="background: linear-gradient(135deg, var(--rent-terracotta) 0%, var(--rent-accent-dark) 100%); padding: 16px 20px; text-align: center; position: relative; overflow: hidden;">
             <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2220%22 cy=%2230%22 r=%2240%22 fill=%22rgba(255,255,255,0.05)%22/><circle cx=%2280%22 cy=%2270%22 r=%2250%22 fill=%22rgba(255,255,255,0.03)%22/></svg>'); pointer-events: none;"></div>
             <p style="margin: 0; color: white; font-size: 15px; font-weight: 600; position: relative; z-index: 1;" data-i18n="summer.banner">
                 🌞 <strong>Summer Perk (Jun–Sep):</strong> Free portable battery fan included with every rental — stay cool at Michi-no-Eki & campgrounds!
             </p>
         </div>
-
-        <!-- ═══ KYUSHU DESTINATIONS (moved below FAQ for CVR flow) ═══ -->
-        <section class="kyushu-destinations" style="padding: 80px 0; overflow: hidden;">
-            <div class="rent-container">
-                <div class="rent-section-header">
-                    <span class="rent-badge">🗾 Explore Kyushu</span>
-                    <h2 data-i18n="dest.title">Where Will You Go?</h2>
-                    <p data-i18n="dest.subtitle">All within a day’s drive from Fukuoka. Swipe to explore →</p>
-                </div>
-            </div>
-            <div class="dest-scroll">
-                <div class="dest-track">
-                    <!-- Set 1 -->
-                    <a href="/posts/aso-campervan-guide" class="dest-card">
-                        <img src="/images/rent/destinations/aso.webp" alt="Mount Aso volcanic caldera, Kyushu" loading="lazy">
-                        <span class="dest-card-tag">🌋 <span data-i18n="dest.volcano">Volcano</span></span>
-                        <div class="dest-card-overlay">
-                            <div class="dest-card-name" data-i18n="dest.aso">Aso</div>
-                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.aso">2h from Fukuoka</span></div>
-                        </div>
-                    </a>
-                    <a href="/posts/beppu-campervan-guide" class="dest-card">
-                        <img src="/images/rent/destinations/beppu.webp" alt="Beppu hot spring town with steam rising" loading="lazy">
-                        <span class="dest-card-tag">♨️ <span data-i18n="dest.onsen">Onsen</span></span>
-                        <div class="dest-card-overlay">
-                            <div class="dest-card-name" data-i18n="dest.beppu">Beppu</div>
-                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.beppu">2.5h from Fukuoka</span></div>
-                        </div>
-                    </a>
-                    <a href="/posts/itoshima-campervan-guide" class="dest-card">
-                        <img src="/images/rent/destinations/itoshima.webp" alt="Itoshima beach sunset with torii gate" loading="lazy">
-                        <span class="dest-card-tag">🌊 <span data-i18n="dest.coast">Coast</span></span>
-                        <div class="dest-card-overlay">
-                            <div class="dest-card-name" data-i18n="dest.itoshima">Itoshima</div>
-                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.itoshima">40 min from Fukuoka</span></div>
-                        </div>
-                    </a>
-                    <div class="dest-card">
-                        <img src="/images/rent/destinations/yakushima.webp" alt="Ancient cedar forest on Yakushima island" loading="lazy">
-                        <span class="dest-card-tag">🌿 <span data-i18n="dest.unesco">UNESCO</span></span>
-                        <div class="dest-card-overlay">
-                            <div class="dest-card-name" data-i18n="dest.yakushima">Yakushima</div>
-                            <div class="dest-card-drive">⛴️ <span data-i18n="dest.drive.yakushima">Ferry from Kagoshima</span></div>
-                        </div>
-                    </div>
-                    <div class="dest-card">
-                        <img src="/images/rent/destinations/takachiho.webp" alt="Takachiho Gorge with emerald water and boats" loading="lazy">
-                        <span class="dest-card-tag">⛩️ <span data-i18n="dest.sacred">Sacred</span></span>
-                        <div class="dest-card-overlay">
-                            <div class="dest-card-name" data-i18n="dest.takachiho">Takachiho</div>
-                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.takachiho">3h from Fukuoka</span></div>
-                        </div>
-                    </div>
-                    <div class="dest-card">
-                        <img src="/images/rent/destinations/ibusuki.webp" alt="Ibusuki sand bath with Sakurajima volcano" loading="lazy">
-                        <span class="dest-card-tag">🏖️ <span data-i18n="dest.sandbath">Sand Bath</span></span>
-                        <div class="dest-card-overlay">
-                            <div class="dest-card-name" data-i18n="dest.ibusuki">Ibusuki</div>
-                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.ibusuki">4h from Fukuoka</span></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Set 2 (Duplicated for Infinite Marquee) -->
-                    <a href="/posts/aso-campervan-guide" class="dest-card" aria-hidden="true">
-                        <img src="/images/rent/destinations/aso.webp" alt="Mount Aso volcanic caldera, Kyushu" loading="lazy">
-                        <span class="dest-card-tag">🌋 <span data-i18n="dest.volcano">Volcano</span></span>
-                        <div class="dest-card-overlay">
-                            <div class="dest-card-name" data-i18n="dest.aso">Aso</div>
-                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.aso">2h from Fukuoka</span></div>
-                        </div>
-                    </a>
-                    <a href="/posts/beppu-campervan-guide" class="dest-card" aria-hidden="true">
-                        <img src="/images/rent/destinations/beppu.webp" alt="Beppu hot spring town with steam rising" loading="lazy">
-                        <span class="dest-card-tag">♨️ <span data-i18n="dest.onsen">Onsen</span></span>
-                        <div class="dest-card-overlay">
-                            <div class="dest-card-name" data-i18n="dest.beppu">Beppu</div>
-                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.beppu">2.5h from Fukuoka</span></div>
-                        </div>
-                    </a>
-                    <a href="/posts/itoshima-campervan-guide" class="dest-card" aria-hidden="true">
-                        <img src="/images/rent/destinations/itoshima.webp" alt="Itoshima beach sunset with torii gate" loading="lazy">
-                        <span class="dest-card-tag">🌊 <span data-i18n="dest.coast">Coast</span></span>
-                        <div class="dest-card-overlay">
-                            <div class="dest-card-name" data-i18n="dest.itoshima">Itoshima</div>
-                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.itoshima">40 min from Fukuoka</span></div>
-                        </div>
-                    </a>
-                    <div class="dest-card" aria-hidden="true">
-                        <img src="/images/rent/destinations/yakushima.webp" alt="Ancient cedar forest on Yakushima island" loading="lazy">
-                        <span class="dest-card-tag">🌿 <span data-i18n="dest.unesco">UNESCO</span></span>
-                        <div class="dest-card-overlay">
-                            <div class="dest-card-name" data-i18n="dest.yakushima">Yakushima</div>
-                            <div class="dest-card-drive">⛴️ <span data-i18n="dest.drive.yakushima">Ferry from Kagoshima</span></div>
-                        </div>
-                    </div>
-                    <div class="dest-card" aria-hidden="true">
-                        <img src="/images/rent/destinations/takachiho.webp" alt="Takachiho Gorge with emerald water and boats" loading="lazy">
-                        <span class="dest-card-tag">⛩️ <span data-i18n="dest.sacred">Sacred</span></span>
-                        <div class="dest-card-overlay">
-                            <div class="dest-card-name" data-i18n="dest.takachiho">Takachiho</div>
-                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.takachiho">3h from Fukuoka</span></div>
-                        </div>
-                    </div>
-                    <div class="dest-card" aria-hidden="true">
-                        <img src="/images/rent/destinations/ibusuki.webp" alt="Ibusuki sand bath with Sakurajima volcano" loading="lazy">
-                        <span class="dest-card-tag">🏖️ <span data-i18n="dest.sandbath">Sand Bath</span></span>
-                        <div class="dest-card-overlay">
-                            <div class="dest-card-name" data-i18n="dest.ibusuki">Ibusuki</div>
-                            <div class="dest-card-drive">🚗 <span data-i18n="dest.drive.ibusuki">4h from Fukuoka</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══ WHEN TO VISIT KYUSHU ═══ -->
-        <section class="rent-section" id="best-time-to-visit" style="background: var(--rent-surface); position: relative;">
-            <div class="rent-container">
-                <div class="rent-section-header">
-                    <span class="rent-badge">🌤️ Seasonality Guide</span>
-                    <h2 class="rent-section-title">When is the best time to visit Kyushu?</h2>
-                    <p class="rent-section-subtitle">A campervan gives you the freedom to chase the good weather.</p>
-                </div>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px;">
-                    <!-- Spring -->
-                    <div style="background: white; padding: 24px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #F48FB1;">
-                        <h3 style="margin-top: 0; color: var(--rent-text); display: flex; align-items: center; gap: 8px;">🌸 Spring <span style="font-size: 14px; font-weight: normal; color: var(--rent-text-secondary);">(Mar - May)</span></h3>
-                        <p style="font-size: 14px; color: var(--rent-text-secondary); line-height: 1.6;"><strong>Best for:</strong> Cherry blossoms, mild temperatures, and comfortable sleeping.</p>
-                        <p style="font-size: 14px; color: var(--rent-text-secondary); line-height: 1.6; margin-bottom: 0;">Highly recommended! The weather is perfect for vanlife, but campsites book up fast during Golden Week (early May).</p>
-                    </div>
-
-                    <!-- Summer / Rainy -->
-                    <div style="background: white; padding: 24px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #4FC3F7;">
-                        <h3 style="margin-top: 0; color: var(--rent-text); display: flex; align-items: center; gap: 8px;">☔ Summer & Rainy <span style="font-size: 14px; font-weight: normal; color: var(--rent-text-secondary);">(Jun - Aug)</span></h3>
-                        <p style="font-size: 14px; color: var(--rent-text-secondary); line-height: 1.6;"><strong>Best for:</strong> Beaches, waterfalls, and flexible itineraries.</p>
-                        <p style="font-size: 14px; color: var(--rent-text-secondary); line-height: 1.6; margin-bottom: 0;"><strong>June/July is rainy season (Tsuyu)</strong>, but a campervan lets you escape the rain! Check the radar and drive to the sunny side of the island. <span style="color:var(--rent-accent); font-weight:bold;">Free battery fans included</span> to keep you cool.</p>
-                    </div>
-
-                    <!-- Autumn -->
-                    <div style="background: white; padding: 24px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid #FFB74D;">
-                        <h3 style="margin-top: 0; color: var(--rent-text); display: flex; align-items: center; gap: 8px;">🍁 Autumn <span style="font-size: 14px; font-weight: normal; color: var(--rent-text-secondary);">(Sep - Nov)</span></h3>
-                        <p style="font-size: 14px; color: var(--rent-text-secondary); line-height: 1.6;"><strong>Best for:</strong> Fall foliage, hiking in Aso, and cool evenings.</p>
-                        <p style="font-size: 14px; color: var(--rent-text-secondary); line-height: 1.6; margin-bottom: 0;">Another prime season for campervans. The crisp air is perfect for outdoor cooking and enjoying Kyushu's famous hot springs.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- ═══ VEHICLES ═══ -->
         <section class="rent-section" id="vehicles" style="background: white; position: relative;">
@@ -934,7 +786,7 @@
                         <div class="pricing-cta-group">
                             <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20a%20quote%20for%20a%20campervan%20rental."
                                 class="pricing-cta" data-track="wa_pricing" style="display:inline-flex;align-items:center;gap:10px;"><img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.4);flex-shrink:0;"> <span data-i18n="pricing.cta">Get a Quote from Karen on WhatsApp</span></a>
-                            <p class="cta-microcopy"><span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 8 days before</span></p>
+
                             <a href="/book/" class="btn-book-outline" data-track="book_pricing" data-i18n="cta.book">📝 Prefer not to chat? Request by form</a>
                         </div>
                     </div>
@@ -1074,7 +926,7 @@
                 <!-- Book at this price -->
                 <div class="calc-book-cta">
                     <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20book%20a%20campervan." class="btn-whatsapp btn-whatsapp--lg" target="_blank" id="calc-book-btn" data-track="wa_calculator"><img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.5);flex-shrink:0;"> <span data-i18n="calc.book_btn">Send these details to Karen on WhatsApp</span></a>
-                    <p class="cta-microcopy"><span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 8 days before</span></p>
+
                     <a href="/book/" class="btn-book-outline" data-track="book_calculator" style="margin-top:4px;"><span data-i18n="calc.book_form">📝 Or request by form</span></a>
                 </div>
 
@@ -1323,7 +1175,6 @@
                         <ul>
                             <li data-i18n="license.sg.item1">✅ IDP from AA Singapore (~SGD 20, same-day)</li>
                             <li data-i18n="license.sg.item2">✈️ Direct flights: Changi ↔ Fukuoka (3.5 hours)</li>
-                            <li data-i18n="license.sg.item3">🚐 Pick up your van 10 min from Fukuoka Airport</li>
                             <li data-i18n="license.sg.item4">💰 From ~SGD 150/day all-inclusive</li>
                         </ul>
                     </div>
@@ -1338,84 +1189,6 @@
                             <li data-i18n="license.il.item4">💰 From ~$110 USD/day all-inclusive</li>
                         </ul>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══ JOURNEY MAP ═══ -->
-        <section class="journey-section" id="route">
-            <div class="journey-inner">
-                <div class="journey-header">
-                    <span class="rent-badge">🗺️ <span data-i18n="route.badge">Suggested Route</span></span>
-                    <h2 data-i18n="route.title">Your 7-Day Kyushu Road Trip</h2>
-                    <p data-i18n="route.subtitle">A recommended route from Fukuoka — fully customizable to your interests</p>
-                </div>
-
-                <div class="journey-timeline">
-                    <div class="journey-day">
-                        <div class="journey-dot"></div>
-                        <div class="journey-day-label">Day 1–2</div>
-                        <div class="journey-day-title" data-i18n="route.d1.title">Fukuoka → Aso</div>
-                        <div class="journey-day-desc" data-i18n="route.d1.desc">Drive through the countryside to the world’s largest volcanic caldera. Wake up to misty grasslands and wild horses at Kusasenri.</div>
-                        <div class="journey-day-highlights">
-                            <span class="journey-highlight">🌋 <span data-i18n="route.d1.h1">Daikanbo Viewpoint</span></span>
-                            <span class="journey-highlight">🌿 <span data-i18n="route.d1.h2">Kusasenri Grassland</span></span>
-                            <span class="journey-highlight">♨️ <span data-i18n="route.d1.h3">Kurokawa Onsen</span></span>
-                        </div>
-                    </div>
-
-                    <div class="journey-day">
-                        <div class="journey-dot"></div>
-                        <div class="journey-day-label">Day 3–4</div>
-                        <div class="journey-day-title" data-i18n="route.d3.title">Aso → Beppu</div>
-                        <div class="journey-day-desc" data-i18n="route.d3.desc">Head to Japan’s onsen capital. Soak in steaming hot springs, explore the “Hells of Beppu,” and eat local jigoku-mushi (steam-cooked) cuisine.</div>
-                        <div class="journey-day-highlights">
-                            <span class="journey-highlight">♨️ <span data-i18n="route.d3.h1">Hyotan Onsen</span></span>
-                            <span class="journey-highlight">🔥 <span data-i18n="route.d3.h2">Jigoku Meguri</span></span>
-                            <span class="journey-highlight">🍜 <span data-i18n="route.d3.h3">Jigoku-mushi</span></span>
-                        </div>
-                    </div>
-
-                    <div class="journey-day">
-                        <div class="journey-dot"></div>
-                        <div class="journey-day-label">Day 5</div>
-                        <div class="journey-day-title" data-i18n="route.d5.title">Beppu → Takachiho</div>
-                        <div class="journey-day-desc" data-i18n="route.d5.desc">Discover the mythical gorge where Japanese gods are said to have descended. Rent a boat and drift beneath the 17m Manai Falls.</div>
-                        <div class="journey-day-highlights">
-                            <span class="journey-highlight">⛩️ <span data-i18n="route.d5.h1">Takachiho Gorge</span></span>
-                            <span class="journey-highlight">⚩️ <span data-i18n="route.d5.h2">Amano Iwato Shrine</span></span>
-                            <span class="journey-highlight">🎭 <span data-i18n="route.d5.h3">Yokagura Dance</span></span>
-                        </div>
-                    </div>
-
-                    <div class="journey-day">
-                        <div class="journey-dot"></div>
-                        <div class="journey-day-label">Day 6</div>
-                        <div class="journey-day-title" data-i18n="route.d6.title">Takachiho → Itoshima</div>
-                        <div class="journey-day-desc" data-i18n="route.d6.desc">Wind through mountain roads back to the coast. End the day watching the sunset at Sakurai Futamigaura with its iconic torii gate and sea rocks.</div>
-                        <div class="journey-day-highlights">
-                            <span class="journey-highlight">🌅 <span data-i18n="route.d6.h1">Futamigaura Sunset</span></span>
-                            <span class="journey-highlight">🌴 <span data-i18n="route.d6.h2">Beach Cafes</span></span>
-                            <span class="journey-highlight">🍵 <span data-i18n="route.d6.h3">Local Crafts</span></span>
-                        </div>
-                    </div>
-
-                    <div class="journey-day">
-                        <div class="journey-dot"></div>
-                        <div class="journey-day-label">Day 7</div>
-                        <div class="journey-day-title" data-i18n="route.d7.title">Itoshima → Fukuoka</div>
-                        <div class="journey-day-desc" data-i18n="route.d7.desc">A short 40-minute drive back to base. Drop off the van, grab a bowl of Hakata tonkotsu ramen, and catch your flight home.</div>
-                        <div class="journey-day-highlights">
-                            <span class="journey-highlight">🍜 <span data-i18n="route.d7.h1">Hakata Ramen</span></span>
-                            <span class="journey-highlight">✈️ <span data-i18n="route.d7.h2">10 min to Airport</span></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="journey-cta">
-                    <a href="https://wa.me/817093757129?text=Hi!%20I'm%20planning%20a%207-day%20Kyushu%20road%20trip.%20Can%20you%20help%20with%20the%20route?">
-                        💬 <span data-i18n="route.cta">Plan Your Custom Route</span>
-                    </a>
                 </div>
             </div>
         </section>
@@ -1534,7 +1307,7 @@
                     📝 <span data-i18n="cta.book">Prefer not to chat? Request by form</span>
                 </a>
             </div>
-            <p class="cta-microcopy"><span data-i18n="cta.microcopy">✓ Real owner replies personally · ✓ No payment & no documents until we confirm your dates · ✓ Free cancellation up to 8 days before</span></p>
+
         </section>
 
     <!-- ═══ Sticky Bottom Bar ═══ -->
@@ -1545,7 +1318,10 @@
         </div>
         <div class="sticky-bar-buttons">
             <a href="/book/" class="btn-book-outline btn-book-outline--sticky" data-track="book_sticky" data-i18n="sticky.book">📝 Book Now</a>
-            <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20check%20availability%20for%20a%20campervan%20in%20Fukuoka." class="btn-whatsapp" target="_blank" data-track="wa_sticky">💬 WhatsApp</a>
+            <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20check%20availability%20for%20a%20campervan%20in%20Fukuoka." class="btn-whatsapp" target="_blank" data-track="wa_sticky">
+              <img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:24px;height:24px;border-radius:50%;object-fit:cover;object-position:65% center;">
+              💬 WhatsApp
+            </a>
         </div>
     </div>
 
