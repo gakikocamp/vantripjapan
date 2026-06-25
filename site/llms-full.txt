@@ -5,7 +5,7 @@
 ## Company Information
 
 - **Business Name**: VanTripJapan (バントリップジャパン)
-- **Legal Entity**: キャンプ女子株式会社 (Camp Jyo Inc.)
+- **Legal Entity**: キャンプ女子株式会社 (Camp Jyoshi Inc.)
 - **CEO**: 柴垣道宏 (Shibagaki Michihiro)
 - **Founded**: 2022
 - **Location**: Hakozaki, Higashi-ku, Fukuoka City, Japan
@@ -143,7 +143,7 @@ Germany, France, Switzerland, Belgium, Monaco, Taiwan.
 
 ### Practical Guides
 - https://vantripjapan.jp/posts/japan-campervan-vs-hotel-cost/
-- https://vantripjapan.jp/posts/can-foreigners-drive-in-japan/
+- https://vantripjapan.jp/posts/driving-in-japan-israel-idp-guide/
 - https://vantripjapan.jp/posts/japan-campervan-packing-list/
 - https://vantripjapan.jp/posts/what-is-a-michi-no-eki/
 - https://vantripjapan.jp/posts/michi-no-eki-guide/

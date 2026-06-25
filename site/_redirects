@@ -32,3 +32,7 @@
 
 # Top-campervan thin article redirect
 /posts/top-campervan-rental-kyushu-2026/ /rent/ 301
+
+# Redirect driving license article slug
+/posts/can-foreigners-drive-in-japan/ /posts/driving-in-japan-israel-idp-guide/ 301
+/posts/can-foreigners-drive-in-japan /posts/driving-in-japan-israel-idp-guide/ 301

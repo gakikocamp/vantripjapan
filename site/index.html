@@ -286,7 +286,7 @@
       "parentOrganization": {
         "@type": "Organization",
         "name": "キャンプ女子株式会社",
-        "alternateName": "Camp Jyo Inc.",
+        "alternateName": "Camp Jyoshi Inc.",
         "url": "https://www.camjyo.com/"
       },
       "sameAs": [
@@ -296,7 +296,55 @@
     }
     </script>
 
-
+    <style>
+        .search-widget--glass input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            form.search-widget--glass {
+                flex-direction: column !important;
+                align-items: stretch !important;
+            }
+            form.search-widget--glass .search-widget-group {
+                width: 100% !important;
+            }
+            form.search-widget--glass button {
+                align-self: stretch !important;
+                margin-top: 8px !important;
+            }
+        }
+    </style>
+    <script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const pickupInput = document.getElementById('sw-pickup');
+        const returnInput = document.getElementById('sw-return');
+        if (pickupInput && returnInput) {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowStr = tomorrow.toISOString().slice(0, 10);
+            
+            const defaultReturn = new Date();
+            defaultReturn.setDate(tomorrow.getDate() + 5);
+            const defaultReturnStr = defaultReturn.toISOString().slice(0, 10);
+            
+            pickupInput.value = tomorrowStr;
+            pickupInput.min = new Date().toISOString().slice(0, 10);
+            
+            returnInput.value = defaultReturnStr;
+            returnInput.min = tomorrowStr;
+            
+            pickupInput.addEventListener('change', () => {
+                returnInput.min = pickupInput.value;
+                if (returnInput.value < pickupInput.value) {
+                    const newReturn = new Date(pickupInput.value);
+                    newReturn.setDate(newReturn.getDate() + 5);
+                    returnInput.value = newReturn.toISOString().slice(0, 10);
+                }
+            });
+        }
+    });
+    </script>
 </head>
 
 <body>
@@ -336,7 +384,34 @@
                 <span class="hero-badge">🇯🇵 Family-Run Camper & Campervan Rental in Fukuoka</span>
                 <h1 class="hero-title">Explore Kyushu<br>Your Way</h1>
                 <p class="hero-description">We're a husband-and-wife team renting hand-built campers and campervans out of Fukuoka. Onsen-hop through Beppu, drive the Aso caldera rim, and wake up to ocean views — all-inclusive from ¥22,000/day.</p>
-                <div class="hero-actions">
+                
+                <!-- Search Widget -->
+                <form class="search-widget search-widget--glass" action="/book/" method="GET" style="display: flex; flex-wrap: wrap; background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 16px 20px; gap: 16px; align-items: center; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); width: 100%; max-width: 650px; margin: 24px 0 16px;">
+                    <div class="search-widget-group" style="flex: 1; min-width: 130px; display: flex; flex-direction: column; gap: 4px;">
+                        <label for="sw-pickup" style="font-size: 0.7rem; font-weight: 700; color: rgba(255, 255, 255, 0.9); text-transform: uppercase; letter-spacing: 0.5px;">Pickup Date</label>
+                        <input type="date" id="sw-pickup" name="from" required style="padding: 8px 12px; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px; font-size: 0.9rem; background: rgba(255, 255, 255, 0.1); color: #ffffff; outline: none; transition: all 0.2s;">
+                    </div>
+                    <div class="search-widget-group" style="flex: 1; min-width: 130px; display: flex; flex-direction: column; gap: 4px;">
+                        <label for="sw-return" style="font-size: 0.7rem; font-weight: 700; color: rgba(255, 255, 255, 0.9); text-transform: uppercase; letter-spacing: 0.5px;">Return Date</label>
+                        <input type="date" id="sw-return" name="to" required style="padding: 8px 12px; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px; font-size: 0.9rem; background: rgba(255, 255, 255, 0.1); color: #ffffff; outline: none; transition: all 0.2s;">
+                    </div>
+                    <div class="search-widget-group" style="flex: 0.8; min-width: 100px; display: flex; flex-direction: column; gap: 4px;">
+                        <label for="sw-guests" style="font-size: 0.7rem; font-weight: 700; color: rgba(255, 255, 255, 0.9); text-transform: uppercase; letter-spacing: 0.5px;">Guests</label>
+                        <select id="sw-guests" name="guests" required style="padding: 8px 12px; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px; font-size: 0.9rem; background: rgba(0, 0, 0, 0.4); color: #ffffff; outline: none; transition: all 0.2s; -webkit-appearance: none; appearance: none; background-image: url(&quot;data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>&quot;); background-repeat: no-repeat; background-position: right 8px center; padding-right: 28px;">
+                            <option value="1">1 Guest</option>
+                            <option value="2" selected>2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5+ Guests</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="search-widget-btn" style="align-self: flex-end; padding: 10px 20px; background: #C4704B; color: #FFFFFF; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; height: 38px; justify-content: center; margin-top: auto; border: 1px solid #C4704B;">
+                        <span>Search</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+
+                <div class="hero-actions" style="margin-top: 8px;">
                     <a href="/rent/" class="hero-cta">Rent a Camper / Campervan →</a>
                     <a href="/#stories" class="hero-cta hero-cta--ghost">Read Travel Guides</a>
                 </div>
@@ -355,7 +430,7 @@
                         <h3>Campervan vs Hotel: The Real Cost Comparison</h3>
                     </div>
                 </a>
-                <a href="/posts/kyushu-onsen-road-trip/" class="hero-featured-card hero-featured-card--small">
+                <a href="/posts/driving-in-japan-israel-idp-guide/" class="hero-featured-card hero-featured-card--small">
                     <img src="/images/article-driving-license-japan.png" loading="lazy" alt="Driving License Guide">
                     <div class="hero-featured-text">
                         <span class="hero-featured-cat">Guide</span>
@@ -545,8 +620,8 @@
         </div>
 
         <div class="footer-bottom">
-            <span>© 2026 VanTripJapan. Operated by <a href="https://www.camjyo.com/" target="_blank" style="color:inherit;text-decoration:underline;">キャンプ女子株式会社</a>. All rights reserved.</span>
-            <span>Fukuoka, Japan</span>
+            <span>© 2026 VanTripJapan. Operated by <a href="https://www.camjyo.com/" target="_blank" style="color:inherit;text-decoration:underline;">Camp Jyoshi Inc.</a> — Tenjin HQ, Fukuoka.</span>
+            <span>All rights reserved.</span>
         </div>
     </footer>
 
