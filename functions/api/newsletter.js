@@ -178,6 +178,57 @@ export async function onRequest(context) {
     }
   }
 
+  // 3.5. Send email notification to Karen (owner) on new lead capture
+  if (shouldSendDrip1 && env.RESEND_API_KEY) {
+    try {
+      const ownerSubject = `[Lead Alert] New Kyushu Guide Download - ${name || 'New Lead'}`;
+      const ownerHtml = `
+        <div style="font-family: sans-serif; line-height: 1.6; color: #2d3748; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; background-color: #f7fafc;">
+          <h2 style="color: #2c5282; margin-top: 0; display: flex; align-items: center; gap: 8px;">🗺️ New Guide Download</h2>
+          <p>Hi Karen,</p>
+          <p>A new traveler has just requested the free <strong>Kyushu Road Trip Guide</strong>!</p>
+          <div style="background-color: #ffffff; border: 1px solid #edf2f7; border-radius: 6px; padding: 16px; margin: 18px 0;">
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 6px 0; font-weight: bold; width: 120px; color: #4a5568;">Name:</td>
+                <td style="padding: 6px 0; color: #2d3748;">${name || '—'}</td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 0; font-weight: bold; color: #4a5568;">Email:</td>
+                <td style="padding: 6px 0;"><a href="mailto:${email}" style="color: #3182ce; text-decoration: underline;">${email}</a></td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 0; font-weight: bold; color: #4a5568;">Planned Area:</td>
+                <td style="padding: 6px 0; color: #2d3748; text-transform: capitalize;">${survey}</td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 0; font-weight: bold; color: #4a5568;">Language:</td>
+                <td style="padding: 6px 0; color: #2d3748; text-transform: uppercase;">${language}</td>
+              </tr>
+            </table>
+          </div>
+          <p style="font-size: 13px; color: #718096; margin-bottom: 0;">They have been subscribed to the 5-step nurturing drip email campaign (Step 1 sent in ${language}).</p>
+        </div>
+      `;
+
+      await fetch(RESEND_API, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: FROM,
+          to: ['info@vantripjapan.jp'],
+          subject: ownerSubject,
+          html: ownerHtml,
+        }),
+      });
+    } catch (err) {
+      console.error('Owner lead notification delivery error:', err);
+    }
+  }
+
   // 4. Backwards Compatibility: Sync to MailerLite if configured
   if (env.MAILERLITE_API_KEY) {
     try {
