@@ -1938,7 +1938,7 @@
         })();
 
         // ── PDF Guide Download Modal Logic ──
-        (function() {
+        document.addEventListener('DOMContentLoaded', function() {
             var overlay = document.getElementById('guide-popup-overlay');
             var closeBtn = document.getElementById('guide-popup-close');
             var formState = document.getElementById('guide-popup-form-state');
@@ -1951,17 +1951,21 @@
             var isShown = localStorage.getItem('vtj_guide_shown') === 'true';
 
             function openModal() {
-                overlay.style.display = 'flex';
-                // Force layout reflow
-                overlay.offsetHeight;
-                overlay.classList.add('active');
+                if (overlay) {
+                    overlay.style.display = 'flex';
+                    // Force layout reflow
+                    overlay.offsetHeight;
+                    overlay.classList.add('active');
+                }
             }
 
             function closeModal() {
-                overlay.classList.remove('active');
-                setTimeout(function() {
-                    overlay.style.display = 'none';
-                }, 300);
+                if (overlay) {
+                    overlay.classList.remove('active');
+                    setTimeout(function() {
+                        overlay.style.display = 'none';
+                    }, 300);
+                }
             }
 
             if (floatingBtn) {
@@ -1973,11 +1977,13 @@
             }
 
             // Close when clicking background overlay
-            overlay.addEventListener('click', function(e) {
-                if (e.target === overlay) {
-                    closeModal();
-                }
-            });
+            if (overlay) {
+                overlay.addEventListener('click', function(e) {
+                    if (e.target === overlay) {
+                        closeModal();
+                    }
+                });
+            }
 
             // Trigger automatically based on delay or scroll
             if (!isSubscribed && !isShown) {
@@ -2051,7 +2057,7 @@
                     });
                 });
             }
-        })();
+        });
     </script>
 
     <!-- ── Floating PDF Download Badge ── -->
