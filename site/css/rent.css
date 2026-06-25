@@ -851,6 +851,132 @@
     box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
 }
 
+/* Redesigned 2-Column Pricing Layout */
+.pricing-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    .pricing-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        align-items: start;
+    }
+}
+
+.pricing-layout .pricing-card {
+    max-width: 100%;
+}
+
+.pricing-inclusions-card {
+    background: var(--rent-surface);
+    border-radius: var(--rent-radius);
+    padding: 32px;
+    box-shadow: var(--rent-card-shadow);
+    border: 1px solid var(--rent-border);
+    text-align: left;
+}
+
+.inclusions-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--rent-text);
+}
+
+.inclusions-subtitle {
+    font-size: 15px;
+    color: var(--rent-text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.upgrades-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--rent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.pricing-upgrades {
+    list-style: none;
+}
+
+.pricing-upgrades li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    font-size: 15px;
+    font-weight: 500;
+    border-bottom: 1px solid var(--rent-border);
+    text-align: left;
+}
+
+.pricing-upgrades li:last-child {
+    border-bottom: none;
+}
+
+.pricing-disclosure {
+    background: rgba(44, 62, 80, 0.03);
+    border-radius: var(--rent-radius-sm);
+    padding: 24px;
+    margin-top: 24px;
+    border: 1px solid var(--rent-border);
+    text-align: left;
+}
+
+.pricing-disclosure h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--rent-text);
+    margin-top: 0;
+}
+
+.pricing-disclosure ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.pricing-disclosure li {
+    font-size: 14px;
+    color: var(--rent-text-secondary);
+    margin-bottom: 10px;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 16px;
+}
+
+.pricing-disclosure li::before {
+    content: "•";
+    color: var(--rent-terracotta);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.pricing-disclosure li:last-child {
+    margin-bottom: 0;
+}
+
+.pricing-disclosure p {
+    font-size: 13px;
+    color: var(--rent-text-muted);
+    margin-top: 16px;
+    border-top: 1px solid var(--rent-border);
+    padding-top: 12px;
+    margin-bottom: 0;
+}
+
 /* ══════════════════════════════════════════════
    Price Calculator
    ══════════════════════════════════════════════ */

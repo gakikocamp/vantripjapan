@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/style.css?v=20260615">
-    <link rel="stylesheet" href="/css/rent.css?v=20260625_v7">
+    <link rel="stylesheet" href="/css/rent.css?v=20260625_v8">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
@@ -769,36 +769,59 @@
                         is included</p>
                 </div>
 
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <p class="pricing-from" data-i18n="pricing.from">Starting from</p>
-                        <p class="pricing-amount">¥22,000<small data-i18n="pricing.perday"> /day〜</small></p>
-                        <p class="pricing-insurance-badge" data-i18n="pricing.insurance_badge">🛡️ Insurance (CDW) included in price</p>
-                    </div>
-                    <div class="pricing-body">
-                        <ul class="pricing-includes">
-                            <li><span class="check">✅</span> <span data-i18n="pricing.item1">Vehicle Insurance (CDW)
-                                    included — no extra charge</span></li>
-                            <li><span class="check">✅</span> <span data-i18n="pricing.item2">ETC Card — Free (pre-registration required) · Japan's electronic highway toll card. Fees auto-deducted from deposit, balance refunded at return.</span></li>
-                            <li><span class="check">✅</span> <span data-i18n="pricing.item4">Cooking set & tableware included</span></li>
-                            <li><span class="check">🏕️</span> <span data-i18n="pricing.item4b">Camping gear rental available (optional, extra charge)</span></li>
-                            <li><span class="check">✅</span> <span data-i18n="pricing.item5">24-hour roadside
-                                    assistance</span></li>
-                            <li><span class="check">🚐</span> <span data-i18n="pricing.item7">Tokyo / Osaka drop-off available (surcharge applies)</span></li>
-                            <li><span class="check">✅</span> <span data-i18n="pricing.item6">Multilingual support</span>
-                            </li>
-                            <li style="background: linear-gradient(135deg, #fff8e1, #ffecb3); border-radius: 8px; padding: 12px 16px; margin-top: 12px; border-left: 4px solid #BF4E30;">
-                                <span class="check">🌀</span>
+                <div class="pricing-layout">
+                    <!-- Left Column: What's Included -->
+                    <div class="pricing-left">
+                        <div class="pricing-inclusions-card">
+                            <h3 class="inclusions-title" data-i18n="pricing.inclusions_title">✨ Included in Base Rate</h3>
+                            <p class="inclusions-subtitle" data-i18n="pricing.inclusions_subtitle">No hidden fees. Everything you need for the road is built in.</p>
+                            <ul class="pricing-includes">
+                                <li><span class="check">✅</span> <span data-i18n="pricing.item1">Vehicle Insurance (CDW) included — no extra charge</span></li>
+                                <li><span class="check">✅</span> <span data-i18n="pricing.item2">ETC Card — Free (pre-registration required) · Japan's electronic highway toll card. Fees auto-deducted from deposit, balance refunded at return.</span></li>
+                                <li><span class="check">✅</span> <span data-i18n="pricing.item4">Cooking set & tableware included</span></li>
+                                <li><span class="check">✅</span> <span data-i18n="pricing.item5">24-hour roadside assistance</span></li>
+                                <li><span class="check">✅</span> <span data-i18n="pricing.item6">Multilingual support</span></li>
+                            </ul>
+                            
+                            <div class="summer-perks-box" style="background: linear-gradient(135deg, #fff8e1, #ffecb3); border-radius: 8px; padding: 16px; margin-top: 20px; border-left: 4px solid #BF4E30; font-size: 15px; line-height: 1.6;">
+                                <span class="check" style="font-size: 20px; margin-right: 8px;">🌀</span>
                                 <span data-i18n="pricing.summer_perk"><strong>Free Summer Perks (Jun-Sep):</strong> Window mosquito screens + USB-powered portable fans are included 100% FREE with every rental (Advance request required). Sleep naturally with cool night breezes.</span>
-                            </li>
-                            <li style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 8px; padding: 12px 16px; margin-top: 12px; border-left: 4px solid #1976d2;">
-                                <span class="check">❄️</span>
-                                <span data-i18n="pricing.summer_ac_bundle"><strong>Summer Off-Grid Cooling Bundle:</strong> Premium EcoFlow Wave 3 Portable AC + High-capacity Portable Power Station for <strong>¥4,000/day</strong> (capped at <strong>¥28,000 max</strong> flat per trip). Run silent air conditioning overnight with the engine completely turned OFF!</span>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
+                    </div>
 
-                        <div class="pricing-notice">
-                            🛡️ <span data-i18n="pricing.notice">No hidden fees. Insurance is already included in the daily rate.</span>
+                    <!-- Right Column: Price & CTAs + Fine Print -->
+                    <div class="pricing-right">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <p class="pricing-from" data-i18n="pricing.from">Starting from</p>
+                                <p class="pricing-amount">¥22,000<small data-i18n="pricing.perday"> /day〜</small></p>
+                                <p class="pricing-insurance-badge" data-i18n="pricing.insurance_badge">🛡️ Insurance (CDW) included in price</p>
+                            </div>
+                            <div class="pricing-body">
+                                <h4 class="upgrades-title" data-i18n="pricing.upgrades_title">⚡ Optional Upgrades</h4>
+                                <ul class="pricing-upgrades">
+                                    <li><span class="check">🏕️</span> <span data-i18n="pricing.item4b">Camping gear rental available (optional, extra charge)</span></li>
+                                    <li><span class="check">🚐</span> <span data-i18n="pricing.item7">Tokyo / Osaka drop-off available (surcharge applies)</span></li>
+                                    <li style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 8px; padding: 16px; margin-top: 12px; border-left: 4px solid #1976d2; font-size: 14px; font-weight: normal; line-height: 1.5; text-align: left; display: flex; align-items: start; gap: 12px; border-bottom: none;">
+                                        <span class="check" style="font-size: 20px; margin-top: 2px;">❄️</span>
+                                        <span data-i18n="pricing.summer_ac_bundle"><strong>Summer Off-Grid Cooling Bundle:</strong> Premium EcoFlow Wave 3 Portable AC + High-capacity Portable Power Station for <strong>¥4,000/day</strong> (capped at <strong>¥28,000 max</strong> flat per trip). Run silent air conditioning overnight with the engine completely turned OFF!</span>
+                                    </li>
+                                </ul>
+
+                                <div class="pricing-notice" style="margin-top: 24px;">
+                                    🛡️ <span data-i18n="pricing.notice">No hidden fees. Insurance is already included in the daily rate.</span>
+                                </div>
+
+                                <p class="pricing-note" data-i18n="pricing.note">* Above is PROBOX weekday rate. BONGO / weekends may differ.</p>
+
+                                <div class="pricing-cta-group">
+                                    <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20a%20quote%20for%20a%20campervan%20rental."
+                                        class="pricing-cta" data-track="wa_pricing" style="display:inline-flex;align-items:center;gap:10px;justify-content:center;"><img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.4);flex-shrink:0;"> <span data-i18n="pricing.cta">Get a Quote from Karen on WhatsApp</span></a>
+
+                                    <a href="/book/" class="btn-book-outline" data-track="book_pricing" data-i18n="cta.book">📝 Prefer not to chat? Request by form</a>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Deposit & Deductible Disclosure -->
@@ -811,16 +834,6 @@
                                 <li data-i18n="pricing.full_cover"><strong>Zero-Risk Full Cover Option (+¥5,000/day):</strong> Highly recommended. Waives all deductibles and NOC to ¥0, and covers tire punctures and towing.</li>
                             </ul>
                             <p data-i18n="pricing.disclosure_note">Full details are provided in our <a href="/rent/terms/">Rental Terms & Conditions</a>. We'll explain everything clearly at pick-up — no surprises.</p>
-                        </div>
-
-                        <p class="pricing-note" data-i18n="pricing.note">* Above is PROBOX weekday rate. BONGO /
-                            weekends may differ.</p>
-
-                        <div class="pricing-cta-group">
-                            <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20a%20quote%20for%20a%20campervan%20rental."
-                                class="pricing-cta" data-track="wa_pricing" style="display:inline-flex;align-items:center;gap:10px;"><img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.4);flex-shrink:0;"> <span data-i18n="pricing.cta">Get a Quote from Karen on WhatsApp</span></a>
-
-                            <a href="/book/" class="btn-book-outline" data-track="book_pricing" data-i18n="cta.book">📝 Prefer not to chat? Request by form</a>
                         </div>
                     </div>
                 </div>
