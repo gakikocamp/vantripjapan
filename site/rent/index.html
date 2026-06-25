@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/style.css?v=20260615">
-    <link rel="stylesheet" href="/css/rent.css?v=20260615">
+    <link rel="stylesheet" href="/css/rent.css?v=20260625_v4">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
@@ -525,14 +525,14 @@
                         <span class="vehicle-number">01</span>
                         <h3>Roof Tent Probox</h3>
                         <p style="font-size: 14px; color: var(--rent-text-secondary); font-style: italic; margin-bottom: 12px;" data-i18n="vehicles.probox_story">Our compact explorer. Outstanding fuel economy, extremely compact and easy to park, with 5 seats and massive luggage space. Perfect for couples.</p>
-                        <div class="vehicle-img" style="margin: 16px 0; aspect-ratio: 16/9; overflow: hidden; border-radius: 12px; position: relative; cursor: pointer;" onclick="(function(el){var imgs=el.querySelectorAll('img');var cur=el.dataset.cur||'0';var next=(parseInt(cur)+1)%imgs.length;imgs[cur].style.opacity='0';imgs[next].style.opacity='1';el.dataset.cur=next;})(this)">
-                            <img src="/images/rent/vehicles/probox-front.jpg" alt="Toyota Probox with roof tent at Aso viewpoint, Kyushu" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: opacity 0.5s ease; opacity: 1;">
-                            <img src="/images/rent/vehicles/probox-rear.jpg" alt="Toyota Probox with roof tent on mountain road, Mt Aso" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: opacity 0.5s ease; opacity: 0;">
-                            <span style="position: absolute; bottom: 8px; right: 12px; background: rgba(0,0,0,0.5); color: #fff; font-size: 11px; padding: 3px 10px; border-radius: 12px; pointer-events: none;">Tap to see more →</span>
+                        <div class="vehicle-img" style="margin: 16px 0; aspect-ratio: 16/9; overflow: hidden; border-radius: 12px; position: relative;">
+                            <a href="/rent/probox/" class="vehicle-img-link" title="View details for Roof Tent Probox"></a>
+                            <img src="/images/rent/vehicles/probox-front.jpg" alt="Toyota Probox with roof tent at Aso viewpoint, Kyushu" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0;">
                         </div>
                         <div class="vehicle-specs">
                             <div class="spec-item">👥 <span data-i18n="vehicles.spec_guest2">2 guests</span></div>
                             <div class="spec-item">🛏️ <span data-i18n="vehicles.spec_rooftent">Roof tent</span></div>
+                            <div class="spec-item">🕹️ <span data-i18n="vehicles.spec_auto">Automatic</span></div>
                             <div class="spec-item">⛽ <span data-i18n="vehicles.spec_fuel">Great fuel economy</span></div>
                             <div class="spec-item">🅿️ <span data-i18n="vehicles.spec_park">Easy to park</span></div>
                             <div class="spec-item">📱 <span data-i18n="vehicles.spec_power">Portable power</span></div>
@@ -541,6 +541,7 @@
                         </div>
                         <p class="vehicle-price">¥22,000〜 <small data-i18n="vehicles.perday">/day</small></p>
                         <p class="vehicle-insurance-note" data-i18n="vehicles.insurance_note">🛡️ Insurance included</p>
+                        <a href="/rent/probox/" class="btn-details-outline" data-i18n="details.view_specs">🔍 View Specs & Details →</a>
                         <a href="https://wa.me/817093757129?text=Hi%20Karen!%20Is%20the%20Probox%20available%20for%20my%20dates%3F" class="btn-book btn-book--block" target="_blank" data-track="wa_vehicle_probox" data-i18n="vehicles.book_btn">💬 Ask Karen about this van</a>
                         <p class="vehicle-availability"><a href="/book/?vehicle=probox" data-track="book_vehicle_probox" data-i18n="vehicles.no_payment" style="color:var(--rent-text-muted);">or request by form — no payment until confirmed</a></p>
                     </div>
@@ -551,18 +552,23 @@
                         <h3>Bed Bongo Brawny</h3>
                         <p style="font-size: 14px; color: var(--rent-text-secondary); font-style: italic; margin-bottom: 12px;" data-i18n="vehicles.bongo_story">Our hand-built cruiser. Spacious enough to relax and enjoy inside even on rainy days. Despite its larger size, the vehicle width is narrow, making it incredibly easy to drive on Japan's roads.</p>
                         <div style="display: inline-block; background: var(--rent-forest); color: white; padding: 4px 12px; border-radius: var(--rent-radius-pill); font-size: 11px; font-weight: 700; margin-bottom: 8px;">🔧 <span data-i18n="vehicles.handbuilt">HAND-BUILT</span></div>
-                        <div class="vehicle-img" style="margin: 16px 0; aspect-ratio: 16/9; overflow: hidden; border-radius: 12px;"><img src="/images/rent/vehicles/bongo-mountain.jpg" alt="Bongo Brawny Campervan on mountain road" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                        <div class="vehicle-img" style="margin: 16px 0; aspect-ratio: 16/9; overflow: hidden; border-radius: 12px; position: relative;">
+                            <a href="/rent/bongo/" class="vehicle-img-link" title="View details for Bed Bongo Brawny"></a>
+                            <img src="/images/rent/vehicles/bongo-mountain.jpg" alt="Bongo Brawny Campervan on mountain road" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0;">
+                        </div>
                         <div class="vehicle-specs">
                             <div class="spec-item">👥 <span data-i18n="vehicles.spec_guest23">2-3 guests</span></div>
                             <div class="spec-item">🛏️ <span data-i18n="vehicles.spec_bed">Built-in bed</span></div>
+                            <div class="spec-item">🕹️ <span data-i18n="vehicles.spec_auto">Automatic</span></div>
                             <div class="spec-item">🏠 <span data-i18n="vehicles.spec_space">More interior space</span></div>
                             <div class="spec-item">🔌 <span data-i18n="vehicles.spec_inverter">Power inverter</span></div>
                             <div class="spec-item">💡 <span data-i18n="vehicles.spec_led">LED lighting</span></div>
-                            <div class="spec-item">🪑 Camping chairs</div>
+                            <div class="spec-item">🪑 <span data-i18n="vehicles.spec_chairs">Camping chairs</span></div>
                             <div class="spec-item" style="background: linear-gradient(135deg, #fff3e0, #ffe0b2); border: 1px solid #ffb74d;">🌀 <span data-i18n="vehicles.spec_fan">Free fan (Jun–Sep)</span></div>
                         </div>
                         <p class="vehicle-price">¥22,000〜 <small data-i18n="vehicles.perday">/day</small></p>
                         <p class="vehicle-insurance-note" data-i18n="vehicles.insurance_note">🛡️ Insurance included</p>
+                        <a href="/rent/bongo/" class="btn-details-outline" data-i18n="details.view_specs">🔍 View Specs & Details →</a>
                         <a href="https://wa.me/817093757129?text=Hi%20Karen!%20Is%20the%20Bongo%20available%20for%20my%20dates%3F" class="btn-book btn-book--block" target="_blank" data-track="wa_vehicle_bongo" data-i18n="vehicles.book_btn">💬 Ask Karen about this van</a>
                         <p class="vehicle-availability"><a href="/book/?vehicle=bongo" data-track="book_vehicle_bongo" data-i18n="vehicles.no_payment" style="color:var(--rent-text-muted);">or request by form — no payment until confirmed</a></p>
                     </div>
@@ -577,15 +583,14 @@
                             <div style="display: inline-block; background: var(--rent-forest); color: white; padding: 4px 12px; border-radius: var(--rent-radius-pill); font-size: 11px; font-weight: 700;">🔧 <span data-i18n="vehicles.handbuilt">HAND-BUILT</span></div>
                             <div style="display: inline-block; background: linear-gradient(135deg, #0077b6, #00b4d8); color: white; padding: 4px 12px; border-radius: var(--rent-radius-pill); font-size: 11px; font-weight: 700;">🏝️ <span data-i18n="vehicles.daihatsu_island_badge">ISLAND FERRY FRIENDLY</span></div>
                         </div>
-                        <div class="vehicle-img" style="margin: 16px 0; aspect-ratio: 16/9; overflow: hidden; border-radius: 12px; position: relative; cursor: pointer;" onclick="(function(el){var imgs=el.querySelectorAll('img');var cur=el.dataset.cur||'0';var next=(parseInt(cur)+1)%imgs.length;imgs[cur].style.opacity='0';imgs[next].style.opacity='1';el.dataset.cur=next;})(this)">
-                            <img src="/images/rent/vehicles/daihatsu.jpg" alt="Pocket Loft with roof tent" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: opacity 0.5s ease; opacity: 1;">
-                            <img src="/images/rent/vehicles/daihatsu-front.webp" alt="Pocket Loft front view" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: opacity 0.5s ease; opacity: 0;">
-                            <img src="/images/rent/vehicles/daihatsu-interior.webp" alt="Pocket Loft interior view" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: opacity 0.5s ease; opacity: 0;">
-                            <span style="position: absolute; bottom: 8px; right: 12px; background: rgba(0,0,0,0.5); color: #fff; font-size: 11px; padding: 3px 10px; border-radius: 12px; pointer-events: none;">Tap to see more →</span>
+                        <div class="vehicle-img" style="margin: 16px 0; aspect-ratio: 16/9; overflow: hidden; border-radius: 12px; position: relative;">
+                            <a href="/rent/loft/" class="vehicle-img-link" title="View details for Pocket Loft"></a>
+                            <img src="/images/rent/vehicles/daihatsu.jpg" alt="Pocket Loft with roof tent" style="width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0;">
                         </div>
                         <div class="vehicle-specs">
                             <div class="spec-item">👥 <span data-i18n="vehicles.spec_guest4">2-4 guests</span></div>
                             <div class="spec-item">⛺ <span data-i18n="vehicles.spec_rooftent_indoor">Indoor roof tent access</span></div>
+                            <div class="spec-item">🕹️ <span data-i18n="vehicles.spec_auto">Automatic</span></div>
                             <div class="spec-item">⛰️ <span data-i18n="vehicles.spec_panorama">Panorama views</span></div>
                             <div class="spec-item">🚗 <span data-i18n="vehicles.spec_easy">Easiest to drive</span></div>
                             <div class="spec-item">⛽ <span data-i18n="vehicles.spec_fuel">Great fuel economy</span></div>
@@ -598,14 +603,21 @@
                         </div>
                         <p class="vehicle-price">¥25,000〜 <small data-i18n="vehicles.perday">/day</small></p>
                         <p class="vehicle-insurance-note" data-i18n="vehicles.insurance_note">🛡️ Insurance included</p>
+                        <a href="/rent/loft/" class="btn-details-outline" data-i18n="details.view_specs">🔍 View Specs & Details →</a>
                         <a href="https://wa.me/817093757129?text=Hi%20Karen!%20Is%20the%20Pocket%20Loft%20available%20for%20my%20dates%3F" class="btn-book btn-book--block" target="_blank" data-track="wa_vehicle_loft" data-i18n="vehicles.book_btn">💬 Ask Karen about this van</a>
                         <p class="vehicle-availability"><a href="/book/?vehicle=loft" data-track="book_vehicle_loft" data-i18n="vehicles.no_payment" style="color:var(--rent-text-muted);">or request by form — no payment until confirmed</a></p>
                     </div>
                 </div>
                 <!-- Micro proof: vehicles (factual, not fabricated) -->
-                <div class="micro-proof">
-                    <span class="proof-flag">🛡️</span>
-                    <span data-i18n="vehicles.proof1">Every van is fully insured (CDW included) and cleaned &amp; checked before each trip.</span>
+                <div class="micro-proof" style="display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: center; margin-top: 32px; font-size: 14px; color: var(--rent-text-secondary);">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="proof-flag">🛡️</span>
+                        <span data-i18n="vehicles.proof1">Every van is fully insured (CDW included) and cleaned &amp; checked before each trip.</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="proof-flag">🕹️</span>
+                        <span data-i18n="vehicles.proof_at">All vehicles are Automatic Transmission (AT) — easy to drive for anyone.</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -794,8 +806,9 @@
                             <h4 data-i18n="pricing.disclosure_title">💳 Important: Deposit & Insurance Details</h4>
                             <ul>
                                 <li data-i18n="pricing.deposit"><strong>Security Deposit: ¥50,000</strong> — Collected at pick-up and fully refunded at return (minus ETC tolls, if any).</li>
-                                <li data-i18n="pricing.deductible"><strong>Accident Deductible (免責額):</strong> In case of an accident, the driver is responsible for a deductible amount as specified in the rental agreement.</li>
-                                <li data-i18n="pricing.noc"><strong>Non-Operation Charge (NOC):</strong> If the vehicle cannot be used due to damage, an additional non-operation charge will apply. Details provided in the rental agreement.</li>
+                                <li data-i18n="pricing.deductible"><strong>Accident Deductible (免責額):</strong> In case of an accident, a deductible of up to ¥100,000 for vehicle damage and ¥100,000 for property damage applies.</li>
+                                <li data-i18n="pricing.noc"><strong>Non-Operation Charge (NOC):</strong> If the vehicle is damaged and cannot be rented (business downtime), a charge of ¥20,000 (if drivable) or ¥50,000 (if towing is required) applies.</li>
+                                <li data-i18n="pricing.full_cover"><strong>Zero-Risk Full Cover Option (+¥5,000/day):</strong> Highly recommended. Waives all deductibles and NOC to ¥0, and covers tire punctures and towing.</li>
                             </ul>
                             <p data-i18n="pricing.disclosure_note">Full details are provided in our <a href="/rent/terms/">Rental Terms & Conditions</a>. We'll explain everything clearly at pick-up — no surprises.</p>
                         </div>
@@ -1402,7 +1415,7 @@
     </div><!-- end .rent-page -->
 
     <script src="/js/nav.js?v=20260615"></script>
-    <script src="/js/i18n.js?v=20260615"></script>
+    <script src="/js/i18n.js?v=20260625_v6"></script>
     <script>
         // ── Price Calculator ──
         var _calcDays = 7, _calcVehicle = 22000, _calcVehicleName = 'Probox', _calcPeople = 2;

@@ -1340,7 +1340,7 @@
 
 .vehicles-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
 }
 
@@ -1352,6 +1352,9 @@
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .vehicle-card:hover {
@@ -1422,6 +1425,7 @@
     font-size: 24px;
     font-weight: 800;
     color: var(--rent-text);
+    margin-top: auto;
 }
 
 .vehicle-card .vehicle-price small {
@@ -3627,6 +3631,7 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
     transform: scale(1.02);
 }
 
+
 /* ── Floating Guide Badge (opposite of WhatsApp) ── */
 .floating-guide-badge {
     position: fixed;
@@ -3660,4 +3665,468 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
         font-size: 13px;
     }
 }
+
+
+/* ══════════════════════════════════════════════
+   Vehicle Detail Pages Styles
+   ══════════════════════════════════════════════ */
+
+.detail-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--rent-border);
+}
+
+.btn-back-fleet {
+    color: var(--rent-text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-back-fleet:hover {
+    color: var(--rent-primary);
+}
+
+.detail-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    margin-bottom: 80px;
+}
+
+@media (max-width: 992px) {
+    .detail-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+.detail-gallery-wrap {
+    position: sticky;
+    top: 100px;
+}
+
+.detail-gallery-main {
+    aspect-ratio: 16/9;
+    border-radius: var(--rent-radius);
+    overflow: hidden;
+    margin-bottom: 16px;
+    box-shadow: var(--rent-card-shadow);
+    background: #e5e7eb;
+    position: relative;
+    cursor: pointer;
+}
+
+.detail-gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+
+.detail-gallery-main img.active {
+    opacity: 1;
+}
+
+.detail-gallery-nav {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: var(--rent-radius-pill);
+    pointer-events: none;
+    font-weight: 600;
+}
+
+.detail-gallery-thumbnails {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+}
+
+.detail-thumb {
+    width: 80px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.detail-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-thumb.active {
+    border-color: var(--rent-accent);
+    transform: scale(1.05);
+}
+
+.detail-info h1 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.detail-desc {
+    font-size: 16px;
+    color: var(--rent-text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.7;
+}
+
+/* Specs Table */
+.detail-specs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 32px;
+}
+
+.detail-specs-table tr {
+    border-bottom: 1px solid var(--rent-border);
+}
+
+.detail-specs-table td {
+    padding: 14px 0;
+    font-size: 15px;
+}
+
+.detail-specs-table td.spec-label {
+    color: var(--rent-text-muted);
+    font-weight: 600;
+    width: 40%;
+}
+
+.detail-specs-table td.spec-val {
+    color: var(--rent-text);
+    font-weight: 700;
+    text-align: right;
+}
+
+/* Graphic Dimensions Visual */
+.dimensions-visual-card {
+    background: #FAF6F0;
+    border: 1px dashed var(--rent-border);
+    border-radius: var(--rent-radius);
+    padding: 24px;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.dimensions-visual-card h4 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--rent-text-secondary);
+}
+
+.dim-box {
+    border: 2px solid var(--rent-accent);
+    border-radius: 8px;
+    background: white;
+    padding: 16px;
+    display: inline-block;
+    min-width: 200px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(196,112,75,0.05);
+}
+
+.dim-line-w {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -24px;
+    height: 1px;
+    background: var(--rent-accent);
+}
+.dim-line-w::before, .dim-line-w::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--rent-accent);
+}
+.dim-line-w::before { left: 0; }
+.dim-line-w::after { right: 0; }
+
+.dim-line-h {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -24px;
+    width: 1px;
+    background: var(--rent-accent);
+}
+.dim-line-h::before, .dim-line-h::after {
+    content: '';
+    position: absolute;
+    left: -3px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--rent-accent);
+}
+.dim-line-h::before { top: 0; }
+.dim-line-h::after { bottom: 0; }
+
+.dim-label {
+    font-size: 12px;
+    color: var(--rent-accent);
+    font-weight: 700;
+    position: absolute;
+}
+.dim-label.width {
+    bottom: -44px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.dim-label.height {
+    right: -70px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+}
+
+/* Included Gear Checklist */
+.gear-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+}
+
+.gear-category-card {
+    background: white;
+    border: 1px solid var(--rent-border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: var(--rent-card-shadow);
+}
+
+.gear-category-card h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--rent-primary);
+    border-bottom: 1px solid var(--rent-border);
+    padding-bottom: 8px;
+}
+
+.gear-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.gear-list li {
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gear-list li::before {
+    content: '✓';
+    color: var(--rent-primary);
+    font-weight: bold;
+}
+
+/* Timeline Flow */
+.how-timeline {
+    position: relative;
+    padding: 20px 0;
+    margin-bottom: 48px;
+}
+
+.how-timeline::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--rent-border);
+}
+
+.how-step {
+    position: relative;
+    padding-left: 52px;
+    margin-bottom: 32px;
+}
+
+.how-step:last-child {
+    margin-bottom: 0;
+}
+
+.how-step-num {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 34px;
+    height: 34px;
+    background: var(--rent-surface);
+    border: 2px solid var(--rent-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--rent-primary);
+    font-size: 14px;
+    z-index: 1;
+}
+
+.how-step h4 {
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.how-step p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--rent-text-secondary);
+    line-height: 1.5;
+}
+
+/* Insurance Info layout */
+.insurance-comparison-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 48px;
+}
+
+@media (max-width: 768px) {
+    .insurance-comparison-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+.insurance-box {
+    background: white;
+    border: 1px solid var(--rent-border);
+    border-radius: var(--rent-radius);
+    padding: 24px;
+    box-shadow: var(--rent-card-shadow);
+    transition: transform 0.2s;
+}
+
+.insurance-box.premium {
+    border: 2px solid var(--rent-accent);
+    background: #FFFBF8;
+    position: relative;
+}
+
+.insurance-box.premium .ins-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--rent-accent);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: var(--rent-radius-pill);
+}
+
+.insurance-box h4 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.insurance-box p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--rent-text-secondary);
+    margin-bottom: 16px;
+}
+
+/* Fleet Details CTA Buttons */
+.btn-details-outline {
+    display: block;
+    text-align: center;
+    background: transparent;
+    border: 2px solid var(--rent-accent);
+    color: var(--rent-accent);
+    padding: 12px 24px;
+    border-radius: var(--rent-radius-pill);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 16px 0 12px;
+    transition: all 0.25s ease;
+}
+
+.btn-details-outline:hover {
+    background: var(--rent-accent);
+    color: white;
+    box-shadow: 0 4px 12px rgba(196, 112, 75, 0.25);
+    transform: translateY(-1px);
+}
+
+.vehicle-img-link {
+    position: absolute;
+    inset: 0;
+    display: block;
+    z-index: 2;
+    text-decoration: none;
+}
+
+.vehicle-img-link::after {
+    content: '🔍 View Details';
+    position: absolute;
+    inset: 0;
+    background: rgba(45, 90, 61, 0.85); /* rent-forest translucent */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.vehicle-img-link:hover::after {
+    opacity: 1;
+}
+
+@media (max-width: 1024px) {
+    .vehicles-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+
 
