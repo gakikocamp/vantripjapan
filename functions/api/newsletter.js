@@ -1,40 +1,14 @@
 /**
- * VanTripJapan — Newsletter Subscription API
- * POST /api/newsletter — stores email in D1, sends welcome email via Resend
+ * VanTripJapan — Newsletter Subscription API (Custom CRM & Drip Campaign Integrated)
+ * POST /api/newsletter — stores email in drip_subscribers (CUSTOMERS_DB), sends step 1 email via Resend
  */
 
 const RESEND_API = 'https://api.resend.com/emails';
-const FROM = 'VanTripJapan <newsletter@vantripjapan.jp>';
+const FROM = 'Karen | VanTripJapan <newsletter@vantripjapan.jp>';
 
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
-
-const WELCOME_HTML = (name) => `
-<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="UTF-8"></head>
-<body style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; padding: 40px 20px; color: #1A1A2E;">
-  <p style="font-size: 13px; letter-spacing: 2px; color: #BF4E30; text-transform: uppercase;">VAN TRIP JAPAN</p>
-  <h1 style="font-size: 24px; font-weight: 600; margin: 16px 0;">Welcome${name ? ', ' + name : ''}!</h1>
-  <p style="font-size: 16px; line-height: 1.8; color: #444;">
-    You're now part of the VanTripJapan community. We'll send you road trip guides, hidden spots across Kyushu, and occasional updates about our campervan rental service in Fukuoka.
-  </p>
-  <p style="font-size: 16px; line-height: 1.8; color: #444;">
-    Our vans are available from ¥16,500/day — all-inclusive, 10 minutes from Fukuoka Airport.
-  </p>
-  <a href="https://vantripjapan.jp/rent/" style="display: inline-block; margin: 24px 0; padding: 14px 28px; background: #BF4E30; color: #fff; text-decoration: none; font-size: 14px; letter-spacing: 1px;">
-    View Rental Options →
-  </a>
-  <p style="font-size: 14px; color: #888; margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
-    VanTripJapan · Fukuoka, Japan<br>
-    <a href="https://vantripjapan.jp" style="color: #888;">vantripjapan.jp</a>
-  </p>
-</body>
-</html>`;
-
-const WELCOME_TEXT = (name) =>
-  `Welcome${name ? ', ' + name : ''}!\n\nYou're now subscribed to VanTripJapan.\n\nWe'll send you road trip guides, hidden spots across Kyushu, and updates about our campervan rental in Fukuoka.\n\nOur vans start from ¥16,500/day — all-inclusive, 10 min from Fukuoka Airport.\nhttps://vantripjapan.jp/rent/\n\n— VanTripJapan Team`;
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -68,6 +42,8 @@ export async function onRequest(context) {
 
   const email = (body.email || '').trim().toLowerCase();
   const name  = (body.name  || '').trim().slice(0, 100);
+  const survey = (body.survey || 'kyushu').trim().slice(0, 50);
+  const language = (body.language || 'en').trim().slice(0, 10);
 
   if (!email || !isValidEmail(email)) {
     return new Response(JSON.stringify({ error: 'Valid email required' }), {
@@ -76,40 +52,160 @@ export async function onRequest(context) {
     });
   }
 
-  // Store in D1
-  try {
-    await env.DB.prepare(
-      `INSERT INTO newsletter_subscribers (site, email, name, subscribed_at)
-       VALUES ('vantrip', ?, ?, datetime('now'))
-       ON CONFLICT(site, email) DO NOTHING`
-    ).bind(email, name || null).run();
-  } catch (err) {
-    console.error('Newsletter DB error:', err.message, { email });
+  // 1. Backwards Compatibility: Store in main DB
+  if (env.DB) {
+    try {
+      await env.DB.prepare(
+        `INSERT INTO newsletter_subscribers (site, email, name, subscribed_at)
+         VALUES ('vantrip', ?, ?, datetime('now'))
+         ON CONFLICT(site, email) DO NOTHING`
+      ).bind(email, name || null).run();
+    } catch (err) {
+      console.error('Legacy Newsletter DB error:', err.message, { email });
+    }
   }
 
-  // Send welcome email via Resend
-  try {
-    const res = await fetch(RESEND_API, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: FROM,
-        to: [email],
-        subject: 'Welcome to VanTripJapan 🚐',
-        html: WELCOME_HTML(name),
-        text: WELCOME_TEXT(name),
-      }),
-    });
+  let shouldSendDrip1 = false;
 
-    if (!res.ok) {
-      const err = await res.text();
-      console.error('Resend error:', err);
+  // 2. Custom CRM: Store in CUSTOMERS_DB (drip_subscribers)
+  if (env.CUSTOMERS_DB) {
+    try {
+      // Check if subscriber already exists
+      const existing = await env.CUSTOMERS_DB.prepare(
+        'SELECT current_step FROM drip_subscribers WHERE email = ?'
+      ).bind(email).first();
+
+      if (!existing) {
+        // New subscriber
+        await env.CUSTOMERS_DB.prepare(
+          `INSERT INTO drip_subscribers (email, name, survey, language, current_step, next_send_date, last_sent_at)
+           VALUES (?, ?, ?, ?, 1, date('now', '+2 days'), datetime('now', 'localtime'))`
+        ).bind(email, name || null, survey, language).run();
+        shouldSendDrip1 = true;
+      } else if (existing.current_step === -1) {
+        // Resubscribing from unsubscribe state
+        await env.CUSTOMERS_DB.prepare(
+          `UPDATE drip_subscribers 
+           SET name = ?, survey = ?, language = ?, current_step = 1, next_send_date = date('now', '+2 days'), last_sent_at = datetime('now', 'localtime')
+           WHERE email = ?`
+        ).bind(name || null, survey, language, email).run();
+        shouldSendDrip1 = true;
+      } else {
+        // Already active or finished, do not restart
+        console.log(`Subscriber ${email} already at step ${existing.current_step}. Skipping restart.`);
+      }
+    } catch (err) {
+      console.error('Custom CRM DB error:', err.message, { email });
     }
-  } catch (err) {
-    console.error('Resend fetch error:', err);
+  }
+
+  // 2.5. Sync to Resend Audience
+  if (env.RESEND_API_KEY) {
+    try {
+      const audienceRes = await fetch('https://api.resend.com/audiences/de618a55-3736-4982-a19d-2996b31ef834/contacts', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          first_name: name.split(' ')[0] || '',
+          last_name: name.split(' ').slice(1).join(' ') || '',
+          unsubscribed: false,
+          metadata: {
+            lang: language,
+            source: 'newsletter_form',
+            survey: survey
+          }
+        }),
+      });
+      if (!audienceRes.ok) {
+        const errText = await audienceRes.text();
+        console.error('Failed to sync newsletter subscriber to Resend Audience:', errText);
+      }
+    } catch (e) {
+      console.error('Error syncing newsletter subscriber to Resend Audience:', e.message);
+    }
+  }
+
+  // 3. Send step 1 welcome drip email if needed
+  if (shouldSendDrip1 && env.RESEND_API_KEY) {
+    try {
+      // Fetch Step 1 template
+      let template = await env.CUSTOMERS_DB.prepare(
+        'SELECT subject, body_html FROM email_templates WHERE step = 1 AND language = ?'
+      ).bind(language).first();
+
+      // Fallback to English if language template is missing
+      if (!template && language !== 'en') {
+        template = await env.CUSTOMERS_DB.prepare(
+          'SELECT subject, body_html FROM email_templates WHERE step = 1 AND language = \'en\''
+        ).first();
+      }
+
+      if (template) {
+        // Render content
+        const renderedSubject = template.subject.replace(/{Name}/gi, name || 'there');
+        const unsubUrl = `https://vantripjapan.jp/api/newsletter/unsubscribe?email=${encodeURIComponent(email)}&lang=${language}`;
+        const renderedHtml = template.body_html
+          .replace(/{Name}/gi, name || 'there')
+          .replace(/{{UnsubscribeURL}}/g, unsubUrl);
+
+        const res = await fetch(RESEND_API, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: FROM,
+            to: [email],
+            subject: renderedSubject,
+            html: renderedHtml,
+          }),
+        });
+
+        if (!res.ok) {
+          const errText = await res.text();
+          console.error('Resend Step 1 delivery error:', errText);
+        }
+      } else {
+        console.error('Step 1 template not found in DB.');
+      }
+    } catch (err) {
+      console.error('Resend Step 1 send error:', err);
+    }
+  }
+
+  // 4. Backwards Compatibility: Sync to MailerLite if configured
+  if (env.MAILERLITE_API_KEY) {
+    try {
+      const mlData = {
+        email: email,
+        fields: {
+          name: name || '',
+          language: language,
+          survey: survey
+        }
+      };
+      
+      if (env.MAILERLITE_GROUP_ID) {
+        mlData.groups = [env.MAILERLITE_GROUP_ID];
+      }
+
+      await fetch('https://connect.mailerlite.com/api/subscribers', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${env.MAILERLITE_API_KEY}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(mlData)
+      });
+    } catch (err) {
+      console.error('MailerLite sync error:', err);
+    }
   }
 
   return new Response(JSON.stringify({ ok: true }), {

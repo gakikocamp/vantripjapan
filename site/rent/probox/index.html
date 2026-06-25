@@ -83,13 +83,47 @@
                 <!-- Graphic Dimensions Visual -->
                 <div class="dimensions-visual-card" style="margin-top: 30px;">
                     <h4 data-i18n="details.dimensions_title">Dimensions & Sleeping Space</h4>
-                    <div class="dim-box" style="width: 170px; height: 200px;">
-                        <span style="font-weight: 700; font-size: 15px; color: var(--rent-primary);" data-i18n="probox.title">Roof Tent Probox</span>
-                        <div style="font-size: 13px; color: var(--rent-text-secondary); margin-top: 6px;" data-i18n="probox.bed">Roof Tent Bed: 200cm × 120cm</div>
-                        <div class="dim-line-w"></div>
-                        <div class="dim-line-h"></div>
-                        <span class="dim-label width">W: 1.69m</span>
-                        <span class="dim-label height">H: 1.98m</span>
+                    <div class="dim-views-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; align-items: flex-start; margin-top: 20px;">
+                        <!-- Front View -->
+                        <div class="dim-view-item" style="display: flex; flex-direction: column; align-items: center;">
+                            <div style="font-weight: 600; font-size: 12px; color: var(--rent-text-muted); margin-bottom: 12px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="details.front_view">Front View</div>
+                            <div class="dim-box" style="width: 170px; height: 200px; margin-bottom: 30px; margin-right: 30px;">
+                                <span style="font-weight: 700; font-size: 15px; color: var(--rent-primary);" data-i18n="probox.title">Roof Tent Probox</span>
+                                <div style="font-size: 13px; color: var(--rent-text-secondary); margin-top: 6px;" data-i18n="probox.bed">Roof Tent Bed: 200cm × 120cm</div>
+                                <div class="dim-line-w" style="bottom: -20px;"></div>
+                                <div class="dim-line-h" style="right: -20px;"></div>
+                                <span class="dim-label width" style="bottom: -32px;">W: 1.69m</span>
+                                <span class="dim-label height" style="right: -60px;">H: 1.98m</span>
+                            </div>
+                        </div>
+                        <!-- Side View -->
+                        <div class="dim-view-item" style="display: flex; flex-direction: column; align-items: center; width: 240px;">
+                            <div style="font-weight: 600; font-size: 12px; color: var(--rent-text-muted); margin-bottom: 12px; letter-spacing: 0.5px; text-transform: uppercase;" data-i18n="details.side_view">Side View (Length Scale)</div>
+                            <div class="dim-box-side" style="background: white; border: 2px solid var(--rent-accent); border-radius: 8px; width: 100%; padding: 16px 12px; box-shadow: 0 4px 12px rgba(196,112,75,0.05); box-sizing: border-box;">
+                                <svg viewBox="0 0 240 140" width="100%" height="140" style="display: block; margin: 0 auto;">
+                                  <!-- Wheels -->
+                                  <circle cx="55" cy="100" r="14" fill="#333" />
+                                  <circle cx="55" cy="100" r="5" fill="#ccc" />
+                                  <circle cx="185" cy="100" r="14" fill="#333" />
+                                  <circle cx="185" cy="100" r="5" fill="#ccc" />
+                                  <!-- Body -->
+                                  <path d="M 20 100 L 20 70 Q 20 62 30 60 L 60 55 Q 70 48 85 48 L 210 48 Q 220 48 220 58 L 220 100 Z" fill="#f8fafc" stroke="var(--rent-accent)" stroke-width="2.5" />
+                                  <!-- Windows -->
+                                  <rect x="80" y="55" width="40" height="20" rx="2" fill="#cbd5e1" stroke="var(--rent-accent)" stroke-width="1.5" />
+                                  <rect x="130" y="55" width="45" height="20" rx="2" fill="#cbd5e1" stroke="var(--rent-accent)" stroke-width="1.5" />
+                                  <rect x="185" y="55" width="25" height="20" rx="2" fill="#cbd5e1" stroke="var(--rent-accent)" stroke-width="1.5" />
+                                  <!-- Roof Tent (Opened) -->
+                                  <polygon points="90,48 200,48 185,20 90,48" fill="#e2e8f0" stroke="var(--rent-primary)" stroke-width="2" />
+                                  <rect x="95" y="24" width="80" height="5" rx="1" fill="#E8DFD1" stroke="var(--rent-primary)" stroke-width="1" />
+                                  <text x="135" y="15" font-size="9" font-family="sans-serif" font-weight="bold" fill="var(--rent-primary)" text-anchor="middle">Tent Bed: 200cm</text>
+                                  <!-- Length arrow -->
+                                  <line x1="20" y1="124" x2="220" y2="124" stroke="var(--rent-accent)" stroke-width="1.5" stroke-dasharray="3 3" />
+                                  <polygon points="20,124 27,120 27,128" fill="var(--rent-accent)" />
+                                  <polygon points="220,124 213,120 213,128" fill="var(--rent-accent)" />
+                                  <text x="120" y="136" font-size="11" font-family="sans-serif" font-weight="bold" fill="var(--rent-accent)" text-anchor="middle">L: 4.24m</text>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -143,6 +177,9 @@
                         <td class="spec-val" data-i18n="probox.specs.luggage">Fits 2-3 large suitcases in trunk</td>
                     </tr>
                 </table>
+
+                <!-- Social Proof Stats -->
+                <div id="social-proof-container"></div>
 
                 <!-- Primary Booking CTA -->
                 <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 16px;">
@@ -395,6 +432,12 @@
                 });
             };
             initLightbox();
+        }
+    </script>
+    <script src="/js/social-proof.js"></script>
+    <script>
+        if (typeof VTJSocialProof !== 'undefined') {
+            VTJSocialProof.init('probox', 'details', '#social-proof-container');
         }
     </script>
 </body>

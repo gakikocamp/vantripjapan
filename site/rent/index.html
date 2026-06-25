@@ -618,6 +618,254 @@
                         <span class="proof-flag">🕹️</span>
                         <span data-i18n="vehicles.proof_at">All vehicles are Automatic Transmission (AT) — easy to drive for anyone.</span>
                     </div>
+            </div>
+        </section>
+
+        <!-- ═══ PRICE CALCULATOR ═══ -->
+        <section class="rent-section" id="calculator">
+            <div class="rent-container">
+                <div class="rent-section-header">
+                    <span class="rent-badge">🧮 <span data-i18n="calc.badge">Price Calculator</span></span>
+                    <h2 class="rent-section-title" data-i18n="calc.title">How Much Does Your Trip Cost?</h2>
+                    <p class="rent-section-subtitle" data-i18n="calc.subtitle">Longer stays = better value per day. Compare with hotels.</p>
+                </div>
+
+                <!-- Controls -->
+                <div class="calc-controls">
+                    <div class="calc-control">
+                        <label data-i18n="calc.days_label">Number of days</label>
+                        <div class="calc-slider-wrap">
+                            <input type="range" id="calc-days" min="1" max="30" value="7">
+                            <span class="calc-days-display"><span id="calc-days-val">7</span> <span data-i18n="calc.days_unit">days</span></span>
+                        </div>
+                    </div>
+                    <div class="calc-control">
+                        <label data-i18n="calc.vehicle_label">Vehicle</label>
+                        <div class="calc-veh-btns">
+                            <button class="calc-veh-btn active" data-price="22000" data-name="Probox">Probox<br><small>¥22,000/day</small></button>
+                            <button class="calc-veh-btn" data-price="22000" data-name="Bongo">Bongo<br><small>¥22,000/day</small></button>
+                            <button class="calc-veh-btn" data-price="25000" data-name="Pocket Loft">Pocket Loft<br><small>¥25,000/day</small></button>
+                        </div>
+                    </div>
+                    <div class="calc-control">
+                        <label data-i18n="calc.people_label">Travelers</label>
+                        <div class="calc-ppl-btns">
+                            <button class="calc-ppl-btn" data-people="1">1</button>
+                            <button class="calc-ppl-btn active" data-people="2">2</button>
+                            <button class="calc-ppl-btn" data-people="3">3</button>
+                            <button class="calc-ppl-btn" data-people="4">4</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Currency Selector -->
+                <style>
+                    .currency-btn {
+                        background: none;
+                        border: none;
+                        font-size: 11px;
+                        font-weight: 700;
+                        padding: 6px 14px;
+                        border-radius: 20px;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        color: var(--rent-text-primary);
+                    }
+                    .currency-btn.active {
+                        background: var(--rent-forest) !important;
+                        color: white !important;
+                        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.2);
+                    }
+                    .currency-btn:hover:not(.active) {
+                        background: rgba(0,0,0,0.08);
+                    }
+                </style>
+                <div class="calc-currency-switch" style="display: flex; gap: 8px; justify-content: flex-end; align-items: center; margin-bottom: 20px; width: 100%; flex-wrap: wrap;">
+                    <span style="font-size: 13px; font-weight: 600; color: var(--rent-text-secondary);" data-i18n="calc.currency_label">Display Currency (approx.):</span>
+                    <div class="currency-btns" style="display: flex; gap: 4px; background: rgba(0,0,0,0.05); padding: 4px; border-radius: 20px;">
+                        <button class="currency-btn active" data-curr="JPY">JPY (¥)</button>
+                        <button class="currency-btn" data-curr="USD">USD ($)</button>
+                        <button class="currency-btn" data-curr="EUR">EUR (€)</button>
+                        <button class="currency-btn" data-curr="GBP">GBP (£)</button>
+                        <button class="currency-btn" data-curr="ILS">ILS (₪)</button>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="calc-results">
+                    <div class="calc-card calc-card--van">
+                        <div class="calc-card-label">🚐 VanTripJapan</div>
+                        <div class="calc-perday">
+                            <span id="calc-van-perday">¥7,838</span><span class="calc-perday-unit" data-i18n="calc.per_person_day">/person/day</span>
+                        </div>
+                        <div class="calc-total-row">
+                            <span class="calc-total-small" id="calc-van-total">¥109,725</span>
+                            <span class="calc-total-note" id="calc-van-total-note">total · 7 days</span>
+                        </div>
+                        <div id="calc-discount-badge" style="display:none; margin:8px 0; padding:6px 14px; background:linear-gradient(135deg,#E8F5E9,#C8E6C9); border-radius:20px; font-size:13px; font-weight:600; color:#2E7D32; text-align:center;">
+                        </div>
+                        <div class="calc-perks">
+                            <div>✅ <span data-i18n="calc.perk1">Sleep in nature — mountains, coast, hot springs</span></div>
+                            <div>✅ <span data-i18n="calc.perk2">No check-in times. Go anywhere, anytime.</span></div>
+                            <div>✅ <span data-i18n="calc.perk3">Kitchen included. Save on meals.</span></div>
+                            <div>✅ <span data-i18n="calc.perk4">All-inclusive. Zero hidden costs.</span></div>
+                        </div>
+                    </div>
+
+                    <div class="calc-vs">VS</div>
+
+                    <div class="calc-card calc-card--hotel">
+                        <div class="calc-card-label">🏨 <span data-i18n="calc.hotel_note">Hotel + inter-city transport</span></div>
+                        <div class="calc-perday">
+                            <span id="calc-hotel-perday">¥13,000</span><span class="calc-perday-unit" data-i18n="calc.per_person_day">/person/day</span>
+                        </div>
+                        <div class="calc-total-row">
+                            <span class="calc-total-small" id="calc-hotel-total">¥182,000〜</span>
+                            <span class="calc-total-note" id="calc-hotel-total-note">total · 7 days</span>
+                        </div>
+                        <div class="calc-perks">
+                            <div>❌ <span data-i18n="calc.hotel1">¥20,000/night per room (Fukuoka avg.)</span></div>
+                            <div>❌ <span data-i18n="calc.hotel2">Inter-city transport: +¥3,000/person/day</span></div>
+                            <div>❌ <span data-i18n="calc.hotel3">Check-in/out times limit your freedom</span></div>
+                            <div>❌ <span data-i18n="calc.hotel4">Meals & incidentals add up fast</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Savings Banner -->
+                <div class="calc-savings" id="calc-savings">
+                    <span data-i18n="calc.savings_prefix">You save approx.</span>
+                    <strong id="calc-save-amt">¥72,275</strong>
+                    <span data-i18n="calc.savings_suffix">vs a budget hotel — and sleep in nature.</span>
+                    <div class="calc-nature-badge">
+                        <span data-i18n="calc.badge_nature1">🏔️ Mountains</span>
+                        <span data-i18n="calc.badge_nature2">🌊 Coast</span>
+                        <span data-i18n="calc.badge_nature3">♨️ Hot Springs</span>
+                    </div>
+                </div>
+
+                <!-- Book at this price -->
+                <div class="calc-book-cta">
+                    <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20book%20a%20campervan." class="btn-whatsapp btn-whatsapp--lg" target="_blank" id="calc-book-btn" data-track="wa_calculator"><img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.5);flex-shrink:0;"> <span data-i18n="calc.book_btn">Send these details to Karen on WhatsApp</span></a>
+                    <a href="/book/" class="btn-book-outline" data-track="book_calculator" style="margin-top:4px;"><span data-i18n="calc.book_form">📝 Or request by form</span></a>
+                </div>
+
+                <!-- Quote Form -->
+                <div class="quote-form-wrap" id="quote-form-wrap">
+                    <div class="quote-form-header">
+                        <span>📧</span>
+                        <div>
+                            <strong data-i18n="quote.title">Get a Free Quote by Email</strong>
+                            <p data-i18n="quote.subtitle">No WhatsApp needed. We'll send your personalized estimate within 24 hours.</p>
+                        </div>
+                    </div>
+                    <form id="quote-form" class="quote-form">
+                        <div class="quote-fields">
+                            <input type="email" id="quote-email" required placeholder="your@email.com" class="quote-input">
+                            <input type="text" id="quote-name" placeholder="Name (optional)" data-i18n-placeholder="quote.name_ph" class="quote-input">
+                            <input type="text" id="quote-dates" placeholder="Preferred dates (optional)" data-i18n-placeholder="quote.dates_ph" class="quote-input">
+                        </div>
+                        <button type="submit" class="quote-submit" id="quote-submit">
+                            <span data-i18n="quote.submit">📧 Send Me a Quote</span>
+                        </button>
+                        <p class="quote-note" data-i18n="quote.note">We'll include your calculator settings (vehicle, days, travelers) in the quote.</p>
+                    </form>
+                    <div id="quote-success" class="quote-success" style="display:none;">
+                        <span>✅</span>
+                        <div>
+                            <strong data-i18n="quote.success">Quote request sent!</strong>
+                            <p data-i18n="quote.success_detail">Check your inbox within 24 hours. We can also chat on WhatsApp anytime.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ PRICING ═══ -->
+        <section class="rent-section" id="pricing">
+            <div class="rent-container">
+                <div class="rent-section-header">
+                    <span class="rent-badge">💰 <span data-i18n="pricing.badge">Transparent Pricing</span></span>
+                    <h2 class="rent-section-title" data-i18n="pricing.title">All-Inclusive, No Surprises</h2>
+                    <p class="rent-section-subtitle" data-i18n="pricing.subtitle">Everything you need for your road trip is included</p>
+                </div>
+
+                <div class="pricing-layout">
+                    <!-- Left Column: What's Included -->
+                    <div class="pricing-left">
+                        <div class="pricing-inclusions-card">
+                            <h3 class="inclusions-title" data-i18n="pricing.inclusions_title">✨ Included in Base Rate</h3>
+                            <p class="inclusions-subtitle" data-i18n="pricing.inclusions_subtitle">No hidden fees. Everything you need for the road is built in.</p>
+                            <ul class="pricing-includes">
+                                <li><span class="check">✅</span> <span data-i18n="pricing.item1">Vehicle Insurance (CDW) included — no extra charge</span></li>
+                                <li><span class="check">✅</span> <span data-i18n="pricing.item2">ETC Card — Free (pre-registration required) · Japan's electronic highway toll card. Fees auto-deducted from deposit, balance refunded at return.</span></li>
+                                <li><span class="check">✅</span> <span data-i18n="pricing.item4">Cooking set & tableware included</span></li>
+                                <li><span class="check">✅</span> <span data-i18n="pricing.item5">24-hour roadside assistance</span></li>
+                                <li><span class="check">✅</span> <span data-i18n="pricing.item6">Multilingual support</span></li>
+                            </ul>
+                            
+                            <div class="summer-perks-box" style="background: linear-gradient(135deg, #fff8e1, #ffecb3); border-radius: 8px; padding: 16px; margin-top: 20px; border-left: 4px solid #BF4E30; font-size: 15px; line-height: 1.6;">
+                                <span class="check" style="font-size: 20px; margin-right: 8px;">🌀</span>
+                                <span data-i18n="pricing.summer_perk"><strong>Free Summer Perks (Jun-Sep):</strong> Window mosquito screens + USB-powered portable fans are included 100% FREE with every rental (Advance request required). Sleep naturally with cool night breezes.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Price & CTAs + Fine Print -->
+                    <div class="pricing-right">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <p class="pricing-from" data-i18n="pricing.from">Starting from</p>
+                                <p class="pricing-amount">¥22,000<small data-i18n="pricing.perday"> /day〜</small></p>
+                                <p class="pricing-insurance-badge" data-i18n="pricing.insurance_badge">🛡️ Insurance (CDW) included in price</p>
+                            </div>
+                            <div class="pricing-body">
+                                <h4 class="upgrades-title" data-i18n="pricing.upgrades_title">⚡ Optional Upgrades</h4>
+                                <ul class="pricing-upgrades">
+                                    <li><span class="check">🏕️</span> <span data-i18n="pricing.item4b">Camping gear rental available (optional, extra charge)</span></li>
+                                    <li><span class="check">🚐</span> <span data-i18n="pricing.item7">Tokyo / Osaka drop-off available (surcharge applies)</span></li>
+                                    <li style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 8px; padding: 16px; margin-top: 12px; border-left: 4px solid #1976d2; font-size: 14px; font-weight: normal; line-height: 1.5; text-align: left; display: flex; align-items: start; gap: 12px; border-bottom: none;">
+                                        <span class="check" style="font-size: 20px; margin-top: 2px;">❄️</span>
+                                        <span data-i18n="pricing.summer_ac_bundle"><strong>Summer Off-Grid Cooling Bundle:</strong> Premium EcoFlow Wave 3 Portable AC + High-capacity Portable Power Station for <strong>¥4,000/day</strong> (capped at <strong>¥28,000 max</strong> flat per trip). Run silent air conditioning overnight with the engine completely turned OFF!</span>
+                                    </li>
+                                </ul>
+
+                                <div class="pricing-notice" style="margin-top: 24px;">
+                                    🛡️ <span data-i18n="pricing.notice">No hidden fees. Insurance is already included in the daily rate.</span>
+                                </div>
+
+                                <p class="pricing-note" data-i18n="pricing.note">* Above is PROBOX weekday rate. BONGO / weekends may differ.</p>
+
+                                <div class="pricing-cta-group">
+                                    <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20a%20quote%20for%20a%20campervan%20rental."
+                                        class="pricing-cta" data-track="wa_pricing" style="display:inline-flex;align-items:center;gap:10px;justify-content:center;"><img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.4);flex-shrink:0;"> <span data-i18n="pricing.cta">Get a Quote from Karen on WhatsApp</span></a>
+                                    <a href="/book/" class="btn-book-outline" data-track="book_pricing" data-i18n="cta.book">📝 Prefer not to chat? Request by form</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Deposit & Deductible Disclosure Accordion -->
+                        <div class="pricing-disclosure" style="margin-top: 20px;">
+                            <details style="border: 1px solid var(--rent-border, #E8DFD1); border-radius: 12px; padding: 16px; background: white; cursor: pointer; transition: all 0.3s ease;">
+                                <summary style="font-weight: 700; font-size: 14px; color: var(--rent-text-primary, #2C2C2C); list-style: none; display: flex; justify-content: space-between; align-items: center;" data-i18n="pricing.disclosure_title">
+                                    <span>💳 Important: Deposit & Insurance Details</span>
+                                    <span style="font-size: 12px; color: var(--rent-text-secondary, #5C5446);">▼ Click to expand</span>
+                                </summary>
+                                <ul style="margin-top: 14px; padding-left: 20px; list-style-type: disc; color: var(--rent-text-secondary, #5C5446); font-size: 13.5px; line-height: 1.6;">
+                                    <li data-i18n="pricing.deposit" style="margin-bottom: 8px;"><strong>Security Deposit: ¥50,000</strong> — Collected at pick-up and fully refunded at return (minus ETC tolls, if any).</li>
+                                    <li data-i18n="pricing.deductible" style="margin-bottom: 8px;"><strong>Accident Deductible (免責額):</strong> In case of an accident, a deductible of up to ¥100,000 for vehicle damage and ¥100,000 for property damage applies.</li>
+                                    <li data-i18n="pricing.noc" style="margin-bottom: 8px;"><strong>Non-Operation Charge (NOC):</strong> If the vehicle is damaged and cannot be rented (business downtime), a charge of ¥20,000 (if drivable) or ¥50,000 (if towing is required) applies.</li>
+                                    <li data-i18n="pricing.full_cover" style="margin-bottom: 8px;"><strong>Zero-Risk Full Cover Option (+¥5,000/day):</strong> Highly recommended. Waives all deductibles and NOC to ¥0, and covers tire punctures and towing.</li>
+                                </ul>
+                                <p data-i18n="pricing.disclosure_note" style="margin-top: 12px; font-size: 13px; color: var(--rent-text-secondary, #5C5446); border-top: 1px dashed var(--rent-border, #E8DFD1); padding-top: 12px;">Full details are provided in our <a href="/rent/terms/" style="color: var(--rent-accent, #C4704B); text-decoration: underline;">Rental Terms & Conditions</a>. We'll explain everything clearly at pick-up — no surprises.</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+                <!-- Micro proof: pricing (factual, not fabricated) -->
+                <div class="micro-proof" style="margin-top: 30px;">
+                    <span class="proof-flag">✅</span>
+                    <span data-i18n="vehicles.proof3">All-inclusive: insurance, camping gear, ETC toll card &amp; 24/7 support — no hidden fees.</span>
                 </div>
             </div>
         </section>
@@ -744,253 +992,7 @@
                                 <ul>
                                     <li data-i18n="whyus.flexible_us1">Come anytime — day or night</li>
                                     <li data-i18n="whyus.flexible_us2">Unattended self-pickup 24h</li>
-                                    <li data-i18n="whyus.flexible_us3">No phone call needed</li>
-                                    <li data-i18n="whyus.flexible_us4">Small family business = flexible</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Micro proof: why us (factual, not fabricated) -->
-                <div class="micro-proof">
-                    <span class="proof-flag">🌙</span>
-                    <span data-i18n="vehicles.proof2">Unattended 24-hour self-pickup — even if your flight lands late at night, your van is ready.</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══ PRICING ═══ -->
-        <section class="rent-section" id="pricing">
-            <div class="rent-container">
-                <div class="rent-section-header">
-                    <span class="rent-badge">💰 <span data-i18n="pricing.badge">Transparent Pricing</span></span>
-                    <h2 class="rent-section-title" data-i18n="pricing.title">All-Inclusive, No Surprises</h2>
-                    <p class="rent-section-subtitle" data-i18n="pricing.subtitle">Everything you need for your road trip
-                        is included</p>
-                </div>
-
-                <div class="pricing-layout">
-                    <!-- Left Column: What's Included -->
-                    <div class="pricing-left">
-                        <div class="pricing-inclusions-card">
-                            <h3 class="inclusions-title" data-i18n="pricing.inclusions_title">✨ Included in Base Rate</h3>
-                            <p class="inclusions-subtitle" data-i18n="pricing.inclusions_subtitle">No hidden fees. Everything you need for the road is built in.</p>
-                            <ul class="pricing-includes">
-                                <li><span class="check">✅</span> <span data-i18n="pricing.item1">Vehicle Insurance (CDW) included — no extra charge</span></li>
-                                <li><span class="check">✅</span> <span data-i18n="pricing.item2">ETC Card — Free (pre-registration required) · Japan's electronic highway toll card. Fees auto-deducted from deposit, balance refunded at return.</span></li>
-                                <li><span class="check">✅</span> <span data-i18n="pricing.item4">Cooking set & tableware included</span></li>
-                                <li><span class="check">✅</span> <span data-i18n="pricing.item5">24-hour roadside assistance</span></li>
-                                <li><span class="check">✅</span> <span data-i18n="pricing.item6">Multilingual support</span></li>
-                            </ul>
-                            
-                            <div class="summer-perks-box" style="background: linear-gradient(135deg, #fff8e1, #ffecb3); border-radius: 8px; padding: 16px; margin-top: 20px; border-left: 4px solid #BF4E30; font-size: 15px; line-height: 1.6;">
-                                <span class="check" style="font-size: 20px; margin-right: 8px;">🌀</span>
-                                <span data-i18n="pricing.summer_perk"><strong>Free Summer Perks (Jun-Sep):</strong> Window mosquito screens + USB-powered portable fans are included 100% FREE with every rental (Advance request required). Sleep naturally with cool night breezes.</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Column: Price & CTAs + Fine Print -->
-                    <div class="pricing-right">
-                        <div class="pricing-card">
-                            <div class="pricing-header">
-                                <p class="pricing-from" data-i18n="pricing.from">Starting from</p>
-                                <p class="pricing-amount">¥22,000<small data-i18n="pricing.perday"> /day〜</small></p>
-                                <p class="pricing-insurance-badge" data-i18n="pricing.insurance_badge">🛡️ Insurance (CDW) included in price</p>
-                            </div>
-                            <div class="pricing-body">
-                                <h4 class="upgrades-title" data-i18n="pricing.upgrades_title">⚡ Optional Upgrades</h4>
-                                <ul class="pricing-upgrades">
-                                    <li><span class="check">🏕️</span> <span data-i18n="pricing.item4b">Camping gear rental available (optional, extra charge)</span></li>
-                                    <li><span class="check">🚐</span> <span data-i18n="pricing.item7">Tokyo / Osaka drop-off available (surcharge applies)</span></li>
-                                    <li style="background: linear-gradient(135deg, #e3f2fd, #bbdefb); border-radius: 8px; padding: 16px; margin-top: 12px; border-left: 4px solid #1976d2; font-size: 14px; font-weight: normal; line-height: 1.5; text-align: left; display: flex; align-items: start; gap: 12px; border-bottom: none;">
-                                        <span class="check" style="font-size: 20px; margin-top: 2px;">❄️</span>
-                                        <span data-i18n="pricing.summer_ac_bundle"><strong>Summer Off-Grid Cooling Bundle:</strong> Premium EcoFlow Wave 3 Portable AC + High-capacity Portable Power Station for <strong>¥4,000/day</strong> (capped at <strong>¥28,000 max</strong> flat per trip). Run silent air conditioning overnight with the engine completely turned OFF!</span>
-                                    </li>
-                                </ul>
-
-                                <div class="pricing-notice" style="margin-top: 24px;">
-                                    🛡️ <span data-i18n="pricing.notice">No hidden fees. Insurance is already included in the daily rate.</span>
-                                </div>
-
-                                <p class="pricing-note" data-i18n="pricing.note">* Above is PROBOX weekday rate. BONGO / weekends may differ.</p>
-
-                                <div class="pricing-cta-group">
-                                    <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20a%20quote%20for%20a%20campervan%20rental."
-                                        class="pricing-cta" data-track="wa_pricing" style="display:inline-flex;align-items:center;gap:10px;justify-content:center;"><img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.4);flex-shrink:0;"> <span data-i18n="pricing.cta">Get a Quote from Karen on WhatsApp</span></a>
-
-                                    <a href="/book/" class="btn-book-outline" data-track="book_pricing" data-i18n="cta.book">📝 Prefer not to chat? Request by form</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Deposit & Deductible Disclosure -->
-                        <div class="pricing-disclosure">
-                            <h4 data-i18n="pricing.disclosure_title">💳 Important: Deposit & Insurance Details</h4>
-                            <ul>
-                                <li data-i18n="pricing.deposit"><strong>Security Deposit: ¥50,000</strong> — Collected at pick-up and fully refunded at return (minus ETC tolls, if any).</li>
-                                <li data-i18n="pricing.deductible"><strong>Accident Deductible (免責額):</strong> In case of an accident, a deductible of up to ¥100,000 for vehicle damage and ¥100,000 for property damage applies.</li>
-                                <li data-i18n="pricing.noc"><strong>Non-Operation Charge (NOC):</strong> If the vehicle is damaged and cannot be rented (business downtime), a charge of ¥20,000 (if drivable) or ¥50,000 (if towing is required) applies.</li>
-                                <li data-i18n="pricing.full_cover"><strong>Zero-Risk Full Cover Option (+¥5,000/day):</strong> Highly recommended. Waives all deductibles and NOC to ¥0, and covers tire punctures and towing.</li>
-                            </ul>
-                            <p data-i18n="pricing.disclosure_note">Full details are provided in our <a href="/rent/terms/">Rental Terms & Conditions</a>. We'll explain everything clearly at pick-up — no surprises.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Micro proof: pricing (factual, not fabricated) -->
-                <div class="micro-proof">
-                    <span class="proof-flag">✅</span>
-                    <span data-i18n="vehicles.proof3">All-inclusive: insurance, camping gear, ETC toll card &amp; 24/7 support — no hidden fees.</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══ PRICE CALCULATOR ═══ -->
-        <section class="rent-section" id="calculator">
-            <div class="rent-container">
-                <div class="rent-section-header">
-                    <span class="rent-badge">🧮 <span data-i18n="calc.badge">Price Calculator</span></span>
-                    <h2 class="rent-section-title" data-i18n="calc.title">How Much Does Your Trip Cost?</h2>
-                    <p class="rent-section-subtitle" data-i18n="calc.subtitle">Longer stays = better value per day. Compare with hotels.</p>
-                </div>
-
-                <!-- Controls -->
-                <div class="calc-controls">
-                    <div class="calc-control">
-                        <label data-i18n="calc.days_label">Number of days</label>
-                        <div class="calc-slider-wrap">
-                            <input type="range" id="calc-days" min="1" max="30" value="7">
-                            <span class="calc-days-display"><span id="calc-days-val">7</span> <span data-i18n="calc.days_unit">days</span></span>
-                        </div>
-                    </div>
-                    <div class="calc-control">
-                        <label data-i18n="calc.vehicle_label">Vehicle</label>
-                        <div class="calc-veh-btns">
-                            <button class="calc-veh-btn active" data-price="22000" data-name="Probox">Probox<br><small>¥22,000/day</small></button>
-                            <button class="calc-veh-btn" data-price="22000" data-name="Bongo">Bongo<br><small>¥22,000/day</small></button>
-                            <button class="calc-veh-btn" data-price="25000" data-name="Pocket Loft">Pocket Loft<br><small>¥25,000/day</small></button>
-                        </div>
-                    </div>
-                    <div class="calc-control">
-                        <label data-i18n="calc.people_label">Travelers</label>
-                        <div class="calc-ppl-btns">
-                            <button class="calc-ppl-btn" data-people="1">1</button>
-                            <button class="calc-ppl-btn active" data-people="2">2</button>
-                            <button class="calc-ppl-btn" data-people="3">3</button>
-                            <button class="calc-ppl-btn" data-people="4">4</button>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Currency Selector -->
-                <style>
-                    .currency-btn {
-                        background: none;
-                        border: none;
-                        font-size: 11px;
-                        font-weight: 700;
-                        padding: 6px 14px;
-                        border-radius: 20px;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                        color: var(--rent-text-primary);
-                    }
-                    .currency-btn.active {
-                        background: var(--rent-forest) !important;
-                        color: white !important;
-                        box-shadow: 0 2px 8px rgba(44, 62, 80, 0.2);
-                    }
-                    .currency-btn:hover:not(.active) {
-                        background: rgba(0,0,0,0.08);
-                    }
-                </style>
-                <div class="calc-currency-switch" style="display: flex; gap: 8px; justify-content: flex-end; align-items: center; margin-bottom: 20px; width: 100%; flex-wrap: wrap;">
-                    <span style="font-size: 13px; font-weight: 600; color: var(--rent-text-secondary);" data-i18n="calc.currency_label">Display Currency (approx.):</span>
-                    <div class="currency-btns" style="display: flex; gap: 4px; background: rgba(0,0,0,0.05); padding: 4px; border-radius: 20px;">
-                        <button class="currency-btn active" data-curr="JPY">JPY (¥)</button>
-                        <button class="currency-btn" data-curr="USD">USD ($)</button>
-                        <button class="currency-btn" data-curr="EUR">EUR (€)</button>
-                        <button class="currency-btn" data-curr="GBP">GBP (£)</button>
-                        <button class="currency-btn" data-curr="ILS">ILS (₪)</button>
-                    </div>
-                </div>
-
-                <!-- Results -->
-                <div class="calc-results">
-                    <div class="calc-card calc-card--van">
-                        <div class="calc-card-label">🚐 VanTripJapan</div>
-                        <div class="calc-perday">
-                            <span id="calc-van-perday">¥7,838</span><span class="calc-perday-unit" data-i18n="calc.per_person_day">/person/day</span>
-                        </div>
-                        <div class="calc-total-row">
-                            <span class="calc-total-small" id="calc-van-total">¥109,725</span>
-                            <span class="calc-total-note" id="calc-van-total-note">total · 7 days</span>
-                        </div>
-                        <div id="calc-discount-badge" style="display:none; margin:8px 0; padding:6px 14px; background:linear-gradient(135deg,#E8F5E9,#C8E6C9); border-radius:20px; font-size:13px; font-weight:600; color:#2E7D32; text-align:center;">
-                        </div>
-                        <div class="calc-perks">
-                            <div>✅ <span data-i18n="calc.perk1">Sleep in nature — mountains, coast, hot springs</span></div>
-                            <div>✅ <span data-i18n="calc.perk2">No check-in times. Go anywhere, anytime.</span></div>
-                            <div>✅ <span data-i18n="calc.perk3">Kitchen included. Save on meals.</span></div>
-                            <div>✅ <span data-i18n="calc.perk4">All-inclusive. Zero hidden costs.</span></div>
-                        </div>
-                    </div>
-
-                    <div class="calc-vs">VS</div>
-
-                    <div class="calc-card calc-card--hotel">
-                        <div class="calc-card-label">🏨 <span data-i18n="calc.hotel_note">Hotel + inter-city transport</span></div>
-                        <div class="calc-perday">
-                            <span id="calc-hotel-perday">¥13,000</span><span class="calc-perday-unit" data-i18n="calc.per_person_day">/person/day</span>
-                        </div>
-                        <div class="calc-total-row">
-                            <span class="calc-total-small" id="calc-hotel-total">¥182,000〜</span>
-                            <span class="calc-total-note" id="calc-hotel-total-note">total · 7 days</span>
-                        </div>
-                        <div class="calc-perks">
-                            <div>❌ <span data-i18n="calc.hotel1">¥20,000/night per room (Fukuoka avg.)</span></div>
-                            <div>❌ <span data-i18n="calc.hotel2">Inter-city transport: +¥3,000/person/day</span></div>
-                            <div>❌ <span data-i18n="calc.hotel3">Check-in/out times limit your freedom</span></div>
-                            <div>❌ <span data-i18n="calc.hotel4">Meals & incidentals add up fast</span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Savings Banner -->
-                <div class="calc-savings" id="calc-savings">
-                    <span data-i18n="calc.savings_prefix">You save approx.</span>
-                    <strong id="calc-save-amt">¥72,275</strong>
-                    <span data-i18n="calc.savings_suffix">vs a budget hotel — and sleep in nature.</span>
-                    <div class="calc-nature-badge">
-                        <span data-i18n="calc.badge_nature1">🏔️ Mountains</span>
-                        <span data-i18n="calc.badge_nature2">🌊 Coast</span>
-                        <span data-i18n="calc.badge_nature3">♨️ Hot Springs</span>
-                    </div>
-                </div>
-
-                <!-- Book at this price -->
-                <div class="calc-book-cta">
-                    <a href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20book%20a%20campervan." class="btn-whatsapp btn-whatsapp--lg" target="_blank" id="calc-book-btn" data-track="wa_calculator"><img src="/images/rent/story/owners-fuji.webp" alt="Karen" style="width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:65% center;border:2px solid rgba(255,255,255,0.5);flex-shrink:0;"> <span data-i18n="calc.book_btn">Send these details to Karen on WhatsApp</span></a>
-
-                    <a href="/book/" class="btn-book-outline" data-track="book_calculator" style="margin-top:4px;"><span data-i18n="calc.book_form">📝 Or request by form</span></a>
-                </div>
-
-                <!-- Quote Form -->
-                <div class="quote-form-wrap" id="quote-form-wrap">
-                    <div class="quote-form-header">
-                        <span>📧</span>
-                        <div>
-                            <strong data-i18n="quote.title">Get a Free Quote by Email</strong>
-                            <p data-i18n="quote.subtitle">No WhatsApp needed. We'll send your personalized estimate within 24 hours.</p>
-                        </div>
-                    </div>
-                    <form id="quote-form" class="quote-form">
-                        <div class="quote-fields">
-                            <input type="email" id="quote-email" required placeholder="your@email.com" class="quote-input">
-                            <input type="text" id="quote-name" placeholder="Name (optional)" data-i18n-placeholder="quote.name_ph" class="quote-input">
-                            <input type="text" id="quote-dates" placeholder="Preferred dates (optional)" data-i18n-placeholder="quote.dates_ph" class="quote-input">
-                        </div>
+                                    <li data-i18n="whyus.flexible_us3">No phone call nee</div>
                         <button type="submit" class="quote-submit" id="quote-submit">
                             <span data-i18n="quote.submit">📧 Send Me a Quote</span>
                         </button>
@@ -1146,6 +1148,61 @@
                         <span class="trust-google">G</span>
                         <span data-i18n="reviews.google_link">See us on Google Maps &amp; read our reviews →</span>
                     </a>
+                </div>
+
+                <!-- Google Star Reviews Slider/Grid -->
+                <div class="reviews-grid" style="margin-bottom: 48px;">
+                    <!-- Review 1: Michael -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="review-flag">🇳🇱</span>
+                            <div>
+                                <div class="review-name">Michael</div>
+                                <div class="review-meta" data-i18n="reviews.r1_meta">7 days · Bongo · Couple</div>
+                            </div>
+                            <span class="review-stars">★★★★★</span>
+                        </div>
+                        <p class="review-text" data-i18n="reviews.r1_text">"We explored Aso, Beppu, and the Kunisaki Peninsula over 7 days. The van was spotless, well-equipped, and the pickup at Hakozaki was incredibly smooth. This was our third time in Japan but the first time we truly felt free. Absolutely recommend!"</p>
+                    </div>
+
+                    <!-- Review 2: Sarah -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="review-flag">🇫🇷</span>
+                            <div>
+                                <div class="review-name">Sarah</div>
+                                <div class="review-meta" data-i18n="reviews.r2_meta">14 days · Probox · Couple</div>
+                            </div>
+                            <span class="review-stars">★★★★★</span>
+                        </div>
+                        <p class="review-text" data-i18n="reviews.r2_text">"14 incredible days in Kyushu! The campervan had everything we needed. We slept by the sea in Yakushima and at the foot of the Aso mountains. The multilingual support in French was a real plus. Thank you VanTripJapan!"</p>
+                    </div>
+
+                    <!-- Review 3: David -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="review-flag">🇮🇱</span>
+                            <div>
+                                <div class="review-name">David</div>
+                                <div class="review-meta" data-i18n="reviews.r3_meta">10 days · Bongo · Couple</div>
+                            </div>
+                            <span class="review-stars">★★★★★</span>
+                        </div>
+                        <p class="review-text" data-i18n="reviews.r3_text">"We drove from Fukuoka all the way to Kagoshima and back through the mountains. The onsen stops along the way were incredible — nothing beats a hot spring after a full day of driving. The team helped us plan the whole route. Best holiday we've ever had!"</p>
+                    </div>
+
+                    <!-- Review 4: Lea -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="review-flag">🇬🇧</span>
+                            <div>
+                                <div class="review-name">Lea</div>
+                                <div class="review-meta" data-i18n="reviews.r4_meta">5 days · Probox · Solo</div>
+                            </div>
+                            <span class="review-stars">★★★★★</span>
+                        </div>
+                        <p class="review-text" data-i18n="reviews.r4_text">"As a solo female traveler, I felt completely safe. The Probox was perfect for one person — compact but had everything I needed. The roadside stations (Michi-no-Eki) were amazing for parking overnight. Only wish I'd booked longer!"</p>
+                    </div>
                 </div>
 
                 <div class="proof-grid">

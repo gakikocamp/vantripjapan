@@ -27,6 +27,10 @@
                 <i class="fas fa-calendar-check"></i>
                 <span>予約管理</span>
             </li>
+            <li class="nav-item" data-page="crm">
+                <i class="fas fa-paper-plane"></i>
+                <span>メルマガ・CRM</span>
+            </li>
         </ul>
         <div class="sidebar-footer">
             <div class="user-info">
@@ -141,6 +145,128 @@
                 </div>
             </div>
         </section>
+
+        <!-- CRM & Drip Campaign Page -->
+        <section class="page" id="page-crm">
+            <!-- Tabs for CRM (Subscribers vs Email Templates) -->
+            <div class="status-tabs" id="crmTabs" style="margin-bottom:16px;">
+                <button class="status-tab active" data-tab="subscribers">👥 読者・顧客リスト</button>
+                <button class="status-tab" data-tab="templates">✉️ メールテンプレート</button>
+            </div>
+
+            <!-- Subscribers Tab -->
+            <div class="crm-tab-content active" id="crm-tab-subscribers">
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-users"></i> メルマガ登録者・簡易CRM</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>名前 / メール</th>
+                                        <th>言語</th>
+                                        <th>興味のあるエリア</th>
+                                        <th>配信ステップ</th>
+                                        <th>次回送信予定</th>
+                                        <th>登録日時</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="subscribersBody"></tbody>
+                            </table>
+                        </div>
+                        <p class="empty-state" id="subscribersEmpty" style="display:none;">読者が登録されていません</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Templates Tab -->
+            <div class="crm-tab-content" id="crm-tab-templates" style="display:none;">
+                <div style="display:grid; grid-template-columns: 200px 1fr; gap:20px;">
+                    <!-- Sidebar Steps -->
+                    <div class="card" style="padding:16px; align-self:start;">
+                        <h4 style="font-weight:600; padding-bottom:8px; border-bottom:1px solid var(--border-subtle); margin-bottom:12px; font-size:0.95rem;">ステップ選択</h4>
+                        <ul class="step-menu" id="templateStepList" style="list-style:none; padding:0; margin:0;">
+                            <!-- Dynamic steps -->
+                        </ul>
+                    </div>
+
+                    <!-- Template Editor -->
+                    <div class="card">
+                        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center;">
+                            <h3 id="editorTitle"><i class="fas fa-edit"></i> テンプレート編集</h3>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <label style="font-size:0.85rem; font-weight:600; color:var(--text-secondary);">言語:</label>
+                                <select id="editorLanguageSelect" style="padding:6px 12px; border-radius:6px; background:var(--bg-input); border:1px solid var(--border-light); color:var(--text-primary);">
+                                    <option value="en">English (EN)</option>
+                                    <option value="ja">日本語 (JA)</option>
+                                    <option value="fr">Français (FR)</option>
+                                    <option value="de">Deutsch (DE)</option>
+                                    <option value="zh">繁體中文 (ZH)</option>
+                                    <option value="he">עברית (HE)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form id="templateEditForm" onsubmit="saveTemplate(event)">
+                                <input type="hidden" id="editStep" value="1">
+                                <div class="form-group" style="margin-bottom:16px;">
+                                    <label style="font-weight:600; font-size:0.85rem; display:block; margin-bottom:6px;">件名 (Subject)</label>
+                                    <input type="text" id="editSubject" required style="width:100%;">
+                                </div>
+                                <div class="form-group" style="margin-bottom:16px;">
+                                    <label style="font-weight:600; font-size:0.85rem; display:block; margin-bottom:6px;">本文 (Plain-text/HTML)</label>
+                                    <div style="font-size:0.75rem; color:var(--text-secondary); margin-bottom:6px; line-height:1.4;">
+                                        💡 送信相手の名前を差し込むには <code>{Name}</code> を使います。また、会社のフッター署名と配信解除リンク (<code>{{UnsubscribeURL}}</code>) はシステムが配信時に自動で挿入します。
+                                    </div>
+                                    <textarea id="editBody" required style="width:100%; min-height:280px; font-family:monospace; line-height:1.5;"></textarea>
+                                </div>
+                                <div class="form-group" style="margin-bottom:20px;">
+                                    <label style="font-weight:600; font-size:0.85rem; display:block; margin-bottom:6px;">次のステップメール送信までの間隔（日数）</label>
+                                    <input type="number" id="editDelayDays" min="0" max="30" required style="width:100px;">
+                                </div>
+                                <div style="display:flex; justify-content:space-between; align-items:center;">
+                                    <div>
+                                        <button type="button" class="btn btn-secondary" onclick="triggerSendTestModal()">
+                                            <i class="fas fa-paper-plane"></i> テスト送信
+                                        </button>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save"></i> テンプレートを保存
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Test Email Modal -->
+        <div class="modal-overlay" id="testEmailModal">
+            <div class="modal" style="max-width:400px;">
+                <div class="modal-header">
+                    <h3>✉️ テストメール送信</h3>
+                    <button class="modal-close" onclick="$('#testEmailModal').classList.remove('active')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="testEmailForm" onsubmit="submitSendTestEmail(event)">
+                        <div class="form-group" style="margin-bottom:16px;">
+                            <label style="font-weight:600; font-size:0.85rem; display:block; margin-bottom:6px;">送信先メールアドレス</label>
+                            <input type="email" id="testTargetEmail" required placeholder="example@gmail.com" style="width:100%;">
+                        </div>
+                        <div style="display:flex; justify-content:flex-end; gap:12px;">
+                            <button type="button" class="btn btn-secondary" onclick="$('#testEmailModal').classList.remove('active')">キャンセル</button>
+                            <button type="submit" class="btn btn-primary">送信する</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Booking Detail Modal -->

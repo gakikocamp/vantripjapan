@@ -61,6 +61,10 @@ function isPublicRequest(request) {
   if (path === '/api/documents' && method === 'POST') return true;
   // Public: POST newsletter signup
   if (path === '/api/newsletter' && method === 'POST') return true;
+  // Public: GET newsletter unsubscribe
+  if (path === '/api/newsletter/unsubscribe' && method === 'GET') return true;
+  // Public: GET cron drip campaign trigger
+  if (path === '/api/cron/send-drip' && method === 'GET') return true;
   // Public: POST quote request
   if (path === '/api/quote' && method === 'POST') return true;
   // Public: OPTIONS (CORS preflight)

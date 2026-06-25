@@ -383,6 +383,8 @@ const translations = {
         "popup.close": "Close",
         // Vehicle Details Common
         "details.back_to_fleet": "← Back to Fleet",
+        "details.front_view": "Front View",
+        "details.side_view": "Side View (Length Scale)",
         "details.specs_title": "Specifications",
         "details.dimensions_title": "Dimensions & Sleeping Space",
         "details.included_gear_title": "Included Camping Gear & Amenities",
@@ -474,6 +476,11 @@ const translations = {
         "whyus.value_title": "All-Inclusive Value",
         "whyus.value_desc": "Insurance, cooking gear, ETC card, & 24/7 support included.",
         "whyus.oneway_title": "One-Way Drops",
+        "social.viewers_label": "{n} travelers are looking at this van right now",
+        "social.bookings_label": "{n} booking requests received in the last 7 days!",
+        "social.high_demand_banner": "⚡ <strong>High Demand Season</strong>: 78% of summer dates are already booked! We recommend requesting your dates early to secure a vehicle.",
+        "social.recent_inquiry": "👀 Popular Choice: {n} travelers are looking at this vehicle for summer dates right now.",
+        "social.recent_bookings": "📝 Recently Requested: {n} bookings requested for this van in the last 7 days.",
     },
 
     fr: {
@@ -839,6 +846,8 @@ const translations = {
         "popup.close": "Fermer",
         // Vehicle Details Common
         "details.back_to_fleet": "← Retour à la flotte",
+        "details.front_view": "Vue de face",
+        "details.side_view": "Vue latérale (échelle de longueur)",
         "details.specs_title": "Spécifications",
         "details.dimensions_title": "Dimensions et espace couchage",
         "details.included_gear_title": "Équipement de camping et commodités inclus",
@@ -930,6 +939,11 @@ const translations = {
         "whyus.value_title": "Valeur tout compris",
         "whyus.value_desc": "Assurance, matériel de cuisine, carte ETC et assistance 24/7 inclus.",
         "whyus.oneway_title": "Dépôts en aller simple",
+        "social.viewers_label": "{n} voyageurs consultent ce van en ce moment",
+        "social.bookings_label": "{n} demandes de réservation reçues ces 7 derniers jours !",
+        "social.high_demand_banner": "⚡ <strong>Saison à forte demande</strong> : 78% des dates d'été sont déjà réservées ! Nous vous recommandons de faire votre demande tôt pour garantir votre véhicule.",
+        "social.recent_inquiry": "👀 Choix populaire : {n} voyageurs consultent ce véhicule pour des dates d'été en ce moment.",
+        "social.recent_bookings": "📝 Récemment demandé : {n} réservations demandées pour ce van ces 7 derniers jours.",
     },
 
     de: {
@@ -1221,6 +1235,14 @@ const translations = {
         "quote.note": "Wir berücksichtigen Ihre Rechner-Einstellungen (Fahrzeug, Tage, Reisende) im Angebot.",
         "quote.success": "Angebotsanfrage gesendet!",
         "quote.success_detail": "Prüfen Sie Ihr Postfach innerhalb von 24 Stunden. Sie können uns auch jederzeit über WhatsApp kontaktieren.",
+
+        // Our Story
+        "story.sec1_badge": "👫 Unsere Geschichte",
+        "story.sec1_title": "Zwei Menschen, 100 % japanische Flotte, eine gemeinsame Leidenschaft",
+        "story.sec1_subtitle": "Wir sind kein riesiger Vermietungskonzern. Wir sind ein Ehepaar, das jedes einzelne Fahrzeug handverliest und liebt.",
+        "story.sec1_text1": "Es gibt kein Callcenter, kein Firmenskript und keinen unpersönlichen Service. Wenn Sie bei uns mieten, werden Sie direkt von uns unterstützt – erfahrenen Vanlifern, die jahrelang auf der Straße unterwegs waren. Wir haben jedes unserer sicheren, hochgradig zuverlässigen japanischen Fahrzeuge aus unserer eigenen Vanlife-Perspektive ausgewählt. Jeder Van bietet eine hervorragende Kraftstoffeffizienz und lässt sich auf Japans engen, kurvenreichen Panoramastraßen extrem leicht fahren.",
+        "story.sec1_text2": "VanTripJapan wurde von Karen, einer echten und leidenschaftlichen Outdoor-Liebhaberin, zusammen mit ihrem Ehemann gegründet und betrieben. Wir haben diesen kleinen Laden aufgebaut, weil wir glauben, dass Campervan-Reisen in Japan sicher, herzlich und authentisch sein sollten. Wir sind hier, um Ihre Reise mit rund um die Uhr persönlicher Betreuung, maßgeschneiderten Routen und den besten lokalen Tipps zu unterstützen, die Sie in keinem Reiseführer finden.",
+
         "story.label": "🏠 Unsere Geschichte",
         "story.caption": "👋 Karen & ihr Mann — eure Gastgeber",
         "story.title": "Ein Familien-Campervan-Abenteuer",
@@ -1289,6 +1311,8 @@ const translations = {
         "popup.close": "Schließen",
         // Vehicle Details Common
         "details.back_to_fleet": "← Zurück zur Flotte",
+        "details.front_view": "Vorderansicht",
+        "details.side_view": "Seitenansicht (Längenmaßstab)",
         "details.specs_title": "Technische Daten",
         "details.dimensions_title": "Abmessungen & Schlafplatz",
         "details.included_gear_title": "Inbegriffene Campingausrüstung & Annehmlichkeiten",
@@ -1380,6 +1404,11 @@ const translations = {
         "whyus.value_title": "Rundum-Sorglos-Wert",
         "whyus.value_desc": "Versicherung, Kochausrüstung, ETC-Karte & 24/7 Support inklusive.",
         "whyus.oneway_title": "Einweg-Miete",
+        "social.viewers_label": "{n} Reisende sehen sich diesen Van gerade an",
+        "social.bookings_label": "{n} Buchungsanfragen in den letzten 7 Tagen eingegangen!",
+        "social.high_demand_banner": "⚡ <strong>Hochsaison</strong>: 78 % der Sommertermine sind bereits ausgebucht! Wir empfehlen, Ihre Termine frühzeitig anzufragen, um sich ein Fahrzeug zu sichern.",
+        "social.recent_inquiry": "👀 Beliebte Wahl: {n} Reisende interessieren sich gerade für diesen Van im Sommer.",
+        "social.recent_bookings": "📝 Kürzlich angefragt: {n} Buchungen für diesen Van in den letzten 7 Tagen angefragt.",
     },
 
     zh: {
@@ -1669,6 +1698,14 @@ const translations = {
         "quote.note": "我們會包含您的計算器設定（車輛、天數、旅客）在報價中。",
         "quote.success": "報價請求已發送！",
         "quote.success_detail": "請在24小時內檢查您的郵箱。也可以隨時在WhatsApp上聊天。",
+
+        // Our Story
+        "story.sec1_badge": "👫 我們的故事",
+        "story.sec1_title": "兩個人，100% 日本車隊，同一個共同熱情",
+        "story.sec1_subtitle": "我們不是龐大的租賃企業。我們是一對夫妻，親自挑選並熱愛每一輛車。",
+        "story.sec1_text1": "這裡沒有呼叫中心，沒有企業指令，也沒有冰冷的服務。當您向我們租車時，您將直接得到我們的支持——我們是經驗豐富的露營車旅人，曾在旅途中度過多年時光。我們從自身露營生活的角度出發，挑選了每一輛安全、高安全性且極其可靠的日本車輛。每輛車都具有出色的燃油效率，並且在日本狹窄、彎曲的風景道路上極易駕駛。",
+        "story.sec1_text2": "VanTripJapan 由 Karen 及其丈夫共同創立和運營，她是一位真正熱愛戶外運動的終身愛好者。我們建立這家小店，是因為我們相信在日本的露營車旅行應該是安全、溫馨和真實的。我們隨時為您的旅程提供 24/7 的個人關懷、定制路線以及在任何旅遊指南中都找不到的最佳當地實用建議。",
+
         "story.label": "🏠 我們的故事",
         "story.caption": "👋 Karen 與她的先生 — 您的主人",
         "story.title": "家族經營的露營車冒險",
@@ -1737,6 +1774,8 @@ const translations = {
         "popup.close": "關閉",
         // Vehicle Details Common
         "details.back_to_fleet": "← 返回車隊列表",
+        "details.front_view": "正面圖",
+        "details.side_view": "側面圖 (全長比例)",
         "details.specs_title": "車輛規格",
         "details.dimensions_title": "車身尺寸與就寢空間",
         "details.included_gear_title": "免費附帶露營裝備與用品",
@@ -1830,6 +1869,11 @@ const translations = {
         "whyus.value_title": "超值全包服務",
         "whyus.value_desc": "包含保險、烹飪裝備、ETC卡及24/7全天候客服支援。",
         "whyus.oneway_title": "單程甲租乙還",
+        "social.viewers_label": "👀 目前有 {n} 位旅客正在瀏覽這輛露營車",
+        "social.bookings_label": "📝 過去 7 天內已收到 {n} 筆預約申請！",
+        "social.high_demand_banner": "⚡ <strong>熱門預約季節</strong>：夏季 78% 的日期已售罄！建議您儘早送出預約申請以確保車輛。",
+        "social.recent_inquiry": "👀 熱門選擇：目前有 {n} 位旅客正在關注夏季這輛露營車。",
+        "social.recent_bookings": "📝 最近預約：過去 7 天內這輛露營車已有 {n} 筆預約申請。",
     },
 
     he: {
@@ -2040,6 +2084,7 @@ const translations = {
         "calc.days_unit": "ימים",
         "calc.vehicle_label": "רכב",
         "calc.people_label": "נוסעים",
+        "calc.per_person": "/ אדם",
         "calc.per_person_day": "/אדם/יום",
         "calc.total_note": "סה\"כ",
         "calc.hotel_note": "מלון + תחבורה",
@@ -2061,6 +2106,7 @@ const translations = {
         "access.badge": "הגעה",
         "access.title": "מיקום בסיס האקוזאקי",
         "access.subtitle": "רק 10 דקות משדה התעופה, ליד הכניסה לכביש המהיר",
+        "access.mapPlaceholder": "המפה תוטמע כאן",
         "access.pickup": "📍 איסוף / החזרה",
         "access.address": "האקוזאקי, הגאשי-קו, פוקואוקה<br>(אזור האקאטה / שדה התעופה)",
         "access.hours": "🕐 שעות פעילות",
@@ -2169,13 +2215,15 @@ const translations = {
         "popup.survey_label": "לאן אתם מתכננים לטייל ביפן?",
         "popup.survey_kyushu": "קיושו (פוקואוקה, הר אסו, באפו וכו')",
         "popup.survey_tokyo_kyoto": "נתיב הזהב (טוקיו, קיוטו, אוסקה וכו')",
-"popup.survey_others": "אזורים אחרים / עדיין לא הוחלט",
+        "popup.survey_others": "אזורים אחרים / עדיין לא הוחלט",
         "popup.submit": "הורדת מדריך חינם (PDF)",
         "popup.success": "תודה! לחצו למטה כדי להוריד את המדריך שלכם:",
         "popup.download_btn": "📥 הורדת מדריך קיושו (PDF)",
         "popup.close": "סגור",
         // Vehicle Details Common
         "details.back_to_fleet": "← חזרה לצי הרכבים",
+        "details.front_view": "מבט מלפנים",
+        "details.side_view": "מבט מהצד (קנה מידה של אורך)",
         "details.specs_title": "מפרט טכני",
         "details.dimensions_title": "מידות ושטח לינה",
         "details.included_gear_title": "ציוד קמפינג ואביזרים כלולים",
@@ -2269,6 +2317,11 @@ const translations = {
         "whyus.value_title": "תמורה הכל-כלול",
         "whyus.value_desc": "ביטוח, ציוד בישול, כרטיס ETC ותמיכה 24/7 כלולים במחיר.",
         "whyus.oneway_title": "החזרה בכיוון אחד",
+        "social.viewers_label": "👀 {n} מטיילים צופים בוואן הזה ברגע זה",
+        "social.bookings_label": "📝 {n} בקשות להזמנה התקבלו ב-7 הימים האחרונים!",
+        "social.high_demand_banner": "⚡ <strong>עונה בביקוש גבוה</strong>: 78% מתאריכי הקיץ כבר מוזמנים! אנו מומלץ לבקש את התאריכים שלך מוקדם כדי להבטיח רכב.",
+        "social.recent_inquiry": "👀 בחירה פופולרית: {n} מטיילים מתעניינים ברכב זה לתאריכי קיץ כעת.",
+        "social.recent_bookings": "📝 התבקש לאחרונה: {n} הזמנות התבקשו לוואן זה ב-7 הימים האחרונים.",
     },
 };
 

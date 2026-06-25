@@ -47,9 +47,13 @@ async function handlePost(request, env) {
   const addressEnc = await encrypt(data.address || null, env);
 
   const status = data.status || 'form_submitted';
-  const gearNotes = data.num_guests
+  let gearNotes = data.num_guests
     ? `[Guests: ${data.num_guests}] ${data.camping_gear_notes || ''}`
     : data.camping_gear_notes || null;
+
+  if (data.full_cover_option) {
+    gearNotes = `[Insurance: Zero-Risk Full Cover] ${gearNotes || ''}`;
+  }
 
   const result = await env.CUSTOMERS_DB.prepare(`
     INSERT INTO bookings (email_encrypted, full_name, phone_encrypted, address_encrypted,
@@ -124,9 +128,10 @@ async function sendBookingEmails(data, bookingId, env) {
     `those after we've confirmed your dates are free.`,
     ``,
     `Your request:`,
-    `  • Vehicle: ${vehicle}`,
-    `  • Pick-up: ${pickup}`,
-    `  • Return:  ${ret}`,
+    `  • Vehicle:   ${vehicle}`,
+    `  • Pick-up:   ${pickup}`,
+    `  • Return:    ${ret}`,
+    `  • Insurance: ${data.full_cover_option ? 'Zero-Risk Full Cover (+¥5,000/day)' : 'Basic Cover (Excess applies)'}`,
     ``,
     `Want a faster reply? Message Karen directly on WhatsApp:`,
     `  ${waLink}`,
@@ -145,9 +150,28 @@ async function sendBookingEmails(data, bookingId, env) {
     text: customerBody,
   }) : Promise.resolve();
 
+  // Clean phone and build WhatsApp link
+  let waAdminLink = '';
+  if (data.phone) {
+    let cleanPhone = data.phone.replace(/\D/g, '');
+    if (cleanPhone.startsWith('0')) {
+      cleanPhone = '81' + cleanPhone.slice(1);
+    }
+    waAdminLink = `https://wa.me/${cleanPhone}`;
+  }
+
+  // Detect test requests
+  const nameLower = name.toLowerCase();
+  const emailLower = email.toLowerCase();
+  const isTest = nameLower.includes('test') || nameLower.includes('テスト') || nameLower.includes('dummy') ||
+                 emailLower.includes('test') || emailLower.includes('dummy') ||
+                 (data.camping_gear_notes || '').toLowerCase().includes('test') ||
+                 (data.camping_gear_notes || '').includes('テスト');
+
   // 2) Internal alert so Karen can reply fast
   const adminBody = [
     `🚐 NEW BOOKING REQUEST #${bookingId}`,
+    isTest ? `⚠️ [TEST SUBMISSION / テスト送信]` : ``,
     ``,
     `Name:     ${data.full_name || '—'}`,
     `Email:    ${email || '—'}`,
@@ -159,20 +183,153 @@ async function sendBookingEmails(data, bookingId, env) {
     `Drivers:  ${data.num_drivers || 1}`,
     `Found us: ${data.referral_source || '—'}`,
     `Gear:     ${data.camping_gear_notes || '—'}`,
+    `Insurance: ${data.full_cover_option ? 'Zero-Risk Full Cover (+¥5,000/day)' : 'Basic Cover'}`,
     `JP license translation needed: ${data.translation_needed ? 'YES' : 'no'}`,
     ``,
+    `→ Reply via Email: mailto:${email}`,
+    waAdminLink ? `→ Reply via WhatsApp: ${waAdminLink}` : ``,
     `→ Manage: https://vantripjapan.jp/admin/`,
   ].join('\n');
+
+  const adminHtml = `
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; color: #2d3748;">
+  <!-- Title/Header Banner -->
+  <div style="background-color: ${isTest ? '#d69e2e' : '#1a365d'}; padding: 20px; color: #ffffff; text-align: center;">
+    <h2 style="margin: 0; font-size: 20px;">🚐 新規予約リクエスト #${bookingId}</h2>
+    ${isTest ? '<div style="margin-top: 5px; font-weight: bold; background-color: rgba(255,255,255,0.2); display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px;">⚠️ テスト送信の可能性があります (Test Submission)</div>' : ''}
+  </div>
+
+  <div style="padding: 24px;">
+    <!-- Customer Quick Action / Contact Info -->
+    <h3 style="margin-top: 0; color: #1a365d; border-bottom: 2px solid #edf2f7; padding-bottom: 8px;">👤 お客様情報 (Customer Info)</h3>
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px;">
+      <tr>
+        <td style="padding: 6px 0; font-weight: bold; width: 150px; color: #4a5568;">お名前 (Name):</td>
+        <td style="padding: 6px 0; font-weight: bold;">${data.full_name || '—'}</td>
+      </tr>
+      <tr>
+        <td style="padding: 6px 0; font-weight: bold; color: #4a5568;">メール (Email):</td>
+        <td style="padding: 6px 0;"><a href="mailto:${email}" style="color: #3182ce; text-decoration: underline;">${email || '—'}</a></td>
+      </tr>
+      <tr>
+        <td style="padding: 6px 0; font-weight: bold; color: #4a5568;">電話番号 (Phone):</td>
+        <td style="padding: 6px 0;">${data.phone || '—'}</td>
+      </tr>
+    </table>
+
+    <!-- Admin Actions -->
+    <h3 style="color: #1a365d; border-bottom: 2px solid #edf2f7; padding-bottom: 8px;">🚀 次のアクション (Next Steps)</h3>
+    <div style="margin-bottom: 25px;">
+      <p style="margin: 0 0 12px 0; font-size: 13px; line-height: 1.5; color: #4a5568;">
+        お客様へ直接連絡、または予約処理を行うには以下のボタンを押してください：
+      </p>
+      
+      <!-- Action 1: Reply via Email -->
+      <a href="mailto:${email}?subject=Re: VanTripJapan Booking Request %23${bookingId}" style="display: block; background-color: #3182ce; color: #ffffff; text-decoration: none; padding: 12px; border-radius: 6px; text-align: center; font-weight: bold; margin-bottom: 4px; font-size: 14px;">
+        ✉️ お客様にメールで返信する (Direct Email)
+      </a>
+      <div style="font-size: 11px; color: #718096; margin-bottom: 12px; text-align: center;">
+        （※この通知メールにそのまま「返信」をしても、お客様宛に届きます）
+      </div>
+
+      <!-- Action 2: WhatsApp if phone is present -->
+      ${waAdminLink ? `
+      <a href="${waAdminLink}" target="_blank" style="display: block; background-color: #38a169; color: #ffffff; text-decoration: none; padding: 12px; border-radius: 6px; text-align: center; font-weight: bold; margin-bottom: 12px; font-size: 14px;">
+        💬 WhatsAppでチャットを開始する
+      </a>
+      ` : ''}
+
+      <!-- Action 3: Go to Admin Dashboard -->
+      <a href="https://vantripjapan.jp/admin/" target="_blank" style="display: block; background-color: #4a5568; color: #ffffff; text-decoration: none; padding: 12px; border-radius: 6px; text-align: center; font-weight: bold; font-size: 14px;">
+        ⚙️ 管理画面で予約を処理する (Admin Dashboard)
+      </a>
+    </div>
+
+    <!-- Details Table -->
+    <h3 style="color: #1a365d; border-bottom: 2px solid #edf2f7; padding-bottom: 8px;">📋 予約リクエスト詳細 (Request Details)</h3>
+    <table style="width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.5;">
+      <tr style="background-color: #f7fafc;">
+        <td style="padding: 8px; font-weight: bold; border: 1px solid #e2e8f0; width: 180px; color: #4a5568;">車両タイプ (Vehicle)</td>
+        <td style="padding: 8px; border: 1px solid #e2e8f0;">${vehicle}</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; font-weight: bold; border: 1px solid #e2e8f0; color: #4a5568;">出発日時 (Pick-up)</td>
+        <td style="padding: 8px; border: 1px solid #e2e8f0;">${pickup}</td>
+      </tr>
+      <tr style="background-color: #f7fafc;">
+        <td style="padding: 8px; font-weight: bold; border: 1px solid #e2e8f0; color: #4a5568;">返却日時 (Return)</td>
+        <td style="padding: 8px; border: 1px solid #e2e8f0;">${ret}</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; font-weight: bold; border: 1px solid #e2e8f0; color: #4a5568;">乗車人数 (Guests)</td>
+        <td style="padding: 8px; border: 1px solid #e2e8f0;">${data.num_guests || 1} 名</td>
+      </tr>
+      <tr style="background-color: #f7fafc;">
+        <td style="padding: 8px; font-weight: bold; border: 1px solid #e2e8f0; color: #4a5568;">運転者数 (Drivers)</td>
+        <td style="padding: 8px; border: 1px solid #e2e8f0;">${data.num_drivers || 1} 名</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; font-weight: bold; border: 1px solid #e2e8f0; color: #4a5568;">加入保険 (Insurance)</td>
+        <td style="padding: 8px; border: 1px solid #e2e8f0; font-weight: bold;">${data.full_cover_option ? 'Zero-Risk フルカバー (+¥5,000/日)' : '標準カバー'}</td>
+      </tr>
+      <tr style="background-color: #f7fafc;">
+        <td style="padding: 8px; font-weight: bold; border: 1px solid #e2e8f0; color: #4a5568;">免許翻訳 (JAF Translation)</td>
+        <td style="padding: 8px; border: 1px solid #e2e8f0; font-weight: bold; color: ${data.translation_needed ? '#e53e3e' : '#2d3748'};">${data.translation_needed ? '✅ 必要 (YES)' : '不要 (NO)'}</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px; font-weight: bold; border: 1px solid #e2e8f0; color: #4a5568;">アンケート (Referral)</td>
+        <td style="padding: 8px; border: 1px solid #e2e8f0;">${data.referral_source || '—'}</td>
+      </tr>
+      <tr style="background-color: #f7fafc;">
+        <td style="padding: 8px; font-weight: bold; border: 1px solid #e2e8f0; color: #4a5568;">要望・備品備考 (Notes)</td>
+        <td style="padding: 8px; border: 1px solid #e2e8f0;">${data.camping_gear_notes || '—'}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+  `;
 
   const adminMail = sendResend({
     from: 'VanTripJapan Booking Bot <booking@vantripjapan.jp>',
     reply_to: email && email.includes('@') ? email : 'info@vantripjapan.jp',
     to: ['info@vantripjapan.jp'],
-    subject: `🚐 New booking: ${vehicle} — ${data.full_name || ''} (#${bookingId})`,
+    subject: `${isTest ? '⚠️ [TEST] ' : ''}🚐 New booking: ${vehicle} — ${data.full_name || ''} (#${bookingId})`,
     text: adminBody,
+    html: adminHtml,
   });
 
-  await Promise.allSettled([customerMail, adminMail]);
+  // 3) Sync customer to Resend Audience
+  const syncAudience = async () => {
+    if (!email || !email.includes('@')) return;
+    try {
+      const res = await fetch('https://api.resend.com/audiences/de618a55-3736-4982-a19d-2996b31ef834/contacts', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${resendApiKey}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          first_name: name.split(' ')[0],
+          last_name: name.split(' ').slice(1).join(' ') || '',
+          unsubscribed: false,
+          metadata: {
+            lang: data.translation_needed ? 'ja' : 'en',
+            source: 'booking_form',
+            vehicle: vehicle
+          }
+        }),
+      });
+      if (!res.ok) {
+        const errText = await res.text();
+        console.error('[Booking Mail] Resend Audience Sync Failed:', errText);
+      }
+    } catch (e) {
+      console.error('[Booking Mail] Resend Audience Sync Error:', e?.message);
+    }
+  };
+
+  await Promise.allSettled([customerMail, adminMail, syncAudience()]);
 }
 
 // GET: Admin — list bookings or get single booking

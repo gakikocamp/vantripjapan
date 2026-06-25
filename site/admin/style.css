@@ -1013,3 +1013,34 @@ body::after {
     white-space: nowrap;
 }
 
+/* --- CRM & Drip Campaign Styling --- */
+.step-menu-item {
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.step-menu-item:hover {
+    background: var(--bg-input);
+    color: var(--text-primary);
+}
+.step-menu-item.active {
+    background: var(--accent-blue-glow);
+    border-left: 3px solid var(--accent-blue);
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+.crm-tab-content {
+    display: none;
+}
+.crm-tab-content.active {
+    display: block;
+}
+
+

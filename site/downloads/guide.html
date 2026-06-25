@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kyushu Uncharted: The Local's Guide to Campervan Road Tripping</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm 15mm 20mm 15mm;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #2c3e50;
+      line-height: 1.6;
+      font-size: 14px;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      -webkit-print-color-adjust: exact;
+    }
+    
+    /* Cover Page */
+    .cover-page {
+      page-break-after: always;
+      height: 257mm; /* Full page minus margins */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      padding: 20mm 10mm;
+      background-color: #1a2e40;
+      color: #ffffff;
+      border-radius: 8px;
+    }
+    .cover-header {
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #d4af37;
+      font-weight: 600;
+    }
+    .cover-title-group {
+      margin-top: 40mm;
+    }
+    .cover-title {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin: 0 0 10px 0;
+      color: #ffffff;
+      font-family: "Outfit", system-ui, sans-serif;
+    }
+    .cover-subtitle {
+      font-size: 20px;
+      font-weight: 300;
+      color: #d4af37;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+    .cover-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+    .cover-brand {
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    
+    /* Document Layout */
+    .page-content {
+      page-break-after: always;
+      box-sizing: border-box;
+      padding-top: 10mm;
+    }
+    .page-content:last-of-type {
+      page-break-after: avoid;
+    }
+    
+    h1 {
+      font-size: 24px;
+      color: #1a2e40;
+      border-bottom: 2px solid #d4af37;
+      padding-bottom: 8px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    h2 {
+      font-size: 18px;
+      color: #2c3e50;
+      margin-top: 25px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    p {
+      margin-top: 0;
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+    
+    /* Lists and grids */
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 16px;
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    
+    /* Callout Box */
+    .tip-box {
+      background-color: #f4f7f6;
+      border-left: 4px solid #4b6b94;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .tip-box-title {
+      font-weight: 700;
+      color: #1a2e40;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+    .tip-box-title span {
+      margin-right: 8px;
+    }
+    .tip-box p {
+      margin: 0;
+      font-size: 13.5px;
+    }
+    
+    /* Timeline / Itinerary list */
+    .itinerary-day {
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eef2f3;
+    }
+    .itinerary-day:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .day-num {
+      background-color: #1a2e40;
+      color: #ffffff;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 10px;
+      display: inline-block;
+    }
+    .day-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a2e40;
+      display: inline-block;
+    }
+    .day-route {
+      font-size: 12px;
+      color: #666;
+      margin-top: 2px;
+      font-style: italic;
+    }
+    .day-desc {
+      margin-top: 10px;
+    }
+
+    /* Footer styling for internal pages */
+    .page-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #95a5a6;
+      border-top: 1px solid #eef2f3;
+      padding-top: 10px;
+      background: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cover Page -->
+  <div class="cover-page">
+    <div class="cover-header">VanTripJapan &bull; Local Guide Series</div>
+    <div class="cover-title-group">
+      <h1 class="cover-title">Kyushu Uncharted</h1>
+      <div class="cover-subtitle">The Local's Guide to Campervan Road Tripping</div>
+    </div>
+    <div class="cover-footer">
+      <span class="cover-brand">VAN TRIP JAPAN</span>
+      <span>Published in Fukuoka, Japan</span>
+    </div>
+  </div>
+
+  <!-- Page 2: Welcome and Why Campervans -->
+  <div class="page-content">
+    <h1>Welcome to Kyushu</h1>
+    <p>
+      Kyushu, the southernmost of Japan's four main islands, is a region defined by raw nature, geothermal energy, and deep history. Unlike the neon-lit corridors of Tokyo or the traditional temple districts of Kyoto, Kyushu is best experienced slowly, wandering down winding coastal lanes and climbing into smoking volcanic calderas.
+    </p>
+    <p>
+      While Japan's Shinkansen (bullet train) network is world-class, it is designed to transport people between major cities at high speed. It does not stop at hidden mountain hot springs, remote coastal farming villages, or the trailheads of ancient forests. To truly discover the soul of Kyushu, you must have your own wheels.
+    </p>
+
+    <h2>Why a Campervan is the Ultimate Way to Travel</h2>
+    <p>
+      Traveling Kyushu by campervan offers a level of freedom and connection that conventional travel simply cannot match:
+    </p>
+    <ul>
+      <li><strong>Total Freedom:</strong> There are no train timetables to check, hotel check-out hours to rush for, or heavy bags to drag through crowded stations. If you find a beautiful beach, you can stay. If it rains, you can drive toward the sunshine.</li>
+      <li><strong>Cost-Effective Comfort:</strong> By combining your transportation and accommodation into one beautifully handbuilt vehicle, you save on expensive hotel rooms and local train/bus fares.</li>
+      <li><strong>Local Connections:</strong> Sleeping close to nature means waking up to mountain views, buying fresh produce directly from farmers, and parking next to quiet, natural hot springs.</li>
+    </ul>
+
+    <div class="tip-box">
+      <div class="tip-box-title">
+        <span>💡</span> Local Insight
+      </div>
+      <p>
+        Kyushu is the hot spring ("Onsen") capital of Japan. Over 30% of all natural hot springs in the country are located here, making it the perfect destination to combine driving adventures with soothing daily baths.
+      </p>
+    </div>
+  </div>
+
+  <!-- Page 3: The Rules of the Road & Campervan Life in Japan -->
+  <div class="page-content">
+    <h1>The Rules of the Road & Vanlife in Japan</h1>
+    <p>
+      Japan is one of the safest, most welcoming countries in the world for campervan travelers. However, to ensure a smooth journey and show respect to local communities, it's essential to understand a few unique customs.
+    </p>
+
+    <h2>1. The "Michi-no-Eki" (Roadside Station) Network</h2>
+    <p>
+      Japan features over 1,200 government-designated roadside stations called <em>Michi-no-Eki</em>. They are clean, safe, and open 24/7. More than just parking lots, they are community hubs that sell locally harvested vegetables, regional snacks, and hot food. 
+    </p>
+    <p>
+      <strong>Overnight Parking:</strong> It is socially accepted and completely free to park and sleep overnight in your vehicle at almost all Michi-no-Eki. However, they are not campsites. Setting up tables, chairs, or camp stoves outside your van is strictly forbidden. Keep your setup inside the van and use the stations for sleeping and resting.
+    </p>
+
+    <h2>2. Managing Trash</h2>
+    <p>
+      There are almost no public trash cans in Japan. This is a common surprise for travelers. You are expected to take your trash with you. 
+      When traveling in a van, you can dispose of small bags of garbage at convenience stores (when purchasing items), at campsites, or at designated campervan parks (RV Parks) where trash disposal is included in the fee.
+    </p>
+
+    <h2>3. Driving Safety</h2>
+    <ul>
+      <li><strong>Keep Left:</strong> Driving is on the left side of the road, and the driver's seat is on the right.</li>
+      <li><strong>Politeness:</strong> Japanese drivers are exceptionally polite. Heavy use of the horn is considered rude. To say thank you when someone lets you merge, blink your hazard lights twice.</li>
+      <li><strong>Narrow Roads:</strong> Mountain roads in Kyushu can be narrow. Our vans are specifically chosen to be compact (standard width) so you can navigate these roads comfortably.</li>
+    </ul>
+
+    <div class="tip-box">
+      <div class="tip-box-title">
+        <span>⚠️</span> Important Rule
+      </div>
+      <p>
+        Japan has a strict zero-tolerance policy for driving under the influence of alcohol. Even a single sip of beer will put you over the legal limit. Always park your van for the night before enjoying a drink.
+      </p>
+    </div>
+  </div>
+
+  <!-- Page 4: Curated 5-Day Kyushu Itinerary (Part 1) -->
+  <div class="page-content">
+    <h1>Curated 5-Day Road Trip Itinerary</h1>
+    <p>
+      This classic loop begins and ends at our Hakozaki Base in Fukuoka, taking you through the smoking heart of Kyushu's volcanic highlands down to the scenic valleys of Miyazaki.
+    </p>
+
+    <div class="itinerary-day">
+      <div>
+        <span class="day-num">Day 1</span>
+        <span class="day-title">Fukuoka to Mount Aso</span>
+      </div>
+      <div class="day-route">Route: Yamanami Highway | Drive time: Approx. 2.5 hours</div>
+      <div class="day-desc">
+        Pick up your campervan in Fukuoka and head southeast. You'll drive along the famous Yamanami Highway, widely considered one of Japan's most scenic drives. As you ascend, the landscape opens up into the vast grasslands of the Mount Aso caldera—the largest active caldera in the world. Park at the Daikanbo Lookout for a panoramic view of the volcanic peaks.
+      </div>
+    </div>
+
+    <div class="itinerary-day">
+      <div>
+        <span class="day-num">Day 2</span>
+        <span class="day-title">Mount Aso to Kurokawa Onsen</span>
+      </div>
+      <div class="day-route">Route: Prefectural Road 11 | Drive time: Approx. 1 hour</div>
+      <div class="day-desc">
+        Spend the morning exploring the volcanic crater of Nakadake (when active gas levels allow). In the afternoon, make the short, beautiful drive to Kurokawa Onsen, a traditional hot spring village tucked away in a forested valley. Purchase a <em>Nyutego</em> (wooden bath pass) to access three different open-air baths ("Rotenburo") of your choice across the town's traditional ryokans.
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">
+        <span>♨️</span> Tattoo-Friendly Bathing
+      </div>
+      <p>
+        If you have tattoos, entering public baths can sometimes be a challenge in Japan. In Kurokawa, many baths allow tattoos, or you can easily rent a private family bath (called <em>Kashikiri-buro</em>) for a small fee, allowing you to enjoy the hot springs in total privacy.
+      </p>
+    </div>
+  </div>
+
+  <!-- Page 5: Curated 5-Day Kyushu Itinerary (Part 2) -->
+  <div class="page-content">
+    <h1>Curated 5-Day Road Trip Itinerary (Cont.)</h1>
+
+    <div class="itinerary-day">
+      <div>
+        <span class="day-num">Day 3</span>
+        <span class="day-title">Kurokawa Onsen to Takachiho Gorge</span>
+      </div>
+      <div class="day-route">Route: National Route 325 | Drive time: Approx. 1.5 hours</div>
+      <div class="day-desc">
+        Cross the border into Miyazaki Prefecture to visit Takachiho Gorge, a narrow chasm cut through volcanic basalt columns by the Gokase River. Rent a wooden rowboat to paddle close to the spectacular Manai Falls, which cascades over the cliff side. In the evening, head to the local shrine to watch a traditional <em>Yokagura</em> dance performance depicting ancient Japanese mythology.
+      </div>
+    </div>
+
+    <div class="itinerary-day">
+      <div>
+        <span class="day-num">Day 4</span>
+        <span class="day-title">Takachiho Gorge to Miyazaki Coast</span>
+      </div>
+      <div class="day-route">Route: National Route 218 & Expressway | Drive time: Approx. 2 hours</div>
+      <div class="day-desc">
+        Drive down to the tropical Nichinan Coastline. The scenery changes dramatically from volcanic mountains to palm trees and blue Pacific waves. Visit Udo Shrine, a unique Shinto shrine built inside a cave on a cliff overlooking the ocean. Park overnight at a coastal Michi-no-Eki and fall asleep to the sound of breaking waves.
+      </div>
+    </div>
+
+    <div class="itinerary-day">
+      <div>
+        <span class="day-num">Day 5</span>
+        <span class="day-title">Miyazaki back to Fukuoka via Yufuin</span>
+      </div>
+      <div class="day-route">Route: Oita Expressway | Drive time: Approx. 3.5 hours</div>
+      <div class="day-desc">
+        On your drive back to Fukuoka, stop at Yufuin, a trendy hot spring town located at the foot of Mount Yufu. Stroll around Lake Kinrin, where warm spring water mixes with cold lake water, creating a magical morning mist. Pick up some local snacks, then make the final drive back to Hakozaki Base to return your van.
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-box-title">
+        <span>🥩</span> Cooking Local: Campervan Dining
+      </div>
+      <p>
+        Every VanTripJapan campervan comes equipped with a portable stove and cooking utensils. Stop at local supermarkets along your route to purchase Kyushu's famous ingredients: A5 Kumamoto Wagyu beef, fresh Miyazaki chicken, and local seasonal vegetables to cook a restaurant-quality meal in the comfort of your van.
+      </p>
+    </div>
+  </div>
+
+  <!-- Page 6: Essential Pre-Trip Checklist -->
+  <div class="page-content">
+    <h1>Essential Pre-Trip Checklist</h1>
+    <p>
+      Before you land in Fukuoka and get the keys to your campervan, make sure you have checked off these critical items:
+    </p>
+
+    <h2>1. Driver's License Requirements (Crucial!)</h2>
+    <p>
+      To drive in Japan, you cannot simply show your home country's driver's license. You MUST have one of the following:
+    </p>
+    <ul>
+      <li><strong>International Driving Permit (IDP):</strong> Must be issued under the 1949 Geneva Convention format. Permits issued under the 1968 Vienna Convention are NOT valid in Japan.</li>
+      <li><strong>JAF Official Translation:</strong> If your license is issued in France, Germany, Switzerland, Belgium, Monaco, or Taiwan, you must present your original license along with an official Japanese translation issued by the Japan Automobile Federation (JAF).</li>
+    </ul>
+
+    <h2>2. Recommended Apps to Download</h2>
+    <ul>
+      <li><strong>Google Maps:</strong> Still the most reliable navigation app in Japan. It correctly maps toll roads, gas stations, and supermarkets.</li>
+      <li><strong>Michi-no-Eki App:</strong> Excellent for finding nearby roadside stations, checking their facilities (restrooms, hot springs, restaurants), and reading reviews from fellow campervan travelers.</li>
+      <li><strong>Safety tips:</strong> The official disaster warning app by the Japan Tourism Agency, providing earthquake and weather alerts in English.</li>
+    </ul>
+
+    <h2>3. Cash is King</h2>
+    <p>
+      While credit cards are widely accepted in cities, many rural hot springs, vegetable direct-sales stands, coin launderettes, and parking meters in Kyushu only accept cash (Japanese Yen coins and bills). Keep at least ¥10,000–¥20,000 in cash with you at all times.
+    </p>
+
+    <div class="tip-box" style="border-left-color: #d4af37;">
+      <div class="tip-box-title">
+        <span>🚐</span> Ready to Explore?
+      </div>
+      <p>
+        If you have any questions about planning your route, checking campsite availability, or getting your official license translation, please send us a WhatsApp message. We are here to help you experience the adventure of a lifetime!
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>

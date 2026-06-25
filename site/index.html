@@ -379,8 +379,8 @@
     <section class="hero" id="hero">
         <div class="hero-bg" style="background: url('/images/hero-vanlife.png') center/cover no-repeat;"></div>
         <div class="hero-overlay"></div>
-        <div class="hero-content hero-content--split">
-            <div class="hero-left">
+        <div class="hero-content">
+            <div class="hero-left" style="max-width: 750px;">
                 <span class="hero-badge">🇯🇵 Family-Run Camper & Campervan Rental in Fukuoka</span>
                 <h1 class="hero-title">Explore Kyushu<br>Your Way</h1>
                 <p class="hero-description">We're a husband-and-wife team renting hand-built campers and campervans out of Fukuoka. Onsen-hop through Beppu, drive the Aso caldera rim, and wake up to ocean views — all-inclusive from ¥22,000/day.</p>
@@ -415,28 +415,11 @@
                     <a href="/rent/" class="hero-cta">Rent a Camper / Campervan →</a>
                     <a href="/#stories" class="hero-cta hero-cta--ghost">Read Travel Guides</a>
                 </div>
-                <div class="hero-trust">
+                <div class="hero-trust" style="margin-top: 24px;">
                     <span>🚐 From ¥22,000/day</span>
                     <span>📍 10 min from Airport</span>
                     <span>🌏 100+ Languages</span>
                 </div>
-            </div>
-            <div class="hero-right">
-                <a href="/posts/michi-no-eki-guide/" class="hero-featured-card">
-                    <img src="/images/article-campervan-vs-hotel.png" loading="lazy" alt="Campervan vs Hotel Cost">
-                    <div class="hero-featured-label">🔥 Popular</div>
-                    <div class="hero-featured-text">
-                        <span class="hero-featured-cat">Guide</span>
-                        <h3>Campervan vs Hotel: The Real Cost Comparison</h3>
-                    </div>
-                </a>
-                <a href="/posts/driving-in-japan-israel-idp-guide/" class="hero-featured-card hero-featured-card--small">
-                    <img src="/images/article-driving-license-japan.png" loading="lazy" alt="Driving License Guide">
-                    <div class="hero-featured-text">
-                        <span class="hero-featured-cat">Guide</span>
-                        <h3>Can Foreigners Drive in Japan?</h3>
-                    </div>
-                </a>
             </div>
         </div>
     </section>
@@ -554,6 +537,44 @@
             });
             </script>
 
+        </div>
+    </section>
+
+    <!-- ═══ Popular Guides ═══ -->
+    <section class="section" id="popular-guides" style="background: var(--color-bg-light, #FAF6F0);">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-tag">Recommended</span>
+                <h2 class="section-title">Popular Travel Guides</h2>
+            </div>
+            <div class="articles-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg); margin-top: var(--space-xl);">
+                <a href="/posts/michi-no-eki-guide/" class="article-card animate-in" style="text-decoration: none; color: inherit; display: flex; flex-direction: column;">
+                    <div class="article-card-image" style="height: 220px; overflow: hidden; border-radius: 8px 8px 0 0; position: relative;">
+                        <img src="/images/article-campervan-vs-hotel.png" loading="lazy" alt="Campervan vs Hotel Cost" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="article-card-category" style="position: absolute; top: 12px; left: 12px; background: var(--color-accent, #BF4E30); color: white; font-size: 11px; padding: 4px 10px; border-radius: 4px; font-weight: 700; text-transform: uppercase;">Guide</span>
+                    </div>
+                    <div class="article-card-body" style="padding: var(--space-md); background: white; border: 1px solid var(--color-border-light, #E8DFD1); border-top: none; border-radius: 0 0 8px 8px; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-family: var(--font-serif); margin-bottom: 8px; color: var(--color-text, #2C2C2C);">Campervan vs Hotel: The Real Cost Comparison</h3>
+                            <p style="font-size: 0.9rem; color: var(--color-muted, #5C5446); line-height: 1.6; margin-bottom: 16px;">Is renting a campervan actually cheaper than booking hotels and trains? We break down the real numbers for a 7-day road trip in Kyushu.</p>
+                        </div>
+                        <div style="font-weight: 700; color: var(--color-accent, #BF4E30); font-size: 0.95rem;">Read Guide →</div>
+                    </div>
+                </a>
+                <a href="/posts/driving-in-japan-israel-idp-guide/" class="article-card animate-in" style="text-decoration: none; color: inherit; display: flex; flex-direction: column;">
+                    <div class="article-card-image" style="height: 220px; overflow: hidden; border-radius: 8px 8px 0 0; position: relative;">
+                        <img src="/images/article-driving-license-japan.png" loading="lazy" alt="Driving License Guide" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="article-card-category" style="position: absolute; top: 12px; left: 12px; background: var(--color-accent, #BF4E30); color: white; font-size: 11px; padding: 4px 10px; border-radius: 4px; font-weight: 700; text-transform: uppercase;">Guide</span>
+                    </div>
+                    <div class="article-card-body" style="padding: var(--space-md); background: white; border: 1px solid var(--color-border-light, #E8DFD1); border-top: none; border-radius: 0 0 8px 8px; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h3 style="font-size: 1.25rem; font-family: var(--font-serif); margin-bottom: 8px; color: var(--color-text, #2C2C2C);">Can Foreigners Drive in Japan? License & IDP Requirements</h3>
+                            <p style="font-size: 0.9rem; color: var(--color-muted, #5C5446); line-height: 1.6; margin-bottom: 16px;">Everything you need to know about International Driving Permits (IDP), Japanese license translations, and traffic rules.</p>
+                        </div>
+                        <div style="font-weight: 700; color: var(--color-accent, #BF4E30); font-size: 0.95rem;">Read Guide →</div>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
 

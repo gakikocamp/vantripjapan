@@ -79,11 +79,9 @@ function mapSummaryToVehicle(summary) {
   return null;
 }
 
-async function getCalendarBlocks(env) {
-  const url = env.GOOGLE_CALENDAR_ICS_URL;
-  if (!url) return [];
+async function fetchCalendar(url) {
+  if (!url) return null;
   try {
-    // If testing locally, avoid deadlocking fetch by using a quick timeout/fallback
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), 1500); // 1.5s timeout
     const res = await fetch(url, {
@@ -96,10 +94,71 @@ async function getCalendarBlocks(env) {
     const text = await res.text();
     return parseICS(text);
   } catch (err) {
-    console.error('Failed to fetch calendar:', err.message || err);
-    
-    // Deterministic mock fallback for local testing
-    return parseICS(`BEGIN:VCALENDAR
+    console.error(`Failed to fetch calendar from ${url}:`, err.message || err);
+    return null;
+  }
+}
+
+async function getCalendarBlocks(env) {
+  const blocks = {
+    'MAZDA BONGO': [],
+    'TOYOTA PROBOX': [],
+    'DAIHATSU POCKET LOFT': []
+  };
+
+  let fetchedAny = false;
+
+  // 1. Fetch Bongo Calendar
+  if (env.GOOGLE_CALENDAR_ICS_URL_BONGO) {
+    const events = await fetchCalendar(env.GOOGLE_CALENDAR_ICS_URL_BONGO);
+    if (events) {
+      fetchedAny = true;
+      for (const e of events) {
+        blocks['MAZDA BONGO'].push({ start: e.start, end: e.end, summary: e.summary || '' });
+      }
+    }
+  }
+
+  // 2. Fetch Probox Calendar
+  if (env.GOOGLE_CALENDAR_ICS_URL_PROBOX) {
+    const events = await fetchCalendar(env.GOOGLE_CALENDAR_ICS_URL_PROBOX);
+    if (events) {
+      fetchedAny = true;
+      for (const e of events) {
+        blocks['TOYOTA PROBOX'].push({ start: e.start, end: e.end, summary: e.summary || '' });
+      }
+    }
+  }
+
+  // 3. Fetch Loft Calendar
+  if (env.GOOGLE_CALENDAR_ICS_URL_LOFT) {
+    const events = await fetchCalendar(env.GOOGLE_CALENDAR_ICS_URL_LOFT);
+    if (events) {
+      fetchedAny = true;
+      for (const e of events) {
+        blocks['DAIHATSU POCKET LOFT'].push({ start: e.start, end: e.end, summary: e.summary || '' });
+      }
+    }
+  }
+
+  // 4. Fetch Legacy / Unified Calendar
+  if (env.GOOGLE_CALENDAR_ICS_URL) {
+    const events = await fetchCalendar(env.GOOGLE_CALENDAR_ICS_URL);
+    if (events) {
+      fetchedAny = true;
+      for (const e of events) {
+        const vehicleKey = mapSummaryToVehicle(e.summary);
+        if (vehicleKey && blocks[vehicleKey]) {
+          blocks[vehicleKey].push({ start: e.start, end: e.end, summary: e.summary || '' });
+        }
+      }
+    }
+  }
+
+  // If no URLs are defined or all fetches failed, return mock fallback
+  if (!fetchedAny) {
+    console.log('No calendar URLs configured or all failed. Using mock fallback.');
+    const mockEvents = parseICS(`BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Google Inc//Google Calendar 70.9054//EN
 CALSCALE:GREGORIAN
@@ -115,7 +174,15 @@ DTEND;VALUE=DATE:20260725
 SUMMARY:[Probox] Blocked - Karen WhatsApp
 END:VEVENT
 END:VCALENDAR`);
+    for (const e of mockEvents) {
+      const vehicleKey = mapSummaryToVehicle(e.summary);
+      if (vehicleKey && blocks[vehicleKey]) {
+        blocks[vehicleKey].push({ start: e.start, end: e.end, summary: e.summary || '' });
+      }
+    }
   }
+
+  return blocks;
 }
 
 export async function onRequestGet({ request, env }) {
@@ -131,8 +198,8 @@ export async function onRequestGet({ request, env }) {
   const placeholders = BLOCKING_STATUSES.map(() => '?').join(',');
   const cacheHeaders = { 'Cache-Control': 'public, max-age=300' };
 
-  // Fetch Google Calendar blocks
-  const calEvents = await getCalendarBlocks(env);
+  // Fetch Google Calendar blocks grouped by vehicle
+  const calBlocks = await getCalendarBlocks(env);
 
   // Normalise query dates
   const fromDate = from ? from.slice(0, 10) : null;
@@ -146,12 +213,10 @@ export async function onRequestGet({ request, env }) {
 
     // 1. Google Calendar Conflicts
     const calConflicts = [];
-    for (const event of calEvents) {
-      const mappedVeh = mapSummaryToVehicle(event.summary);
-      if (mappedVeh === vehicle) {
-        if (event.start < toDate && event.end > fromDate) {
-          calConflicts.push({ from: event.start, to: event.end });
-        }
+    const vehicleCalEvents = calBlocks[vehicle] || [];
+    for (const event of vehicleCalEvents) {
+      if (event.start < toDate && event.end > fromDate) {
+        calConflicts.push({ from: event.start, to: event.end });
       }
     }
 
@@ -208,11 +273,10 @@ export async function onRequestGet({ request, env }) {
   sixMonthsLater.setMonth(sixMonthsLater.getMonth() + 6);
   const sixMonthsLaterStr = sixMonthsLater.toISOString().slice(0, 10);
 
-  for (const event of calEvents) {
-    const key = mapSummaryToVehicle(event.summary);
-    if (key) {
+  for (const vehicleKey of Object.keys(calBlocks)) {
+    for (const event of calBlocks[vehicleKey]) {
       if (event.end >= nowStr && event.start <= sixMonthsLaterStr) {
-        addBlock(key, event.start, event.end);
+        addBlock(vehicleKey, event.start, event.end);
       }
     }
   }

@@ -63,11 +63,13 @@ function switchPage(pageName) {
     const titles = {
         dashboard: 'ダッシュボード',
         bookings: '予約管理',
+        crm: 'メルマガ・CRM',
     };
     $('#pageTitle').textContent = titles[pageName] || pageName;
 
     if (pageName === 'dashboard') loadDashboard();
     if (pageName === 'bookings') loadBookings();
+    if (pageName === 'crm') loadCRM();
 
     $('#sidebar').classList.remove('open');
 }
@@ -308,6 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDate();
     initNav();
     initBookings();
+    initCRM();
     loadDashboard();
 });
 
@@ -355,5 +358,283 @@ window.submitManualBooking = async function(event) {
         }
     } catch (e) {
         // shown by api() toast
+    }
+};
+
+// ============================================================
+// CRM & Drip Campaign Management
+// ============================================================
+
+let allSubscribers = [];
+let allTemplates = [];
+let currentStepId = 1;
+let currentLanguageId = 'en';
+
+window.initCRM = function() {
+    // Setup tab switching
+    const tabs = $$('#crmTabs .status-tab');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            const targetTab = tab.dataset.tab;
+            $$('.crm-tab-content').forEach(c => c.style.display = 'none');
+            $(`#crm-tab-${targetTab}`).style.display = 'block';
+        });
+    });
+
+    // Setup language selector in editor
+    const langSelect = $('#editorLanguageSelect');
+    if (langSelect) {
+        langSelect.addEventListener('change', (e) => {
+            currentLanguageId = e.target.value;
+            loadStepTemplate(currentStepId, currentLanguageId);
+        });
+    }
+};
+
+window.loadCRM = async function() {
+    try {
+        const data = await api('/api/admin/drip-campaign');
+        allSubscribers = data.subscribers || [];
+        allTemplates = data.templates || [];
+        
+        renderSubscribers();
+        renderStepMenu();
+        loadStepTemplate(currentStepId, currentLanguageId);
+    } catch (e) {
+        console.error('CRM load error:', e);
+    }
+};
+
+function renderSubscribers() {
+    const tbody = $('#subscribersBody');
+    const empty = $('#subscribersEmpty');
+
+    if (allSubscribers.length === 0) {
+        tbody.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+    }
+
+    empty.style.display = 'none';
+    tbody.innerHTML = allSubscribers.map(s => {
+        // Step labels
+        let stepText = '';
+        if (s.current_step === -1) {
+            stepText = '<span class="status-badge" style="background:#fee2e2; color:#ef4444;"><i class="fas fa-times-circle"></i> 配信解除</span>';
+        } else if (s.current_step === 5) {
+            stepText = '<span class="status-badge" style="background:#d1fae5; color:#10b981;"><i class="fas fa-check-circle"></i> 送信完了 (5/5)</span>';
+        } else {
+            stepText = `<span class="status-badge" style="background:var(--accent-blue-glow); color:var(--accent-blue);"><i class="fas fa-paper-plane"></i> ステップ ${s.current_step}/5</span>`;
+        }
+
+        // Survey labels
+        const surveyLabels = {
+            kyushu: '🌲 九州ロードトリップ',
+            tokyo_kyoto: '🗼 東京・京都',
+            others: '✈️ その他'
+        };
+        const surveyText = surveyLabels[s.survey] || s.survey || '未設定';
+
+        // Action buttons
+        let actionsHtml = '';
+        if (s.current_step >= 0 && s.current_step < 5) {
+            actionsHtml += `
+                <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem; background:rgba(239,68,68,0.1); border-color:rgba(239,68,68,0.2); color:#ef4444;" onclick="optOutSubscriber(${s.id})">
+                    <i class="fas fa-ban"></i> 配信停止
+                </button>
+            `;
+        } else if (s.current_step === -1) {
+            actionsHtml += `
+                <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem; background:rgba(52,211,153,0.1); border-color:rgba(52,211,153,0.2); color:#34d399;" onclick="optInSubscriber(${s.id})">
+                    <i class="fas fa-redo"></i> 配信再開
+                </button>
+            `;
+        }
+        actionsHtml += `
+            <button class="btn btn-secondary" style="padding:4px 8px; font-size:0.75rem; background:rgba(239,68,68,0.05); border-color:transparent; color:var(--text-muted);" onclick="deleteSubscriber(${s.id})">
+                <i class="fas fa-trash-alt"></i> 削除
+            </button>
+        `;
+
+        return `
+        <tr>
+            <td>
+                <strong>${s.name || 'Anonymous'}</strong>
+                <br><small style="color:var(--text-muted)">${s.email}</small>
+            </td>
+            <td><span class="status-badge" style="background:rgba(255,255,255,0.05); color:var(--text-primary); font-size:0.75rem;">🌐 ${s.language.toUpperCase()}</span></td>
+            <td><small>${surveyText}</small></td>
+            <td>${stepText}</td>
+            <td><small>${s.next_send_date || '-'}</small></td>
+            <td><small style="color:var(--text-muted)">${formatDate(s.subscribed_at)}</small></td>
+            <td>
+                <div style="display:flex; gap:6px;">
+                    ${actionsHtml}
+                </div>
+            </td>
+        </tr>
+        `;
+    }).join('');
+}
+
+const STEP_TITLES = {
+    1: '1通目: ガイド送付・挨拶',
+    2: '2通目: キャンバン vs 電車',
+    3: '3通目: 日本での運転・割引',
+    4: '4通目: 九州の極秘情報',
+    5: '5通目: 残数警告・日程確保'
+};
+
+function renderStepMenu() {
+    const listEl = $('#templateStepList');
+    if (!listEl) return;
+
+    listEl.innerHTML = [1, 2, 3, 4, 5].map(step => {
+        const activeClass = step === currentStepId ? 'active' : '';
+        return `
+            <li class="step-menu-item ${activeClass}" onclick="selectStep(${step})">
+                <span>${STEP_TITLES[step]}</span>
+                <i class="fas fa-chevron-right" style="font-size:0.75rem; opacity:0.5;"></i>
+            </li>
+        `;
+    }).join('');
+}
+
+window.selectStep = function(step) {
+    currentStepId = step;
+    renderStepMenu();
+    loadStepTemplate(currentStepId, currentLanguageId);
+};
+
+function loadStepTemplate(step, lang) {
+    $('#editStep').value = step;
+    
+    // Find template
+    const template = allTemplates.find(t => t.step === step && t.language === lang);
+    const titleEl = $('#editorTitle');
+    if (titleEl) {
+        titleEl.innerHTML = `<i class="fas fa-edit"></i> ${STEP_TITLES[step]} (${lang.toUpperCase()})`;
+    }
+
+    if (template) {
+        $('#editSubject').value = template.subject;
+        $('#editBody').value = template.body_html;
+        $('#editDelayDays').value = template.delay_days;
+    } else {
+        // Form resets for new combinations
+        $('#editSubject').value = '';
+        $('#editBody').value = '';
+        $('#editDelayDays').value = 3;
+        showToast(`${lang.toUpperCase()}のテンプレートがまだ設定されていません。`, 'info');
+    }
+}
+
+window.saveTemplate = async function(event) {
+    event.preventDefault();
+    const data = {
+        action: 'save_template',
+        step: parseInt($('#editStep').value, 10),
+        language: $('#editorLanguageSelect').value,
+        subject: $('#editSubject').value,
+        body_html: $('#editBody').value,
+        delay_days: parseInt($('#editDelayDays').value, 10)
+    };
+
+    try {
+        const res = await api('/api/admin/drip-campaign', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        if (res.ok) {
+            showToast('テンプレートを保存しました');
+            loadCRM(); // Reload data
+        }
+    } catch (e) {
+        console.error('Template save error:', e);
+    }
+};
+
+window.triggerSendTestModal = function() {
+    $('#testEmailForm').reset();
+    $('#testEmailModal').classList.add('active');
+};
+
+window.submitSendTestEmail = async function(event) {
+    event.preventDefault();
+    const testEmail = $('#testTargetEmail').value;
+    const data = {
+        action: 'send_test',
+        step: parseInt($('#editStep').value, 10),
+        language: $('#editorLanguageSelect').value,
+        test_email: testEmail
+    };
+
+    try {
+        const res = await api('/api/admin/drip-campaign', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        if (res.ok) {
+            showToast('テストメールを送信しました！メールボックスをご確認ください。');
+            $('#testEmailModal').classList.remove('active');
+        }
+    } catch (e) {
+        console.error('Send test error:', e);
+    }
+};
+
+window.optOutSubscriber = async function(id) {
+    if (!confirm('この読者への自動ステップメール配信を停止しますか？')) return;
+    try {
+        const res = await api('/api/admin/drip-campaign', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'unsubscribe', id })
+        });
+        if (res.ok) {
+            showToast('配信を停止しました');
+            loadCRM();
+        }
+    } catch (e) {
+        console.error('Unsubscribe error:', e);
+    }
+};
+
+window.optInSubscriber = async function(id) {
+    if (!confirm('この読者の配信をステップ1から再開しますか？')) return;
+    try {
+        const res = await api('/api/admin/drip-campaign', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'resubscribe', id })
+        });
+        if (res.ok) {
+            showToast('ステップ1（アクティブ）として配信を再開しました');
+            loadCRM();
+        }
+    } catch (e) {
+        console.error('Resubscribe error:', e);
+    }
+};
+
+window.deleteSubscriber = async function(id) {
+    if (!confirm('この読者をデータベースから完全に削除しますか？この操作は取り消せません。')) return;
+    try {
+        const res = await api('/api/admin/drip-campaign', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'delete_subscriber', id })
+        });
+        if (res.ok) {
+            showToast('読者データを削除しました');
+            loadCRM();
+        }
+    } catch (e) {
+        console.error('Delete subscriber error:', e);
     }
 };

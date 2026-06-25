@@ -67,3 +67,4 @@ HANDOFF_*.md
 vantrip-seo-title-ideas.md
 *.sql
 run.sh
+.dev.vars

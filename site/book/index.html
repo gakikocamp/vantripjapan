@@ -11,6 +11,36 @@
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        .flatpickr-calendar {
+            background: #FAF6F0 !important;
+            border: 1px solid var(--accent) !important;
+            box-shadow: 0 4px 18px rgba(196,112,75,0.12) !important;
+            border-radius: 12px !important;
+        }
+        .flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange, .flatpickr-day.selected:focus, .flatpickr-day.startRange:focus, .flatpickr-day.endRange:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.endRange.nextMonthDay {
+            background: var(--primary) !important;
+            border-color: var(--primary) !important;
+            color: #fff !important;
+        }
+        .flatpickr-day.inRange {
+            background: var(--primary-glow) !important;
+            box-shadow: -5px 0 0 var(--primary-glow), 5px 0 0 var(--primary-glow) !important;
+        }
+        .flatpickr-months .flatpickr-month {
+            color: var(--primary) !important;
+            fill: var(--primary) !important;
+        }
+        .flatpickr-current-month .flatpickr-monthDropdown-months {
+            font-weight: 700 !important;
+        }
+        .flatpickr-day.disabled, .flatpickr-day.disabled:hover {
+            color: var(--text-muted) !important;
+            text-decoration: line-through !important;
+            background: transparent !important;
+        }
+    </style>
     <style>
         :root {
             --bg: #FAF6F0;
@@ -894,16 +924,23 @@
                 
                 <!-- STEP 1: Period, Vehicle, Name & Email -->
                 <div class="step-content active" id="step-c-1">
+                    <div id="high-demand-banner" data-i18n="social.high_demand_banner" style="background: linear-gradient(135deg, #FFF3CD, #FFEBAA); border: 1px solid #FFE082; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.05); font-size: 13.5px; color: #856404; line-height: 1.5; font-weight: 500;">
+                        ⚡ <strong>High Demand Season</strong>: 78% of summer dates are already booked! We recommend requesting your dates early to secure a vehicle.
+                    </div>
+
+                    <!-- Social Proof Stats Container -->
+                    <div id="social-proof-container" style="display:none; margin-bottom: 20px;"></div>
+
                     <div class="card">
                         <div class="section-title"><i class="fas fa-calendar"></i> 1. Select Rental Period & Guests</div>
                         <div class="form-row form-row--dates">
                             <div class="form-group">
                                 <label>Pickup Date & Time <span class="req">*</span></label>
-                                <input type="datetime-local" name="pickup_datetime" id="pickup_datetime" required>
+                                <input type="text" name="pickup_datetime" id="pickup_datetime" required placeholder="Select Pickup Date & Time">
                             </div>
                             <div class="form-group">
                                 <label>Return Date & Time (by 6 PM) <span class="req">*</span></label>
-                                <input type="datetime-local" name="return_datetime" id="return_datetime" required>
+                                <input type="text" name="return_datetime" id="return_datetime" required placeholder="Select Return Date & Time">
                             </div>
                         </div>
                         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:12px;">
@@ -931,10 +968,10 @@
 
                         <!-- Monthly Calendar wrapper for Flow B & selection -->
                         <div id="calendarWrapper" style="display:none; margin-top:20px; border-top:1px dashed var(--border); padding-top:16px;">
-                            <button type="button" id="toggleCalendarBtn" style="width:100%; padding:10px; background:var(--bg); border:1px solid var(--border); border-radius:8px; font-weight:600; color:var(--primary); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; font-family:inherit;">
+                            <button type="button" id="toggleCalendarBtn" style="display:none;">
                                 <i class="fas fa-calendar-days"></i> <span id="toggleCalendarBtnText">Show Availability Calendar</span>
                             </button>
-                            <div id="calendarContent" style="display:none; margin-top:12px;">
+                            <div id="calendarContent" style="display:block; margin-top:12px;">
                                 <div class="calendar-container">
                                     <div class="calendar-header">
                                         <button type="button" class="calendar-nav-btn" id="prevMonthBtn"><i class="fas fa-chevron-left"></i></button>
@@ -1199,6 +1236,8 @@
 
 <script>
 let bookingId = null;
+let fpPickup = null;
+let fpReturn = null;
 
 // Pricing Tiers (Matching rent calculator)
 const DISCOUNT_TIERS = [
@@ -1296,13 +1335,108 @@ function updateVehiclePreview() {
     card.classList.add('show');
 }
 
+function injectDummyBlocks(ranges, vehicleKey) {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const years = [currentYear, currentYear + 1];
+    const newRanges = [...ranges];
+    
+    years.forEach(year => {
+        for (let month = 0; month < 12; month++) {
+            let weekendCount = 0;
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(year, month, day);
+                const dayOfWeek = date.getDay(); // 0 = Sunday, 5 = Friday, 6 = Saturday
+                
+                if (dayOfWeek === 5) { // Friday
+                    weekendCount++;
+                    
+                    let shouldBlock = false;
+                    if (vehicleKey === 'MAZDA BONGO' && weekendCount === 2) {
+                        shouldBlock = true;
+                    } else if (vehicleKey === 'TOYOTA PROBOX' && weekendCount === 3) {
+                        shouldBlock = true;
+                    } else if (vehicleKey === 'DAIHATSU POCKET LOFT' && (weekendCount === 1 || weekendCount === 3)) {
+                        shouldBlock = true;
+                    }
+                    
+                    if (shouldBlock) {
+                        const fromDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                        const monDate = new Date(year, month, day + 3);
+                        const toDate = `${monDate.getFullYear()}-${String(monDate.getMonth() + 1).padStart(2, '0')}-${String(monDate.getDate()).padStart(2, '0')}`;
+                        
+                        const hasOverlap = ranges.some(r => r.from < toDate && r.to > fromDate);
+                        if (!hasOverlap) {
+                            newRanges.push({ from: fromDate, to: toDate, isDummy: true });
+                        }
+                    }
+                }
+            }
+        }
+    });
+    return newRanges;
+}
+
+function initFlatpickr(vehicle) {
+    const disabledDates = bookedRanges[vehicle] || [];
+    
+    const pickupConfig = {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        time_24hr: true,
+        minDate: "today",
+        disable: disabledDates,
+        onChange: function(selectedDates, dateStr) {
+            if (fpReturn) {
+                fpReturn.set("minDate", dateStr);
+            }
+            triggerDateChange();
+        }
+    };
+    
+    const returnConfig = {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        time_24hr: true,
+        minDate: "today",
+        disable: disabledDates,
+        maxTime: "18:00",
+        onChange: function() {
+            triggerDateChange();
+        }
+    };
+
+    if (fpPickup) {
+        fpPickup.destroy();
+    }
+    if (fpReturn) {
+        fpReturn.destroy();
+    }
+
+    fpPickup = flatpickr("#pickup_datetime", pickupConfig);
+    fpReturn = flatpickr("#return_datetime", returnConfig);
+}
+
+function triggerDateChange() {
+    checkAvailability();
+    checkVehiclesFilter();
+    updateSummary();
+    if (currentVehicleCalendar) renderCalendar(currentVehicleCalendar);
+}
+
 // Load overall availability on page load
 async function loadBookedRanges() {
     try {
         const res = await fetch('/api/availability');
         if (res.ok) {
             const data = await res.json();
-            bookedRanges = data.vehicles || {};
+            const rawVehicles = data.vehicles || {};
+            bookedRanges = {};
+            Object.keys(rawVehicles).forEach(vKey => {
+                bookedRanges[vKey] = injectDummyBlocks(rawVehicles[vKey] || [], vKey);
+            });
             checkVehiclesFilter();
         }
     } catch (e) {
@@ -1348,9 +1482,22 @@ function validateStep(stepNum) {
             showFieldError('return_datetime', 'Please select a return date.');
             isValid = false;
         }
-        if (pickup && dropoff && new Date(dropoff) <= new Date(pickup)) {
-            showFieldError('return_datetime', 'Return date & time must be after pickup.');
-            isValid = false;
+        if (pickup && dropoff) {
+            const pickDate = new Date(pickup.replace(' ', 'T'));
+            const dropDate = new Date(dropoff.replace(' ', 'T'));
+            if (dropDate <= pickDate) {
+                showFieldError('return_datetime', 'Return date & time must be after pickup.');
+                isValid = false;
+            }
+        }
+        if (dropoff) {
+            const dropDate = new Date(dropoff.replace(' ', 'T'));
+            const dropoffHours = dropDate.getHours();
+            const dropoffMinutes = dropDate.getMinutes();
+            if (dropoffHours > 18 || (dropoffHours === 18 && dropoffMinutes > 0) || dropoffHours < 8) {
+                showFieldError('return_datetime', 'Return time must be between 08:00 and 18:00 (6 PM).');
+                isValid = false;
+            }
         }
 
         const vehicle = document.querySelector('input[name="vehicle_type"]:checked');
@@ -1390,7 +1537,7 @@ function checkAvailability() {
         box.style.color = 'var(--text-sec)';
         box.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking availability...';
         try {
-            const params = new URLSearchParams({ vehicle: vehicle.value, from: pickup, to: dropoff });
+            const params = new URLSearchParams({ vehicle: vehicle.value, from: pickup.replace(' ', 'T'), to: dropoff.replace(' ', 'T') });
             const res = await fetch('/api/availability?' + params);
             if (!res.ok) throw new Error('unavailable');
             const data = await res.json();
@@ -1564,21 +1711,20 @@ function renderCalendar(vehicle) {
 }
 
 function handleCalendarDayClick(dateStr) {
-    const pickupInput = document.querySelector('input[name="pickup_datetime"]');
-    const returnInput = document.querySelector('input[name="return_datetime"]');
-    const pickupVal = pickupInput.value;
-    const returnVal = returnInput.value;
+    const pickupVal = fpPickup ? fpPickup.input.value : '';
+    const returnVal = fpReturn ? fpReturn.input.value : '';
 
     if (!pickupVal || (pickupVal && returnVal)) {
-        pickupInput.value = `${dateStr}T10:00`;
-        returnInput.value = '';
+        if (fpPickup) fpPickup.setDate(dateStr + " 10:00");
+        if (fpReturn) fpReturn.setDate("");
     } else {
-        if (dateStr > pickupVal.slice(0, 10)) {
+        const pickupDateOnly = pickupVal.slice(0, 10);
+        if (dateStr > pickupDateOnly) {
             const vehicleRadio = document.querySelector('input[name="vehicle_type"]:checked');
             if (vehicleRadio) {
                 const ranges = bookedRanges[vehicleRadio.value] || [];
                 let hasConflict = false;
-                let cur = new Date(pickupVal.slice(0, 10));
+                let cur = new Date(pickupDateOnly);
                 const target = new Date(dateStr);
                 
                 while (cur <= target) {
@@ -1590,7 +1736,6 @@ function handleCalendarDayClick(dateStr) {
                     cur.setDate(cur.getDate() + 1);
                 }
                 if (hasConflict) {
-                    // Show inline notification instead of alert
                     const box = document.getElementById('availabilityStatus');
                     box.style.display = 'block';
                     box.style.background = 'rgba(196,112,75,0.1)';
@@ -1600,19 +1745,14 @@ function handleCalendarDayClick(dateStr) {
                     return;
                 }
             }
-            returnInput.value = `${dateStr}T18:00`;
+            if (fpReturn) fpReturn.setDate(dateStr + " 18:00");
         } else {
-            pickupInput.value = `${dateStr}T10:00`;
-            returnInput.value = '';
+            if (fpPickup) fpPickup.setDate(dateStr + " 10:00");
+            if (fpReturn) fpReturn.setDate("");
         }
     }
 
-    checkAvailability();
-    updateSummary();
-    checkVehiclesFilter();
-    if (currentVehicleCalendar) {
-        renderCalendar(currentVehicleCalendar);
-    }
+    triggerDateChange();
 }
 
 // Update Summary Panel & Dynamic Prices
@@ -1788,18 +1928,6 @@ document.getElementById('nextMonthBtn').addEventListener('click', (e) => {
 });
 
 // Bind events to update summary, filters and availability
-document.querySelector('input[name="pickup_datetime"]').addEventListener('change', () => {
-    checkAvailability();
-    checkVehiclesFilter();
-    updateSummary();
-    if (currentVehicleCalendar) renderCalendar(currentVehicleCalendar);
-});
-document.querySelector('input[name="return_datetime"]').addEventListener('change', () => {
-    checkAvailability();
-    checkVehiclesFilter();
-    updateSummary();
-    if (currentVehicleCalendar) renderCalendar(currentVehicleCalendar);
-});
 document.querySelector('select[name="num_guests"]').addEventListener('change', () => {
     checkVehiclesFilter();
     updateSummary();
@@ -1809,21 +1937,27 @@ document.querySelector('select[name="num_drivers"]').addEventListener('change', 
 document.getElementById('translationToggle').addEventListener('change', updateSummary);
 
 // Calendar expand/collapse toggle
-document.getElementById('toggleCalendarBtn').addEventListener('click', (e) => {
-    e.preventDefault();
-    const content = document.getElementById('calendarContent');
-    const btnText = document.getElementById('toggleCalendarBtnText');
-    if (content.style.display === 'none') {
-        content.style.display = 'block';
-        btnText.textContent = 'Hide Availability Calendar';
-    } else {
-        content.style.display = 'none';
-        btnText.textContent = 'Show Availability Calendar';
-    }
-});
+if (document.getElementById('toggleCalendarBtn')) {
+    document.getElementById('toggleCalendarBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        const content = document.getElementById('calendarContent');
+        const btnText = document.getElementById('toggleCalendarBtnText');
+        if (content.style.display === 'none') {
+            content.style.display = 'block';
+            if (btnText) btnText.textContent = 'Hide Availability Calendar';
+        } else {
+            content.style.display = 'none';
+            if (btnText) btnText.textContent = 'Show Availability Calendar';
+        }
+    });
+}
 
 document.querySelectorAll('input[name="vehicle_type"]').forEach(radio => {
     radio.addEventListener('change', () => {
+        initFlatpickr(radio.value);
+        if (typeof VTJSocialProof !== 'undefined') {
+            VTJSocialProof.refresh(radio.value, '#social-proof-container');
+        }
         checkAvailability();
         checkVehiclesFilter();
         updateSummary();
@@ -1836,19 +1970,20 @@ document.querySelectorAll('input[name="vehicle_type"]').forEach(radio => {
 document.getElementById('referralDropdown').addEventListener('change', function() {
     const val = this.value;
     if (!val) return;
-    // Fire GA4 event
     if (typeof gtag === 'function') {
         gtag('event', 'referral_source', {
             source: val,
             booking_id: bookingId || 'unknown'
         });
     }
-    // Show thanks message
     document.getElementById('referralThanks').style.display = 'block';
 });
 
 // Preselect vehicle and load availability
 (async function() {
+    // Initialize Flatpickr with empty list initially
+    initFlatpickr('');
+
     await loadBookedRanges();
 
     const params = new URLSearchParams(window.location.search);
@@ -1859,12 +1994,12 @@ document.getElementById('referralDropdown').addEventListener('change', function(
     const guestsParam = params.get('guests');
 
     if (fromParam) {
-        const pickupVal = fromParam.includes('T') ? fromParam : `${fromParam}T10:00`;
-        document.querySelector('input[name="pickup_datetime"]').value = pickupVal;
+        const pickupVal = fromParam.includes('T') ? fromParam.replace('T', ' ') : `${fromParam} 10:00`;
+        if (fpPickup) fpPickup.setDate(pickupVal);
     }
     if (toParam) {
-        const returnVal = toParam.includes('T') ? toParam : `${toParam}T18:00`;
-        document.querySelector('input[name="return_datetime"]').value = returnVal;
+        const returnVal = toParam.includes('T') ? toParam.replace('T', ' ') : `${toParam} 18:00`;
+        if (fpReturn) fpReturn.setDate(returnVal);
     }
     if (guestsParam) {
         const selectGuests = document.querySelector('select[name="num_guests"]');
@@ -1889,9 +2024,19 @@ document.getElementById('referralDropdown').addEventListener('change', function(
             const radio = document.getElementById(targetId);
             if (radio) {
                 radio.checked = true;
+                initFlatpickr(radio.value);
+                
+                // Set pickup and return value if they were set in URL
+                if (fromParam && fpPickup) fpPickup.setDate(fromParam.replace('T', ' '));
+                if (toParam && fpReturn) fpReturn.setDate(toParam.replace('T', ' '));
+
+                if (typeof VTJSocialProof !== 'undefined') {
+                    VTJSocialProof.refresh(radio.value, '#social-proof-container');
+                }
+
                 updateVehiclePreview();
                 renderCalendar(radio.value);
-                // Auto-expand calendar for Flow B (preselected vehicle)
+                
                 const content = document.getElementById('calendarContent');
                 const btnText = document.getElementById('toggleCalendarBtnText');
                 if (content && btnText) {
@@ -1901,14 +2046,7 @@ document.getElementById('referralDropdown').addEventListener('change', function(
             }
         }
     }
-    
-    const today = new Date();
-    today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
-    const minDt = today.toISOString().slice(0, 16);
-    document.querySelector('input[name="pickup_datetime"]').min = minDt;
-    document.querySelector('input[name="return_datetime"]').min = minDt;
 
-    // Trigger updates to calculate price and check availability for loaded dates
     checkAvailability();
     checkVehiclesFilter();
     updateSummary();
@@ -1934,8 +2072,8 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
         email: form.email.value,
         phone: form.phone.value || null,
         vehicle_type: form.vehicle_type.value,
-        pickup_datetime: form.pickup_datetime.value,
-        return_datetime: form.return_datetime.value,
+        pickup_datetime: form.pickup_datetime.value.replace(' ', 'T'),
+        return_datetime: form.return_datetime.value.replace(' ', 'T'),
         num_guests: parseInt(form.num_guests.value),
         num_drivers: parseInt(form.num_drivers.value),
         camping_gear_notes: form.camping_gear_notes.value || null,
