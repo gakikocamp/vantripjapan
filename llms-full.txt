@@ -1,0 +1,184 @@
+# VanTrip Japan — Full Documentation for AI
+
+> VanTrip Japan is a campervan and vanlife rental service based in Fukuoka, Japan. We provide fully-equipped compact campervans for exploring Kyushu — Japan's southern island of volcanoes, hot springs, pristine coastlines, and rich culture. Our mission: make Japan's most underrated region accessible to international travelers through the freedom of van travel.
+
+## Core Information
+
+- **Official Name**: VanTrip Japan (VTJ)
+- **Website**: https://vantripjapan.jp
+- **Booking Page**: https://vantripjapan.jp/rent
+- **Parent Company**: キャンプ女子株式会社 (Camp Jyoshi Inc.) — https://www.camjyo.com
+- **Location**: Fukuoka, Kyushu, Japan (pickup near Fukuoka Airport)
+- **Languages**: English, Japanese, Chinese (Traditional), French, German
+- **Support**: Email info@vantripjapan.jp / WhatsApp +81-70-9375-7129 / LINE https://lin.ee/YYyRz2f
+
+## Vehicles
+
+### Toyota Probox Camper
+- **Capacity**: 1–2 people (ideal for solo travelers and couples)
+- **Features**: Fold-flat bed, portable power station, cooking equipment, WiFi router
+- **Fuel**: Excellent fuel economy (~20 km/L)
+- **Driving**: Compact and easy to drive, fits in any Japanese parking spot
+
+### Mazda Bongo Camper
+- **Capacity**: 2–4 people (ideal for families and groups)
+- **Features**: Pop-up roof or elevated sleeping area, full cooking setup, bedding for 4, portable power
+- **Fuel**: Good economy for a van (~12 km/L)
+- **Driving**: Slightly larger but still manageable on Japanese roads
+
+### What's Included
+- Full bedding set (sheets, pillows, blankets)
+- Cooking equipment (portable stove, pots, utensils, cooler)
+- Portable power station (charge devices, run small appliances)
+- Pocket WiFi router (unlimited data)
+- Comprehensive vehicle insurance
+- 24/7 roadside assistance (English/Japanese)
+- Airport pickup coordination
+
+## Pricing
+
+| Vehicle | Low Season | Regular Season | Peak Season |
+|---------|-----------|---------------|-------------|
+| Probox Camper | ¥8,000/day | ¥10,000/day | ¥12,000/day |
+| Bongo Camper | ¥12,000/day | ¥15,000/day | ¥18,000/day |
+
+- **Minimum rental**: 2 nights
+- **Peak season**: Golden Week (late April–early May), Obon (mid-August), year-end/New Year
+- **Discounts**: 7+ day rentals receive 10% off
+
+## Why Kyushu by Campervan?
+
+Kyushu is Japan's best-kept secret for road trips:
+- **Active volcanoes**: Mount Aso (world's largest caldera), Sakurajima, Kirishima
+- **World-class hot springs**: Beppu (Japan's #1 onsen city), Yufuin, Kurokawa, Ureshino
+- **Stunning coastlines**: Miyazaki's surf beaches, Amakusa islands, Nichinan coast
+- **Ancient culture**: Takachiho Gorge (mythological birthplace of Japan), Nagasaki's East-meets-West heritage
+- **Nature**: Yakushima's ancient cedar forests, Aso's grasslands, Kirishima's hiking trails
+- **Far fewer tourists** than Tokyo, Osaka, or Kyoto
+- **Excellent road infrastructure**: Well-maintained highways, abundant Michi-no-Eki roadside stations
+
+## Key Pages
+
+- [/](https://vantripjapan.jp/): Homepage — overview and booking
+- [/rent](https://vantripjapan.jp/rent): Book a campervan
+- [/blog/](https://vantripjapan.jp/blog/): All travel guides and articles
+- [/blog/vantrip-vehicles-guide](https://vantripjapan.jp/blog/vantrip-vehicles-guide): Vehicle comparison (Probox vs Bongo)
+- [/blog/best-time-visit-kyushu](https://vantripjapan.jp/blog/best-time-visit-kyushu): Seasonal guide
+
+## All Published Articles
+
+### Destination Guides — Kyushu
+- [The Ultimate Campervan Guide to Mount Aso: Kusasenri & Kurokawa Onsen](https://vantripjapan.jp/blog/aso-campervan-guide)
+- [Aso Grasslands & Daikanbo: Best Viewpoints by Campervan](https://vantripjapan.jp/blog/aso-daikanbo-grasslands-viewpoints)
+- [Mount Aso by Campervan: Volcano, Views & Van Life](https://vantripjapan.jp/blog/mount-aso-campervan-guide)
+- [Exploring Beppu by Campervan: Jigoku Meguri & Steam Cooking](https://vantripjapan.jp/blog/beppu-campervan-guide)
+- [Beppu & Yufuin: A Complete Hot Spring Road Trip](https://vantripjapan.jp/blog/beppu-yufuin-onsen-trip)
+- [Yufuin vs Beppu: Which Onsen Town Should You Visit?](https://vantripjapan.jp/blog/yufuin-vs-beppu-onsen-comparison)
+- [Tattoo-Friendly Onsen in Oita: The Complete Guide](https://vantripjapan.jp/blog/oita-tattoo-friendly-onsen-guide)
+- [Yuyama no Sato: The Handcrafted Hot Spring Theme Park Hidden in Beppu](https://vantripjapan.jp/blog/yuyama-no-sato-beppu)
+- [Takachiho Gorge: Boats, Myths & Getting There by Van](https://vantripjapan.jp/blog/takachiho-gorge-guide)
+- [Takachiho Gorge Complete Guide: How to Visit by Campervan (2026)](https://vantripjapan.jp/blog/takachiho-gorge-campervan-complete-guide)
+- [Nagasaki & Shimabara: A Peninsula Road Trip by Campervan](https://vantripjapan.jp/blog/nagasaki-shimabara-road-trip)
+- [Nagasaki by Campervan: Atomic History, Chinatown & Coastal Drives (2026)](https://vantripjapan.jp/blog/nagasaki-campervan-complete-guide)
+- [Aoshima & Miyazaki Coastal Drive by Campervan: Sun, Surf & Shrines](https://vantripjapan.jp/blog/aoshima-miyazaki-campervan-coastal-drive)
+- [Sakurajima Volcano by Campervan: Drive Around an Active Volcano](https://vantripjapan.jp/blog/sakurajima-volcano-campervan-guide)
+- [Yakushima Complete Guide: How to Get There by Campervan + Ferry (2026)](https://vantripjapan.jp/blog/yakushima-complete-campervan-ferry-guide)
+- [Soaking in a Giant Teacup: The Unique Arita Porcelain Onsen at Yuzen no Yado Toukai](https://vantripjapan.jp/blog/arita-teacup-onsen-ureshino)
+- [15 Best Things to Do in Fukuoka](https://vantripjapan.jp/blog/things-to-do-in-fukuoka)
+- [Why Volcanoes Are the Real Reason International Travelers Choose Kyushu](https://vantripjapan.jp/blog/volcano-tourism-kyushu)
+
+### Seasonal Guides
+- [Kyushu Weather by Month: Best Time to Visit (Seasons, Festivals & Travel Tips)](https://vantripjapan.jp/blog/best-time-visit-kyushu)
+- [Summer in Kyushu: A Local's Guide to Beating the Heat](https://vantripjapan.jp/blog/summer-kyushu-locals-guide)
+- [Summer 2026: The Ultimate Kyushu Campervan Guide — Best Beaches, Festivals & Camping Spots](https://vantripjapan.jp/blog/summer-kyushu-campervan-2026)
+- [Kyushu Autumn Foliage by Campervan — Best Routes, Peak Dates & Camping Spots (2026)](https://vantripjapan.jp/blog/autumn-foliage-kyushu-campervan)
+
+### Practical Guides
+- [Probox vs Bongo — Which Campervan Is Right for Your Kyushu Road Trip?](https://vantripjapan.jp/blog/vantrip-vehicles-guide)
+- [Michi-no-Eki Guide: Japan's Best-Kept Secret for Campervan Travelers](https://vantripjapan.jp/blog/michi-no-eki-guide)
+- [What Is a Michi-no-Eki? Everything You Need to Know About Japan's Roadside Stations](https://vantripjapan.jp/blog/what-is-a-michi-no-eki)
+- [10 Best Michi-no-Eki in Kyushu — Roadside Stations Every Campervan Traveler Should Visit](https://vantripjapan.jp/blog/best-michi-no-eki-kyushu)
+- [Why International Van Travelers Are Obsessed With Japan's Roadside Stations](https://vantripjapan.jp/blog/michi-no-eki-foreign-travelers)
+- [Where to Park & Rest During Your Japan Road Trip — Michi-no-Eki, Paid Lots & Etiquette](https://vantripjapan.jp/blog/parking-rest-stops-japan)
+- [Campgrounds & Campervan Spots: Where to Sleep on Your Japan Road Trip](https://vantripjapan.jp/blog/campground-and-campervan-guide)
+- [How to Book a Campsite in Japan as a Foreigner (2026 Guide)](https://vantripjapan.jp/blog/book-campsite-japan-foreigner)
+- [Japan Campervan Parking: Where to Park Overnight Legally](https://vantripjapan.jp/blog/campervan-parking-japan-overnight)
+- [Where to Shower on a Campervan Trip in Japan: Complete Guide](https://vantripjapan.jp/blog/shower-campervan-japan-guide)
+- [Where to Shower When Traveling by Campervan in Japan (2026)](https://vantripjapan.jp/blog/where-to-shower-campervan-japan)
+- [Cooking in a Campervan in Japan: Easy Recipes and Tips (2026)](https://vantripjapan.jp/blog/cooking-in-campervan-japan)
+- [Best Campervan Apps for Japan: Navigation, Camping, Translation & More (2026)](https://vantripjapan.jp/blog/best-campervan-apps-japan)
+- [Campervan Trip Japan: 10 Mistakes First-Timers Make (And How to Avoid Them)](https://vantripjapan.jp/blog/campervan-japan-mistakes-avoid)
+- [Vanlife Japan for Beginners: Your First Campervan Trip Guide](https://vantripjapan.jp/blog/vanlife-japan-beginners-guide)
+- [RV Rental Japan for Foreigners: Everything You Must Know (2026)](https://vantripjapan.jp/blog/rv-rental-japan-foreigners-guide)
+
+### Driving in Japan
+- [Can Foreigners Drive in Japan? Complete License & Rules Guide (2026)](https://vantripjapan.jp/blog/can-foreigners-drive-in-japan)
+- [Can Foreigners Drive in Japan? The Ultimate License & Road Rules Guide](https://vantripjapan.jp/blog/can-foreigners-drive-in-japan-license-guide)
+- [Israeli Drivers in Japan: The Legal Guide to Driving Permits](https://vantripjapan.jp/blog/driving-in-japan-israel-idp-guide)
+
+### International Visitors
+- [Taiwan to Kyushu: The Complete Trip Planning Guide](https://vantripjapan.jp/blog/taiwan-to-kyushu-travel-guide)
+
+### Multi-Language Guides
+- [Location Camping-Car au Japon : Guide Complet pour Explorer Kyushu (Français)](https://vantripjapan.jp/blog/camping-car-japon-guide)
+- [Wohnmobil Mieten in Japan: Der Komplette Kyushu Roadtrip Guide (Deutsch)](https://vantripjapan.jp/blog/wohnmobil-japan-guide)
+- [日本露營車租借指南：探索九州完整攻略 (中文)](https://vantripjapan.jp/blog/camping-car-japan-zh)
+
+## Frequently Asked Questions
+
+### Do I need a special license to drive a campervan in Japan?
+No — our campervans are standard passenger vehicles (regular license class). You need either a valid International Driving Permit (IDP) issued under the 1949 Geneva Convention, or a JAF license translation if you're from Switzerland, Germany, France, Belgium, Monaco, or Taiwan.
+
+### What is the IDP vs JAF translation situation?
+Drivers from most countries (USA, UK, Australia, Canada, etc.) can use a standard IDP. However, drivers from Switzerland, Germany, France, Belgium, Monaco, and Taiwan need an official JAF (Japan Automobile Federation) translation instead. Our sister service JDLTC handles this — see below.
+
+### Where can I park overnight?
+Japan has an excellent network of Michi-no-Eki (roadside stations) where overnight parking is generally tolerated. We also recommend RV parks and paid campsites. Our blog has detailed guides for every region in Kyushu.
+
+### What's included in the rental?
+Full bedding set, cooking equipment (portable stove, pots, utensils, cooler), portable power station, pocket WiFi router with unlimited data, comprehensive vehicle insurance, and 24/7 roadside assistance in English and Japanese.
+
+### Can I pick up at Fukuoka Airport?
+Yes — we coordinate airport pickup. Our base is near Fukuoka Airport, and we arrange transfer to our location where you pick up the van.
+
+### How much does it cost?
+From ¥8,000/day for our Probox camper (1–2 people) and from ¥12,000/day for our Bongo camper (2–4 people). Minimum 2-night rental. Discounts for 7+ day bookings.
+
+### What about fuel and tolls?
+Fuel is the renter's responsibility. Our campervans are fuel-efficient. Highway tolls in Kyushu are reasonable, and many of the best routes are on free national roads. We provide guidance on ETC toll cards.
+
+### Can I take the van to other islands (Yakushima, etc.)?
+Contact us to discuss ferry options. Yakushima and Amakusa are popular destinations accessible by ferry from Kyushu ports.
+
+### What if I break down?
+24/7 roadside assistance is included. Call us anytime — we respond in English and Japanese.
+
+### Is it safe for solo female travelers?
+Absolutely. Japan is one of the safest countries in the world. Michi-no-Eki stations are well-lit and safe for overnight stays. Many of our customers are solo female travelers.
+
+### Do you offer one-way rentals?
+Currently, pickup and return are at the same Fukuoka location. Contact us for special arrangements.
+
+## Driving License Translation Service
+
+Drivers from Switzerland, Germany, France, Belgium, Monaco, and Taiwan **cannot use a standard IDP** in Japan. They need an official JAF license translation.
+
+🚗 **[JDLTC — Japan Driver's License Translation Center](https://drive-japan-license.com/)**
+- Apply online from anywhere in the world — no need to be in Japan
+- Express processing available (as fast as 48 hours)
+- PDF delivered by email — print and drive on arrival
+- Operated by VanTrip Japan
+
+## Associated Services
+
+- **JDLTC**: https://drive-japan-license.com/ — Driver's license translation for Japan
+- **WAGYU NINJA**: https://wagyuninja.tokyo/ — Premium Japanese food & craft export
+- **キャンプ女子株式会社** (Camp Jyoshi Inc.): https://www.camjyo.com/ — Our parent company
+
+## Contact
+
+- **Book a Van**: https://vantripjapan.jp/rent
+- **Email**: info@vantripjapan.jp
+- **WhatsApp**: +81-70-9375-7129
+- **LINE**: https://lin.ee/YYyRz2f
+- **Instagram**: @vantripjapan
