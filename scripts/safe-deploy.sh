@@ -65,11 +65,16 @@ for u in "${URLS[@]}"; do
   done
   if [ "$code" = "200" ]; then echo "  ✅ 200 $u"; else echo "  ❌ $code $u"; FAIL=1; fi
 done
-# 言語コンテンツマーカー（キャッシュで旧版が出ていないか）
-if ! curl -s --max-time 20 "https://vantripjapan.jp/fr/" | grep -q 'lang="fr"'; then
-  echo "  ❌ /fr/ が lang=\"fr\" を返していません"; FAIL=1
-else
+# 言語コンテンツマーカー（キャッシュで旧版が出ていないか / エッジ伝播待ちでリトライ）
+MARKER_OK=0
+for attempt in 1 2 3 4; do
+  if curl -s --max-time 20 "https://vantripjapan.jp/fr/" | grep -q 'lang="fr"'; then MARKER_OK=1; break; fi
+  sleep 8
+done
+if [ "$MARKER_OK" = 1 ]; then
   echo "  ✅ /fr/ 言語マーカー OK"
+else
+  echo "  ❌ /fr/ が lang=\"fr\" を返していません"; FAIL=1
 fi
 
 if [ "$FAIL" -ne 0 ]; then
