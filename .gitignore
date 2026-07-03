@@ -41,6 +41,7 @@ data/
 # Reports
 *.md
 !README.md
+!CLAUDE.md
 
 # Python scripts (keep ga4_report.py)
 admin_server.py
@@ -68,3 +69,6 @@ vantrip-seo-title-ideas.md
 *.sql
 run.sh
 .dev.vars
+
+# Claude Code 個人設定（共有しない）
+.claude/settings.local.json
