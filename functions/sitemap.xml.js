@@ -5,31 +5,41 @@
 
 const BASE_URL = 'https://vantripjapan.jp';
 
+// hreflang: true のページは scripts/build-i18n-pages.js が /fr/ /de/ /zh/ /he/ に静的版を生成している
 const STATIC_PAGES = [
-  { loc: '/',          changefreq: 'weekly',  priority: '1.0', hreflang: false },
-  { loc: '/rent/',     changefreq: 'monthly', priority: '0.9', hreflang: true  },
-  { loc: '/category/', changefreq: 'monthly', priority: '0.7', hreflang: false },
-  { loc: '/faq/',      changefreq: 'monthly', priority: '0.6', hreflang: false },
-  { loc: '/contact/',  changefreq: 'monthly', priority: '0.6', hreflang: false },
+  { loc: '/',                  changefreq: 'weekly',  priority: '1.0', hreflang: true  },
+  { loc: '/rent/',             changefreq: 'monthly', priority: '0.9', hreflang: true  },
+  { loc: '/category/',         changefreq: 'monthly', priority: '0.7', hreflang: false },
+  { loc: '/faq/',              changefreq: 'monthly', priority: '0.6', hreflang: true  },
+  { loc: '/contact/',          changefreq: 'monthly', priority: '0.6', hreflang: true  },
+  { loc: '/rent/bongo/',       changefreq: 'monthly', priority: '0.6', hreflang: true  },
+  { loc: '/rent/loft/',        changefreq: 'monthly', priority: '0.6', hreflang: true  },
+  { loc: '/rent/probox/',      changefreq: 'monthly', priority: '0.6', hreflang: true  },
+  { loc: '/road-trip-planner/', changefreq: 'weekly', priority: '0.7', hreflang: true  },
 ];
 
-const HREFLANG_LANGS = ['en', 'fr', 'de', 'zh-Hant', 'he'];
-const HREFLANG_PARAMS = { en: '', fr: '?lang=fr', de: '?lang=de', 'zh-Hant': '?lang=zh', he: '?lang=he' };
+// 静的言語ディレクトリ（hreflangコード → URLプレフィックス）
+const LANG_DIRS = { fr: '/fr', de: '/de', 'zh-Hant': '/zh', he: '/he' };
 
-function hreflangLinks(loc) {
-  return HREFLANG_LANGS.map(lang =>
-    `    <xhtml:link rel="alternate" hreflang="${lang}" href="${BASE_URL}${loc}${HREFLANG_PARAMS[lang]}"/>`
+function hreflangLinks(baseLoc) {
+  const alts = [
+    ['x-default', `${BASE_URL}${baseLoc}`],
+    ['en', `${BASE_URL}${baseLoc}`],
+    ...Object.entries(LANG_DIRS).map(([code, dir]) => [code, `${BASE_URL}${dir}${baseLoc}`]),
+  ];
+  return alts.map(([lang, href]) =>
+    `    <xhtml:link rel="alternate" hreflang="${lang}" href="${href}"/>`
   ).join('\n');
 }
 
-function urlEntry({ loc, lastmod, changefreq, priority, withHreflang }) {
+function urlEntry({ loc, lastmod, changefreq, priority, hreflangBase }) {
   const lines = [
     '  <url>',
     `    <loc>${BASE_URL}${loc}</loc>`,
     lastmod ? `    <lastmod>${lastmod}</lastmod>` : null,
     `    <changefreq>${changefreq}</changefreq>`,
     `    <priority>${priority}</priority>`,
-    withHreflang ? hreflangLinks(loc) : null,
+    hreflangBase ? hreflangLinks(hreflangBase) : null,
     '  </url>',
   ];
   return lines.filter(Boolean).join('\n');
@@ -60,8 +70,21 @@ export async function onRequest(context) {
       lastmod: today,
       changefreq: p.changefreq,
       priority: p.priority,
-      withHreflang: p.hreflang,
+      hreflangBase: p.hreflang ? p.loc : null,
     })
+  );
+
+  // 静的言語ページ（/fr/ /de/ /zh/ /he/）— EN版と同じ hreflang クラスタを持つ
+  const langEntries = STATIC_PAGES.filter(p => p.hreflang).flatMap(p =>
+    Object.values(LANG_DIRS).map(dir =>
+      urlEntry({
+        loc: `${dir}${p.loc}`,
+        lastmod: today,
+        changefreq: p.changefreq,
+        priority: p.loc === '/' ? '0.8' : '0.5',
+        hreflangBase: p.loc,
+      })
+    )
   );
 
   const articleEntries = articles.map(a => {
@@ -71,7 +94,6 @@ export async function onRequest(context) {
       lastmod,
       changefreq: 'monthly',
       priority: '0.8',
-      withHreflang: false,
     });
   });
 
@@ -80,6 +102,7 @@ export async function onRequest(context) {
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
     '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     ...staticEntries,
+    ...langEntries,
     ...articleEntries,
     '</urlset>',
   ].join('\n');
