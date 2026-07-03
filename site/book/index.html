@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <style>
         .flatpickr-calendar {
             background: #FAF6F0 !important;
@@ -78,6 +79,7 @@
             max-width: 1100px;
             position: relative;
             z-index: 1;
+            min-width: 0;
         }
         
         /* Header styles */
@@ -140,13 +142,13 @@
         /* Split layout */
         .split-layout {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             gap: 30px;
             margin-top: 20px;
         }
         @media (min-width: 900px) {
             .split-layout {
-                grid-template-columns: 1.4fr 1fr;
+                grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
                 align-items: start;
             }
         }
@@ -260,7 +262,7 @@
         /* Forms Elements */
         .form-row {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
             gap: 20px;
         }
         @media (max-width: 600px) {
@@ -342,6 +344,7 @@
         }
         .vehicle-option-info {
             flex: 1;
+            min-width: 0;
         }
         .vehicle-option .name { font-weight: 700; font-size: 1rem; color: var(--text); }
         .vehicle-option .type { font-size: 0.8rem; color: var(--text-sec); margin-top: 4px; }
@@ -847,11 +850,15 @@
             }
         }
         @media (max-width: 600px) {
+            .card {
+                padding: 20px !important;
+                border-radius: 12px !important;
+            }
             .wizard-buttons--step1 {
                 flex-direction: column;
             }
             .form-row--dates {
-                grid-template-columns: 1fr 1fr !important;
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
                 gap: 10px !important;
             }
             .vehicle-grid {
@@ -861,6 +868,8 @@
                 gap: 12px !important;
                 padding: 4px 4px 12px 4px !important;
                 -webkit-overflow-scrolling: touch !important;
+                width: 100% !important;
+                max-width: 100% !important;
             }
             .vehicle-option {
                 flex: 0 0 88% !important;
@@ -885,22 +894,22 @@
 <body>
 <div class="container">
     <div class="header">
-        <a href="/rent/" class="back-btn">
+        <a href="/rent/" class="back-btn" data-i18n="book.back">
             <i class="fas fa-arrow-left"></i> Back to vehicles & pricing
         </a>
         <div class="logo">
             <i class="fas fa-van-shuttle"></i>
             VANTRIPJAPAN
         </div>
-        <p>Booking Request — takes about 1 minute</p>
+        <p data-i18n="book.tagline">Booking Request — takes about 1 minute</p>
         <div class="header-trust">
             <a href="https://maps.app.goo.gl/3uuep4h3zypPY6UYA" target="_blank" rel="noopener">
-                <span>📍 Verified on Google Maps</span>
+                <span data-i18n="book.trust.maps">📍 Verified on Google Maps</span>
             </a>
             <span>·</span>
-            <span><i class="fas fa-shield-halved" style="color:var(--primary);"></i> No payment today</span>
+            <span data-i18n="book.trust.nopay"><i class="fas fa-shield-halved" style="color:var(--primary);"></i> No payment today</span>
             <span>·</span>
-            <span><i class="fas fa-calendar-check" style="color:var(--primary);"></i> Free cancellation up to 8 days</span>
+            <span data-i18n="book.trust.cancel"><i class="fas fa-calendar-check" style="color:var(--primary);"></i> Free cancellation up to 8 days</span>
         </div>
     </div>
 
@@ -912,11 +921,11 @@
             <div class="stepper">
                 <div class="step active" id="step-i-1">
                     <span class="step-num">1</span>
-                    <span class="step-label">Trip & Vehicle</span>
+                    <span class="step-label" data-i18n="book.step1">Trip & Vehicle</span>
                 </div>
                 <div class="step" id="step-i-2">
                     <span class="step-num">2</span>
-                    <span class="step-label">Details & Submit</span>
+                    <span class="step-label" data-i18n="book.step2">Details & Submit</span>
                 </div>
             </div>
 
@@ -928,41 +937,65 @@
                         ⚡ <strong>High Demand Season</strong>: 78% of summer dates are already booked! We recommend requesting your dates early to secure a vehicle.
                     </div>
 
+                    <!-- No-Risk Booking Banner -->
+                    <div id="no-risk-banner" style="background: linear-gradient(135deg, #E8F5E9, #C8E6C9); border: 1px solid #A5D6A7; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; box-shadow: 0 4px 12px rgba(46, 125, 50, 0.05); font-size: 13.5px; color: #1B5E20; line-height: 1.5; font-weight: 600; display: flex; align-items: start; gap: 10px;">
+                        <span style="font-size: 18px; line-height: 1.2;">💡</span>
+                        <div data-i18n="book.norisk">
+                            <strong>No-Risk Reservation</strong>: No credit card or documents are required at this stage. Request your dates now — we will check availability and confirm details with you first. Free cancellation up to 8 days before.
+                        </div>
+                    </div>
+
                     <!-- Social Proof Stats Container -->
                     <div id="social-proof-container" style="display:none; margin-bottom: 20px;"></div>
 
                     <div class="card">
-                        <div class="section-title"><i class="fas fa-calendar"></i> 1. Select Rental Period & Guests</div>
+                        <div class="section-title" data-i18n="book.sec1"><i class="fas fa-calendar"></i> 1. Select Rental Period & Guests</div>
                         <div class="form-row form-row--dates">
                             <div class="form-group">
-                                <label>Pickup Date & Time <span class="req">*</span></label>
-                                <input type="text" name="pickup_datetime" id="pickup_datetime" required placeholder="Select Pickup Date & Time">
+                                <label data-i18n="book.pickup.label">Pickup Date & Time <span class="req">*</span></label>
+                                <input type="text" name="pickup_datetime" id="pickup_datetime" required placeholder="Select Pickup Date & Time" data-i18n-placeholder="book.pickup.ph">
                             </div>
                             <div class="form-group">
-                                <label>Return Date & Time (by 6 PM) <span class="req">*</span></label>
-                                <input type="text" name="return_datetime" id="return_datetime" required placeholder="Select Return Date & Time">
+                                <label data-i18n="book.return.label">Return Date & Time (by 6 PM) <span class="req">*</span></label>
+                                <input type="text" name="return_datetime" id="return_datetime" required placeholder="Select Return Date & Time" data-i18n-placeholder="book.return.ph">
                             </div>
                         </div>
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:12px;">
+                        <div style="display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); gap:16px; margin-top:12px;">
                             <div class="form-group">
-                                <label>Number of Guests <span class="req">*</span></label>
+                                <label data-i18n="book.guests.label">Number of Guests <span class="req">*</span></label>
                                 <select name="num_guests" required>
-                                    <option value="1">1 Guest</option>
-                                    <option value="2" selected>2 Guests</option>
-                                    <option value="3">3 Guests</option>
-                                    <option value="4">4 Guests</option>
-                                    <option value="5">5+ Guests</option>
+                                    <option value="1" data-i18n="book.opt.guest1">1 Guest</option>
+                                    <option value="2" selected data-i18n="book.opt.guest2">2 Guests</option>
+                                    <option value="3" data-i18n="book.opt.guest3">3 Guests</option>
+                                    <option value="4" data-i18n="book.opt.guest4">4 Guests</option>
+                                    <option value="5" data-i18n="book.opt.guest5">5+ Guests</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Number of Drivers <span class="req">*</span></label>
+                                <label data-i18n="book.drivers.label">Number of Drivers <span class="req">*</span></label>
                                 <select name="num_drivers" required>
-                                    <option value="1">1 Driver</option>
-                                    <option value="2">2 Drivers</option>
-                                    <option value="3">3 Drivers</option>
-                                    <option value="4">4 Drivers</option>
-                                    <option value="5">5 Drivers</option>
+                                    <option value="1" data-i18n="book.opt.driver1">1 Driver</option>
+                                    <option value="2" data-i18n="book.opt.driver2">2 Drivers</option>
+                                    <option value="3" data-i18n="book.opt.driver3">3 Drivers</option>
+                                    <option value="4" data-i18n="book.opt.driver4">4 Drivers</option>
+                                    <option value="5" data-i18n="book.opt.driver5">5 Drivers</option>
                                 </select>
+                                <div style="margin-top: 8px; font-size: 0.8rem; line-height: 1.4; color: var(--text-sec);">
+                                    <details style="border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; background: #ffffff;">
+                                        <summary style="font-weight: 600; cursor: pointer; color: var(--primary); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                                            <span data-i18n="book.license.summary">🪪 License requirements for driving in Japan</span>
+                                            <span style="font-size: 0.7rem; color: var(--text-muted);" data-i18n="book.license.show">▼ Show</span>
+                                        </summary>
+                                        <div style="margin-top: 6px; color: var(--text-sec); border-top: 1px dashed var(--border); padding-top: 6px; text-align: left;" data-i18n="book.license.body">
+                                            To drive in Japan, you need:
+                                            <ul style="margin-top: 4px; padding-left: 16px; list-style-type: disc;">
+                                                <li>A valid driver's license from your home country AND</li>
+                                                <li>An <strong>International Driving Permit (IDP)</strong> issued under the <strong>1949 Geneva Convention</strong>. (Note: IDPs issued under the 1968 Vienna Convention are NOT valid in Japan.)</li>
+                                                <li><em>Drivers from Switzerland, Germany, France, Belgium, Monaco, Taiwan:</em> You need an official Japanese translation of your license (available via JDLTC or JAF) instead of an IDP.</li>
+                                            </ul>
+                                        </div>
+                                    </details>
+                                </div>
                             </div>
                         </div>
 
@@ -980,16 +1013,18 @@
                                     </div>
                                     <div class="calendar-grid" id="calendarGrid"></div>
                                 </div>
-                                <div style="font-size:0.75rem; color:var(--text-sec); margin-top:8px; display:flex; gap:12px; align-items:center; justify-content:center;">
+                                <div style="font-size:0.75rem; color:var(--text-sec); margin-top:10px; display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:center; border-top:1px dashed var(--border); padding-top:10px;">
                                     <span><span style="display:inline-block; width:12px; height:12px; background:#fff; border:1px solid var(--border); border-radius:3px; vertical-align:middle; margin-right:4px;"></span> Available</span>
-                                    <span><span style="display:inline-block; width:12px; height:12px; background:rgba(196,112,75,0.08); border-radius:3px; vertical-align:middle; text-decoration:line-through; color:var(--text-muted); margin-right:4px; text-align:center; font-size:0.6rem;">1</span> Booked / Blocked</span>
+                                    <span><span style="display:inline-block; width:12px; height:12px; background:#e0e0e0; border-radius:3px; vertical-align:middle; text-decoration:line-through; color:var(--text-muted); margin-right:4px; text-align:center; font-size:0.6rem;">1</span> Booked / Past</span>
+                                    <span><span style="display:inline-block; width:12px; height:12px; background:var(--primary); border-radius:3px; vertical-align:middle; margin-right:4px;"></span> Selected</span>
+                                    <span><span style="display:inline-block; width:12px; height:12px; background:var(--primary-glow); border-radius:3px; vertical-align:middle; margin-right:4px;"></span> Selected Range</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="card">
-                        <div class="section-title"><i class="fas fa-car"></i> 2. Choose Your Vehicle</div>
+                        <div class="section-title" data-i18n="book.sec2"><i class="fas fa-car"></i> 2. Choose Your Vehicle</div>
                         <div class="form-group">
                             <div class="vehicle-grid" id="vehicleGrid">
                                 <input type="radio" name="vehicle_type" id="veh-bongo" value="MAZDA BONGO" class="custom-radio" required>
@@ -997,7 +1032,7 @@
                                     <img src="/images/rent/vehicles/bongo.webp" alt="Mazda Bongo">
                                     <div class="vehicle-option-info">
                                         <div class="name">🚐 MAZDA BONGO</div>
-                                        <div class="type">Campervan · Max 3 guests · sleeps 2 inside</div>
+                                        <div class="type" data-i18n="book.veh.bongo">Campervan · Max 3 guests · sleeps 2 inside</div>
                                         <div class="price" id="price-bongo">¥22,000〜/day</div>
                                         <div class="status-msg" id="status-bongo" style="font-size:0.8rem; margin-top:4px;"></div>
                                     </div>
@@ -1008,7 +1043,7 @@
                                     <img src="/images/rent/vehicles/probox.webp" alt="Toyota Probox">
                                     <div class="vehicle-option-info">
                                         <div class="name">🏕️ TOYOTA PROBOX</div>
-                                        <div class="type">with RoofTent · Max 2 guests · sleeps 2 on roof</div>
+                                        <div class="type" data-i18n="book.veh.probox">with RoofTent · Max 2 guests · sleeps 2 on roof</div>
                                         <div class="price" id="price-probox">¥22,000〜/day</div>
                                         <div class="status-msg" id="status-probox" style="font-size:0.8rem; margin-top:4px;"></div>
                                     </div>
@@ -1019,7 +1054,7 @@
                                     <img src="/images/rent/vehicles/daihatsu-front.webp" alt="Daihatsu Pocket Loft">
                                     <div class="vehicle-option-info">
                                         <div class="name">🚐 DAIHATSU POCKET LOFT</div>
-                                        <div class="type">Pocket Loft with RoofTent · Max 4 guests · sleeps 2 inside, 2 on roof</div>
+                                        <div class="type" data-i18n="book.veh.loft">Pocket Loft with RoofTent · Max 4 guests · sleeps 2 inside, 2 on roof</div>
                                         <div class="price" id="price-loft">¥25,000〜/day</div>
                                         <div class="status-msg" id="status-loft" style="font-size:0.8rem; margin-top:4px;"></div>
                                     </div>
@@ -1035,29 +1070,37 @@
                             </div>
                             <div class="vp-rate">
                                 <span id="vpRate"></span>
-                                <small>per day</small>
+                                <small data-i18n="book.perday">per day</small>
                             </div>
                         </div>
                         <div id="availabilityStatus" style="display:none; padding:12px 16px; border-radius:8px; font-size:0.85rem; margin-top:12px;"></div>
                     </div>
 
                     <div class="card">
-                        <div class="section-title"><i class="fas fa-user"></i> 3. Your Details</div>
+                        <div class="section-title" data-i18n="book.sec3"><i class="fas fa-user"></i> 3. Your Details</div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Full Name <span class="req">*</span></label>
-                                <input type="text" name="full_name" id="full_name" placeholder="As shown on your passport">
+                                <label data-i18n="book.name.label">Full Name <span class="req">*</span></label>
+                                <input type="text" name="full_name" id="full_name" placeholder="As shown on your passport" data-i18n-placeholder="book.name.ph">
                             </div>
                             <div class="form-group">
-                                <label>Email Address <span class="req">*</span></label>
+                                <label data-i18n="book.email.label">Email Address <span class="req">*</span></label>
                                 <input type="email" name="email" id="email" placeholder="your@email.com">
                             </div>
                         </div>
                     </div>
 
-                    <div class="wizard-buttons wizard-buttons--step1">
-                        <button type="button" class="btn-next" onclick="goToStep(2)">Continue to Final Step <i class="fas fa-arrow-right"></i></button>
-                        <a id="step1WALink" href="#" target="_blank" class="btn-wa-secondary">
+                    <!-- WhatsApp Draft Preview Step 1 -->
+                    <div id="wa-preview-box-step1" style="display: none; margin-bottom: 16px; padding: 14px; background: rgba(37, 211, 102, 0.05); border: 1px dashed #25D366; border-radius: 12px; font-size: 13px; line-height: 1.5; color: #1e7e34; text-align: left; width: 100%;">
+                        <div style="font-weight: 700; color: #128C7E; margin-bottom: 6px; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px;">
+                            <span data-i18n="book.wa.preview">💬 Your WhatsApp Message Preview:</span>
+                        </div>
+                        <div id="wa-preview-text-step1" style="white-space: pre-wrap; font-family: monospace; background: #ffffff; padding: 8px 12px; border-radius: 8px; border: 1px solid #e8dfd1; color: #2C2C2C; font-size: 12px; max-height: 150px; overflow-y: auto;"></div>
+                    </div>
+
+                    <div class="wizard-buttons wizard-buttons--step1" style="display: flex; flex-direction: column; gap: 10px;">
+                        <button type="button" class="btn-next" style="width: 100%;" onclick="goToStep(2)" data-i18n="book.next">Continue to Final Step <i class="fas fa-arrow-right"></i></button>
+                        <a id="step1WALink" href="#" target="_blank" class="btn-wa-secondary" data-i18n="book.wa.inquire" style="width: 100%; justify-content: center; margin-left: 0;">
                             <i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i> Inquire via WhatsApp
                         </a>
                     </div>
@@ -1066,18 +1109,18 @@
                 <!-- STEP 2: Phone (optional), License, Camping gear & Submit -->
                 <div class="step-content" id="step-c-2">
                     <div class="card">
-                        <div class="section-title"><i class="fas fa-sliders"></i> Optional Details</div>
+                        <div class="section-title" data-i18n="book.opt.title"><i class="fas fa-sliders"></i> Optional Details</div>
                         <div class="form-group">
-                            <label>Phone Number <span style="font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-muted);">(optional)</span></label>
-                            <input type="tel" name="phone" id="phone" placeholder="Include country code (e.g. +65 9123 4567)">
+                            <label data-i18n="book.phone.label">Phone Number <span style="font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-muted);">(optional)</span></label>
+                            <input type="tel" name="phone" id="phone" placeholder="Include country code (e.g. +65 9123 4567)" data-i18n-placeholder="book.phone.ph">
                         </div>
                     </div>
 
                     <div class="card">
-                        <div class="section-title"><i class="fas fa-file-invoice"></i> License Translation</div>
+                        <div class="section-title" data-i18n="book.trans.title"><i class="fas fa-file-invoice"></i> License Translation</div>
                         <div class="form-group">
                             <div class="translation-toggle">
-                                <div class="info">
+                                <div class="info" data-i18n="book.trans.info">
                                     Do you need a Japanese translation of your driver's license?
                                     <small>Required for 6 specific countries (Switzerland, Germany, France, Belgium, Taiwan, Monaco)</small>
                                     <small class="warn">⚠️ This is a paid service with an additional fee</small>
@@ -1091,21 +1134,21 @@
                     </div>
 
                     <div class="card">
-                        <div class="section-title"><i class="fas fa-campground"></i> Camping Gear</div>
+                        <div class="section-title" data-i18n="book.gear.title"><i class="fas fa-campground"></i> Camping Gear</div>
                         <div class="form-group">
-                            <label>Additional camping gear to rent <span style="font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-muted);">(optional)</span></label>
-                            <textarea name="camping_gear_notes" placeholder="Any extra camping gear you'd like to add? (Check: camcierge.com)"></textarea>
+                            <label data-i18n="book.gear.label">Additional camping gear to rent <span style="font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-muted);">(optional)</span></label>
+                            <textarea name="camping_gear_notes" placeholder="Any extra camping gear you'd like to add? (Check: camcierge.com)" data-i18n-placeholder="book.gear.ph"></textarea>
                         </div>
                     </div>
 
-                    <div class="form-notice">
+                    <div class="form-notice" data-i18n="book.notice">
                         <i class="fas fa-shield-halved"></i>
                         No payment details are required now. We will verify dates first.
                     </div>
 
                     <div class="wizard-buttons">
-                        <button type="button" class="btn-prev" onclick="goToStep(1)"><i class="fas fa-arrow-left"></i> Back</button>
-                        <button type="submit" class="btn-submit" id="submitBtn">
+                        <button type="button" class="btn-prev" onclick="goToStep(1)" data-i18n="book.prev"><i class="fas fa-arrow-left"></i> Back</button>
+                        <button type="submit" class="btn-submit" id="submitBtn" data-i18n="book.submit">
                             <i class="fas fa-paper-plane"></i> Submit Booking Request
                         </button>
                     </div>
@@ -1117,7 +1160,7 @@
         <!-- Right Side: Booking Summary & Trust -->
         <div class="summary-sidebar">
             <div class="summary-card">
-                <div class="summary-title">Booking Summary</div>
+                <div class="summary-title" data-i18n="book.sum.title">Booking Summary</div>
                 
                 <div class="summary-vehicle" id="summaryVehicle" style="display:none;">
                     <img src="" id="summaryVehicleImg" alt="Selected campervan">
@@ -1128,55 +1171,63 @@
                 </div>
                 <div class="summary-vehicle" id="summaryVehiclePlaceholder">
                     <i class="fas fa-van-shuttle" style="font-size: 2.5rem; color: var(--border);"></i>
-                    <div style="color:var(--text-sec); font-size:0.9rem;">No vehicle selected yet</div>
+                    <div style="color:var(--text-sec); font-size:0.9rem;" data-i18n="book.sum.noveh">No vehicle selected yet</div>
                 </div>
 
                 <div class="summary-details">
                     <div class="summary-details-row">
-                        <span class="summary-details-label">Pick-up:</span>
+                        <span class="summary-details-label" data-i18n="book.sum.pickup">Pick-up:</span>
                         <span class="summary-details-val" id="summaryPickup">—</span>
                     </div>
                     <div class="summary-details-row">
-                        <span class="summary-details-label">Return:</span>
+                        <span class="summary-details-label" data-i18n="book.sum.return">Return:</span>
                         <span class="summary-details-val" id="summaryReturn">—</span>
                     </div>
                     <div class="summary-details-row">
-                        <span class="summary-details-label">Duration:</span>
+                        <span class="summary-details-label" data-i18n="book.sum.duration">Duration:</span>
                         <span class="summary-details-val" id="summaryDuration">—</span>
                     </div>
                     <div class="summary-details-row">
-                        <span class="summary-details-label">Drivers:</span>
+                        <span class="summary-details-label" data-i18n="book.sum.drivers">Drivers:</span>
                         <span class="summary-details-val" id="summaryDrivers">—</span>
                     </div>
                     <div class="summary-details-row" id="summaryTranslationRow" style="display:none;">
-                        <span class="summary-details-label">License Translation:</span>
-                        <span class="summary-details-val" style="color:var(--accent);">Requested</span>
+                        <span class="summary-details-label" data-i18n="book.sum.trans">License Translation:</span>
+                        <span class="summary-details-val" style="color:var(--accent);" data-i18n="book.sum.requested">Requested</span>
                     </div>
                 </div>
 
                 <div class="summary-price-box">
                     <div class="summary-price-row">
-                        <span style="font-size: 0.85rem; font-weight:600; color: var(--text-sec);">Estimated Total:</span>
+                        <span style="font-size: 0.85rem; font-weight:600; color: var(--text-sec);" data-i18n="book.sum.total">Estimated Total:</span>
                         <span class="summary-price-total" id="summaryPriceTotal">¥0</span>
                     </div>
-                    <div class="summary-price-desc" id="summaryPriceDesc">
+                    <div class="summary-price-desc" id="summaryPriceDesc" data-i18n="book.sum.desc">
                         Includes rental fees, standard insurance, and camper gear. Dynamic rates applied for weekends/long-stays.
                     </div>
                 </div>
 
+                <!-- WhatsApp Draft Preview Summary -->
+                <div id="wa-preview-box-summary" style="display: none; margin-top: 14px; padding: 12px; background: rgba(37, 211, 102, 0.05); border: 1px dashed #25D366; border-radius: 8px; font-size: 12.5px; line-height: 1.5; color: #1e7e34; text-align: left; width: 100%;">
+                    <div style="font-weight: 700; color: #128C7E; margin-bottom: 6px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;">
+                        <span data-i18n="book.wa.preview2">💬 WhatsApp Message Preview:</span>
+                    </div>
+                    <div id="wa-preview-text-summary" style="white-space: pre-wrap; font-family: monospace; background: #ffffff; padding: 8px 10px; border-radius: 6px; border: 1px solid #e8dfd1; color: #2C2C2C; font-size: 11.5px; max-height: 120px; overflow-y: auto;"></div>
+                </div>
+
                 <!-- Prominent WhatsApp Inquiry Button -->
-                <a id="summaryWALink" href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20chat%20about%20booking%20a%20campervan." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; padding: 12px; background: #25D366; color: white; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(37,211,102,0.15); transition: all 0.2s;">
+                <a id="summaryWALink" data-i18n="book.wa.inquire2" href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20chat%20about%20booking%20a%20campervan." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; padding: 12px; background: #25D366; color: white; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(37,211,102,0.15); transition: all 0.2s;">
                     <i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i> Inquire on WhatsApp
                 </a>
 
                 <div class="summary-badge-list">
-                    <div class="summary-badge-item">
+                    <div class="summary-badge-item" data-i18n="book.badge1">
                         <i class="fas fa-circle-check"></i> No payment due today
                     </div>
-                    <div class="summary-badge-item">
+                    <div class="summary-badge-item" data-i18n="book.badge2">
                         <i class="fas fa-circle-check"></i> Free cancellation (up to 8d)
                     </div>
-                    <div class="summary-badge-item">
+                    <div class="summary-badge-item" data-i18n="book.badge3">
                         <i class="fas fa-circle-check"></i> Direct contact with owners
                     </div>
                 </div>
@@ -1189,16 +1240,16 @@
     <!-- Success Screen Card -->
     <div class="card success-screen" id="successScreen">
         <div class="icon"><i class="fas fa-check"></i></div>
-        <h2>Request Received — Thank You! 🎉</h2>
-        <p>
+        <h2 data-i18n="book.success.title">Request Received — Thank You! 🎉</h2>
+        <p data-i18n="book.success.body">
             Karen will personally review your request (reference #<span id="displayBookingId">—</span>), check our fleet calendar, and reply within 24 hours (usually much faster!).
         </p>
 
         <div style="margin-top:28px; padding:24px; background:var(--primary-glow); border:1px solid rgba(45,90,61,0.15); border-radius:var(--radius); text-align:center;">
-            <p style="font-size:0.95rem; color:var(--text); margin-bottom:16px; font-weight:600;">
+            <p style="font-size:0.95rem; color:var(--text); margin-bottom:16px; font-weight:600;" data-i18n="book.success.faster">
                 <i class="fas fa-bolt" style="color:var(--primary);"></i> Want a faster reply? Message Karen directly on WhatsApp:
             </p>
-            <a href="" id="successWALink" target="_blank"
+            <a href="" id="successWALink" target="_blank" data-i18n="book.success.wabtn"
                style="display:inline-flex; align-items:center; gap:8px; padding:12px 28px; background:#25D366; color:#fff; border-radius:var(--radius-sm); text-decoration:none; font-weight:700; box-shadow: 0 4px 15px rgba(37,211,102,0.25);">
                 <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i> Message Karen on WhatsApp
             </a>
@@ -1206,22 +1257,22 @@
 
         <!-- Referral source (optional, fires GA4 event) -->
         <div class="referral-followup" id="referralFollowup">
-            <label for="referralDropdown">How did you find us? <span style="font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-muted);">(optional)</span></label>
+            <label for="referralDropdown" data-i18n="book.ref.label">How did you find us? <span style="font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-muted);">(optional)</span></label>
             <select id="referralDropdown">
-                <option value="">— Select —</option>
-                <option value="Website/Search Engine">🌐 Website / Search Engine</option>
-                <option value="Social Media">📱 Social Media</option>
-                <option value="Word of Mouth">🗣️ Word of Mouth</option>
-                <option value="Travel Platforms">✈️ Travel Apps / Platforms</option>
-                <option value="Influencer">🎥 Influencer / YouTuber</option>
-                <option value="Other">💡 Other</option>
+                <option value="" data-i18n="book.ref.select">— Select —</option>
+                <option value="Website/Search Engine" data-i18n="book.ref.web">🌐 Website / Search Engine</option>
+                <option value="Social Media" data-i18n="book.ref.social">📱 Social Media</option>
+                <option value="Word of Mouth" data-i18n="book.ref.wom">🗣️ Word of Mouth</option>
+                <option value="Travel Platforms" data-i18n="book.ref.travel">✈️ Travel Apps / Platforms</option>
+                <option value="Influencer" data-i18n="book.ref.influencer">🎥 Influencer / YouTuber</option>
+                <option value="Other" data-i18n="book.ref.other">💡 Other</option>
             </select>
-            <div class="referral-thanks" id="referralThanks">
+            <div class="referral-thanks" id="referralThanks" data-i18n="book.ref.thanks">
                 <i class="fas fa-heart"></i> Thanks for letting us know!
             </div>
         </div>
 
-        <p style="font-size:0.8rem; color:var(--text-muted); margin-top:24px; line-height:1.5;">
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-top:24px; line-height:1.5;" data-i18n="book.success.next">
             <i class="fas fa-shield-halved"></i> What's next: We confirm availability → Send you a secure payment link & request your driver's license/IDP → Your van is reserved. All documents are stored securely and encrypted.
         </p>
     </div>
@@ -1235,6 +1286,18 @@
 </div>
 
 <script>
+// i18n helper: translations/currentLang は /js/i18n.js が定義する。
+// このスクリプトの実行時点では未読込だが、参照はユーザー操作時なので安全。未読込時は英語フォールバック。
+function bt(key, fallback) {
+    try {
+        const dict = (typeof translations !== 'undefined') ? translations[(typeof currentLang !== 'undefined' && currentLang) || 'en'] : null;
+        return (dict && dict[key]) || fallback;
+    } catch (e) { return fallback; }
+}
+function btLocale() {
+    const map = { en: 'en-US', fr: 'fr-FR', de: 'de-DE', zh: 'zh-TW', he: 'he-IL' };
+    return map[(typeof currentLang !== 'undefined' && currentLang) || 'en'] || 'en-US';
+}
 let bookingId = null;
 let fpPickup = null;
 let fpReturn = null;
@@ -1475,11 +1538,11 @@ function validateStep(stepNum) {
         const dropoff = document.querySelector('input[name="return_datetime"]').value;
 
         if (!pickup) {
-            showFieldError('pickup_datetime', 'Please select a pickup date.');
+            showFieldError('pickup_datetime', bt('book.js.pickup_req', 'Please select a pickup date.'));
             isValid = false;
         }
         if (!dropoff) {
-            showFieldError('return_datetime', 'Please select a return date.');
+            showFieldError('return_datetime', bt('book.js.return_req', 'Please select a return date.'));
             isValid = false;
         }
         if (pickup && dropoff) {
@@ -1502,7 +1565,7 @@ function validateStep(stepNum) {
 
         const vehicle = document.querySelector('input[name="vehicle_type"]:checked');
         if (!vehicle) {
-            showVehicleError('Please choose an available campervan.');
+            showVehicleError(bt('book.js.vehicle_req', 'Please choose an available campervan.'));
             isValid = false;
         }
 
@@ -1510,11 +1573,11 @@ function validateStep(stepNum) {
         const email = document.querySelector('input[name="email"]').value.trim();
 
         if (!name) {
-            showFieldError('full_name', 'Please enter your full name.');
+            showFieldError('full_name', bt('book.js.name_req', 'Please enter your full name.'));
             isValid = false;
         }
         if (!email || !email.includes('@')) {
-            showFieldError('email', 'Please enter a valid email address.');
+            showFieldError('email', bt('book.js.email_req', 'Please enter a valid email address.'));
             isValid = false;
         }
     }
@@ -1535,7 +1598,7 @@ function checkAvailability() {
         box.style.display = 'block';
         box.style.background = 'var(--bg)';
         box.style.color = 'var(--text-sec)';
-        box.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking availability...';
+        box.innerHTML = bt('book.js.checking', '<i class="fas fa-spinner fa-spin"></i> Checking availability...');
         try {
             const params = new URLSearchParams({ vehicle: vehicle.value, from: pickup.replace(' ', 'T'), to: dropoff.replace(' ', 'T') });
             const res = await fetch('/api/availability?' + params);
@@ -1544,12 +1607,12 @@ function checkAvailability() {
             if (data.available) {
                 box.style.background = 'var(--primary-glow)';
                 box.style.color = 'var(--primary)';
-                box.innerHTML = '<i class="fas fa-circle-check"></i> <strong>This van is available for your dates.</strong> Submit request to secure your booking.';
+                box.innerHTML = bt('book.js.available_msg', '<i class="fas fa-circle-check"></i> <strong>This van is available for your dates.</strong> Submit request to secure your booking.');
             } else {
                 box.style.background = 'rgba(196,112,75,0.1)';
                 box.style.color = 'var(--accent)';
                 const waUrl = getWhatsAppURL();
-                box.innerHTML = `<i class="fas fa-triangle-exclamation"></i> <strong>This van has a scheduling conflict.</strong> You can still submit — we'll suggest another van or nearby dates. Or <a href="${waUrl}" target="_blank" style="color:var(--accent); text-decoration:underline;">ask Karen on WhatsApp</a>.`;
+                box.innerHTML = bt('book.js.conflict_msg', '<i class="fas fa-triangle-exclamation"></i> <strong>This van has a scheduling conflict.</strong> You can still submit — we\'ll suggest another van or nearby dates. Or <a href="{WA_URL}" target="_blank" style="color:var(--accent); text-decoration:underline;">ask Karen on WhatsApp</a>.').replace('{WA_URL}', waUrl);
             }
         } catch (e) {
             box.style.display = 'none';
@@ -1603,7 +1666,7 @@ function checkVehiclesFilter() {
             } else {
                 label.classList.remove('disabled');
                 radio.disabled = false;
-                statusMsg.innerHTML = `<span class="status-badge available"><i class="fas fa-circle-check"></i> Available</span>`;
+                statusMsg.innerHTML = bt('book.js.avail_badge', '<span class="status-badge available"><i class="fas fa-circle-check"></i> Available</span>');
 
                 if (fromDate && toDate && toDate > fromDate) {
                     const days = Math.ceil((new Date(toDate) - new Date(fromDate)) / (1000 * 60 * 60 * 24));
@@ -1740,7 +1803,7 @@ function handleCalendarDayClick(dateStr) {
                     box.style.display = 'block';
                     box.style.background = 'rgba(196,112,75,0.1)';
                     box.style.color = 'var(--accent)';
-                    box.innerHTML = '<i class="fas fa-triangle-exclamation"></i> There are booked dates in between. Please select a different return date.';
+                    box.innerHTML = bt('book.js.between_msg', '<i class="fas fa-triangle-exclamation"></i> There are booked dates in between. Please select a different return date.');
                     setTimeout(() => { box.style.display = 'none'; }, 5000);
                     return;
                 }
@@ -1773,7 +1836,7 @@ function updateSummary() {
             vehInfo.style.display = 'flex';
             document.getElementById('summaryVehicleImg').src = info.img;
             document.getElementById('summaryVehicleName').textContent = vKey;
-            document.getElementById('summaryVehicleDesc').textContent = info.desc;
+            document.getElementById('summaryVehicleDesc').textContent = bt(({'MAZDA BONGO':'book.veh.bongo','TOYOTA PROBOX':'book.veh.probox','DAIHATSU POCKET LOFT':'book.veh.loft'})[vKey] || '', info.desc);
         }
     } else {
         vehPlaceholder.style.display = 'flex';
@@ -1785,14 +1848,14 @@ function updateSummary() {
 
     if (pickupVal) {
         const pDate = new Date(pickupVal);
-        document.getElementById('summaryPickup').textContent = pDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'});
+        document.getElementById('summaryPickup').textContent = pDate.toLocaleDateString(btLocale(), {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'});
     } else {
         document.getElementById('summaryPickup').textContent = '—';
     }
 
     if (returnVal) {
         const rDate = new Date(returnVal);
-        document.getElementById('summaryReturn').textContent = rDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'});
+        document.getElementById('summaryReturn').textContent = rDate.toLocaleDateString(btLocale(), {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'});
     } else {
         document.getElementById('summaryReturn').textContent = '—';
     }
@@ -1803,7 +1866,7 @@ function updateSummary() {
         const diffMs = rDate - pDate;
         if (diffMs > 0) {
             days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-            document.getElementById('summaryDuration').textContent = days + (days === 1 ? ' day' : ' days');
+            document.getElementById('summaryDuration').textContent = days + (days === 1 ? bt('book.js.day', ' day') : bt('book.js.days', ' days'));
         } else {
             document.getElementById('summaryDuration').textContent = '—';
         }
@@ -1812,7 +1875,7 @@ function updateSummary() {
     }
 
     const driversVal = document.querySelector('select[name="num_drivers"]').value;
-    document.getElementById('summaryDrivers').textContent = driversVal + (driversVal === '1' ? ' Driver' : ' Drivers');
+    document.getElementById('summaryDrivers').textContent = driversVal + (driversVal === '1' ? bt('book.js.driver', ' Driver') : bt('book.js.drivers', ' Drivers'));
 
     const translationVal = document.getElementById('translationToggle').checked;
     const translationRow = document.getElementById('summaryTranslationRow');
@@ -1834,23 +1897,54 @@ function updateSummary() {
         document.getElementById('summaryPriceTotal').textContent = '¥' + finalTotal.toLocaleString();
         
         if (discount.rate > 0) {
-            document.getElementById('summaryPriceDesc').innerHTML = `🎉 Includes <strong>${discount.label}</strong> long-stay discount! Estimated daily rate: ¥${Math.round(finalTotal/days).toLocaleString()}/day.`;
+            document.getElementById('summaryPriceDesc').innerHTML = bt('book.js.discount_desc', '🎉 Includes <strong>{LABEL}</strong> long-stay discount! Estimated daily rate: ¥{RATE}/day.').replace('{LABEL}', discount.label).replace('{RATE}', Math.round(finalTotal/days).toLocaleString());
         } else {
-            document.getElementById('summaryPriceDesc').textContent = 'Includes rental fees, standard insurance, and camper gear. Dynamic rates applied for weekends/long-stays.';
+            document.getElementById('summaryPriceDesc').textContent = bt('book.sum.desc', 'Includes rental fees, standard insurance, and camper gear. Dynamic rates applied for weekends/long-stays.');
         }
     } else {
         document.getElementById('summaryPriceTotal').textContent = '¥0';
-        document.getElementById('summaryPriceDesc').textContent = 'Includes rental fees, standard insurance, and camper gear. Dynamic rates applied for weekends/long-stays.';
+        document.getElementById('summaryPriceDesc').textContent = bt('book.sum.desc', 'Includes rental fees, standard insurance, and camper gear. Dynamic rates applied for weekends/long-stays.');
     }
 
     // Update WhatsApp link text with selected conditions
+    const waUrl = getWhatsAppURL();
     const summaryWALinkEl = document.getElementById('summaryWALink');
     if (summaryWALinkEl) {
-        summaryWALinkEl.href = getWhatsAppURL();
+        summaryWALinkEl.href = waUrl;
     }
     const step1WALinkEl = document.getElementById('step1WALink');
     if (step1WALinkEl) {
-        step1WALinkEl.href = getWhatsAppURL();
+        step1WALinkEl.href = waUrl;
+    }
+
+    // Update WhatsApp preview boxes
+    try {
+        const urlObj = new URL(waUrl);
+        const textVal = urlObj.searchParams.get('text') || '';
+        
+        const waPreviewSummary = document.getElementById('wa-preview-text-summary');
+        const waPreviewSummaryBox = document.getElementById('wa-preview-box-summary');
+        if (waPreviewSummary && waPreviewSummaryBox) {
+            if (vehicleRadio) {
+                waPreviewSummary.textContent = textVal;
+                waPreviewSummaryBox.style.display = 'block';
+            } else {
+                waPreviewSummaryBox.style.display = 'none';
+            }
+        }
+
+        const waPreviewStep1 = document.getElementById('wa-preview-text-step1');
+        const waPreviewStep1Box = document.getElementById('wa-preview-box-step1');
+        if (waPreviewStep1 && waPreviewStep1Box) {
+            if (vehicleRadio) {
+                waPreviewStep1.textContent = textVal;
+                waPreviewStep1Box.style.display = 'block';
+            } else {
+                waPreviewStep1Box.style.display = 'none';
+            }
+        }
+    } catch(e) {
+        console.error('[WA Preview Error]', e);
     }
 }
 
@@ -1881,11 +1975,11 @@ function getWhatsAppURL() {
     }
     if (pickupVal) {
         const pDate = new Date(pickupVal);
-        waMsg += `- Pickup: ${pDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'})}\n`;
+        waMsg += `- Pickup: ${pDate.toLocaleDateString(btLocale(), {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'})}\n`;
     }
     if (returnVal) {
         const rDate = new Date(returnVal);
-        waMsg += `- Return: ${rDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'})}\n`;
+        waMsg += `- Return: ${rDate.toLocaleDateString(btLocale(), {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'})}\n`;
     }
     if (days > 0) {
         waMsg += `- Duration: ${days} days\n`;
@@ -1963,6 +2057,14 @@ document.querySelectorAll('input[name="vehicle_type"]').forEach(radio => {
         updateSummary();
         updateVehiclePreview();
         renderCalendar(radio.value);
+
+        // Auto-open calendar content on vehicle select
+        const content = document.getElementById('calendarContent');
+        const btnText = document.getElementById('toggleCalendarBtnText');
+        if (content && btnText) {
+            content.style.display = 'block';
+            btnText.textContent = 'Hide Availability Calendar';
+        }
     });
 });
 
@@ -2141,5 +2243,6 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
     }
 });
 </script>
+<script src="/js/i18n.js?v=20260703"></script>
 </body>
 </html>
