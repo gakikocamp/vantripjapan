@@ -66,9 +66,11 @@ for u in "${URLS[@]}"; do
   if [ "$code" = "200" ]; then echo "  ✅ 200 $u"; else echo "  ❌ $code $u"; FAIL=1; fi
 done
 # 言語コンテンツマーカー（キャッシュで旧版が出ていないか / エッジ伝播待ちでリトライ）
+# 注意: `curl | grep -q` は pipefail + SIGPIPE で誤FAILするため、一度変数に受ける
 MARKER_OK=0
 for attempt in 1 2 3 4; do
-  if curl -s --max-time 20 "https://vantripjapan.jp/fr/" | grep -q 'lang="fr"'; then MARKER_OK=1; break; fi
+  BODY=$(curl -s --max-time 20 "https://vantripjapan.jp/fr/" || true)
+  if printf '%s' "$BODY" | grep -q 'lang="fr"'; then MARKER_OK=1; break; fi
   sleep 8
 done
 if [ "$MARKER_OK" = 1 ]; then
