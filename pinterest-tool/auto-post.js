@@ -301,10 +301,21 @@ async function main() {
             if (post.image_url) {
                 result = await createPinFromUrl(post);
             } else if (post.image) {
-                // Local file — construct GitHub raw URL
-                const imageUrl = githubRawUrl(post.image);
-                post.image_url = imageUrl;
-                result = await createPinFromUrl({ ...post, image_url: imageUrl });
+                // Local file — try to upload directly as base64 first
+                const absoluteImagePath = path.isAbsolute(post.image)
+                    ? post.image
+                    : path.join(__dirname, "..", post.image);
+
+                if (fs.existsSync(absoluteImagePath)) {
+                    log("📤", `Uploading local image directly (base64) from: ${post.image}`);
+                    result = await createPinFromFile(post, absoluteImagePath);
+                } else {
+                    // Fallback to GitHub raw URL
+                    log("🔗", `Local image not found at ${absoluteImagePath}. Falling back to GitHub raw URL...`);
+                    const imageUrl = githubRawUrl(post.image);
+                    post.image_url = imageUrl;
+                    result = await createPinFromUrl({ ...post, image_url: imageUrl });
+                }
             } else {
                 log("⚠️", "No image specified, skipping");
                 post.status = "error";

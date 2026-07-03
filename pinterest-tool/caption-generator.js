@@ -137,7 +137,8 @@ Generate the following in JSON format:
   "description": "English description (150-300 chars). Include 2-3 German keywords naturally and 2-3 French keywords. Example: '...A perfect Kyushu road trip destination. Ideal for Wohnmobil Japan adventures and voyage Japon en van...'",
   "hashtags": ["array of 15-20 hashtags mixing English, German, and French. Focus on: van life, japan travel, kyushu, road trip, campervan, onsen. Include location-specific tags when possible."],
   "alt_text": "Descriptive alt text for accessibility (max 200 chars)",
-  "board_suggestion": "Which board this pin fits best: 'Japan Van Life', 'Kyushu Road Trip', 'Japan Hot Springs', 'Japanese Camping Spots', or 'Japan Travel Tips'"
+  "board_suggestion": "Which board this pin fits best: 'Japan Van Life', 'Kyushu Road Trip', 'Japan Hot Springs', 'Japanese Camping Spots', or 'Japan Travel Tips'",
+  "list_items": ["If TEMPLATE STYLE is 'list', generate 4 to 5 short and catchy points/destinations (max 25 chars each) related to the topic. Otherwise, return an empty array."]
 }
 
 IMPORTANT:
@@ -154,6 +155,7 @@ IMPORTANT:
             hashtags: result.hashtags || getDefaultHashtags(),
             alt_text: result.alt_text || pinTitle,
             board_suggestion: result.board_suggestion || "Japan Van Life",
+            list_items: result.list_items || [],
             generated_at: new Date().toISOString(),
         };
     } catch (error) {
@@ -165,6 +167,7 @@ IMPORTANT:
             hashtags: getDefaultHashtags(),
             alt_text: pinTitle,
             board_suggestion: "Japan Van Life",
+            list_items: [],
             generated_at: new Date().toISOString(),
             error: error.message,
         };

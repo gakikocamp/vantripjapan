@@ -73,6 +73,19 @@ const PINS_DB = path.join(DATA_DIR, "pins.json");
 const PINTEREST_ACCESS_TOKEN = process.env.PINTEREST_ACCESS_TOKEN || "";
 
 // ── Database ──
+const QUEUE_PATH = path.join(DATA_DIR, "post-queue.json");
+
+function loadQueue() {
+    if (fs.existsSync(QUEUE_PATH)) {
+        try { return JSON.parse(fs.readFileSync(QUEUE_PATH, "utf8")); } catch (e) { /* ignore */ }
+    }
+    return [];
+}
+
+function saveQueue(queue) {
+    fs.writeFileSync(QUEUE_PATH, JSON.stringify(queue, null, 2));
+}
+
 function loadPins() {
     if (fs.existsSync(PINS_DB)) {
         try { return JSON.parse(fs.readFileSync(PINS_DB, "utf8")); } catch (e) { /* ignore */ }
@@ -349,7 +362,8 @@ Generate JSON:
   "description": "English description (200-300 chars). Naturally include 2-3 German keywords (Wohnmobil, Reise, Abenteuer) and 2-3 French keywords (voyage, aventure, camping car).",
   "hashtags": ["15-20 hashtags: 8 English, 4 German, 4 French, 4 location-specific"],
   "alt_text": "Alt text for accessibility (max 200 chars)",
-  "board_suggestion": "Best board: 'Japan Van Life', 'Kyushu Road Trip', 'Japan Hot Springs', 'Japanese Camping Spots', or 'Japan Travel Tips'"
+  "board_suggestion": "Best board: 'Japan Van Life', 'Kyushu Road Trip', 'Japan Hot Springs', 'Japanese Camping Spots', or 'Japan Travel Tips'",
+  "list_items": ["If TEMPLATE is 'list', generate 4 to 5 short and catchy points/destinations (max 25 chars each) related to the topic. Otherwise, return an empty array."]
 }
 
 Tone: adventurous, premium travel brand.`;
@@ -361,6 +375,7 @@ Tone: adventurous, premium travel brand.`;
                     hashtags: result.hashtags || [],
                     alt_text: result.alt_text || title,
                     board_suggestion: result.board_suggestion || "Japan Van Life",
+                    list_items: result.list_items || []
                 });
             } catch (err) {
                 respond(res, 500, { error: err.message });
@@ -372,16 +387,24 @@ Tone: adventurous, premium travel brand.`;
         if (pathname === "/api/queue" && req.method === "POST") {
             try {
                 const body = JSON.parse((await readBody(req)).toString());
-                const db = loadPins();
-                const entry = {
-                    id: crypto.randomUUID(),
-                    ...body,
-                    status: "queued",
-                    created_at: new Date().toISOString(),
-                };
-                db.queue.push(entry);
-                savePins(db);
-                respond(res, 200, { ok: true, entry });
+                const queue = loadQueue();
+                
+                if (Array.isArray(body)) {
+                    // Overwrite entire queue
+                    saveQueue(body);
+                    respond(res, 200, { ok: true, count: body.length });
+                } else {
+                    // Append single entry
+                    const entry = {
+                        id: body.id || crypto.randomUUID(),
+                        status: body.status || "queued",
+                        ...body,
+                        created_at: body.created_at || new Date().toISOString(),
+                    };
+                    queue.push(entry);
+                    saveQueue(queue);
+                    respond(res, 200, { ok: true, entry });
+                }
             } catch (err) {
                 respond(res, 500, { error: err.message });
             }
@@ -389,16 +412,16 @@ Tone: adventurous, premium travel brand.`;
         }
 
         if (pathname === "/api/queue" && req.method === "GET") {
-            const db = loadPins();
-            respond(res, 200, db.queue || []);
+            const queue = loadQueue();
+            respond(res, 200, queue);
             return;
         }
 
         if (pathname.startsWith("/api/queue/") && req.method === "DELETE") {
             const id = pathname.replace("/api/queue/", "");
-            const db = loadPins();
-            db.queue = (db.queue || []).filter((q) => q.id !== id);
-            savePins(db);
+            let queue = loadQueue();
+            queue = queue.filter((q) => q.id !== id);
+            saveQueue(queue);
             respond(res, 200, { ok: true });
             return;
         }

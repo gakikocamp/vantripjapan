@@ -31,7 +31,7 @@ VanTripJapan Team`
       subject: "📥 九州ロードトリップガイドをお届けします！＋Karenからのご挨拶",
       body: `{Name} 様
 
-こんにちは、VanTripJapanのKarenです。
+こんにちは、VanTripJapan of Karenです。
 九州のガイドブックをダウンロードいただき、本当にありがとうございます！
 
 こちらのリンクからPDFを保存してご覧いただけます：
@@ -88,7 +88,7 @@ VanTripJapan`
 それも素晴らしい旅ですが、混雑した観光地から観光地へと急がされているように感じることもあります。
 
 では、代わりにこんな旅を想像してみてください。
-世界最大級の活火山カルデラである**阿蘇山**を見下ろす涼しい山の中、鳥の声で目覚める朝。調べるべき電車の時刻表はなく、朝10時までのチェックアウトも不要で、引きずる荷物もありません。
+世界最大級の活火山カレデラである**阿蘇山**を見下ろす涼しい山の中、鳥の声で目覚める朝。調べるべき電車の時刻表はなく、朝10時までのチェックアウトも不要で、引きずる荷物もありません。
 
 静かな海岸沿いの道路を走り、地元の直売所に立ち寄って新鮮なイチゴや地元の豚肉を買い、隣に天然温泉がある「道の駅」で車中泊をする。
 
@@ -107,8 +107,40 @@ VanTripJapan`
   {
     step: 3,
     delay_days: 3,
-    en: {
-      subject: "Is it hard to drive in Japan? (Plus a €100 gift for you)",
+    en_idp: {
+      subject: "Is it hard to drive in Japan? (Plus a €100 early bird gift for you)",
+      body: `Hi {Name},
+
+One of the most common questions I get is: *"Is it safe and easy to drive in Japan as a foreigner?"*
+
+The honest answer is **yes, highly safe**. Japanese drivers are incredibly polite, roads are in perfect condition, and signs are in English. Also, our vans are specifically chosen to be narrow and compact—so you can easily navigate winding roads and narrow mountain passes without stress.
+
+The only real requirement is obtaining an **International Driving Permit (IDP)** before you leave your home country.
+
+Getting an IDP is very simple and cheap (usually around $20-$30 USD). You can easily get it at:
+- **USA**: AAA (American Automobile Association)
+- **UK**: Post Office
+- **Australia**: AAA (state auto clubs)
+- **Canada**: CAA (Canadian Automobile Association)
+- **Israel**: MEMSI (or other authorized operators)
+
+⚠️ **Important Warning**: Please make sure your IDP is issued under the **1949 Geneva Convention** format. Japan does NOT accept the 1968 Vienna Convention IDP or unofficial online PDFs/scams. If you show up with the wrong version, car rental companies in Japan are legally prohibited from renting you a vehicle.
+
+Even though you don't need a costly translation, we want to help you make this trip happen:
+🎁 **If you book your Kyushu campervan trip this week, we'll deduct €100 (approx. ¥16,000) from your rental fee as an early bird gift!**
+
+Check your license requirements and see the exact IDP formats accepted in Japan:
+👉 [Can You Drive in Japan? License Guide](https://vantripjapan.jp/posts/can-foreigners-drive-in-japan/)
+
+If you have any questions about obtaining your IDP or driving rules in Japan, just reply to this email or chat with me on WhatsApp!
+
+Warmly,
+
+Karen
+VanTripJapan`
+    },
+    en_jaf: {
+      subject: "Is it hard to drive in Japan? (Plus a €100 translation gift for you)",
       body: `Hi {Name},
 
 One of the most common questions I get is: *"Is it safe and easy to drive in Japan as a foreigner?"*
@@ -133,24 +165,23 @@ Karen
 VanTripJapan`
     },
     ja: {
-      subject: "日本での運転は難しい？（＋100ユーロ還元のプレゼント）",
+      subject: "日本での運転は難しい？（＋16,000円割引プレゼント）",
       body: `{Name} 様
 
-よくこんな質問をいただきます。「外国人にとって、日本での運転は安全で簡単ですか？」
+よくこんな質問をいただきます。「普段普通の乗用車しか運転していませんが、キャンピングカーの運転は難しいですか？」
 
-正直にお答えすると、**「はい、非常に安全です」**。日本のドライバーは非常に礼儀正しく、道路は整備されており、標識には英語が併記されています。さらに、私たちの車は「車幅が狭くてコンパクトなモデル」を選んでいるため、山道や細い道でもストレスなく運転できます。
+正直にお答えすると、**「とても簡単で安心です」**。
+私たちのキャンピングカーは、日本の道路事情に合わせて「車幅が狭くてコンパクトなモデル（マツダ・ボンゴやプロボックス）」をベースに手作りしています。そのため、山道や細い温泉街の道路でも、普段の乗用車と全く同じ感覚でストレスなく運転できます。
 
-唯一の面倒な点は「書類の手続き」です。
-国によって、国際免許証（IDP）が必要な場合と、公式の日文翻訳（JAF翻訳。フランス、ドイツ、スイス、ベルギー、台湾で必須）が必要な場合があります。
+全車にバックカメラやカーナビ（またはスマホホルダー）、ETC車載器も完備していますので、日本の高速道路や駐車場でも安心です。
 
-あなたの旅行を完全にストレスフリーにするため、**私たちの公式サービス「JDLTC」を通して、翻訳の取得をお手伝いします。**
+旅行の準備を応援するため、嬉しいプレゼントを用意しました：
+🎁 **今週中にキャンピングカーをご予約いただいた場合、レンタル料金から16,000円（約100ユーロ）を特別にお値引きします！**
 
-さらに嬉しい特典として、**キャンピングカーをご予約いただいた場合、レンタル料金から100ユーロ（約16,000円）を値引きします。** 翻訳費用は約100ユーロですので、実質的に翻訳代が**完全無料**になる非常にお得なキャンペーンです！
+車両のサイズや設備などの詳細はこちらからご確認いただけます：
+👉 [車両ラインナップとスペック一覧](https://vantripjapan.jp/rent/)
 
-免許の要件はこちらからご確認いただけます：
-👉 [日本で運転できる？免許ガイド](https://vantripjapan.jp/posts/can-foreigners-drive-in-japan/)
-
-翻訳の手配が必要でしたら、いつでも声をかけてくださいね。私たちが面倒な書類処理を引き受けます。
+運転や装備について気になることがあれば、このメールに返信するか、WhatsAppでいつでもお気軽にメッセージをくださいね。
 
 Karen
 VanTripJapan`
@@ -166,8 +197,8 @@ VanTripJapan`
 
 Since you are planning a trip to Kyushu, I want to share 3 local secrets that will make your road trip unforgettable:
 
-**1. The "Michi-no-Eki" Secret**
-Japan has over 1,200 "Roadside Stations" (Michi-no-Eki). They aren't just rest stops; they are local hubs selling fresh local beef, seafood, and vegetables. Most importantly, it is socially accepted and safe to park and sleep overnight in them for free. Many even have hot spring baths (onsens) next to them!
+**1. The \"Michi-no-Eki\" Secret**
+Japan has over 1,200 \"Roadside Stations\" (Michi-no-Eki). They aren't just rest stops; they are local hubs selling fresh local beef, seafood, and vegetables. Most importantly, it is socially accepted and safe to park and sleep overnight in them for free. Many even have hot spring baths (onsens) next to them!
 
 **2. The Tattoo-Friendly Hot Spring Map**
 Getting into an onsen with tattoos can be stressful in Japan. Kyushu is the onsen capital of Japan, and we have curated a private list of beautiful, traditional hot springs that are 100% tattoo-friendly (including private family baths).
@@ -209,7 +240,37 @@ VanTripJapan`
   {
     step: 5,
     delay_days: 0,
-    en: {
+    en_idp: {
+      subject: "Our fleet is small. Let’s lock in your Kyushu dates!",
+      body: `Hi {Name},
+
+If you are thinking about renting a van for your Japan trip, I wanted to give you a quick, friendly heads-up.
+
+Because we handbuild and personally maintain our campervans (to ensure the highest safety and cleanliness), **our fleet is very small—we only have a few select vehicles.**
+
+During the peak travel seasons (Spring Cherry Blossoms, Autumn Foliage, and Summer holidays), our vans get booked out months in advance.
+
+I would hate for you to miss out on the freedom of exploring Kyushu.
+
+**Here is how to secure your trip:**
+1. You don't need to pay anything yet.
+2. Just send me your preferred dates on WhatsApp.
+3. We will check availability and hold the vehicle for you.
+
+Plus, don't forget you get the **€100 early bird discount** when booking your campervan!
+
+Let's make this trip happen. Tap below to chat with me on WhatsApp:
+
+👉 [Chat with Karen on WhatsApp](https://wa.me/817093757129?text=Hi%20Karen!%20I'm%20planning%20a%20Kyushu%20trip%20and%20want%20to%20check%20availability.)
+
+(Prefer email? You can also request via our [Simple Form](https://vantripjapan.jp/book/)).
+
+I look forward to hosting you in Japan!
+
+Karen
+VanTripJapan`
+    },
+    en_jaf: {
       subject: "Our fleet is small. Let’s lock in your Kyushu dates!",
       body: `Hi {Name},
 
@@ -256,7 +317,7 @@ VanTripJapan`
 2. 希望する日程をWhatsAppで送ってください。
 3. 空き状況を確認し、車両をお取り置きします。
 
-運転免許の翻訳が必要な方は、**100ユーロのJDLTC割引**も適用されますのでお忘れなく！
+今週中のご予約で、**16,000円（約100ユーロ）の早割割引**も適用されますのでお忘れなく！
 
 あなたの素晴らしい旅を実現させましょう。以下のリンクからWhatsAppでチャットを始められます：
 
@@ -334,13 +395,29 @@ const languages = ['en', 'ja', 'fr', 'de', 'zh', 'he'];
 for (const email of emails) {
   for (const lang of languages) {
     let subject, body;
-    // Fallback to 'en' if language copy doesn't exist
-    if (lang === 'ja' && email.ja) {
-      subject = email.ja.subject;
-      body = wrapEmail(email.ja.body, 'ja');
+    
+    if (email.step === 3 || email.step === 5) {
+      if (lang === 'ja' && email.ja) {
+        subject = email.ja.subject;
+        body = wrapEmail(email.ja.body, 'ja');
+      } else if (lang === 'fr' || lang === 'de' || lang === 'zh') {
+        // JAF translation countries
+        subject = email.en_jaf.subject;
+        body = wrapEmail(email.en_jaf.body, 'en');
+      } else {
+        // IDP countries (en, he)
+        subject = email.en_idp.subject;
+        body = wrapEmail(email.en_idp.body, 'en');
+      }
     } else {
-      subject = email.en.subject;
-      body = wrapEmail(email.en.body, 'en');
+      // Fallback to 'en' if language copy doesn't exist
+      if (lang === 'ja' && email.ja) {
+        subject = email.ja.subject;
+        body = wrapEmail(email.ja.body, 'ja');
+      } else {
+        subject = email.en.subject;
+        body = wrapEmail(email.en.body, 'en');
+      }
     }
 
     // Escape SQL single quotes

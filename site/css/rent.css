@@ -48,11 +48,15 @@
 
 .rent-section {
     padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
 }
 
 .rent-container {
+    width: 100%;
     max-width: 1100px;
     margin: 0 auto;
+    min-width: 0;
 }
 
 .rent-section-header {
@@ -1285,7 +1289,21 @@
 .bento-hero {
     grid-column: span 2;
     background: #eef2f3;
-    border: 1px solid rgba(44, 62, 80, 0.1);
+    border: 2px solid var(--rent-terracotta);
+    position: relative;
+}
+.bento-hero::before {
+    content: '★ RECOMMENDED KEY FEATURE';
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: var(--rent-terracotta);
+    color: white;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: var(--rent-radius-pill);
+    letter-spacing: 0.5px;
 }
 
 .bento-hero h3 {
@@ -1601,8 +1619,33 @@
    Comparison Table
    ══════════════════════════════════════════════ */
 
+.comparison-table-container {
+    position: relative;
+    width: 100%;
+}
+
 .comparison-table-wrapper {
     overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+    .comparison-swipe-indicator {
+        display: block !important;
+    }
+    .comparison-table-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 30px;
+        background: linear-gradient(to left, #FAF6F0, transparent);
+        pointer-events: none;
+        z-index: 5;
+    }
 }
 
 .comparison-table {
@@ -2418,6 +2461,7 @@
     /* ── Comparison Table ── */
     .comparison-table {
         font-size: 12px;
+        box-shadow: none !important;
     }
 
     .comparison-table thead th,
@@ -2438,11 +2482,24 @@
 
     /* ── Language Switcher ── */
     .lang-switcher {
-        top: 70px;
-        bottom: auto;
-        right: 12px;
-        flex-direction: row;
-        gap: 2px;
+        display: none !important;
+    }
+
+    body.menu-open .lang-switcher {
+        display: flex !important;
+        position: fixed;
+        bottom: 20px;
+        top: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto;
+        z-index: 1001;
+        background: white;
+        padding: 6px;
+        border-radius: var(--rent-radius-pill);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        border: 1px solid var(--rent-border);
+        gap: 4px;
     }
 
     .lang-btn {
@@ -4465,6 +4522,113 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
         top: -45px;
         right: 10px;
         font-size: 40px;
+    }
+}
+
+/* ── Details Page Optimizations ── */
+#wa-preview-box {
+    margin-bottom: 16px;
+    padding: 16px;
+    background: rgba(37, 211, 102, 0.05);
+    border: 1px dashed #25D366;
+    border-radius: 12px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: #1e7e34;
+    text-align: left;
+    width: 100%;
+}
+#wa-preview-text {
+    white-space: pre-wrap;
+    font-family: monospace;
+    background: #ffffff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #e8dfd1;
+    color: #2C2C2C;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* Other Vehicles section */
+.other-vehicles-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 2px solid var(--rent-border);
+}
+
+.other-vehicles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 24px;
+}
+
+.other-vehicle-card {
+    background: var(--rent-surface);
+    border: 1px solid var(--rent-border);
+    border-radius: var(--rent-radius);
+    overflow: hidden;
+    box-shadow: var(--rent-card-shadow);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.other-vehicle-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.other-vehicle-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.other-vehicle-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.other-vehicle-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--rent-primary);
+}
+
+.other-vehicle-desc {
+    font-size: 14px;
+    color: var(--rent-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    flex: 1;
+}
+
+.other-vehicle-specs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.other-vehicle-spec-tag {
+    background: rgba(45, 90, 61, 0.08);
+    color: var(--rent-primary);
+    padding: 4px 10px;
+    border-radius: var(--rent-radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .other-vehicles-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
 
