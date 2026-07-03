@@ -40,11 +40,17 @@
 /posts/*
   Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600
 
-# Baked language pages (fr/de) — same policy as their EN originals
+# Baked language pages (fr/de/zh/he) — same policy as their EN originals
 /fr/*
   Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600
 
 /de/*
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600
+
+/zh/*
+  Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600
+
+/he/*
   Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600
 
 /category/

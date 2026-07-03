@@ -27,9 +27,10 @@ const { chromium } = require("playwright");
 
 const SITE = path.join(__dirname, "..", "site");
 const BASE = "https://vantripjapan.jp";
-const LANGS = ["fr", "de"];
-const LANG_ATTR = { fr: "fr", de: "de" };
-const OG_LOCALE = { fr: "fr_FR", de: "de_DE" };
+const LANGS = ["fr", "de", "zh", "he"];
+const LANG_ATTR = { fr: "fr", de: "de", zh: "zh-Hant", he: "he" };
+const HREFLANG = { fr: "fr", de: "de", zh: "zh-Hant", he: "he" };
+const OG_LOCALE = { fr: "fr_FR", de: "de_DE", zh: "zh_TW", he: "he_IL" };
 
 // Pages to bake. path is relative to site/, always with trailing slash ('' = root).
 // Only pages with solid data-i18n coverage — /book/ and /contact/ are not
@@ -114,6 +115,74 @@ const META = {
         "contact/": {
             title: "Kontakt — VAN TRIP JAPAN | Campervan mieten in Fukuoka",
             desc: "Fragen zur Campervan-Miete in Fukuoka? Schreiben Sie uns auf WhatsApp, LINE oder über das Formular. Antwort innerhalb von 24 Stunden.",
+        },
+    },
+    zh: {
+        "": {
+            title: "福岡露營車租借 | VAN TRIP JAPAN — 九州公路旅行",
+            desc: "在福岡租露營車，每天22,000日圓起。以自己的步調探索九州的溫泉、火山與海岸公路。家族經營、全包式價格。",
+        },
+        "rent/": {
+            title: "福岡露營車租借 — 每天22,000日圓起 | VAN TRIP JAPAN",
+            desc: "福岡露營車租借 — 保險、寢具與裝備全包。機場10分鐘取車，以自己的步調探索九州。2022年起家族經營。",
+        },
+        "faq/": {
+            title: "常見問題 — 日本露營車租借 | VAN TRIP JAPAN",
+            desc: "日本露營車租借常見問題：駕照（台灣駕照需備日文譯本）、費用、過夜停車、保險與九州公路旅行。",
+        },
+        "rent/bongo/": {
+            title: "Bed Bongo Brawny — 福岡露營車租借 | VAN TRIP JAPAN",
+            desc: "我們手工打造的巡航車。雨天也能在車內舒適放鬆。車身窄，在日本道路上輕鬆駕駛。",
+        },
+        "rent/loft/": {
+            title: "車頂帳Loft — 福岡露營車租借 | VAN TRIP JAPAN",
+            desc: "超小型車頂帳探險車。最多可睡4人，車內直通車頂帳。最好開，渡輪費率最低。",
+        },
+        "rent/probox/": {
+            title: "小型Probox — 福岡露營車租借 | VAN TRIP JAPAN",
+            desc: "油耗表現出色，極致小巧好停車，5個座位與超大行李空間。情侶出遊首選。",
+        },
+        "road-trip-planner/": {
+            title: "九州公路旅行規劃工具 | VAN TRIP JAPAN",
+            desc: "30秒規劃您的九州露營車之旅。3〜10天精選路線：溫泉、阿蘇火山、海灘與露營地。",
+        },
+        "contact/": {
+            title: "聯絡我們 — VAN TRIP JAPAN | 福岡露營車租借",
+            desc: "關於福岡露營車租借的問題？透過WhatsApp、LINE或表單與我們聯繫。24小時內回覆。",
+        },
+    },
+    he: {
+        "": {
+            title: "השכרת קרוואנים בפוקואוקה | VAN TRIP JAPAN — טיולי דרכים בקיושו",
+            desc: "השכרת קרוואן בפוקואוקה החל מ-22,000 ין ליום. גלו את האונסנים, הרי הגעש וכבישי החוף של קיושו בקצב שלכם. עסק משפחתי, הכול כלול.",
+        },
+        "rent/": {
+            title: "השכרת קרוואן בפוקואוקה — החל מ-22,000 ין ליום | VAN TRIP JAPAN",
+            desc: "השכרת קרוואן בפוקואוקה — ביטוח, מצעים וציוד כלולים. איסוף 10 דקות משדה התעופה. עסק משפחתי מאז 2022.",
+        },
+        "faq/": {
+            title: "שאלות נפוצות — השכרת קרוואן ביפן | VAN TRIP JAPAN",
+            desc: "שאלות נפוצות על השכרת קרוואן ביפן: רישיון נהיגה (IDP ישראלי תקף!), עלויות, חניית לילה, ביטוח וטיולי קיושו.",
+        },
+        "rent/bongo/": {
+            title: "בונגו עם מיטה — השכרת קרוואן בפוקואוקה | VAN TRIP JAPAN",
+            desc: "הקרוזר בעבודת יד שלנו. מרווח מספיק להתרווח בפנים גם בימי גשם. צר וקל לנהיגה בכבישי יפן.",
+        },
+        "rent/loft/": {
+            title: "לופט עם אוהל גג — השכרת קרוואן בפוקואוקה | VAN TRIP JAPAN",
+            desc: "רכב חקר אולטרה-קומפקטי עם אוהל גג. עד 4 אורחים עם גישה ישירה מהרכב לאוהל. הכי קל לנהיגה, תעריפי המעבורת הזולים ביותר.",
+        },
+        "rent/probox/": {
+            title: "פרובוקס קומפקטי — השכרת ואן בפוקואוקה | VAN TRIP JAPAN",
+            desc: "חסכוני מאוד בדלק, קומפקטי וקל לחניה, 5 מושבים ותא מטען ענק. מושלם לזוגות.",
+        },
+        "road-trip-planner/": {
+            title: "מתכנן טיול הדרכים בקיושו | VAN TRIP JAPAN",
+            desc: "תכננו את טיול הקרוואן שלכם בקיושו ב-30 שניות. מסלולים ל-3–10 ימים: אונסנים, הר אסו, חופים ואתרי קמפינג.",
+        },
+        "contact/": {
+            title: "צרו קשר — VAN TRIP JAPAN | השכרת קרוואנים בפוקואוקה",
+            desc: "שאלות על השכרת קרוואן בפוקואוקה? כתבו לנו בוואטסאפ, ב-LINE או בטופס. מענה תוך 24 שעות.",
         },
     },
 };
@@ -252,6 +321,13 @@ function ensureEnPage(pagePath) {
             `\n    <link rel="alternate" hreflang="x-default" href="${url}">`;
         html = html.replace(/<link rel="canonical"[^>]*>/, (m) => m + cluster);
     }
+    // zh/he は後追いで追加（fr/de クラスタが既にあるページにも冪等に挿入）
+    if (!html.includes('hreflang="zh-Hant"')) {
+        const extra =
+            `\n    <link rel="alternate" hreflang="zh-Hant" href="${BASE}/zh/${pagePath}">` +
+            `\n    <link rel="alternate" hreflang="he" href="${BASE}/he/${pagePath}">`;
+        html = html.replace(/<link rel="alternate" hreflang="de"[^>]*>/, (m) => m + extra);
+    }
 
     html = html.replace(
         /<a href="\?lang=fr" class="lang-btn" onclick="switchLang\('fr'\); return false;">FR<\/a>/,
@@ -260,6 +336,14 @@ function ensureEnPage(pagePath) {
     html = html.replace(
         /<a href="\?lang=de" class="lang-btn" onclick="switchLang\('de'\); return false;">DE<\/a>/,
         `<a href="/de/${pagePath}" class="lang-btn">DE</a>`
+    );
+    html = html.replace(
+        /<a href="\?lang=zh" class="lang-btn" onclick="switchLang\('zh'\); return false;">繁中<\/a>/,
+        `<a href="/zh/${pagePath}" class="lang-btn">繁中</a>`
+    );
+    html = html.replace(
+        /<a href="\?lang=he" class="lang-btn" onclick="switchLang\('he'\); return false;">HE<\/a>/,
+        `<a href="/he/${pagePath}" class="lang-btn">HE</a>`
     );
 
     if (html !== before) {
@@ -287,7 +371,7 @@ async function bakePage(browser, translations, lang, pagePath) {
             });
 
             const ilCard = document.getElementById("license-card-il");
-            if (ilCard) ilCard.style.display = "none";
+            if (ilCard) ilCard.style.display = lang === "he" ? "" : "none";
 
             const sorted = BAKED.slice().sort((a, b) => b.length - a.length);
             document.querySelectorAll("a[href]").forEach((a) => {
@@ -307,8 +391,8 @@ async function bakePage(browser, translations, lang, pagePath) {
                 if (t === "en") { target = "/" + pagePath; code = "en"; }
                 else if (t === "fr") { target = "/fr/" + pagePath; code = "fr"; }
                 else if (t === "de") { target = "/de/" + pagePath; code = "de"; }
-                else if (t.includes("繁")) { target = "/" + pagePath + "?lang=zh"; code = "zh"; }
-                else if (t === "he") { target = "/" + pagePath + "?lang=he"; code = "he"; }
+                else if (t.includes("繁")) { target = "/zh/" + pagePath; code = "zh"; }
+                else if (t === "he") { target = "/he/" + pagePath; code = "he"; }
                 if (target) {
                     btn.setAttribute("href", target);
                     btn.removeAttribute("onclick");
@@ -347,6 +431,8 @@ async function bakePage(browser, translations, lang, pagePath) {
             document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((l) => l.remove());
             const cluster = [
                 ["x-default", BASE + "/" + pagePath],
+                ["he", BASE + "/he/" + pagePath],
+                ["zh-Hant", BASE + "/zh/" + pagePath],
                 ["de", BASE + "/de/" + pagePath],
                 ["fr", BASE + "/fr/" + pagePath],
                 ["en", BASE + "/" + pagePath],
@@ -406,7 +492,7 @@ async function bakePage(browser, translations, lang, pagePath) {
 
     // Sanity assertions — refuse to write a page that isn't actually localized
     if (!html.includes(`lang="${LANG_ATTR[lang]}"`)) throw new Error(`lang attr missing: ${lang}/${pagePath}`);
-    if ((html.match(/hreflang=/g) || []).length !== 4) throw new Error(`hreflang cluster wrong: ${lang}/${pagePath}`);
+    if ((html.match(/hreflang=/g) || []).length !== 6) throw new Error(`hreflang cluster wrong: ${lang}/${pagePath}`);
     if (!html.includes(`VTJ_FORCE_LANG='${lang}'`)) throw new Error(`FORCE_LANG pin missing: ${lang}/${pagePath}`);
     const marker = translations[lang]["nav.rental"];
     if (marker && !html.includes(marker)) throw new Error(`translated nav missing: ${lang}/${pagePath}`);
