@@ -11,8 +11,12 @@
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="/css/vendor/flatpickr.min.css">
+    <script src="/js/vendor/flatpickr.min.js"></script>
+    <script src="/js/vendor/flatpickr-l10n-fr.js"></script>
+    <script src="/js/vendor/flatpickr-l10n-de.js"></script>
+    <script src="/js/vendor/flatpickr-l10n-zh-tw.js"></script>
+    <script src="/js/vendor/flatpickr-l10n-he.js"></script>
     <style>
         .flatpickr-calendar {
             background: #FAF6F0 !important;
@@ -1033,7 +1037,7 @@
                                     <div class="vehicle-option-info">
                                         <div class="name">🚐 MAZDA BONGO</div>
                                         <div class="type" data-i18n="book.veh.bongo">Campervan · Max 3 guests · sleeps 2 inside</div>
-                                        <div class="price" id="price-bongo">¥22,000〜/day</div>
+                                        <div class="price" id="price-bongo" data-i18n="book.price22">¥22,000〜/day</div>
                                         <div class="status-msg" id="status-bongo" style="font-size:0.8rem; margin-top:4px;"></div>
                                     </div>
                                 </label>
@@ -1044,7 +1048,7 @@
                                     <div class="vehicle-option-info">
                                         <div class="name">🏕️ TOYOTA PROBOX</div>
                                         <div class="type" data-i18n="book.veh.probox">with RoofTent · Max 2 guests · sleeps 2 on roof</div>
-                                        <div class="price" id="price-probox">¥22,000〜/day</div>
+                                        <div class="price" id="price-probox" data-i18n="book.price22">¥22,000〜/day</div>
                                         <div class="status-msg" id="status-probox" style="font-size:0.8rem; margin-top:4px;"></div>
                                     </div>
                                 </label>
@@ -1055,7 +1059,7 @@
                                     <div class="vehicle-option-info">
                                         <div class="name">🚐 DAIHATSU POCKET LOFT</div>
                                         <div class="type" data-i18n="book.veh.loft">Pocket Loft with RoofTent · Max 4 guests · sleeps 2 inside, 2 on roof</div>
-                                        <div class="price" id="price-loft">¥25,000〜/day</div>
+                                        <div class="price" id="price-loft" data-i18n="book.price25">¥25,000〜/day</div>
                                         <div class="status-msg" id="status-loft" style="font-size:0.8rem; margin-top:4px;"></div>
                                     </div>
                                 </label>
@@ -1216,9 +1220,10 @@
                 </div>
 
                 <!-- Prominent WhatsApp Inquiry Button -->
-                <a id="summaryWALink" data-i18n="book.wa.inquire2" href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20chat%20about%20booking%20a%20campervan." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; padding: 12px; background: #25D366; color: white; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(37,211,102,0.15); transition: all 0.2s;">
+                <a id="summaryWALink" data-i18n-wa="wa.book" data-i18n="book.wa.inquire2" href="https://wa.me/817093757129?text=Hi%20Karen!%20I'd%20like%20to%20chat%20about%20booking%20a%20campervan." target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; padding: 12px; background: #25D366; color: white; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(37,211,102,0.15); transition: all 0.2s;">
                     <i class="fab fa-whatsapp" style="font-size: 1.1rem;"></i> Inquire on WhatsApp
                 </a>
+                <p style="margin-top:8px; font-size:0.8rem; color:var(--text-sec); text-align:center;" data-i18n="wa.langnote">💬 Message us in your language — English, Français, Deutsch, 中文, עברית all welcome!</p>
 
                 <div class="summary-badge-list">
                     <div class="summary-badge-item" data-i18n="book.badge1">
@@ -1285,9 +1290,9 @@
     </p>
 </div>
 
+<script src="/js/i18n.js?v=20260704"></script>
 <script>
-// i18n helper: translations/currentLang は /js/i18n.js が定義する。
-// このスクリプトの実行時点では未読込だが、参照はユーザー操作時なので安全。未読込時は英語フォールバック。
+// i18n helper: bt() は辞書参照のフォールバック付きラッパー（i18n.js は直前で読込済み）。
 function bt(key, fallback) {
     try {
         const dict = (typeof translations !== 'undefined') ? translations[(typeof currentLang !== 'undefined' && currentLang) || 'en'] : null;
@@ -1297,6 +1302,11 @@ function bt(key, fallback) {
 function btLocale() {
     const map = { en: 'en-US', fr: 'fr-FR', de: 'de-DE', zh: 'zh-TW', he: 'he-IL' };
     return map[(typeof currentLang !== 'undefined' && currentLang) || 'en'] || 'en-US';
+}
+function eurHint(yen) {
+    const l = (typeof currentLang !== 'undefined' && currentLang) || 'en';
+    if (l !== 'fr' && l !== 'de') return '';
+    return ' (≈ €' + Math.round(yen / 165).toLocaleString() + ')'; // 換算目安 1€=165円（定期見直し）
 }
 let bookingId = null;
 let fpPickup = null;
@@ -1444,11 +1454,15 @@ function injectDummyBlocks(ranges, vehicleKey) {
 
 function initFlatpickr(vehicle) {
     const disabledDates = bookedRanges[vehicle] || [];
+    const fpLangMap = { fr: 'fr', de: 'de', zh: 'zh_tw', he: 'he' };
+    const fpLang = (typeof currentLang !== 'undefined' && fpLangMap[currentLang]) || null;
+    const FP_LOCALE = (fpLang && flatpickr.l10ns && flatpickr.l10ns[fpLang]) ? fpLang : 'default';
     
     const pickupConfig = {
         enableTime: true,
         dateFormat: "Y-m-d H:i",
         time_24hr: true,
+        locale: FP_LOCALE,
         minDate: "today",
         disable: disabledDates,
         onChange: function(selectedDates, dateStr) {
@@ -1463,6 +1477,7 @@ function initFlatpickr(vehicle) {
         enableTime: true,
         dateFormat: "Y-m-d H:i",
         time_24hr: true,
+        locale: FP_LOCALE,
         minDate: "today",
         disable: disabledDates,
         maxTime: "18:00",
@@ -1674,12 +1689,12 @@ function checkVehiclesFilter() {
                         const baseTotal = calculateBaseTotal(config.base, days);
                         const discount = getDiscount(days);
                         const finalPrice = Math.round(baseTotal * (1 - discount.rate));
-                        priceMsg.innerHTML = `<strong>¥${finalPrice.toLocaleString()}</strong> for ${days} days ${discount.rate > 0 ? `<small style="color:var(--accent); font-weight:700">(${discount.label})</small>` : ''}`;
+                        priceMsg.innerHTML = `<strong>¥${finalPrice.toLocaleString()}</strong>${eurHint(finalPrice)} for ${days} days ${discount.rate > 0 ? `<small style="color:var(--accent); font-weight:700">(${discount.label})</small>` : ''}`;
                     } else {
-                        priceMsg.innerHTML = `¥${config.base.toLocaleString()}〜/day`;
+                        priceMsg.innerHTML = `¥${config.base.toLocaleString()}〜/${bt('book.js.day_unit','day')}${eurHint(config.base)}`;
                     }
                 } else {
-                    priceMsg.innerHTML = `¥${config.base.toLocaleString()}〜/day`;
+                    priceMsg.innerHTML = `¥${config.base.toLocaleString()}〜/${bt('book.js.day_unit','day')}${eurHint(config.base)}`;
                 }
             }
         }
@@ -1894,7 +1909,7 @@ function updateSummary() {
         }
 
         const finalTotal = Math.round(estimatedTotal);
-        document.getElementById('summaryPriceTotal').textContent = '¥' + finalTotal.toLocaleString();
+        document.getElementById('summaryPriceTotal').textContent = '¥' + finalTotal.toLocaleString() + eurHint(finalTotal);
         
         if (discount.rate > 0) {
             document.getElementById('summaryPriceDesc').innerHTML = bt('book.js.discount_desc', '🎉 Includes <strong>{LABEL}</strong> long-stay discount! Estimated daily rate: ¥{RATE}/day.').replace('{LABEL}', discount.label).replace('{RATE}', Math.round(finalTotal/days).toLocaleString());
@@ -1967,24 +1982,24 @@ function getWhatsAppURL() {
         }
     }
 
-    let waMsg = "Hi Karen! I'd like to check availability / inquire about booking:\n";
+    let waMsg = bt('book.wa.msg_head', "Hi Karen! I'd like to check availability / inquire about booking:") + "\n";
     if (vehicleRadio) {
-        waMsg += `- Vehicle: ${vehicleRadio.value}\n`;
+        waMsg += `- ${bt('book.wa.msg_vehicle','Vehicle')}: ${vehicleRadio.value}\n`;
     } else {
-        waMsg += `- Vehicle: Not selected yet\n`;
+        waMsg += `- ${bt('book.wa.msg_vehicle','Vehicle')}: ${bt('book.wa.msg_notselected','Not selected yet')}\n`;
     }
     if (pickupVal) {
         const pDate = new Date(pickupVal);
-        waMsg += `- Pickup: ${pDate.toLocaleDateString(btLocale(), {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'})}\n`;
+        waMsg += `- ${bt('book.wa.msg_pickup','Pickup')}: ${pDate.toLocaleDateString(btLocale(), {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'})}\n`;
     }
     if (returnVal) {
         const rDate = new Date(returnVal);
-        waMsg += `- Return: ${rDate.toLocaleDateString(btLocale(), {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'})}\n`;
+        waMsg += `- ${bt('book.wa.msg_return','Return')}: ${rDate.toLocaleDateString(btLocale(), {month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'})}\n`;
     }
     if (days > 0) {
-        waMsg += `- Duration: ${days} days\n`;
+        waMsg += `- ${bt('book.wa.msg_duration','Duration')}: ${days}${bt('book.js.days',' days')}\n`;
     }
-    waMsg += `- Travelers: ${driversVal === '1' ? '1 Driver' : driversVal + ' Drivers'}, ${guestsVal} Guests\n`;
+    waMsg += `- ${bt('book.wa.msg_travelers','Travelers')}: ${driversVal === '1' ? '1' + bt('book.js.driver',' Driver') : driversVal + bt('book.js.drivers',' Drivers')}, ${guestsVal} ${bt('book.wa.msg_guests','Guests')}\n`;
 
     if (vehicleRadio && days > 0) {
         const info = VEHICLE_PRICES[vehicleRadio.value];
@@ -1995,7 +2010,7 @@ function getWhatsAppURL() {
             if (discount.rate > 0) {
                 estimatedTotal = baseTotal * (1 - discount.rate);
             }
-            waMsg += `- Estimated Total: ¥${Math.round(estimatedTotal).toLocaleString()}\n`;
+            waMsg += `- ${bt('book.wa.msg_total','Estimated Total')}: ¥${Math.round(estimatedTotal).toLocaleString()}${eurHint(Math.round(estimatedTotal))}\n`;
         }
     }
     return "https://wa.me/817093757129?text=" + encodeURIComponent(waMsg);
@@ -2243,6 +2258,5 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
     }
 });
 </script>
-<script src="/js/i18n.js?v=20260703"></script>
 </body>
 </html>

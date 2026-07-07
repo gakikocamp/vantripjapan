@@ -369,6 +369,10 @@ async function bakePage(browser, translations, lang, pagePath) {
                 const key = el.getAttribute("data-i18n-placeholder");
                 if (dict[key]) el.setAttribute("placeholder", dict[key]);
             });
+            document.querySelectorAll("[data-i18n-wa]").forEach((el) => {
+                const key = el.getAttribute("data-i18n-wa");
+                if (dict[key]) el.setAttribute("href", "https://wa.me/817093757129?text=" + encodeURIComponent(dict[key]));
+            });
 
             const ilCard = document.getElementById("license-card-il");
             if (ilCard) ilCard.style.display = lang === "he" ? "" : "none";
