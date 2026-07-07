@@ -758,6 +758,7 @@ const translations = {
         "book.js.day_unit": "day",
         "calc.wa_head": "Hi Karen! I used the calculator:",
         "calc.wa_q": "Is this vehicle available for my dates?",
+        "book.js.submitting": "<i class=\"fas fa-spinner fa-spin\"></i> Submitting...",
     },
 
     fr: {
@@ -1498,6 +1499,7 @@ const translations = {
         "book.js.day_unit": "jour",
         "calc.wa_head": "Bonjour Karen ! J'ai utilisé le calculateur :",
         "calc.wa_q": "Ce véhicule est-il disponible à mes dates ?",
+        "book.js.submitting": "<i class=\"fas fa-spinner fa-spin\"></i> Envoi en cours...",
     },
 
     de: {
@@ -2240,6 +2242,7 @@ const translations = {
         "book.js.day_unit": "Tag",
         "calc.wa_head": "Hallo Karen! Ich habe den Rechner benutzt:",
         "calc.wa_q": "Ist dieses Fahrzeug an meinen Daten verfügbar?",
+        "book.js.submitting": "<i class=\"fas fa-spinner fa-spin\"></i> Wird gesendet...",
     },
 
     zh: {
@@ -2983,6 +2986,7 @@ const translations = {
         "book.js.day_unit": "天",
         "calc.wa_head": "Karen您好！我用了費用計算機：",
         "calc.wa_q": "這台車在我的日期有空檔嗎？",
+        "book.js.submitting": "<i class=\"fas fa-spinner fa-spin\"></i> 送出中…",
     },
 
     he: {
@@ -3708,6 +3712,7 @@ const translations = {
         "book.js.day_unit": "יום",
         "calc.wa_head": "היי קארן! השתמשתי במחשבון:",
         "calc.wa_q": "האם הרכב הזה זמין בתאריכים שלי?",
+        "book.js.submitting": "<i class=\"fas fa-spinner fa-spin\"></i> שולח...",
     },
 };
 

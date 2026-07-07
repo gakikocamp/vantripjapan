@@ -78,13 +78,14 @@ async function handlePost(request, env) {
   const bookingId = result.meta.last_row_id;
 
   // Fire-and-forget notifications (never block or fail the booking on email errors)
-  await sendBookingEmails(data, bookingId, env).catch((e) => console.error('[Booking Mail]', e?.message));
+  const mailLang = ['en', 'fr', 'de', 'zh', 'he'].includes(data.lang) ? data.lang : 'en';
+  await sendBookingEmails(data, bookingId, env, mailLang).catch((e) => console.error('[Booking Mail]', e?.message));
 
   return Response.json({ status: 'ok', booking_id: bookingId });
 }
 
 // Send confirmation to the customer + alert to the VanTripJapan inbox (Resend API)
-async function sendBookingEmails(data, bookingId, env) {
+async function sendBookingEmails(data, bookingId, env, lang = 'en') {
   const name = (data.full_name || '').trim() || 'there';
   const email = (data.email || '').trim();
   const vehicle = data.vehicle_type || 'Campervan';
@@ -115,38 +116,139 @@ async function sendBookingEmails(data, bookingId, env) {
     return res.json();
   };
 
-  // 1) Customer confirmation — reassurance + WhatsApp, no payment/docs yet
-  const customerBody = [
-    `Hi ${name},`,
-    ``,
-    `Thank you for your booking request with VanTripJapan! 🚐`,
-    ``,
-    `We've received your request (ref #${bookingId}) and Karen will personally`,
-    `check availability and reply within 24 hours — usually much faster.`,
-    ``,
-    `IMPORTANT: No payment and no documents are needed yet. We only ask for`,
-    `those after we've confirmed your dates are free.`,
-    ``,
-    `Your request:`,
-    `  • Vehicle:   ${vehicle}`,
-    `  • Pick-up:   ${pickup}`,
-    `  • Return:    ${ret}`,
-    `  • Insurance: ${data.full_cover_option ? 'Zero-Risk Full Cover (+¥5,000/day)' : 'Basic Cover (Excess applies)'}`,
-    ``,
-    `Want a faster reply? Message Karen directly on WhatsApp:`,
-    `  ${waLink}`,
-    ``,
-    `— Karen & the VanTripJapan family`,
-    `Licensed rent-a-car operator (Permit No. 愛運輸第290号)`,
-    `Operated by キャンプ女子株式会社 · Hakozaki, Fukuoka, Japan`,
-    `https://vantripjapan.jp`,
-  ].join('\n');
+  // 1) Customer confirmation — フォームの言語で送信（支払い/書類はまだ不要という安心感 + WhatsApp導線）
+  const CUSTOMER_MAIL_I18N = {
+    en: {
+      subject: `✅ We received your VanTripJapan booking request (#${bookingId})`,
+      wa: `Hi Karen! I just submitted booking request #${bookingId}.`,
+      insFull: 'Zero-Risk Full Cover (+¥5,000/day)', insBasic: 'Basic Cover (Excess applies)',
+      body: (ins, wa) => [
+        `Hi ${name},`, ``,
+        `Thank you for your booking request with VanTripJapan! 🚐`, ``,
+        `We've received your request (ref #${bookingId}) and Karen will personally`,
+        `check availability and reply within 24 hours — usually much faster.`, ``,
+        `IMPORTANT: No payment and no documents are needed yet. We only ask for`,
+        `those after we've confirmed your dates are free.`, ``,
+        `Your request:`,
+        `  • Vehicle:   ${vehicle}`,
+        `  • Pick-up:   ${pickup}`,
+        `  • Return:    ${ret}`,
+        `  • Insurance: ${ins}`, ``,
+        `Want a faster reply? Message Karen directly on WhatsApp:`,
+        `  ${wa}`, ``,
+        `— Karen & the VanTripJapan family`,
+        `Licensed rent-a-car operator (Permit No. 愛運輸第290号)`,
+        `Operated by キャンプ女子株式会社 · Hakozaki, Fukuoka, Japan`,
+        `https://vantripjapan.jp`,
+      ],
+    },
+    fr: {
+      subject: `✅ Votre demande de réservation VanTripJapan est bien reçue (#${bookingId})`,
+      wa: `Bonjour Karen ! Je viens d'envoyer la demande de réservation #${bookingId}.`,
+      insFull: 'Couverture complète sans risque (+5 000 ¥/jour)', insBasic: 'Couverture de base (franchise applicable)',
+      body: (ins, wa) => [
+        `Bonjour ${name},`, ``,
+        `Merci pour votre demande de réservation chez VanTripJapan ! 🚐`, ``,
+        `Nous avons bien reçu votre demande (réf. #${bookingId}). Karen vérifiera`,
+        `personnellement la disponibilité et vous répondra sous 24 h — souvent bien plus vite.`, ``,
+        `IMPORTANT : aucun paiement ni document n'est requis pour le moment.`,
+        `Nous ne les demanderons qu'une fois vos dates confirmées.`, ``,
+        `Votre demande :`,
+        `  • Véhicule : ${vehicle}`,
+        `  • Prise en charge : ${pickup}`,
+        `  • Retour : ${ret}`,
+        `  • Assurance : ${ins}`, ``,
+        `Pour une réponse plus rapide, écrivez directement à Karen sur WhatsApp :`,
+        `  ${wa}`, ``,
+        `— Karen et la famille VanTripJapan`,
+        `Loueur de véhicules agréé (permis n° 愛運輸第290号)`,
+        `Exploité par キャンプ女子株式会社 · Hakozaki, Fukuoka, Japon`,
+        `https://vantripjapan.jp`,
+      ],
+    },
+    de: {
+      subject: `✅ Ihre VanTripJapan-Buchungsanfrage ist eingegangen (#${bookingId})`,
+      wa: `Hallo Karen! Ich habe gerade die Buchungsanfrage #${bookingId} gesendet.`,
+      insFull: 'Null-Risiko-Vollkasko (+5.000 ¥/Tag)', insBasic: 'Basisschutz (Selbstbeteiligung möglich)',
+      body: (ins, wa) => [
+        `Hallo ${name},`, ``,
+        `vielen Dank für Ihre Buchungsanfrage bei VanTripJapan! 🚐`, ``,
+        `Wir haben Ihre Anfrage erhalten (Ref. #${bookingId}). Karen prüft persönlich`,
+        `die Verfügbarkeit und antwortet innerhalb von 24 Stunden — meist deutlich schneller.`, ``,
+        `WICHTIG: Es sind noch keine Zahlung und keine Dokumente nötig.`,
+        `Wir fragen erst danach, wenn Ihre Termine bestätigt sind.`, ``,
+        `Ihre Anfrage:`,
+        `  • Fahrzeug: ${vehicle}`,
+        `  • Abholung: ${pickup}`,
+        `  • Rückgabe: ${ret}`,
+        `  • Versicherung: ${ins}`, ``,
+        `Für eine schnellere Antwort schreiben Sie Karen direkt auf WhatsApp:`,
+        `  ${wa}`, ``,
+        `— Karen & die VanTripJapan-Familie`,
+        `Lizenzierter Autovermieter (Genehmigung Nr. 愛運輸第290号)`,
+        `Betrieben von キャンプ女子株式会社 · Hakozaki, Fukuoka, Japan`,
+        `https://vantripjapan.jp`,
+      ],
+    },
+    zh: {
+      subject: `✅ VanTripJapan已收到您的預約申請（#${bookingId}）`,
+      wa: `Karen您好！我剛送出了預約申請 #${bookingId}。`,
+      insFull: '零風險全險（+5,000日圓/天）', insBasic: '基本保險（含自負額）',
+      body: (ins, wa) => [
+        `${name} 您好，`, ``,
+        `感謝您向VanTripJapan送出預約申請！🚐`, ``,
+        `我們已收到您的申請（編號 #${bookingId}），Karen將親自確認檔期，`,
+        `並於24小時內回覆 — 通常會更快。`, ``,
+        `重要：目前無需付款、也無需提供任何文件。`,
+        `我們會在確認日期有空檔後才向您索取。`, ``,
+        `您的申請內容：`,
+        `  • 車輛：${vehicle}`,
+        `  • 取車：${pickup}`,
+        `  • 還車：${ret}`,
+        `  • 保險：${ins}`, ``,
+        `想更快得到回覆？直接在WhatsApp聯繫Karen：`,
+        `  ${wa}`, ``,
+        `— Karen與VanTripJapan全體`,
+        `合法登記租車業者（許可編號 愛運輸第290号）`,
+        `由キャンプ女子株式会社營運 · 日本福岡市箱崎`,
+        `https://vantripjapan.jp`,
+      ],
+    },
+    he: {
+      subject: `✅ קיבלנו את בקשת ההזמנה שלך ב-VanTripJapan (#${bookingId})`,
+      wa: `היי קארן! הרגע שלחתי את בקשת ההזמנה #${bookingId}.`,
+      insFull: 'כיסוי מלא ללא סיכון (+5,000 ין ליום)', insBasic: 'כיסוי בסיסי (השתתפות עצמית)',
+      body: (ins, wa) => [
+        `שלום ${name},`, ``,
+        `תודה על בקשת ההזמנה ב-VanTripJapan! 🚐`, ``,
+        `קיבלנו את הבקשה (מס' #${bookingId}). קארן תבדוק אישית את הזמינות`,
+        `ותחזור אליך תוך 24 שעות — בדרך כלל הרבה יותר מהר.`, ``,
+        `חשוב: בשלב זה אין צורך בתשלום או במסמכים.`,
+        `נבקש אותם רק אחרי שנאשר שהתאריכים פנויים.`, ``,
+        `הבקשה שלך:`,
+        `  • רכב: ${vehicle}`,
+        `  • איסוף: ${pickup}`,
+        `  • החזרה: ${ret}`,
+        `  • ביטוח: ${ins}`, ``,
+        `רוצה תשובה מהירה יותר? כתבו לקארן ישירות בוואטסאפ:`,
+        `  ${wa}`, ``,
+        `— קארן ומשפחת VanTripJapan`,
+        `משכיר רכב מורשה (רישיון מס' 愛運輸第290号)`,
+        `מופעל ע"י キャンプ女子株式会社 · האקוזאקי, פוקואוקה, יפן`,
+        `https://vantripjapan.jp`,
+      ],
+    },
+  };
+  const CT = CUSTOMER_MAIL_I18N[lang] || CUSTOMER_MAIL_I18N.en;
+  const insLabel = data.full_cover_option ? CT.insFull : CT.insBasic;
+  const customerWaLink = "https://wa.me/817093757129?text=" + encodeURIComponent(CT.wa);
+  const customerBody = CT.body(insLabel, customerWaLink).join('\n');
 
   const customerMail = email && email.includes('@') ? sendResend({
     from: 'VanTripJapan <booking@vantripjapan.jp>',
     reply_to: 'info@vantripjapan.jp',
     to: [email],
-    subject: `✅ We received your VanTripJapan booking request (#${bookingId})`,
+    subject: CT.subject,
     text: customerBody,
   }) : Promise.resolve();
 

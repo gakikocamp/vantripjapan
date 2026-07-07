@@ -1290,7 +1290,7 @@
     </p>
 </div>
 
-<script src="/js/i18n.js?v=20260704"></script>
+<script src="/js/i18n.js?v=20260708"></script>
 <script>
 // i18n helper: bt() は辞書参照のフォールバック付きラッパー（i18n.js は直前で読込済み）。
 function bt(key, fallback) {
@@ -2181,7 +2181,7 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
 
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+    btn.innerHTML = bt('book.js.submitting', '<i class="fas fa-spinner fa-spin"></i> Submitting...');
 
     const form = e.target;
     const data = {
@@ -2195,6 +2195,7 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
         num_drivers: parseInt(form.num_drivers.value),
         camping_gear_notes: form.camping_gear_notes.value || null,
         translation_needed: form.translation_needed.checked,
+        lang: (typeof currentLang !== 'undefined' && currentLang) || 'en',
     };
 
     try {
@@ -2241,7 +2242,7 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
                 notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
             btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
+            btn.innerHTML = bt('book.submit', '<i class="fas fa-paper-plane"></i> Submit Booking Request');
         }
     } catch (err) {
         // Show inline error instead of alert for network errors
@@ -2254,7 +2255,7 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
             notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
         btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Booking Request';
+        btn.innerHTML = bt('book.submit', '<i class="fas fa-paper-plane"></i> Submit Booking Request');
     }
 });
 </script>
