@@ -108,6 +108,17 @@ function renderArticlePage(article) {
     "articleSection": "${escHtml(article.category || '').replace(/"/g, '\\"')}",
     "inLanguage": "${lang}"
   }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://vantripjapan.jp/" },
+      { "@type": "ListItem", "position": 2, "name": "Journal", "item": "https://vantripjapan.jp/category/" },
+      { "@type": "ListItem", "position": 3, "name": "${escHtml(article.title).replace(/"/g, '\\"')}", "item": "${canonicalUrl}" }
+    ]
+  }
   </script>${faqSchema}
   ${article.structured_data ? `\n  <script type="application/ld+json">\n  ${article.structured_data}\n  </script>` : ''}
 </head>
