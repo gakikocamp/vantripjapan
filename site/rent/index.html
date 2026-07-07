@@ -1612,12 +1612,13 @@
                 var bookBtn = document.getElementById('calc-book-btn');
                 var waPreviewBox = document.getElementById('wa-preview-box');
                 var waPreviewText = document.getElementById('wa-preview-text');
-                var msg = "Hi Karen! I used the calculator:\n" +
-                          "• Vehicle: " + _calcVehicleName + "\n" +
-                          "• Duration: " + _calcDays + " days\n" +
-                          "• Travelers: " + _calcPeople + " travelers\n" +
-                          "• Estimated Total: " + _fmtYen(vanTotal) + " total\n\n" +
-                          "Is this vehicle available for my dates?";
+                var _rt = function(k, fb) { try { var d = (typeof translations !== 'undefined') ? translations[(typeof currentLang !== 'undefined' && currentLang) || 'en'] : null; return (d && d[k]) || fb; } catch (e) { return fb; } };
+                var msg = _rt('calc.wa_head', "Hi Karen! I used the calculator:") + "\n" +
+                          "• " + _rt('book.wa.msg_vehicle', 'Vehicle') + ": " + _calcVehicleName + "\n" +
+                          "• " + _rt('book.wa.msg_duration', 'Duration') + ": " + _calcDays + _rt('book.js.days', ' days') + "\n" +
+                          "• " + _rt('book.wa.msg_travelers', 'Travelers') + ": " + _calcPeople + "\n" +
+                          "• " + _rt('book.wa.msg_total', 'Estimated Total') + ": " + _fmtYen(vanTotal) + "\n\n" +
+                          _rt('calc.wa_q', "Is this vehicle available for my dates?");
                           
                 if (bookBtn) {
                     bookBtn.href = 'https://wa.me/817093757129?text=' + encodeURIComponent(msg);
