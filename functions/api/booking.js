@@ -14,6 +14,26 @@ function ensureBookingBindings(env) {
   return null;
 }
 
+// 予約フォーム(/book/)と同じ料金ロジック。見積総額と割引ラベルを返す。
+const VEHICLE_BASE = { 'MAZDA BONGO': 22000, 'TOYOTA PROBOX': 22000, 'DAIHATSU POCKET LOFT': 25000 };
+const DISCOUNT_TIERS = [
+  { minDays: 21, rate: 0.20, label: '20% OFF' },
+  { minDays: 14, rate: 0.15, label: '15% OFF' },
+  { minDays: 7, rate: 0.10, label: '10% OFF' },
+];
+function estimateBookingTotal(vehicleType, pickup, returns) {
+  const base = VEHICLE_BASE[vehicleType];
+  if (!base || !(pickup instanceof Date) || !(returns instanceof Date)) return { total: null, label: null };
+  const days = Math.ceil((returns - pickup) / (1000 * 60 * 60 * 24));
+  if (!(days > 0)) return { total: null, label: null };
+  const weekendRate = Math.round(base * 1.5);
+  const weeklyTotal = (5 * base) + (2 * weekendRate);
+  const baseTotal = (Math.floor(days / 7) * weeklyTotal) + ((days % 7) * base);
+  const tier = DISCOUNT_TIERS.find((t) => days >= t.minDays);
+  const total = Math.round(baseTotal * (1 - (tier ? tier.rate : 0)));
+  return { total, label: tier ? tier.label : null, days };
+}
+
 // POST: Public — create a new booking
 async function handlePost(request, env) {
   const bindingError = ensureBookingBindings(env);
@@ -55,11 +75,22 @@ async function handlePost(request, env) {
     gearNotes = `[Insurance: Zero-Risk Full Cover] ${gearNotes || ''}`;
   }
 
+  // 見積金額をサーバ側でも算出して保存（予約フォームと同じ計算式）
+  const price = estimateBookingTotal(data.vehicle_type, pickup, returns);
+
+  // お客様のメタ情報を notes 列にJSONで保存: 申込言語 + 申込国（Cloudflareの地理情報ヘッダ）
+  const meta = {
+    lang: ['en', 'fr', 'de', 'zh', 'he'].includes(data.lang) ? data.lang : null,
+    country: request.headers.get('CF-IPCountry') || null,
+  };
+  const notesJson = (meta.lang || meta.country) ? JSON.stringify(meta) : null;
+
   const result = await env.CUSTOMERS_DB.prepare(`
     INSERT INTO bookings (email_encrypted, full_name, phone_encrypted, address_encrypted,
       vehicle_type, pickup_datetime, return_datetime, num_drivers,
-      referral_source, camping_gear_notes, translation_needed, status)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      referral_source, camping_gear_notes, translation_needed, status,
+      notes, estimated_total, discount_info)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `).bind(
     emailEnc,
     data.full_name.trim(),
@@ -72,7 +103,10 @@ async function handlePost(request, env) {
     data.referral_source || null,
     gearNotes,
     data.translation_needed ? 1 : 0,
-    status
+    status,
+    notesJson,
+    price.total,
+    price.label || null
   ).run();
 
   const bookingId = result.meta.last_row_id;
@@ -480,10 +514,10 @@ async function handleGet(request, env) {
   let query, params;
 
   if (status) {
-    query = 'SELECT id, full_name, email_encrypted, vehicle_type, pickup_datetime, return_datetime, status, translation_needed, created_at FROM bookings WHERE status = ? ORDER BY created_at DESC';
+    query = 'SELECT id, full_name, email_encrypted, vehicle_type, pickup_datetime, return_datetime, status, translation_needed, created_at, notes, estimated_total FROM bookings WHERE status = ? ORDER BY created_at DESC';
     params = [status];
   } else {
-    query = 'SELECT id, full_name, email_encrypted, vehicle_type, pickup_datetime, return_datetime, status, translation_needed, created_at FROM bookings ORDER BY created_at DESC';
+    query = 'SELECT id, full_name, email_encrypted, vehicle_type, pickup_datetime, return_datetime, status, translation_needed, created_at, notes, estimated_total FROM bookings ORDER BY created_at DESC';
     params = [];
   }
 

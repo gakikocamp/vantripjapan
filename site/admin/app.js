@@ -5,6 +5,57 @@
 function $(sel) { return document.querySelector(sel); }
 function $$(sel) { return document.querySelectorAll(sel); }
 
+// --- Pricing (mirror of /book/ so the dashboard shows amounts for any booking) ---
+const VEHICLE_BASE = { 'MAZDA BONGO': 22000, 'TOYOTA PROBOX': 22000, 'DAIHATSU POCKET LOFT': 25000 };
+const DISCOUNT_TIERS = [
+    { minDays: 21, rate: 0.20, label: '20% OFF' },
+    { minDays: 14, rate: 0.15, label: '15% OFF' },
+    { minDays: 7, rate: 0.10, label: '10% OFF' },
+];
+function estimateTotal(vehicleType, pickup, returns) {
+    const base = VEHICLE_BASE[vehicleType];
+    const p = new Date(pickup), r = new Date(returns);
+    if (!base || isNaN(p) || isNaN(r)) return null;
+    const days = Math.ceil((r - p) / (1000 * 60 * 60 * 24));
+    if (!(days > 0)) return null;
+    const weekendRate = Math.round(base * 1.5);
+    const weekly = (5 * base) + (2 * weekendRate);
+    const baseTotal = (Math.floor(days / 7) * weekly) + ((days % 7) * base);
+    const tier = DISCOUNT_TIERS.find((t) => days >= t.minDays);
+    return { total: Math.round(baseTotal * (1 - (tier ? tier.rate : 0))), label: tier ? tier.label : null, days };
+}
+function fmtYen(n) { return '¥' + Number(n).toLocaleString('ja-JP'); }
+// 予約レコードの金額表示（保存済みestimated_totalを優先、無ければ車種+日付から算出）
+function bookingPriceHtml(b) {
+    let total = b.estimated_total, label = null;
+    if (!total) { const e = estimateTotal(b.vehicle_type, b.pickup_datetime, b.return_datetime); if (e) { total = e.total; label = e.label; } }
+    if (!total) return '<span style="color:var(--text-muted)">-</span>';
+    return `<strong>${fmtYen(total)}</strong>` + (label ? ` <small style="color:#34d399">${label}</small>` : '');
+}
+
+// --- Customer origin (language + country) stored in notes JSON at booking time ---
+const LANG_LABELS = { en: '🇬🇧 English', fr: '🇫🇷 Français', de: '🇩🇪 Deutsch', zh: '🇹🇼 中文', he: '🇮🇱 עברית' };
+function parseBookingMeta(notes) {
+    if (!notes) return {};
+    try { const m = JSON.parse(notes); if (m && typeof m === 'object') return m; } catch (e) { /* not JSON */ }
+    return {};
+}
+function langLabel(code) { return code ? (LANG_LABELS[code] || ('🌐 ' + code)) : null; }
+function countryFlag(cc) {
+    if (!cc || cc.length !== 2) return cc || null;
+    const A = 0x1F1E6;
+    return String.fromCodePoint(A + cc.charCodeAt(0) - 65, A + cc.charCodeAt(1) - 65) + ' ' + cc;
+}
+
+// --- Modal helpers (robust close: X button, backdrop click, Escape) ---
+function closeModal(id) { const m = $('#' + id); if (m) m.classList.remove('active'); }
+function closeAllModals() { $$('.modal-overlay.active').forEach((m) => m.classList.remove('active')); }
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAllModals(); });
+document.addEventListener('click', (e) => {
+    // クリックがオーバーレイ自身（＝モーダル外側の暗幕）なら閉じる
+    if (e.target.classList && e.target.classList.contains('modal-overlay')) e.target.classList.remove('active');
+});
+
 function formatDate(dateStr) {
     if (!dateStr) return '-';
     const d = new Date(dateStr);
@@ -191,6 +242,8 @@ function renderBookings(list) {
     empty.style.display = 'none';
     tbody.innerHTML = list.map(b => {
         const st = STATUS_LABELS[b.status] || { label: b.status, color: '#888' };
+        const meta = parseBookingMeta(b.notes);
+        const origin = [langLabel(meta.lang), countryFlag(meta.country)].filter(Boolean).join(' · ') || '<span style="color:var(--text-muted)">-</span>';
         return `
         <tr>
             <td>
@@ -200,6 +253,8 @@ function renderBookings(list) {
             <td>${b.vehicle_type || '-'}</td>
             <td>${formatDate(b.pickup_datetime)}</td>
             <td>${formatDate(b.return_datetime)}</td>
+            <td>${bookingPriceHtml(b)}</td>
+            <td style="white-space:nowrap">${origin}</td>
             <td><span class="status-badge" style="background:${st.color}20;color:${st.color};border:1px solid ${st.color}40">${st.label}</span></td>
             <td>${b.translation_needed ? '📝 翻訳あり' : '-'}</td>
             <td>
@@ -237,17 +292,26 @@ window.openBookingDetail = async function(id) {
                 </div>
             `).join('');
 
+        const meta = parseBookingMeta(b.notes);
+        const originVal = [langLabel(meta.lang), countryFlag(meta.country)].filter(Boolean).join(' · ') || '-';
+        const priceEst = estimateTotal(b.vehicle_type, b.pickup_datetime, b.return_datetime);
+        const priceVal = b.estimated_total
+            ? fmtYen(b.estimated_total) + (b.discount_info ? ` (${b.discount_info})` : '')
+            : (priceEst ? `${fmtYen(priceEst.total)}${priceEst.label ? ` (${priceEst.label})` : ''} <small style="color:var(--text-muted)">概算</small>` : '-');
+
         const body = `
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
                 <div><label style="color:var(--text-muted);font-size:0.8rem">名前</label><p><strong>${b.full_name}</strong></p></div>
                 <div><label style="color:var(--text-muted);font-size:0.8rem">メール</label><p>${b.email || '-'}</p></div>
                 <div><label style="color:var(--text-muted);font-size:0.8rem">電話</label><p>${b.phone || '-'}</p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">住所</label><p>${b.address || '-'}</p></div>
+                <div><label style="color:var(--text-muted);font-size:0.8rem">言語 / 国</label><p>${originVal}</p></div>
                 <div><label style="color:var(--text-muted);font-size:0.8rem">車種</label><p>${b.vehicle_type || '-'}</p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">ドライバー数</label><p>${b.num_drivers}</p></div>
+                <div><label style="color:var(--text-muted);font-size:0.8rem">概算金額</label><p><strong style="color:var(--accent-blue,#3b82f6)">${priceVal}</strong></p></div>
                 <div><label style="color:var(--text-muted);font-size:0.8rem">ピックアップ</label><p>${b.pickup_datetime || '-'}</p></div>
                 <div><label style="color:var(--text-muted);font-size:0.8rem">返却</label><p>${b.return_datetime || '-'}</p></div>
+                <div><label style="color:var(--text-muted);font-size:0.8rem">ドライバー数</label><p>${b.num_drivers}</p></div>
                 <div><label style="color:var(--text-muted);font-size:0.8rem">紹介元</label><p>${b.referral_source || '-'}</p></div>
+                <div><label style="color:var(--text-muted);font-size:0.8rem">住所</label><p>${b.address || '-'}</p></div>
                 <div><label style="color:var(--text-muted);font-size:0.8rem">翻訳</label><p>${b.translation_needed ? '✅ 必要' : '不要'}</p></div>
             </div>
             <div style="margin-bottom:20px;">
