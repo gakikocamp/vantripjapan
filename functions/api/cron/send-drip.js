@@ -17,11 +17,21 @@ export async function onRequest(context) {
 
   const isLocal = url.hostname === 'localhost' || url.hostname === '127.0.0.1';
 
-  if (cronSecret && !isLocal) {
-    const isAuthorized = 
-      (authHeader === `Bearer ${cronSecret}`) || 
+  // Fail-closed: 本番では常に CRON_SECRET を必須にする。
+  // シークレット未設定のまま公開エンドポイントを開けておくと、第三者が
+  // ドリップ配信を無制限にトリガーできてしまう。未設定時は実行を拒否する
+  // （send-personal-email.js の `!SECRET ||` と同じfail-closed方針）。
+  if (!isLocal) {
+    if (!cronSecret) {
+      return new Response(JSON.stringify({ error: 'Cron endpoint not configured (CRON_SECRET missing)' }), {
+        status: 503,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    const isAuthorized =
+      (authHeader === `Bearer ${cronSecret}`) ||
       (secretParam === cronSecret);
-      
+
     if (!isAuthorized) {
       return new Response(JSON.stringify({ error: 'Unauthorized' }), {
         status: 401,
