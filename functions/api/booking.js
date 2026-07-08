@@ -262,6 +262,10 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
     waAdminLink = `https://wa.me/${cleanPhone}`;
   }
 
+  // お客様が申込フォームで使っていた言語（Karenが同じ言語で返信できるように内部通知へ表示）
+  const LANG_LABELS = { en: 'English', fr: 'Français (French)', de: 'Deutsch (German)', zh: '繁體中文 (Chinese)', he: 'עברית (Hebrew)' };
+  const langLabel = LANG_LABELS[lang] || `English (default${data.lang ? ` — unknown "${data.lang}"` : ', lang not sent'})`;
+
   // Detect test requests
   const nameLower = name.toLowerCase();
   const emailLower = email.toLowerCase();
@@ -278,6 +282,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
     `Name:     ${data.full_name || '—'}`,
     `Email:    ${email || '—'}`,
     `Phone:    ${data.phone || '—'}`,
+    `Language: ${langLabel}  ← お客様が申込時に使っていた言語。この言語で返信してください`,
     `Vehicle:  ${vehicle}`,
     `Pick-up:  ${pickup}`,
     `Return:   ${ret}`,
@@ -316,6 +321,10 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
       <tr>
         <td style="padding: 6px 0; font-weight: bold; color: #4a5568;">電話番号 (Phone):</td>
         <td style="padding: 6px 0;">${data.phone || '—'}</td>
+      </tr>
+      <tr>
+        <td style="padding: 6px 0; font-weight: bold; color: #4a5568;">言語 (Language):</td>
+        <td style="padding: 6px 0; font-weight: bold; color: #c05621;">${langLabel} <span style="font-weight:400; color:#718096;">← この言語で返信</span></td>
       </tr>
     </table>
 
