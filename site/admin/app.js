@@ -331,12 +331,13 @@ window.openBookingDetail = async function(id) {
                 ${docsHtml}
             </div>
             <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border-subtle);display:flex;justify-content:flex-end;">
-                <button class="btn btn-danger" onclick="deleteBooking(${b.id}, ${JSON.stringify(b.full_name)})">
+                <button class="btn btn-danger" onclick="deleteBooking(${b.id})">
                     <i class="fas fa-trash"></i> この予約を完全に削除
                 </button>
             </div>
         `;
 
+        _openBookingName = b.full_name || '';
         $('#bookingModalTitle').textContent = `予約 #${b.id} — ${b.full_name}`;
         $('#bookingModalBody').innerHTML = body;
         $('#bookingModal').classList.add('active');
@@ -358,8 +359,10 @@ window.changeBookingStatus = async function(id, newStatus) {
     } catch (e) { /* shown by api() */ }
 };
 
-window.deleteBooking = async function(id, name) {
-    if (!confirm(`予約 #${id}（${name || ''}）を完全に削除します。\n関連書類も一緒に削除され、この操作は取り消せません。\n\n本当に削除しますか？`)) return;
+let _openBookingName = '';
+window.deleteBooking = async function(id) {
+    const name = _openBookingName || '';
+    if (!confirm(`予約 #${id}（${name}）を完全に削除します。\n関連書類も一緒に削除され、この操作は取り消せません。\n\n本当に削除しますか？`)) return;
     try {
         await api(`/api/booking?id=${id}`, { method: 'DELETE' });
         showToast(`予約 #${id} を削除しました`);
