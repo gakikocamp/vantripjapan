@@ -67,6 +67,9 @@ function isPublicRequest(request) {
   if (path === '/api/cron/send-drip' && method === 'GET') return true;
   // Public: POST quote request
   if (path === '/api/quote' && method === 'POST') return true;
+  // TEMP diagnostic (remove after): let it reach the worker so we can see which
+  // headers Cloudflare Access injects. On admin.vantripjapan.jp, Access still gates it at the edge.
+  if (path === '/api/_debug-headers' && method === 'GET') return true;
   // Public: OPTIONS (CORS preflight)
   if (method === 'OPTIONS') return true;
 
