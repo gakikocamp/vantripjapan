@@ -7,6 +7,8 @@
  * - Access logging
  */
 
+import { verifyAccessJwt } from './_access-jwt.js';
+
 // In-memory rate limit store (per isolate, resets on cold start — acceptable for edge)
 const rateLimitMap = new Map();
 const RATE_LIMIT = 30; // requests per minute for public endpoints
@@ -137,10 +139,18 @@ export async function onRequest(context) {
 
   // Admin authentication check
   if (!isPublicRequest(request)) {
-    const email = getCFAccessEmail(request);
     const isLocalDev = ['localhost', '127.0.0.1'].includes(url.hostname);
 
-    // Never trust Referer for auth. Only CF Access (or explicit local dev) is accepted.
+    // 認証情報の優先順:
+    //  1) Cf-Access-Authenticated-User-Email ヘッダ（Accessが注入する場合）
+    //  2) Cf-Access-Jwt-Assertion の署名検証（メールヘッダ未注入でもこちらは常に付く）
+    // どちらもクライアントからは偽装不可（Cloudflareが剥がす）。ローカル開発のみ例外。
+    let email = getCFAccessEmail(request);
+    if (!email && !isLocalDev) {
+      email = await verifyAccessJwt(request, env);
+    }
+
+    // Never trust Referer for auth. Only verified CF Access (or explicit local dev) is accepted.
     if (!email && !isLocalDev) {
       return new Response(JSON.stringify({ error: 'Authentication required' }), {
         status: 403,
