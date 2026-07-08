@@ -27,6 +27,10 @@
 /images/favicon.png
   Cache-Control: public, max-age=31536000, immutable
 
+# 管理画面 — オーナー専用・低トラフィックなので常に最新を配信（版ズレ防止）
+/admin/*
+  Cache-Control: no-cache, must-revalidate
+
 # HTML pages — cache but revalidate
 /*.html
   Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=3600
