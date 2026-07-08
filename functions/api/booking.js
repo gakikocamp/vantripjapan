@@ -572,6 +572,45 @@ async function handlePut(request, env, data) {
   return Response.json({ error: 'No valid update fields' }, { status: 400 });
 }
 
+async function handleDelete(request, env, data) {
+  const bindingError = ensureBookingBindings(env);
+  if (bindingError) {
+    return Response.json({ error: 'Booking service misconfigured', detail: bindingError }, { status: 500 });
+  }
+
+  const url = new URL(request.url);
+  const id = url.searchParams.get('id');
+  if (!id) return Response.json({ error: 'Missing id' }, { status: 400 });
+
+  // 関連書類を先に削除（R2の暗号化ファイル + customer_documents の行）
+  try {
+    const docs = await env.CUSTOMERS_DB.prepare(
+      'SELECT r2_key FROM customer_documents WHERE booking_id = ?'
+    ).bind(id).all();
+    if (env.DOCUMENTS && docs?.results?.length) {
+      for (const d of docs.results) {
+        if (d.r2_key) await env.DOCUMENTS.delete(d.r2_key).catch(() => {});
+      }
+    }
+    await env.CUSTOMERS_DB.prepare('DELETE FROM customer_documents WHERE booking_id = ?').bind(id).run();
+  } catch (e) {
+    // customer_documents が無い/空でも予約本体の削除は続行
+  }
+
+  const res = await env.CUSTOMERS_DB.prepare('DELETE FROM bookings WHERE id = ?').bind(id).run();
+  if (!res?.meta?.changes) return Response.json({ error: 'Not found' }, { status: 404 });
+
+  // 監査ログ（誰が何を消したか）
+  try {
+    const email = data?.userEmail || 'unknown';
+    await env.CUSTOMERS_DB.prepare(
+      'INSERT INTO access_logs (user_email, action, resource, detail) VALUES (?, ?, ?, ?)'
+    ).bind(email, 'delete', `booking/${id}`, 'Booking deleted').run();
+  } catch (e) { /* ログ失敗は無視 */ }
+
+  return Response.json({ status: 'ok' });
+}
+
 export async function onRequest(context) {
   const { request, env, data } = context;
 
@@ -579,6 +618,7 @@ export async function onRequest(context) {
     case 'POST': return handlePost(request, env);
     case 'GET': return handleGet(request, env);
     case 'PUT': return handlePut(request, env, data);
+    case 'DELETE': return handleDelete(request, env, data);
     default:
       return Response.json({ error: 'Method not allowed' }, { status: 405 });
   }

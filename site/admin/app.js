@@ -330,6 +330,11 @@ window.openBookingDetail = async function(id) {
                 <label style="color:var(--text-muted);font-size:0.8rem;margin-bottom:8px;display:block;">📄 書類</label>
                 ${docsHtml}
             </div>
+            <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border-subtle);display:flex;justify-content:flex-end;">
+                <button class="btn btn-danger" onclick="deleteBooking(${b.id}, ${JSON.stringify(b.full_name)})">
+                    <i class="fas fa-trash"></i> この予約を完全に削除
+                </button>
+            </div>
         `;
 
         $('#bookingModalTitle').textContent = `予約 #${b.id} — ${b.full_name}`;
@@ -350,6 +355,17 @@ window.changeBookingStatus = async function(id, newStatus) {
         showToast(`ステータスを「${st.label}」に変更しました`);
         openBookingDetail(id);
         loadBookings();
+    } catch (e) { /* shown by api() */ }
+};
+
+window.deleteBooking = async function(id, name) {
+    if (!confirm(`予約 #${id}（${name || ''}）を完全に削除します。\n関連書類も一緒に削除され、この操作は取り消せません。\n\n本当に削除しますか？`)) return;
+    try {
+        await api(`/api/booking?id=${id}`, { method: 'DELETE' });
+        showToast(`予約 #${id} を削除しました`);
+        closeModal('bookingModal');
+        loadBookings();
+        loadDashboard();
     } catch (e) { /* shown by api() */ }
 };
 
