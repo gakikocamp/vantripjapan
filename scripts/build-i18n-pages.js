@@ -491,8 +491,25 @@ async function bakePage(browser, translations, lang, pagePath) {
         }
     );
 
-    const html = await page.content();
+    let html = await page.content();
     await context.close();
+
+    // 台湾(zh)向け: 常時表示のLINE問い合わせボタンを注入し、WhatsApp浮遊ボタンは隠す。
+    // 台湾はLINEが主流でWhatsAppはほぼ使われないため、zhページのみ導線をLINE優先にする。
+    if (lang === "zh") {
+        const lineBtn =
+            `<a href="https://lin.ee/YYyRz2f" target="_blank" rel="noopener" class="floating-line-zh" aria-label="LINE">` +
+            `<span class="fl-icon" aria-hidden="true">💬</span><span>加LINE詢問</span></a>`;
+        // 既存の浮遊WhatsAppを非表示化（あるページのみ）
+        html = html.replace(/class="floating-whatsapp"/g, 'class="floating-whatsapp" style="display:none"');
+        // スティッキーバーの主要WhatsAppボタンをLINEに差し替え（レンタルページの常時表示CTA）
+        html = html.replace(
+            /<a href="https:\/\/wa\.me\/[^"]*"([^>]*?)data-track="wa_sticky">[\s\S]*?<\/a>/,
+            `<a href="https://lin.ee/YYyRz2f"$1data-track="line_sticky" style="background:#06C755;border-color:#06C755">💬 LINE</a>`
+        );
+        // </body> 直前に注入
+        html = html.replace(/<\/body>/i, `    ${lineBtn}\n</body>`);
+    }
 
     // Sanity assertions — refuse to write a page that isn't actually localized
     if (!html.includes(`lang="${LANG_ATTR[lang]}"`)) throw new Error(`lang attr missing: ${lang}/${pagePath}`);
