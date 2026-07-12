@@ -4,6 +4,22 @@
  * Falls back to static file if article not found in D1
  */
 
+/**
+ * 薄い量産記事(pSEO)の重複判定。
+ * 「{campervan|camping-car|motorhome|rv}-rental-{location}-for-{segment}」のうち、
+ * 同義語(campervan以外)・地名重複(fukuoka-airport / hakata) を「薄い重複」とみなす。
+ * campervan の fukuoka/itoshima/kyushu 版だけを正規版として残す（indexする）。
+ * → 該当は noindex,follow でインデックスから外し、サイト全体の評価希釈を止める。
+ * 完全に可逆（このファイルと sitemap.xml.js の判定を消すだけで元に戻る）。
+ */
+function isThinRentalDuplicate(slug) {
+  const m = /^(campervan|camping-car|motorhome|rv)-rental-(fukuoka-airport|hakata|fukuoka|itoshima|kyushu)-for-(couples|families|solo-travelers|surfers)$/.exec(slug || '');
+  if (!m) return false;
+  const syn = m[1], loc = m[2];
+  const isCanonical = syn === 'campervan' && (loc === 'fukuoka' || loc === 'itoshima' || loc === 'kyushu');
+  return !isCanonical;
+}
+
 function escHtml(str) {
   if (!str) return '';
   return String(str)
@@ -331,6 +347,22 @@ export async function onRequest(context) {
     if (!article) {
       // Fall back to static file if exists
       return context.next();
+    }
+
+    // 薄い量産記事の重複は published のままでも noindex,follow で配信（インデックス希釈を止める）
+    if (isThinRentalDuplicate(slug)) {
+      const html = renderArticlePage(article).replace(
+        '<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">',
+        '<meta name="robots" content="noindex, follow">'
+      );
+      return new Response(html, {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/html;charset=UTF-8',
+          'X-Robots-Tag': 'noindex, follow',
+          'Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400',
+        },
+      });
     }
 
     const html = renderArticlePage(article);

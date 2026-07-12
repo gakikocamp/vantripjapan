@@ -5,6 +5,15 @@
 
 const BASE_URL = 'https://vantripjapan.jp';
 
+// 薄い量産記事(pSEO)の重複判定（functions/posts/[[slug]].js と同一ロジック）
+function isThinRentalDuplicate(slug) {
+  const m = /^(campervan|camping-car|motorhome|rv)-rental-(fukuoka-airport|hakata|fukuoka|itoshima|kyushu)-for-(couples|families|solo-travelers|surfers)$/.exec(slug || '');
+  if (!m) return false;
+  const syn = m[1], loc = m[2];
+  const isCanonical = syn === 'campervan' && (loc === 'fukuoka' || loc === 'itoshima' || loc === 'kyushu');
+  return !isCanonical;
+}
+
 // hreflang: true のページは scripts/build-i18n-pages.js が /fr/ /de/ /zh/ /he/ に静的版を生成している
 const STATIC_PAGES = [
   { loc: '/',                  changefreq: 'weekly',  priority: '1.0', hreflang: true  },
@@ -61,6 +70,9 @@ export async function onRequest(context) {
   } catch (err) {
     // On DB error, serve sitemap with static pages only
   }
+
+  // 薄い量産記事の重複(pSEO同義語/地名重複)はサイトマップから除外（noindex方針と一致）
+  articles = articles.filter(a => !isThinRentalDuplicate(a.slug));
 
   const today = new Date().toISOString().slice(0, 10);
 
