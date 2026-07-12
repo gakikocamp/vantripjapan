@@ -509,6 +509,11 @@ async function bakePage(browser, translations, lang, pagePath) {
         );
         // </body> 直前に注入
         html = html.replace(/<\/body>/i, `    ${lineBtn}\n</body>`);
+        // 台湾旅客に一番人気のProboxを主役化：レンタルページのProboxカードにバッジを付与
+        html = html.replace(
+            "<h3>Roof Tent Probox</h3>",
+            '<span style="display:inline-block;background:#06C755;color:#fff;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;margin-bottom:8px;">🇹🇼 台灣旅客最愛</span><h3>Roof Tent Probox</h3>'
+        );
     }
 
     // Sanity assertions — refuse to write a page that isn't actually localized
