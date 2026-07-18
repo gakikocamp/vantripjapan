@@ -1303,10 +1303,13 @@ function btLocale() {
     const map = { en: 'en-US', fr: 'fr-FR', de: 'de-DE', zh: 'zh-TW', he: 'he-IL' };
     return map[(typeof currentLang !== 'undefined' && currentLang) || 'en'] || 'en-US';
 }
+// 現地通貨の目安を併記: 欧州(仏独)→€ / イスラエル(he)→₪。換算レートは目安（定期見直し）。
+// 1€≈165円, 1₪(ILS)≈40.5円。
 function eurHint(yen) {
     const l = (typeof currentLang !== 'undefined' && currentLang) || 'en';
-    if (l !== 'fr' && l !== 'de') return '';
-    return ' (≈ €' + Math.round(yen / 165).toLocaleString() + ')'; // 換算目安 1€=165円（定期見直し）
+    if (l === 'fr' || l === 'de') return ' (≈ €' + Math.round(yen / 165).toLocaleString() + ')';
+    if (l === 'he') return ' (≈ ₪' + Math.round(yen / 40.5).toLocaleString() + ')';
+    return '';
 }
 let bookingId = null;
 let fpPickup = null;
