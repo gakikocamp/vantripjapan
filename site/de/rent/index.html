@@ -24,8 +24,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="stylesheet" href="/css/style.css?v=20260615">
-    <link rel="stylesheet" href="/css/rent.css?v=20260625_v8">
+    <link rel="stylesheet" href="/css/style.css?v=20260719">
+    <link rel="stylesheet" href="/css/rent.css?v=20260719_v8">
     <!-- Google Analytics -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
@@ -235,7 +235,7 @@
       "name": "Benötige ich einen speziellen Führerschein, um in Japan einen Campervan zu fahren?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No special license is needed. Our campervans are regular-sized vehicles that can be driven with a standard International Driving Permit (IDP). If you're from Switzerland, Germany, France, Belgium, Monaco, or Taiwan, you'll need a JAF translation instead of an IDP. Our partner JDLTC (drive-japan-license.com) can handle the entire process for you."
+        "text": "Nein. Unsere Campervans sind normale Fahrzeuge, die mit einem internationalen Führerschein (IFÜ) oder einer übersetzten Lizenz gefahren werden können."
       }
     },
     {
@@ -243,7 +243,7 @@
       "name": "Wo kann ich den Campervan abholen und zurückgeben?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Pick-up and return is at our Hakozaki Base, just 10 minutes from Fukuoka Airport. We can also arrange airport pick-up. Flexible drop-off locations including Tokyo and Osaka are available."
+        "text": "An unserer Hakozaki-Basis, 10 Minuten vom Flughafen Fukuoka. Flughafen-Transfer auf Anfrage möglich."
       }
     },
     {
@@ -251,7 +251,7 @@
       "name": "Was ist im Mietpreis enthalten?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Everything you need: vehicle insurance (CDW), cooking set & tableware, portable power station, 24/7 roadside assistance, and multilingual support. No hidden fees."
+        "text": "Alles: Versicherung, ETC-Karte (kostenlos, Voranmeldung erforderlich), Navigation, Campingausrüstung, tragbare Powerstation, 24/7 Pannenhilfe und mehrsprachiger Support. Keine versteckten Kosten!"
       }
     },
     {
@@ -259,7 +259,7 @@
       "name": "Wie ist die Stornierungsrichtlinie?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Free cancellation up to 8 days before scheduled pick-up. Cancellations within 7 days incur a fee: 30% (7-5 days before), 50% (4-2 days before), 100% (1 day before/on the day)."
+        "text": "Kostenlose Stornierung bis zu 8 Tage vor Mietbeginn. Bei Stornierungen innerhalb von 7 Tagen fällt eine gestaffelte Gebühr an. Details findest du auf der Seite mit den Mietbedingungen."
       }
     },
     {
@@ -267,7 +267,7 @@
       "name": "Kann ich überall im Campervan schlafen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Japan has many great options: auto-campsites, RV parks, and Michi-no-Eki roadside stations. There are hundreds of spots across Kyushu. We provide a recommended spot guide at pickup."
+        "text": "Japan bietet viele Optionen: Auto-Campingplätze, Wohnmobilparks und „Michi-no-Eki“ Raststationen. Wir geben dir einen Spot-Guide bei der Abholung!"
       }
     },
     {
@@ -275,7 +275,7 @@
       "name": "Kann ich den Campervan in Tokio oder Osaka zurückgeben?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes! One-way trips are available. Pick up in Fukuoka and drop off in Tokyo or Osaka. A surcharge applies depending on the destination."
+        "text": "Ja! Einwegfahrten sind möglich. Abholung in Fukuoka, Rückgabe in Tokyo oder Osaka (oder umgekehrt). Ein Aufpreis fällt je nach Zielort an. Kontaktiere uns via WhatsApp oder LINE für ein Angebot!"
       }
     }
   ],
@@ -338,6 +338,21 @@
           "priceCurrency": "JPY",
           "unitText": "DAY"
         }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Thing",
+          "name": "Pocket Loft — Kei Camper, Sleeps up to 4"
+        },
+        "price": "25000",
+        "priceCurrency": "JPY",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "25000",
+          "priceCurrency": "JPY",
+          "unitText": "DAY"
+        }
       }
     ]
   }
@@ -389,7 +404,7 @@
         }
     });
     </script>
-</head>
+<meta property="og:locale" content="de_DE"></head>
 
 <body>
 
@@ -599,7 +614,7 @@
                 <div class="rent-section-header">
                     <span class="rent-badge">🚐 <span data-i18n="vehicles.badge">Unsere Flotte</span></span>
                     <h2 class="rent-section-title" data-i18n="vehicles.title">Welches Fahrzeug passt zu dir?</h2>
-                    <p class="rent-section-subtitle" data-i18n="vehicles.subtitle">Vergleiche unsere zwei Fahrzeuge und finde deins</p>
+                    <p class="rent-section-subtitle" data-i18n="vehicles.subtitle">Vergleiche unsere drei Fahrzeuge und finde deins</p>
                 </div>
 
                 <div class="vehicles-grid">
@@ -1537,7 +1552,7 @@
     </div><!-- end .rent-page -->
 
     <script src="/js/nav.js?v=20260615"></script>
-    <script>window.VTJ_FORCE_LANG='de';</script><script src="/js/i18n.js?v=20260708"></script>
+    <script>window.VTJ_FORCE_LANG='de';</script><script src="/js/i18n.js?v=20260719"></script>
     <script>
         // ── Price Calculator ──
         var _calcDays = 7, _calcVehicle = 22000, _calcVehicleName = 'Probox', _calcPeople = 2;
@@ -1684,7 +1699,6 @@
                     formBtn.href = '/book/?from=' + pickupStr + '&to=' + returnStr + '&guests=' + _calcPeople + '&vehicle=' + vehicleParam;
                 }
 
-                console.log('[VTJ Calc]', _calcDays + 'd', effectiveRate + '¥/d (disc:' + (discount ? discount.label : 'none') + ', promo:' + _calcPromoCode + ')', _calcPeople + 'p', '→ van=' + vanTotal, 'hotel=' + hotelTotal, 'save=' + savings);
             } catch (e) {
                 console.error('[VTJ Calc Error]', e);
             }
@@ -1846,7 +1860,6 @@
                 function showQuoteSuccess() {
                     quoteForm.style.display = 'none';
                     document.getElementById('quote-success').style.display = 'block';
-                    console.log('[VTJ Quote]', quoteData);
                 }
             });
         }

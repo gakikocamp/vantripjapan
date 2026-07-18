@@ -360,6 +360,8 @@ async function bakePage(browser, translations, lang, pagePath) {
     await page.evaluate(
         ({ dict, lang, langAttr, ogLocale, pagePath, meta, BASE, BAKED, ldMap }) => {
             document.documentElement.setAttribute("lang", langAttr);
+            // ヘブライ語はRTL（右→左）レイアウト
+            if (lang === "he") document.documentElement.setAttribute("dir", "rtl");
 
             document.querySelectorAll("[data-i18n]").forEach((el) => {
                 const key = el.getAttribute("data-i18n");
@@ -421,8 +423,13 @@ async function bakePage(browser, translations, lang, pagePath) {
 
             const altUrl = BASE + "/" + lang + "/" + pagePath;
             setMeta('meta[property="og:url"]', altUrl);
-            const ogl = document.querySelector('meta[property="og:locale"]');
-            if (ogl) ogl.setAttribute("content", ogLocale);
+            let ogl = document.querySelector('meta[property="og:locale"]');
+            if (!ogl) {
+                ogl = document.createElement("meta");
+                ogl.setAttribute("property", "og:locale");
+                document.head.appendChild(ogl);
+            }
+            ogl.setAttribute("content", ogLocale);
 
             let canonical = document.querySelector('link[rel="canonical"]');
             if (!canonical) {

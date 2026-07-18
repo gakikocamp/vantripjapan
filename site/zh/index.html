@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link rel="stylesheet" href="/css/style.css?v=20260615">
+    <link rel="stylesheet" href="/css/style.css?v=20260719">
     <link rel="preload" as="image" href="/images/hero-vanlife.png">
 
     <!-- 構造化データ: LocalBusiness -->
@@ -355,7 +355,7 @@
         }
     });
     </script>
-</head>
+<meta property="og:locale" content="zh_TW"></head>
 
 <body>
 
@@ -401,6 +401,7 @@
         <div class="hero-content">
             <div class="hero-left" style="max-width: 750px;">
                 <span class="hero-badge" data-i18n="home.hero.badge">🇯🇵 福岡家庭經營露營車租賃</span>
+                <span data-i18n="home.new_loft_pill"><a href="/zh/rent/loft/" style="display:inline-block;margin:10px 0 0 8px;background:#BF4E30;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:9999px;text-decoration:none;">🆕 新車上線：Pocket Loft — 可睡4人</a></span>
                 <h1 class="hero-title" data-i18n="home.hero.title">用您的方式<br>探索九州</h1>
                 <p class="hero-description" data-i18n="home.hero.desc">我們是一對在福岡經營手作露營車租賃的夫妻。在別府泡溫泉、驅車前往阿蘇火山口、在海景中醒來 — 全包式費用每日 22,000 日圓起。</p>
                 
@@ -662,7 +663,7 @@
     </footer>
 
     <script src="/js/nav.js?v=20260413"></script>
-    <script>window.VTJ_FORCE_LANG='zh';</script><script src="/js/i18n.js?v=20260708"></script>
+    <script>window.VTJ_FORCE_LANG='zh';</script><script src="/js/i18n.js?v=20260719"></script>
 
     <!-- CMS Article Loader -->
     <script>
@@ -771,9 +772,17 @@
         function showArticleFallback() {
             const grid = document.getElementById('articles-grid');
             if (grid) {
+                // 実行時注入なのでbake対象外 → 辞書から直接現在言語の文言を引く
+                let fb = 'Articles are being updated. Check back soon or explore our <a href="/rent/" style="color:var(--color-accent);text-decoration:underline;">rental page</a>.';
+                try {
+                    const lang = window.VTJ_FORCE_LANG || 'en';
+                    if (typeof translations !== 'undefined' && translations[lang] && translations[lang]['home.articles_fallback']) {
+                        fb = translations[lang]['home.articles_fallback'];
+                    }
+                } catch (e) {}
                 grid.innerHTML = `
                     <div style="grid-column:1/-1;text-align:center;padding:var(--space-2xl) var(--space-lg);">
-                        <p style="color:var(--color-muted);font-size:1rem;">Articles are being updated. Check back soon or explore our <a href="/rent/" style="color:var(--color-accent);text-decoration:underline;">rental page</a>.</p>
+                        <p style="color:var(--color-muted);font-size:1rem;">` + fb + `</p>
                     </div>`;
             }
         }

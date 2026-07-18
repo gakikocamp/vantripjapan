@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link rel="stylesheet" href="/css/style.css?v=20260615">
+    <link rel="stylesheet" href="/css/style.css?v=20260719">
     <link rel="preload" as="image" href="/images/hero-vanlife.png">
 
     <!-- 構造化データ: LocalBusiness -->
@@ -355,7 +355,7 @@
         }
     });
     </script>
-</head>
+<meta property="og:locale" content="de_DE"></head>
 
 <body>
 
@@ -401,6 +401,7 @@
         <div class="hero-content">
             <div class="hero-left" style="max-width: 750px;">
                 <span class="hero-badge" data-i18n="home.hero.badge">🇩🇪 Familiengeführte Wohnmobil- &amp; Campervan-Vermietung in Fukuoka</span>
+                <span data-i18n="home.new_loft_pill"><a href="/de/rent/loft/" style="display:inline-block;margin:10px 0 0 8px;background:#BF4E30;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:9999px;text-decoration:none;">🆕 Neu: Pocket Loft — Platz für 4</a></span>
                 <h1 class="hero-title" data-i18n="home.hero.title">Erkunden Sie Kyushu<br>Auf Ihre Weise</h1>
                 <p class="hero-description" data-i18n="home.hero.desc">Wir sind ein Ehepaar, das handgefertigte Campervans in Fukuoka vermietet. Onsen-Hopping in Beppu, Fahrt am Kraterrand des Aso und Aufwachen mit Meerblick — alles inklusive ab ¥22.000/Tag.</p>
                 
@@ -662,7 +663,7 @@
     </footer>
 
     <script src="/js/nav.js?v=20260413"></script>
-    <script>window.VTJ_FORCE_LANG='de';</script><script src="/js/i18n.js?v=20260708"></script>
+    <script>window.VTJ_FORCE_LANG='de';</script><script src="/js/i18n.js?v=20260719"></script>
 
     <!-- CMS Article Loader -->
     <script>
@@ -771,9 +772,17 @@
         function showArticleFallback() {
             const grid = document.getElementById('articles-grid');
             if (grid) {
+                // 実行時注入なのでbake対象外 → 辞書から直接現在言語の文言を引く
+                let fb = 'Articles are being updated. Check back soon or explore our <a href="/rent/" style="color:var(--color-accent);text-decoration:underline;">rental page</a>.';
+                try {
+                    const lang = window.VTJ_FORCE_LANG || 'en';
+                    if (typeof translations !== 'undefined' && translations[lang] && translations[lang]['home.articles_fallback']) {
+                        fb = translations[lang]['home.articles_fallback'];
+                    }
+                } catch (e) {}
                 grid.innerHTML = `
                     <div style="grid-column:1/-1;text-align:center;padding:var(--space-2xl) var(--space-lg);">
-                        <p style="color:var(--color-muted);font-size:1rem;">Articles are being updated. Check back soon or explore our <a href="/rent/" style="color:var(--color-accent);text-decoration:underline;">rental page</a>.</p>
+                        <p style="color:var(--color-muted);font-size:1rem;">` + fb + `</p>
                     </div>`;
             }
         }

@@ -179,7 +179,9 @@ const translations = {
         // Vehicles
         "vehicles.badge": "Our Fleet",
         "vehicles.title": "Which Vehicle Fits You?",
-        "vehicles.subtitle": "Compare our two vehicles and find your perfect match",
+        "vehicles.subtitle": "Compare our three vehicles and find your perfect match",
+        "home.new_loft_pill": "<a href=\"/rent/loft/\" style=\"display:inline-block;margin:10px 0 0 8px;background:#BF4E30;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:9999px;text-decoration:none;\">🆕 New van: Pocket Loft — sleeps up to 4</a>",
+        "home.articles_fallback": "Articles are being updated. Check back soon or explore our <a href=\"/rent/\" style=\"color:var(--color-accent);text-decoration:underline;\">rental page</a>.",
         "vehicles.perday": "/day",
 
         // Comparison
@@ -931,7 +933,9 @@ const translations = {
 
         "vehicles.badge": "Notre Flotte",
         "vehicles.title": "Quel véhicule vous convient ?",
-        "vehicles.subtitle": "Comparez nos deux véhicules et trouvez votre compagnon idéal",
+        "vehicles.subtitle": "Comparez nos trois véhicules et trouvez votre compagnon idéal",
+        "home.new_loft_pill": "<a href=\"/fr/rent/loft/\" style=\"display:inline-block;margin:10px 0 0 8px;background:#BF4E30;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:9999px;text-decoration:none;\">🆕 Nouveau : Pocket Loft — jusqu'à 4 couchages</a>",
+        "home.articles_fallback": "Les articles arrivent bientôt — découvrez en attendant notre <a href=\"/fr/rent/\" style=\"color:var(--color-accent);text-decoration:underline;\">page de location</a>.",
         "vehicles.perday": "/jour",
 
         "compare.badge": "Avantage Net",
@@ -1672,7 +1676,9 @@ const translations = {
 
         "vehicles.badge": "Unsere Flotte",
         "vehicles.title": "Welches Fahrzeug passt zu dir?",
-        "vehicles.subtitle": "Vergleiche unsere zwei Fahrzeuge und finde deins",
+        "vehicles.subtitle": "Vergleiche unsere drei Fahrzeuge und finde deins",
+        "home.new_loft_pill": "<a href=\"/de/rent/loft/\" style=\"display:inline-block;margin:10px 0 0 8px;background:#BF4E30;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:9999px;text-decoration:none;\">🆕 Neu: Pocket Loft — Platz für 4</a>",
+        "home.articles_fallback": "Neue Artikel folgen in Kürze — entdecke inzwischen unsere <a href=\"/de/rent/\" style=\"color:var(--color-accent);text-decoration:underline;\">Mietseite</a>.",
         "vehicles.perday": "/Tag",
 
         "compare.badge": "Klarer Vorteil",
@@ -2413,7 +2419,9 @@ const translations = {
 
         "vehicles.badge": "我們的車隊",
         "vehicles.title": "哪款車適合您？",
-        "vehicles.subtitle": "比較兩款車輛，找到最適合您的一台",
+        "vehicles.subtitle": "比較三款車輛，找到最適合您的一台",
+        "home.new_loft_pill": "<a href=\"/zh/rent/loft/\" style=\"display:inline-block;margin:10px 0 0 8px;background:#BF4E30;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:9999px;text-decoration:none;\">🆕 新車上線：Pocket Loft — 可睡4人</a>",
+        "home.articles_fallback": "文章更新中，敬請期待。歡迎先瀏覽<a href=\"/zh/rent/\" style=\"color:var(--color-accent);text-decoration:underline;\">租車頁面</a>。",
         "vehicles.perday": "/天",
 
         "compare.badge": "明確優勢",
@@ -3157,7 +3165,9 @@ const translations = {
         "pricing.cta": "💬 קבלו הצעת מחיר מקארן בוואטסאפ",
         "vehicles.badge": "הצי שלנו",
         "vehicles.title": "איזה רכב מתאים לכם?",
-        "vehicles.subtitle": "השוו בין שני הרכבים שלנו",
+        "vehicles.subtitle": "השוו בין שלושת הרכבים שלנו",
+        "home.new_loft_pill": "<a href=\"/he/rent/loft/\" style=\"display:inline-block;margin:10px 0 0 8px;background:#BF4E30;color:#fff;font-size:12px;font-weight:700;padding:6px 14px;border-radius:9999px;text-decoration:none;\">🆕 חדש: פוקט לופט — עד 4 אנשים</a>",
+        "home.articles_fallback": "המאמרים בעדכון — בינתיים בקרו ב<a href=\"/he/rent/\" style=\"color:var(--color-accent);text-decoration:underline;\">עמוד ההשכרה</a>.",
         "vehicles.perday": "/יום",
         "compare.badge": "יתרון ברור",
         "compare.title": "למה לבחור בנו?",

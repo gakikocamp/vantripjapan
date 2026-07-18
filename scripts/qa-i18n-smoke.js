@@ -32,6 +32,15 @@ const enCount = Object.keys(t.en).length;
 for (const l of Object.keys(t)) {
     if (Object.keys(t[l]).length !== enCount) bad(`辞書キー数不一致: en=${enCount} ${l}=${Object.keys(t[l]).length}`);
 }
+// キー「集合」の完全一致（数だけでなく中身も検査）
+const enKeySet = new Set(Object.keys(t.en));
+for (const l of Object.keys(t)) {
+    if (l === "en") continue;
+    const missing = [...enKeySet].filter((k) => !(k in t[l]));
+    const extra = Object.keys(t[l]).filter((k) => !enKeySet.has(k));
+    if (missing.length) bad(`辞書キー欠落(${l}): ${missing.slice(0, 5).join(", ")}${missing.length > 5 ? "…" : ""}`);
+    if (extra.length) bad(`辞書キー余剰(${l}): ${extra.slice(0, 5).join(", ")}${extra.length > 5 ? "…" : ""}`);
+}
 console.log(`辞書: ${Object.keys(t).join("/")} 各${enCount}キー`);
 
 // 焼き込みページ
@@ -66,6 +75,7 @@ for (const f of EN_PAGES) {
         i++;
     }
     if (f !== "site/book/index.html" && (html.match(/hreflang=/g) || []).length !== 6) issues.push("hreflang≠6");
+    if (/hreflang="[^"]+" href="[^"]*\?lang=/.test(html)) issues.push("hreflangが旧?lang=形式（/fr/等の静的URLに直すこと）");
     for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
         try { JSON.parse(m[1]); } catch (e) { issues.push("JSON-LD"); break; }
     }

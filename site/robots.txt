@@ -8,6 +8,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /api/
 Disallow: /book/
 Disallow: /privacy/
 Disallow: /rent/terms/
@@ -23,30 +24,48 @@ Sitemap: https://vantripjapan.jp/sitemap.xml
 
 User-agent: GPTBot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 User-agent: cohere-ai
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
 # ═══ Unwanted Scrapers — BLOCK ═══
 # Block known scrapers that don't provide value

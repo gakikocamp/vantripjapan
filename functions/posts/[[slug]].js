@@ -30,6 +30,11 @@ function escHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
+// JSON-LD文字列用エスケープ（escHtmlはHTML用なのでJSONには使わない）
+function jsonEsc(str) {
+  return JSON.stringify(String(str == null ? '' : str)).slice(1, -1);
+}
+
 function formatDate(dateStr) {
   if (!dateStr) return '';
   // YYYY-MM-DD → YYYY.MM.DD
@@ -52,6 +57,71 @@ function detectLang(article) {
   if (tags.includes('lang-zh')) return 'zh-Hant';
   return 'en';
 }
+
+// 記事CTAの多言語辞書（detectLangのキーに対応。zh-HantはLINEファースト）
+const CTA_I18N = {
+  en: {
+    ready: 'Ready to explore Kyushu by campervan?',
+    body: 'All-inclusive campervan rental from Fukuoka — from ¥22,000/day. Insurance, ETC card, bedding, and 24/7 English support included. Pickup 10 min from Fukuoka Airport.',
+    view: 'View Rental Options →',
+    wa: '💬 Ask on WhatsApp',
+    waText: "Hi Karen! I just read your article and I'm interested in renting a campervan.",
+    book: 'No-risk booking request — no payment needed',
+    floatBadge: 'Fukuoka Airport Pickup',
+    floatTitle: 'Explore Japan by Campervan',
+    floatBody: 'All-inclusive rental from ¥22,000/day',
+    floatBtn: 'View Rates →',
+  },
+  fr: {
+    ready: 'Prêt à explorer Kyushu en camping-car ?',
+    body: "Location de camping-car tout compris au départ de Fukuoka — à partir de ¥22 000/jour (≈134 €). Assurance, carte ETC, literie et assistance 24h/24 incluses. Prise en charge à 10 min de l'aéroport de Fukuoka.",
+    view: 'Voir les camping-cars →',
+    wa: '💬 Écrivez-nous sur WhatsApp',
+    waText: 'Bonjour Karen ! Je viens de lire votre article et je souhaite louer un camping-car.',
+    book: 'Demande de réservation sans engagement',
+    floatBadge: "Départ aéroport de Fukuoka",
+    floatTitle: 'Le Japon en camping-car',
+    floatBody: 'Tout compris dès ¥22 000/jour (≈134 €)',
+    floatBtn: 'Voir les tarifs →',
+  },
+  de: {
+    ready: 'Bereit, Kyushu im Campervan zu entdecken?',
+    body: 'All-inclusive-Campervan-Vermietung ab Fukuoka — ab ¥22.000/Tag (≈134 €). Versicherung, ETC-Karte, Bettwäsche und 24/7-Support inklusive. Abholung 10 Min. vom Flughafen Fukuoka.',
+    view: 'Fahrzeuge ansehen →',
+    wa: '💬 Auf WhatsApp fragen',
+    waText: 'Hallo Karen! Ich habe gerade euren Artikel gelesen und möchte einen Campervan mieten.',
+    book: 'Unverbindliche Buchungsanfrage',
+    floatBadge: 'Abholung am Flughafen Fukuoka',
+    floatTitle: 'Japan im Campervan erleben',
+    floatBody: 'All-inclusive ab ¥22.000/Tag (≈134 €)',
+    floatBtn: 'Preise ansehen →',
+  },
+  'zh-Hant': {
+    ready: '準備好開露營車遊九州了嗎？',
+    body: '福岡出發全包式露營車出租——每日¥22,000起。含保險、ETC卡、寢具與24小時支援。福岡機場10分鐘即可取車。',
+    view: '查看車輛與價格 →',
+    line: 'LINE 諮詢（台灣旅客首選）',
+    wa: '💬 WhatsApp 諮詢',
+    waText: 'Hi Karen! I read your article and would like to rent a campervan.',
+    book: '免付款預約申請',
+    floatBadge: '福岡機場取車',
+    floatTitle: '開露營車環遊九州',
+    floatBody: '全包式每日¥22,000起',
+    floatBtn: '查看價格 →',
+  },
+  he: {
+    ready: 'מוכנים לטייל בקיושו בקרוואן?',
+    body: 'השכרת קרוואן הכל-כלול מפוקואוקה — החל מ-¥22,000 ליום (≈₪543). ביטוח, כרטיס ETC, מצעים ותמיכה 24/7 כלולים. איסוף 10 דקות משדה התעופה פוקואוקה.',
+    view: 'לצפייה ברכבים →',
+    wa: '💬 שאלו אותנו בוואטסאפ',
+    waText: "Hi Karen! I just read your article and I'm interested in renting a campervan.",
+    book: 'בקשת הזמנה ללא תשלום',
+    floatBadge: 'איסוף משדה התעופה פוקואוקה',
+    floatTitle: 'יפן בקרוואן',
+    floatBody: 'הכל כלול החל מ-¥22,000 ליום',
+    floatBtn: 'למחירים →',
+  },
+};
 
 function resolveImageUrl(src) {
   if (!src) return '';
@@ -86,9 +156,11 @@ function renderArticlePage(article) {
   const lang = detectLang(article);
   const imageUrl = resolveImageUrl(article.cover_image);
   const faqSchema = extractFaqSchema(article.body);
+  const t = CTA_I18N[lang] || CTA_I18N.en;
+  const isZh = lang === 'zh-Hant';
 
   return `<!DOCTYPE html>
-<html lang="${lang}">
+<html lang="${lang}"${lang === 'he' ? ' dir="rtl"' : ''}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,7 +176,7 @@ function renderArticlePage(article) {
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="${canonicalUrl}">
   <link rel="icon" type="image/png" href="/images/favicon.png">
-  <link rel="stylesheet" href="/css/style.css?v=20260504">
+  <link rel="stylesheet" href="/css/style.css?v=20260719">
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
@@ -188,13 +260,17 @@ function renderArticlePage(article) {
     ${article.body || ''}
   </article>
 
-  <!-- CTA -->
+  <!-- CTA (多言語・zhはLINEファースト) -->
   <div class="article-cta">
     <div class="article-cta-box">
-      <h3>Ready to explore Kyushu by campervan?</h3>
-      <p>All-inclusive campervan rental from Fukuoka — from ¥16,500/day. Insurance, ETC card, bedding, and 24/7 English support included. Pickup 10 min from Fukuoka Airport.</p>
-      <a href="/rent/" class="article-cta-btn">View Rental Options →</a>
-      <a href="https://wa.me/817093757129?text=Hi!%20I%20just%20read%20your%20article%20and%20I'm%20interested%20in%20renting%20a%20campervan." class="article-cta-btn" style="background:transparent;border:2px solid rgba(255,255,255,0.5);margin-left:12px;color:#fff;" target="_blank">💬 Ask on WhatsApp</a>
+      <h3>${t.ready}</h3>
+      <p>${t.body}</p>
+      ${isZh
+        ? `<a href="https://lin.ee/YYyRz2f" class="article-cta-btn" target="_blank" rel="noopener">💚 ${t.line}</a>
+      <a href="/rent/" class="article-cta-btn" style="background:transparent;border:2px solid rgba(255,255,255,0.5);margin-left:12px;color:#fff;">${t.view}</a>`
+        : `<a href="/rent/" class="article-cta-btn">${t.view}</a>
+      <a href="https://wa.me/817093757129?text=${encodeURIComponent(t.waText)}" class="article-cta-btn" style="background:transparent;border:2px solid rgba(255,255,255,0.5);margin-left:12px;color:#fff;" target="_blank" rel="noopener">${t.wa}</a>`}
+      <div><a href="/book/" style="display:inline-block;margin-top:14px;color:#fff;text-decoration:underline;font-size:14px;opacity:.9;">📝 ${t.book}</a></div>
     </div>
   </div>
 
@@ -244,21 +320,23 @@ function renderArticlePage(article) {
     </div>
   </footer>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/817093757129?text=Hi!%20I'm%20interested%20in%20renting%20a%20campervan%20in%20Fukuoka." 
-     class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+  <!-- Floating Chat Button (zh=LINE / others=WhatsApp) -->
+  ${isZh
+    ? `<a href="https://lin.ee/YYyRz2f" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="LINE" style="background:#06C755;">💚</a>`
+    : `<a href="https://wa.me/817093757129?text=${encodeURIComponent(t.waText)}"
+     class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
     💬
-  </a>
+  </a>`}
 
   <!-- Floating Sticky CTA for Campervan Rental -->
   <div class="floating-cta" id="floatingCta">
     <button class="floating-cta-close" id="closeCta" aria-label="Close CTA">×</button>
     <div class="floating-cta-content">
-      <span class="floating-cta-badge">Fukuoka Airport Pickup</span>
-      <h4>Explore Japan by Campervan</h4>
-      <p>All-inclusive rental from ¥16,500/day</p>
+      <span class="floating-cta-badge">${t.floatBadge}</span>
+      <h4>${t.floatTitle}</h4>
+      <p>${t.floatBody}</p>
     </div>
-    <a href="/rent/" class="floating-cta-btn">View Rates →</a>
+    <a href="/rent/" class="floating-cta-btn">${t.floatBtn}</a>
   </div>
 
   <script>
@@ -292,7 +370,23 @@ function renderArticlePage(article) {
     });
   </script>
 
-  <script src="/js/nav.js?v=20260413"></script>
+  <script src="/js/nav.js?v=20260719"></script>
+
+  <script>
+    // GA4 CTAクリック計測（予約転換の可視化）
+    (function(){
+      if (typeof gtag !== 'function') return;
+      document.addEventListener('click', function(e){
+        var a = e.target && e.target.closest ? e.target.closest('a') : null;
+        if (!a) return;
+        var h = a.href || '';
+        if (h.indexOf('wa.me') > -1) gtag('event', 'whatsapp_click', {event_category: 'cta', page_path: location.pathname});
+        else if (h.indexOf('lin.ee') > -1) gtag('event', 'line_click', {event_category: 'cta', page_path: location.pathname});
+        else if (h.indexOf('/book/') > -1) gtag('event', 'book_link_click', {event_category: 'cta', page_path: location.pathname});
+        else if (h.indexOf('/rent/') > -1) gtag('event', 'rent_link_click', {event_category: 'cta', page_path: location.pathname});
+      }, true);
+    })();
+  </script>
 
 </body>
 </html>`;
