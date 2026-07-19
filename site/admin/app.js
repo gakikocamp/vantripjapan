@@ -149,9 +149,9 @@ async function loadDashboard() {
         statusEl.innerHTML = Object.entries(statusLabels)
             .filter(([k]) => byStatus[k])
             .map(([k, label]) => `
-                <div class="country-rank-item">
+                <div class="country-rank-item clickable" onclick="gotoBookings('${k}')">
                     <span class="country-rank-name">${label}</span>
-                    <span class="country-rank-count">${byStatus[k]}件</span>
+                    <span class="country-rank-count">${byStatus[k]}件 <i class="fas fa-chevron-right" style="font-size:0.7rem;opacity:.5"></i></span>
                 </div>
             `).join('') || '<p class="empty-state">まだ予約データがありません</p>';
 
@@ -160,7 +160,7 @@ async function loadDashboard() {
         const rrEl = $('#recentBookings');
         if (recent.length > 0) {
             rrEl.innerHTML = recent.map(r => `
-                <div class="rental-item" style="cursor:pointer" onclick="switchPage('bookings')">
+                <div class="rental-item clickable" onclick="${r.id ? `openBookingDetail(${r.id})` : `switchPage('bookings')`}">
                     <div class="rental-info">
                         <span class="rental-customer">${r.full_name}</span>
                         <span class="rental-dates">${r.vehicle_type || '-'} • ${formatDate(r.pickup_datetime)}</span>
@@ -205,6 +205,12 @@ const DOC_LABELS = {
 };
 
 let currentBookingFilter = 'all';
+
+window.gotoBookings = function(status) {
+    currentBookingFilter = status || 'all';
+    switchPage('bookings');
+    $$('#statusTabs .status-tab').forEach(t => t.classList.toggle('active', t.dataset.status === currentBookingFilter));
+};
 
 function initBookings() {
     const tabs = $$('#statusTabs .status-tab');
@@ -287,7 +293,7 @@ window.openBookingDetail = async function(id) {
         let docsHtml = docs.length === 0
             ? '<p style="color:var(--text-muted)">まだ書類がアップロードされていません</p>'
             : docs.map(d => `
-                <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--bg-secondary);border-radius:8px;margin-bottom:6px;">
+                <div class="doc-row">
                     <span>${DOC_LABELS[d.doc_type] || d.doc_type}</span>
                     <span style="margin-left:auto;font-size:0.8rem;color:var(--text-muted)">${d.original_filename || ''}</span>
                     ${d.verified
@@ -305,59 +311,73 @@ window.openBookingDetail = async function(id) {
             ? fmtYen(b.estimated_total) + (b.discount_info ? ` (${b.discount_info})` : '')
             : (priceEst ? `${fmtYen(priceEst.total)}${priceEst.label ? ` (${priceEst.label})` : ''} <small style="color:var(--text-muted)">概算</small>` : '-');
 
+        const vehShort = { 'MAZDA BONGO': ['BONGO', 'veh-bongo'], 'TOYOTA PROBOX': ['PROBOX', 'veh-probox'], 'DAIHATSU POCKET LOFT': ['LOFT', 'veh-loft'] }[b.vehicle_type] || [b.vehicle_type || '-', 'veh-other'];
+        let nightsStr = '';
+        { const pd = new Date(b.pickup_datetime), rd = new Date(b.return_datetime);
+          if (!isNaN(pd) && !isNaN(rd)) { const n = Math.round((rd - pd) / 86400000); if (n > 0) nightsStr = `・${n}泊`; } }
+        const IDP_LABELS = { idp_1949: '国際免許(1949)', jdltc_translation: '翻訳文(持参)', jdltc_order: '🎫 JDLTC注文希望', unsure: '未定（要案内）' };
         const body = `
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
-                <div><label style="color:var(--text-muted);font-size:0.8rem">名前</label><p><strong>${b.full_name}</strong></p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">メール</label><p>${b.email || '-'}</p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">電話</label><p>${b.phone || '-'}</p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">言語 / 国</label><p>${originVal}</p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">車種</label><p>${b.vehicle_type || '-'}</p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">概算金額</label><p><strong style="color:var(--accent-blue,#3b82f6)">${priceVal}</strong></p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">ピックアップ</label><p>${b.pickup_datetime || '-'}</p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">返却</label><p>${b.return_datetime || '-'}</p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">ドライバー数</label><p>${b.num_drivers}</p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">紹介元</label><p>${b.referral_source || '-'}</p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">住所</label><p>${b.address || '-'}</p></div>
-                <div><label style="color:var(--text-muted);font-size:0.8rem">翻訳</label><p>${b.translation_needed ? '✅ 必要' : '不要'}</p></div>
+            <div class="dsec">
+                <div class="dsec-title">👤 お客様</div>
+                <div class="dgrid">
+                    <div><span class="dt">名前</span><span class="dd"><strong>${b.full_name}</strong></span></div>
+                    <div><span class="dt">言語 / 国</span><span class="dd">${originVal}</span></div>
+                    <div><span class="dt">メール</span><span class="dd">${b.email ? `<a href="mailto:${b.email}" style="color:var(--accent-blue)">${b.email}</a>` : '-'}</span></div>
+                    <div><span class="dt">電話</span><span class="dd">${b.phone || '-'}</span></div>
+                    <div><span class="dt">紹介元</span><span class="dd">${b.referral_source || '-'}</span></div>
+                    <div><span class="dt">翻訳文</span><span class="dd">${b.translation_needed ? '📝 必要' : '不要'}</span></div>
+                </div>
             </div>
-            <div style="margin-bottom:20px;">
-                <label style="color:var(--text-muted);font-size:0.8rem">ステータス</label>
-                <div style="display:flex;align-items:center;gap:10px;margin-top:6px;flex-wrap:wrap;">
-                    <span class="status-badge" style="background:${st.color}20;color:${st.color};border:1px solid ${st.color}40;font-size:1rem;padding:6px 14px;">${st.label}</span>
+            <div class="dsec">
+                <div class="dsec-title">🚐 旅程・金額</div>
+                <div class="dtrip">
+                    <span class="veh-chip ${vehShort[1]}">${vehShort[0]}</span>
+                    <span class="dtrip-dates">${formatDate(b.pickup_datetime)} → ${formatDate(b.return_datetime)}${nightsStr}</span>
+                    <span class="dtrip-price">${priceVal}</span>
+                </div>
+                <div class="dgrid" style="margin-top:10px;">
+                    <div><span class="dt">ピックアップ</span><span class="dd">${(b.pickup_datetime || '-').replace('T', ' ')}</span></div>
+                    <div><span class="dt">返却</span><span class="dd">${(b.return_datetime || '-').replace('T', ' ')}</span></div>
+                    <div><span class="dt">ドライバー数</span><span class="dd">${b.num_drivers || 1}名</span></div>
+                    <div><span class="dt">住所</span><span class="dd">${b.address || '-'}</span></div>
+                </div>
+            </div>
+            <div class="dsec">
+                <div class="dsec-title">🔄 ステータス</div>
+                <div class="dstatus">
+                    <span class="status-badge" style="background:${st.color}20;color:${st.color};border:1px solid ${st.color}40;font-size:0.95rem;padding:8px 16px;">${st.label}</span>
                     ${nextStatus ? `<button class="btn btn-primary" onclick="changeBookingStatus(${b.id},'${nextStatus}')">
                         <i class="fas fa-arrow-right"></i> ${STATUS_LABELS[nextStatus].label} に進める
                     </button>` : ''}
-                    ${b.status !== 'cancelled' ? `<button class="btn btn-danger" onclick="changeBookingStatus(${b.id},'cancelled')">
-                        <i class="fas fa-times"></i> キャンセル
-                    </button>` : ''}
+                    ${b.status !== 'cancelled' ? `<button class="btn btn-ghost-danger" onclick="changeBookingStatus(${b.id},'cancelled')">キャンセルにする</button>` : ''}
                 </div>
+                ${b.status === 'docs_received' ? '<p class="dhint">💡 書類を確認したら「決済待ちに進める」→ Stripeリンクを送ってください。</p>' : ''}
+                ${b.status === 'payment_sent' ? '<p class="dhint">💡 入金を確認したら「確定に進める」→ 確定メール（カレンダー付き・5言語）が自動送信されます。</p>' : ''}
             </div>
-            <div style="margin-bottom:20px;padding:12px;background:var(--bg-secondary);border-radius:8px;">
-                <label style="color:var(--text-muted);font-size:0.8rem;display:block;margin-bottom:6px;">📋 お客様手続きページ（免許証アップロード＋必要事項の記入）</label>
+            <div class="dsec">
+                <div class="dsec-title">📋 お客様手続きページ（免許証アップ＋必要事項）</div>
                 <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
                     <button class="btn btn-primary" onclick="copyCompleteLink('${(b.complete_url || '').replace(/'/g, '')}')">
-                        <i class="fas fa-copy"></i> 手続きリンクをコピー（WhatsAppに貼る）
+                        <i class="fas fa-copy"></i> 手続きリンクをコピー
                     </button>
-                    ${meta.details ? '<span style="color:#34d399;font-weight:600;"><i class="fas fa-check-circle"></i> お客様記入済み</span>' : '<span style="color:var(--text-muted);font-size:0.85rem;">未記入</span>'}
+                    ${meta.details ? '<span style="color:#34d399;font-weight:600;"><i class="fas fa-check-circle"></i> お客様記入済み</span>' : '<span style="color:var(--text-muted);font-size:0.85rem;">未記入（コピーしてWhatsAppに貼ってください）</span>'}
                 </div>
                 ${meta.details ? `
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;font-size:0.85rem;">
-                    <div><label style="color:var(--text-muted);font-size:0.75rem">免許発行国</label><p>${meta.details.license_country || '-'}</p></div>
-                    <div><label style="color:var(--text-muted);font-size:0.75rem">運転書類</label><p>${{ idp_1949: '国際免許(1949)', jdltc_translation: 'JDLTC翻訳', unsure: '未定（要案内）' }[meta.details.idp_type] || meta.details.idp_type || '-'}</p></div>
-                    <div><label style="color:var(--text-muted);font-size:0.75rem">到着便 / 時刻</label><p>${meta.details.flight_number || '-'} ${meta.details.arrival_time ? '/ ' + meta.details.arrival_time : ''}</p></div>
-                    <div><label style="color:var(--text-muted);font-size:0.75rem">追加ドライバー</label><p>${meta.details.additional_driver || '-'}</p></div>
-                    <div><label style="color:var(--text-muted);font-size:0.75rem">緊急連絡先</label><p>${meta.details.emergency_name || '-'} ${meta.details.emergency_phone || ''}</p></div>
-                    <div><label style="color:var(--text-muted);font-size:0.75rem">要望</label><p>${meta.details.special_requests || '-'}</p></div>
+                <div class="dgrid" style="margin-top:12px;">
+                    <div><span class="dt">免許発行国</span><span class="dd">${meta.details.license_country || '-'}</span></div>
+                    <div><span class="dt">運転書類</span><span class="dd">${IDP_LABELS[meta.details.idp_type] || meta.details.idp_type || '-'}</span></div>
+                    <div><span class="dt">到着便 / 時刻</span><span class="dd">${meta.details.flight_number || '-'} ${meta.details.arrival_time ? '/ ' + meta.details.arrival_time : ''}</span></div>
+                    <div><span class="dt">追加ドライバー</span><span class="dd">${meta.details.additional_driver || '-'}</span></div>
+                    <div><span class="dt">緊急連絡先</span><span class="dd">${meta.details.emergency_name || '-'} ${meta.details.emergency_phone || ''}</span></div>
+                    <div><span class="dt">要望</span><span class="dd">${meta.details.special_requests || '-'}</span></div>
                 </div>` : ''}
             </div>
-            <div>
-                <label style="color:var(--text-muted);font-size:0.8rem;margin-bottom:8px;display:block;">📄 書類</label>
+            <div class="dsec">
+                <div class="dsec-title">📄 書類</div>
                 ${docsHtml}
             </div>
-            <div style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border-subtle);display:flex;justify-content:flex-end;">
-                <button class="btn btn-danger" onclick="deleteBooking(${b.id})">
-                    <i class="fas fa-trash"></i> この予約を完全に削除
-                </button>
+            <div class="dfooter">
+                <button class="btn-text-danger" onclick="deleteBooking(${b.id})"><i class="fas fa-trash"></i> この予約を完全に削除</button>
             </div>
         `;
 

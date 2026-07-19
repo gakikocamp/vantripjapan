@@ -7,7 +7,7 @@
     <meta name="robots" content="noindex, nofollow">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/admin/style.css?v=20260720a">
+    <link rel="stylesheet" href="/admin/style.css?v=20260720b">
 </head>
 <body>
     <!-- Sidebar -->
@@ -272,83 +272,76 @@
             </div>
             <div class="modal-body">
                 <form id="createBookingForm" onsubmit="submitManualBooking(event)">
-                    <div style="display:grid; grid-template-columns:1fr; gap:12px;">
-                        <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
-                            <label style="font-weight:600; font-size:0.85rem;">車種 <span style="color:red;">*</span></label>
-                            <select name="vehicle_type" required style="padding:8px; border:1px solid #ddd; border-radius:6px;">
-                                <option value="MAZDA BONGO">🚐 MAZDA BONGO</option>
-                                <option value="TOYOTA PROBOX">🏕️ TOYOTA PROBOX</option>
-                                <option value="DAIHATSU POCKET LOFT">🚐 DAIHATSU POCKET LOFT</option>
+                    <p class="modal-hint">💬 WhatsAppで合意した予約を登録します。登録と同時に、お客様へ控えメール（手続きリンク同封・選択した言語）が自動送信されます。</p>
+                    <div class="fgrid">
+                        <div class="fg span2">
+                            <label>車種 <em>*</em></label>
+                            <select name="vehicle_type" required>
+                                <option value="MAZDA BONGO">🚐 MAZDA BONGO（車内就寝・2名）</option>
+                                <option value="TOYOTA PROBOX">🏕️ TOYOTA PROBOX（ルーフテント・2名）</option>
+                                <option value="DAIHATSU POCKET LOFT">👨‍👩‍👧 DAIHATSU POCKET LOFT（4名）</option>
                             </select>
                         </div>
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
-                                <label style="font-weight:600; font-size:0.85rem;">貸出日時 <span style="color:red;">*</span></label>
-                                <input type="datetime-local" name="pickup_datetime" required style="padding:8px; border:1px solid #ddd; border-radius:6px;">
-                            </div>
-                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
-                                <label style="font-weight:600; font-size:0.85rem;">返却日時 <span style="color:red;">*</span></label>
-                                <input type="datetime-local" name="return_datetime" required style="padding:8px; border:1px solid #ddd; border-radius:6px;">
-                            </div>
+                        <div class="fg">
+                            <label>貸出日時 <em>*</em></label>
+                            <input type="datetime-local" name="pickup_datetime" required>
                         </div>
-                        <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
-                            <label style="font-weight:600; font-size:0.85rem;">お客様氏名 <span style="color:red;">*</span></label>
-                            <input type="text" name="full_name" required placeholder="例: 山田 太郎" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
+                        <div class="fg">
+                            <label>返却日時 <em>*</em></label>
+                            <input type="datetime-local" name="return_datetime" required>
                         </div>
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
-                                <label style="font-weight:600; font-size:0.85rem;">メールアドレス <span style="color:red;">*</span></label>
-                                <input type="email" name="email" required value="whatsapp@vantripjapan.jp" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
-                            </div>
-                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
-                                <label style="font-weight:600; font-size:0.85rem;">電話番号</label>
-                                <input type="text" name="phone" placeholder="例: +81 90-1234-5678" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
-                            </div>
+                        <div class="fg span2">
+                            <label>お客様氏名 <em>*</em></label>
+                            <input type="text" name="full_name" required placeholder="例: Amélie Dubois">
                         </div>
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
-                                <label style="font-weight:600; font-size:0.85rem;">運転者数</label>
-                                <select name="num_drivers" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
-                                    <option value="1">1名</option>
-                                    <option value="2">2名</option>
-                                    <option value="3">3名</option>
-                                    <option value="4">4名</option>
-                                </select>
-                            </div>
-                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
-                                <label style="font-weight:600; font-size:0.85rem;">登録ステータス <span style="color:red;">*</span></label>
-                                <select name="status" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
-                                    <option value="docs_requested">📋 書類待ち (空き状況をブロック)</option>
-                                    <option value="confirmed">🎉 確定 (空き状況をブロック)</option>
-                                    <option value="active">🚐 利用中 (空き状況をブロック)</option>
-                                    <option value="form_submitted">📩 新規 (仮押さえしない)</option>
-                                </select>
-                            </div>
+                        <div class="fg">
+                            <label>メールアドレス <em>*</em></label>
+                            <input type="email" name="email" required value="whatsapp@vantripjapan.jp">
                         </div>
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
-                                <label style="font-weight:600; font-size:0.85rem;">お客様の言語（メール・手続きページ用）</label>
-                                <select name="lang" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
-                                    <option value="en">🇬🇧 English</option>
-                                    <option value="fr">🇫🇷 Français</option>
-                                    <option value="de">🇩🇪 Deutsch</option>
-                                    <option value="zh">🇹🇼 繁體中文</option>
-                                    <option value="he">🇮🇱 עברית</option>
-                                </select>
-                            </div>
-                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
-                                <label style="font-weight:600; font-size:0.85rem;">合意金額（円・任意）</label>
-                                <input type="number" name="agreed_total" min="0" step="500" placeholder="WhatsAppで合意した総額" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
-                            </div>
+                        <div class="fg">
+                            <label>電話番号</label>
+                            <input type="text" name="phone" placeholder="例: +33 6 12 34 56 78">
                         </div>
-                        <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
-                            <label style="font-weight:600; font-size:0.85rem;">メモ・その他要望</label>
-                            <textarea name="camping_gear_notes" placeholder="例: WhatsAppからの予約。オプション品追加予定等" style="padding:8px; border:1px solid #ddd; border-radius:6px; resize:vertical; min-height:60px;"></textarea>
+                        <div class="fg">
+                            <label>運転者数</label>
+                            <select name="num_drivers">
+                                <option value="1">1名</option>
+                                <option value="2">2名</option>
+                                <option value="3">3名</option>
+                                <option value="4">4名</option>
+                            </select>
                         </div>
-                        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:12px;">
-                            <button type="button" class="btn btn-secondary" onclick="$('#createBookingModal').classList.remove('active')">キャンセル</button>
-                            <button type="submit" class="btn btn-primary">登録する</button>
+                        <div class="fg">
+                            <label>登録ステータス <em>*</em></label>
+                            <select name="status">
+                                <option value="docs_requested">📋 書類待ち（空き状況をブロック）</option>
+                                <option value="confirmed">🎉 確定（空き状況をブロック）</option>
+                                <option value="active">🚐 利用中（空き状況をブロック）</option>
+                                <option value="form_submitted">📩 新規（仮押さえしない）</option>
+                            </select>
                         </div>
+                        <div class="fg">
+                            <label>お客様の言語（メール・手続きページ用）</label>
+                            <select name="lang">
+                                <option value="en">🇬🇧 English</option>
+                                <option value="fr">🇫🇷 Français</option>
+                                <option value="de">🇩🇪 Deutsch</option>
+                                <option value="zh">🇹🇼 繁體中文</option>
+                                <option value="he">🇮🇱 עברית</option>
+                            </select>
+                        </div>
+                        <div class="fg">
+                            <label>合意金額（円・任意）</label>
+                            <input type="number" name="agreed_total" min="0" step="500" placeholder="WhatsAppで合意した総額">
+                        </div>
+                        <div class="fg span2">
+                            <label>メモ・その他要望</label>
+                            <textarea name="camping_gear_notes" placeholder="例: WhatsAppからの予約。オプション品追加予定 等"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" onclick="$('#createBookingModal').classList.remove('active')">キャンセル</button>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> 登録する</button>
                     </div>
                 </form>
             </div>
@@ -358,6 +351,6 @@
     <!-- Toast -->
     <div id="toastContainer" style="position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;"></div>
 
-    <script src="/admin/app.js?v=20260720a"></script>
+    <script src="/admin/app.js?v=20260720b"></script>
 </body>
 </html>

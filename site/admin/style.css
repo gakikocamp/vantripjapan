@@ -1179,3 +1179,169 @@ body::after {
     .page-actions { justify-content: stretch; }
     .page-actions .btn { flex: 1; justify-content: center; }
 }
+
+/* ============================================================
+   モーダル内フォーム・詳細セクション（2026-07-20 ダーク統一）
+   ============================================================ */
+.modal-hint {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    line-height: 1.55;
+}
+
+.fgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.fg { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.fg.span2 { grid-column: 1 / -1; }
+
+.fg label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.fg label em { color: var(--accent-red); font-style: normal; }
+
+.fg input, .fg select, .fg textarea {
+    background: var(--bg-input);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    padding: 10px 12px;
+    font-size: 0.92rem;
+    font-family: inherit;
+    width: 100%;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.fg input:focus, .fg select:focus, .fg textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background: var(--bg-input-focus);
+}
+
+.fg input::placeholder, .fg textarea::placeholder { color: var(--text-muted); }
+.fg select option { background: var(--bg-secondary); color: var(--text-primary); }
+.fg textarea { resize: vertical; min-height: 64px; }
+.fg input[type="datetime-local"] { color-scheme: dark; }
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+/* 詳細モーダルのセクション */
+.dsec {
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    margin-bottom: 14px;
+}
+
+.dsec-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    letter-spacing: 0.03em;
+    margin-bottom: 10px;
+}
+
+.dgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 16px;
+}
+
+.dgrid > div { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.dt { font-size: 0.72rem; color: var(--text-muted); }
+.dd { font-size: 0.92rem; color: var(--text-primary); word-break: break-word; }
+
+.dtrip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.dtrip-dates { font-weight: 600; font-size: 0.98rem; }
+.dtrip-price { margin-left: auto; font-weight: 800; color: var(--accent-blue); font-size: 1.05rem; }
+
+.dstatus { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.dhint {
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: var(--accent-green);
+    background: var(--accent-green-glow);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    line-height: 1.5;
+}
+
+.doc-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.btn-ghost-danger {
+    background: transparent;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+    color: var(--accent-red);
+    border-radius: var(--radius-sm);
+    padding: 9px 14px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.btn-ghost-danger:hover { background: rgba(239, 68, 68, 0.12); }
+
+.dfooter {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4px;
+}
+
+.btn-text-danger {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 6px 8px;
+    transition: color 0.15s ease;
+}
+
+.btn-text-danger:hover { color: var(--accent-red); }
+
+/* ダッシュボードの行をクリック可能に */
+.clickable { cursor: pointer; transition: background 0.15s ease; border-radius: var(--radius-sm); }
+.clickable:hover { background: var(--bg-input); }
+
+@media (max-width: 640px) {
+    .fgrid, .dgrid { grid-template-columns: 1fr; }
+    .dtrip-price { margin-left: 0; width: 100%; }
+    .modal-actions { flex-direction: column-reverse; }
+    .modal-actions .btn { width: 100%; justify-content: center; }
+}
