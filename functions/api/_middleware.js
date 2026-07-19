@@ -69,6 +69,8 @@ function isPublicRequest(request) {
   if (path === '/api/newsletter/unsubscribe' && method === 'GET') return true;
   // Public: GET cron drip campaign trigger
   if (path === '/api/cron/send-drip' && method === 'GET') return true;
+  // Public: GET cron pickup reminder (CRON_SECRETをエンドポイント内で検証・fail-closed)
+  if (path === '/api/cron/pickup-reminder' && method === 'GET') return true;
   // Public: POST quote request
   if (path === '/api/quote' && method === 'POST') return true;
   // Public: OPTIONS (CORS preflight)

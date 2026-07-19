@@ -452,7 +452,9 @@ window.submitManualBooking = async function(event) {
         status: form.elements['status'].value,
         camping_gear_notes: form.elements['camping_gear_notes'].value || null,
         translation_needed: false,
-        referral_source: 'WhatsApp/Manual'
+        referral_source: 'WhatsApp/Manual',
+        lang: form.elements['lang'].value || 'en',
+        agreed_total: form.elements['agreed_total'].value ? parseInt(form.elements['agreed_total'].value, 10) : null
     };
 
     try {
@@ -462,10 +464,12 @@ window.submitManualBooking = async function(event) {
             body: JSON.stringify(data)
         });
         if (res.status === 'ok') {
-            showToast('新規予約を登録しました');
+            showToast('登録完了。お客様へ控えメール(手続きリンク付き)を送信しました');
             $('#createBookingModal').classList.remove('active');
             loadBookings();
             loadDashboard();
+            // 手続きリンクをすぐコピーできるよう、作成した予約の詳細を開く
+            if (res.booking_id) openBookingDetail(res.booking_id);
         }
     } catch (e) {
         // shown by api() toast

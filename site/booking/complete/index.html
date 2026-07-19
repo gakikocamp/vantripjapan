@@ -83,11 +83,27 @@
         </span>
       </div>
       <div class="docrow">
+        <span class="doclabel" id="t_passport"></span>
+        <span>
+          <span class="chip" id="chip_passport"></span>
+          <label class="upbtn" for="f_passport" id="b_passport"></label>
+          <input type="file" id="f_passport" accept="image/*,.pdf" data-doctype="passport">
+        </span>
+      </div>
+      <div class="docrow">
         <span class="doclabel" id="t_idp"></span>
         <span>
           <span class="chip" id="chip_international_license"></span>
           <label class="upbtn secondary" for="f_international_license" id="b_idp"></label>
           <input type="file" id="f_international_license" accept="image/*,.pdf" data-doctype="international_license">
+        </span>
+      </div>
+      <div class="docrow">
+        <span class="doclabel" id="t_translation"></span>
+        <span>
+          <span class="chip" id="chip_translation"></span>
+          <label class="upbtn secondary" for="f_translation" id="b_translation"></label>
+          <input type="file" id="f_translation" accept="image/*,.pdf" data-doctype="translation">
         </span>
       </div>
       <p class="note" id="t_upload_hint"></p>
@@ -153,7 +169,7 @@ const T = {
     title:"Complete your booking", sub:"A few last steps — then Karen sends your payment link. No payment on this page.",
     summary:"Your booking", vehicle:"Vehicle", pickup:"Pick-up", return:"Return",
     docs:"Driver's license photos", docs_note:"Please upload clear photos of the main driver's license. Files are encrypted and only used for the rental contract.",
-    front:"License — front", back:"License — back", idp:"International Driving Permit / Translation (if you have it)",
+    front:"License — front", passport:"Passport (photo page)", translation:"Japanese translation of license (JDLTC etc.)", back:"License — back", idp:"International Driving Permit / Translation (if you have it)",
     upload:"Upload", uploaded:"✓ Uploaded", pending:"Not yet", uploading:"Uploading…", upload_hint:"JPG/PNG/PDF, max 10MB. You can also add the IDP or JDLTC translation later.",
     details:"Trip details", license_country:"Country that issued your license *", idp_type:"Which document will you drive with? *",
     opt_choose:"— Please choose —", opt_idp:"International Driving Permit (1949 Geneva)", opt_jdltc:"Japanese translation (JDLTC etc.)", opt_unsure:"Not sure yet — please advise me",
@@ -167,13 +183,13 @@ const T = {
     err_link:"This link is not valid. Please use the exact link Karen sent you, or contact us on WhatsApp.",
     err_upload:"Upload failed. Please try again or send the photos to Karen on WhatsApp.",
     err_submit:"Could not send. Please try again or contact Karen on WhatsApp.",
-    need:"Please upload both sides of the license, choose your document type, and accept the terms."
+    need:"Please upload the license (both sides) and passport, choose your document type, and accept the terms."
   },
   fr: {
     title:"Finalisez votre réservation", sub:"Quelques dernières étapes — ensuite Karen vous enverra le lien de paiement. Aucun paiement sur cette page.",
     summary:"Votre réservation", vehicle:"Véhicule", pickup:"Prise en charge", return:"Retour",
     docs:"Photos du permis de conduire", docs_note:"Merci de télécharger des photos nettes du permis du conducteur principal. Les fichiers sont chiffrés et utilisés uniquement pour le contrat de location.",
-    front:"Permis — recto", back:"Permis — verso", idp:"Permis international / Traduction (si vous l'avez)",
+    front:"Permis — recto", passport:"Passeport (page photo)", translation:"Traduction japonaise du permis (JDLTC, etc.)", back:"Permis — verso", idp:"Permis international / Traduction (si vous l'avez)",
     upload:"Envoyer", uploaded:"✓ Reçu", pending:"À faire", uploading:"Envoi…", upload_hint:"JPG/PNG/PDF, 10 Mo max. Le PCI ou la traduction JDLTC peuvent être ajoutés plus tard.",
     details:"Détails du voyage", license_country:"Pays de délivrance du permis *", idp_type:"Avec quel document conduirez-vous ? *",
     opt_choose:"— Choisissez —", opt_idp:"Permis de conduire international (Genève 1949)", opt_jdltc:"Traduction japonaise (JDLTC, etc.)", opt_unsure:"Pas encore sûr — conseillez-moi",
@@ -187,13 +203,13 @@ const T = {
     err_link:"Ce lien n'est pas valide. Utilisez le lien exact envoyé par Karen, ou contactez-nous sur WhatsApp.",
     err_upload:"Échec de l'envoi. Réessayez ou envoyez les photos à Karen sur WhatsApp.",
     err_submit:"Envoi impossible. Réessayez ou contactez Karen sur WhatsApp.",
-    need:"Merci de télécharger le recto et le verso du permis, de choisir votre document et d'accepter les conditions."
+    need:"Merci de télécharger le permis (recto-verso) et le passeport, de choisir votre document et d'accepter les conditions."
   },
   de: {
     title:"Buchung abschließen", sub:"Noch ein paar Schritte — dann sendet Karen Ihren Zahlungslink. Keine Zahlung auf dieser Seite.",
     summary:"Ihre Buchung", vehicle:"Fahrzeug", pickup:"Abholung", return:"Rückgabe",
     docs:"Führerschein-Fotos", docs_note:"Bitte laden Sie gut lesbare Fotos des Führerscheins des Hauptfahrers hoch. Die Dateien werden verschlüsselt und nur für den Mietvertrag verwendet.",
-    front:"Führerschein — Vorderseite", back:"Führerschein — Rückseite", idp:"Internationaler Führerschein / Übersetzung (falls vorhanden)",
+    front:"Führerschein — Vorderseite", passport:"Reisepass (Fotoseite)", translation:"Japanische Übersetzung des Führerscheins (JDLTC usw.)", back:"Führerschein — Rückseite", idp:"Internationaler Führerschein / Übersetzung (falls vorhanden)",
     upload:"Hochladen", uploaded:"✓ Erhalten", pending:"Offen", uploading:"Lädt…", upload_hint:"JPG/PNG/PDF, max. 10 MB. IDP oder JDLTC-Übersetzung können auch später ergänzt werden.",
     details:"Reisedetails", license_country:"Ausstellungsland des Führerscheins *", idp_type:"Mit welchem Dokument fahren Sie? *",
     opt_choose:"— Bitte wählen —", opt_idp:"Internationaler Führerschein (Genf 1949)", opt_jdltc:"Japanische Übersetzung (JDLTC usw.)", opt_unsure:"Noch unsicher — bitte beraten Sie mich",
@@ -207,13 +223,13 @@ const T = {
     err_link:"Dieser Link ist ungültig. Bitte nutzen Sie genau den Link von Karen oder kontaktieren Sie uns per WhatsApp.",
     err_upload:"Upload fehlgeschlagen. Bitte erneut versuchen oder die Fotos an Karen per WhatsApp senden.",
     err_submit:"Senden nicht möglich. Bitte erneut versuchen oder Karen per WhatsApp kontaktieren.",
-    need:"Bitte beide Seiten des Führerscheins hochladen, Dokumenttyp wählen und die Bedingungen akzeptieren."
+    need:"Bitte Führerschein (beide Seiten) und Reisepass hochladen, Dokumenttyp wählen und die Bedingungen akzeptieren."
   },
   zh: {
     title:"完成您的預約", sub:"最後幾個步驟 — 完成後Karen將傳送付款連結給您。本頁面不會收取任何款項。",
     summary:"您的預約", vehicle:"車輛", pickup:"取車", return:"還車",
     docs:"駕照照片", docs_note:"請上傳主駕駛人駕照的清晰照片。檔案會加密保存，僅用於租車合約。",
-    front:"駕照 — 正面", back:"駕照 — 背面", idp:"日文譯本／國際駕照（如已備妥）",
+    front:"駕照 — 正面", passport:"護照（照片頁）", translation:"駕照日文譯本（JDLTC等）", back:"駕照 — 背面", idp:"日文譯本／國際駕照（如已備妥）",
     upload:"上傳", uploaded:"✓ 已收到", pending:"未上傳", uploading:"上傳中…", upload_hint:"JPG/PNG/PDF，最大10MB。日文譯本也可以之後再補上傳。",
     details:"行程資訊", license_country:"駕照發照國家／地區 *", idp_type:"您將使用哪種文件駕車？ *",
     opt_choose:"— 請選擇 —", opt_idp:"國際駕照（1949日內瓦公約）", opt_jdltc:"駕照日文譯本（台灣旅客適用）", opt_unsure:"還不確定 — 請給我建議",
@@ -227,13 +243,13 @@ const T = {
     err_link:"連結無效。請使用Karen傳給您的原始連結，或透過WhatsApp／LINE聯絡我們。",
     err_upload:"上傳失敗。請再試一次，或直接把照片傳給Karen。",
     err_submit:"送出失敗。請再試一次，或直接聯絡Karen。",
-    need:"請上傳駕照正反面、選擇駕駛文件類型，並同意租賃條款。"
+    need:"請上傳駕照正反面與護照、選擇駕駛文件類型，並同意租賃條款。"
   },
   he: {
     title:"השלמת ההזמנה", sub:"עוד כמה צעדים אחרונים — ואז קארן תשלח את קישור התשלום. אין תשלום בעמוד זה.",
     summary:"ההזמנה שלך", vehicle:"רכב", pickup:"איסוף", return:"החזרה",
     docs:"תמונות רישיון הנהיגה", docs_note:"נא להעלות תמונות ברורות של רישיון הנהג הראשי. הקבצים מוצפנים ומשמשים רק לחוזה ההשכרה.",
-    front:"רישיון — צד קדמי", back:"רישיון — צד אחורי", idp:"רישיון בינלאומי / תרגום (אם יש)",
+    front:"רישיון — צד קדמי", passport:"דרכון (עמוד התמונה)", translation:"תרגום יפני של הרישיון (JDLTC וכו')", back:"רישיון — צד אחורי", idp:"רישיון בינלאומי / תרגום (אם יש)",
     upload:"העלאה", uploaded:"✓ התקבל", pending:"טרם הועלה", uploading:"מעלה…", upload_hint:"JPG/PNG/PDF, עד 10MB. אפשר להוסיף את הרישיון הבינלאומי גם מאוחר יותר.",
     details:"פרטי הנסיעה", license_country:"המדינה שהנפיקה את הרישיון *", idp_type:"עם איזה מסמך תנהגו? *",
     opt_choose:"— בחרו —", opt_idp:"רישיון נהיגה בינלאומי (ז'נבה 1949)", opt_jdltc:"תרגום ליפנית (JDLTC וכו')", opt_unsure:"עוד לא בטוח — אשמח לייעוץ",
@@ -247,7 +263,7 @@ const T = {
     err_link:"הקישור אינו תקין. השתמשו בקישור המדויק שקארן שלחה, או צרו קשר בוואטסאפ.",
     err_upload:"ההעלאה נכשלה. נסו שוב או שלחו את התמונות לקארן בוואטסאפ.",
     err_submit:"השליחה נכשלה. נסו שוב או פנו לקארן בוואטסאפ.",
-    need:"נא להעלות את שני צדי הרישיון, לבחור סוג מסמך ולאשר את התנאים."
+    need:"נא להעלות את שני צדי הרישיון ואת הדרכון, לבחור סוג מסמך ולאשר את התנאים."
   }
 };
 
@@ -265,7 +281,7 @@ const uploadedDocs = new Set();
 
 function applyTexts() {
   const map = { t_title:'title', t_sub:'sub', t_summary:'summary', t_vehicle:'vehicle', t_pickup:'pickup', t_return:'return',
-    t_docs:'docs', t_docs_note:'docs_note', t_front:'front', t_back:'back', t_idp:'idp', t_upload_hint:'upload_hint',
+    t_docs:'docs', t_docs_note:'docs_note', t_front:'front', t_back:'back', t_passport:'passport', t_translation:'translation', t_idp:'idp', t_upload_hint:'upload_hint',
     t_details:'details', t_license_country:'license_country', t_idp_type:'idp_type', opt_choose:'opt_choose', opt_idp:'opt_idp',
     opt_jdltc:'opt_jdltc', opt_unsure:'opt_unsure', t_flight:'flight', t_arrival:'arrival', t_adddriver:'adddriver',
     t_emergency:'emergency', t_requests:'requests', t_after:'after', t_map_title:'map_title', t_map_desc:'map_desc',
@@ -273,11 +289,11 @@ function applyTexts() {
   for (const [el, key] of Object.entries(map)) { if ($(el)) $(el).innerHTML = t[key]; }
   $('t_agree').innerHTML = t.agree;
   $('btn_submit').textContent = t.submit;
-  ['b_front','b_back','b_idp'].forEach((b) => $(b).textContent = t.upload);
+  ['b_front','b_back','b_passport','b_idp','b_translation'].forEach((b) => $(b).textContent = t.upload);
 }
 
 function refreshChips() {
-  for (const type of ['license_front','license_back','international_license']) {
+  for (const type of ['license_front','license_back','passport','international_license','translation']) {
     const chip = $('chip_' + type);
     if (uploadedDocs.has(type)) { chip.textContent = t.uploaded; chip.className = 'chip ok'; }
     else { chip.textContent = t.pending; chip.className = 'chip'; }
@@ -286,8 +302,9 @@ function refreshChips() {
 }
 
 function refreshSubmit() {
-  const ready = uploadedDocs.has('license_front') && uploadedDocs.has('license_back') &&
-    $('in_license_country').value.trim() && $('in_idp_type').value && $('in_agree').checked;
+  const hasDrivingDoc = uploadedDocs.has('international_license') || uploadedDocs.has('translation') || $('in_idp_type').value === 'unsure';
+  const ready = uploadedDocs.has('license_front') && uploadedDocs.has('license_back') && uploadedDocs.has('passport') &&
+    hasDrivingDoc && $('in_license_country').value.trim() && $('in_idp_type').value && $('in_agree').checked;
   $('btn_submit').disabled = !ready;
 }
 

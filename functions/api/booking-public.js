@@ -88,9 +88,9 @@ async function handlePost(request, env) {
   try { notes = booking.notes ? JSON.parse(booking.notes) : {}; } catch { notes = { legacy: booking.notes }; }
   notes.details = details;
 
-  // 免許証の表裏が揃っていれば docs_received へ（初期ステータスの場合のみ前進）
+  // 免許証の表裏+パスポートが揃っていれば docs_received へ（初期ステータスの場合のみ前進）
   const docTypes = await loadDocTypes(env, id);
-  const docsComplete = docTypes.includes('license_front') && docTypes.includes('license_back');
+  const docsComplete = docTypes.includes('license_front') && docTypes.includes('license_back') && docTypes.includes('passport');
   const canAdvance = ['form_submitted', 'docs_requested'].includes(booking.status);
   const newStatus = docsComplete && canAdvance ? 'docs_received' : booking.status;
 

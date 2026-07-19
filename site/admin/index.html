@@ -341,11 +341,27 @@
                             <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
                                 <label style="font-weight:600; font-size:0.85rem;">登録ステータス <span style="color:red;">*</span></label>
                                 <select name="status" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
-                                    <option value="confirmed">🎉 確定 (空き状況をブロック)</option>
                                     <option value="docs_requested">📋 書類待ち (空き状況をブロック)</option>
+                                    <option value="confirmed">🎉 確定 (空き状況をブロック)</option>
                                     <option value="active">🚐 利用中 (空き状況をブロック)</option>
                                     <option value="form_submitted">📩 新規 (仮押さえしない)</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
+                                <label style="font-weight:600; font-size:0.85rem;">お客様の言語（メール・手続きページ用）</label>
+                                <select name="lang" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
+                                    <option value="en">🇬🇧 English</option>
+                                    <option value="fr">🇫🇷 Français</option>
+                                    <option value="de">🇩🇪 Deutsch</option>
+                                    <option value="zh">🇹🇼 繁體中文</option>
+                                    <option value="he">🇮🇱 עברית</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
+                                <label style="font-weight:600; font-size:0.85rem;">合意金額（円・任意）</label>
+                                <input type="number" name="agreed_total" min="0" step="500" placeholder="WhatsAppで合意した総額" style="padding:8px; border:1px solid #ddd; border-radius:6px;">
                             </div>
                         </div>
                         <div class="form-group" style="display:flex; flex-direction:column; gap:4px;">
@@ -365,6 +381,6 @@
     <!-- Toast -->
     <div id="toastContainer" style="position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;"></div>
 
-    <script src="/admin/app.js?v=20260719"></script>
+    <script src="/admin/app.js?v=20260719b"></script>
 </body>
 </html>

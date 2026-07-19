@@ -77,7 +77,12 @@ async function handlePost(request, env) {
   }
 
   // 見積金額をサーバ側でも算出して保存（予約フォームと同じ計算式）
-  const price = estimateBookingTotal(data.vehicle_type, pickup, returns);
+  // 管理画面からの手動登録ではWhatsAppで合意した金額を優先(agreed_total)
+  let price = estimateBookingTotal(data.vehicle_type, pickup, returns);
+  const agreed = Number(data.agreed_total);
+  if (agreed > 0 && agreed < 10_000_000) {
+    price = { total: Math.round(agreed), label: '合意額' };
+  }
 
   // お客様のメタ情報を notes 列にJSONで保存: 申込言語 + 申込国（Cloudflareの地理情報ヘッダ）
   const meta = {
@@ -114,7 +119,13 @@ async function handlePost(request, env) {
 
   // Fire-and-forget notifications (never block or fail the booking on email errors)
   const mailLang = ['en', 'fr', 'de', 'zh', 'he'].includes(data.lang) ? data.lang : 'en';
-  await sendBookingEmails(data, bookingId, env, mailLang).catch((e) => console.error('[Booking Mail]', e?.message));
+  // 手動登録(WhatsApp成約)は、お客様控えメールに手続きページのリンクを直接同封する
+  let completeUrl = null;
+  if (data.referral_source === 'WhatsApp/Manual') {
+    const tok = await buildCompleteToken(bookingId, env);
+    completeUrl = `https://vantripjapan.jp/booking/complete/?id=${bookingId}&token=${tok}&lang=${mailLang}`;
+  }
+  await sendBookingEmails(data, bookingId, env, mailLang, completeUrl).catch((e) => console.error('[Booking Mail]', e?.message));
 
   return Response.json({ status: 'ok', booking_id: bookingId });
 }
@@ -151,7 +162,7 @@ function buildCalendarLinks(vehicle, pickupStr, retStr, bookingId) {
 }
 
 // Send confirmation to the customer + alert to the VanTripJapan inbox (Resend API)
-async function sendBookingEmails(data, bookingId, env, lang = 'en') {
+async function sendBookingEmails(data, bookingId, env, lang = 'en', completeUrl = null) {
   const name = (data.full_name || '').trim() || 'there';
   const email = (data.email || '').trim();
   const vehicle = data.vehicle_type || 'Campervan';
@@ -334,7 +345,18 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
   const CT = CUSTOMER_MAIL_I18N[lang] || CUSTOMER_MAIL_I18N.en;
   const insLabel = data.full_cover_option ? CT.insFull : CT.insBasic;
   const customerWaLink = "https://wa.me/817093757129?text=" + encodeURIComponent(CT.wa);
-  const customerBody = CT.body(insLabel, customerWaLink, cal).join('\n');
+  let customerBody = CT.body(insLabel, customerWaLink, cal).join('\n');
+  // WhatsApp成約(手動登録)の控えメール: 手続きページへの導線を先頭に追加
+  if (completeUrl) {
+    const NEXT_STEP = {
+      en: `▶ NEXT STEP — please complete your booking here (license & passport upload, details):\n${completeUrl}\n`,
+      fr: `▶ PROCHAINE ÉTAPE — finalisez votre réservation ici (permis, passeport et informations) :\n${completeUrl}\n`,
+      de: `▶ NÄCHSTER SCHRITT — vervollständigen Sie Ihre Buchung hier (Führerschein, Reisepass & Angaben):\n${completeUrl}\n`,
+      zh: `▶ 下一步 — 請在此完成預約手續（上傳駕照、護照與填寫資料）：\n${completeUrl}\n`,
+      he: `▶ השלב הבא — השלימו את ההזמנה כאן (העלאת רישיון, דרכון ופרטים):\n${completeUrl}\n`,
+    };
+    customerBody = (NEXT_STEP[lang] || NEXT_STEP.en) + '\n' + customerBody;
+  }
 
   const customerMail = email && email.includes('@') ? sendResend({
     from: 'VanTripJapan <booking@vantripjapan.jp>',

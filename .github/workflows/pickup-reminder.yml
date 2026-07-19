@@ -1,0 +1,21 @@
+name: Pickup Reminder (前日リマインダー)
+
+on:
+  schedule:
+    # 毎日日本時間 10:00 (01:00 UTC) — 翌日取車のお客様へ前日メール
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+    # 手動実行用
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call pickup-reminder endpoint
+        run: |
+          if [ -z "${{ secrets.CRON_SECRET }}" ]; then
+            echo "::error::CRON_SECRET is not set in GitHub repository secrets"; exit 1
+          fi
+          RESPONSE=$(curl -fsS -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "https://vantripjapan.jp/api/cron/pickup-reminder")
+          echo "Response: $RESPONSE"
