@@ -189,7 +189,7 @@ function renderArticlePage(article) {
     "description": "${escHtml(article.excerpt).replace(/"/g, '\\"')}",
     "image": "${imageUrl}",
     "author": {"@type": "Organization", "name": "VanTripJapan"},
-    "publisher": {"@type": "Organization", "name": "VanTripJapan", "logo": {"@type": "ImageObject", "url": "https://vantripjapan.jp/images/hero-vanlife.png"}},
+    "publisher": {"@type": "Organization", "name": "VanTripJapan", "logo": {"@type": "ImageObject", "url": "https://vantripjapan.jp/images/hero-vanlife.jpg"}},
     "datePublished": "${article.published_at || ''}",
     "dateModified": "${article.updated_at || article.published_at || ''}",
     "url": "${canonicalUrl}",
