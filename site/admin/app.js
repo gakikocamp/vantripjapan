@@ -240,31 +240,37 @@ function renderBookings(list) {
     }
 
     empty.style.display = 'none';
+    const VEH_SHORT = { 'MAZDA BONGO': ['BONGO', 'veh-bongo'], 'TOYOTA PROBOX': ['PROBOX', 'veh-probox'], 'DAIHATSU POCKET LOFT': ['LOFT', 'veh-loft'] };
     tbody.innerHTML = list.map(b => {
         const st = STATUS_LABELS[b.status] || { label: b.status, color: '#888' };
         const meta = parseBookingMeta(b.notes);
-        const origin = [langLabel(meta.lang), countryFlag(meta.country)].filter(Boolean).join(' · ') || '<span style="color:var(--text-muted)">-</span>';
+        const origin = [langLabel(meta.lang), countryFlag(meta.country)].filter(Boolean).join(' · ');
+        const [vehName, vehClass] = VEH_SHORT[b.vehicle_type] || [b.vehicle_type || '-', 'veh-other'];
+        let nights = '';
+        const pd = new Date(b.pickup_datetime), rd = new Date(b.return_datetime);
+        if (!isNaN(pd) && !isNaN(rd)) {
+            const n = Math.round((rd - pd) / 86400000);
+            if (n > 0) nights = `・${n}泊`;
+        }
         return `
-        <tr>
-            <td>
-                <strong>${b.full_name}</strong>
-                <br><small style="color:var(--text-muted)">${b.email || ''}</small>
-            </td>
-            <td>${b.vehicle_type || '-'}</td>
-            <td>${formatDate(b.pickup_datetime)}</td>
-            <td>${formatDate(b.return_datetime)}</td>
-            <td>${bookingPriceHtml(b)}</td>
-            <td style="white-space:nowrap">${origin}</td>
-            <td><span class="status-badge" style="background:${st.color}20;color:${st.color};border:1px solid ${st.color}40">${st.label}</span></td>
-            <td>${b.translation_needed ? '📝 翻訳あり' : '-'}</td>
-            <td>
-                <div class="action-btns">
-                    <button class="btn btn-sm btn-secondary" onclick="openBookingDetail(${b.id})">
-                        <i class="fas fa-eye"></i>
-                    </button>
+        <div class="bcard" onclick="openBookingDetail(${b.id})">
+            <div class="bcard-top">
+                <div class="bcard-who">
+                    <span class="bcard-name">${b.full_name}</span>
+                    <span class="bcard-sub">${origin || (b.email || '')}</span>
                 </div>
-            </td>
-        </tr>`;
+                <span class="status-badge" style="background:${st.color}20;color:${st.color};border:1px solid ${st.color}40">${st.label}</span>
+            </div>
+            <div class="bcard-mid">
+                <span class="veh-chip ${vehClass}">${vehName}</span>
+                <span class="bcard-dates">${formatDate(b.pickup_datetime)} → ${formatDate(b.return_datetime)}<span class="bcard-nights">${nights}</span></span>
+            </div>
+            <div class="bcard-bot">
+                <span class="bcard-price">${bookingPriceHtml(b)}</span>
+                <span class="bcard-tags">${b.translation_needed ? '<span class="mini-tag">📝 翻訳</span>' : ''}</span>
+                <span class="bcard-cta">詳細 <i class="fas fa-chevron-right"></i></span>
+            </div>
+        </div>`;
     }).join('');
 }
 

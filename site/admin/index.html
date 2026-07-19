@@ -7,7 +7,7 @@
     <meta name="robots" content="noindex, nofollow">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/admin/style.css?v=20260709">
+    <link rel="stylesheet" href="/admin/style.css?v=20260720a">
 </head>
 <body>
     <!-- Sidebar -->
@@ -101,51 +101,28 @@
 
         <!-- Bookings Page -->
         <section class="page" id="page-bookings">
-            <div class="page-actions" style="display:flex; gap:12px; justify-content:flex-end; margin-bottom:16px;">
+            <div class="page-actions">
                 <button class="btn btn-primary" onclick="openCreateBookingModal()">
                     <i class="fas fa-plus"></i> 新規予約登録
                 </button>
                 <a href="/book/" target="_blank" class="btn btn-secondary" style="display:inline-flex; align-items:center; gap:6px;">
-                    <i class="fas fa-external-link-alt"></i> 予約フォームを開く
+                    <i class="fas fa-external-link-alt"></i> 予約フォーム
                 </a>
             </div>
 
-            <div class="card">
-                <div class="status-tabs" id="statusTabs">
-                    <button class="status-tab active" data-status="all">全て</button>
-                    <button class="status-tab" data-status="form_submitted">📩 新規</button>
-                    <button class="status-tab" data-status="docs_requested">📋 書類待ち</button>
-                    <button class="status-tab" data-status="docs_received">✅ 書類受領</button>
-                    <button class="status-tab" data-status="payment_sent">💳 決済待ち</button>
-                    <button class="status-tab" data-status="confirmed">🎉 確定</button>
-                    <button class="status-tab" data-status="active">🚐 利用中</button>
-                    <button class="status-tab" data-status="completed">✨ 完了</button>
-                </div>
-                <div class="card-header">
-                    <h3><i class="fas fa-calendar-check"></i> 予約一覧</h3>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>名前</th>
-                                    <th>車種</th>
-                                    <th>ピックアップ</th>
-                                    <th>返却</th>
-                                    <th>概算金額</th>
-                                    <th>言語 / 国</th>
-                                    <th>ステータス</th>
-                                    <th>書類</th>
-                                    <th>操作</th>
-                                </tr>
-                            </thead>
-                            <tbody id="bookingsBody"></tbody>
-                        </table>
-                    </div>
-                    <p class="empty-state" id="bookingsEmpty" style="display:none;">予約がありません</p>
-                </div>
+            <div class="status-tabs" id="statusTabs">
+                <button class="status-tab active" data-status="all">全て</button>
+                <button class="status-tab" data-status="form_submitted">📩 新規</button>
+                <button class="status-tab" data-status="docs_requested">📋 書類待ち</button>
+                <button class="status-tab" data-status="docs_received">✅ 書類受領</button>
+                <button class="status-tab" data-status="payment_sent">💳 決済待ち</button>
+                <button class="status-tab" data-status="confirmed">🎉 確定</button>
+                <button class="status-tab" data-status="active">🚐 利用中</button>
+                <button class="status-tab" data-status="completed">✨ 完了</button>
             </div>
+
+            <div class="booking-cards" id="bookingsBody"></div>
+            <p class="empty-state" id="bookingsEmpty" style="display:none;">予約がありません</p>
         </section>
 
         <!-- CRM & Drip Campaign Page -->
@@ -381,6 +358,6 @@
     <!-- Toast -->
     <div id="toastContainer" style="position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;"></div>
 
-    <script src="/admin/app.js?v=20260719b"></script>
+    <script src="/admin/app.js?v=20260720a"></script>
 </body>
 </html>

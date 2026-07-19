@@ -1048,3 +1048,134 @@ body::after {
 }
 
 
+
+/* ============================================================
+   予約カード（2026-07-20 テーブル→カード化。横スクロール撲滅）
+   ============================================================ */
+.page-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.booking-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.bcard {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+
+.bcard:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-light);
+    transform: translateY(-2px);
+}
+
+.bcard:active { transform: translateY(0); }
+
+.bcard-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.bcard-who { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+.bcard-name {
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: var(--text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bcard-sub { font-size: 0.8rem; color: var(--text-secondary); }
+
+.bcard-top .status-badge { flex-shrink: 0; white-space: nowrap; }
+
+.bcard-mid {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.veh-chip {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.veh-bongo  { background: var(--accent-blue-glow);   color: var(--accent-blue); }
+.veh-probox { background: var(--accent-green-glow);  color: var(--accent-green); }
+.veh-loft   { background: var(--accent-orange-glow); color: var(--accent-orange); }
+.veh-other  { background: var(--bg-input);           color: var(--text-secondary); }
+
+.bcard-dates { font-size: 0.9rem; color: var(--text-primary); white-space: nowrap; }
+.bcard-nights { color: var(--text-secondary); font-size: 0.82rem; }
+
+.bcard-bot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px dashed var(--border-subtle);
+    padding-top: 10px;
+    margin-top: auto;
+}
+
+.bcard-price { font-weight: 700; color: var(--accent-blue); font-size: 0.95rem; }
+.bcard-tags { display: flex; gap: 6px; }
+
+.mini-tag {
+    font-size: 0.72rem;
+    background: var(--accent-purple-glow);
+    color: var(--accent-purple);
+    border-radius: 6px;
+    padding: 2px 8px;
+    white-space: nowrap;
+}
+
+.bcard-cta {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.bcard:hover .bcard-cta { color: var(--accent-blue); }
+
+/* ステータスタブ: モバイルは横スクロール（折返しでゴチャつかせない） */
+@media (max-width: 640px) {
+    .status-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+    }
+    .status-tabs::-webkit-scrollbar { display: none; }
+    .status-tab { flex-shrink: 0; }
+    .booking-cards { grid-template-columns: 1fr; }
+    .page-actions { justify-content: stretch; }
+    .page-actions .btn { flex: 1; justify-content: center; }
+}
