@@ -72,3 +72,12 @@ run.sh
 
 # Claude Code 個人設定（共有しない）
 .claude/settings.local.json
+
+# 写真素材・顧客提供画像（publicリポジトリに載せない）
+利用者提供画像/
+GBP写真アップロード用/
+免許証/
+DAIHATSU車両画像/
+キャンジョ_サポート実績/
+車両情報/
+VAN TRIP JAPAN レンタル管理用/

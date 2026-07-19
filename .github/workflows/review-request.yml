@@ -1,0 +1,22 @@
+name: Review Request (返却翌日レビュー依頼)
+
+on:
+  schedule:
+    # 毎日日本時間 18:00 (09:00 UTC) — 昨日返却のお客様へレビュー依頼メール
+    # (帰国後の夕方/欧州の朝に届く時間帯。開封率を考慮)
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+    # 手動実行用
+
+jobs:
+  send-review-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call review-request endpoint
+        run: |
+          if [ -z "${{ secrets.CRON_SECRET }}" ]; then
+            echo "::error::CRON_SECRET is not set in GitHub repository secrets"; exit 1
+          fi
+          RESPONSE=$(curl -fsS -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "https://vantripjapan.jp/api/cron/review-request")
+          echo "Response: $RESPONSE"
