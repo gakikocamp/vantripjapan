@@ -1,6 +1,9 @@
 # Redirects for old/renamed article slugs (旧slug → 新slug)
 # Format: old-path new-path status-code
 
+# 管理サブドメインのルート→管理画面（素のadmin.vantripjapan.jpで迷子にならないように）
+https://admin.vantripjapan.jp/ /admin/ 302
+
 # Duplicate articles: redirect thin old versions to full new versions
 /posts/japan-rv-rental-foreigners/ /posts/rv-rental-japan-foreigners-guide/ 301
 /posts/vanlife-japan-beginners/ /posts/vanlife-japan-beginners-guide/ 301
