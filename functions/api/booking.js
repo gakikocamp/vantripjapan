@@ -118,6 +118,37 @@ async function handlePost(request, env) {
   return Response.json({ status: 'ok', booking_id: bookingId });
 }
 
+// Googleカレンダー用リンク + 全メールソフト共通の.icsファイルを生成（Gmailの「自動追加」は
+// Google審査済みの大手送信元に限定されており小規模事業者には効かないため、リンク/添付で代替）
+function buildCalendarLinks(vehicle, pickupStr, retStr, bookingId) {
+  const pickup = new Date(pickupStr);
+  const ret = new Date(retStr);
+  if (isNaN(pickup) || isNaN(ret)) return null;
+  const fmt = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  const summary = `VanTripJapan — ${vehicle} pickup (request #${bookingId})`;
+  const desc = `Booking request #${bookingId} with VanTripJapan. Pending Karen's confirmation — no payment needed yet. https://vantripjapan.jp`;
+  const location = 'VAN TRIP JAPAN, Hakozaki, Fukuoka, Japan';
+
+  const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(summary)}&dates=${fmt(pickup)}/${fmt(ret)}&details=${encodeURIComponent(desc)}&location=${encodeURIComponent(location)}`;
+
+  const esc = (s) => String(s).replace(/[\\;,]/g, (m) => '\\' + m).replace(/\n/g, '\\n');
+  const ics = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//VanTripJapan//Booking//EN', 'CALSCALE:GREGORIAN',
+    'BEGIN:VEVENT',
+    `UID:vtj-booking-${bookingId}@vantripjapan.jp`,
+    `DTSTAMP:${fmt(new Date())}`,
+    `DTSTART:${fmt(pickup)}`,
+    `DTEND:${fmt(ret)}`,
+    `SUMMARY:${esc(summary)}`,
+    `DESCRIPTION:${esc(desc)}`,
+    `LOCATION:${esc(location)}`,
+    'END:VEVENT', 'END:VCALENDAR',
+  ].join('\r\n');
+  const icsBase64 = btoa(unescape(encodeURIComponent(ics)));
+
+  return { gcalUrl, icsBase64 };
+}
+
 // Send confirmation to the customer + alert to the VanTripJapan inbox (Resend API)
 async function sendBookingEmails(data, bookingId, env, lang = 'en') {
   const name = (data.full_name || '').trim() || 'there';
@@ -125,6 +156,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
   const vehicle = data.vehicle_type || 'Campervan';
   const pickup = data.pickup_datetime || '—';
   const ret = data.return_datetime || '—';
+  const cal = buildCalendarLinks(vehicle, data.pickup_datetime, data.return_datetime, bookingId);
   const waLink = "https://wa.me/817093757129?text=" +
     encodeURIComponent(`Hi Karen! I just submitted booking request #${bookingId}.`);
 
@@ -156,7 +188,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
       subject: `✅ We received your VanTripJapan booking request (#${bookingId})`,
       wa: `Hi Karen! I just submitted booking request #${bookingId}.`,
       insFull: 'Zero-Risk Full Cover (+¥5,000/day)', insBasic: 'Basic Cover (Excess applies)',
-      body: (ins, wa) => [
+      body: (ins, wa, cal) => [
         `Hi ${name},`, ``,
         `Thank you for your booking request with VanTripJapan! 🚐`, ``,
         `We've received your request (ref #${bookingId}) and Karen will personally`,
@@ -168,6 +200,11 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
         `  • Pick-up:   ${pickup}`,
         `  • Return:    ${ret}`,
         `  • Insurance: ${ins}`, ``,
+        ...(cal ? [
+          `📅 Add these dates to your calendar (tentative, pending confirmation):`,
+          `  ${cal.gcalUrl}`,
+          `  A calendar file (.ics) is also attached — works with Apple Calendar, Outlook, etc.`, ``,
+        ] : []),
         `Want a faster reply? Message Karen directly on WhatsApp:`,
         `  ${wa}`, ``,
         `— Karen & the VanTripJapan family`,
@@ -180,7 +217,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
       subject: `✅ Votre demande de réservation VanTripJapan est bien reçue (#${bookingId})`,
       wa: `Bonjour Karen ! Je viens d'envoyer la demande de réservation #${bookingId}.`,
       insFull: 'Couverture complète sans risque (+5 000 ¥/jour)', insBasic: 'Couverture de base (franchise applicable)',
-      body: (ins, wa) => [
+      body: (ins, wa, cal) => [
         `Bonjour ${name},`, ``,
         `Merci pour votre demande de réservation chez VanTripJapan ! 🚐`, ``,
         `Nous avons bien reçu votre demande (réf. #${bookingId}). Karen vérifiera`,
@@ -192,6 +229,11 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
         `  • Prise en charge : ${pickup}`,
         `  • Retour : ${ret}`,
         `  • Assurance : ${ins}`, ``,
+        ...(cal ? [
+          `📅 Ajouter ces dates à votre calendrier (provisoire, en attente de confirmation) :`,
+          `  ${cal.gcalUrl}`,
+          `  Un fichier calendrier (.ics) est aussi joint — compatible Apple Calendar, Outlook, etc.`, ``,
+        ] : []),
         `Pour une réponse plus rapide, écrivez directement à Karen sur WhatsApp :`,
         `  ${wa}`, ``,
         `— Karen et la famille VanTripJapan`,
@@ -204,7 +246,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
       subject: `✅ Ihre VanTripJapan-Buchungsanfrage ist eingegangen (#${bookingId})`,
       wa: `Hallo Karen! Ich habe gerade die Buchungsanfrage #${bookingId} gesendet.`,
       insFull: 'Null-Risiko-Vollkasko (+5.000 ¥/Tag)', insBasic: 'Basisschutz (Selbstbeteiligung möglich)',
-      body: (ins, wa) => [
+      body: (ins, wa, cal) => [
         `Hallo ${name},`, ``,
         `vielen Dank für Ihre Buchungsanfrage bei VanTripJapan! 🚐`, ``,
         `Wir haben Ihre Anfrage erhalten (Ref. #${bookingId}). Karen prüft persönlich`,
@@ -216,6 +258,11 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
         `  • Abholung: ${pickup}`,
         `  • Rückgabe: ${ret}`,
         `  • Versicherung: ${ins}`, ``,
+        ...(cal ? [
+          `📅 Termin (vorläufig, bis zur Bestätigung) zum Kalender hinzufügen:`,
+          `  ${cal.gcalUrl}`,
+          `  Eine Kalenderdatei (.ics) ist ebenfalls angehängt — kompatibel mit Apple Kalender, Outlook usw.`, ``,
+        ] : []),
         `Für eine schnellere Antwort schreiben Sie Karen direkt auf WhatsApp:`,
         `  ${wa}`, ``,
         `— Karen & die VanTripJapan-Familie`,
@@ -228,7 +275,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
       subject: `✅ VanTripJapan已收到您的預約申請（#${bookingId}）`,
       wa: `Karen您好！我剛送出了預約申請 #${bookingId}。`,
       insFull: '零風險全險（+5,000日圓/天）', insBasic: '基本保險（含自負額）',
-      body: (ins, wa) => [
+      body: (ins, wa, cal) => [
         `${name} 您好，`, ``,
         `感謝您向VanTripJapan送出預約申請！🚐`, ``,
         `我們已收到您的申請（編號 #${bookingId}），Karen將親自確認檔期，`,
@@ -240,6 +287,11 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
         `  • 取車：${pickup}`,
         `  • 還車：${ret}`,
         `  • 保險：${ins}`, ``,
+        ...(cal ? [
+          `📅 加入日曆（暫定日期，待確認後為準）：`,
+          `  ${cal.gcalUrl}`,
+          `  郵件也附上日曆檔案（.ics），適用於Apple日曆、Outlook等。`, ``,
+        ] : []),
         `想更快得到回覆？直接在WhatsApp聯繫Karen：`,
         `  ${wa}`, ``,
         `— Karen與VanTripJapan全體`,
@@ -252,7 +304,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
       subject: `✅ קיבלנו את בקשת ההזמנה שלך ב-VanTripJapan (#${bookingId})`,
       wa: `היי קארן! הרגע שלחתי את בקשת ההזמנה #${bookingId}.`,
       insFull: 'כיסוי מלא ללא סיכון (+5,000 ין ליום)', insBasic: 'כיסוי בסיסי (השתתפות עצמית)',
-      body: (ins, wa) => [
+      body: (ins, wa, cal) => [
         `שלום ${name},`, ``,
         `תודה על בקשת ההזמנה ב-VanTripJapan! 🚐`, ``,
         `קיבלנו את הבקשה (מס' #${bookingId}). קארן תבדוק אישית את הזמינות`,
@@ -264,6 +316,11 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
         `  • איסוף: ${pickup}`,
         `  • החזרה: ${ret}`,
         `  • ביטוח: ${ins}`, ``,
+        ...(cal ? [
+          `📅 הוספת התאריכים ליומן (זמני, בהמתנה לאישור):`,
+          `  ${cal.gcalUrl}`,
+          `  קובץ יומן (.ics) מצורף גם הוא — תואם ל-Apple Calendar, Outlook ועוד.`, ``,
+        ] : []),
         `רוצה תשובה מהירה יותר? כתבו לקארן ישירות בוואטסאפ:`,
         `  ${wa}`, ``,
         `— קארן ומשפחת VanTripJapan`,
@@ -276,7 +333,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
   const CT = CUSTOMER_MAIL_I18N[lang] || CUSTOMER_MAIL_I18N.en;
   const insLabel = data.full_cover_option ? CT.insFull : CT.insBasic;
   const customerWaLink = "https://wa.me/817093757129?text=" + encodeURIComponent(CT.wa);
-  const customerBody = CT.body(insLabel, customerWaLink).join('\n');
+  const customerBody = CT.body(insLabel, customerWaLink, cal).join('\n');
 
   const customerMail = email && email.includes('@') ? sendResend({
     from: 'VanTripJapan <booking@vantripjapan.jp>',
@@ -284,6 +341,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en') {
     to: [email],
     subject: CT.subject,
     text: customerBody,
+    ...(cal ? { attachments: [{ filename: `vantripjapan-booking-${bookingId}.ics`, content: cal.icsBase64 }] } : {}),
   }) : Promise.resolve();
 
   // Clean phone and build WhatsApp link
