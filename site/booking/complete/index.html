@@ -66,6 +66,12 @@
     <div class="card">
       <h2><span class="badge">1</span> <span id="t_docs"></span></h2>
       <p class="note" id="t_docs_note" style="margin:0 0 10px;"></p>
+
+      <label class="f" id="t_license_country" style="margin-top:4px;"></label>
+      <select id="in_license_country"></select>
+      <div id="req_info" class="hidden" style="margin:10px 0 4px; padding:10px 12px; border-radius:8px; font-size:.85rem; background:#EFF6F0; border:1px solid #CFE3D4;"></div>
+      <div id="req_warn" class="hidden err" style="margin:10px 0 4px;"></div>
+      <div style="height:8px;"></div>
       <div class="docrow">
         <span class="doclabel" id="t_front"></span>
         <span>
@@ -90,19 +96,28 @@
           <input type="file" id="f_passport" accept="image/*,.pdf" data-doctype="passport">
         </span>
       </div>
-      <div class="docrow">
+      <div class="docrow hidden" id="row_international_license">
         <span class="doclabel" id="t_idp"></span>
         <span>
           <span class="chip" id="chip_international_license"></span>
-          <label class="upbtn secondary" for="f_international_license" id="b_idp"></label>
+          <label class="upbtn" for="f_international_license" id="b_idp"></label>
           <input type="file" id="f_international_license" accept="image/*,.pdf" data-doctype="international_license">
         </span>
       </div>
-      <div class="docrow">
+      <div class="hidden" id="jdltc_block" style="padding:12px; margin-top:10px; background:#FFF8EF; border:1px solid #EFD9BD; border-radius:10px;">
+        <p style="font-size:.88rem; font-weight:700; margin-bottom:8px;" id="t_jdltc_q"></p>
+        <label style="display:flex; gap:8px; align-items:flex-start; font-size:.86rem; margin-bottom:8px; cursor:pointer;">
+          <input type="radio" name="jdltc" value="have" style="margin-top:3px;"><span id="t_jdltc_have"></span>
+        </label>
+        <label style="display:flex; gap:8px; align-items:flex-start; font-size:.86rem; cursor:pointer;">
+          <input type="radio" name="jdltc" value="order" style="margin-top:3px;"><span id="t_jdltc_order"></span>
+        </label>
+      </div>
+      <div class="docrow hidden" id="row_translation">
         <span class="doclabel" id="t_translation"></span>
         <span>
           <span class="chip" id="chip_translation"></span>
-          <label class="upbtn secondary" for="f_translation" id="b_translation"></label>
+          <label class="upbtn" for="f_translation" id="b_translation"></label>
           <input type="file" id="f_translation" accept="image/*,.pdf" data-doctype="translation">
         </span>
       </div>
@@ -111,17 +126,6 @@
 
     <div class="card">
       <h2><span class="badge">2</span> <span id="t_details"></span></h2>
-
-      <label class="f" id="t_license_country"></label>
-      <input type="text" id="in_license_country" maxlength="60">
-
-      <label class="f" id="t_idp_type"></label>
-      <select id="in_idp_type">
-        <option value="" id="opt_choose"></option>
-        <option value="idp_1949" id="opt_idp"></option>
-        <option value="jdltc_translation" id="opt_jdltc"></option>
-        <option value="unsure" id="opt_unsure"></option>
-      </select>
 
       <label class="f" id="t_flight"></label>
       <input type="text" id="in_flight_number" maxlength="20" placeholder="e.g. TW215">
@@ -173,6 +177,14 @@ const T = {
     upload:"Upload", uploaded:"✓ Uploaded", pending:"Not yet", uploading:"Uploading…", upload_hint:"JPG/PNG/PDF, max 10MB. You can also add the IDP or JDLTC translation later.",
     details:"Trip details", license_country:"Country that issued your license *", idp_type:"Which document will you drive with? *",
     opt_choose:"— Please choose —", opt_idp:"International Driving Permit (1949 Geneva)", opt_jdltc:"Japanese translation (JDLTC etc.)", opt_unsure:"Not sure yet — please advise me",
+    country_choose:"— Select the country that issued your license —", country_other:"Other / not listed",
+    req_idp:"✅ With your license you can drive in Japan using: home license + <strong>International Driving Permit (1949 Geneva)</strong> + passport. Please upload your IDP below.",
+    req_trans:"📝 Your license is valid in Japan with an <strong>official Japanese translation</strong> — no IDP needed. Choose an option below.",
+    req_check:"🤝 We'll double-check the exact requirements for your country and confirm via WhatsApp. Upload your license and passport — add an IDP or translation if you already have one.",
+    req_no:"⚠️ Unfortunately, a license from this country alone <strong>cannot be used to drive in Japan as a visitor</strong>. If you also hold a license or IDP issued by another country, select that country instead — or message Karen on WhatsApp and we'll look into options together.",
+    jdltc_q:"Japanese translation of your license — how would you like to arrange it? *",
+    jdltc_have:"I already have the official translation (JAF / embassy / JDLTC) — I'll upload it below.",
+    jdltc_order:"I'll order it via our family-run service <a href='https://drive-japan-license.com/' target='_blank' rel='noopener'>JDLTC</a> — done fully online before you arrive, and you get a <strong>€100 / CHF 100 / NT$3,000 (≈¥16,000) discount on this rental</strong>. We'll guide you after you submit this form.",
     flight:"Arrival flight number (if flying in)", arrival:"Arrival date & time", adddriver:"Additional driver (full name, if any)",
     emergency:"Emergency contact (name & phone)", requests:"Anything else we should know?",
     agree:'I agree to the <a href="/rent/terms/" target="_blank">Rental Terms & Conditions</a> *',
@@ -193,6 +205,14 @@ const T = {
     upload:"Envoyer", uploaded:"✓ Reçu", pending:"À faire", uploading:"Envoi…", upload_hint:"JPG/PNG/PDF, 10 Mo max. Le PCI ou la traduction JDLTC peuvent être ajoutés plus tard.",
     details:"Détails du voyage", license_country:"Pays de délivrance du permis *", idp_type:"Avec quel document conduirez-vous ? *",
     opt_choose:"— Choisissez —", opt_idp:"Permis de conduire international (Genève 1949)", opt_jdltc:"Traduction japonaise (JDLTC, etc.)", opt_unsure:"Pas encore sûr — conseillez-moi",
+    country_choose:"— Sélectionnez le pays de délivrance de votre permis —", country_other:"Autre / non listé",
+    req_idp:"✅ Avec votre permis, vous conduisez au Japon avec : permis national + <strong>Permis de Conduire International (Genève 1949)</strong> + passeport. Merci de téléverser votre PCI ci-dessous.",
+    req_trans:"📝 Votre permis est valable au Japon avec une <strong>traduction japonaise officielle</strong> — pas besoin de PCI. Choisissez une option ci-dessous.",
+    req_check:"🤝 Nous vérifierons les exigences exactes pour votre pays et confirmerons par WhatsApp. Téléversez votre permis et votre passeport — ajoutez un PCI ou une traduction si vous en avez déjà.",
+    req_no:"⚠️ Malheureusement, un permis de ce pays seul <strong>ne permet pas de conduire au Japon en tant que visiteur</strong>. Si vous détenez aussi un permis ou PCI d'un autre pays, sélectionnez ce pays — ou écrivez à Karen sur WhatsApp pour étudier les options.",
+    jdltc_q:"Traduction japonaise de votre permis — comment souhaitez-vous l'obtenir ? *",
+    jdltc_have:"J'ai déjà la traduction officielle (JAF / ambassade / JDLTC) — je la téléverse ci-dessous.",
+    jdltc_order:"Je la commande via notre service familial <a href='https://drive-japan-license.com/' target='_blank' rel='noopener'>JDLTC</a> — 100 % en ligne avant votre arrivée, avec <strong>100 € de réduction sur cette location</strong>. Nous vous guiderons après l'envoi du formulaire.",
     flight:"N° de vol d'arrivée (si vous arrivez en avion)", arrival:"Date et heure d'arrivée", adddriver:"Conducteur additionnel (nom complet, le cas échéant)",
     emergency:"Contact d'urgence (nom et téléphone)", requests:"Autre chose à nous signaler ?",
     agree:'J\'accepte les <a href="/rent/terms/" target="_blank">Conditions de location</a> *',
@@ -213,6 +233,14 @@ const T = {
     upload:"Hochladen", uploaded:"✓ Erhalten", pending:"Offen", uploading:"Lädt…", upload_hint:"JPG/PNG/PDF, max. 10 MB. IDP oder JDLTC-Übersetzung können auch später ergänzt werden.",
     details:"Reisedetails", license_country:"Ausstellungsland des Führerscheins *", idp_type:"Mit welchem Dokument fahren Sie? *",
     opt_choose:"— Bitte wählen —", opt_idp:"Internationaler Führerschein (Genf 1949)", opt_jdltc:"Japanische Übersetzung (JDLTC usw.)", opt_unsure:"Noch unsicher — bitte beraten Sie mich",
+    country_choose:"— Ausstellungsland Ihres Führerscheins wählen —", country_other:"Anderes / nicht aufgeführt",
+    req_idp:"✅ Mit Ihrem Führerschein fahren Sie in Japan mit: Heimatführerschein + <strong>Internationalem Führerschein (Genf 1949)</strong> + Reisepass. Bitte laden Sie den IDP unten hoch.",
+    req_trans:"📝 Ihr Führerschein gilt in Japan mit einer <strong>offiziellen japanischen Übersetzung</strong> — kein IDP nötig. Wählen Sie unten eine Option.",
+    req_check:"🤝 Wir prüfen die genauen Anforderungen für Ihr Land und bestätigen per WhatsApp. Laden Sie Führerschein und Reisepass hoch — plus IDP oder Übersetzung, falls vorhanden.",
+    req_no:"⚠️ Leider kann man mit einem Führerschein aus diesem Land allein <strong>als Besucher in Japan nicht fahren</strong>. Falls Sie auch einen Führerschein oder IDP eines anderen Landes besitzen, wählen Sie dieses Land — oder schreiben Sie Karen auf WhatsApp.",
+    jdltc_q:"Japanische Übersetzung Ihres Führerscheins — wie möchten Sie sie besorgen? *",
+    jdltc_have:"Ich habe die offizielle Übersetzung bereits (JAF / Botschaft / JDLTC) — ich lade sie unten hoch.",
+    jdltc_order:"Ich bestelle sie über unseren Familienservice <a href='https://drive-japan-license.com/' target='_blank' rel='noopener'>JDLTC</a> — komplett online vor der Anreise, mit <strong>100 CHF / 100 € (≈¥16.000) Rabatt auf diese Miete</strong>. Wir begleiten Sie nach dem Absenden.",
     flight:"Ankunftsflugnummer (falls Anreise per Flug)", arrival:"Ankunftsdatum & -zeit", adddriver:"Zusätzlicher Fahrer (vollständiger Name, falls vorhanden)",
     emergency:"Notfallkontakt (Name & Telefon)", requests:"Sonst noch etwas Wichtiges?",
     agree:'Ich akzeptiere die <a href="/rent/terms/" target="_blank">Mietbedingungen</a> *',
@@ -233,6 +261,14 @@ const T = {
     upload:"上傳", uploaded:"✓ 已收到", pending:"未上傳", uploading:"上傳中…", upload_hint:"JPG/PNG/PDF，最大10MB。日文譯本也可以之後再補上傳。",
     details:"行程資訊", license_country:"駕照發照國家／地區 *", idp_type:"您將使用哪種文件駕車？ *",
     opt_choose:"— 請選擇 —", opt_idp:"國際駕照（1949日內瓦公約）", opt_jdltc:"駕照日文譯本（台灣旅客適用）", opt_unsure:"還不確定 — 請給我建議",
+    country_choose:"— 請選擇駕照發照國家／地區 —", country_other:"其他／未列出",
+    req_idp:"✅ 持該國駕照，您在日本駕車需要：本國駕照＋<strong>國際駕照（1949日內瓦公約）</strong>＋護照。請在下方上傳國際駕照。",
+    req_trans:"📝 您的駕照搭配<strong>日文譯本</strong>即可在日本駕車——無需國際駕照。請在下方選擇。",
+    req_check:"🤝 我們會為您確認貴國的正確要求，並透過WhatsApp回覆。請先上傳駕照與護照——如已持有國際駕照或譯本也請一併上傳。",
+    req_no:"⚠️ 很抱歉，僅持該國駕照<strong>無法以旅客身分在日本駕車</strong>。若您同時持有其他國家的駕照或國際駕照，請改選該國——或透過WhatsApp與Karen討論其他方案。",
+    jdltc_q:"駕照日文譯本——您想如何取得？ *",
+    jdltc_have:"我已持有官方譯本（JAF／台北駐日經濟文化代表處／JDLTC）——將在下方上傳。",
+    jdltc_order:"透過我們家族經營的 <a href='https://drive-japan-license.com/' target='_blank' rel='noopener'>JDLTC</a> 線上申請——抵日前即可完成，並享<strong>本次租車 NT$3,000（約¥16,000）折扣</strong>。送出表單後我們會引導您完成。",
     flight:"抵達航班編號（搭機前來時）", arrival:"抵達日期與時間", adddriver:"additional駕駛人（如有，請填全名）",
     emergency:"緊急聯絡人（姓名＋電話）", requests:"其他需要告訴我們的事項",
     agree:'我同意<a href="/rent/terms/" target="_blank">租賃條款</a> *',
@@ -253,6 +289,14 @@ const T = {
     upload:"העלאה", uploaded:"✓ התקבל", pending:"טרם הועלה", uploading:"מעלה…", upload_hint:"JPG/PNG/PDF, עד 10MB. אפשר להוסיף את הרישיון הבינלאומי גם מאוחר יותר.",
     details:"פרטי הנסיעה", license_country:"המדינה שהנפיקה את הרישיון *", idp_type:"עם איזה מסמך תנהגו? *",
     opt_choose:"— בחרו —", opt_idp:"רישיון נהיגה בינלאומי (ז'נבה 1949)", opt_jdltc:"תרגום ליפנית (JDLTC וכו')", opt_unsure:"עוד לא בטוח — אשמח לייעוץ",
+    country_choose:"— בחרו את המדינה שהנפיקה את הרישיון —", country_other:"אחר / לא ברשימה",
+    req_idp:"✅ עם הרישיון שלכם נוהגים ביפן עם: רישיון מקומי + <strong>רישיון נהיגה בינלאומי (ז'נבה 1949)</strong> + דרכון. אנא העלו את הרישיון הבינלאומי למטה.",
+    req_trans:"📝 הרישיון שלכם תקף ביפן עם <strong>תרגום יפני רשמי</strong> — אין צורך ברישיון בינלאומי. בחרו אפשרות למטה.",
+    req_check:"🤝 נבדוק את הדרישות המדויקות למדינה שלכם ונאשר בוואטסאפ. העלו רישיון ודרכון — והוסיפו רישיון בינלאומי או תרגום אם יש.",
+    req_no:"⚠️ לצערנו, עם רישיון ממדינה זו בלבד <strong>לא ניתן לנהוג ביפן כתייר</strong>. אם יש לכם גם רישיון או IDP ממדינה אחרת, בחרו אותה — או כתבו לקארן בוואטסאפ ונבדוק יחד אפשרויות.",
+    jdltc_q:"תרגום יפני של הרישיון — איך תרצו להשיג אותו? *",
+    jdltc_have:"כבר יש לי את התרגום הרשמי (JAF / שגרירות / JDLTC) — אעלה אותו למטה.",
+    jdltc_order:"אזמין דרך השירות המשפחתי שלנו <a href='https://drive-japan-license.com/' target='_blank' rel='noopener'>JDLTC</a> — אונליין לפני ההגעה, עם <strong>הנחה של כ-¥16,000 על ההשכרה</strong>. נלווה אתכם אחרי שליחת הטופס.",
     flight:"מספר טיסת הגעה (אם מגיעים בטיסה)", arrival:"תאריך ושעת הגעה", adddriver:"נהג נוסף (שם מלא, אם יש)",
     emergency:"איש קשר לחירום (שם וטלפון)", requests:"עוד משהו שכדאי שנדע?",
     agree:'אני מסכים/ה ל<a href="/rent/terms/" target="_blank">תנאי ההשכרה</a> *',
@@ -279,17 +323,61 @@ const $ = (i) => document.getElementById(i);
 const api = `/api/booking-public?id=${encodeURIComponent(id)}&token=${encodeURIComponent(token)}`;
 const uploadedDocs = new Set();
 
+// 国→必要書類の判定（出典: 警視庁・JAF 2026-07確認。翻訳6=政令指定国 / IDP=ジュネーブ1949締約国。
+// 確信のない国はリストに載せず「Other」→check(Karenが個別案内)に落とす安全設計）
+const T6 = ['France','Germany','Switzerland','Belgium','Monaco','Taiwan'];
+const NO_DRIVE = ['China (mainland)','Vietnam','Indonesia','Brazil'];
+const TOP = ['France','Germany','Switzerland','Belgium','Taiwan','Israel','United States','United Kingdom','Australia','New Zealand','Netherlands','Canada','Hong Kong','Thailand','Poland','Portugal','Slovakia','Monaco'];
+const GENEVA_REST = ['Albania','Algeria','Argentina','Austria','Bangladesh','Barbados','Benin','Botswana','Bulgaria','Burkina Faso','Cambodia','Central African Republic','Chile','Congo',"Cote d'Ivoire",'Cuba','Cyprus','Czech Republic','Democratic Republic of the Congo','Denmark','Dominican Republic','Ecuador','Egypt','Estonia','Fiji','Finland','Georgia','Ghana','Greece','Guatemala','Haiti','Hungary','Iceland','India','Ireland','Italy','Jamaica','Jordan','Kyrgyzstan','Laos','Lesotho','Luxembourg','Macau','Madagascar','Malawi','Malaysia','Mali','Malta','Montenegro','Morocco','Niger','Norway','Papua New Guinea','Paraguay','Peru','Philippines','Romania','Russia','Rwanda','San Marino','Senegal','Serbia','Sierra Leone','Singapore','Slovenia','South Africa','South Korea','Spain','Sri Lanka','Sweden','Togo','Trinidad and Tobago','Tunisia','Turkey','United Arab Emirates','Venezuela','Zimbabwe'];
+
+function classify(c) {
+  if (!c) return null;
+  if (c === 'OTHER') return 'check';
+  if (T6.includes(c)) return 'translation';
+  if (NO_DRIVE.includes(c)) return 'no';
+  if (TOP.includes(c) || GENEVA_REST.includes(c)) return 'idp';
+  return 'check';
+}
+function jdltcChoice() {
+  const r = document.querySelector('input[name="jdltc"]:checked');
+  return r ? r.value : '';
+}
+function onCountryChange() {
+  const req = classify($('in_license_country').value);
+  $('req_info').classList.add('hidden');
+  $('req_warn').classList.add('hidden');
+  $('row_international_license').classList.toggle('hidden', !(req === 'idp' || req === 'check'));
+  $('jdltc_block').classList.toggle('hidden', req !== 'translation');
+  // 翻訳ルートでは「持っている」を選んだ時だけアップ行を出す。checkでは任意で常時表示
+  $('row_translation').classList.toggle('hidden', !((req === 'translation' && jdltcChoice() === 'have') || req === 'check'));
+  if (req === 'idp') { $('req_info').innerHTML = t.req_idp; $('req_info').classList.remove('hidden'); }
+  if (req === 'translation') { $('req_info').innerHTML = t.req_trans; $('req_info').classList.remove('hidden'); }
+  if (req === 'check') { $('req_info').innerHTML = t.req_check; $('req_info').classList.remove('hidden'); }
+  if (req === 'no') { $('req_warn').innerHTML = t.req_no; $('req_warn').classList.remove('hidden'); }
+  refreshSubmit();
+}
+
 function applyTexts() {
   const map = { t_title:'title', t_sub:'sub', t_summary:'summary', t_vehicle:'vehicle', t_pickup:'pickup', t_return:'return',
     t_docs:'docs', t_docs_note:'docs_note', t_front:'front', t_back:'back', t_passport:'passport', t_translation:'translation', t_idp:'idp', t_upload_hint:'upload_hint',
-    t_details:'details', t_license_country:'license_country', t_idp_type:'idp_type', opt_choose:'opt_choose', opt_idp:'opt_idp',
-    opt_jdltc:'opt_jdltc', opt_unsure:'opt_unsure', t_flight:'flight', t_arrival:'arrival', t_adddriver:'adddriver',
+    t_details:'details', t_license_country:'license_country', t_jdltc_q:'jdltc_q', t_jdltc_have:'jdltc_have', t_jdltc_order:'jdltc_order',
+    t_flight:'flight', t_arrival:'arrival', t_adddriver:'adddriver',
     t_emergency:'emergency', t_requests:'requests', t_after:'after', t_map_title:'map_title', t_map_desc:'map_desc',
     t_map_link:'map_link', d_title:'d_title', d_sub:'d_sub', d_map:'d_map' };
   for (const [el, key] of Object.entries(map)) { if ($(el)) $(el).innerHTML = t[key]; }
   $('t_agree').innerHTML = t.agree;
   $('btn_submit').textContent = t.submit;
   ['b_front','b_back','b_passport','b_idp','b_translation'].forEach((b) => $(b).textContent = t.upload);
+  // 国セレクトを構築（主要マーケットを先頭に）
+  const sel = $('in_license_country');
+  sel.innerHTML = '';
+  const opt = (v, label, dis) => { const o = document.createElement('option'); o.value = v; o.textContent = label; if (dis) o.disabled = true; return o; };
+  sel.appendChild(opt('', t.country_choose));
+  TOP.forEach((c) => sel.appendChild(opt(c, c)));
+  sel.appendChild(opt('', '──────────', true));
+  [...new Set([...GENEVA_REST, ...NO_DRIVE])].filter((c) => !TOP.includes(c)).sort()
+    .forEach((c) => sel.appendChild(opt(c, c)));
+  sel.appendChild(opt('OTHER', t.country_other));
 }
 
 function refreshChips() {
@@ -302,9 +390,13 @@ function refreshChips() {
 }
 
 function refreshSubmit() {
-  const hasDrivingDoc = uploadedDocs.has('international_license') || uploadedDocs.has('translation') || $('in_idp_type').value === 'unsure';
-  const ready = uploadedDocs.has('license_front') && uploadedDocs.has('license_back') && uploadedDocs.has('passport') &&
-    hasDrivingDoc && $('in_license_country').value.trim() && $('in_idp_type').value && $('in_agree').checked;
+  const req = classify($('in_license_country').value);
+  const baseDocs = uploadedDocs.has('license_front') && uploadedDocs.has('license_back') && uploadedDocs.has('passport');
+  let drivingOk = false;
+  if (req === 'idp') drivingOk = uploadedDocs.has('international_license');
+  else if (req === 'translation') drivingOk = jdltcChoice() === 'order' || (jdltcChoice() === 'have' && uploadedDocs.has('translation'));
+  else if (req === 'check') drivingOk = true;
+  const ready = !!req && req !== 'no' && baseDocs && drivingOk && $('in_agree').checked;
   $('btn_submit').disabled = !ready;
 }
 
@@ -349,10 +441,9 @@ document.querySelectorAll('input[type=file]').forEach((input) => {
   });
 });
 
-['in_license_country','in_idp_type','in_agree'].forEach((i) => {
-  $(i).addEventListener('input', refreshSubmit);
-  $(i).addEventListener('change', refreshSubmit);
-});
+$('in_license_country').addEventListener('change', onCountryChange);
+$('in_agree').addEventListener('change', refreshSubmit);
+document.querySelectorAll('input[name="jdltc"]').forEach((r) => r.addEventListener('change', onCountryChange));
 
 $('btn_submit').addEventListener('click', async () => {
   refreshSubmit();
@@ -365,7 +456,9 @@ $('btn_submit').addEventListener('click', async () => {
         flight_number: $('in_flight_number').value,
         arrival_time: $('in_arrival_time').value,
         license_country: $('in_license_country').value,
-        idp_type: $('in_idp_type').value,
+        requirement: classify($('in_license_country').value) || '',
+        jdltc_order: jdltcChoice() === 'order' ? 'yes' : '',
+        idp_type: (function(){ const r = classify($('in_license_country').value); if (r === 'translation') return jdltcChoice() === 'order' ? 'jdltc_order' : 'jdltc_translation'; if (r === 'idp') return 'idp_1949'; return 'unsure'; })(),
         additional_driver: $('in_additional_driver').value,
         emergency_name: $('in_emergency_name').value,
         emergency_phone: $('in_emergency_phone').value,

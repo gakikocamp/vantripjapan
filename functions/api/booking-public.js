@@ -75,7 +75,9 @@ async function handlePost(request, env) {
     flight_number: pick(body.flight_number),
     arrival_time: pick(body.arrival_time),
     license_country: pick(body.license_country),
-    idp_type: pick(body.idp_type),            // idp_1949 | jdltc_translation | unsure
+    requirement: pick(body.requirement),      // idp | translation | check | no（国から自動判定）
+    jdltc_order: pick(body.jdltc_order),      // 'yes' = JDLTC翻訳を注文希望（割引プロモ対象）
+    idp_type: pick(body.idp_type),            // idp_1949 | jdltc_translation | jdltc_order | unsure
     additional_driver: pick(body.additional_driver),
     emergency_name: pick(body.emergency_name),
     emergency_phone: pick(body.emergency_phone),
@@ -113,6 +115,7 @@ async function handlePost(request, env) {
       `Documents: ${docTypes.join(', ') || '(まだアップロードなし)'}`,
       `License country: ${details.license_country || '—'}`,
       `IDP/Translation: ${details.idp_type || '—'}`,
+      details.jdltc_order === 'yes' ? `🎫 JDLTC翻訳を注文希望 → 案内を送ってください（レンタル割引プロモ対象）` : ``,
       `Flight: ${details.flight_number || '—'} (arrival: ${details.arrival_time || '—'})`,
       `Additional driver: ${details.additional_driver || '—'}`,
       `Emergency: ${details.emergency_name || '—'} ${details.emergency_phone || ''}`,
