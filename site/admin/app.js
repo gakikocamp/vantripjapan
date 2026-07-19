@@ -112,7 +112,7 @@ function switchPage(pageName) {
     $(`#page-${pageName}`)?.classList.add('active');
 
     const titles = {
-        dashboard: 'ダッシュボード',
+        dashboard: '今日やること',
         bookings: '予約管理',
         crm: 'メルマガ・CRM',
     };
@@ -125,52 +125,75 @@ function switchPage(pageName) {
     $('#sidebar').classList.remove('open');
 }
 
-// --- Dashboard ---
+// --- Dashboard: 今日やること ---
 async function loadDashboard() {
     try {
-        const data = await api('/api/admin-dashboard');
-        $('#statBookings').textContent = data.total_bookings || 0;
-        $('#statDocs').textContent = data.total_docs || 0;
-        $('#statUnverified').textContent = data.unverified_docs || 0;
+        const bookings = await api('/api/booking');
+        const today = new Date(); today.setHours(0, 0, 0, 0);
+        const day = (d) => { const x = new Date(d); return isNaN(x) ? null : (x.setHours(0, 0, 0, 0), x); };
+        const diffDays = (d) => { const x = day(d); return x === null ? null : Math.round((x - today) / 86400000); };
+        const mmdd = (d) => { const x = new Date(d); return isNaN(x) ? '-' : `${x.getMonth() + 1}/${x.getDate()}`; };
+        const VEH = { 'MAZDA BONGO': 'BONGO', 'TOYOTA PROBOX': 'PROBOX', 'DAIHATSU POCKET LOFT': 'LOFT' };
+        const veh = (b) => VEH[b.vehicle_type] || b.vehicle_type || '';
+        const live = bookings.filter(b => b.status !== 'cancelled' && b.status !== 'completed');
 
-        // Status breakdown
-        const byStatus = data.bookings_by_status || {};
-        const statusEl = $('#statusBreakdown');
-        const statusLabels = {
-            form_submitted: '📩 新規',
-            docs_requested: '📋 書類待ち',
-            docs_received: '✅ 書類受領',
-            payment_sent: '💳 決済待ち',
-            confirmed: '🎉 確定',
-            active: '🚐 利用中',
-            completed: '✨ 完了',
-            cancelled: '❌ キャンセル',
-        };
-        statusEl.innerHTML = Object.entries(statusLabels)
-            .filter(([k]) => byStatus[k])
-            .map(([k, label]) => `
-                <div class="country-rank-item clickable" onclick="gotoBookings('${k}')">
-                    <span class="country-rank-name">${label}</span>
-                    <span class="country-rank-count">${byStatus[k]}件 <i class="fas fa-chevron-right" style="font-size:0.7rem;opacity:.5"></i></span>
-                </div>
-            `).join('') || '<p class="empty-state">まだ予約データがありません</p>';
-
-        // Recent bookings
-        const recent = data.recent_bookings || [];
-        const rrEl = $('#recentBookings');
-        if (recent.length > 0) {
-            rrEl.innerHTML = recent.map(r => `
-                <div class="rental-item clickable" onclick="${r.id ? `openBookingDetail(${r.id})` : `switchPage('bookings')`}">
-                    <div class="rental-info">
-                        <span class="rental-customer">${r.full_name}</span>
-                        <span class="rental-dates">${r.vehicle_type || '-'} • ${formatDate(r.pickup_datetime)}</span>
-                    </div>
-                    <span class="status-badge" style="font-size:0.75rem">${statusLabels[r.status] || r.status}</span>
-                </div>
-            `).join('');
-        } else {
-            rrEl.innerHTML = '<p class="empty-state">まだ予約データがありません</p>';
+        // ── 今日やること（優先度順） ──
+        const todos = [];
+        for (const b of live) {
+            const pd = diffDays(b.pickup_datetime), rd = diffDays(b.return_datetime);
+            if (b.status === 'payment_sent') todos.push({ pri: 1, icon: '💰', text: `<strong>入金を確認</strong>して「確定」に進める`, who: b, hint: 'Stripeで入金を確認→確定にすると確定メールが自動送信' });
+            else if (b.status === 'docs_received') todos.push({ pri: 2, icon: '💳', text: `<strong>Stripe決済リンクを送る</strong>`, who: b, hint: '書類はそろっています。送ったら「決済待ち」に進める' });
+            else if (b.status === 'form_submitted') todos.push({ pri: 3, icon: '📩', text: `<strong>新規リクエストに返信する</strong>`, who: b, hint: '空きを確認してWhatsApp/メールで返事' });
+            if ((b.status === 'confirmed') && pd === 1) todos.push({ pri: 0, icon: '🔑', text: `<strong>明日出発！鍵の開け方をWhatsAppで送る</strong>`, who: b, hint: '写真つきでいつもの案内を' });
+            if ((b.status === 'confirmed') && pd === 0) todos.push({ pri: 0, icon: '🚐', text: `<strong>今日出発！</strong>受け渡し準備`, who: b, hint: '' });
+            if ((b.status === 'active' || b.status === 'confirmed') && rd === 0) todos.push({ pri: 0, icon: '🧹', text: `<strong>今日返却</strong>→清掃・忘れ物チェック`, who: b, hint: '' });
         }
+        todos.sort((a, z) => a.pri - z.pri);
+        $('#todoList').innerHTML = todos.length === 0
+            ? '<p class="todo-done">✅ 今日やることはありません。おつかれさまです！</p>'
+            : todos.map(t => `
+                <div class="todo-item" onclick="openBookingDetail(${t.who.id})">
+                    <span class="todo-icon">${t.icon}</span>
+                    <span class="todo-main">
+                        <span class="todo-text">${t.text}</span>
+                        <span class="todo-who">${t.who.full_name} · ${veh(t.who)} · ${mmdd(t.who.pickup_datetime)}〜${mmdd(t.who.return_datetime)}${t.hint ? `<br><em>${t.hint}</em>` : ''}</span>
+                    </span>
+                    <i class="fas fa-chevron-right todo-go"></i>
+                </div>`).join('');
+
+        // ── 直近7日の出発・返却 ──
+        const events = [];
+        for (const b of live) {
+            const pd = diffDays(b.pickup_datetime), rd = diffDays(b.return_datetime);
+            if (pd !== null && pd >= 0 && pd <= 6) events.push({ d: pd, icon: '🛫', label: '出発', b, dt: b.pickup_datetime });
+            if (rd !== null && rd >= 0 && rd <= 6) events.push({ d: rd, icon: '🛬', label: '返却', b, dt: b.return_datetime });
+        }
+        events.sort((a, z) => a.d - z.d);
+        const DAYNAMES = ['日', '月', '火', '水', '木', '金', '土'];
+        $('#weekTimeline').innerHTML = events.length === 0
+            ? '<p class="empty-state">今後7日間の出発・返却はありません</p>'
+            : events.map(e => {
+                const x = new Date(e.dt);
+                const dlabel = e.d === 0 ? '今日' : (e.d === 1 ? '明日' : `${x.getMonth() + 1}/${x.getDate()}(${DAYNAMES[x.getDay()]})`);
+                const time = String(e.dt).includes('T') ? String(e.dt).split('T')[1].slice(0, 5) : '';
+                return `
+                <div class="tl-row ${e.d === 0 ? 'tl-today' : ''}" onclick="openBookingDetail(${e.b.id})">
+                    <span class="tl-day">${dlabel}</span>
+                    <span class="tl-what">${e.icon} ${e.label} ${time}</span>
+                    <span class="tl-who">${e.b.full_name} <span class="tl-veh">${veh(e.b)}</span></span>
+                </div>`;
+            }).join('');
+
+        // ── 予約の流れ（チップ） ──
+        const FLOW_INFO = [
+            ['form_submitted', '📩 新規'], ['docs_requested', '📋 書類待ち'], ['docs_received', '✅ 書類受領'],
+            ['payment_sent', '💳 決済待ち'], ['confirmed', '🎉 確定'], ['active', '🚐 利用中'],
+        ];
+        const counts = {};
+        for (const b of bookings) counts[b.status] = (counts[b.status] || 0) + 1;
+        $('#flowChips').innerHTML = FLOW_INFO.map(([k, label]) => `
+            <button class="flow-chip ${counts[k] ? 'has' : ''}" onclick="gotoBookings('${k}')">${label} <strong>${counts[k] || 0}</strong></button>
+        `).join('<span class="flow-arrow">→</span>') + `<button class="flow-chip all" onclick="gotoBookings('all')">全て ${bookings.length}件</button>`;
     } catch (e) {
         console.error('Dashboard load error:', e);
     }

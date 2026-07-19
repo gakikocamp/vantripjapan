@@ -7,7 +7,7 @@
     <meta name="robots" content="noindex, nofollow">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/admin/style.css?v=20260720b">
+    <link rel="stylesheet" href="/admin/style.css?v=20260720c">
 </head>
 <body>
     <!-- Sidebar -->
@@ -20,8 +20,8 @@
         </div>
         <ul class="nav-menu">
             <li class="nav-item active" data-page="dashboard">
-                <i class="fas fa-chart-pie"></i>
-                <span>ダッシュボード</span>
+                <i class="fas fa-list-check"></i>
+                <span>今日やること</span>
             </li>
             <li class="nav-item" data-page="bookings">
                 <i class="fas fa-calendar-check"></i>
@@ -45,7 +45,7 @@
         <header class="topbar">
             <div class="topbar-left">
                 <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
-                <h1 id="pageTitle">ダッシュボード</h1>
+                <h1 id="pageTitle">今日やること</h1>
             </div>
             <div class="date-display">
                 <i class="fas fa-calendar"></i>
@@ -55,46 +55,36 @@
 
         <!-- Dashboard Page -->
         <section class="page active" id="page-dashboard">
-            <div class="stats-grid">
-                <div class="stat-card stat-customers">
-                    <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-value" id="statBookings">0</span>
-                        <span class="stat-label">予約総数</span>
-                    </div>
+            <button class="btn btn-primary btn-big" onclick="openCreateBookingModal()">
+                <i class="fas fa-plus"></i> 新規予約登録（WhatsAppで合意したらここ）
+            </button>
+
+            <div class="card" style="margin-top:16px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-list-check"></i> 今日やること</h3>
+                    <span class="card-note">タップすると予約が開きます</span>
                 </div>
-                <div class="stat-card stat-rentals">
-                    <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-value" id="statDocs">0</span>
-                        <span class="stat-label">書類総数</span>
-                    </div>
-                </div>
-                <div class="stat-card stat-countries">
-                    <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                    <div class="stat-info">
-                        <span class="stat-value" id="statUnverified">0</span>
-                        <span class="stat-label">未確認書類</span>
-                    </div>
+                <div class="card-body" id="todoList">
+                    <p class="empty-state">読み込み中...</p>
                 </div>
             </div>
 
-            <div class="dashboard-grid">
-                <div class="card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-list"></i> ステータス別</h3>
-                    </div>
-                    <div class="card-body" id="statusBreakdown">
-                        <p class="empty-state">読み込み中...</p>
-                    </div>
+            <div class="card" style="margin-top:16px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-calendar-days"></i> 直近7日の出発・返却</h3>
                 </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-clock"></i> 最近の予約</h3>
-                    </div>
-                    <div class="card-body" id="recentBookings">
-                        <p class="empty-state">読み込み中...</p>
-                    </div>
+                <div class="card-body" id="weekTimeline">
+                    <p class="empty-state">読み込み中...</p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top:16px;">
+                <div class="card-header">
+                    <h3><i class="fas fa-arrow-right-arrow-left"></i> 予約の流れ</h3>
+                    <span class="card-note">タップでその一覧へ</span>
+                </div>
+                <div class="card-body">
+                    <div class="flow-chips" id="flowChips"></div>
                 </div>
             </div>
         </section>
@@ -351,6 +341,6 @@
     <!-- Toast -->
     <div id="toastContainer" style="position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;"></div>
 
-    <script src="/admin/app.js?v=20260720b"></script>
+    <script src="/admin/app.js?v=20260720c"></script>
 </body>
 </html>
