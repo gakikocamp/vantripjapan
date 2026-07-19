@@ -1304,11 +1304,11 @@ function btLocale() {
     return map[(typeof currentLang !== 'undefined' && currentLang) || 'en'] || 'en-US';
 }
 // 現地通貨の目安を併記: 欧州(仏独)→€ / イスラエル(he)→₪。換算レートは目安（定期見直し）。
-// 1€≈165円, 1₪(ILS)≈40.5円。
+// 2026-07-19更新: 1€≈185円, 1₪(ILS)≈54円。四半期ごとに実勢レート点検。
 function eurHint(yen) {
     const l = (typeof currentLang !== 'undefined' && currentLang) || 'en';
-    if (l === 'fr' || l === 'de') return ' (≈ €' + Math.round(yen / 165).toLocaleString() + ')';
-    if (l === 'he') return ' (≈ ₪' + Math.round(yen / 40.5).toLocaleString() + ')';
+    if (l === 'fr' || l === 'de') return ' (≈ €' + Math.round(yen / 185).toLocaleString() + ')';
+    if (l === 'he') return ' (≈ ₪' + Math.round(yen / 54).toLocaleString() + ')';
     return '';
 }
 let bookingId = null;
