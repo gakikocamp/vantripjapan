@@ -1209,6 +1209,7 @@
                     <div class="summary-price-desc" id="summaryPriceDesc" data-i18n="book.sum.desc">
                         Includes rental fees, standard insurance, and camper gear. Dynamic rates applied for weekends/long-stays.
                     </div>
+                    <div data-i18n="pricing.fx_note" style="margin-top: 8px; font-size: 0.72rem; color: var(--text-sec); opacity: 0.85; line-height: 1.5;">All prices are billed in Japanese yen (¥). Amounts shown in other currencies are approximate, for reference only — the final charge depends on your card's exchange rate.</div>
                 </div>
 
                 <!-- WhatsApp Draft Preview Summary -->
@@ -1307,8 +1308,9 @@ function btLocale() {
 // 2026-07-19更新: 1€≈185円, 1₪(ILS)≈54円。四半期ごとに実勢レート点検。
 function eurHint(yen) {
     const l = (typeof currentLang !== 'undefined' && currentLang) || 'en';
-    if (l === 'fr' || l === 'de') return ' (≈ €' + Math.round(yen / 185).toLocaleString() + ')';
-    if (l === 'he') return ' (≈ ₪' + Math.round(yen / 54).toLocaleString() + ')';
+    if (l === 'fr') return ' (env. €' + Math.round(yen / 185).toLocaleString() + ')';
+    if (l === 'de') return ' (ca. €' + Math.round(yen / 185).toLocaleString() + ')';
+    if (l === 'he') return ' (כ־₪' + Math.round(yen / 54).toLocaleString() + ')';
     return '';
 }
 let bookingId = null;
