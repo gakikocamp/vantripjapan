@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Complete your booking — VAN TRIP JAPAN</title>
+<style>
+  :root { --accent:#C4704B; --accent-dark:#A85A38; --bg:#FAF6F0; --text:#2B2620; --text-sec:#6B6156; --ok:#2F7D4F; --border:#E8DFD1; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Hiragino Sans','Noto Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+  .wrap { max-width:640px; margin:0 auto; padding:24px 16px 64px; }
+  .logo { text-align:center; padding:18px 0 6px; font-weight:800; letter-spacing:.08em; color:var(--accent-dark); }
+  h1 { font-size:1.35rem; margin:12px 0 4px; }
+  .sub { color:var(--text-sec); font-size:.9rem; margin-bottom:20px; }
+  .card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:20px; margin-bottom:16px; }
+  .card h2 { font-size:1.02rem; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .badge { display:inline-block; background:var(--accent); color:#fff; border-radius:999px; font-size:.72rem; padding:2px 10px; font-weight:700; }
+  .summary td { padding:4px 8px 4px 0; font-size:.92rem; vertical-align:top; }
+  .summary td:first-child { color:var(--text-sec); white-space:nowrap; }
+  .docrow { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px dashed var(--border); flex-wrap:wrap; }
+  .docrow:last-child { border-bottom:none; }
+  .doclabel { font-size:.92rem; font-weight:600; }
+  .chip { font-size:.78rem; border-radius:999px; padding:3px 10px; background:#F1EAE0; color:var(--text-sec); }
+  .chip.ok { background:#E3F2E8; color:var(--ok); font-weight:700; }
+  input[type=file] { display:none; }
+  .upbtn { display:inline-block; background:var(--accent); color:#fff; border:none; border-radius:8px; padding:8px 14px; font-size:.85rem; font-weight:700; cursor:pointer; }
+  .upbtn.secondary { background:#fff; color:var(--accent); border:1.5px solid var(--accent); }
+  label.f { display:block; font-size:.85rem; font-weight:600; margin:14px 0 4px; }
+  .req { color:var(--accent); }
+  input[type=text], select, textarea { width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:8px; font-size:.95rem; background:#fff; font-family:inherit; }
+  textarea { min-height:70px; resize:vertical; }
+  .agree { display:flex; gap:10px; align-items:flex-start; margin-top:16px; font-size:.88rem; }
+  .agree input { margin-top:4px; transform:scale(1.2); }
+  .submit { display:block; width:100%; background:var(--accent); color:#fff; border:none; border-radius:10px; padding:14px; font-size:1rem; font-weight:800; cursor:pointer; margin-top:18px; }
+  .submit:disabled { opacity:.5; cursor:not-allowed; }
+  .note { font-size:.8rem; color:var(--text-sec); margin-top:8px; }
+  .mapcard { background:#FFF8EF; border:1px solid #EFD9BD; }
+  .mapcard a { color:var(--accent-dark); font-weight:700; }
+  .hidden { display:none; }
+  .success { text-align:center; padding:26px 18px; }
+  .success .big { font-size:2.4rem; }
+  .err { background:#FBEAEA; border:1px solid #E5B8B8; color:#8C3A3A; border-radius:10px; padding:14px; font-size:.9rem; margin-bottom:16px; }
+  [dir="rtl"] .summary td:first-child { padding:4px 0 4px 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">VAN TRIP JAPAN</div>
+  <div id="loading" class="card" style="text-align:center;">…</div>
+  <div id="invalid" class="hidden err"></div>
+
+  <div id="main" class="hidden">
+    <h1 id="t_title"></h1>
+    <p class="sub" id="t_sub"></p>
+
+    <div class="card">
+      <h2>🚐 <span id="t_summary"></span></h2>
+      <table class="summary">
+        <tr><td id="t_vehicle"></td><td id="v_vehicle" style="font-weight:700;"></td></tr>
+        <tr><td id="t_pickup"></td><td id="v_pickup"></td></tr>
+        <tr><td id="t_return"></td><td id="v_return"></td></tr>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2><span class="badge">1</span> <span id="t_docs"></span></h2>
+      <p class="note" id="t_docs_note" style="margin:0 0 10px;"></p>
+      <div class="docrow">
+        <span class="doclabel" id="t_front"></span>
+        <span>
+          <span class="chip" id="chip_license_front"></span>
+          <label class="upbtn" for="f_license_front" id="b_front"></label>
+          <input type="file" id="f_license_front" accept="image/*,.pdf" data-doctype="license_front">
+        </span>
+      </div>
+      <div class="docrow">
+        <span class="doclabel" id="t_back"></span>
+        <span>
+          <span class="chip" id="chip_license_back"></span>
+          <label class="upbtn" for="f_license_back" id="b_back"></label>
+          <input type="file" id="f_license_back" accept="image/*,.pdf" data-doctype="license_back">
+        </span>
+      </div>
+      <div class="docrow">
+        <span class="doclabel" id="t_idp"></span>
+        <span>
+          <span class="chip" id="chip_international_license"></span>
+          <label class="upbtn secondary" for="f_international_license" id="b_idp"></label>
+          <input type="file" id="f_international_license" accept="image/*,.pdf" data-doctype="international_license">
+        </span>
+      </div>
+      <p class="note" id="t_upload_hint"></p>
+    </div>
+
+    <div class="card">
+      <h2><span class="badge">2</span> <span id="t_details"></span></h2>
+
+      <label class="f" id="t_license_country"></label>
+      <input type="text" id="in_license_country" maxlength="60">
+
+      <label class="f" id="t_idp_type"></label>
+      <select id="in_idp_type">
+        <option value="" id="opt_choose"></option>
+        <option value="idp_1949" id="opt_idp"></option>
+        <option value="jdltc_translation" id="opt_jdltc"></option>
+        <option value="unsure" id="opt_unsure"></option>
+      </select>
+
+      <label class="f" id="t_flight"></label>
+      <input type="text" id="in_flight_number" maxlength="20" placeholder="e.g. TW215">
+
+      <label class="f" id="t_arrival"></label>
+      <input type="text" id="in_arrival_time" maxlength="40">
+
+      <label class="f" id="t_adddriver"></label>
+      <input type="text" id="in_additional_driver" maxlength="80">
+
+      <label class="f" id="t_emergency"></label>
+      <input type="text" id="in_emergency_name" maxlength="80">
+      <input type="text" id="in_emergency_phone" maxlength="40" style="margin-top:6px;">
+
+      <label class="f" id="t_requests"></label>
+      <textarea id="in_special_requests" maxlength="500"></textarea>
+
+      <div class="agree">
+        <input type="checkbox" id="in_agree">
+        <label for="in_agree" id="t_agree"></label>
+      </div>
+
+      <button class="submit" id="btn_submit" disabled></button>
+      <p class="note" id="t_after"></p>
+    </div>
+
+    <div class="card mapcard">
+      <h2>📍 <span id="t_map_title"></span></h2>
+      <p style="font-size:.92rem;" id="t_map_desc"></p>
+      <p style="margin-top:8px;"><a href="https://maps.app.goo.gl/Dkb2bSSUM7dWJS7m7" target="_blank" rel="noopener" id="t_map_link"></a></p>
+    </div>
+  </div>
+
+  <div id="done" class="hidden card success">
+    <div class="big">🎉</div>
+    <h1 id="d_title"></h1>
+    <p class="sub" id="d_sub" style="margin-top:8px;"></p>
+    <p style="font-size:.9rem; margin-top:10px;">📍 <a href="https://maps.app.goo.gl/Dkb2bSSUM7dWJS7m7" target="_blank" rel="noopener" id="d_map"></a></p>
+  </div>
+</div>
+
+<script>
+const T = {
+  en: {
+    title:"Complete your booking", sub:"A few last steps — then Karen sends your payment link. No payment on this page.",
+    summary:"Your booking", vehicle:"Vehicle", pickup:"Pick-up", return:"Return",
+    docs:"Driver's license photos", docs_note:"Please upload clear photos of the main driver's license. Files are encrypted and only used for the rental contract.",
+    front:"License — front", back:"License — back", idp:"International Driving Permit / Translation (if you have it)",
+    upload:"Upload", uploaded:"✓ Uploaded", pending:"Not yet", uploading:"Uploading…", upload_hint:"JPG/PNG/PDF, max 10MB. You can also add the IDP or JDLTC translation later.",
+    details:"Trip details", license_country:"Country that issued your license *", idp_type:"Which document will you drive with? *",
+    opt_choose:"— Please choose —", opt_idp:"International Driving Permit (1949 Geneva)", opt_jdltc:"Japanese translation (JDLTC etc.)", opt_unsure:"Not sure yet — please advise me",
+    flight:"Arrival flight number (if flying in)", arrival:"Arrival date & time", adddriver:"Additional driver (full name, if any)",
+    emergency:"Emergency contact (name & phone)", requests:"Anything else we should know?",
+    agree:'I agree to the <a href="/rent/terms/" target="_blank">Rental Terms & Conditions</a> *',
+    submit:"Send my details", after:"After this, Karen will double-check everything and send your secure payment link via WhatsApp or email.",
+    map_title:"Pick-up location", map_desc:"VAN TRIP JAPAN, Hakozaki, Fukuoka — about 10 minutes by bus or taxi from Hakata Station or Fukuoka Airport.",
+    map_link:"Open in Google Maps →",
+    d_title:"All done — thank you!", d_sub:"Karen will review your details and send the payment link soon. See you in Fukuoka!", d_map:"Pick-up location on Google Maps",
+    err_link:"This link is not valid. Please use the exact link Karen sent you, or contact us on WhatsApp.",
+    err_upload:"Upload failed. Please try again or send the photos to Karen on WhatsApp.",
+    err_submit:"Could not send. Please try again or contact Karen on WhatsApp.",
+    need:"Please upload both sides of the license, choose your document type, and accept the terms."
+  },
+  fr: {
+    title:"Finalisez votre réservation", sub:"Quelques dernières étapes — ensuite Karen vous enverra le lien de paiement. Aucun paiement sur cette page.",
+    summary:"Votre réservation", vehicle:"Véhicule", pickup:"Prise en charge", return:"Retour",
+    docs:"Photos du permis de conduire", docs_note:"Merci de télécharger des photos nettes du permis du conducteur principal. Les fichiers sont chiffrés et utilisés uniquement pour le contrat de location.",
+    front:"Permis — recto", back:"Permis — verso", idp:"Permis international / Traduction (si vous l'avez)",
+    upload:"Envoyer", uploaded:"✓ Reçu", pending:"À faire", uploading:"Envoi…", upload_hint:"JPG/PNG/PDF, 10 Mo max. Le PCI ou la traduction JDLTC peuvent être ajoutés plus tard.",
+    details:"Détails du voyage", license_country:"Pays de délivrance du permis *", idp_type:"Avec quel document conduirez-vous ? *",
+    opt_choose:"— Choisissez —", opt_idp:"Permis de conduire international (Genève 1949)", opt_jdltc:"Traduction japonaise (JDLTC, etc.)", opt_unsure:"Pas encore sûr — conseillez-moi",
+    flight:"N° de vol d'arrivée (si vous arrivez en avion)", arrival:"Date et heure d'arrivée", adddriver:"Conducteur additionnel (nom complet, le cas échéant)",
+    emergency:"Contact d'urgence (nom et téléphone)", requests:"Autre chose à nous signaler ?",
+    agree:'J\'accepte les <a href="/rent/terms/" target="_blank">Conditions de location</a> *',
+    submit:"Envoyer mes informations", after:"Ensuite, Karen vérifiera le tout et vous enverra le lien de paiement sécurisé par WhatsApp ou e-mail.",
+    map_title:"Lieu de prise en charge", map_desc:"VAN TRIP JAPAN, Hakozaki, Fukuoka — à environ 10 minutes en bus ou taxi de la gare de Hakata ou de l'aéroport de Fukuoka.",
+    map_link:"Ouvrir dans Google Maps →",
+    d_title:"C'est fait — merci !", d_sub:"Karen va vérifier vos informations et vous enverra bientôt le lien de paiement. À bientôt à Fukuoka !", d_map:"Lieu de prise en charge sur Google Maps",
+    err_link:"Ce lien n'est pas valide. Utilisez le lien exact envoyé par Karen, ou contactez-nous sur WhatsApp.",
+    err_upload:"Échec de l'envoi. Réessayez ou envoyez les photos à Karen sur WhatsApp.",
+    err_submit:"Envoi impossible. Réessayez ou contactez Karen sur WhatsApp.",
+    need:"Merci de télécharger le recto et le verso du permis, de choisir votre document et d'accepter les conditions."
+  },
+  de: {
+    title:"Buchung abschließen", sub:"Noch ein paar Schritte — dann sendet Karen Ihren Zahlungslink. Keine Zahlung auf dieser Seite.",
+    summary:"Ihre Buchung", vehicle:"Fahrzeug", pickup:"Abholung", return:"Rückgabe",
+    docs:"Führerschein-Fotos", docs_note:"Bitte laden Sie gut lesbare Fotos des Führerscheins des Hauptfahrers hoch. Die Dateien werden verschlüsselt und nur für den Mietvertrag verwendet.",
+    front:"Führerschein — Vorderseite", back:"Führerschein — Rückseite", idp:"Internationaler Führerschein / Übersetzung (falls vorhanden)",
+    upload:"Hochladen", uploaded:"✓ Erhalten", pending:"Offen", uploading:"Lädt…", upload_hint:"JPG/PNG/PDF, max. 10 MB. IDP oder JDLTC-Übersetzung können auch später ergänzt werden.",
+    details:"Reisedetails", license_country:"Ausstellungsland des Führerscheins *", idp_type:"Mit welchem Dokument fahren Sie? *",
+    opt_choose:"— Bitte wählen —", opt_idp:"Internationaler Führerschein (Genf 1949)", opt_jdltc:"Japanische Übersetzung (JDLTC usw.)", opt_unsure:"Noch unsicher — bitte beraten Sie mich",
+    flight:"Ankunftsflugnummer (falls Anreise per Flug)", arrival:"Ankunftsdatum & -zeit", adddriver:"Zusätzlicher Fahrer (vollständiger Name, falls vorhanden)",
+    emergency:"Notfallkontakt (Name & Telefon)", requests:"Sonst noch etwas Wichtiges?",
+    agree:'Ich akzeptiere die <a href="/rent/terms/" target="_blank">Mietbedingungen</a> *',
+    submit:"Angaben senden", after:"Danach prüft Karen alles und sendet Ihnen den sicheren Zahlungslink per WhatsApp oder E-Mail.",
+    map_title:"Abholort", map_desc:"VAN TRIP JAPAN, Hakozaki, Fukuoka — ca. 10 Minuten mit Bus oder Taxi vom Bahnhof Hakata oder Flughafen Fukuoka.",
+    map_link:"In Google Maps öffnen →",
+    d_title:"Fertig — vielen Dank!", d_sub:"Karen prüft Ihre Angaben und sendet Ihnen bald den Zahlungslink. Bis bald in Fukuoka!", d_map:"Abholort in Google Maps",
+    err_link:"Dieser Link ist ungültig. Bitte nutzen Sie genau den Link von Karen oder kontaktieren Sie uns per WhatsApp.",
+    err_upload:"Upload fehlgeschlagen. Bitte erneut versuchen oder die Fotos an Karen per WhatsApp senden.",
+    err_submit:"Senden nicht möglich. Bitte erneut versuchen oder Karen per WhatsApp kontaktieren.",
+    need:"Bitte beide Seiten des Führerscheins hochladen, Dokumenttyp wählen und die Bedingungen akzeptieren."
+  },
+  zh: {
+    title:"完成您的預約", sub:"最後幾個步驟 — 完成後Karen將傳送付款連結給您。本頁面不會收取任何款項。",
+    summary:"您的預約", vehicle:"車輛", pickup:"取車", return:"還車",
+    docs:"駕照照片", docs_note:"請上傳主駕駛人駕照的清晰照片。檔案會加密保存，僅用於租車合約。",
+    front:"駕照 — 正面", back:"駕照 — 背面", idp:"日文譯本／國際駕照（如已備妥）",
+    upload:"上傳", uploaded:"✓ 已收到", pending:"未上傳", uploading:"上傳中…", upload_hint:"JPG/PNG/PDF，最大10MB。日文譯本也可以之後再補上傳。",
+    details:"行程資訊", license_country:"駕照發照國家／地區 *", idp_type:"您將使用哪種文件駕車？ *",
+    opt_choose:"— 請選擇 —", opt_idp:"國際駕照（1949日內瓦公約）", opt_jdltc:"駕照日文譯本（台灣旅客適用）", opt_unsure:"還不確定 — 請給我建議",
+    flight:"抵達航班編號（搭機前來時）", arrival:"抵達日期與時間", adddriver:"additional駕駛人（如有，請填全名）",
+    emergency:"緊急聯絡人（姓名＋電話）", requests:"其他需要告訴我們的事項",
+    agree:'我同意<a href="/rent/terms/" target="_blank">租賃條款</a> *',
+    submit:"送出資料", after:"送出後，Karen會確認所有內容，並透過WhatsApp／LINE或Email傳送安全付款連結。",
+    map_title:"取車地點", map_desc:"VAN TRIP JAPAN（福岡・箱崎）— 從博多站或福岡機場搭巴士／計程車約10分鐘。",
+    map_link:"在Google地圖開啟 →",
+    d_title:"完成 — 謝謝您！", d_sub:"Karen會確認您的資料後盡快傳送付款連結。福岡見！", d_map:"在Google地圖查看取車地點",
+    err_link:"連結無效。請使用Karen傳給您的原始連結，或透過WhatsApp／LINE聯絡我們。",
+    err_upload:"上傳失敗。請再試一次，或直接把照片傳給Karen。",
+    err_submit:"送出失敗。請再試一次，或直接聯絡Karen。",
+    need:"請上傳駕照正反面、選擇駕駛文件類型，並同意租賃條款。"
+  },
+  he: {
+    title:"השלמת ההזמנה", sub:"עוד כמה צעדים אחרונים — ואז קארן תשלח את קישור התשלום. אין תשלום בעמוד זה.",
+    summary:"ההזמנה שלך", vehicle:"רכב", pickup:"איסוף", return:"החזרה",
+    docs:"תמונות רישיון הנהיגה", docs_note:"נא להעלות תמונות ברורות של רישיון הנהג הראשי. הקבצים מוצפנים ומשמשים רק לחוזה ההשכרה.",
+    front:"רישיון — צד קדמי", back:"רישיון — צד אחורי", idp:"רישיון בינלאומי / תרגום (אם יש)",
+    upload:"העלאה", uploaded:"✓ התקבל", pending:"טרם הועלה", uploading:"מעלה…", upload_hint:"JPG/PNG/PDF, עד 10MB. אפשר להוסיף את הרישיון הבינלאומי גם מאוחר יותר.",
+    details:"פרטי הנסיעה", license_country:"המדינה שהנפיקה את הרישיון *", idp_type:"עם איזה מסמך תנהגו? *",
+    opt_choose:"— בחרו —", opt_idp:"רישיון נהיגה בינלאומי (ז'נבה 1949)", opt_jdltc:"תרגום ליפנית (JDLTC וכו')", opt_unsure:"עוד לא בטוח — אשמח לייעוץ",
+    flight:"מספר טיסת הגעה (אם מגיעים בטיסה)", arrival:"תאריך ושעת הגעה", adddriver:"נהג נוסף (שם מלא, אם יש)",
+    emergency:"איש קשר לחירום (שם וטלפון)", requests:"עוד משהו שכדאי שנדע?",
+    agree:'אני מסכים/ה ל<a href="/rent/terms/" target="_blank">תנאי ההשכרה</a> *',
+    submit:"שליחת הפרטים", after:"לאחר מכן קארן תבדוק הכול ותשלח קישור תשלום מאובטח בוואטסאפ או במייל.",
+    map_title:"מיקום האיסוף", map_desc:"VAN TRIP JAPAN, האקוזאקי, פוקואוקה — כ-10 דקות באוטובוס או מונית מתחנת האקאטה או משדה התעופה פוקואוקה.",
+    map_link:"פתיחה ב-Google Maps ←",
+    d_title:"הכול מוכן — תודה!", d_sub:"קארן תבדוק את הפרטים ותשלח את קישור התשלום בקרוב. נתראה בפוקואוקה!", d_map:"מיקום האיסוף ב-Google Maps",
+    err_link:"הקישור אינו תקין. השתמשו בקישור המדויק שקארן שלחה, או צרו קשר בוואטסאפ.",
+    err_upload:"ההעלאה נכשלה. נסו שוב או שלחו את התמונות לקארן בוואטסאפ.",
+    err_submit:"השליחה נכשלה. נסו שוב או פנו לקארן בוואטסאפ.",
+    need:"נא להעלות את שני צדי הרישיון, לבחור סוג מסמך ולאשר את התנאים."
+  }
+};
+
+const params = new URLSearchParams(location.search);
+const id = params.get('id'), token = params.get('token');
+let lang = params.get('lang') || 'en';
+if (!T[lang]) lang = 'en';
+const t = T[lang];
+if (lang === 'he') { document.documentElement.dir = 'rtl'; document.documentElement.lang = 'he'; }
+else document.documentElement.lang = lang;
+
+const $ = (i) => document.getElementById(i);
+const api = `/api/booking-public?id=${encodeURIComponent(id)}&token=${encodeURIComponent(token)}`;
+const uploadedDocs = new Set();
+
+function applyTexts() {
+  const map = { t_title:'title', t_sub:'sub', t_summary:'summary', t_vehicle:'vehicle', t_pickup:'pickup', t_return:'return',
+    t_docs:'docs', t_docs_note:'docs_note', t_front:'front', t_back:'back', t_idp:'idp', t_upload_hint:'upload_hint',
+    t_details:'details', t_license_country:'license_country', t_idp_type:'idp_type', opt_choose:'opt_choose', opt_idp:'opt_idp',
+    opt_jdltc:'opt_jdltc', opt_unsure:'opt_unsure', t_flight:'flight', t_arrival:'arrival', t_adddriver:'adddriver',
+    t_emergency:'emergency', t_requests:'requests', t_after:'after', t_map_title:'map_title', t_map_desc:'map_desc',
+    t_map_link:'map_link', d_title:'d_title', d_sub:'d_sub', d_map:'d_map' };
+  for (const [el, key] of Object.entries(map)) { if ($(el)) $(el).innerHTML = t[key]; }
+  $('t_agree').innerHTML = t.agree;
+  $('btn_submit').textContent = t.submit;
+  ['b_front','b_back','b_idp'].forEach((b) => $(b).textContent = t.upload);
+}
+
+function refreshChips() {
+  for (const type of ['license_front','license_back','international_license']) {
+    const chip = $('chip_' + type);
+    if (uploadedDocs.has(type)) { chip.textContent = t.uploaded; chip.className = 'chip ok'; }
+    else { chip.textContent = t.pending; chip.className = 'chip'; }
+  }
+  refreshSubmit();
+}
+
+function refreshSubmit() {
+  const ready = uploadedDocs.has('license_front') && uploadedDocs.has('license_back') &&
+    $('in_license_country').value.trim() && $('in_idp_type').value && $('in_agree').checked;
+  $('btn_submit').disabled = !ready;
+}
+
+async function init() {
+  applyTexts();
+  if (!id || !token) { $('loading').classList.add('hidden'); $('invalid').textContent = t.err_link; $('invalid').classList.remove('hidden'); return; }
+  try {
+    const res = await fetch(api);
+    if (!res.ok) throw new Error('bad');
+    const b = await res.json();
+    $('v_vehicle').textContent = b.vehicle || '—';
+    $('v_pickup').textContent = (b.pickup || '—').replace('T', ' ');
+    $('v_return').textContent = (b.return || '—').replace('T', ' ');
+    (b.docs || []).forEach((d) => uploadedDocs.add(d));
+    $('t_title').textContent = b.first_name ? `${t.title} — ${b.first_name}!` : t.title;
+    refreshChips();
+    $('loading').classList.add('hidden');
+    $('main').classList.remove('hidden');
+  } catch {
+    $('loading').classList.add('hidden');
+    $('invalid').textContent = t.err_link;
+    $('invalid').classList.remove('hidden');
+  }
+}
+
+document.querySelectorAll('input[type=file]').forEach((input) => {
+  input.addEventListener('change', async () => {
+    const file = input.files[0];
+    if (!file) return;
+    if (file.size > 10 * 1024 * 1024) { alert('Max 10MB'); return; }
+    const type = input.dataset.doctype;
+    const chip = $('chip_' + type);
+    chip.textContent = t.uploading; chip.className = 'chip';
+    const fd = new FormData();
+    fd.append('file', file); fd.append('doc_type', type); fd.append('booking_id', id);
+    try {
+      const res = await fetch('/api/documents', { method: 'POST', body: fd });
+      if (!res.ok) throw new Error('upload failed');
+      uploadedDocs.add(type);
+    } catch { alert(t.err_upload); }
+    refreshChips();
+  });
+});
+
+['in_license_country','in_idp_type','in_agree'].forEach((i) => {
+  $(i).addEventListener('input', refreshSubmit);
+  $(i).addEventListener('change', refreshSubmit);
+});
+
+$('btn_submit').addEventListener('click', async () => {
+  refreshSubmit();
+  if ($('btn_submit').disabled) { alert(t.need); return; }
+  $('btn_submit').disabled = true;
+  try {
+    const res = await fetch(api, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        flight_number: $('in_flight_number').value,
+        arrival_time: $('in_arrival_time').value,
+        license_country: $('in_license_country').value,
+        idp_type: $('in_idp_type').value,
+        additional_driver: $('in_additional_driver').value,
+        emergency_name: $('in_emergency_name').value,
+        emergency_phone: $('in_emergency_phone').value,
+        special_requests: $('in_special_requests').value,
+        agree_terms: $('in_agree').checked,
+      }),
+    });
+    if (!res.ok) throw new Error('submit failed');
+    $('main').classList.add('hidden');
+    $('done').classList.remove('hidden');
+    window.scrollTo(0, 0);
+  } catch {
+    alert(t.err_submit);
+    $('btn_submit').disabled = false;
+  }
+});
+
+init();
+</script>
+</body>
+</html>

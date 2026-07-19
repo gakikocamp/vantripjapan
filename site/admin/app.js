@@ -326,6 +326,24 @@ window.openBookingDetail = async function(id) {
                     </button>` : ''}
                 </div>
             </div>
+            <div style="margin-bottom:20px;padding:12px;background:var(--bg-secondary);border-radius:8px;">
+                <label style="color:var(--text-muted);font-size:0.8rem;display:block;margin-bottom:6px;">📋 お客様手続きページ（免許証アップロード＋必要事項の記入）</label>
+                <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+                    <button class="btn btn-primary" onclick="copyCompleteLink('${(b.complete_url || '').replace(/'/g, '')}')">
+                        <i class="fas fa-copy"></i> 手続きリンクをコピー（WhatsAppに貼る）
+                    </button>
+                    ${meta.details ? '<span style="color:#34d399;font-weight:600;"><i class="fas fa-check-circle"></i> お客様記入済み</span>' : '<span style="color:var(--text-muted);font-size:0.85rem;">未記入</span>'}
+                </div>
+                ${meta.details ? `
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;font-size:0.85rem;">
+                    <div><label style="color:var(--text-muted);font-size:0.75rem">免許発行国</label><p>${meta.details.license_country || '-'}</p></div>
+                    <div><label style="color:var(--text-muted);font-size:0.75rem">運転書類</label><p>${{ idp_1949: '国際免許(1949)', jdltc_translation: 'JDLTC翻訳', unsure: '未定（要案内）' }[meta.details.idp_type] || meta.details.idp_type || '-'}</p></div>
+                    <div><label style="color:var(--text-muted);font-size:0.75rem">到着便 / 時刻</label><p>${meta.details.flight_number || '-'} ${meta.details.arrival_time ? '/ ' + meta.details.arrival_time : ''}</p></div>
+                    <div><label style="color:var(--text-muted);font-size:0.75rem">追加ドライバー</label><p>${meta.details.additional_driver || '-'}</p></div>
+                    <div><label style="color:var(--text-muted);font-size:0.75rem">緊急連絡先</label><p>${meta.details.emergency_name || '-'} ${meta.details.emergency_phone || ''}</p></div>
+                    <div><label style="color:var(--text-muted);font-size:0.75rem">要望</label><p>${meta.details.special_requests || '-'}</p></div>
+                </div>` : ''}
+            </div>
             <div>
                 <label style="color:var(--text-muted);font-size:0.8rem;margin-bottom:8px;display:block;">📄 書類</label>
                 ${docsHtml}
@@ -357,6 +375,16 @@ window.changeBookingStatus = async function(id, newStatus) {
         openBookingDetail(id);
         loadBookings();
     } catch (e) { /* shown by api() */ }
+};
+
+window.copyCompleteLink = async function(url) {
+    if (!url) { showToast('リンクを取得できませんでした', 'error'); return; }
+    try {
+        await navigator.clipboard.writeText(url);
+        showToast('手続きリンクをコピーしました。WhatsAppに貼り付けて送ってください', 'success');
+    } catch {
+        prompt('コピーできない場合は手動でコピーしてください:', url);
+    }
 };
 
 let _openBookingName = '';

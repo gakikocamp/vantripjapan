@@ -61,6 +61,8 @@ function isPublicRequest(request) {
   if (path === '/api/booking' && method === 'POST') return true;
   // Public: POST document upload
   if (path === '/api/documents' && method === 'POST') return true;
+  // Public: 顧客本人の手続きページ（HMACトークンをエンドポイント内で検証）
+  if (path === '/api/booking-public' && (method === 'GET' || method === 'POST')) return true;
   // Public: POST newsletter signup
   if (path === '/api/newsletter' && method === 'POST') return true;
   // Public: GET newsletter unsubscribe

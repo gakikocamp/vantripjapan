@@ -7,6 +7,7 @@
  */
 
 import { encrypt, decrypt } from './_crypto.js';
+import { buildCompleteToken } from './_complete-token.js';
 
 function ensureBookingBindings(env) {
   if (!env?.CUSTOMERS_DB) return 'Missing binding: CUSTOMERS_DB';
@@ -563,6 +564,12 @@ async function handleGet(request, env) {
       'SELECT * FROM customer_documents WHERE booking_id = ? ORDER BY uploaded_at'
     ).bind(id).all();
     booking.documents = docs.results;
+
+    // 顧客手続きページのリンク（KarenがWhatsAppに貼る用。言語はnotesの申込言語を引き継ぐ）
+    let bookingLang = 'en';
+    try { bookingLang = JSON.parse(booking.notes || '{}').lang || 'en'; } catch { /* legacy notes */ }
+    const token = await buildCompleteToken(id, env);
+    booking.complete_url = `https://vantripjapan.jp/booking/complete/?id=${id}&token=${token}&lang=${bookingLang}`;
 
     return Response.json(booking);
   }
