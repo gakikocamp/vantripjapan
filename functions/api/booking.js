@@ -631,10 +631,153 @@ async function handlePut(request, env, data) {
       'INSERT INTO access_logs (user_email, action, resource, detail) VALUES (?, ?, ?, ?)'
     ).bind(email, 'status_change', `booking/${id}`, `Status → ${body.status}`).run();
 
+    // 「確定」に進めたら、お客様へ予約確定メール(ics+受取場所つき・5言語)を自動送信
+    if (body.status === 'confirmed') {
+      await sendConfirmedEmail(env, id).catch((e) => console.error('[Confirm Mail]', e?.message));
+    }
+
     return Response.json({ status: 'ok' });
   }
 
   return Response.json({ error: 'No valid update fields' }, { status: 400 });
+}
+
+// 予約確定メール — Karenが管理画面で「確定」に進めた瞬間に自動送信。
+// 確定版ics添付 + 受取場所(Googleマップ/博多駅・空港から約10分) + WhatsApp導線。
+async function sendConfirmedEmail(env, id) {
+  if (!env.RESEND_API_KEY) return;
+  const b = await env.CUSTOMERS_DB.prepare('SELECT * FROM bookings WHERE id = ?').bind(id).first();
+  if (!b) return;
+  const email = await decrypt(b.email_encrypted, env);
+  if (!email || !email.includes('@')) return;
+
+  let lang = 'en';
+  try { lang = JSON.parse(b.notes || '{}').lang || 'en'; } catch { /* legacy notes */ }
+  const first = (b.full_name || '').trim().split(/\s+/)[0] || 'there';
+  const vehicle = b.vehicle_type || 'Campervan';
+  const pickup = b.pickup_datetime || '—';
+  const ret = b.return_datetime || '—';
+  const cal = buildCalendarLinks(vehicle, b.pickup_datetime, b.return_datetime, id);
+  const MAP = 'https://maps.app.goo.gl/Dkb2bSSUM7dWJS7m7';
+  const WA = 'https://wa.me/817093757129';
+
+  const M = {
+    en: {
+      subject: `🎉 Your VanTripJapan booking is confirmed! (#${id})`,
+      body: [
+        `Hi ${first},`, ``,
+        `Great news — your booking is confirmed! 🚐`, ``,
+        `  • Vehicle:  ${vehicle}`,
+        `  • Pick-up:  ${pickup}`,
+        `  • Return:   ${ret}`, ``,
+        `📍 Pick-up location: VAN TRIP JAPAN, Hakozaki, Fukuoka`,
+        `  ${MAP}`,
+        `  About 10 minutes by bus or taxi from Hakata Station or Fukuoka Airport.`, ``,
+        cal ? `📅 Add it to your calendar: ${cal.gcalUrl}` : ``,
+        cal ? `  (A calendar file (.ics) is also attached.)` : ``, ``,
+        `On pick-up day, please bring your driver's license and your IDP or Japanese translation.`,
+        `Questions anytime → WhatsApp Karen: ${WA}`, ``,
+        `We can't wait to welcome you to Kyushu!`,
+        `— Karen & the VanTripJapan family`,
+        `https://vantripjapan.jp`,
+      ],
+    },
+    fr: {
+      subject: `🎉 Votre réservation VanTripJapan est confirmée ! (#${id})`,
+      body: [
+        `Bonjour ${first},`, ``,
+        `Bonne nouvelle — votre réservation est confirmée ! 🚐`, ``,
+        `  • Véhicule : ${vehicle}`,
+        `  • Prise en charge : ${pickup}`,
+        `  • Retour : ${ret}`, ``,
+        `📍 Lieu de prise en charge : VAN TRIP JAPAN, Hakozaki, Fukuoka`,
+        `  ${MAP}`,
+        `  À environ 10 minutes en bus ou taxi de la gare de Hakata ou de l'aéroport de Fukuoka.`, ``,
+        cal ? `📅 Ajoutez-la à votre calendrier : ${cal.gcalUrl}` : ``,
+        cal ? `  (Un fichier calendrier (.ics) est également joint.)` : ``, ``,
+        `Le jour J, merci d'apporter votre permis de conduire et votre permis international ou traduction japonaise.`,
+        `Des questions ? → WhatsApp Karen : ${WA}`, ``,
+        `Nous avons hâte de vous accueillir à Kyushu !`,
+        `— Karen et la famille VanTripJapan`,
+        `https://vantripjapan.jp`,
+      ],
+    },
+    de: {
+      subject: `🎉 Ihre VanTripJapan-Buchung ist bestätigt! (#${id})`,
+      body: [
+        `Hallo ${first},`, ``,
+        `Gute Nachrichten — Ihre Buchung ist bestätigt! 🚐`, ``,
+        `  • Fahrzeug:  ${vehicle}`,
+        `  • Abholung:  ${pickup}`,
+        `  • Rückgabe:  ${ret}`, ``,
+        `📍 Abholort: VAN TRIP JAPAN, Hakozaki, Fukuoka`,
+        `  ${MAP}`,
+        `  Ca. 10 Minuten mit Bus oder Taxi vom Bahnhof Hakata oder Flughafen Fukuoka.`, ``,
+        cal ? `📅 Zum Kalender hinzufügen: ${cal.gcalUrl}` : ``,
+        cal ? `  (Eine Kalenderdatei (.ics) ist ebenfalls angehängt.)` : ``, ``,
+        `Bringen Sie am Abholtag bitte Ihren Führerschein und Ihren internationalen Führerschein oder die japanische Übersetzung mit.`,
+        `Fragen jederzeit → WhatsApp Karen: ${WA}`, ``,
+        `Wir freuen uns auf Sie in Kyushu!`,
+        `— Karen & die VanTripJapan-Familie`,
+        `https://vantripjapan.jp`,
+      ],
+    },
+    zh: {
+      subject: `🎉 您的VanTripJapan預約已確認！（#${id}）`,
+      body: [
+        `${first} 您好，`, ``,
+        `好消息 — 您的預約已確認！🚐`, ``,
+        `  • 車輛：${vehicle}`,
+        `  • 取車：${pickup}`,
+        `  • 還車：${ret}`, ``,
+        `📍 取車地點：VAN TRIP JAPAN（福岡・箱崎）`,
+        `  ${MAP}`,
+        `  從博多站或福岡機場搭巴士／計程車約10分鐘。`, ``,
+        cal ? `📅 加入行事曆：${cal.gcalUrl}` : ``,
+        cal ? `  （郵件亦附上 .ics 行事曆檔案。）` : ``, ``,
+        `取車當天請攜帶駕照與日文譯本（或國際駕照）。`,
+        `有任何問題 → WhatsApp／LINE 聯絡 Karen：${WA}`, ``,
+        `期待在九州與您相見！`,
+        `— Karen 與 VanTripJapan 全體`,
+        `https://vantripjapan.jp`,
+      ],
+    },
+    he: {
+      subject: `🎉 ההזמנה שלך ב-VanTripJapan אושרה! (#${id})`,
+      body: [
+        `שלום ${first},`, ``,
+        `חדשות טובות — ההזמנה שלך אושרה! 🚐`, ``,
+        `  • רכב: ${vehicle}`,
+        `  • איסוף: ${pickup}`,
+        `  • החזרה: ${ret}`, ``,
+        `📍 מיקום האיסוף: VAN TRIP JAPAN, האקוזאקי, פוקואוקה`,
+        `  ${MAP}`,
+        `  כ-10 דקות באוטובוס או מונית מתחנת האקאטה או משדה התעופה פוקואוקה.`, ``,
+        cal ? `📅 הוספה ליומן: ${cal.gcalUrl}` : ``,
+        cal ? `  (קובץ יומן (.ics) מצורף גם הוא.)` : ``, ``,
+        `ביום האיסוף נא להביא את רישיון הנהיגה ואת הרישיון הבינלאומי או התרגום היפני.`,
+        `שאלות בכל שעה → וואטסאפ קארן: ${WA}`, ``,
+        `מחכים לכם בקיושו!`,
+        `— קארן ומשפחת VanTripJapan`,
+        `https://vantripjapan.jp`,
+      ],
+    },
+  };
+  const m = M[lang] || M.en;
+
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      from: 'VanTripJapan <booking@vantripjapan.jp>',
+      reply_to: 'info@vantripjapan.jp',
+      to: [email],
+      subject: m.subject,
+      text: m.body.join('\n'),
+      ...(cal ? { attachments: [{ filename: `vantripjapan-booking-${id}.ics`, content: cal.icsBase64 }] } : {}),
+    }),
+  });
+  if (!res.ok) throw new Error(`Resend failed: ${await res.text()}`);
 }
 
 async function handleDelete(request, env, data) {
