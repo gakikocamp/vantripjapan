@@ -89,24 +89,22 @@ async function api(path, options = {}) {
 
 // --- Navigation ---
 function initNav() {
-    $$('.nav-item').forEach(item => {
+    $$('.nav-item, .tab-item').forEach(item => {
         item.addEventListener('click', () => {
             const page = item.dataset.page;
             switchPage(page);
         });
     });
 
-    $('#mobileToggle').addEventListener('click', () => {
+    $('#mobileToggle')?.addEventListener('click', () => {
         $('#sidebar').classList.toggle('open');
-    });
-    $('#mainContent').addEventListener('click', () => {
-        $('#sidebar').classList.remove('open');
     });
 }
 
 function switchPage(pageName) {
-    $$('.nav-item').forEach(n => n.classList.remove('active'));
+    $$('.nav-item, .tab-item').forEach(n => n.classList.remove('active'));
     $(`.nav-item[data-page="${pageName}"]`)?.classList.add('active');
+    $(`.tab-item[data-page="${pageName}"]`)?.classList.add('active');
 
     $$('.page').forEach(p => p.classList.remove('active'));
     $(`#page-${pageName}`)?.classList.add('active');
