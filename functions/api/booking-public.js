@@ -79,6 +79,10 @@ async function handlePost(request, env) {
     jdltc_order: pick(body.jdltc_order),      // 'yes' = JDLTC翻訳を注文希望（割引プロモ対象）
     idp_type: pick(body.idp_type),            // idp_1949 | jdltc_translation | jdltc_order | unsure
     additional_driver: pick(body.additional_driver),
+    has_additional_driver: pick(body.has_additional_driver),   // 'yes' = 追加ドライバーあり
+    additional_driver_country: pick(body.additional_driver_country),
+    d2_requirement: pick(body.d2_requirement),
+    d2_jdltc_order: pick(body.d2_jdltc_order),
     emergency_name: pick(body.emergency_name),
     emergency_phone: pick(body.emergency_phone),
     special_requests: pick(body.special_requests),
@@ -91,8 +95,13 @@ async function handlePost(request, env) {
   notes.details = details;
 
   // 免許証の表裏+パスポートが揃っていれば docs_received へ（初期ステータスの場合のみ前進）
+  // 追加ドライバー申告時はその人の3点も必須
   const docTypes = await loadDocTypes(env, id);
-  const docsComplete = docTypes.includes('license_front') && docTypes.includes('license_back') && docTypes.includes('passport');
+  const mainOk = docTypes.includes('license_front') && docTypes.includes('license_back') && docTypes.includes('passport');
+  const d2Ok = details.has_additional_driver === 'yes'
+    ? (docTypes.includes('d2_license_front') && docTypes.includes('d2_license_back') && docTypes.includes('d2_passport'))
+    : true;
+  const docsComplete = mainOk && d2Ok;
   const canAdvance = ['form_submitted', 'docs_requested'].includes(booking.status);
   const newStatus = docsComplete && canAdvance ? 'docs_received' : booking.status;
 
@@ -116,6 +125,10 @@ async function handlePost(request, env) {
       `License country: ${details.license_country || '—'}`,
       `IDP/Translation: ${details.idp_type || '—'}`,
       details.jdltc_order === 'yes' ? `🎫 JDLTC翻訳を注文希望 → 案内を送ってください（レンタル割引プロモ対象）` : ``,
+      details.has_additional_driver === 'yes'
+        ? `🚗 追加ドライバー: ${details.additional_driver || '—'}（${details.additional_driver_country || '国不明'}・書類も提出対象）`
+        : ``,
+      details.d2_jdltc_order === 'yes' ? `🎫 追加ドライバーもJDLTC翻訳を注文希望` : ``,
       `Flight: ${details.flight_number || '—'} (arrival: ${details.arrival_time || '—'})`,
       `Additional driver: ${details.additional_driver || '—'}`,
       `Emergency: ${details.emergency_name || '—'} ${details.emergency_phone || ''}`,

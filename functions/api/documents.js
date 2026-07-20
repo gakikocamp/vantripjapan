@@ -30,7 +30,8 @@ async function handlePost(request, env) {
     return Response.json({ error: 'Missing file, doc_type, or booking_id' }, { status: 400 });
   }
 
-  const allowedTypes = ['license_front', 'license_back', 'international_license', 'translation', 'passport'];
+  const allowedTypes = ['license_front', 'license_back', 'international_license', 'translation', 'passport',
+    'd2_license_front', 'd2_license_back', 'd2_international_license', 'd2_translation', 'd2_passport'];
   if (!allowedTypes.includes(docType)) {
     return Response.json({ error: 'Invalid doc_type' }, { status: 400 });
   }

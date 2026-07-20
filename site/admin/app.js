@@ -216,6 +216,11 @@ const DOC_LABELS = {
     international_license: '国際免許証',
     translation: '翻訳文',
     passport: 'パスポート',
+    d2_license_front: '追加ドライバー・免許証（表）',
+    d2_license_back: '追加ドライバー・免許証（裏）',
+    d2_international_license: '追加ドライバー・国際免許証',
+    d2_translation: '追加ドライバー・翻訳文',
+    d2_passport: '追加ドライバー・パスポート',
 };
 
 let currentBookingFilter = 'all';
@@ -406,7 +411,7 @@ window.openBookingDetail = async function(id) {
                     <div><span class="dt">免許発行国</span><span class="dd">${meta.details.license_country || '-'}</span></div>
                     <div><span class="dt">運転書類</span><span class="dd">${IDP_LABELS[meta.details.idp_type] || meta.details.idp_type || '-'}</span></div>
                     <div><span class="dt">到着便 / 時刻</span><span class="dd">${meta.details.flight_number || '-'} ${meta.details.arrival_time ? '/ ' + meta.details.arrival_time : ''}</span></div>
-                    <div><span class="dt">追加ドライバー</span><span class="dd">${meta.details.additional_driver || '-'}</span></div>
+                    <div><span class="dt">追加ドライバー</span><span class="dd">${meta.details.has_additional_driver === 'yes' ? `${meta.details.additional_driver || '-'}（${meta.details.additional_driver_country || '国不明'}${meta.details.d2_jdltc_order === 'yes' ? '・🎫JDLTC注文' : ''}）` : (meta.details.additional_driver || 'なし')}</span></div>
                     <div><span class="dt">緊急連絡先</span><span class="dd">${meta.details.emergency_name || '-'} ${meta.details.emergency_phone || ''}</span></div>
                     <div><span class="dt">要望</span><span class="dd">${meta.details.special_requests || '-'}</span></div>
                 </div>` : ''}

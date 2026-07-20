@@ -121,6 +121,69 @@
           <input type="file" id="f_translation" accept="image/*,.pdf" data-doctype="translation">
         </span>
       </div>
+      <div style="height:12px;"></div>
+      <label class="f" id="t_d2_q" style="margin-top:10px;"></label>
+      <div style="display:flex; gap:18px; margin:4px 0 2px; flex-wrap:wrap;">
+        <label style="display:flex;gap:7px;align-items:center;font-size:.9rem;cursor:pointer;"><input type="radio" name="d2" value="no" checked> <span id="t_d2_no"></span></label>
+        <label style="display:flex;gap:7px;align-items:center;font-size:.9rem;cursor:pointer;"><input type="radio" name="d2" value="yes"> <span id="t_d2_yes"></span></label>
+      </div>
+      <div id="d2_block" class="hidden" style="margin-top:6px; padding:12px; background:#FBF8F2; border:1px dashed #DBCFBC; border-radius:10px;">
+        <label class="f" id="t_d2_name" style="margin-top:0;"></label>
+        <input type="text" id="in_additional_driver" maxlength="80">
+        <label class="f" id="t_d2_country"></label>
+        <select id="in_d2_country"></select>
+        <div id="d2_req_info" class="hidden" style="margin:10px 0 4px; padding:10px 12px; border-radius:8px; font-size:.85rem; background:#EFF6F0; border:1px solid #CFE3D4;"></div>
+        <div id="d2_req_warn" class="hidden err" style="margin:10px 0 4px;"></div>
+        <div style="height:8px;"></div>
+      <div class="docrow" id="row_d2_license_front_wrap">
+        <span class="doclabel" id="t_d2_license_front"></span>
+        <span>
+          <span class="chip" id="chip_d2_license_front"></span>
+          <label class="upbtn" for="f_d2_license_front" id="b_d2_license_front"></label>
+          <input type="file" id="f_d2_license_front" accept="image/*,.pdf" data-doctype="d2_license_front">
+        </span>
+      </div>
+      <div class="docrow" id="row_d2_license_back_wrap">
+        <span class="doclabel" id="t_d2_license_back"></span>
+        <span>
+          <span class="chip" id="chip_d2_license_back"></span>
+          <label class="upbtn" for="f_d2_license_back" id="b_d2_license_back"></label>
+          <input type="file" id="f_d2_license_back" accept="image/*,.pdf" data-doctype="d2_license_back">
+        </span>
+      </div>
+      <div class="docrow" id="row_d2_passport_wrap">
+        <span class="doclabel" id="t_d2_passport"></span>
+        <span>
+          <span class="chip" id="chip_d2_passport"></span>
+          <label class="upbtn" for="f_d2_passport" id="b_d2_passport"></label>
+          <input type="file" id="f_d2_passport" accept="image/*,.pdf" data-doctype="d2_passport">
+        </span>
+      </div>
+      <div class="docrow hidden" id="row_d2_idp">
+        <span class="doclabel" id="t_d2_idp"></span>
+        <span>
+          <span class="chip" id="chip_d2_international_license"></span>
+          <label class="upbtn" for="f_d2_international_license" id="b_d2_idp"></label>
+          <input type="file" id="f_d2_international_license" accept="image/*,.pdf" data-doctype="d2_international_license">
+        </span>
+      </div>
+      <div class="hidden" id="jdltc2_block" style="padding:12px; margin-top:10px; background:#FFF8EF; border:1px solid #EFD9BD; border-radius:10px;">
+        <p style="font-size:.88rem; font-weight:700; margin-bottom:8px;" id="t_jdltc2_q"></p>
+        <label style="display:flex; gap:8px; align-items:flex-start; font-size:.86rem; margin-bottom:8px; cursor:pointer;">
+          <input type="radio" name="jdltc2" value="have" style="margin-top:3px;"><span id="t_jdltc2_have"></span>
+        </label>
+        <label style="display:flex; gap:8px; align-items:flex-start; font-size:.86rem; cursor:pointer;">
+          <input type="radio" name="jdltc2" value="order" style="margin-top:3px;"><span id="t_jdltc2_order"></span>
+        </label>
+      </div>
+      <div class="docrow hidden" id="row_d2_translation">
+        <span class="doclabel" id="t_d2_translation"></span>
+        <span>
+          <span class="chip" id="chip_d2_translation"></span>
+          <label class="upbtn" for="f_d2_translation" id="b_d2_translation"></label>
+          <input type="file" id="f_d2_translation" accept="image/*,.pdf" data-doctype="d2_translation"></span>
+      </div>
+      </div>
       <p class="note" id="t_upload_hint"></p>
     </div>
 
@@ -132,9 +195,6 @@
 
       <label class="f" id="t_arrival"></label>
       <input type="text" id="in_arrival_time" maxlength="40">
-
-      <label class="f" id="t_adddriver"></label>
-      <input type="text" id="in_additional_driver" maxlength="80">
 
       <label class="f" id="t_emergency"></label>
       <input type="text" id="in_emergency_name" maxlength="80">
@@ -185,6 +245,7 @@ const T = {
     jdltc_q:"Japanese translation of your license — how would you like to arrange it? *",
     jdltc_have:"I already have the official translation (JAF / embassy / JDLTC) — I'll upload it below.",
     jdltc_order:"I'll order it via our family-run service <a href='https://drive-japan-license.com/' target='_blank' rel='noopener'>JDLTC</a> — done fully online before you arrive, and you get a <strong>¥5,000 discount (≈ €27) on this rental</strong>. We'll guide you after you submit this form.",
+    d2_q:"Will a second person also drive? *", d2_no:"No — one driver only", d2_yes:"Yes — add a second driver", d2_name:"Additional driver — full name *", d2_country:"Country that issued their license *",
     flight:"Arrival flight number (if flying in)", arrival:"Arrival date & time", adddriver:"Additional driver (full name, if any)",
     emergency:"Emergency contact (name & phone)", requests:"Anything else we should know?",
     agree:'I agree to the <a href="/rent/terms/" target="_blank">Rental Terms & Conditions</a> *',
@@ -213,6 +274,7 @@ const T = {
     jdltc_q:"Traduction japonaise de votre permis — comment souhaitez-vous l'obtenir ? *",
     jdltc_have:"J'ai déjà la traduction officielle (JAF / ambassade / JDLTC) — je la téléverse ci-dessous.",
     jdltc_order:"Je la commande via notre service familial <a href='https://drive-japan-license.com/' target='_blank' rel='noopener'>JDLTC</a> — 100 % en ligne avant votre arrivée, avec <strong>5 000 ¥ (env. 27 €) de réduction sur cette location</strong>. Nous vous guiderons après l'envoi du formulaire.",
+    d2_q:"Une deuxième personne conduira-t-elle ? *", d2_no:"Non — un seul conducteur", d2_yes:"Oui — ajouter un conducteur", d2_name:"Conducteur additionnel — nom complet *", d2_country:"Pays de délivrance de son permis *",
     flight:"N° de vol d'arrivée (si vous arrivez en avion)", arrival:"Date et heure d'arrivée", adddriver:"Conducteur additionnel (nom complet, le cas échéant)",
     emergency:"Contact d'urgence (nom et téléphone)", requests:"Autre chose à nous signaler ?",
     agree:'J\'accepte les <a href="/rent/terms/" target="_blank">Conditions de location</a> *',
@@ -241,6 +303,7 @@ const T = {
     jdltc_q:"Japanische Übersetzung Ihres Führerscheins — wie möchten Sie sie besorgen? *",
     jdltc_have:"Ich habe die offizielle Übersetzung bereits (JAF / Botschaft / JDLTC) — ich lade sie unten hoch.",
     jdltc_order:"Ich bestelle sie über unseren Familienservice <a href='https://drive-japan-license.com/' target='_blank' rel='noopener'>JDLTC</a> — komplett online vor der Anreise, mit <strong>5.000 ¥ (ca. 27 €) Rabatt auf diese Miete</strong>. Wir begleiten Sie nach dem Absenden.",
+    d2_q:"Fährt eine zweite Person? *", d2_no:"Nein — nur ein Fahrer", d2_yes:"Ja — zweiten Fahrer hinzufügen", d2_name:"Zusatzfahrer — vollständiger Name *", d2_country:"Ausstellungsland des Führerscheins *",
     flight:"Ankunftsflugnummer (falls Anreise per Flug)", arrival:"Ankunftsdatum & -zeit", adddriver:"Zusätzlicher Fahrer (vollständiger Name, falls vorhanden)",
     emergency:"Notfallkontakt (Name & Telefon)", requests:"Sonst noch etwas Wichtiges?",
     agree:'Ich akzeptiere die <a href="/rent/terms/" target="_blank">Mietbedingungen</a> *',
@@ -269,6 +332,7 @@ const T = {
     jdltc_q:"駕照日文譯本——您想如何取得？ *",
     jdltc_have:"我已持有官方譯本（JAF／台北駐日經濟文化代表處／JDLTC）——將在下方上傳。",
     jdltc_order:"透過我們家族經營的 <a href='https://drive-japan-license.com/' target='_blank' rel='noopener'>JDLTC</a> 線上申請——抵日前即可完成，並享<strong>本次租車 ¥5,000（約 NT$1,050）折扣</strong>。送出表單後我們會引導您完成。",
+    d2_q:"是否有第二位駕駛人？ *", d2_no:"沒有——僅一位駕駛", d2_yes:"有——新增第二位駕駛", d2_name:"第二位駕駛——全名 *", d2_country:"其駕照發照國家／地區 *",
     flight:"抵達航班編號（搭機前來時）", arrival:"抵達日期與時間", adddriver:"additional駕駛人（如有，請填全名）",
     emergency:"緊急聯絡人（姓名＋電話）", requests:"其他需要告訴我們的事項",
     agree:'我同意<a href="/rent/terms/" target="_blank">租賃條款</a> *',
@@ -297,6 +361,7 @@ const T = {
     jdltc_q:"תרגום יפני של הרישיון — איך תרצו להשיג אותו? *",
     jdltc_have:"כבר יש לי את התרגום הרשמי (JAF / שגרירות / JDLTC) — אעלה אותו למטה.",
     jdltc_order:"אזמין דרך השירות המשפחתי שלנו <a href='https://drive-japan-license.com/' target='_blank' rel='noopener'>JDLTC</a> — אונליין לפני ההגעה, עם <strong>הנחה של ¥5,000 (כ־₪93) על ההשכרה</strong>. נלווה אתכם אחרי שליחת הטופס.",
+    d2_q:"האם אדם נוסף ינהג? *", d2_no:"לא — נהג אחד בלבד", d2_yes:"כן — הוספת נהג נוסף", d2_name:"נהג נוסף — שם מלא *", d2_country:"המדינה שהנפיקה את הרישיון שלו *",
     flight:"מספר טיסת הגעה (אם מגיעים בטיסה)", arrival:"תאריך ושעת הגעה", adddriver:"נהג נוסף (שם מלא, אם יש)",
     emergency:"איש קשר לחירום (שם וטלפון)", requests:"עוד משהו שכדאי שנדע?",
     agree:'אני מסכים/ה ל<a href="/rent/terms/" target="_blank">תנאי ההשכרה</a> *',
@@ -338,9 +403,30 @@ function classify(c) {
   if (TOP.includes(c) || GENEVA_REST.includes(c)) return 'idp';
   return 'check';
 }
-function jdltcChoice() {
-  const r = document.querySelector('input[name="jdltc"]:checked');
+function jdltcChoice(name) {
+  const r = document.querySelector('input[name="' + (name || 'jdltc') + '"]:checked');
   return r ? r.value : '';
+}
+function hasD2() {
+  const r = document.querySelector('input[name="d2"]:checked');
+  return !!r && r.value === 'yes';
+}
+function onD2Change() {
+  $('d2_block').classList.toggle('hidden', !hasD2());
+  onD2CountryChange();
+}
+function onD2CountryChange() {
+  const req = classify($('in_d2_country').value);
+  $('d2_req_info').classList.add('hidden');
+  $('d2_req_warn').classList.add('hidden');
+  $('row_d2_idp').classList.toggle('hidden', !(req === 'idp' || req === 'check'));
+  $('jdltc2_block').classList.toggle('hidden', req !== 'translation');
+  $('row_d2_translation').classList.toggle('hidden', !((req === 'translation' && jdltcChoice('jdltc2') === 'have') || req === 'check'));
+  if (req === 'idp') { $('d2_req_info').innerHTML = t.req_idp; $('d2_req_info').classList.remove('hidden'); }
+  if (req === 'translation') { $('d2_req_info').innerHTML = t.req_trans; $('d2_req_info').classList.remove('hidden'); }
+  if (req === 'check') { $('d2_req_info').innerHTML = t.req_check; $('d2_req_info').classList.remove('hidden'); }
+  if (req === 'no') { $('d2_req_warn').innerHTML = t.req_no; $('d2_req_warn').classList.remove('hidden'); }
+  refreshSubmit();
 }
 function onCountryChange() {
   const req = classify($('in_license_country').value);
@@ -361,28 +447,35 @@ function applyTexts() {
   const map = { t_title:'title', t_sub:'sub', t_summary:'summary', t_vehicle:'vehicle', t_pickup:'pickup', t_return:'return',
     t_docs:'docs', t_docs_note:'docs_note', t_front:'front', t_back:'back', t_passport:'passport', t_translation:'translation', t_idp:'idp', t_upload_hint:'upload_hint',
     t_details:'details', t_license_country:'license_country', t_jdltc_q:'jdltc_q', t_jdltc_have:'jdltc_have', t_jdltc_order:'jdltc_order',
-    t_flight:'flight', t_arrival:'arrival', t_adddriver:'adddriver',
+    t_flight:'flight', t_arrival:'arrival',
+    t_d2_q:'d2_q', t_d2_no:'d2_no', t_d2_yes:'d2_yes', t_d2_name:'d2_name', t_d2_country:'d2_country',
+    t_d2_front:'front', t_d2_back:'back', t_d2_passport:'passport', t_d2_idp:'idp', t_d2_translation:'translation',
+    t_jdltc2_q:'jdltc_q', t_jdltc2_have:'jdltc_have', t_jdltc2_order:'jdltc_order',
     t_emergency:'emergency', t_requests:'requests', t_after:'after', t_map_title:'map_title', t_map_desc:'map_desc',
     t_map_link:'map_link', d_title:'d_title', d_sub:'d_sub', d_map:'d_map' };
   for (const [el, key] of Object.entries(map)) { if ($(el)) $(el).innerHTML = t[key]; }
   $('t_agree').innerHTML = t.agree;
   $('btn_submit').textContent = t.submit;
-  ['b_front','b_back','b_passport','b_idp','b_translation'].forEach((b) => $(b).textContent = t.upload);
-  // 国セレクトを構築（主要マーケットを先頭に）
-  const sel = $('in_license_country');
-  sel.innerHTML = '';
+  ['b_front','b_back','b_passport','b_idp','b_translation','b_d2_license_front','b_d2_license_back','b_d2_passport','b_d2_idp','b_d2_translation'].forEach((b) => { if ($(b)) $(b).textContent = t.upload; });
+  // 国セレクトを構築（本人+追加ドライバー、主要マーケットを先頭に）
   const opt = (v, label, dis) => { const o = document.createElement('option'); o.value = v; o.textContent = label; if (dis) o.disabled = true; return o; };
-  sel.appendChild(opt('', t.country_choose));
-  TOP.forEach((c) => sel.appendChild(opt(c, c)));
-  sel.appendChild(opt('', '──────────', true));
-  [...new Set([...GENEVA_REST, ...NO_DRIVE])].filter((c) => !TOP.includes(c)).sort()
-    .forEach((c) => sel.appendChild(opt(c, c)));
-  sel.appendChild(opt('OTHER', t.country_other));
+  ['in_license_country', 'in_d2_country'].forEach((selId) => {
+    const sel = $(selId);
+    if (!sel) return;
+    sel.innerHTML = '';
+    sel.appendChild(opt('', t.country_choose));
+    TOP.forEach((c) => sel.appendChild(opt(c, c)));
+    sel.appendChild(opt('', '──────────', true));
+    [...new Set([...GENEVA_REST, ...NO_DRIVE])].filter((c) => !TOP.includes(c)).sort()
+      .forEach((c) => sel.appendChild(opt(c, c)));
+    sel.appendChild(opt('OTHER', t.country_other));
+  });
 }
 
 function refreshChips() {
-  for (const type of ['license_front','license_back','passport','international_license','translation']) {
+  for (const type of ['license_front','license_back','passport','international_license','translation','d2_license_front','d2_license_back','d2_passport','d2_international_license','d2_translation']) {
     const chip = $('chip_' + type);
+    if (!chip) continue;
     if (uploadedDocs.has(type)) { chip.textContent = t.uploaded; chip.className = 'chip ok'; }
     else { chip.textContent = t.pending; chip.className = 'chip'; }
   }
@@ -396,7 +489,17 @@ function refreshSubmit() {
   if (req === 'idp') drivingOk = uploadedDocs.has('international_license');
   else if (req === 'translation') drivingOk = jdltcChoice() === 'order' || (jdltcChoice() === 'have' && uploadedDocs.has('translation'));
   else if (req === 'check') drivingOk = true;
-  const ready = !!req && req !== 'no' && baseDocs && drivingOk && $('in_agree').checked;
+  let d2Ok = true;
+  if (hasD2()) {
+    const req2 = classify($('in_d2_country').value);
+    const base2 = uploadedDocs.has('d2_license_front') && uploadedDocs.has('d2_license_back') && uploadedDocs.has('d2_passport');
+    let drive2 = false;
+    if (req2 === 'idp') drive2 = uploadedDocs.has('d2_international_license');
+    else if (req2 === 'translation') drive2 = jdltcChoice('jdltc2') === 'order' || (jdltcChoice('jdltc2') === 'have' && uploadedDocs.has('d2_translation'));
+    else if (req2 === 'check') drive2 = true;
+    d2Ok = !!req2 && req2 !== 'no' && base2 && drive2 && $('in_additional_driver').value.trim().length > 0;
+  }
+  const ready = !!req && req !== 'no' && baseDocs && drivingOk && d2Ok && $('in_agree').checked;
   $('btn_submit').disabled = !ready;
 }
 
@@ -444,6 +547,10 @@ document.querySelectorAll('input[type=file]').forEach((input) => {
 $('in_license_country').addEventListener('change', onCountryChange);
 $('in_agree').addEventListener('change', refreshSubmit);
 document.querySelectorAll('input[name="jdltc"]').forEach((r) => r.addEventListener('change', onCountryChange));
+document.querySelectorAll('input[name="d2"]').forEach((r) => r.addEventListener('change', onD2Change));
+$('in_d2_country').addEventListener('change', onD2CountryChange);
+$('in_additional_driver').addEventListener('input', refreshSubmit);
+document.querySelectorAll('input[name="jdltc2"]').forEach((r) => r.addEventListener('change', onD2CountryChange));
 
 $('btn_submit').addEventListener('click', async () => {
   refreshSubmit();
@@ -460,6 +567,10 @@ $('btn_submit').addEventListener('click', async () => {
         jdltc_order: jdltcChoice() === 'order' ? 'yes' : '',
         idp_type: (function(){ const r = classify($('in_license_country').value); if (r === 'translation') return jdltcChoice() === 'order' ? 'jdltc_order' : 'jdltc_translation'; if (r === 'idp') return 'idp_1949'; return 'unsure'; })(),
         additional_driver: $('in_additional_driver').value,
+        has_additional_driver: hasD2() ? 'yes' : '',
+        additional_driver_country: hasD2() ? $('in_d2_country').value : '',
+        d2_requirement: hasD2() ? (classify($('in_d2_country').value) || '') : '',
+        d2_jdltc_order: hasD2() && jdltcChoice('jdltc2') === 'order' ? 'yes' : '',
         emergency_name: $('in_emergency_name').value,
         emergency_phone: $('in_emergency_phone').value,
         special_requests: $('in_special_requests').value,
