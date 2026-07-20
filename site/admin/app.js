@@ -156,7 +156,7 @@ async function loadDashboard() {
                         <span class="todo-text">${t.text}</span>
                         <span class="todo-who">${t.who.full_name} · ${veh(t.who)} · ${mmdd(t.who.pickup_datetime)}〜${mmdd(t.who.return_datetime)}${t.hint ? `<br><em>${t.hint}</em>` : ''}</span>
                     </span>
-                    <i class="fas fa-chevron-right todo-go"></i>
+                    <span class="todo-go">手順を見る <i class="fas fa-chevron-right"></i></span>
                 </div>`).join('');
 
         // ── 直近7日の出発・返却 ──
@@ -200,6 +200,73 @@ async function loadDashboard() {
 // ============================================================
 // Bookings Management
 // ============================================================
+
+// ── 「次にやること」ガイド(誰でも迷わない番号付き手順) ──
+function waPhoneLink(phone, text) {
+    if (!phone) return null;
+    let d = String(phone).replace(/\D/g, '');
+    if (!d) return null;
+    if (d.startsWith('0')) d = '81' + d.slice(1);
+    return `https://wa.me/${d}?text=${encodeURIComponent(text)}`;
+}
+
+function buildGuide(b, meta) {
+    const first = (b.full_name || '').split(' ')[0] || 'there';
+    const wa = (text) => waPhoneLink(b.phone, text);
+    const steps = [];
+    const day0 = (d) => { const x = new Date(d); if (isNaN(x)) return null; x.setHours(0,0,0,0); return x; };
+    const today = new Date(); today.setHours(0,0,0,0);
+    const pd = day0(b.pickup_datetime), rd = day0(b.return_datetime);
+    const pdDiff = pd ? Math.round((pd - today) / 86400000) : null;
+    const rdDiff = rd ? Math.round((rd - today) / 86400000) : null;
+
+    if (b.status === 'form_submitted') {
+        const msg = `Hi ${first}! Karen here from VAN TRIP JAPAN 🚐 Thank you for your booking request! I've checked the calendar and...`;
+        steps.push({ n: 1, label: '空き状況をカレンダーで確認する', note: '同じ日程の他の予約がないか見てください' });
+        steps.push({ n: 2, label: wa(msg) ? 'WhatsAppで返事を送る' : 'メールで返事を送る', href: wa(msg) || (b.email ? `mailto:${b.email}` : null), icon: '💬' });
+        steps.push({ n: 3, label: '話がまとまったら下のボタン', btn: { text: '📋 書類待ちに進める', action: `changeBookingStatus(${b.id},'docs_requested')` }, note: '次は手続きリンクを送る段階になります' });
+    } else if (b.status === 'docs_requested') {
+        const msg = `Hi ${first}! Please complete your booking here (license upload + a few details) 👉 `;
+        steps.push({ n: 1, label: '手続きリンクをコピーする', btn: { text: '📋 リンクをコピー', action: `copyCompleteLink('${(b.complete_url || '').replace(/'/g, '')}')` } });
+        steps.push({ n: 2, label: wa(msg) ? 'WhatsAppを開いて貼り付けて送る' : 'メールに貼り付けて送る', href: wa(msg) || (b.email ? `mailto:${b.email}` : null), icon: '💬' });
+        steps.push({ n: 3, label: 'あとは待つだけ', note: 'お客様が書類を上げると自動で「✅書類受領」に変わり、あなたにメールが届きます' });
+    } else if (b.status === 'docs_received') {
+        const msg = `Hi ${first}! Here is your secure payment link for your VAN TRIP JAPAN booking 👉 (リンクをここに貼ってください)`;
+        steps.push({ n: 1, label: 'Stripeで決済リンクを作る', href: 'https://dashboard.stripe.com/payment-links/create', icon: '🔗', note: `金額: ${b.estimated_total ? '¥' + Number(b.estimated_total).toLocaleString() : '見積もりを確認'}` });
+        steps.push({ n: 2, label: wa(msg) ? 'WhatsAppでリンクを送る' : 'メールでリンクを送る', href: wa(msg) || (b.email ? `mailto:${b.email}` : null), icon: '💬' });
+        steps.push({ n: 3, label: '送り終えたら下のボタン', btn: { text: '💳 決済待ちにする', action: `changeBookingStatus(${b.id},'payment_sent')` } });
+    } else if (b.status === 'payment_sent') {
+        steps.push({ n: 1, label: 'Stripeで入金を確認する', href: 'https://dashboard.stripe.com/payments', icon: '💰' });
+        steps.push({ n: 2, label: '入金が確認できたら下のボタン', btn: { text: '🎉 確定にする', action: `changeBookingStatus(${b.id},'confirmed')` }, note: '押すと確定メール(カレンダー・受取場所つき)が自動で届きます' });
+    } else if (b.status === 'confirmed' && pdDiff === 1) {
+        const msg = `Hi ${first}! Tomorrow is the day! 🎉 Here is how to unlock the van:`;
+        steps.push({ n: 1, label: 'WhatsAppで鍵の開け方を送る(写真つき)', href: wa(msg), icon: '🔑' });
+        steps.push({ n: 2, label: 'これで準備完了', note: 'この項目は明日の朝に自動で消えます' });
+    } else if (b.status === 'confirmed' && pdDiff === 0) {
+        steps.push({ n: 1, label: '受け渡し準備(清掃・満タン・寝具・ETCカード)', note: '' });
+        steps.push({ n: 2, label: 'お客様が出発したら下のボタン', btn: { text: '🚐 利用中にする', action: `changeBookingStatus(${b.id},'active')` } });
+    } else if (b.status === 'active' && rdDiff !== null && rdDiff <= 0) {
+        steps.push({ n: 1, label: '車両チェック(傷・忘れ物・ETC利用額)', note: '' });
+        steps.push({ n: 2, label: '返却が済んだら下のボタン', btn: { text: '✨ 完了にする', action: `changeBookingStatus(${b.id},'completed')` }, note: '翌日、お客様へお礼とレビューのお願いが自動で届きます' });
+    }
+
+    if (!steps.length) return '';
+    const rows = steps.map(st => `
+        <div class="gstep">
+            <span class="gnum">${st.n}</span>
+            <div class="gmain">
+                ${st.href ? `<a class="btn btn-primary gbtn" href="${st.href}" target="_blank" rel="noopener">${st.icon || ''} ${st.label}</a>`
+                  : st.btn ? `<div class="glabel">${st.label}</div><button class="btn btn-primary gbtn" onclick="${st.btn.action}">${st.btn.text}</button>`
+                  : `<div class="glabel">${st.label}</div>`}
+                ${st.note ? `<div class="gnote">${st.note}</div>` : ''}
+            </div>
+        </div>`).join('');
+    return `
+        <div class="guide">
+            <div class="guide-title">👉 次にやること（上から順に押すだけ）</div>
+            ${rows}
+        </div>`;
+}
 
 // ライトテーマ用の濃色（badge文字色。背景は色+'20'の淡色で自動生成される）
 const STATUS_LABELS = {
@@ -338,7 +405,9 @@ window.openBookingDetail = async function(id) {
         { const pd = new Date(b.pickup_datetime), rd = new Date(b.return_datetime);
           if (!isNaN(pd) && !isNaN(rd)) { const n = Math.round((rd - pd) / 86400000); if (n > 0) nightsStr = `・${n}泊`; } }
         const IDP_LABELS = { idp_1949: '国際免許(1949)', jdltc_translation: '翻訳文(持参)', jdltc_order: '🎫 JDLTC注文希望', unsure: '未定（要案内）' };
+        const guideHtml = buildGuide(b, meta);
         const body = `
+            ${guideHtml}
             <div class="dsec">
                 <div class="dsec-title">👤 お客様</div>
                 <div class="dgrid">

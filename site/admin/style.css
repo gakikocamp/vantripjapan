@@ -839,6 +839,52 @@ button { font-family: inherit; }
     to { transform: none; opacity: 1; }
 }
 
+/* ============ 「次にやること」ガイド(誰でも迷わない番号手順) ============ */
+.guide {
+    background: var(--tint-soft);
+    border-radius: var(--r-card);
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+.guide-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--tint-dark);
+    margin-bottom: 12px;
+    letter-spacing: -0.005em;
+}
+
+.gstep {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 9px 0;
+}
+
+.gstep + .gstep { border-top: 1px dashed rgba(168, 90, 56, 0.25); }
+
+.gnum {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--tint);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.gmain { flex: 1; display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.glabel { font-size: 0.94rem; font-weight: 600; line-height: 1.45; padding-top: 5px; }
+.gbtn { width: 100%; text-decoration: none; }
+.gnote { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
+
+.todo-go { display: flex; align-items: center; gap: 4px; font-size: 0.78rem; color: var(--tint-dark); font-weight: 600; margin-top: 12px; flex-shrink: 0; white-space: nowrap; }
+
 /* ============ §14 アクセシビリティ ============ */
 @media (prefers-reduced-motion: reduce) {
     .page.active, .modal, .toast, .modal-overlay.active { animation: fadeOnly 200ms ease !important; }
