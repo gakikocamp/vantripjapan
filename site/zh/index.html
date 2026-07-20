@@ -536,6 +536,11 @@
                 </div>
             </div>
 
+            <!-- View all guides button -->
+            <div id="stories-viewall" style="display:none; text-align:center; margin-top: var(--space-xl);">
+                <a href="/category/" class="hero-cta hero-cta--ghost" data-i18n="home.stories.viewall" style="display:inline-block;">查看所有旅遊指南 →</a>
+            </div>
+
             <!-- Category Blocks -->
             <div class="category-blocks" style="margin-top: var(--space-3xl);">
                 <a href="#stories" class="category-block animate-in" style="background: linear-gradient(135deg, rgba(44,62,80,0.75), rgba(74,107,138,0.75)), url('/images/category-tips.jpg') center/cover;">
@@ -802,8 +807,12 @@
 
                 const grid = document.getElementById('articles-grid');
                 if (grid && articles.length > 1) {
-                    grid.innerHTML = articles.slice(1).map(renderCard).join('');
+                    // ホームは最新6本まで（全記事はGuidesへ）。以前は全99本をダンプしていて
+                    // ページ高さがモバイルで65画面分になり、バランスを致命的に崩していた。
+                    grid.innerHTML = articles.slice(1, 7).map(renderCard).join('');
                 }
+                var viewAll = document.getElementById('stories-viewall');
+                if (viewAll) { viewAll.style.display = articles.length > 7 ? '' : 'none'; }
 
                 if (window._vtjObserver) {
                     var isBot = window._vtjIsBot || false;

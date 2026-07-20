@@ -589,6 +589,7 @@ const translations = {
         // ── Homepage sections (stories, guides, GEO facts) ──
         "home.stories.tag": "Latest",
         "home.stories.title": "What's New",
+        "home.stories.viewall": "Read all travel guides →",
         "home.cat1.title": "Van Travel Guide",
         "home.cat1.desc": "Tips, routes, and how to rent — the essentials for van travel.",
         "home.cat2.title": "Explore Destinations",
@@ -1339,6 +1340,7 @@ const translations = {
         // ── Homepage sections (stories, guides, GEO facts) ──
         "home.stories.tag": "Nouveautés",
         "home.stories.title": "Quoi de neuf",
+        "home.stories.viewall": "Voir tous les guides de voyage →",
         "home.cat1.title": "Guide du voyage en van",
         "home.cat1.desc": "Conseils, itinéraires et location — l'essentiel du voyage en van.",
         "home.cat2.title": "Explorer les destinations",
@@ -2091,6 +2093,7 @@ const translations = {
         // ── Homepage sections (stories, guides, GEO facts) ──
         "home.stories.tag": "Aktuell",
         "home.stories.title": "Neuigkeiten",
+        "home.stories.viewall": "Alle Reiseführer ansehen →",
         "home.cat1.title": "Van-Reiseguide",
         "home.cat1.desc": "Tipps, Routen und Mietinfos — die Grundlagen fürs Reisen im Van.",
         "home.cat2.title": "Ziele entdecken",
@@ -2839,6 +2842,7 @@ const translations = {
         // ── Homepage sections (stories, guides, GEO facts) ──
         "home.stories.tag": "最新",
         "home.stories.title": "最新消息",
+        "home.stories.viewall": "查看所有旅遊指南 →",
         "home.cat1.title": "露營車旅行指南",
         "home.cat1.desc": "租車方式、路線與實用技巧 — 露營車旅行的基礎知識。",
         "home.cat2.title": "探索目的地",
@@ -3579,6 +3583,7 @@ const translations = {
         // ── Homepage sections (stories, guides, GEO facts) ──
         "home.stories.tag": "חדש",
         "home.stories.title": "מה חדש",
+        "home.stories.viewall": "לכל מדריכי הטיול →",
         "home.cat1.title": "מדריך טיולי ואן",
         "home.cat1.desc": "טיפים, מסלולים ואיך שוכרים — כל הבסיס לטיול בוואן.",
         "home.cat2.title": "גלו יעדים",
