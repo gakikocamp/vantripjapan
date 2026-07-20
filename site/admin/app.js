@@ -203,15 +203,16 @@ async function loadDashboard() {
 // Bookings Management
 // ============================================================
 
+// ライトテーマ用の濃色（badge文字色。背景は色+'20'の淡色で自動生成される）
 const STATUS_LABELS = {
-    form_submitted: { label: '📩 新規', color: '#4f8cff' },
-    docs_requested: { label: '📋 書類待ち', color: '#fb923c' },
-    docs_received:  { label: '✅ 書類受領', color: '#34d399' },
-    payment_sent:   { label: '💳 決済待ち', color: '#fbbf24' },
-    confirmed:      { label: '🎉 確定', color: '#a78bfa' },
-    active:         { label: '🚐 利用中', color: '#38bdf8' },
-    completed:      { label: '✨ 完了', color: '#6ee7b7' },
-    cancelled:      { label: '❌ キャンセル', color: '#f87171' },
+    form_submitted: { label: '📩 新規', color: '#3E7BB6' },
+    docs_requested: { label: '📋 書類待ち', color: '#C08A2D' },
+    docs_received:  { label: '✅ 書類受領', color: '#2F7D4F' },
+    payment_sent:   { label: '💳 決済待ち', color: '#A8762D' },
+    confirmed:      { label: '🎉 確定', color: '#8A67AB' },
+    active:         { label: '🚐 利用中', color: '#2E7FA3' },
+    completed:      { label: '✨ 完了', color: '#5A8A6A' },
+    cancelled:      { label: '❌ キャンセル', color: '#C25353' },
 };
 
 const STATUS_FLOW = [
