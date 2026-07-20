@@ -7,7 +7,7 @@
     <meta name="robots" content="noindex, nofollow">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/admin/style.css?v=20260720f">
+    <link rel="stylesheet" href="/admin/style.css?v=20260720g">
 </head>
 <body>
     <!-- Sidebar -->
@@ -19,13 +19,9 @@
             </div>
         </div>
         <ul class="nav-menu">
-            <li class="nav-item active" data-page="dashboard">
-                <i class="fas fa-list-check"></i>
-                <span>今日やること</span>
-            </li>
-            <li class="nav-item" data-page="bookings">
+            <li class="nav-item active" data-page="bookings">
                 <i class="fas fa-calendar-check"></i>
-                <span>予約管理</span>
+                <span>予約</span>
             </li>
             <li class="nav-item" data-page="crm">
                 <i class="fas fa-paper-plane"></i>
@@ -45,7 +41,7 @@
         <header class="topbar">
             <div class="topbar-left">
                 <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
-                <h1 id="pageTitle">今日やること</h1>
+                <h1 id="pageTitle">予約</h1>
             </div>
             <div class="date-display">
                 <i class="fas fa-calendar"></i>
@@ -54,65 +50,34 @@
         </header>
 
         <!-- Dashboard Page -->
-        <section class="page active" id="page-dashboard">
+        
+
+        <!-- Bookings Page -->
+        <section class="page active" id="page-bookings">
             <button class="btn btn-primary btn-big" onclick="openCreateBookingModal()">
                 <i class="fas fa-plus"></i> 新規予約登録（WhatsAppで合意したらここ）
             </button>
 
-            <div class="card" style="margin-top:16px;">
-                <div class="card-header">
-                    <h3><i class="fas fa-list-check"></i> 今日やること</h3>
-                    <span class="card-note">タップすると予約が開きます</span>
-                </div>
-                <div class="card-body" id="todoList">
-                    <p class="empty-state">読み込み中...</p>
-                </div>
-            </div>
-
-            <div class="card" style="margin-top:16px;">
-                <div class="card-header">
-                    <h3><i class="fas fa-calendar-days"></i> 直近7日の出発・返却</h3>
-                </div>
-                <div class="card-body" id="weekTimeline">
-                    <p class="empty-state">読み込み中...</p>
-                </div>
-            </div>
-
-            <div class="card" style="margin-top:16px;">
-                <div class="card-header">
-                    <h3><i class="fas fa-arrow-right-arrow-left"></i> 予約の流れ</h3>
-                    <span class="card-note">タップでその一覧へ</span>
-                </div>
-                <div class="card-body">
-                    <div class="flow-chips" id="flowChips"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Bookings Page -->
-        <section class="page" id="page-bookings">
-            <div class="page-actions">
-                <button class="btn btn-primary" onclick="openCreateBookingModal()">
-                    <i class="fas fa-plus"></i> 新規予約登録
+            <div class="stat-tiles">
+                <button class="stat-tile" data-filter="attention" id="tileAttBtn">
+                    <span class="tile-num" id="tileAtt">0</span>
+                    <span class="tile-label">⚠️ やること</span>
                 </button>
-                <a href="/book/" target="_blank" class="btn btn-secondary" style="display:inline-flex; align-items:center; gap:6px;">
-                    <i class="fas fa-external-link-alt"></i> 予約フォーム
-                </a>
+                <button class="stat-tile" data-filter="upcoming">
+                    <span class="tile-num" id="tileUp">0</span>
+                    <span class="tile-label">🚐 出発待ち</span>
+                </button>
+                <button class="stat-tile active" data-filter="all">
+                    <span class="tile-num" id="tileAll">0</span>
+                    <span class="tile-label">📚 すべて</span>
+                </button>
             </div>
 
-            <div class="status-tabs" id="statusTabs">
-                <button class="status-tab active" data-status="all">全て</button>
-                <button class="status-tab" data-status="form_submitted">📩 新規</button>
-                <button class="status-tab" data-status="docs_requested">📋 書類待ち</button>
-                <button class="status-tab" data-status="docs_received">✅ 書類受領</button>
-                <button class="status-tab" data-status="payment_sent">💳 決済待ち</button>
-                <button class="status-tab" data-status="confirmed">🎉 確定</button>
-                <button class="status-tab" data-status="active">🚐 利用中</button>
-                <button class="status-tab" data-status="completed">✨ 完了</button>
-            </div>
-
-            <div class="booking-cards" id="bookingsBody"></div>
+            <div class="inbox" id="bookingsBody"></div>
             <p class="empty-state" id="bookingsEmpty" style="display:none;">予約がありません</p>
+            <div style="text-align:center; margin-top:18px;">
+                <a href="/book/" target="_blank" class="formlink"><i class="fas fa-external-link-alt"></i> お客様用の予約フォームを開く</a>
+            </div>
         </section>
 
         <!-- CRM & Drip Campaign Page -->
@@ -340,10 +305,7 @@
 
     <!-- ボトムタブバー(モバイル・iOS流) -->
     <nav class="tabbar" id="tabbar">
-        <button class="tab-item active" data-page="dashboard">
-            <i class="fas fa-list-check"></i><span>今日</span>
-        </button>
-        <button class="tab-item" data-page="bookings">
+        <button class="tab-item active" data-page="bookings">
             <i class="fas fa-calendar-check"></i><span>予約</span>
         </button>
         <button class="tab-item" data-page="crm">
@@ -354,6 +316,6 @@
     <!-- Toast -->
     <div id="toastContainer" style="position:fixed;bottom:calc(76px + env(safe-area-inset-bottom));right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;"></div>
 
-    <script src="/admin/app.js?v=20260720f"></script>
+    <script src="/admin/app.js?v=20260720g"></script>
 </body>
 </html>

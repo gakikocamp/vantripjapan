@@ -885,6 +885,126 @@ button { font-family: inherit; }
 
 .todo-go { display: flex; align-items: center; gap: 4px; font-size: 0.78rem; color: var(--tint-dark); font-weight: 600; margin-top: 12px; flex-shrink: 0; white-space: nowrap; }
 
+/* ============ 受信箱型UI(JDLTC流: タイル=絞り込み、縦一列の行) ============ */
+.stat-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 16px 0;
+}
+
+.stat-tile {
+    background: var(--bg-card);
+    border: 2px solid transparent;
+    border-radius: var(--r-card);
+    box-shadow: var(--shadow-card);
+    padding: 14px 10px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    transition: border-color 120ms ease-out, transform 100ms ease-out;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.stat-tile:active { transform: scale(0.96); }
+.stat-tile.active { border-color: var(--tint); }
+
+.tile-num {
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-tile.has-work .tile-num { color: var(--tint-dark); }
+.tile-label { font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); white-space: nowrap; }
+
+.inbox { display: flex; flex-direction: column; gap: 8px; }
+
+.inbox-head {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--text-secondary);
+    margin: 14px 4px 2px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.inbox-head:first-child { margin-top: 4px; }
+
+.inbox-count {
+    background: var(--fill-tertiary);
+    color: var(--text-secondary);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    padding: 1px 9px;
+    font-weight: 700;
+}
+
+.lrow {
+    background: var(--bg-card);
+    border-radius: var(--r-card);
+    box-shadow: var(--shadow-card);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform 100ms ease-out, box-shadow 140ms ease-out;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 0;
+}
+
+.lrow:hover { box-shadow: 0 2px 4px rgba(60,48,36,0.06), 0 8px 20px rgba(60,48,36,0.1); }
+.lrow:active { transform: scale(0.985); }
+
+.lrow.urgent { border-left: 4px solid var(--tint); }
+
+.lrow-l { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+
+.lrow-name {
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: -0.005em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lrow-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.lrow-act {
+    flex-shrink: 0;
+    font-size: 0.84rem;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 8px 14px;
+    white-space: nowrap;
+}
+
+.lrow-act.do { background: var(--tint); color: #fff; }
+.lrow-act.wait { background: none; color: var(--text-tertiary); font-weight: 600; padding: 8px 4px; }
+
+.formlink { color: var(--text-tertiary); font-size: 0.82rem; text-decoration: none; }
+.formlink:hover { color: var(--tint-dark); }
+
+@media (max-width: 640px) {
+    .lrow { flex-wrap: wrap; }
+    .lrow-act.do { width: 100%; text-align: center; padding: 11px; }
+    .tile-label { font-size: 0.72rem; }
+}
+
 /* ============ §14 アクセシビリティ ============ */
 @media (prefers-reduced-motion: reduce) {
     .page.active, .modal, .toast, .modal-overlay.active { animation: fadeOnly 200ms ease !important; }

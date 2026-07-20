@@ -110,92 +110,17 @@ function switchPage(pageName) {
     $(`#page-${pageName}`)?.classList.add('active');
 
     const titles = {
-        dashboard: '今日やること',
-        bookings: '予約管理',
+        bookings: '予約',
         crm: 'メルマガ・CRM',
     };
     $('#pageTitle').textContent = titles[pageName] || pageName;
 
-    if (pageName === 'dashboard') loadDashboard();
     if (pageName === 'bookings') loadBookings();
     if (pageName === 'crm') loadCRM();
 
     $('#sidebar').classList.remove('open');
 }
 
-// --- Dashboard: 今日やること ---
-async function loadDashboard() {
-    try {
-        const bookings = await api('/api/booking');
-        const today = new Date(); today.setHours(0, 0, 0, 0);
-        const day = (d) => { const x = new Date(d); return isNaN(x) ? null : (x.setHours(0, 0, 0, 0), x); };
-        const diffDays = (d) => { const x = day(d); return x === null ? null : Math.round((x - today) / 86400000); };
-        const mmdd = (d) => { const x = new Date(d); return isNaN(x) ? '-' : `${x.getMonth() + 1}/${x.getDate()}`; };
-        const VEH = { 'MAZDA BONGO': 'BONGO', 'TOYOTA PROBOX': 'PROBOX', 'DAIHATSU POCKET LOFT': 'LOFT' };
-        const veh = (b) => VEH[b.vehicle_type] || b.vehicle_type || '';
-        const live = bookings.filter(b => b.status !== 'cancelled' && b.status !== 'completed');
-
-        // ── 今日やること（優先度順） ──
-        const todos = [];
-        for (const b of live) {
-            const pd = diffDays(b.pickup_datetime), rd = diffDays(b.return_datetime);
-            if (b.status === 'payment_sent') todos.push({ pri: 1, icon: '💰', text: `<strong>入金を確認</strong>して「確定」に進める`, who: b, hint: 'Stripeで入金を確認→確定にすると確定メールが自動送信' });
-            else if (b.status === 'docs_received') todos.push({ pri: 2, icon: '💳', text: `<strong>Stripe決済リンクを送る</strong>`, who: b, hint: '書類はそろっています。送ったら「決済待ち」に進める' });
-            else if (b.status === 'form_submitted') todos.push({ pri: 3, icon: '📩', text: `<strong>新規リクエストに返信する</strong>`, who: b, hint: '空きを確認してWhatsApp/メールで返事' });
-            if ((b.status === 'confirmed') && pd === 1) todos.push({ pri: 0, icon: '🔑', text: `<strong>明日出発！鍵の開け方をWhatsAppで送る</strong>`, who: b, hint: '写真つきでいつもの案内を' });
-            if ((b.status === 'confirmed') && pd === 0) todos.push({ pri: 0, icon: '🚐', text: `<strong>今日出発！</strong>受け渡し準備`, who: b, hint: '' });
-            if ((b.status === 'active' || b.status === 'confirmed') && rd === 0) todos.push({ pri: 0, icon: '🧹', text: `<strong>今日返却</strong>→清掃・忘れ物チェック`, who: b, hint: '' });
-        }
-        todos.sort((a, z) => a.pri - z.pri);
-        $('#todoList').innerHTML = todos.length === 0
-            ? '<p class="todo-done">✅ 今日やることはありません。おつかれさまです！</p>'
-            : todos.map(t => `
-                <div class="todo-item" onclick="openBookingDetail(${t.who.id})">
-                    <span class="todo-icon">${t.icon}</span>
-                    <span class="todo-main">
-                        <span class="todo-text">${t.text}</span>
-                        <span class="todo-who">${t.who.full_name} · ${veh(t.who)} · ${mmdd(t.who.pickup_datetime)}〜${mmdd(t.who.return_datetime)}${t.hint ? `<br><em>${t.hint}</em>` : ''}</span>
-                    </span>
-                    <span class="todo-go">手順を見る <i class="fas fa-chevron-right"></i></span>
-                </div>`).join('');
-
-        // ── 直近7日の出発・返却 ──
-        const events = [];
-        for (const b of live) {
-            const pd = diffDays(b.pickup_datetime), rd = diffDays(b.return_datetime);
-            if (pd !== null && pd >= 0 && pd <= 6) events.push({ d: pd, icon: '🛫', label: '出発', b, dt: b.pickup_datetime });
-            if (rd !== null && rd >= 0 && rd <= 6) events.push({ d: rd, icon: '🛬', label: '返却', b, dt: b.return_datetime });
-        }
-        events.sort((a, z) => a.d - z.d);
-        const DAYNAMES = ['日', '月', '火', '水', '木', '金', '土'];
-        $('#weekTimeline').innerHTML = events.length === 0
-            ? '<p class="empty-state">今後7日間の出発・返却はありません</p>'
-            : events.map(e => {
-                const x = new Date(e.dt);
-                const dlabel = e.d === 0 ? '今日' : (e.d === 1 ? '明日' : `${x.getMonth() + 1}/${x.getDate()}(${DAYNAMES[x.getDay()]})`);
-                const time = String(e.dt).includes('T') ? String(e.dt).split('T')[1].slice(0, 5) : '';
-                return `
-                <div class="tl-row ${e.d === 0 ? 'tl-today' : ''}" onclick="openBookingDetail(${e.b.id})">
-                    <span class="tl-day">${dlabel}</span>
-                    <span class="tl-what">${e.icon} ${e.label} ${time}</span>
-                    <span class="tl-who">${e.b.full_name} <span class="tl-veh">${veh(e.b)}</span></span>
-                </div>`;
-            }).join('');
-
-        // ── 予約の流れ（チップ） ──
-        const FLOW_INFO = [
-            ['form_submitted', '📩 新規'], ['docs_requested', '📋 書類待ち'], ['docs_received', '✅ 書類受領'],
-            ['payment_sent', '💳 決済待ち'], ['confirmed', '🎉 確定'], ['active', '🚐 利用中'],
-        ];
-        const counts = {};
-        for (const b of bookings) counts[b.status] = (counts[b.status] || 0) + 1;
-        $('#flowChips').innerHTML = FLOW_INFO.map(([k, label]) => `
-            <button class="flow-chip ${counts[k] ? 'has' : ''}" onclick="gotoBookings('${k}')">${label} <strong>${counts[k] || 0}</strong></button>
-        `).join('<span class="flow-arrow">→</span>') + `<button class="flow-chip all" onclick="gotoBookings('all')">全て ${bookings.length}件</button>`;
-    } catch (e) {
-        console.error('Dashboard load error:', e);
-    }
-}
 
 // ============================================================
 // Bookings Management
@@ -295,78 +220,101 @@ const DOC_LABELS = {
 
 let currentBookingFilter = 'all';
 
-window.gotoBookings = function(status) {
-    currentBookingFilter = status || 'all';
-    switchPage('bookings');
-    $$('#statusTabs .status-tab').forEach(t => t.classList.toggle('active', t.dataset.status === currentBookingFilter));
-};
+window.gotoBookings = function() { switchPage('bookings'); };
 
 function initBookings() {
-    const tabs = $$('#statusTabs .status-tab');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            currentBookingFilter = tab.dataset.status;
-            loadBookings();
+    $$('.stat-tile').forEach(tile => {
+        tile.addEventListener('click', () => {
+            $$('.stat-tile').forEach(t => t.classList.remove('active'));
+            tile.classList.add('active');
+            currentBookingFilter = tile.dataset.filter;
+            renderBookings(_allBookings);
         });
     });
 }
 
+let _allBookings = [];
 async function loadBookings() {
     try {
-        const status = currentBookingFilter === 'all' ? null : currentBookingFilter;
-        const url = status ? `/api/booking?status=${status}` : '/api/booking';
-        const bookings = await api(url);
-        renderBookings(bookings);
+        _allBookings = await api('/api/booking');
+        renderBookings(_allBookings);
     } catch (e) {
         console.error('Bookings load error:', e);
     }
 }
 
-function renderBookings(list) {
-    const tbody = $('#bookingsBody');
-    const empty = $('#bookingsEmpty');
+// その予約の「次のアクション」(受信箱の右側に出す一言)
+function nextActionOf(b) {
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const dd = (d) => { const x = new Date(d); if (isNaN(x)) return null; x.setHours(0,0,0,0); return Math.round((x - today) / 86400000); };
+    const pd = dd(b.pickup_datetime), rd = dd(b.return_datetime);
+    if (b.status === 'payment_sent') return { t: '💰 入金を確認する', urgent: true };
+    if (b.status === 'docs_received') return { t: '💳 決済リンクを送る', urgent: true };
+    if (b.status === 'form_submitted') return { t: '📩 返事をする', urgent: true };
+    if (b.status === 'confirmed' && pd === 1) return { t: '🔑 鍵の案内を送る', urgent: true };
+    if (b.status === 'confirmed' && pd === 0) return { t: '🚐 今日出発！', urgent: true };
+    if ((b.status === 'active') && rd !== null && rd <= 0) return { t: '🧹 返却対応をする', urgent: true };
+    if (b.status === 'docs_requested') return { t: '📋 お客様の記入待ち', urgent: false };
+    if (b.status === 'confirmed') return { t: '🎉 出発待ち', urgent: false };
+    if (b.status === 'active') return { t: '🚐 旅行中', urgent: false };
+    if (b.status === 'completed') return { t: '✨ 終了', urgent: false, done: true };
+    if (b.status === 'cancelled') return { t: '❌ キャンセル', urgent: false, done: true };
+    return { t: b.status, urgent: false };
+}
 
-    if (list.length === 0) {
-        tbody.innerHTML = '';
-        empty.style.display = 'block';
+function renderBookings(list) {
+    const box = $('#bookingsBody');
+    const empty = $('#bookingsEmpty');
+    const VEH = { 'MAZDA BONGO': 'BONGO', 'TOYOTA PROBOX': 'PROBOX', 'DAIHATSU POCKET LOFT': 'LOFT' };
+    const DAY = ['日','月','火','水','木','金','土'];
+    const fdate = (d) => { const x = new Date(d); return isNaN(x) ? '-' : `${x.getMonth()+1}/${x.getDate()}(${DAY[x.getDay()]})`; };
+
+    const items = list.map(b => ({ b, act: nextActionOf(b), meta: parseBookingMeta(b.notes) }));
+    const urgent = items.filter(i => i.act.urgent);
+    const upcoming = items.filter(i => !i.act.urgent && !i.act.done)
+        .sort((a, z) => new Date(a.b.pickup_datetime) - new Date(z.b.pickup_datetime));
+    const done = items.filter(i => i.act.done);
+
+    // タイルの数字
+    $('#tileAtt').textContent = urgent.length;
+    $('#tileUp').textContent = upcoming.length;
+    $('#tileAll').textContent = items.length;
+    $('#tileAttBtn').classList.toggle('has-work', urgent.length > 0);
+
+    let groups;
+    if (currentBookingFilter === 'attention') groups = [['⚠️ やること', urgent]];
+    else if (currentBookingFilter === 'upcoming') groups = [['🚐 出発待ち（日付順）', upcoming]];
+    else groups = [['⚠️ やること', urgent], ['🚐 出発待ち（日付順）', upcoming], ['✔️ 終了・キャンセル', done]];
+
+    const row = (i) => {
+        const b = i.b, act = i.act;
+        let nights = '';
+        const pdt = new Date(b.pickup_datetime), rdt = new Date(b.return_datetime);
+        if (!isNaN(pdt) && !isNaN(rdt)) { const n = Math.round((rdt - pdt) / 86400000); if (n > 0) nights = `・${n}泊`; }
+        const flag = i.meta.country ? countryFlag(i.meta.country).split(' ')[0] : '';
+        return `
+        <div class="lrow ${act.urgent ? 'urgent' : ''}" onclick="openBookingDetail(${b.id})">
+            <div class="lrow-l">
+                <span class="lrow-name">${flag} ${b.full_name}</span>
+                <span class="lrow-meta">${VEH[b.vehicle_type] || b.vehicle_type || ''} · ${fdate(b.pickup_datetime)} → ${fdate(b.return_datetime)}${nights}</span>
+            </div>
+            <span class="lrow-act ${act.urgent ? 'do' : 'wait'}">${act.t}${act.urgent ? ' <i class="fas fa-chevron-right"></i>' : ''}</span>
+        </div>`;
+    };
+
+    const html = groups.filter(([, arr]) => arr.length > 0).map(([title, arr]) => `
+        <div class="inbox-head">${title} <span class="inbox-count">${arr.length}</span></div>
+        ${arr.map(row).join('')}
+    `).join('');
+
+    if (!html) {
+        box.innerHTML = currentBookingFilter === 'attention'
+            ? '<p class="todo-done">✅ やることはぜんぶ終わっています。おつかれさまです！</p>' : '';
+        empty.style.display = currentBookingFilter === 'all' ? 'block' : 'none';
         return;
     }
-
     empty.style.display = 'none';
-    const VEH_SHORT = { 'MAZDA BONGO': ['BONGO', 'veh-bongo'], 'TOYOTA PROBOX': ['PROBOX', 'veh-probox'], 'DAIHATSU POCKET LOFT': ['LOFT', 'veh-loft'] };
-    tbody.innerHTML = list.map(b => {
-        const st = STATUS_LABELS[b.status] || { label: b.status, color: '#888' };
-        const meta = parseBookingMeta(b.notes);
-        const origin = [langLabel(meta.lang), countryFlag(meta.country)].filter(Boolean).join(' · ');
-        const [vehName, vehClass] = VEH_SHORT[b.vehicle_type] || [b.vehicle_type || '-', 'veh-other'];
-        let nights = '';
-        const pd = new Date(b.pickup_datetime), rd = new Date(b.return_datetime);
-        if (!isNaN(pd) && !isNaN(rd)) {
-            const n = Math.round((rd - pd) / 86400000);
-            if (n > 0) nights = `・${n}泊`;
-        }
-        return `
-        <div class="bcard" onclick="openBookingDetail(${b.id})">
-            <div class="bcard-top">
-                <div class="bcard-who">
-                    <span class="bcard-name">${b.full_name}</span>
-                    <span class="bcard-sub">${origin || (b.email || '')}</span>
-                </div>
-                <span class="status-badge" style="background:${st.color}20;color:${st.color};border:1px solid ${st.color}40">${st.label}</span>
-            </div>
-            <div class="bcard-mid">
-                <span class="veh-chip ${vehClass}">${vehName}</span>
-                <span class="bcard-dates">${formatDate(b.pickup_datetime)} → ${formatDate(b.return_datetime)}<span class="bcard-nights">${nights}</span></span>
-            </div>
-            <div class="bcard-bot">
-                <span class="bcard-price">${bookingPriceHtml(b)}</span>
-                <span class="bcard-tags">${b.translation_needed ? '<span class="mini-tag">📝 翻訳</span>' : ''}</span>
-                <span class="bcard-cta">詳細 <i class="fas fa-chevron-right"></i></span>
-            </div>
-        </div>`;
-    }).join('');
+    box.innerHTML = html;
 }
 
 window.openBookingDetail = async function(id) {
@@ -513,7 +461,6 @@ window.deleteBooking = async function(id) {
         showToast(`予約 #${id} を削除しました`);
         closeModal('bookingModal');
         loadBookings();
-        loadDashboard();
     } catch (e) { /* shown by api() */ }
 };
 
@@ -539,7 +486,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNav();
     initBookings();
     initCRM();
-    loadDashboard();
+    loadBookings();
 });
 
 // --- Manual Booking (WhatsApp / Offline) ---
@@ -584,7 +531,7 @@ window.submitManualBooking = async function(event) {
             showToast('登録完了。お客様へ控えメール(手続きリンク付き)を送信しました');
             $('#createBookingModal').classList.remove('active');
             loadBookings();
-            loadDashboard();
+        loadBookings();
             // 手続きリンクをすぐコピーできるよう、作成した予約の詳細を開く
             if (res.booking_id) openBookingDetail(res.booking_id);
         }
