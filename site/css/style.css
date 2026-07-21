@@ -1210,6 +1210,59 @@ body {
   50% { box-shadow: 0 4px 28px rgba(37, 211, 102, 0.6); }
 }
 
+/* Back-to-top — sits on the same vertical axis as .floating-whatsapp,
+   centered above it with a consistent gap. Rises into view (Apple: hint
+   in the direction of the gesture) rather than a plain fade. */
+.back-to-top-btn {
+  position: fixed;
+  right: 32px;            /* center (right32+20=52) aligns with WhatsApp center (right24+28=52) */
+  bottom: 92px;           /* WhatsApp top is at 80px → 12px gap */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-text);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+  z-index: 998;           /* just under the WhatsApp button (999) */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+.back-to-top-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Fleet cards — lift on hover so they feel touchable (Apple: response + craft).
+   Disabled on touch devices where there is no hover state. */
+#fleet a[href^="/rent/"] {
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  will-change: transform;
+}
+#fleet a[href^="/rent/"]:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+}
+@media (hover: none) {
+  #fleet a[href^="/rent/"]:hover { transform: none; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #fleet a[href^="/rent/"] { transition: box-shadow 0.2s ease; }
+  #fleet a[href^="/rent/"]:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top-btn { transition: opacity 0.2s ease; transform: none; }
+  .back-to-top-btn.visible { transform: none; }
+}
+
 /* Reading progress bar for articles */
 .reading-progress {
   position: fixed;
@@ -1477,6 +1530,13 @@ body {
     width: 50px;
     height: 50px;
     font-size: 24px;
+  }
+  /* Back-to-top stays centered above the (smaller) mobile WhatsApp button:
+     WhatsApp center = right16+25 = 41 → back-to-top right = 41-20 = 21;
+     WhatsApp top = 16+50 = 66 → 10px gap → bottom 76 */
+  .back-to-top-btn {
+    right: 21px;
+    bottom: 76px;
   }
 }
 

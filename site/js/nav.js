@@ -42,24 +42,20 @@
     });
   }
 
-  // Back to Top button — positioned above WhatsApp button
+  // Back to Top button — stacked directly above the WhatsApp button on the
+  // same vertical axis (appearance + responsive position live in style.css
+  // .back-to-top-btn so it stays aligned with .floating-whatsapp at every breakpoint)
   let backBtn = document.getElementById('backToTop');
   if (!backBtn) {
     backBtn = document.createElement('button');
     backBtn.id = 'backToTop';
+    backBtn.className = 'back-to-top-btn';
     backBtn.innerHTML = '&uarr;';
     backBtn.setAttribute('aria-label', 'Back to top');
-    backBtn.style.cssText =
-      'position:fixed;bottom:90px;right:24px;width:40px;height:40px;' +
-      'border-radius:50%;border:none;background:var(--color-text);' +
-      'color:white;font-size:16px;cursor:pointer;opacity:0;' +
-      'transition:all 0.3s;z-index:90;pointer-events:none;' +
-      'box-shadow:0 4px 16px rgba(0,0,0,0.15);';
     document.body.appendChild(backBtn);
   }
   window.addEventListener('scroll', () => {
-    backBtn.style.opacity = window.scrollY > 600 ? '1' : '0';
-    backBtn.style.pointerEvents = window.scrollY > 600 ? 'auto' : 'none';
+    backBtn.classList.toggle('visible', window.scrollY > 600);
   });
   backBtn.addEventListener('click', () =>
     window.scrollTo({ top: 0, behavior: 'smooth' })
