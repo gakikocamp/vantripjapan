@@ -83,6 +83,14 @@ for pat in "${SECRET_PATTERNS[@]}"; do
 done
 [ "$HIT" = 0 ] && green "なし"
 
+# [F2b] env参照のハードコード・フォールバック秘密（process.env.X || "リテラル"）
+# ※ F2のSECRET_EXCLUDEはprocess.envを含む行を丸ごと除外するため、この形の
+#   ハードコード既定値(例: AUTH_PASSWORD = process.env.AUTH_PASSWORD || "vantrip2026")
+#   をすり抜ける。ここは除外を適用せず、フォールバック・リテラルだけを検査する。
+echo "[F2b] env参照のハードコード・フォールバック秘密"
+FALLBACK=$(printf '%s\n' "$SCAN" | grep -inE '(PASSWORD|PASSWD|SECRET|TOKEN|API[_-]?KEY|APIKEY|PRIVATE[_-]?KEY|CREDENTIAL)[A-Za-z_]*[^=]*=[^;]*\|\|[[:space:]]*["'"'"'][A-Za-z0-9+/_.-]{6,}["'"'"']' | grep -viE -e 'YOUR_|<[A-Z_]+>|xxx|example|placeholder|\|\|[[:space:]]*["'"'"']["'"'"']' | head -5 || true)
+if [ -n "$FALLBACK" ]; then red "ハードコードされたフォールバック秘密を検出（env必須にすること）:"; echo "$FALLBACK" | sed 's/^/       /' | cut -c1-160; HIT=1; else green "なし"; fi
+
 # [F3] 許可リスト外メールアドレス（PII）
 echo "[F3] 許可リスト外メールアドレス"
 EMAILS=$(printf '%s\n' "$SCAN" | grep -ohE '[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}' | sort -u | grep -viE "$ALLOW_EMAILS" || true)

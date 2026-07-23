@@ -43,7 +43,13 @@ const TOPICS_PATH = path.join(SCRIPT_DIR, "topics.json");
 const ARTICLES_DIR = path.join(SCRIPT_DIR, "articles");
 const TEMPLATES_DIR = path.join(SCRIPT_DIR, "templates");
 const PORT = process.env.PORT || 5500;
-const AUTH_PASSWORD = process.env.AUTH_PASSWORD || "vantrip2026";
+// パスワードは環境変数必須（公開リポジトリにハードコードしない）。
+// 例: AUTH_PASSWORD='…' node server.js
+const AUTH_PASSWORD = process.env.AUTH_PASSWORD;
+if (!AUTH_PASSWORD) {
+  console.error("✗ 環境変数 AUTH_PASSWORD が未設定です。例: AUTH_PASSWORD='任意の強いパスワード' node server.js");
+  process.exit(1);
+}
 const AUTH_SECRET = crypto.randomBytes(32).toString("hex");
 
 // microCMS settings
