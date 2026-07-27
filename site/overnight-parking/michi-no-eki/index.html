@@ -125,7 +125,7 @@
     <style>
         :root {
             --st-red: #c93028; --st-red-text: #8e1f17; --st-red-tint: #fbedec;
-            --st-amber: #d9a400; --st-amber-text: #6b5400; --st-amber-tint: #fdf6e2;
+            --st-teal: #12808a; --st-teal-text: #0e5a61; --st-teal-tint: #e7f4f5;
             --st-green: #2c9a44; --st-green-text: #1e5c28; --st-green-tint: #eaf6ec;
         }
         .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 128px 20px 72px; text-align: center; }
@@ -143,16 +143,16 @@
         .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
         .badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap; }
         .badge-prohibited { background: var(--st-red-tint); color: var(--st-red-text); } .badge-prohibited .dot { background: var(--st-red); }
-        .badge-noban { background: var(--st-amber-tint); color: var(--st-amber-text); } .badge-noban .dot { background: var(--st-amber); }
+        .badge-noban { background: var(--st-teal-tint); color: var(--st-teal-text); } .badge-noban .dot { background: var(--st-teal); }
         .badge-rv { background: var(--st-green-tint); color: var(--st-green-text); } .badge-rv .dot { background: var(--st-green); }
         .c-red { color: var(--st-red-text); font-weight: 700; } .c-green { color: var(--st-green-text); font-weight: 700; }
         .status-banner { border-radius: 20px; padding: 26px 32px; margin-bottom: 20px; border: 1px solid rgba(0,0,0,0.05); animation: ovn-rise 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
         .status-banner.prohibited { background: var(--st-red-tint); color: var(--st-red-text); }
-        .status-banner.noban { background: var(--st-amber-tint); color: var(--st-amber-text); }
+        .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
         .status-banner .st-label { display: flex; align-items: center; gap: 12px; font-size: 1.35rem; font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.01em; line-height: 1.2; }
         .status-banner .st-label .dot { width: 12px; height: 12px; }
-        .status-banner.prohibited .dot { background: var(--st-red); } .status-banner.noban .dot { background: var(--st-amber); } .status-banner.rv .dot { background: var(--st-green); }
+        .status-banner.prohibited .dot { background: var(--st-red); } .status-banner.noban .dot { background: var(--st-teal); } .status-banner.rv .dot { background: var(--st-green); }
         .status-banner .st-verified { margin-top: 8px; font-size: 0.85rem; opacity: 0.8; font-variant-numeric: tabular-nums; }
         @keyframes ovn-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
         .station-list { display: block; }
@@ -291,9 +291,9 @@
 
         <div class="ovn-card">
             <h2>How to read the statuses</h2>
-            <p style="margin-bottom:8px;">Currently tracking <strong>60 stations</strong> in Kyushu: <span class="c-red">3 free lots with explicit overnight bans</span> and 57 with no explicit ban found — plus <span class="c-green">12 official RV parks</span> where paid overnight stay is always welcome.</p>
+            <p style="margin-bottom:8px;">Currently tracking <strong>60 stations</strong> in Kyushu: <span class="c-red">3 free lots with explicit overnight bans</span> and 57 where a quiet rest is tolerated (no explicit ban found) — plus <span class="c-green">12 official RV parks</span> where paid overnight stay is always welcome.</p>
             <div class="legend-item"><span class="badge badge-prohibited"><span class="dot"></span>Explicit ban</span><p>The station has posted or published an explicit no-overnight rule. Please respect it — use a nearby campground or RV park instead.</p></div>
-            <div class="legend-item"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><p>We could not find any explicit prohibition as of the verification date. The national rule applies: a quiet rest in your vehicle, no camping behavior. This is not a guarantee — always check signs on site.</p></div>
+            <div class="legend-item"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><p>No explicit prohibition found as of the verification date — under Japan's national rule, a quiet one-night rest in your vehicle is generally tolerated here. Not a guarantee: no camping behavior, and always check signs on site.</p></div>
             <div class="legend-item"><span class="badge badge-rv"><span class="dot"></span>RV park</span><p>The station has an official paid RV park (Japan RV Association or equivalent) — the one case where overnight stay is explicitly welcome.</p></div>
         </div>
         <div class="ovn-card">
@@ -312,42 +312,42 @@
 <a class="station-row" href="/overnight-parking/michi-no-eki/fukuoka/oki/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Oki</span>
                 <span class="st-city">道の駅おおき · Oki Town</span></span>
-                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/fukuoka/buzen-okoshikake/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Buzen Okoshikake</span>
                 <span class="st-city">道の駅豊前おこしかけ · Buzen</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/fukuoka/harazuru/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Harazuru</span>
                 <span class="st-city">道の駅原鶴 · Asakura</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/fukuoka/itoda/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Itoda</span>
                 <span class="st-city">道の駅いとだ · Itoda Town</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/fukuoka/kurume/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kurume</span>
                 <span class="st-city">道の駅くるめ · Kurume</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/fukuoka/oto-sakura-kaido/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Oto Sakura Kaido</span>
                 <span class="st-city">道の駅おおとう桜街道 · Oto Town</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/fukuoka/tachibana/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tachibana</span>
                 <span class="st-city">道の駅たちばな · Yame</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/fukuoka/ukiha/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ukiha</span>
                 <span class="st-city">道の駅うきは · Ukiha</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
             </div>
         </div>
@@ -357,32 +357,32 @@
 <a class="station-row" href="/overnight-parking/michi-no-eki/saga/imari/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Imari</span>
                 <span class="st-city">道の駅伊万里 · Imari</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/saga/kashima/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kashima</span>
                 <span class="st-city">道の駅鹿島 · Kashima</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/saga/kyuragi/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kyuragi</span>
                 <span class="st-city">道の駅厳木 · Karatsu</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/saga/tara/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tara</span>
                 <span class="st-city">道の駅太良 · Tara Town</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/saga/ureshino-maruku/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ureshino Maruku</span>
                 <span class="st-city">道の駅うれしの まるく · Ureshino</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/saga/yoshinogari/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yoshinogari</span>
                 <span class="st-city">道の駅吉野ヶ里 · Yoshinogari Town</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
             </div>
         </div>
@@ -392,32 +392,32 @@
 <a class="station-row" href="/overnight-parking/michi-no-eki/nagasaki/sonogi-no-sho/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Sonogi no Sho</span>
                 <span class="st-city">道の駅彼杵の荘 · Higashisonogi Town</span></span>
-                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/nagasaki/ikitsuki-ohashi/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ikitsuki Ohashi</span>
                 <span class="st-city">道の駅生月大橋 · Hirado</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/nagasaki/konchu-no-sato-tabira/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Konchu no Sato Tabira</span>
                 <span class="st-city">道の駅昆虫の里たびら · Hirado</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/nagasaki/saikai/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Saikai</span>
                 <span class="st-city">道の駅さいかい · Saikai</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/nagasaki/sasebo-box99/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Sasebo Box 99</span>
                 <span class="st-city">道の駅させぼっくす９９ · Sasebo</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/nagasaki/yuhigaoka-sotome/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yuhigaoka Sotome</span>
                 <span class="st-city">道の駅夕陽が丘そとめ · Nagasaki</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
             </div>
         </div>
@@ -432,77 +432,77 @@
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/ariake-rippleland/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ariake Ripple Land</span>
                 <span class="st-city">道の駅有明リップルランド · Amakusa</span></span>
-                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/asobo-no-sato-kugino/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Asobo no Sato Kugino</span>
                 <span class="st-city">道の駅あそ望の郷くぎの · Minamiaso Village</span></span>
-                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/kikusui/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kikusui</span>
                 <span class="st-city">道の駅きくすい · Nagomi Town</span></span>
-                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/komoriuta-no-sato-itsuki/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Komoriuta no Sato Itsuki</span>
                 <span class="st-city">道の駅子守唄の里五木 · Itsuki Village</span></span>
-                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/miyajidake-kakashi-no-sato/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Miyajidake Kakashi no Sato</span>
                 <span class="st-city">道の駅宮地岳かかしの里 · Amakusa</span></span>
-                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/mizube-plaza-kamoto/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Mizube Plaza Kamoto</span>
                 <span class="st-city">道の駅水辺プラザかもと · Yamaga</span></span>
-                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/nishiki/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Nishiki</span>
                 <span class="st-city">道の駅錦 · Nishiki Town</span></span>
-                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/toyo/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Toyo</span>
                 <span class="st-city">道の駅東陽 · Yatsushiro</span></span>
-                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/aso/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Aso</span>
                 <span class="st-city">道の駅阿蘇 · Aso</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/hitoyoshi/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Hitoyoshi</span>
                 <span class="st-city">道の駅人吉 · Hitoyoshi</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/kamiamakusa-sunpearl/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kamiamakusa Sunpearl</span>
                 <span class="st-city">道の駅上天草さんぱーる · Kamiamakusa</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/oguni/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Oguni</span>
                 <span class="st-city">道の駅小国 · Oguni Town</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/ozu/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ozu</span>
                 <span class="st-city">道の駅大津 · Ozu Town</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/shichijo-melon-dome/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Shichijo Melon Dome</span>
                 <span class="st-city">道の駅七城メロンドーム · Kikuchi</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kumamoto/suika-no-sato-ueki/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Suika no Sato Ueki</span>
                 <span class="st-city">道の駅すいかの里 植木 · Kumamoto (Kita Ward)</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
             </div>
         </div>
@@ -512,42 +512,42 @@
 <a class="station-row" href="/overnight-parking/michi-no-eki/oita/dowa-no-sato-kusu/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Dowa no Sato Kusu</span>
                 <span class="st-city">道の駅童話の里くす · Kusu Town</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/oita/harajiri-no-taki/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Harajiri no Taki</span>
                 <span class="st-city">道の駅原尻の滝 · Bungo-Ono</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/oita/kunisaki/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kunisaki</span>
                 <span class="st-city">道の駅くにさき · Kunisaki</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/oita/nagayu-onsen/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Nagayu Onsen</span>
                 <span class="st-city">道の駅ながゆ温泉 · Taketa</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/oita/nakatsu/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Nakatsu</span>
                 <span class="st-city">道の駅なかつ · Nakatsu</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/oita/saganoseki/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Saganoseki</span>
                 <span class="st-city">道の駅佐賀関 · Oita</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/oita/tanourara/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tanourara</span>
                 <span class="st-city">道の駅たのうらら · Oita</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/oita/yufuin/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yufuin</span>
                 <span class="st-city">道の駅ゆふいん · Yufu</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
             </div>
         </div>
@@ -562,32 +562,32 @@
 <a class="station-row" href="/overnight-parking/michi-no-eki/miyazaki/ebino/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ebino</span>
                 <span class="st-city">道の駅えびの · Ebino</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/miyazaki/hyuga/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Hyuga</span>
                 <span class="st-city">道の駅日向 · Hyuga</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/miyazaki/kitagawa-hayuma/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kitagawa Hayuma</span>
                 <span class="st-city">道の駅北川はゆま · Nobeoka</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/miyazaki/nango/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Nango</span>
                 <span class="st-city">道の駅なんごう · Nichinan</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/miyazaki/phoenix/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Phoenix</span>
                 <span class="st-city">道の駅フェニックス · Miyazaki</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/miyazaki/takachiho/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Takachiho</span>
                 <span class="st-city">道の駅高千穂 · Takachiho Town</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
             </div>
         </div>
@@ -597,42 +597,42 @@
 <a class="station-row" href="/overnight-parking/michi-no-eki/kagoshima/akune/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Akune</span>
                 <span class="st-city">道の駅阿久根 · Akune</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kagoshima/ibusuki/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ibusuki</span>
                 <span class="st-city">道の駅いぶすき · Ibusuki</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kagoshima/kiire/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kiire</span>
                 <span class="st-city">道の駅喜入 · Kagoshima</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kagoshima/kirishima/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kirishima</span>
                 <span class="st-city">道の駅霧島 · Kirishima</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kagoshima/kuni-no-matsubara-osaki/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kuni no Matsubara Osaki</span>
                 <span class="st-city">道の駅くにの松原おおさき · Osaki Town</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kagoshima/sakurajima/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Sakurajima</span>
                 <span class="st-city">道の駅桜島 · Kagoshima</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kagoshima/tarumizu/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tarumizu</span>
                 <span class="st-city">道の駅たるみず · Tarumizu</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
 <a class="station-row" href="/overnight-parking/michi-no-eki/kagoshima/tarumizu-hamabira/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tarumizu Hamabira</span>
                 <span class="st-city">道の駅たるみずはまびら · Tarumizu</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>No explicit ban</span><span class="chev">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev">›</span></span>
             </a>
             </div>
         </div>

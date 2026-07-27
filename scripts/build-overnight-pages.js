@@ -65,18 +65,18 @@ const T = {
         legend_h: "How to read the statuses",
         st_prohibited: "Overnight stay explicitly prohibited",
         st_prohibited_rv: "Free lot: overnight prohibited — use the RV park",
-        st_no_ban: "No explicit ban found",
+        st_no_ban: "Quiet overnight rest generally tolerated — no explicit ban found",
         st_rv: "Official RV park on site",
         rv_banner: "Official RV park on site — overnight welcome (paid, reservation recommended)",
         st_prohibited_short: "Explicit ban",
-        st_no_ban_short: "No explicit ban",
+        st_no_ban_short: "Rest tolerated",
         st_rv_short: "RV park",
         src_onsite: "Confirmed on site by the VAN TRIP JAPAN team",
         legend_prohibited: "The station has posted or published an explicit no-overnight rule. Please respect it — use a nearby campground or RV park instead.",
-        legend_no_ban: "We could not find any explicit prohibition as of the verification date. The national rule applies: a quiet rest in your vehicle, no camping behavior. This is not a guarantee — always check signs on site.",
+        legend_no_ban: "No explicit prohibition found as of the verification date — under Japan's national rule, a quiet one-night rest in your vehicle is generally tolerated here. Not a guarantee: no camping behavior, and always check signs on site.",
         legend_rv: "The station has an official paid RV park (Japan RV Association or equivalent) — the one case where overnight stay is explicitly welcome.",
         stats_line: (p, n, r, total) =>
-            `Currently tracking <strong>${total} stations</strong> in Kyushu: <span class="c-red">${p === 1 ? "1 free lot with an explicit overnight ban" : `${p} free lots with explicit overnight bans`}</span> and ${n} with no explicit ban found — plus <span class="c-green">${r === 1 ? "1 official RV park" : `${r} official RV parks`}</span> where paid overnight stay is always welcome.`,
+            `Currently tracking <strong>${total} stations</strong> in Kyushu: <span class="c-red">${p === 1 ? "1 free lot with an explicit overnight ban" : `${p} free lots with explicit overnight bans`}</span> and ${n} where a quiet rest is tolerated (no explicit ban found) — plus <span class="c-green">${r === 1 ? "1 official RV park" : `${r} official RV parks`}</span> where paid overnight stay is always welcome.`,
         method_h: "How we verify",
         method_p: "Each entry links its sources — official station websites, the Japan RV Association register, and reports from the Japanese vanlife community — and carries the date we last checked it. Our rental fleet drives these routes weekly, and guest reports flow back into the database. Rules change; when we learn of a change, the entry and its date are updated.",
         pref_h_prefix: "Stations by prefecture",
@@ -90,7 +90,7 @@ const T = {
         updated_label: "Database updated",
         what_h: "What this means for you",
         what_prohibited: "This station explicitly prohibits overnight stays. Please don't sleep here — every ignored sign leads to new bans for everyone. Use an official RV park or campground in the area instead, where you are genuinely welcome — or ask us on WhatsApp for nearby spots.",
-        what_no_ban: "We found no explicit prohibition as of the verification date. That means the national default applies: a quiet overnight rest inside your vehicle is generally tolerated, but you are a guest in a parking lot — not a campsite. Follow the etiquette below, and if staff or signs on site say otherwise, that always wins.",
+        what_no_ban: "Good news: a quiet overnight rest is generally tolerated here — we found no explicit prohibition as of the verification date, so Japan's national default applies. But you are a guest in a parking lot — not a campsite. Follow the etiquette below, and if staff or signs on site say otherwise, that always wins.",
         what_prohibited_rv: "This station prohibits overnight stays in its free parking lot — but it also has an official RV park, so you can still sleep here legally by booking a paid spot. In a way this is the clearest setup in Japan: free lot = no, official RV park = yes. Book ahead in high season.",
         what_rv: "This station has an official RV park: a reserved, paid space where overnight stay is explicitly welcome, usually with power hookups. On the free lot, we found no explicit ban as of the verification date, so the national rule applies — a quiet rest is generally tolerated, camping behavior is not. For a guaranteed, welcomed stay, book the RV park.",
         etiquette_h: "Overnight etiquette (non-negotiable)",
@@ -169,18 +169,18 @@ const T = {
         legend_h: "Comment lire les statuts",
         st_prohibited: "Nuitée explicitement interdite",
         st_prohibited_rv: "Parking gratuit : nuitée interdite — utilisez le RV park",
-        st_no_ban: "Aucune interdiction explicite trouvée",
+        st_no_ban: "Nuit de repos discrète généralement tolérée — aucune interdiction explicite trouvée",
         st_rv: "RV park officiel sur place",
         rv_banner: "RV park officiel sur place — nuitée bienvenue (payant, réservation recommandée)",
         st_prohibited_short: "Interdiction explicite",
-        st_no_ban_short: "Pas d'interdiction explicite",
+        st_no_ban_short: "Repos toléré",
         st_rv_short: "RV park",
         src_onsite: "Constaté sur place par l'équipe VAN TRIP JAPAN",
         legend_prohibited: "La station affiche ou publie une interdiction explicite de nuitée. Respectez-la — préférez un camping ou un RV park à proximité.",
-        legend_no_ban: "Aucune interdiction explicite trouvée à la date de vérification. La règle nationale s'applique : repos discret dans le véhicule, aucun comportement de camping. Ce n'est pas une garantie — vérifiez toujours les panneaux sur place.",
+        legend_no_ban: "Aucune interdiction explicite trouvée à la date de vérification — selon la règle nationale, une nuit de repos discrète dans le véhicule y est généralement tolérée. Ce n'est pas une garantie : aucun comportement de camping, et vérifiez toujours les panneaux sur place.",
         legend_rv: "La station dispose d'un RV park officiel payant (Japan RV Association ou équivalent) — le seul cas où la nuitée est explicitement bienvenue.",
         stats_line: (p, n, r, total) =>
-            `<strong>${total} stations</strong> suivies à Kyushu : <span class="c-red">${p === 1 ? "1 parking gratuit avec interdiction explicite de nuitée" : `${p} parkings gratuits avec interdiction explicite de nuitée`}</span> et ${n} sans interdiction explicite trouvée — plus <span class="c-green">${r === 1 ? "1 RV park officiel" : `${r} RV parks officiels`}</span> où la nuitée payante est toujours bienvenue.`,
+            `<strong>${total} stations</strong> suivies à Kyushu : <span class="c-red">${p === 1 ? "1 parking gratuit avec interdiction explicite de nuitée" : `${p} parkings gratuits avec interdiction explicite de nuitée`}</span> et ${n} où le repos discret est toléré (aucune interdiction explicite trouvée) — plus <span class="c-green">${r === 1 ? "1 RV park officiel" : `${r} RV parks officiels`}</span> où la nuitée payante est toujours bienvenue.`,
         method_h: "Notre méthode de vérification",
         method_p: "Chaque fiche cite ses sources — sites officiels des stations, registre de la Japan RV Association, remontées de la communauté vanlife japonaise — et porte la date de notre dernière vérification. Notre flotte de location parcourt ces routes chaque semaine et les retours de nos clients alimentent la base. Les règles changent ; dès qu'un changement est connu, la fiche et sa date sont mises à jour.",
         pref_h_prefix: "Stations par préfecture",
@@ -194,7 +194,7 @@ const T = {
         updated_label: "Base mise à jour le",
         what_h: "Ce que cela signifie pour vous",
         what_prohibited: "Cette station interdit explicitement la nuitée. N'y dormez pas — chaque panneau ignoré entraîne de nouvelles interdictions pour tous. Utilisez plutôt un RV park officiel ou un camping du secteur, où vous êtes réellement les bienvenus — ou demandez-nous des spots proches sur WhatsApp.",
-        what_no_ban: "Aucune interdiction explicite trouvée à la date de vérification. La règle nationale s'applique donc : une nuit de repos discrète dans le véhicule est généralement tolérée, mais vous êtes sur un parking — pas dans un camping. Suivez l'étiquette ci-dessous ; si le personnel ou un panneau dit autre chose, c'est lui qui a raison.",
+        what_no_ban: "Bonne nouvelle : une nuit de repos discrète est généralement tolérée ici — aucune interdiction explicite trouvée à la date de vérification, la règle nationale s'applique donc. Mais vous êtes sur un parking — pas dans un camping. Suivez l'étiquette ci-dessous ; si le personnel ou un panneau dit autre chose, c'est lui qui a raison.",
         what_prohibited_rv: "Cette station interdit la nuitée sur son parking gratuit — mais elle dispose d'un RV park officiel : vous pouvez donc y dormir légalement en réservant un emplacement payant. C'est en réalité la configuration la plus claire du Japon : parking gratuit = non, RV park officiel = oui. Réservez en haute saison.",
         what_rv: "Cette station dispose d'un RV park officiel : un emplacement payant et réservable où la nuitée est explicitement bienvenue, souvent avec électricité. Sur le parking gratuit, aucune interdiction explicite trouvée à la date de vérification : la règle nationale s'applique — repos discret généralement toléré, comportement de camping interdit. Pour une nuit garantie et bienvenue, réservez le RV park.",
         etiquette_h: "Étiquette de nuit (non négociable)",
@@ -273,18 +273,18 @@ const T = {
         legend_h: "So lesen Sie die Statusangaben",
         st_prohibited: "Übernachtung ausdrücklich verboten",
         st_prohibited_rv: "Kostenloser Parkplatz: Übernachten verboten — nutzen Sie den RV-Park",
-        st_no_ban: "Kein ausdrückliches Verbot gefunden",
+        st_no_ban: "Ruhige Übernachtung in der Regel toleriert — kein ausdrückliches Verbot gefunden",
         st_rv: "Offizieller RV-Park vor Ort",
         rv_banner: "Offizieller RV-Park vor Ort — Übernachten willkommen (kostenpflichtig, Reservierung empfohlen)",
         st_prohibited_short: "Ausdrückliches Verbot",
-        st_no_ban_short: "Kein ausdrückliches Verbot",
+        st_no_ban_short: "Übernachten toleriert",
         st_rv_short: "RV-Park",
         src_onsite: "Vor Ort bestätigt durch das VAN-TRIP-JAPAN-Team",
         legend_prohibited: "Die Station hat ein ausdrückliches Übernachtungsverbot ausgehängt oder veröffentlicht. Bitte respektieren Sie es — nutzen Sie stattdessen einen Campingplatz oder RV-Park in der Nähe.",
-        legend_no_ban: "Zum Prüfdatum konnten wir kein ausdrückliches Verbot finden. Es gilt die nationale Regel: ruhiges Ausruhen im Fahrzeug, kein Camping-Verhalten. Das ist keine Garantie — beachten Sie immer die Schilder vor Ort.",
+        legend_no_ban: "Zum Prüfdatum kein ausdrückliches Verbot gefunden — nach der nationalen Regel wird eine ruhige Nacht im Fahrzeug hier in der Regel toleriert. Keine Garantie: kein Camping-Verhalten, und beachten Sie immer die Schilder vor Ort.",
         legend_rv: "Die Station hat einen offiziellen, kostenpflichtigen RV-Park (Japan RV Association o. ä.) — der eine Fall, in dem Übernachten ausdrücklich willkommen ist.",
         stats_line: (p, n, r, total) =>
-            `Aktuell erfasst: <strong>${total} Stationen</strong> in Kyushu — <span class="c-red">${p === 1 ? "1 kostenloser Parkplatz mit ausdrücklichem Übernachtungsverbot" : `${p} kostenlose Parkplätze mit ausdrücklichem Übernachtungsverbot`}</span>; bei ${n} wurde kein ausdrückliches Verbot gefunden — dazu <span class="c-green">${r === 1 ? "1 offizieller RV-Park" : `${r} offizielle RV-Parks`}</span>, wo bezahltes Übernachten immer willkommen ist.`,
+            `Aktuell erfasst: <strong>${total} Stationen</strong> in Kyushu — <span class="c-red">${p === 1 ? "1 kostenloser Parkplatz mit ausdrücklichem Übernachtungsverbot" : `${p} kostenlose Parkplätze mit ausdrücklichem Übernachtungsverbot`}</span>; bei ${n} wird ruhiges Übernachten toleriert (kein ausdrückliches Verbot gefunden) — dazu <span class="c-green">${r === 1 ? "1 offizieller RV-Park" : `${r} offizielle RV-Parks`}</span>, wo bezahltes Übernachten immer willkommen ist.`,
         method_h: "So verifizieren wir",
         method_p: "Jeder Eintrag verlinkt seine Quellen — offizielle Stations-Websites, das Register der Japan RV Association und Meldungen aus der japanischen Vanlife-Community — und trägt das Datum unserer letzten Prüfung. Unsere Mietflotte fährt diese Routen wöchentlich, und Rückmeldungen unserer Gäste fließen in die Datenbank ein. Regeln ändern sich; sobald wir von einer Änderung erfahren, werden Eintrag und Datum aktualisiert.",
         pref_h_prefix: "Stationen nach Präfektur",
@@ -298,7 +298,7 @@ const T = {
         updated_label: "Datenbank aktualisiert",
         what_h: "Was das für Sie bedeutet",
         what_prohibited: "Diese Station verbietet Übernachtungen ausdrücklich. Bitte schlafen Sie nicht hier — jedes ignorierte Schild führt zu neuen Verboten für alle. Nutzen Sie stattdessen einen offiziellen RV-Park oder Campingplatz in der Umgebung, wo Sie wirklich willkommen sind — oder fragen Sie uns auf WhatsApp nach Plätzen in der Nähe.",
-        what_no_ban: "Zum Prüfdatum haben wir kein ausdrückliches Verbot gefunden. Damit gilt der nationale Standard: eine ruhige Nacht im Fahrzeug wird in der Regel toleriert — aber Sie sind Gast auf einem Parkplatz, nicht auf einem Campingplatz. Halten Sie sich an die Etikette unten; sagen Schilder oder Personal vor Ort etwas anderes, gilt immer das.",
+        what_no_ban: "Gute Nachricht: Eine ruhige Nacht im Fahrzeug wird hier in der Regel toleriert — zum Prüfdatum haben wir kein ausdrückliches Verbot gefunden, es gilt also Japans nationaler Standard. Aber Sie sind Gast auf einem Parkplatz, nicht auf einem Campingplatz. Halten Sie sich an die Etikette unten; sagen Schilder oder Personal vor Ort etwas anderes, gilt immer das.",
         what_prohibited_rv: "Diese Station verbietet Übernachtungen auf ihrem kostenlosen Parkplatz — sie hat aber auch einen offiziellen RV-Park: Sie können also legal hier übernachten, indem Sie einen kostenpflichtigen Stellplatz buchen. Eigentlich die klarste Regelung in Japan: kostenloser Parkplatz = nein, offizieller RV-Park = ja. In der Hochsaison vorab buchen.",
         what_rv: "Diese Station hat einen offiziellen RV-Park: ein reservierbarer, kostenpflichtiger Stellplatz, auf dem Übernachten ausdrücklich willkommen ist — meist mit Stromanschluss. Auf dem kostenlosen Parkplatz haben wir zum Prüfdatum kein ausdrückliches Verbot gefunden; es gilt die nationale Regel — ruhiges Ausruhen wird in der Regel toleriert, Camping-Verhalten nicht. Für eine garantierte, willkommene Nacht buchen Sie den RV-Park.",
         etiquette_h: "Übernachtungs-Etikette (nicht verhandelbar)",
@@ -377,18 +377,18 @@ const T = {
         legend_h: "狀態說明",
         st_prohibited: "明文禁止過夜",
         st_prohibited_rv: "免費停車場禁止過夜 — 請利用RV Park",
-        st_no_ban: "未發現明文禁止",
+        st_no_ban: "一般容許車內安靜休息過夜 — 未發現明文禁止",
         st_rv: "設有官方RV Park",
         rv_banner: "設有官方RV Park — 歡迎過夜（付費・建議預約）",
         st_prohibited_short: "明文禁止",
-        st_no_ban_short: "無明文禁止",
+        st_no_ban_short: "可安靜休息",
         st_rv_short: "RV Park",
         src_onsite: "由VAN TRIP JAPAN團隊現地確認",
         legend_prohibited: "該站已公告或發布明文禁止過夜。請務必遵守 — 改用附近的露營場或RV Park。",
-        legend_no_ban: "截至查證日期，未發現明文禁止。適用全國規則：在車內安靜休息、不做露營行為。這不是保證 — 請務必以現場告示為準。",
+        legend_no_ban: "截至查證日期未發現明文禁止 — 依全國規則，在車內安靜休息一晚在此通常被容許。但這不是保證：不做露營行為，並一律以現場告示為準。",
         legend_rv: "該站設有官方付費RV Park（日本RV協會等認證）— 這是唯一明確歡迎過夜的情況。",
         stats_line: (p, n, r, total) =>
-            `目前追蹤九州 <strong>${total} 座道之驛</strong>：<span class="c-red">${p} 座的免費停車場明文禁止過夜</span>、${n} 座未發現明文禁止 — 另有 <span class="c-green">${r} 座設有官方RV Park</span>，付費過夜隨時歡迎。`,
+            `目前追蹤九州 <strong>${total} 座道之驛</strong>：<span class="c-red">${p} 座的免費停車場明文禁止過夜</span>、${n} 座容許安靜休息（未發現明文禁止）— 另有 <span class="c-green">${r} 座設有官方RV Park</span>，付費過夜隨時歡迎。`,
         method_h: "我們如何查證",
         method_p: "每筆資料都附上來源 — 各站官方網站、日本RV協會登錄名單、日本車中泊社群的回報 — 並標註最後查證日期。我們的租賃車隊每週行駛這些路線，客人的回報也會回饋到資料庫。規則會變；一旦得知變動，就會更新該筆資料與日期。",
         pref_h_prefix: "依縣份瀏覽",
@@ -402,7 +402,7 @@ const T = {
         updated_label: "資料庫更新日",
         what_h: "這對你的意義",
         what_prohibited: "本站明文禁止過夜。請不要在此過夜 — 每一次無視告示，都會為所有人帶來新的禁令。請改用附近的官方RV Park或露營場，那裡真心歡迎你 — 也可以透過WhatsApp問我們附近的推薦地點。",
-        what_no_ban: "截至查證日期，我們未發現明文禁止。因此適用全國預設規則：在車內安靜休息一晚通常被容許，但你是停車場的客人 — 不是露營場的。請遵守下方禮儀；若現場告示或工作人員另有指示，一律以現場為準。",
+        what_no_ban: "好消息：在此一般容許在車內安靜休息過夜 — 截至查證日期我們未發現明文禁止，因此適用日本全國預設規則。但你是停車場的客人 — 不是露營場的。請遵守下方禮儀；若現場告示或工作人員另有指示，一律以現場為準。",
         what_prohibited_rv: "本站禁止在免費停車場過夜 — 但設有官方RV Park，只要預訂付費車位仍可合法過夜。這其實是日本最清楚的規則：免費停車場＝不行，官方RV Park＝可以。旺季請提前預約。",
         what_rv: "本站設有官方RV Park：付費、可預約、明確歡迎過夜的車位，通常附電源。至於免費停車場，截至查證日期我們未發現明文禁止，因此適用全國規則 — 安靜休息通常被容許，露營行為不行。想要有保障、受歡迎的過夜體驗，請預訂RV Park。",
         etiquette_h: "過夜禮儀（必須遵守）",
@@ -551,7 +551,7 @@ function rvChip(lang) {
 const SHARED_CSS = `
         :root {
             --st-red: #c93028; --st-red-text: #8e1f17; --st-red-tint: #fbedec;
-            --st-amber: #d9a400; --st-amber-text: #6b5400; --st-amber-tint: #fdf6e2;
+            --st-teal: #12808a; --st-teal-text: #0e5a61; --st-teal-tint: #e7f4f5;
             --st-green: #2c9a44; --st-green-text: #1e5c28; --st-green-tint: #eaf6ec;
         }
         .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 128px 20px 72px; text-align: center; }
@@ -569,16 +569,16 @@ const SHARED_CSS = `
         .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
         .badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap; }
         .badge-prohibited { background: var(--st-red-tint); color: var(--st-red-text); } .badge-prohibited .dot { background: var(--st-red); }
-        .badge-noban { background: var(--st-amber-tint); color: var(--st-amber-text); } .badge-noban .dot { background: var(--st-amber); }
+        .badge-noban { background: var(--st-teal-tint); color: var(--st-teal-text); } .badge-noban .dot { background: var(--st-teal); }
         .badge-rv { background: var(--st-green-tint); color: var(--st-green-text); } .badge-rv .dot { background: var(--st-green); }
         .c-red { color: var(--st-red-text); font-weight: 700; } .c-green { color: var(--st-green-text); font-weight: 700; }
         .status-banner { border-radius: 20px; padding: 26px 32px; margin-bottom: 20px; border: 1px solid rgba(0,0,0,0.05); animation: ovn-rise 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
         .status-banner.prohibited { background: var(--st-red-tint); color: var(--st-red-text); }
-        .status-banner.noban { background: var(--st-amber-tint); color: var(--st-amber-text); }
+        .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
         .status-banner .st-label { display: flex; align-items: center; gap: 12px; font-size: 1.35rem; font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.01em; line-height: 1.2; }
         .status-banner .st-label .dot { width: 12px; height: 12px; }
-        .status-banner.prohibited .dot { background: var(--st-red); } .status-banner.noban .dot { background: var(--st-amber); } .status-banner.rv .dot { background: var(--st-green); }
+        .status-banner.prohibited .dot { background: var(--st-red); } .status-banner.noban .dot { background: var(--st-teal); } .status-banner.rv .dot { background: var(--st-green); }
         .status-banner .st-verified { margin-top: 8px; font-size: 0.85rem; opacity: 0.8; font-variant-numeric: tabular-nums; }
         @keyframes ovn-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
         .station-list { display: block; }
