@@ -621,12 +621,19 @@ const SHARED_CSS = `
         .ovn-hero .crumbs { font-size: 0.78rem; letter-spacing: 0.02em; margin-bottom: 20px; color: rgba(255,255,255,0.78); }
         .ovn-hero .crumbs a { color: rgba(255,255,255,0.85); text-decoration: none; }
         .ovn-hero .crumbs a:hover { text-decoration: underline; }
-        .ovn-wrap { max-width: 860px; margin: -30px auto 64px; padding: 0 20px; }
-        .ovn-card { background: #fff; border-radius: 20px; padding: 28px 32px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .ovn-card h2 { font-family: var(--font-serif); font-size: 1.3rem; letter-spacing: -0.01em; margin-bottom: 14px; color: var(--color-text); }
-        .ovn-card p, .ovn-card li { font-size: 0.95rem; color: var(--color-text-secondary); line-height: 1.7; }
-        .ovn-card ul { padding-left: 1.2em; margin-top: 8px; }
-        .ovn-card li { margin-bottom: 8px; }
+        /* 駅ページ: 質問(h1)は控えめに、判定文が最大の活字になる */
+        .ovn-hero.compact { padding: 116px 20px 56px; }
+        .ovn-hero.compact h1 { font-size: clamp(1.35rem, 2.6vw, 1.85rem); letter-spacing: -0.015em; margin-bottom: 10px; }
+        .ovn-wrap { max-width: 860px; margin: -30px auto 96px; padding: 0 20px; }
+        /* Apple-2026調: コンテンツは箱なし+活字階層+余白、箱はリスト/フォーム等の操作モジュール(.boxed)のみ */
+        .ovn-card { padding: 12px 0 44px; }
+        .ovn-card h2 { font-family: var(--font-serif); font-size: 1.55rem; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 18px; color: var(--color-text); }
+        .ovn-card p, .ovn-card li { font-size: 0.98rem; color: var(--color-text-secondary); line-height: 1.75; }
+        .ovn-card p { max-width: 70ch; }
+        .ovn-card ul { padding-left: 1.2em; margin-top: 8px; max-width: 70ch; }
+        .ovn-card li { margin-bottom: 9px; }
+        .ovn-card.boxed { background: #fff; border-radius: 20px; padding: 24px 28px 28px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05); margin-bottom: 36px; }
+        .ovn-card.boxed h2 { font-size: 1.3rem; }
         .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
         .badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap; }
         .badge-prohibited { background: var(--st-red-tint); color: var(--st-red-text); } .badge-prohibited .dot { background: var(--st-red); }
@@ -634,13 +641,15 @@ const SHARED_CSS = `
         .badge-paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); } .badge-paidonly .dot { background: var(--st-amber); }
         .badge-rv { background: var(--st-green-tint); color: var(--st-green-text); } .badge-rv .dot { background: var(--st-green); }
         .c-red { color: var(--st-red-text); font-weight: 700; } .c-green { color: var(--st-green-text); font-weight: 700; }
-        .status-banner { border-radius: 20px; padding: 26px 32px; margin-bottom: 20px; border: 1px solid rgba(0,0,0,0.05); animation: ovn-rise 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+        .status-banner { border-radius: 24px; padding: 34px 36px; margin-bottom: 20px; border: 1px solid rgba(0,0,0,0.05); animation: ovn-rise 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
         .status-banner.prohibited { background: var(--st-red-tint); color: var(--st-red-text); }
         .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
-        .status-banner .st-label { display: flex; align-items: center; gap: 12px; font-size: 1.35rem; font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.01em; line-height: 1.2; }
-        .status-banner .st-label .dot { width: 12px; height: 12px; }
+        /* 答えがヒーロー: 判定文をページ最大の活字にする */
+        .status-banner .st-label { display: flex; align-items: center; gap: 14px; font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.02em; line-height: 1.15; }
+        .status-banner .st-label .dot { width: 14px; height: 14px; flex-shrink: 0; }
+        .status-banner .st-verified { font-size: 0.9rem; }
         .status-banner.prohibited .dot { background: var(--st-red); } .status-banner.noban .dot { background: var(--st-teal); } .status-banner.rv .dot { background: var(--st-green); } .status-banner.paidonly .dot { background: var(--st-amber); }
         .status-banner .st-verified { margin-top: 8px; font-size: 0.85rem; opacity: 0.88; font-variant-numeric: tabular-nums; }
         @keyframes ovn-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
@@ -655,7 +664,12 @@ const SHARED_CSS = `
         a.station-row .st-side { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
         a.station-row .chev { color: rgba(0,0,0,0.25); font-size: 1.05rem; transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1); }
         a.station-row:hover .chev { transform: translateX(2px); color: rgba(0,0,0,0.4); }
-        .pref-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+        /* ガラス質スティッキーチップ: コンテンツがチップの下に潜る */
+        .pref-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;
+            position: sticky; top: 72px; z-index: 20; padding: 10px 12px; margin-left: -12px; margin-right: -12px;
+            background: rgba(249,249,247,0.72); backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%);
+            border-radius: 18px; }
+        @media (prefers-reduced-transparency: reduce) { .pref-chips { background: #f9f9f7; backdrop-filter: none; -webkit-backdrop-filter: none; } }
         .pref-chip { display: inline-flex; align-items: center; gap: 7px; background: #fff; border: 1px solid rgba(0,0,0,0.08);
             border-radius: 100px; padding: 8px 16px; font-size: 0.85rem; font-weight: 650; color: var(--color-text);
             text-decoration: none; box-shadow: 0 1px 2px rgba(0,0,0,0.04);
@@ -676,7 +690,7 @@ const SHARED_CSS = `
             outline: none; border-color: #2d5a3d; box-shadow: 0 0 0 3px rgba(45,90,61,0.15);
         }
         .filter-none { margin-top: 12px; font-size: 0.9rem; color: #5f5f66; }
-        #ovnMap { height: 460px; border-radius: 16px; z-index: 0; }
+        #ovnMap { height: 520px; border-radius: 24px; z-index: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.08); }
         #ovnMap .leaflet-popup-content { font-family: inherit; font-size: 0.9rem; line-height: 1.6; }
         #ovnMap .leaflet-popup-content a { color: var(--color-accent); font-weight: 650; text-decoration: none; }
         #ovnMap .leaflet-popup-content a:hover { text-decoration: underline; }
@@ -738,9 +752,11 @@ const SHARED_CSS = `
         .footer-bottom span, .footer-col a, .footer-brand p { color: #5f5f66; }
         .lang-switcher .lang-btn:not(.active) { color: #6e6e73; }
         @media (max-width: 600px) {
-            .ovn-card { padding: 22px 20px; border-radius: 16px; }
-            .status-banner { padding: 22px 20px; }
+            .ovn-card { padding: 8px 0 36px; }
+            .ovn-card.boxed { padding: 20px 18px 24px; border-radius: 16px; }
+            .status-banner { padding: 24px 22px; }
             .ovn-cta { padding: 32px 22px; }
+            .pref-chips { top: 62px; }
         }
         @media (prefers-reduced-motion: reduce) {
             .status-banner { animation: none; }
@@ -749,7 +765,7 @@ const SHARED_CSS = `
         }
 `;
 
-function shell({ lang, sub, title, desc, h1, heroSub, crumbsHtml, jsonld, body, ogImage, extraHead = "" }) {
+function shell({ lang, sub, title, desc, h1, heroSub, crumbsHtml, jsonld, body, ogImage, extraHead = "", heroCompact = false }) {
     const t = T[lang];
     const url = pageUrl(lang, sub);
     const dirAttr = ""; // all 4 langs are LTR
@@ -803,7 +819,7 @@ ${jsonld.map((o) => `    <script type="application/ld+json">\n${JSON.stringify(o
 
     ${langSwitcher(lang, sub)}
 
-    <div class="ovn-hero">
+    <div class="ovn-hero${heroCompact ? " compact" : ""}">
         ${crumbsHtml ? `<div class="crumbs">${crumbsHtml}</div>` : ""}
         <h1>${esc(h1)}</h1>
         ${heroSub ? `<p>${heroSub}</p>` : ""}
@@ -1005,7 +1021,7 @@ function renderIndex(lang) {
 
     const prefBlocks = PREF_ORDER.map((p) => {
         const rows = byPref[p].map((st) => stationRow(st, lang)).join("\n");
-        return `<div class="ovn-card pref-block" id="${p}">
+        return `<div class="ovn-card boxed pref-block" id="${p}">
             <h2><a href="${sectionPath(lang, p + "/")}" style="color:inherit;text-decoration:none;">${esc(prefName(p, lang))}</a> <span class="cnt">${esc(T[lang].stations_count(byPref[p].length))}</span></h2>
             <div class="station-list">
 ${rows}
@@ -1163,7 +1179,7 @@ function renderPref(lang, prefKey) {
 
     const body = `
         <a class="ovn-back" href="${sectionPath(lang, "")}">${esc(t.back_to_index)}</a>
-        <div class="ovn-card">
+        <div class="ovn-card boxed">
             <div class="station-list">
 ${rows}
             </div>
@@ -1275,7 +1291,7 @@ function renderStation(lang, st) {
             <h2>${esc(t.etiquette_h)}</h2>
             <ul>${t.etiquette.map((e) => `<li>${esc(e)}</li>`).join("")}</ul>
         </div>
-        <div class="ovn-card">
+        <div class="ovn-card boxed">
             <h2>${esc(t.details_h)}</h2>
             <table class="ovn-table">${detailRows.map(([k, v]) => `<tr><th>${esc(k)}</th><td>${v}</td></tr>`).join("\n            ")}</table>
         </div>
@@ -1289,14 +1305,14 @@ function renderStation(lang, st) {
         ${(() => {
             const near = nearbyStations(st);
             if (!near.length) return "";
-            return `<div class="ovn-card">
+            return `<div class="ovn-card boxed">
             <h2>${esc(t.nearby_h)}</h2>
             <div class="station-list">
                 ${near.map((n) => stationRow(n.st, lang, n.km)).join("\n                ")}
             </div>
         </div>`;
         })()}
-        <div class="ovn-card">
+        <div class="ovn-card boxed">
             <h2>${esc(t.report_h)}</h2>
             <p>${esc(t.report_p)}</p>
             <form class="rf-form" id="rfForm" novalidate>
@@ -1387,6 +1403,7 @@ function renderStation(lang, st) {
         crumbsHtml: `<a href="${sectionPath(lang, "")}">${esc(t.db_name)}</a> › <a href="${sectionPath(lang, st.prefecture + "/")}">${esc(pn)}</a> › ${esc(name)}`,
         jsonld,
         body,
+        heroCompact: true,
     }));
 }
 
