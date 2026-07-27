@@ -121,7 +121,7 @@
         .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 128px 20px 72px; text-align: center; }
         .ovn-hero h1 { font-family: var(--font-serif); font-size: clamp(1.75rem, 4.5vw, 2.75rem); margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.08; }
         .ovn-hero p { color: rgba(255,255,255,0.82); font-size: 1.02rem; max-width: 680px; margin: 0 auto; line-height: 1.65; }
-        .ovn-hero .crumbs { font-size: 0.78rem; letter-spacing: 0.02em; margin-bottom: 20px; color: rgba(255,255,255,0.65); }
+        .ovn-hero .crumbs { font-size: 0.78rem; letter-spacing: 0.02em; margin-bottom: 20px; color: rgba(255,255,255,0.78); }
         .ovn-hero .crumbs a { color: rgba(255,255,255,0.85); text-decoration: none; }
         .ovn-hero .crumbs a:hover { text-decoration: underline; }
         .ovn-wrap { max-width: 860px; margin: -30px auto 64px; padding: 0 20px; }
@@ -143,7 +143,7 @@
         .status-banner .st-label { display: flex; align-items: center; gap: 12px; font-size: 1.35rem; font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.01em; line-height: 1.2; }
         .status-banner .st-label .dot { width: 12px; height: 12px; }
         .status-banner.prohibited .dot { background: var(--st-red); } .status-banner.noban .dot { background: var(--st-teal); } .status-banner.rv .dot { background: var(--st-green); }
-        .status-banner .st-verified { margin-top: 8px; font-size: 0.85rem; opacity: 0.8; font-variant-numeric: tabular-nums; }
+        .status-banner .st-verified { margin-top: 8px; font-size: 0.85rem; opacity: 0.88; font-variant-numeric: tabular-nums; }
         @keyframes ovn-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
         .station-list { display: block; }
         .station-list .station-row + .station-row { border-top: 1px solid var(--color-border-light); }
@@ -166,6 +166,17 @@
         .pref-chip .chip-n { font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary); font-variant-numeric: tabular-nums;
             background: var(--color-bg-secondary, #f4f4f2); border-radius: 100px; padding: 1px 8px; }
         .pref-block { scroll-margin-top: 90px; }
+        .filter-bar { margin-bottom: 16px; }
+        .filter-bar input[type="search"] {
+            width: 100%; font: inherit; font-size: 0.95rem; color: var(--color-text);
+            background: #fff; border: 1px solid rgba(0,0,0,0.12); border-radius: 100px;
+            padding: 13px 22px; box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            transition: border-color 120ms ease-out, box-shadow 120ms ease-out;
+        }
+        .filter-bar input[type="search"]:focus {
+            outline: none; border-color: #2d5a3d; box-shadow: 0 0 0 3px rgba(45,90,61,0.15);
+        }
+        .filter-none { margin-top: 12px; font-size: 0.9rem; color: #5f5f66; }
         #ovnMap { height: 460px; border-radius: 16px; z-index: 0; }
         #ovnMap .leaflet-popup-content { font-family: inherit; font-size: 0.9rem; line-height: 1.6; }
         #ovnMap .leaflet-popup-content a { color: var(--color-accent); font-weight: 650; text-decoration: none; }
@@ -222,8 +233,11 @@
         a:focus-visible, button:focus-visible { outline: 2px solid #2d5a3d; outline-offset: 2px; border-radius: 4px; }
         .ovn-cta a:focus-visible, .ovn-hero a:focus-visible { outline-color: #fff; }
         /* WCAG AA: 白カード上の本文グレーを4.5:1以上に (#5f5f66 = 6.3:1) */
-        .ovn-card p, .ovn-card li, .ovn-note, .src-item, a.station-row .st-city, .pref-chip .chip-n { color: #5f5f66; }
-        .footer-bottom span { color: #767680; }
+        .ovn-card p, .ovn-card li, .ovn-note, .src-item, a.station-row .st-city, .pref-chip .chip-n,
+        .pref-block h2 .cnt, .ovn-table th, .src-tag { color: #5f5f66; }
+        /* 共有部品の低コントラストをDBページ内で是正（#F5F5F7背景でも4.5:1超） */
+        .footer-bottom span, .footer-col a, .footer-brand p { color: #5f5f66; }
+        .lang-switcher .lang-btn:not(.active) { color: #6e6e73; }
         @media (max-width: 600px) {
             .ovn-card { padding: 22px 20px; border-radius: 16px; }
             .status-banner { padding: 22px 20px; }
@@ -251,7 +265,7 @@
                 <a href="/zh/contact/">聯絡我們</a>
                 <a href="/zh/rent/" class="nav-cta">租一台露營車 →</a>
             </div>
-            <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+            <button class="nav-hamburger" id="hamburger" aria-label="選單"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
@@ -259,7 +273,7 @@
         <a href="/overnight-parking/michi-no-eki/nagasaki/sonogi-no-sho/" class="lang-btn">EN</a>
         <a href="/fr/overnight-parking/michi-no-eki/nagasaki/sonogi-no-sho/" class="lang-btn">FR</a>
         <a href="/de/overnight-parking/michi-no-eki/nagasaki/sonogi-no-sho/" class="lang-btn">DE</a>
-        <a href="/zh/overnight-parking/michi-no-eki/nagasaki/sonogi-no-sho/" class="lang-btn active">繁中</a>
+        <a href="/zh/overnight-parking/michi-no-eki/nagasaki/sonogi-no-sho/" class="lang-btn active" aria-current="true">繁中</a>
     </div>
 
     <div class="ovn-hero">
@@ -306,6 +320,26 @@
             <div class="faq-item-s"><div class="q">道の駅彼杵の荘可以過夜停車嗎？</div><p>可以 — 道の駅彼杵の荘設有官方付費RV Park，明確歡迎過夜（建議預約）。RV Park以外的一般停車場，仍適用道之驛的一般規則。</p></div>
             <div class="faq-item-s"><div class="q">在道之驛過夜要遵守哪些規則？</div><p>最多安靜住一晚、熄火、車外不擺東西、禁明火、停遠離入口、21:00後安靜、垃圾帶走、在商店消費支持站點。個別站點可能有更嚴格的公告 — 現場告示永遠優先於本資料庫。</p></div>
             <div class="faq-item-s"><div class="q">附近哪裡可以合法過夜？</div><p>官方RV Park（一般每晚1,000–4,500日圓、可預約）、汽車露營場（1,000–5,000日圓）、部分附過夜停車方案的溫泉設施。VAN TRIP JAPAN每筆租賃都附九州精選過夜地圖 — 合法且歡迎你的地點。</p></div>
+        </div>
+        <div class="ovn-card">
+            <h2>附近的道之驛</h2>
+            <div class="station-list">
+                <a class="station-row" href="/zh/overnight-parking/michi-no-eki/saga/ureshino-maruku/">
+                <span class="st-main"><span class="st-name">道の駅うれしの まるく</span>
+                <span class="st-city">嬉野市 · 11&nbsp;km</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>可安靜休息</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+                <a class="station-row" href="/zh/overnight-parking/michi-no-eki/saga/kashima/">
+                <span class="st-main"><span class="st-name">道の駅鹿島</span>
+                <span class="st-city">鹿島市 · 21&nbsp;km</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>可安靜休息</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+                <a class="station-row" href="/zh/overnight-parking/michi-no-eki/nagasaki/saikai/">
+                <span class="st-main"><span class="st-name">道の駅さいかい</span>
+                <span class="st-city">西海市 · 21&nbsp;km</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>可安靜休息</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+            </div>
         </div>
         <div class="ovn-card">
             <h2>現場看到不一樣的告示？</h2>
@@ -414,7 +448,7 @@
     <script src="/js/nav.js?v=20260720j"></script>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/817093757129?text=Hi!%20I%20have%20a%20question%20about%20campervan%20rental." class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">💬</a>
+    <a href="https://wa.me/817093757129?text=Hi!%20I%20have%20a%20question%20about%20campervan%20rental." class="floating-whatsapp" target="_blank" rel="noopener" aria-label="透過WhatsApp聯絡">💬</a>
 
 </body>
 </html>

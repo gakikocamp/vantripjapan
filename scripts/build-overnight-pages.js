@@ -145,6 +145,13 @@ const T = {
         map_h: "Map view",
         map_hint: "Tap a pin for rules, station details and Google Maps navigation.",
         map_details: "Station details →",
+        nearby_h: "Nearby stations",
+        filter_ph: "Filter stations… (name or city)",
+        filter_label: "Filter the station list",
+        filter_none: "No stations match your filter.",
+        filter_count: (n) => `${n} ${n === 1 ? "station" : "stations"} shown`,
+        aria_menu: "Menu",
+        aria_whatsapp: "Chat on WhatsApp",
         map_gesture_touch: "Use two fingers to move the map",
         map_gesture_scroll: "Use Ctrl + scroll to zoom the map",
         map_gesture_scroll_mac: "Use ⌘ + scroll to zoom the map",
@@ -255,6 +262,13 @@ const T = {
         map_h: "Vue carte",
         map_hint: "Touchez une épingle : règles, fiche station et navigation Google Maps.",
         map_details: "Fiche station →",
+        nearby_h: "Stations à proximité",
+        filter_ph: "Filtrer les stations… (nom ou ville)",
+        filter_label: "Filtrer la liste des stations",
+        filter_none: "Aucune station ne correspond au filtre.",
+        filter_count: (n) => `${n} station${n === 1 ? "" : "s"} affichée${n === 1 ? "" : "s"}`,
+        aria_menu: "Menu",
+        aria_whatsapp: "Discuter sur WhatsApp",
         map_gesture_touch: "Déplacez la carte avec deux doigts",
         map_gesture_scroll: "Ctrl + molette pour zoomer la carte",
         map_gesture_scroll_mac: "⌘ + molette pour zoomer la carte",
@@ -365,6 +379,13 @@ const T = {
         map_h: "Kartenansicht",
         map_hint: "Tippen Sie auf einen Pin: Regeln, Stationsdetails und Google-Maps-Navigation.",
         map_details: "Stationsdetails →",
+        nearby_h: "Stationen in der Nähe",
+        filter_ph: "Stationen filtern … (Name oder Ort)",
+        filter_label: "Stationsliste filtern",
+        filter_none: "Keine Station passt zum Filter.",
+        filter_count: (n) => `${n} Station${n === 1 ? "" : "en"} angezeigt`,
+        aria_menu: "Menü",
+        aria_whatsapp: "Auf WhatsApp chatten",
         map_gesture_touch: "Karte mit zwei Fingern verschieben",
         map_gesture_scroll: "Strg + Scrollen zum Zoomen der Karte",
         map_gesture_scroll_mac: "⌘ + Scrollen zum Zoomen der Karte",
@@ -475,6 +496,13 @@ const T = {
         map_h: "地圖總覽",
         map_hint: "點選圖釘查看規則、站點資訊與Google地圖導航。",
         map_details: "站點詳情 →",
+        nearby_h: "附近的道之驛",
+        filter_ph: "篩選站點…（站名或市町村）",
+        filter_label: "篩選站點清單",
+        filter_none: "沒有符合條件的站點。",
+        filter_count: (n) => `顯示 ${n} 座站點`,
+        aria_menu: "選單",
+        aria_whatsapp: "透過WhatsApp聯絡",
         map_gesture_touch: "請用兩指移動地圖",
         map_gesture_scroll: "按住 Ctrl 並滾動以縮放地圖",
         map_gesture_scroll_mac: "按住 ⌘ 並滾動以縮放地圖",
@@ -538,7 +566,7 @@ function langSwitcher(lang, sub) {
     return `<div class="lang-switcher">
         ${LANGS.map(
             (l) =>
-                `<a href="${sectionPath(l, sub)}" class="lang-btn${l === lang ? " active" : ""}">${labels[l]}</a>`
+                `<a href="${sectionPath(l, sub)}" class="lang-btn${l === lang ? " active" : ""}"${l === lang ? ' aria-current="true"' : ""}>${labels[l]}</a>`
         ).join("\n        ")}
     </div>`;
 }
@@ -581,7 +609,7 @@ const SHARED_CSS = `
         .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 128px 20px 72px; text-align: center; }
         .ovn-hero h1 { font-family: var(--font-serif); font-size: clamp(1.75rem, 4.5vw, 2.75rem); margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.08; }
         .ovn-hero p { color: rgba(255,255,255,0.82); font-size: 1.02rem; max-width: 680px; margin: 0 auto; line-height: 1.65; }
-        .ovn-hero .crumbs { font-size: 0.78rem; letter-spacing: 0.02em; margin-bottom: 20px; color: rgba(255,255,255,0.65); }
+        .ovn-hero .crumbs { font-size: 0.78rem; letter-spacing: 0.02em; margin-bottom: 20px; color: rgba(255,255,255,0.78); }
         .ovn-hero .crumbs a { color: rgba(255,255,255,0.85); text-decoration: none; }
         .ovn-hero .crumbs a:hover { text-decoration: underline; }
         .ovn-wrap { max-width: 860px; margin: -30px auto 64px; padding: 0 20px; }
@@ -603,7 +631,7 @@ const SHARED_CSS = `
         .status-banner .st-label { display: flex; align-items: center; gap: 12px; font-size: 1.35rem; font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.01em; line-height: 1.2; }
         .status-banner .st-label .dot { width: 12px; height: 12px; }
         .status-banner.prohibited .dot { background: var(--st-red); } .status-banner.noban .dot { background: var(--st-teal); } .status-banner.rv .dot { background: var(--st-green); }
-        .status-banner .st-verified { margin-top: 8px; font-size: 0.85rem; opacity: 0.8; font-variant-numeric: tabular-nums; }
+        .status-banner .st-verified { margin-top: 8px; font-size: 0.85rem; opacity: 0.88; font-variant-numeric: tabular-nums; }
         @keyframes ovn-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
         .station-list { display: block; }
         .station-list .station-row + .station-row { border-top: 1px solid var(--color-border-light); }
@@ -626,6 +654,17 @@ const SHARED_CSS = `
         .pref-chip .chip-n { font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary); font-variant-numeric: tabular-nums;
             background: var(--color-bg-secondary, #f4f4f2); border-radius: 100px; padding: 1px 8px; }
         .pref-block { scroll-margin-top: 90px; }
+        .filter-bar { margin-bottom: 16px; }
+        .filter-bar input[type="search"] {
+            width: 100%; font: inherit; font-size: 0.95rem; color: var(--color-text);
+            background: #fff; border: 1px solid rgba(0,0,0,0.12); border-radius: 100px;
+            padding: 13px 22px; box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            transition: border-color 120ms ease-out, box-shadow 120ms ease-out;
+        }
+        .filter-bar input[type="search"]:focus {
+            outline: none; border-color: #2d5a3d; box-shadow: 0 0 0 3px rgba(45,90,61,0.15);
+        }
+        .filter-none { margin-top: 12px; font-size: 0.9rem; color: #5f5f66; }
         #ovnMap { height: 460px; border-radius: 16px; z-index: 0; }
         #ovnMap .leaflet-popup-content { font-family: inherit; font-size: 0.9rem; line-height: 1.6; }
         #ovnMap .leaflet-popup-content a { color: var(--color-accent); font-weight: 650; text-decoration: none; }
@@ -682,8 +721,11 @@ const SHARED_CSS = `
         a:focus-visible, button:focus-visible { outline: 2px solid #2d5a3d; outline-offset: 2px; border-radius: 4px; }
         .ovn-cta a:focus-visible, .ovn-hero a:focus-visible { outline-color: #fff; }
         /* WCAG AA: 白カード上の本文グレーを4.5:1以上に (#5f5f66 = 6.3:1) */
-        .ovn-card p, .ovn-card li, .ovn-note, .src-item, a.station-row .st-city, .pref-chip .chip-n { color: #5f5f66; }
-        .footer-bottom span { color: #767680; }
+        .ovn-card p, .ovn-card li, .ovn-note, .src-item, a.station-row .st-city, .pref-chip .chip-n,
+        .pref-block h2 .cnt, .ovn-table th, .src-tag { color: #5f5f66; }
+        /* 共有部品の低コントラストをDBページ内で是正（#F5F5F7背景でも4.5:1超） */
+        .footer-bottom span, .footer-col a, .footer-brand p { color: #5f5f66; }
+        .lang-switcher .lang-btn:not(.active) { color: #6e6e73; }
         @media (max-width: 600px) {
             .ovn-card { padding: 22px 20px; border-radius: 16px; }
             .status-banner { padding: 22px 20px; }
@@ -744,7 +786,7 @@ ${jsonld.map((o) => `    <script type="application/ld+json">\n${JSON.stringify(o
                 <a href="${LANG_DIR[lang]}/contact/">${esc(nav(lang, "nav.contact"))}</a>
                 <a href="${LANG_DIR[lang]}/rent/" class="nav-cta">${esc(nav(lang, "nav.rent_btn"))}</a>
             </div>
-            <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+            <button class="nav-hamburger" id="hamburger" aria-label="${esc(t.aria_menu)}"><span></span><span></span><span></span></button>
         </div>
     </nav>
 
@@ -795,7 +837,7 @@ ${body}
     <script src="/js/nav.js?v=${ASSET_V}"></script>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/817093757129?text=Hi!%20I%20have%20a%20question%20about%20campervan%20rental." class="floating-whatsapp" target="_blank" aria-label="Chat on WhatsApp">💬</a>
+    <a href="https://wa.me/817093757129?text=Hi!%20I%20have%20a%20question%20about%20campervan%20rental." class="floating-whatsapp" target="_blank" rel="noopener" aria-label="${esc(t.aria_whatsapp)}">💬</a>
 
 </body>
 </html>
@@ -868,17 +910,36 @@ const counts = {
     total: DATA.stations.length,
 };
 
-function stationRow(st, lang) {
+function stationRow(st, lang, distanceKm) {
     const sub = `${st.prefecture}/${st.id}/`;
     const shownName = stationName(st, lang);
-    const subtitle = shownName === st.name.ja
+    let subtitle = shownName === st.name.ja
         ? esc(cityName(st, lang))
         : `${esc(st.name.ja)} · ${esc(cityName(st, lang))}`;
+    if (distanceKm != null) subtitle += ` · ${distanceKm}&nbsp;km`;
     return `<a class="station-row" href="${sectionPath(lang, sub)}">
                 <span class="st-main"><span class="st-name">${esc(shownName)}</span>
                 <span class="st-city">${subtitle}</span></span>
-                <span class="st-side">${st.rv_park ? rvChip(lang) : ""}${badge(st, lang)}<span class="chev">›</span></span>
+                <span class="st-side">${st.rv_park ? rvChip(lang) : ""}${badge(st, lang)}<span class="chev" aria-hidden="true">›</span></span>
             </a>`;
+}
+
+/** 大円距離(km) — 近隣駅の算出に使用 */
+function haversineKm(a, b) {
+    const R = 6371, rad = (d) => (d * Math.PI) / 180;
+    const dLat = rad(b.lat - a.lat), dLng = rad(b.lng - a.lng);
+    const h = Math.sin(dLat / 2) ** 2 +
+        Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(h));
+}
+
+function nearbyStations(st, count = 3) {
+    if (!st.lat || !st.lng) return [];
+    return DATA.stations
+        .filter((o) => o.id !== st.id && o.lat && o.lng)
+        .map((o) => ({ st: o, km: Math.round(haversineKm(st, o)) }))
+        .sort((a, b) => a.km - b.km)
+        .slice(0, count);
 }
 
 function renderIndex(lang) {
@@ -896,6 +957,39 @@ function renderIndex(lang) {
     const prefChips = `<nav class="pref-chips" aria-label="Prefectures">
             ${PREF_ORDER.map((p) => `<a class="pref-chip" href="#${p}">${esc(prefName(p, lang))}<span class="chip-n">${byPref[p].length}</span></a>`).join("\n            ")}
         </nav>`;
+
+    const filterBar = `
+        <div class="filter-bar">
+            <input type="search" id="ovnFilter" placeholder="${esc(t.filter_ph)}" aria-label="${esc(t.filter_label)}" autocomplete="off">
+            <p class="filter-none" id="ovnFilterNone" role="status" hidden></p>
+        </div>
+        <script>
+        (function () {
+            var input = document.getElementById('ovnFilter');
+            var status = document.getElementById('ovnFilterNone');
+            if (!input || !status) return;
+            var noneText = ${JSON.stringify(t.filter_none)};
+            var oneText = ${JSON.stringify(t.filter_count(1))};
+            var manyTemplate = ${JSON.stringify(t.filter_count("__N__"))};
+            input.addEventListener('input', function () {
+                var q = input.value.trim().toLowerCase();
+                var total = 0;
+                document.querySelectorAll('.pref-block').forEach(function (block) {
+                    var visible = 0;
+                    block.querySelectorAll('a.station-row').forEach(function (row) {
+                        var hit = !q || row.textContent.toLowerCase().indexOf(q) !== -1;
+                        row.style.display = hit ? '' : 'none';
+                        if (hit) visible++;
+                    });
+                    block.style.display = visible ? '' : 'none';
+                    total += visible;
+                });
+                if (!q) { status.hidden = true; return; }
+                status.hidden = false;
+                status.textContent = total === 0 ? noneText : (total === 1 ? oneText : manyTemplate.replace('__N__', total));
+            });
+        })();
+        </script>`;
 
     const prefBlocks = PREF_ORDER.map((p) => {
         const rows = byPref[p].map((st) => stationRow(st, lang)).join("\n");
@@ -973,6 +1067,7 @@ ${legend}
             <p>${esc(t.method_p)}</p>
             <p style="margin-top:10px;font-size:0.85rem;">${esc(t.updated_label)}${COLON[lang]}<strong>${DATA.meta.updated}</strong></p>
         </div>
+${filterBar}
 ${prefBlocks}
         <div class="ovn-card">
             <h2>${esc(t.faq_h)}</h2>
@@ -981,9 +1076,9 @@ ${prefBlocks}
         <div class="ovn-card">
             <h2>${esc(t.related_h)}</h2>
             <div class="station-list">
-                <a class="station-row" href="/posts/michi-no-eki-guide/"><span class="st-main"><span class="st-name">${esc(t.guide_michi)}</span></span><span class="st-side"><span class="chev">›</span></span></a>
-                <a class="station-row" href="/posts/campervan-parking-japan-overnight/"><span class="st-main"><span class="st-name">${esc(t.guide_parking)}</span></span><span class="st-side"><span class="chev">›</span></span></a>
-                <a class="station-row" href="/posts/kyushu-road-trip-7-days/"><span class="st-main"><span class="st-name">${esc(t.guide_7days)}</span></span><span class="st-side"><span class="chev">›</span></span></a>
+                <a class="station-row" href="/posts/michi-no-eki-guide/"><span class="st-main"><span class="st-name">${esc(t.guide_michi)}</span></span><span class="st-side"><span class="chev" aria-hidden="true">›</span></span></a>
+                <a class="station-row" href="/posts/campervan-parking-japan-overnight/"><span class="st-main"><span class="st-name">${esc(t.guide_parking)}</span></span><span class="st-side"><span class="chev" aria-hidden="true">›</span></span></a>
+                <a class="station-row" href="/posts/kyushu-road-trip-7-days/"><span class="st-main"><span class="st-name">${esc(t.guide_7days)}</span></span><span class="st-side"><span class="chev" aria-hidden="true">›</span></span></a>
             </div>
         </div>
         <div class="ovn-card">
@@ -1179,6 +1274,16 @@ function renderStation(lang, st) {
             <h2>${esc(t.faq_h)}</h2>
             ${faqPairs.map(([q, a]) => `<div class="faq-item-s"><div class="q">${esc(q)}</div><p>${esc(a)}</p></div>`).join("\n            ")}
         </div>
+        ${(() => {
+            const near = nearbyStations(st);
+            if (!near.length) return "";
+            return `<div class="ovn-card">
+            <h2>${esc(t.nearby_h)}</h2>
+            <div class="station-list">
+                ${near.map((n) => stationRow(n.st, lang, n.km)).join("\n                ")}
+            </div>
+        </div>`;
+        })()}
         <div class="ovn-card">
             <h2>${esc(t.report_h)}</h2>
             <p>${esc(t.report_p)}</p>
