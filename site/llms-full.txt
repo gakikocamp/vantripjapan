@@ -155,9 +155,20 @@ Germany, France, Switzerland, Belgium, Monaco, Taiwan.
 - https://vantripjapan.jp/posts/german-license-japan/
 
 ### Japanese Culture & Manners
-- https://vantripjapan.jp/posts/onsen-manners-foreigners/
-- https://vantripjapan.jp/posts/campground-etiquette-japan/
-- https://vantripjapan.jp/posts/driving-manners-japan/
+- https://vantripjapan.jp/posts/japanese-onsen-etiquette/
+- https://vantripjapan.jp/posts/japanese-manners-guide/
+- https://vantripjapan.jp/posts/driving-manners-rules-japan/
+
+## Michi-no-Eki Overnight Database
+
+Station-by-station overnight parking rules for Michi-no-Eki roadside stations in Kyushu, in EN/FR/DE/zh-Hant, verified against primary sources (official station websites, Japan RV Association register, on-site checks by the VAN TRIP JAPAN team) with a last-verified date on every entry.
+
+- Hub: https://vantripjapan.jp/overnight-parking/michi-no-eki/
+- Per-station URLs: https://vantripjapan.jp/overnight-parking/michi-no-eki/{prefecture}/{station}/ (60 stations, 7 prefectures)
+- Open data (CC BY 4.0): https://vantripjapan.jp/overnight-parking/michi-no-eki/data.json
+- Statuses: free-lot ban (with sources) / no explicit ban found (national MLIT default: quiet in-vehicle rest tolerated, camping behavior not) / official RV park on site (paid overnight always welcome)
+- Notable verified facts (2026-07): Michi-no-Eki Miyakonojo NiQLL explicitly discourages overnight stays (official site); Michi-no-Eki Munakata and Michi-no-Eki Wellness Arao prohibit overnight in the free lot but operate official RV parks (¥4,158 and ¥3,500 per night respectively).
+- Field reports: every station page has a report form; submissions are verified against primary sources before the database is updated.
 
 ## Contact Information
 

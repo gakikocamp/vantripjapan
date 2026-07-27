@@ -12,7 +12,7 @@ https://admin.vantripjapan.jp/ /admin/ 302
 /posts/yakushima-road-trip-guide/ /posts/yakushima-complete-campervan-ferry-guide/ 301
 /posts/campervan-rental-fukuoka-guide/ /posts/campervan-rental-fukuoka-guide-2026/ 301
 /posts/japan-campervan-rental-cost-breakdown/ /posts/japan-campervan-trip-cost-breakdown-2026/ 301
-/posts/campervan-vs-train-japan/ /posts/japan-campervan-vs-train-pass/ 301
+/posts/campervan-vs-train-japan/ /category/ 301
 /posts/japan-road-trip-budget-2026/ /posts/kyushu-road-trip-budget-2026/ 301
 /posts/campervan-rental-japan-guide-2026/ /posts/campervan-rental-fukuoka-guide-2026/ 301
 
@@ -28,6 +28,10 @@ https://admin.vantripjapan.jp/ /admin/ 302
 
 # /book/ re-enabled 2026-06-11 — direct booking funnel from /rent/ CTAs
 /book /book/ 301
+
+# Overnight DB — section root redirects to the michi-no-eki database
+/overnight-parking /overnight-parking/michi-no-eki/ 301
+/overnight-parking/ /overnight-parking/michi-no-eki/ 301
 
 # Deprecated pages redirect
 /writer/ /category/ 301

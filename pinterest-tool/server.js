@@ -56,7 +56,11 @@ try {
 
 // ── Config ──
 const PORT = process.env.PORT || 5600;
-const AUTH_PASSWORD = process.env.AUTH_PASSWORD || "vantrip2026";
+const AUTH_PASSWORD = process.env.AUTH_PASSWORD;
+if (!AUTH_PASSWORD) {
+    console.error("❌ AUTH_PASSWORD 環境変数が未設定です（scripts/.env に設定してください）");
+    process.exit(1);
+}
 const AUTH_SECRET = crypto.randomBytes(32).toString("hex");
 const GROQ_API_KEY = process.env.GROQ_API_KEY || "";
 const INPUT_DIR = path.join(__dirname, "input");

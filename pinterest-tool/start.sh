@@ -21,7 +21,7 @@ mkdir -p "$WORK_DIR/data"
 # Load env from scripts
 export GROQ_API_KEY=$(grep GROQ_API_KEY "$PROJ_DIR/../scripts/.env" 2>/dev/null | cut -d= -f2)
 export AUTH_PASSWORD=$(grep AUTH_PASSWORD "$PROJ_DIR/../scripts/.env" 2>/dev/null | cut -d= -f2)
-[ -z "$AUTH_PASSWORD" ] && export AUTH_PASSWORD="vantrip2026"
+[ -z "$AUTH_PASSWORD" ] && { echo "❌ AUTH_PASSWORD が未設定です（scripts/.env に設定してください）"; exit 1; }
 
 echo "  🚀 Starting Pinterest Studio..."
 cd "$WORK_DIR"

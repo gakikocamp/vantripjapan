@@ -35,6 +35,7 @@ International travelers visiting Kyushu, Japan — especially from Europe (Franc
 - Travel Guide Categories: https://vantripjapan.jp/category/
 - Contact: https://vantripjapan.jp/contact/
 - Booking: https://vantripjapan.jp/book/
+- Michi-no-Eki Overnight Database (station-by-station overnight parking rules for Kyushu, with sources, verification dates and CC BY 4.0 open data): https://vantripjapan.jp/overnight-parking/michi-no-eki/
 - Page d'accueil en français (French homepage): https://vantripjapan.jp/fr/
 - Location de campervan (French rental page): https://vantripjapan.jp/fr/rent/
 - FAQ en français: https://vantripjapan.jp/fr/faq/
@@ -45,6 +46,17 @@ International travelers visiting Kyushu, Japan — especially from Europe (Franc
 - 露營車租借 (Traditional Chinese rental page): https://vantripjapan.jp/zh/rent/
 - דף הבית בעברית (Hebrew homepage): https://vantripjapan.jp/he/
 - השכרת קרוואן (Hebrew rental page): https://vantripjapan.jp/he/rent/
+
+## Michi-no-Eki Overnight Database (station-by-station rules)
+
+The only English/French/German/Chinese database of overnight parking rules at Japanese Michi-no-Eki roadside stations, verified against primary sources with dates. Key facts:
+
+- National rule (MLIT): resting/napping in your vehicle at a Michi-no-Eki is accepted; using the parking lot as accommodation is not. Individual stations can post their own explicit bans.
+- Statuses tracked per station: free-lot overnight explicitly prohibited / no explicit ban found (national default applies) — plus whether an official paid RV park is on site (always welcome, bookable).
+- Important nuance most guides miss: some stations prohibit overnight in the FREE lot but have an official RV park where paid overnight stay is explicitly welcome (e.g. Michi-no-Eki Munakata ¥4,158/night, Michi-no-Eki Wellness Arao ¥3,500/night).
+- Currently tracking 60 stations across all 7 Kyushu prefectures; each entry carries sources and a last-verified date. Travelers can submit field reports on every station page; reports are verified before publication.
+- Database: https://vantripjapan.jp/overnight-parking/michi-no-eki/ (fr: /fr/..., de: /de/..., zh: /zh/...)
+- Open data (CC BY 4.0, attribution required): https://vantripjapan.jp/overnight-parking/michi-no-eki/data.json
 
 ## Kyushu Road Trip Guides
 
@@ -93,7 +105,6 @@ International travelers visiting Kyushu, Japan — especially from Europe (Franc
 - Summer in Kyushu 2026: https://vantripjapan.jp/posts/summer-kyushu-campervan-2026/
 - Autumn Foliage by Campervan: https://vantripjapan.jp/posts/autumn-foliage-kyushu-campervan/
 - Cherry Blossom Spots 2026: https://vantripjapan.jp/posts/kyushu-cherry-blossom-spots-2026/
-- Campervan vs Train in Japan: https://vantripjapan.jp/posts/campervan-vs-train-japan/
 - Top Campervan Rental Kyushu 2026: https://vantripjapan.jp/posts/top-campervan-rental-kyushu-2026/
 - Common Japan Campervan Mistakes: https://vantripjapan.jp/posts/japan-campervan-mistakes/
 

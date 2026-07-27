@@ -3,6 +3,8 @@
  * GET /sitemap.xml — builds sitemap from D1 database
  */
 
+import { OVERNIGHT_URLS, OVERNIGHT_LASTMOD } from './lib/overnight-urls.js';
+
 const BASE_URL = 'https://vantripjapan.jp';
 
 // 薄い量産記事(pSEO)の重複判定（functions/posts/[[slug]].js と同一ロジック）
@@ -29,6 +31,20 @@ const STATIC_PAGES = [
 
 // 静的言語ディレクトリ（hreflangコード → URLプレフィックス）
 const LANG_DIRS = { fr: '/fr', de: '/de', 'zh-Hant': '/zh', he: '/he' };
+
+// Overnight DB (scripts/build-overnight-pages.js 生成) は he なしの4言語クラスタ
+const OVN_LANG_DIRS = { fr: '/fr', de: '/de', 'zh-Hant': '/zh' };
+
+function ovnHreflangLinks(baseLoc) {
+  const alts = [
+    ['x-default', `${BASE_URL}${baseLoc}`],
+    ['en', `${BASE_URL}${baseLoc}`],
+    ...Object.entries(OVN_LANG_DIRS).map(([code, dir]) => [code, `${BASE_URL}${dir}${baseLoc}`]),
+  ];
+  return alts.map(([lang, href]) =>
+    `    <xhtml:link rel="alternate" hreflang="${lang}" href="${href}"/>`
+  ).join('\n');
+}
 
 function hreflangLinks(baseLoc) {
   const alts = [
@@ -99,6 +115,20 @@ export async function onRequest(context) {
     )
   );
 
+  // 車中泊DB（overnight DB）— 4言語クラスタ、lastmod はDB更新日
+  const ovnEntries = OVERNIGHT_URLS.flatMap(loc => {
+    const isIndex = loc === '/overnight-parking/michi-no-eki/';
+    return ['', ...Object.values(OVN_LANG_DIRS)].map(dir => [
+      '  <url>',
+      `    <loc>${BASE_URL}${dir}${loc}</loc>`,
+      `    <lastmod>${OVERNIGHT_LASTMOD}</lastmod>`,
+      '    <changefreq>weekly</changefreq>',
+      `    <priority>${isIndex ? (dir ? '0.7' : '0.8') : (dir ? '0.5' : '0.6')}</priority>`,
+      ovnHreflangLinks(loc),
+      '  </url>',
+    ].join('\n'));
+  });
+
   const articleEntries = articles.map(a => {
     const lastmod = (a.updated_at || a.published_at || today).slice(0, 10);
     return urlEntry({
@@ -115,6 +145,7 @@ export async function onRequest(context) {
     '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     ...staticEntries,
     ...langEntries,
+    ...ovnEntries,
     ...articleEntries,
     '</urlset>',
   ].join('\n');

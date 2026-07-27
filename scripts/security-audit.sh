@@ -85,7 +85,7 @@ done
 
 # [F2b] env参照のハードコード・フォールバック秘密（process.env.X || "リテラル"）
 # ※ F2のSECRET_EXCLUDEはprocess.envを含む行を丸ごと除外するため、この形の
-#   ハードコード既定値(例: AUTH_PASSWORD = process.env.AUTH_PASSWORD || "vantrip2026")
+#   ハードコード既定値(例: AUTH_PASSWORD = process.env.AUTH_PASSWORD || "<LITERAL>")
 #   をすり抜ける。ここは除外を適用せず、フォールバック・リテラルだけを検査する。
 echo "[F2b] env参照のハードコード・フォールバック秘密"
 FALLBACK=$(printf '%s\n' "$SCAN" | grep -inE '(PASSWORD|PASSWD|SECRET|TOKEN|API[_-]?KEY|APIKEY|PRIVATE[_-]?KEY|CREDENTIAL)[A-Za-z_]*[^=]*=[^;]*\|\|[[:space:]]*["'"'"'][A-Za-z0-9+/_.-]{6,}["'"'"']' | grep -viE -e 'YOUR_|<[A-Z_]+>|xxx|example|placeholder|\|\|[[:space:]]*["'"'"']["'"'"']' | head -5 || true)

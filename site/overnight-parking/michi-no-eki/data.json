@@ -1,0 +1,1340 @@
+{
+  "meta": {
+    "version": 1,
+    "region": "Kyushu",
+    "updated": "2026-07-27",
+    "schema_note": "statusは【無料の一般駐車場】のポリシー: prohibited (明示禁止・要evidence) | no_explicit_ban (明示禁止なし・国交省デフォルト適用)。rv_park は直交フィールド(公認RVパーク併設なら設定)。つまり『無料駐車場は禁止だがRVパークで有料宿泊可』(例:むなかた)を表現できる。verified = 最終確認日. evidence.type: official|blog|wiki|sign|assoc (urlなしのsign=現地確認)。駅の追加・更新はこのファイルを編集して node scripts/build-overnight-pages.js を再実行。地域は九州から開始だがスキーマは全国対応(prefecturesに県を足すだけ)。",
+    "source": "https://vantripjapan.jp/overnight-parking/michi-no-eki/",
+    "license": "CC BY 4.0 — attribution required: VAN TRIP JAPAN (vantripjapan.jp)"
+  },
+  "prefectures": {
+    "fukuoka": {
+      "ja": "福岡県",
+      "en": "Fukuoka",
+      "fr": "Fukuoka",
+      "de": "Fukuoka",
+      "zh": "福岡縣"
+    },
+    "saga": {
+      "ja": "佐賀県",
+      "en": "Saga",
+      "fr": "Saga",
+      "de": "Saga",
+      "zh": "佐賀縣"
+    },
+    "nagasaki": {
+      "ja": "長崎県",
+      "en": "Nagasaki",
+      "fr": "Nagasaki",
+      "de": "Nagasaki",
+      "zh": "長崎縣"
+    },
+    "kumamoto": {
+      "ja": "熊本県",
+      "en": "Kumamoto",
+      "fr": "Kumamoto",
+      "de": "Kumamoto",
+      "zh": "熊本縣"
+    },
+    "oita": {
+      "ja": "大分県",
+      "en": "Oita",
+      "fr": "Ōita",
+      "de": "Ōita",
+      "zh": "大分縣"
+    },
+    "miyazaki": {
+      "ja": "宮崎県",
+      "en": "Miyazaki",
+      "fr": "Miyazaki",
+      "de": "Miyazaki",
+      "zh": "宮崎縣"
+    },
+    "kagoshima": {
+      "ja": "鹿児島県",
+      "en": "Kagoshima",
+      "fr": "Kagoshima",
+      "de": "Kagoshima",
+      "zh": "鹿兒島縣"
+    }
+  },
+  "stations": [
+    {
+      "id": "munakata",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅むなかた",
+        "en": "Michi-no-Eki Munakata"
+      },
+      "city": {
+        "ja": "宗像市",
+        "en": "Munakata"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "https://www.michinoekimunakata.co.jp/",
+      "status": "prohibited",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://pcam.mobi/area/kyushu/fukuoka/12/",
+          "type": "wiki",
+          "date": "2026-07-27",
+          "quote_ja": "駐車場など公共空間で宿泊目的の利用は禁止されています"
+        },
+        {
+          "type": "sign",
+          "date": "2026-07"
+        },
+        {
+          "url": "https://www.michinoekimunakata.co.jp/pages/123/",
+          "type": "official",
+          "date": "2026-07-27"
+        }
+      ],
+      "rv_park": {
+        "name": "RVパーク 道の駅むなかた（6区画・電源あり・¥4,158/泊）",
+        "url": "https://www.michinoekimunakata.co.jp/pages/123/"
+      }
+    },
+    {
+      "id": "ukiha",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅うきは",
+        "en": "Michi-no-Eki Ukiha"
+      },
+      "city": {
+        "ja": "うきは市",
+        "en": "Ukiha"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "harazuru",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅原鶴",
+        "en": "Michi-no-Eki Harazuru"
+      },
+      "city": {
+        "ja": "朝倉市",
+        "en": "Asakura"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "oto-sakura-kaido",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅おおとう桜街道",
+        "en": "Michi-no-Eki Oto Sakura Kaido"
+      },
+      "city": {
+        "ja": "田川郡大任町",
+        "en": "Oto Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "itoda",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅いとだ",
+        "en": "Michi-no-Eki Itoda"
+      },
+      "city": {
+        "ja": "田川郡糸田町",
+        "en": "Itoda Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "oki",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅おおき",
+        "en": "Michi-no-Eki Oki"
+      },
+      "city": {
+        "ja": "三潴郡大木町",
+        "en": "Oki Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "https://ookimichieki.com/",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://rvparksmart.jp/rv-smart/post-1.html",
+          "type": "assoc",
+          "date": "2026-07-27"
+        }
+      ],
+      "rv_park": {
+        "name": "RVパークsmart 道の駅おおき",
+        "url": "https://rvparksmart.jp/rv-smart/post-1.html"
+      }
+    },
+    {
+      "id": "kurume",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅くるめ",
+        "en": "Michi-no-Eki Kurume"
+      },
+      "city": {
+        "ja": "久留米市",
+        "en": "Kurume"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "tachibana",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅たちばな",
+        "en": "Michi-no-Eki Tachibana"
+      },
+      "city": {
+        "ja": "八女市",
+        "en": "Yame"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "buzen-okoshikake",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅豊前おこしかけ",
+        "en": "Michi-no-Eki Buzen Okoshikake"
+      },
+      "city": {
+        "ja": "豊前市",
+        "en": "Buzen"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kashima",
+      "prefecture": "saga",
+      "name": {
+        "ja": "道の駅鹿島",
+        "en": "Michi-no-Eki Kashima"
+      },
+      "city": {
+        "ja": "鹿島市",
+        "en": "Kashima"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "imari",
+      "prefecture": "saga",
+      "name": {
+        "ja": "道の駅伊万里",
+        "en": "Michi-no-Eki Imari"
+      },
+      "city": {
+        "ja": "伊万里市",
+        "en": "Imari"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kyuragi",
+      "prefecture": "saga",
+      "name": {
+        "ja": "道の駅厳木",
+        "en": "Michi-no-Eki Kyuragi"
+      },
+      "city": {
+        "ja": "唐津市",
+        "en": "Karatsu"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "yoshinogari",
+      "prefecture": "saga",
+      "name": {
+        "ja": "道の駅吉野ヶ里",
+        "en": "Michi-no-Eki Yoshinogari"
+      },
+      "city": {
+        "ja": "神埼郡吉野ヶ里町",
+        "en": "Yoshinogari Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "tara",
+      "prefecture": "saga",
+      "name": {
+        "ja": "道の駅太良",
+        "en": "Michi-no-Eki Tara"
+      },
+      "city": {
+        "ja": "藤津郡太良町",
+        "en": "Tara Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "ureshino-maruku",
+      "prefecture": "saga",
+      "name": {
+        "ja": "道の駅うれしの まるく",
+        "en": "Michi-no-Eki Ureshino Maruku"
+      },
+      "city": {
+        "ja": "嬉野市",
+        "en": "Ureshino"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "sonogi-no-sho",
+      "prefecture": "nagasaki",
+      "name": {
+        "ja": "道の駅彼杵の荘",
+        "en": "Michi-no-Eki Sonogi no Sho"
+      },
+      "city": {
+        "ja": "東彼杵郡東彼杵町",
+        "en": "Higashisonogi Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "https://www.town.higashisonogi.lg.jp/soshiki/sangyoushinkou/2/1/1024.html",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://www.kurumatabi.com/park/rvpark/574.html",
+          "type": "assoc",
+          "date": "2026-07-27"
+        }
+      ],
+      "rv_park": {
+        "name": "RVパークそのぎの荘（電源完備）",
+        "url": "https://www.kurumatabi.com/park/rvpark/574.html"
+      }
+    },
+    {
+      "id": "ikitsuki-ohashi",
+      "prefecture": "nagasaki",
+      "name": {
+        "ja": "道の駅生月大橋",
+        "en": "Michi-no-Eki Ikitsuki Ohashi"
+      },
+      "city": {
+        "ja": "平戸市",
+        "en": "Hirado"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "konchu-no-sato-tabira",
+      "prefecture": "nagasaki",
+      "name": {
+        "ja": "道の駅昆虫の里たびら",
+        "en": "Michi-no-Eki Konchu no Sato Tabira"
+      },
+      "city": {
+        "ja": "平戸市",
+        "en": "Hirado"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "yuhigaoka-sotome",
+      "prefecture": "nagasaki",
+      "name": {
+        "ja": "道の駅夕陽が丘そとめ",
+        "en": "Michi-no-Eki Yuhigaoka Sotome"
+      },
+      "city": {
+        "ja": "長崎市",
+        "en": "Nagasaki"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "sasebo-box99",
+      "prefecture": "nagasaki",
+      "name": {
+        "ja": "道の駅させぼっくす９９",
+        "en": "Michi-no-Eki Sasebo Box 99"
+      },
+      "city": {
+        "ja": "佐世保市",
+        "en": "Sasebo"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "saikai",
+      "prefecture": "nagasaki",
+      "name": {
+        "ja": "道の駅さいかい",
+        "en": "Michi-no-Eki Saikai"
+      },
+      "city": {
+        "ja": "西海市",
+        "en": "Saikai"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "aso",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅阿蘇",
+        "en": "Michi-no-Eki Aso"
+      },
+      "city": {
+        "ja": "阿蘇市",
+        "en": "Aso"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "ozu",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅大津",
+        "en": "Michi-no-Eki Ozu"
+      },
+      "city": {
+        "ja": "菊池郡大津町",
+        "en": "Ozu Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "oguni",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅小国",
+        "en": "Michi-no-Eki Oguni"
+      },
+      "city": {
+        "ja": "阿蘇郡小国町",
+        "en": "Oguni Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "asobo-no-sato-kugino",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅あそ望の郷くぎの",
+        "en": "Michi-no-Eki Asobo no Sato Kugino"
+      },
+      "city": {
+        "ja": "阿蘇郡南阿蘇村",
+        "en": "Minamiaso Village"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "http://aso-kugino.jp/",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://www.kurumatabi.com/park/rvpark/758.html",
+          "type": "assoc",
+          "date": "2026-07-27"
+        }
+      ],
+      "rv_park": {
+        "name": "RVパークsmart 道の駅あそ望の郷くぎの",
+        "url": "https://www.kurumatabi.com/park/rvpark/758.html"
+      }
+    },
+    {
+      "id": "kikusui",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅きくすい",
+        "en": "Michi-no-Eki Kikusui"
+      },
+      "city": {
+        "ja": "玉名郡和水町",
+        "en": "Nagomi Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "https://kikusuiromankan.jp/",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://www.kurumatabi.com/park/rvpark/759.html",
+          "type": "assoc",
+          "date": "2026-07-27"
+        }
+      ],
+      "rv_park": {
+        "name": "RVパークsmart 道の駅きくすい",
+        "url": "https://www.kurumatabi.com/park/rvpark/759.html"
+      }
+    },
+    {
+      "id": "shichijo-melon-dome",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅七城メロンドーム",
+        "en": "Michi-no-Eki Shichijo Melon Dome"
+      },
+      "city": {
+        "ja": "菊池市",
+        "en": "Kikuchi"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "suika-no-sato-ueki",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅すいかの里 植木",
+        "en": "Michi-no-Eki Suika no Sato Ueki"
+      },
+      "city": {
+        "ja": "熊本市北区",
+        "en": "Kumamoto (Kita Ward)"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kamiamakusa-sunpearl",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅上天草さんぱーる",
+        "en": "Michi-no-Eki Kamiamakusa Sunpearl"
+      },
+      "city": {
+        "ja": "上天草市",
+        "en": "Kamiamakusa"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "ariake-rippleland",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅有明リップルランド",
+        "en": "Michi-no-Eki Ariake Ripple Land"
+      },
+      "city": {
+        "ja": "天草市",
+        "en": "Amakusa"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "http://www.rippleland.com/",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://www.kurumatabi.com/park/rvpark/1223.html",
+          "type": "assoc",
+          "date": "2026-07-27"
+        }
+      ],
+      "rv_park": {
+        "name": "RVパークsmart 道の駅有明リップルランド（3台・¥3,000/泊・電源込）",
+        "url": "https://www.kurumatabi.com/park/rvpark/1223.html"
+      }
+    },
+    {
+      "id": "miyajidake-kakashi-no-sato",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅宮地岳かかしの里",
+        "en": "Michi-no-Eki Miyajidake Kakashi no Sato"
+      },
+      "city": {
+        "ja": "天草市",
+        "en": "Amakusa"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "https://kakashinosato.jp/",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://rvparksmart.jp/rv-smart/",
+          "type": "assoc",
+          "date": "2026-07-27"
+        }
+      ],
+      "rv_park": {
+        "name": "RVパークsmart 道の駅宮地岳かかしの里",
+        "url": "https://rvparksmart.jp/rv-smart/"
+      }
+    },
+    {
+      "id": "hitoyoshi",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅人吉",
+        "en": "Michi-no-Eki Hitoyoshi"
+      },
+      "city": {
+        "ja": "人吉市",
+        "en": "Hitoyoshi"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "mizube-plaza-kamoto",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅水辺プラザかもと",
+        "en": "Michi-no-Eki Mizube Plaza Kamoto"
+      },
+      "city": {
+        "ja": "山鹿市",
+        "en": "Yamaga"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "https://mizube-plaza.co.jp/",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://www.kurumatabi.com/park/rvpark/1118.html",
+          "type": "assoc",
+          "date": "2026-07-27"
+        },
+        {
+          "url": "https://roadtrips.jp/spot/d/kumamoto/43028",
+          "type": "blog",
+          "date": "2026-07-27",
+          "quote_ja": "2022年秋から、車中泊禁止になり（利用者口コミ・公式記載は未確認）"
+        }
+      ],
+      "rv_park": {
+        "name": "RVパークsmart 道の駅水辺プラザかもと",
+        "url": "https://www.kurumatabi.com/park/rvpark/1118.html"
+      }
+    },
+    {
+      "id": "wellness-arao",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅ウェルネスあらお",
+        "en": "Michi-no-Eki Wellness Arao"
+      },
+      "city": {
+        "ja": "荒尾市",
+        "en": "Arao"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "https://wellness-arao.com/",
+      "status": "prohibited",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://wellness-arao.com/news/248/",
+          "type": "official",
+          "date": "2026-07-27",
+          "quote_ja": "一般駐車場での車中泊はお断りしております。「RVパークsmart道の駅ウェルネスあらお」をご利用ください。"
+        },
+        {
+          "url": "https://rvparksmart.jp/rv-smart/",
+          "type": "assoc",
+          "date": "2026-07-27"
+        }
+      ],
+      "rv_park": {
+        "name": "RVパークsmart 道の駅ウェルネスあらお（3台・¥3,500/泊・要ネット予約）",
+        "url": "https://rvparksmart.jp/rv-smart/"
+      }
+    },
+    {
+      "id": "komoriuta-no-sato-itsuki",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅子守唄の里五木",
+        "en": "Michi-no-Eki Komoriuta no Sato Itsuki"
+      },
+      "city": {
+        "ja": "球磨郡五木村",
+        "en": "Itsuki Village"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "https://www.itsuki-bussan.net/",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://rvparksmart.jp/rv-smart/",
+          "type": "assoc",
+          "date": "2026-07-27"
+        }
+      ],
+      "rv_park": {
+        "name": "RVパークsmart 道の駅子守唄の里五木（¥2,500/泊）",
+        "url": "https://rvparksmart.jp/rv-smart/"
+      }
+    },
+    {
+      "id": "nishiki",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅錦",
+        "en": "Michi-no-Eki Nishiki"
+      },
+      "city": {
+        "ja": "球磨郡錦町",
+        "en": "Nishiki Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "https://kurandmarket.com/",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://rvparksmart.jp/rv-smart/",
+          "type": "assoc",
+          "date": "2026-07-27"
+        }
+      ],
+      "rv_park": {
+        "name": "RVパークsmart 道の駅錦（2台・¥2,000/泊）",
+        "url": "https://rvparksmart.jp/rv-smart/"
+      }
+    },
+    {
+      "id": "toyo",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅東陽",
+        "en": "Michi-no-Eki Toyo"
+      },
+      "city": {
+        "ja": "八代市",
+        "en": "Yatsushiro"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "https://www.toyo-seseragi-michinoeki.com/",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://rvparksmart.jp/rv-smart/",
+          "type": "assoc",
+          "date": "2026-07-27"
+        }
+      ],
+      "rv_park": {
+        "name": "RVパークsmart 道の駅東陽（2台・¥2,500/泊・電源込）",
+        "url": "https://rvparksmart.jp/rv-smart/"
+      }
+    },
+    {
+      "id": "yufuin",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅ゆふいん",
+        "en": "Michi-no-Eki Yufuin"
+      },
+      "city": {
+        "ja": "由布市",
+        "en": "Yufu"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "harajiri-no-taki",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅原尻の滝",
+        "en": "Michi-no-Eki Harajiri no Taki"
+      },
+      "city": {
+        "ja": "豊後大野市",
+        "en": "Bungo-Ono"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "saganoseki",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅佐賀関",
+        "en": "Michi-no-Eki Saganoseki"
+      },
+      "city": {
+        "ja": "大分市",
+        "en": "Oita"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kunisaki",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅くにさき",
+        "en": "Michi-no-Eki Kunisaki"
+      },
+      "city": {
+        "ja": "国東市",
+        "en": "Kunisaki"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "dowa-no-sato-kusu",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅童話の里くす",
+        "en": "Michi-no-Eki Dowa no Sato Kusu"
+      },
+      "city": {
+        "ja": "玖珠郡玖珠町",
+        "en": "Kusu Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "nakatsu",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅なかつ",
+        "en": "Michi-no-Eki Nakatsu"
+      },
+      "city": {
+        "ja": "中津市",
+        "en": "Nakatsu"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "nagayu-onsen",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅ながゆ温泉",
+        "en": "Michi-no-Eki Nagayu Onsen"
+      },
+      "city": {
+        "ja": "竹田市",
+        "en": "Taketa"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "tanourara",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅たのうらら",
+        "en": "Michi-no-Eki Tanourara"
+      },
+      "city": {
+        "ja": "大分市",
+        "en": "Oita"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "phoenix",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅フェニックス",
+        "en": "Michi-no-Eki Phoenix"
+      },
+      "city": {
+        "ja": "宮崎市",
+        "en": "Miyazaki"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "takachiho",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅高千穂",
+        "en": "Michi-no-Eki Takachiho"
+      },
+      "city": {
+        "ja": "西臼杵郡高千穂町",
+        "en": "Takachiho Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "miyakonojo-niqll",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅都城NiQLL",
+        "en": "Michi-no-Eki Miyakonojo NiQLL"
+      },
+      "city": {
+        "ja": "都城市",
+        "en": "Miyakonojo"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "https://coconiqll.co.jp/",
+      "status": "prohibited",
+      "verified": "2026-07-27",
+      "evidence": [
+        {
+          "url": "https://coconiqll.co.jp/shisetu-detail/",
+          "type": "official",
+          "date": "2026-07-27",
+          "quote_ja": "車中泊・バス利用等含めた長時間のご利用はご遠慮くださいますよう、お願い申し上げます。"
+        }
+      ],
+      "rv_park": null
+    },
+    {
+      "id": "kitagawa-hayuma",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅北川はゆま",
+        "en": "Michi-no-Eki Kitagawa Hayuma"
+      },
+      "city": {
+        "ja": "延岡市",
+        "en": "Nobeoka"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "hyuga",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅日向",
+        "en": "Michi-no-Eki Hyuga"
+      },
+      "city": {
+        "ja": "日向市",
+        "en": "Hyuga"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "nango",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅なんごう",
+        "en": "Michi-no-Eki Nango"
+      },
+      "city": {
+        "ja": "日南市",
+        "en": "Nichinan"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "ebino",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅えびの",
+        "en": "Michi-no-Eki Ebino"
+      },
+      "city": {
+        "ja": "えびの市",
+        "en": "Ebino"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "sakurajima",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅桜島",
+        "en": "Michi-no-Eki Sakurajima"
+      },
+      "city": {
+        "ja": "鹿児島市",
+        "en": "Kagoshima"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kiire",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅喜入",
+        "en": "Michi-no-Eki Kiire"
+      },
+      "city": {
+        "ja": "鹿児島市",
+        "en": "Kagoshima"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kirishima",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅霧島",
+        "en": "Michi-no-Eki Kirishima"
+      },
+      "city": {
+        "ja": "霧島市",
+        "en": "Kirishima"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "tarumizu",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅たるみず",
+        "en": "Michi-no-Eki Tarumizu"
+      },
+      "city": {
+        "ja": "垂水市",
+        "en": "Tarumizu"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "tarumizu-hamabira",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅たるみずはまびら",
+        "en": "Michi-no-Eki Tarumizu Hamabira"
+      },
+      "city": {
+        "ja": "垂水市",
+        "en": "Tarumizu"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "ibusuki",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅いぶすき",
+        "en": "Michi-no-Eki Ibusuki"
+      },
+      "city": {
+        "ja": "指宿市",
+        "en": "Ibusuki"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "akune",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅阿久根",
+        "en": "Michi-no-Eki Akune"
+      },
+      "city": {
+        "ja": "阿久根市",
+        "en": "Akune"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kuni-no-matsubara-osaki",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅くにの松原おおさき",
+        "en": "Michi-no-Eki Kuni no Matsubara Osaki"
+      },
+      "city": {
+        "ja": "曽於郡大崎町",
+        "en": "Osaki Town"
+      },
+      "lat": null,
+      "lng": null,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    }
+  ]
+}
