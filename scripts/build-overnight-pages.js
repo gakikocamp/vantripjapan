@@ -63,14 +63,14 @@ const T = {
         national_h: "The official national rule (read this first)",
         national_p: "Michi-no-Eki are government-designated rest stops with free 24-hour parking. The Ministry of Land, Infrastructure, Transport and Tourism (MLIT) position: <strong>resting and napping in your vehicle is accepted — using the parking lot as accommodation is not</strong>. In practice, a quiet one-night rest in your campervan is tolerated at most stations, while camping behavior (chairs, tables, awnings, BBQ, long stays) is not. Individual stations can and do post their own explicit bans — that is exactly what this database tracks.",
         legend_h: "How to read the statuses",
-        st_prohibited: "Overnight stay explicitly prohibited",
-        st_prohibited_rv: "Free lot: overnight prohibited — use the RV park",
-        st_no_ban: "Quiet overnight rest generally tolerated — no explicit ban found",
+        st_prohibited: "Overnight stay not allowed here",
+        st_prohibited_rv: "Free parking: no overnight — book the RV park instead",
+        st_no_ban: "A quiet overnight rest is usually OK here",
         st_rv: "Official RV park on site",
-        rv_banner: "Official RV park on site — overnight welcome (paid, reservation recommended)",
-        st_prohibited_short: "Explicit ban",
-        st_paidonly_short: "Paid stay only",
-        st_no_ban_short: "Rest tolerated",
+        rv_banner: "Official RV park on site — overnight welcome (paid, book ahead)",
+        st_prohibited_short: "Not allowed",
+        st_paidonly_short: "Paid only",
+        st_no_ban_short: "Usually OK",
         st_rv_short: "RV park",
         legend_paidonly: "The free parking lot explicitly bans overnight stays — but the station has an official paid RV park where staying is welcome. Book a spot and sleep legally.",
         src_onsite: "Confirmed on site by the VAN TRIP JAPAN team",
@@ -148,6 +148,7 @@ const T = {
         map_hint: "Tap a pin for rules, station details and Google Maps navigation.",
         map_details: "Station details →",
         nearby_h: "Nearby stations",
+        chip_all: "All",
         filter_ph: "Filter stations… (name or city)",
         filter_label: "Filter the station list",
         filter_none: "No stations match your filter.",
@@ -182,14 +183,14 @@ const T = {
         national_h: "La règle nationale officielle (à lire d'abord)",
         national_p: "Les Michi-no-Eki sont des aires de repos publiques avec parking gratuit 24 h/24. Position du ministère des Transports (MLIT) : <strong>se reposer et dormir dans son véhicule est accepté — utiliser le parking comme hébergement ne l'est pas</strong>. En pratique, une nuit calme dans le van est tolérée dans la plupart des stations ; le comportement « camping » (chaises, tables, auvents, barbecue, longs séjours) ne l'est pas. Chaque station peut afficher sa propre interdiction explicite — c'est exactement ce que cette base recense.",
         legend_h: "Comment lire les statuts",
-        st_prohibited: "Nuitée explicitement interdite",
-        st_prohibited_rv: "Parking gratuit : nuitée interdite — utilisez le RV park",
-        st_no_ban: "Nuit de repos discrète généralement tolérée — aucune interdiction explicite trouvée",
+        st_prohibited: "Dormir ici n'est pas autorisé",
+        st_prohibited_rv: "Parking gratuit : pas de nuitée — réservez le RV park",
+        st_no_ban: "Une nuit de repos discrète est généralement OK ici",
         st_rv: "RV park officiel sur place",
-        rv_banner: "RV park officiel sur place — nuitée bienvenue (payant, réservation recommandée)",
-        st_prohibited_short: "Interdiction explicite",
-        st_paidonly_short: "Nuitée payante uniquement",
-        st_no_ban_short: "Repos toléré",
+        rv_banner: "RV park officiel sur place — nuitée bienvenue (payant, réservez à l'avance)",
+        st_prohibited_short: "Interdit",
+        st_paidonly_short: "Payant uniquement",
+        st_no_ban_short: "Généralement OK",
         st_rv_short: "RV park",
         legend_paidonly: "Le parking gratuit interdit explicitement la nuitée — mais la station dispose d'un RV park officiel payant où vous êtes le bienvenu. Réservez un emplacement et dormez en toute légalité.",
         src_onsite: "Constaté sur place par l'équipe VAN TRIP JAPAN",
@@ -267,6 +268,7 @@ const T = {
         map_hint: "Touchez une épingle : règles, fiche station et navigation Google Maps.",
         map_details: "Fiche station →",
         nearby_h: "Stations à proximité",
+        chip_all: "Toutes",
         filter_ph: "Filtrer les stations… (nom ou ville)",
         filter_label: "Filtrer la liste des stations",
         filter_none: "Aucune station ne correspond au filtre.",
@@ -301,14 +303,14 @@ const T = {
         national_h: "Die offizielle nationale Regel (zuerst lesen)",
         national_p: "Michi-no-Eki sind staatlich ausgewiesene Raststationen mit kostenlosem 24-Stunden-Parkplatz. Position des Verkehrsministeriums (MLIT): <strong>Ausruhen und Schlafen im Fahrzeug wird akzeptiert — den Parkplatz als Unterkunft zu nutzen nicht</strong>. In der Praxis wird eine ruhige Nacht im Campervan an den meisten Stationen toleriert; Camping-Verhalten (Stühle, Tische, Markisen, Grillen, lange Aufenthalte) nicht. Einzelne Stationen können eigene ausdrückliche Verbote aushängen — genau das erfasst diese Datenbank.",
         legend_h: "So lesen Sie die Statusangaben",
-        st_prohibited: "Übernachtung ausdrücklich verboten",
-        st_prohibited_rv: "Kostenloser Parkplatz: Übernachten verboten — nutzen Sie den RV-Park",
-        st_no_ban: "Ruhige Übernachtung in der Regel toleriert — kein ausdrückliches Verbot gefunden",
+        st_prohibited: "Übernachten ist hier nicht erlaubt",
+        st_prohibited_rv: "Kostenloser Parkplatz: kein Übernachten — buchen Sie den RV-Park",
+        st_no_ban: "Eine ruhige Nacht im Fahrzeug ist hier meist OK",
         st_rv: "Offizieller RV-Park vor Ort",
-        rv_banner: "Offizieller RV-Park vor Ort — Übernachten willkommen (kostenpflichtig, Reservierung empfohlen)",
-        st_prohibited_short: "Ausdrückliches Verbot",
-        st_paidonly_short: "Nur bezahlte Übernachtung",
-        st_no_ban_short: "Übernachten toleriert",
+        rv_banner: "Offizieller RV-Park vor Ort — Übernachten willkommen (kostenpflichtig, vorab buchen)",
+        st_prohibited_short: "Nicht erlaubt",
+        st_paidonly_short: "Nur bezahlt",
+        st_no_ban_short: "Meist OK",
         st_rv_short: "RV-Park",
         legend_paidonly: "Der kostenlose Parkplatz verbietet Übernachtungen ausdrücklich — die Station hat aber einen offiziellen, kostenpflichtigen RV-Park, in dem Sie willkommen sind. Stellplatz buchen und legal übernachten.",
         src_onsite: "Vor Ort bestätigt durch das VAN-TRIP-JAPAN-Team",
@@ -386,6 +388,7 @@ const T = {
         map_hint: "Tippen Sie auf einen Pin: Regeln, Stationsdetails und Google-Maps-Navigation.",
         map_details: "Stationsdetails →",
         nearby_h: "Stationen in der Nähe",
+        chip_all: "Alle",
         filter_ph: "Stationen filtern … (Name oder Ort)",
         filter_label: "Stationsliste filtern",
         filter_none: "Keine Station passt zum Filter.",
@@ -420,14 +423,14 @@ const T = {
         national_h: "全國官方規則（請先讀這裡）",
         national_p: "道之驛是政府指定的休息站，提供24小時免費停車。日本國土交通省的立場：<strong>在車內休息、小睡是被接受的 — 把停車場當作住宿設施則不行</strong>。實務上，多數站點容許在露營車內安靜過一夜；但露營行為（桌椅、天幕、烤肉、長期停留）不被容許。個別站點可能公告自己的明文禁止規定 — 本資料庫追蹤的正是這些。",
         legend_h: "狀態說明",
-        st_prohibited: "明文禁止過夜",
-        st_prohibited_rv: "免費停車場禁止過夜 — 請利用RV Park",
-        st_no_ban: "一般容許車內安靜休息過夜 — 未發現明文禁止",
+        st_prohibited: "這裡不可過夜",
+        st_prohibited_rv: "免費停車場不可過夜 — 請預訂RV Park",
+        st_no_ban: "在車內安靜過一夜，這裡通常OK",
         st_rv: "設有官方RV Park",
         rv_banner: "設有官方RV Park — 歡迎過夜（付費・建議預約）",
-        st_prohibited_short: "明文禁止",
-        st_paidonly_short: "僅限付費過夜",
-        st_no_ban_short: "可安靜休息",
+        st_prohibited_short: "不可過夜",
+        st_paidonly_short: "僅限付費",
+        st_no_ban_short: "通常OK",
         st_rv_short: "RV Park",
         legend_paidonly: "免費停車場明文禁止過夜 — 但站內設有官方付費RV Park，歡迎入住。預訂車位即可合法過夜。",
         src_onsite: "由VAN TRIP JAPAN團隊現地確認",
@@ -505,6 +508,7 @@ const T = {
         map_hint: "點選圖釘查看規則、站點資訊與Google地圖導航。",
         map_details: "站點詳情 →",
         nearby_h: "附近的道之驛",
+        chip_all: "全部",
         filter_ph: "篩選站點…（站名或市町村）",
         filter_label: "篩選站點清單",
         filter_none: "沒有符合條件的站點。",
@@ -679,7 +683,17 @@ const SHARED_CSS = `
         .pref-chip .chip-n { font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary); font-variant-numeric: tabular-nums;
             background: var(--color-bg-secondary, #f4f4f2); border-radius: 100px; padding: 1px 8px; }
         .pref-block { scroll-margin-top: 90px; }
-        .filter-bar { margin-bottom: 16px; }
+        .filter-bar { margin: 4px 0 16px; }
+        .status-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .st-chip { display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: 0.88rem; font-weight: 650;
+            color: var(--color-text); background: #fff; border: 1px solid rgba(0,0,0,0.1); border-radius: 100px;
+            padding: 9px 16px; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 150ms, background-color 150ms, box-shadow 150ms; }
+        .st-chip .dot { width: 9px; height: 9px; }
+        .st-chip:hover { transform: translateY(-1px); border-color: rgba(45,90,61,0.4); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .st-chip:active { transform: scale(0.97); transition-duration: 100ms; }
+        .st-chip.active { background: #2d5a3d; color: #fff; border-color: #2d5a3d; }
+        .st-chip.active .chip-n { background: rgba(255,255,255,0.2); color: #fff; }
         .filter-bar input[type="search"] {
             width: 100%; font: inherit; font-size: 0.95rem; color: var(--color-text);
             background: #fff; border: 1px solid rgba(0,0,0,0.12); border-radius: 100px;
@@ -714,6 +728,9 @@ const SHARED_CSS = `
         .ovn-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
         .ovn-btn:active { transform: scale(0.97); transition-duration: 100ms; }
         .ovn-btn.ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.55); }
+        .action-row { margin: 4px 0 28px; }
+        .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
+        .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
         .ovn-back { display: inline-block; margin-bottom: 12px; font-size: 0.9rem; color: var(--color-accent); text-decoration: none; }
         .ovn-back:hover { text-decoration: underline; }
@@ -944,7 +961,7 @@ function stationRow(st, lang, distanceKm) {
         ? esc(cityName(st, lang))
         : `${esc(st.name.ja)} · ${esc(cityName(st, lang))}`;
     if (distanceKm != null) subtitle += ` · ${distanceKm}&nbsp;km`;
-    return `<a class="station-row" href="${sectionPath(lang, sub)}">
+    return `<a class="station-row" data-st="${stCls(st)}" data-rv="${st.rv_park ? 1 : 0}" href="${sectionPath(lang, sub)}">
                 <span class="st-main"><span class="st-name">${esc(shownName)}</span>
                 <span class="st-city">${subtitle}</span></span>
                 <span class="st-side">${st.rv_park ? rvChip(lang) : ""}${badge(st, lang)}<span class="chev" aria-hidden="true">›</span></span>
@@ -986,8 +1003,18 @@ function renderIndex(lang) {
             ${PREF_ORDER.map((p) => `<a class="pref-chip" href="#${p}">${esc(prefName(p, lang))}<span class="chip-n">${byPref[p].length}</span></a>`).join("\n            ")}
         </nav>`;
 
+    const nOk = DATA.stations.filter((s) => s.status !== "prohibited").length;
+    const nRv = DATA.stations.filter((s) => s.rv_park).length;
+    const nNo = DATA.stations.filter((s) => s.status === "prohibited").length;
+
     const filterBar = `
         <div class="filter-bar">
+            <div class="status-chips" role="group" aria-label="${esc(t.filter_label)}">
+                <button type="button" class="st-chip active" data-f="all" aria-pressed="true">${esc(t.chip_all)}<span class="chip-n">${counts.total}</span></button>
+                <button type="button" class="st-chip" data-f="ok" aria-pressed="false"><span class="dot" style="background:var(--st-teal)"></span>${esc(t.st_no_ban_short)}<span class="chip-n">${nOk}</span></button>
+                <button type="button" class="st-chip" data-f="rv" aria-pressed="false"><span class="dot" style="background:var(--st-green)"></span>${esc(t.st_rv_short)}<span class="chip-n">${nRv}</span></button>
+                <button type="button" class="st-chip" data-f="no" aria-pressed="false"><span class="dot" style="background:var(--st-red)"></span>${esc(t.st_prohibited_short)}<span class="chip-n">${nNo}</span></button>
+            </div>
             <input type="search" id="ovnFilter" placeholder="${esc(t.filter_ph)}" aria-label="${esc(t.filter_label)}" autocomplete="off">
             <p class="filter-none" id="ovnFilterNone" role="status" hidden></p>
         </div>
@@ -999,22 +1026,46 @@ function renderIndex(lang) {
             var noneText = ${JSON.stringify(t.filter_none)};
             var oneText = ${JSON.stringify(t.filter_count(1))};
             var manyTemplate = ${JSON.stringify(t.filter_count("__N__"))};
-            input.addEventListener('input', function () {
+            var activeF = 'all';
+            // fキー: all=全部 / ok=通常OK(noban) / rv=RVパークあり / no=不可・有料のみ(prohibited+paidonly)
+            function matchStatus(st, rv) {
+                if (activeF === 'all') return true;
+                if (activeF === 'ok') return st === 'noban';
+                if (activeF === 'rv') return rv === 1 || rv === '1';
+                return st === 'prohibited' || st === 'paidonly';
+            }
+            function apply() {
                 var q = input.value.trim().toLowerCase();
                 var total = 0;
                 document.querySelectorAll('.pref-block').forEach(function (block) {
                     var visible = 0;
                     block.querySelectorAll('a.station-row').forEach(function (row) {
-                        var hit = !q || row.textContent.toLowerCase().indexOf(q) !== -1;
+                        var hit = (!q || row.textContent.toLowerCase().indexOf(q) !== -1) &&
+                            matchStatus(row.getAttribute('data-st'), row.getAttribute('data-rv'));
                         row.style.display = hit ? '' : 'none';
                         if (hit) visible++;
                     });
                     block.style.display = visible ? '' : 'none';
                     total += visible;
                 });
-                if (!q) { status.hidden = true; return; }
+                if (window.__ovnMapFilter) window.__ovnMapFilter(function (st, rv) {
+                    return matchStatus(st, rv);
+                });
+                if (!q && activeF === 'all') { status.hidden = true; return; }
                 status.hidden = false;
                 status.textContent = total === 0 ? noneText : (total === 1 ? oneText : manyTemplate.replace('__N__', total));
+            }
+            input.addEventListener('input', apply);
+            document.querySelectorAll('.st-chip').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    activeF = btn.getAttribute('data-f');
+                    document.querySelectorAll('.st-chip').forEach(function (b) {
+                        var on = b === btn;
+                        b.classList.toggle('active', on);
+                        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+                    });
+                    apply();
+                });
             });
         })();
         </script>`;
@@ -1038,6 +1089,7 @@ ${rows}
     const markers = DATA.stations.filter((s) => s.lat && s.lng).map((s) => ({
         n: stationName(s, lang),
         la: s.lat, ln: s.lng,
+        st: stCls(s), rv: s.rv_park ? 1 : 0,
         c: s.status === "prohibited" ? (s.rv_park ? "#d9a400" : "#c93028") : s.rv_park ? "#2c9a44" : "#12808a",
         b: esc(statusLabel(s, lang, true)) + (s.rv_park ? " · " + esc(t.st_rv_short) : ""),
         u: sectionPath(lang, `${s.prefecture}/${s.id}/`),
@@ -1071,20 +1123,30 @@ ${rows}
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
             var sts = ${JSON.stringify(markers)};
-            sts.forEach(function (s) {
-                L.circleMarker([s.la, s.ln], {
+            var mapMarkers = sts.map(function (s) {
+                var m = L.circleMarker([s.la, s.ln], {
                     radius: 8, fillColor: s.c, fillOpacity: 0.92, color: '#fff', weight: 2
                 }).addTo(map).bindPopup(
                     '<strong>' + s.n + '</strong><br><span style="color:' + s.c + ';font-weight:600;">' + s.b + '</span><br>' +
                     '<a href="' + s.u + '">${esc(t.map_details)}</a> · <a href="' + s.g + '" target="_blank" rel="noopener">Google Maps ↗</a>'
                 );
+                return { m: m, st: s.st, rv: s.rv };
             });
+            // ステータス絞り込みチップから呼ばれる（リストと地図を同時に絞る）
+            window.__ovnMapFilter = function (pred) {
+                mapMarkers.forEach(function (x) {
+                    if (pred(x.st, x.rv)) { if (!map.hasLayer(x.m)) x.m.addTo(map); }
+                    else if (map.hasLayer(x.m)) map.removeLayer(x.m);
+                });
+            };
         })();
         </script>`;
 
     const body = `
         ${prefChips}
 ${mapCard}
+${filterBar}
+${prefBlocks}
         <div class="ovn-card">
             <h2>${esc(t.national_h)}</h2>
             <p>${t.national_p}</p>
@@ -1095,8 +1157,6 @@ ${legend}
             <p>${esc(t.method_p)}</p>
             <p style="margin-top:10px;font-size:0.85rem;">${esc(t.updated_label)}${COLON[lang]}<strong>${DATA.meta.updated}</strong></p>
         </div>
-${filterBar}
-${prefBlocks}
         <div class="ovn-card">
             <h2>${esc(t.faq_h)}</h2>
             ${faqPairs.map(([q, a]) => `<div class="faq-item-s"><div class="q">${esc(q)}</div><p>${esc(a)}</p></div>`).join("\n            ")}
@@ -1279,6 +1339,9 @@ function renderStation(lang, st) {
         ${st.rv_park ? `<div class="status-banner rv">
             <div class="st-label"><span class="dot"></span>${esc(t.rv_banner)}</div>
         </div>` : ""}
+        <div class="action-row">
+            <a class="ovn-btn primary" href="https://www.google.com/maps/search/?api=1&query=${mapsQuery}" target="_blank" rel="noopener">🧭 ${esc(t.d_map_open)}</a>
+        </div>
         <div class="ovn-card">
             <h2>${esc(t.what_h)}</h2>
             <p>${esc(whatText)}</p>

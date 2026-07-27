@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <title>Michi-no-Eki Kuni no Matsubara Osaki — Übernachtungsregeln 2026 | VAN TRIP JAPAN</title>
-    <meta name="description" content="Darf man am Michi-no-Eki Kuni no Matsubara Osaki im Campervan übernachten? Aktueller Status: Ruhige Übernachtung in der Regel toleriert — kein ausdrückliches Verbot gefunden. Regeln, Quellen, Prüfdatum und legale Alternativen in der Nähe.">
+    <meta name="description" content="Darf man am Michi-no-Eki Kuni no Matsubara Osaki im Campervan übernachten? Aktueller Status: Eine ruhige Nacht im Fahrzeug ist hier meist OK. Regeln, Quellen, Prüfdatum und legale Alternativen in der Nähe.">
     <meta property="og:title" content="Michi-no-Eki Kuni no Matsubara Osaki — Übernachtungsregeln 2026 | VAN TRIP JAPAN">
-    <meta property="og:description" content="Darf man am Michi-no-Eki Kuni no Matsubara Osaki im Campervan übernachten? Aktueller Status: Ruhige Übernachtung in der Regel toleriert — kein ausdrückliches Verbot gefunden. Regeln, Quellen, Prüfdatum und legale Alternativen in der Nähe.">
+    <meta property="og:description" content="Darf man am Michi-no-Eki Kuni no Matsubara Osaki im Campervan übernachten? Aktueller Status: Eine ruhige Nacht im Fahrzeug ist hier meist OK. Regeln, Quellen, Prüfdatum und legale Alternativen in der Nähe.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vantripjapan.jp/de/overnight-parking/michi-no-eki/kagoshima/kuni-no-matsubara-osaki/">
     <meta property="og:image" content="https://vantripjapan.jp/images/hero-vanlife.jpg">
@@ -182,7 +182,17 @@
         .pref-chip .chip-n { font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary); font-variant-numeric: tabular-nums;
             background: var(--color-bg-secondary, #f4f4f2); border-radius: 100px; padding: 1px 8px; }
         .pref-block { scroll-margin-top: 90px; }
-        .filter-bar { margin-bottom: 16px; }
+        .filter-bar { margin: 4px 0 16px; }
+        .status-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .st-chip { display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: 0.88rem; font-weight: 650;
+            color: var(--color-text); background: #fff; border: 1px solid rgba(0,0,0,0.1); border-radius: 100px;
+            padding: 9px 16px; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 150ms, background-color 150ms, box-shadow 150ms; }
+        .st-chip .dot { width: 9px; height: 9px; }
+        .st-chip:hover { transform: translateY(-1px); border-color: rgba(45,90,61,0.4); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .st-chip:active { transform: scale(0.97); transition-duration: 100ms; }
+        .st-chip.active { background: #2d5a3d; color: #fff; border-color: #2d5a3d; }
+        .st-chip.active .chip-n { background: rgba(255,255,255,0.2); color: #fff; }
         .filter-bar input[type="search"] {
             width: 100%; font: inherit; font-size: 0.95rem; color: var(--color-text);
             background: #fff; border: 1px solid rgba(0,0,0,0.12); border-radius: 100px;
@@ -217,6 +227,9 @@
         .ovn-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
         .ovn-btn:active { transform: scale(0.97); transition-duration: 100ms; }
         .ovn-btn.ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.55); }
+        .action-row { margin: 4px 0 28px; }
+        .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
+        .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
         .ovn-back { display: inline-block; margin-bottom: 12px; font-size: 0.9rem; color: var(--color-accent); text-decoration: none; }
         .ovn-back:hover { text-decoration: underline; }
@@ -304,10 +317,13 @@
 
         <a class="ovn-back" href="/de/overnight-parking/michi-no-eki/kagoshima/">← Alle Stationen in Kagoshima</a>
         <div class="status-banner noban">
-            <div class="st-label"><span class="dot"></span>Ruhige Übernachtung in der Regel toleriert — kein ausdrückliches Verbot gefunden</div>
+            <div class="st-label"><span class="dot"></span>Eine ruhige Nacht im Fahrzeug ist hier meist OK</div>
             <div class="st-verified">Zuletzt geprüft: 2026-07-27</div>
         </div>
         
+        <div class="action-row">
+            <a class="ovn-btn primary" href="https://www.google.com/maps/search/?api=1&query=31.43811,131.03078" target="_blank" rel="noopener">🧭 In Google Maps öffnen</a>
+        </div>
         <div class="ovn-card">
             <h2>Was das für Sie bedeutet</h2>
             <p>Gute Nachricht: Eine ruhige Nacht im Fahrzeug wird hier in der Regel toleriert — zum Prüfdatum haben wir kein ausdrückliches Verbot gefunden, es gilt also Japans nationaler Standard. Aber Sie sind Gast auf einem Parkplatz, nicht auf einem Campingplatz. Halten Sie sich an die Etikette unten; sagen Schilder oder Personal vor Ort etwas anderes, gilt immer das.</p>
@@ -336,20 +352,20 @@
         <div class="ovn-card boxed">
             <h2>Stationen in der Nähe</h2>
             <div class="station-list">
-                <a class="station-row" href="/de/overnight-parking/michi-no-eki/kagoshima/tarumizu/">
+                <a class="station-row" data-st="noban" data-rv="0" href="/de/overnight-parking/michi-no-eki/kagoshima/tarumizu/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tarumizu</span>
                 <span class="st-city">道の駅たるみず · Tarumizu · 30&nbsp;km</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Übernachten toleriert</span><span class="chev" aria-hidden="true">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Meist OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
-                <a class="station-row" href="/de/overnight-parking/michi-no-eki/kagoshima/tarumizu-hamabira/">
+                <a class="station-row" data-st="noban" data-rv="0" href="/de/overnight-parking/michi-no-eki/kagoshima/tarumizu-hamabira/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tarumizu Hamabira</span>
                 <span class="st-city">道の駅たるみずはまびら · Tarumizu · 32&nbsp;km</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Übernachten toleriert</span><span class="chev" aria-hidden="true">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Meist OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
-                <a class="station-row" href="/de/overnight-parking/michi-no-eki/miyazaki/nango/">
+                <a class="station-row" data-st="noban" data-rv="0" href="/de/overnight-parking/michi-no-eki/miyazaki/nango/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Nango</span>
                 <span class="st-city">道の駅なんごう · Nichinan · 34&nbsp;km</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Übernachten toleriert</span><span class="chev" aria-hidden="true">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Meist OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
         </div>

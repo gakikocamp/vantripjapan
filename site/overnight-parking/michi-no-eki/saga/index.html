@@ -171,7 +171,17 @@
         .pref-chip .chip-n { font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary); font-variant-numeric: tabular-nums;
             background: var(--color-bg-secondary, #f4f4f2); border-radius: 100px; padding: 1px 8px; }
         .pref-block { scroll-margin-top: 90px; }
-        .filter-bar { margin-bottom: 16px; }
+        .filter-bar { margin: 4px 0 16px; }
+        .status-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .st-chip { display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: 0.88rem; font-weight: 650;
+            color: var(--color-text); background: #fff; border: 1px solid rgba(0,0,0,0.1); border-radius: 100px;
+            padding: 9px 16px; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 150ms, background-color 150ms, box-shadow 150ms; }
+        .st-chip .dot { width: 9px; height: 9px; }
+        .st-chip:hover { transform: translateY(-1px); border-color: rgba(45,90,61,0.4); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .st-chip:active { transform: scale(0.97); transition-duration: 100ms; }
+        .st-chip.active { background: #2d5a3d; color: #fff; border-color: #2d5a3d; }
+        .st-chip.active .chip-n { background: rgba(255,255,255,0.2); color: #fff; }
         .filter-bar input[type="search"] {
             width: 100%; font: inherit; font-size: 0.95rem; color: var(--color-text);
             background: #fff; border: 1px solid rgba(0,0,0,0.12); border-radius: 100px;
@@ -206,6 +216,9 @@
         .ovn-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
         .ovn-btn:active { transform: scale(0.97); transition-duration: 100ms; }
         .ovn-btn.ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.55); }
+        .action-row { margin: 4px 0 28px; }
+        .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
+        .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
         .ovn-back { display: inline-block; margin-bottom: 12px; font-size: 0.9rem; color: var(--color-accent); text-decoration: none; }
         .ovn-back:hover { text-decoration: underline; }
@@ -294,35 +307,35 @@
         <a class="ovn-back" href="/overnight-parking/michi-no-eki/">← Full station database</a>
         <div class="ovn-card boxed">
             <div class="station-list">
-<a class="station-row" href="/overnight-parking/michi-no-eki/saga/imari/">
+<a class="station-row" data-st="noban" data-rv="0" href="/overnight-parking/michi-no-eki/saga/imari/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Imari</span>
                 <span class="st-city">道の駅伊万里 · Imari</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev" aria-hidden="true">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
-<a class="station-row" href="/overnight-parking/michi-no-eki/saga/kashima/">
+<a class="station-row" data-st="noban" data-rv="0" href="/overnight-parking/michi-no-eki/saga/kashima/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kashima</span>
                 <span class="st-city">道の駅鹿島 · Kashima</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev" aria-hidden="true">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
-<a class="station-row" href="/overnight-parking/michi-no-eki/saga/kyuragi/">
+<a class="station-row" data-st="noban" data-rv="0" href="/overnight-parking/michi-no-eki/saga/kyuragi/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kyuragi</span>
                 <span class="st-city">道の駅厳木 · Karatsu</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev" aria-hidden="true">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
-<a class="station-row" href="/overnight-parking/michi-no-eki/saga/tara/">
+<a class="station-row" data-st="noban" data-rv="0" href="/overnight-parking/michi-no-eki/saga/tara/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tara</span>
                 <span class="st-city">道の駅太良 · Tara Town</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev" aria-hidden="true">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
-<a class="station-row" href="/overnight-parking/michi-no-eki/saga/ureshino-maruku/">
+<a class="station-row" data-st="noban" data-rv="0" href="/overnight-parking/michi-no-eki/saga/ureshino-maruku/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ureshino Maruku</span>
                 <span class="st-city">道の駅うれしの まるく · Ureshino</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev" aria-hidden="true">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
-<a class="station-row" href="/overnight-parking/michi-no-eki/saga/yoshinogari/">
+<a class="station-row" data-st="noban" data-rv="0" href="/overnight-parking/michi-no-eki/saga/yoshinogari/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yoshinogari</span>
                 <span class="st-city">道の駅吉野ヶ里 · Yoshinogari Town</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Rest tolerated</span><span class="chev" aria-hidden="true">›</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
         </div>
