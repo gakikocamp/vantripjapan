@@ -73,6 +73,8 @@ function isPublicRequest(request) {
   if (path === '/api/cron/pickup-reminder' && method === 'GET') return true;
   // Public: POST quote request
   if (path === '/api/quote' && method === 'POST') return true;
+  // Public: POST overnight DB field report (honeypot+レート制限はエンドポイント内)
+  if (path === '/api/overnight-report' && method === 'POST') return true;
   // Public: OPTIONS (CORS preflight)
   if (method === 'OPTIONS') return true;
 
