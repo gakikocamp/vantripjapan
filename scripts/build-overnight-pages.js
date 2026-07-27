@@ -145,6 +145,9 @@ const T = {
         map_h: "Map view",
         map_hint: "Tap a pin for rules, station details and Google Maps navigation.",
         map_details: "Station details →",
+        map_gesture_touch: "Use two fingers to move the map",
+        map_gesture_scroll: "Use Ctrl + scroll to zoom the map",
+        map_gesture_scroll_mac: "Use ⌘ + scroll to zoom the map",
         related_h: "Related guides",
         guide_michi: "Michi-no-Eki 101 — how Japan's roadside stations work",
         guide_parking: "Where can you park overnight legally in Japan?",
@@ -252,6 +255,9 @@ const T = {
         map_h: "Vue carte",
         map_hint: "Touchez une épingle : règles, fiche station et navigation Google Maps.",
         map_details: "Fiche station →",
+        map_gesture_touch: "Déplacez la carte avec deux doigts",
+        map_gesture_scroll: "Ctrl + molette pour zoomer la carte",
+        map_gesture_scroll_mac: "⌘ + molette pour zoomer la carte",
         related_h: "Guides associés",
         guide_michi: "Michi-no-Eki 101 — comment fonctionnent les stations routières (en anglais)",
         guide_parking: "Où stationner la nuit légalement au Japon ? (en anglais)",
@@ -359,6 +365,9 @@ const T = {
         map_h: "Kartenansicht",
         map_hint: "Tippen Sie auf einen Pin: Regeln, Stationsdetails und Google-Maps-Navigation.",
         map_details: "Stationsdetails →",
+        map_gesture_touch: "Karte mit zwei Fingern verschieben",
+        map_gesture_scroll: "Strg + Scrollen zum Zoomen der Karte",
+        map_gesture_scroll_mac: "⌘ + Scrollen zum Zoomen der Karte",
         related_h: "Passende Guides",
         guide_michi: "Michi-no-Eki 101 — so funktionieren Japans Raststationen (auf Englisch)",
         guide_parking: "Wo darf man in Japan legal über Nacht parken? (auf Englisch)",
@@ -466,6 +475,9 @@ const T = {
         map_h: "地圖總覽",
         map_hint: "點選圖釘查看規則、站點資訊與Google地圖導航。",
         map_details: "站點詳情 →",
+        map_gesture_touch: "請用兩指移動地圖",
+        map_gesture_scroll: "按住 Ctrl 並滾動以縮放地圖",
+        map_gesture_scroll_mac: "按住 ⌘ 並滾動以縮放地圖",
         related_h: "延伸閱讀",
         guide_michi: "道之驛入門 — 日本公路休息站的運作方式（英文）",
         guide_parking: "在日本哪裡可以合法過夜停車？（英文）",
@@ -917,12 +929,21 @@ ${rows}
             <div id="ovnMap" role="application" aria-label="${esc(t.map_h)}"></div>
         </div>
         <script src="/js/vendor/leaflet.js"></script>
+        <script src="/js/vendor/leaflet-gesture-handling.min.js"></script>
         <script>
         (function () {
             var el = document.getElementById('ovnMap');
             if (!el || !window.L) return;
-            var map = L.map(el, { scrollWheelZoom: false, dragging: !L.Browser.mobile, tap: true })
-                .setView([32.75, 130.95], 7);
+            // gestureHandling: モバイルは2本指パン(1本指はページスクロール)、PCはCtrl+ホイールでズーム
+            var map = L.map(el, {
+                scrollWheelZoom: false, tap: true,
+                gestureHandling: true,
+                gestureHandlingOptions: { text: ${JSON.stringify({
+                    touch: t.map_gesture_touch,
+                    scroll: t.map_gesture_scroll,
+                    scrollMac: t.map_gesture_scroll_mac,
+                }) } }
+            }).setView([32.75, 130.95], 7);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 18,
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -1023,7 +1044,7 @@ ${prefBlocks}
         jsonld,
         body,
         ogImage: "article-michinoeki.png",
-        extraHead: '<link rel="stylesheet" href="/css/vendor/leaflet.css">',
+        extraHead: '<link rel="stylesheet" href="/css/vendor/leaflet.css"><link rel="stylesheet" href="/css/vendor/leaflet-gesture-handling.min.css">',
     }));
 }
 
