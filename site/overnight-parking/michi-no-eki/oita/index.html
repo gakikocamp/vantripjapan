@@ -21,6 +21,7 @@
     <link rel="alternate" hreflang="x-default" href="https://vantripjapan.jp/overnight-parking/michi-no-eki/oita/">
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/style.css?v=20260720j">
+    
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
@@ -165,6 +166,11 @@
         .pref-chip .chip-n { font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary); font-variant-numeric: tabular-nums;
             background: var(--color-bg-secondary, #f4f4f2); border-radius: 100px; padding: 1px 8px; }
         .pref-block { scroll-margin-top: 90px; }
+        #ovnMap { height: 460px; border-radius: 16px; z-index: 0; }
+        #ovnMap .leaflet-popup-content { font-family: inherit; font-size: 0.9rem; line-height: 1.6; }
+        #ovnMap .leaflet-popup-content a { color: var(--color-accent); font-weight: 650; text-decoration: none; }
+        #ovnMap .leaflet-popup-content a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { #ovnMap { height: 360px; } }
         .legend-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; }
         .legend-item + .legend-item { border-top: 1px solid var(--color-border-light); }
         .legend-item .badge { margin-top: 2px; }

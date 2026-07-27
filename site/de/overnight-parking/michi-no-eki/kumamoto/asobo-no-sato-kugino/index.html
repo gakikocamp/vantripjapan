@@ -21,6 +21,7 @@
     <link rel="alternate" hreflang="x-default" href="https://vantripjapan.jp/overnight-parking/michi-no-eki/kumamoto/asobo-no-sato-kugino/">
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/style.css?v=20260720j">
+    
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
@@ -69,6 +70,11 @@
     "addressRegion": "Kumamoto",
     "addressLocality": "Minamiaso Village",
     "addressCountry": "JP"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 32.81846,
+    "longitude": 131.04116
   },
   "sameAs": "http://aso-kugino.jp/"
 }
@@ -160,6 +166,11 @@
         .pref-chip .chip-n { font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary); font-variant-numeric: tabular-nums;
             background: var(--color-bg-secondary, #f4f4f2); border-radius: 100px; padding: 1px 8px; }
         .pref-block { scroll-margin-top: 90px; }
+        #ovnMap { height: 460px; border-radius: 16px; z-index: 0; }
+        #ovnMap .leaflet-popup-content { font-family: inherit; font-size: 0.9rem; line-height: 1.6; }
+        #ovnMap .leaflet-popup-content a { color: var(--color-accent); font-weight: 650; text-decoration: none; }
+        #ovnMap .leaflet-popup-content a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { #ovnMap { height: 360px; } }
         .legend-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; }
         .legend-item + .legend-item { border-top: 1px solid var(--color-border-light); }
         .legend-item .badge { margin-top: 2px; }
@@ -284,7 +295,7 @@
             <table class="ovn-table"><tr><th>Präfektur</th><td>Kumamoto</td></tr>
             <tr><th>Stadt / Gemeinde</th><td>Minamiaso Village（阿蘇郡南阿蘇村）</td></tr>
             <tr><th>Offizielle Website</th><td><a href="http://aso-kugino.jp/" target="_blank" rel="noopener nofollow">aso-kugino.jp</a></td></tr>
-            <tr><th>Karte</th><td><a href="https://www.google.com/maps/search/?api=1&query=%E9%81%93%E3%81%AE%E9%A7%85%E3%81%82%E3%81%9D%E6%9C%9B%E3%81%AE%E9%83%B7%E3%81%8F%E3%81%8E%E3%81%AE" target="_blank" rel="noopener">In Google Maps öffnen</a></td></tr>
+            <tr><th>Karte</th><td><a href="https://www.google.com/maps/search/?api=1&query=32.81846,131.04116" target="_blank" rel="noopener">In Google Maps öffnen</a></td></tr>
             <tr><th>RV-Park</th><td><span lang="ja">RVパークsmart 道の駅あそ望の郷くぎの</span> — <a href="https://www.kurumatabi.com/park/rvpark/758.html" target="_blank" rel="noopener nofollow">www.kurumatabi.com</a></td></tr></table>
         </div>
         <div class="ovn-card"><h2>Quellen</h2>

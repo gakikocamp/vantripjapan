@@ -142,6 +142,9 @@ const T = {
         rf_sent: "Thank you! We'll verify and update this page.",
         rf_err: "Could not send — please use WhatsApp below.",
         rf_or_wa: "or message us directly:",
+        map_h: "Map view",
+        map_hint: "Tap a pin for rules, station details and Google Maps navigation.",
+        map_details: "Station details →",
         related_h: "Related guides",
         guide_michi: "Michi-no-Eki 101 — how Japan's roadside stations work",
         guide_parking: "Where can you park overnight legally in Japan?",
@@ -246,6 +249,9 @@ const T = {
         rf_sent: "Merci ! Nous allons vérifier et mettre à jour cette page.",
         rf_err: "Échec de l'envoi — utilisez WhatsApp ci-dessous.",
         rf_or_wa: "ou écrivez-nous directement :",
+        map_h: "Vue carte",
+        map_hint: "Touchez une épingle : règles, fiche station et navigation Google Maps.",
+        map_details: "Fiche station →",
         related_h: "Guides associés",
         guide_michi: "Michi-no-Eki 101 — comment fonctionnent les stations routières (en anglais)",
         guide_parking: "Où stationner la nuit légalement au Japon ? (en anglais)",
@@ -350,6 +356,9 @@ const T = {
         rf_sent: "Danke! Wir prüfen es und aktualisieren diese Seite.",
         rf_err: "Senden fehlgeschlagen — bitte nutzen Sie WhatsApp unten.",
         rf_or_wa: "oder schreiben Sie uns direkt:",
+        map_h: "Kartenansicht",
+        map_hint: "Tippen Sie auf einen Pin: Regeln, Stationsdetails und Google-Maps-Navigation.",
+        map_details: "Stationsdetails →",
         related_h: "Passende Guides",
         guide_michi: "Michi-no-Eki 101 — so funktionieren Japans Raststationen (auf Englisch)",
         guide_parking: "Wo darf man in Japan legal über Nacht parken? (auf Englisch)",
@@ -454,6 +463,9 @@ const T = {
         rf_sent: "謝謝！我們會查證並更新本頁。",
         rf_err: "送出失敗 — 請改用下方WhatsApp。",
         rf_or_wa: "或直接聯絡我們：",
+        map_h: "地圖總覽",
+        map_hint: "點選圖釘查看規則、站點資訊與Google地圖導航。",
+        map_details: "站點詳情 →",
         related_h: "延伸閱讀",
         guide_michi: "道之驛入門 — 日本公路休息站的運作方式（英文）",
         guide_parking: "在日本哪裡可以合法過夜停車？（英文）",
@@ -602,6 +614,11 @@ const SHARED_CSS = `
         .pref-chip .chip-n { font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary); font-variant-numeric: tabular-nums;
             background: var(--color-bg-secondary, #f4f4f2); border-radius: 100px; padding: 1px 8px; }
         .pref-block { scroll-margin-top: 90px; }
+        #ovnMap { height: 460px; border-radius: 16px; z-index: 0; }
+        #ovnMap .leaflet-popup-content { font-family: inherit; font-size: 0.9rem; line-height: 1.6; }
+        #ovnMap .leaflet-popup-content a { color: var(--color-accent); font-weight: 650; text-decoration: none; }
+        #ovnMap .leaflet-popup-content a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { #ovnMap { height: 360px; } }
         .legend-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; }
         .legend-item + .legend-item { border-top: 1px solid var(--color-border-light); }
         .legend-item .badge { margin-top: 2px; }
@@ -667,7 +684,7 @@ const SHARED_CSS = `
         }
 `;
 
-function shell({ lang, sub, title, desc, h1, heroSub, crumbsHtml, jsonld, body, ogImage }) {
+function shell({ lang, sub, title, desc, h1, heroSub, crumbsHtml, jsonld, body, ogImage, extraHead = "" }) {
     const t = T[lang];
     const url = pageUrl(lang, sub);
     const dirAttr = ""; // all 4 langs are LTR
@@ -690,6 +707,7 @@ function shell({ lang, sub, title, desc, h1, heroSub, crumbsHtml, jsonld, body, 
     ${hreflangBlock(sub)}
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/style.css?v=${ASSET_V}">
+    ${extraHead}
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
@@ -882,8 +900,48 @@ ${rows}
         [t.faq_q3, t.faq_a3],
     ];
 
+    // 地図マーカー: 色 = 禁止:赤 / RVパーク併設:緑 / 休憩容認:ティール
+    const markers = DATA.stations.filter((s) => s.lat && s.lng).map((s) => ({
+        n: stationName(s, lang),
+        la: s.lat, ln: s.lng,
+        c: s.status === "prohibited" ? "#c93028" : s.rv_park ? "#2c9a44" : "#12808a",
+        b: esc(statusLabel(s, lang, true)) + (s.rv_park ? " · " + esc(t.st_rv_short) : ""),
+        u: sectionPath(lang, `${s.prefecture}/${s.id}/`),
+        g: `https://www.google.com/maps/search/?api=1&query=${s.lat},${s.lng}`,
+    }));
+
+    const mapCard = `
+        <div class="ovn-card">
+            <h2>${esc(t.map_h)}</h2>
+            <p style="margin-bottom:14px;">${esc(t.map_hint)}</p>
+            <div id="ovnMap" role="application" aria-label="${esc(t.map_h)}"></div>
+        </div>
+        <script src="/js/vendor/leaflet.js"></script>
+        <script>
+        (function () {
+            var el = document.getElementById('ovnMap');
+            if (!el || !window.L) return;
+            var map = L.map(el, { scrollWheelZoom: false, dragging: !L.Browser.mobile, tap: true })
+                .setView([32.75, 130.95], 7);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            var sts = ${JSON.stringify(markers)};
+            sts.forEach(function (s) {
+                L.circleMarker([s.la, s.ln], {
+                    radius: 8, fillColor: s.c, fillOpacity: 0.92, color: '#fff', weight: 2
+                }).addTo(map).bindPopup(
+                    '<strong>' + s.n + '</strong><br><span style="color:' + s.c + ';font-weight:600;">' + s.b + '</span><br>' +
+                    '<a href="' + s.u + '">${esc(t.map_details)}</a> · <a href="' + s.g + '" target="_blank" rel="noopener">Google Maps ↗</a>'
+                );
+            });
+        })();
+        </script>`;
+
     const body = `
         ${prefChips}
+${mapCard}
         <div class="ovn-card">
             <h2>${esc(t.national_h)}</h2>
             <p>${t.national_p}</p>
@@ -965,6 +1023,7 @@ ${prefBlocks}
         jsonld,
         body,
         ogImage: "article-michinoeki.png",
+        extraHead: '<link rel="stylesheet" href="/css/vendor/leaflet.css">',
     }));
 }
 

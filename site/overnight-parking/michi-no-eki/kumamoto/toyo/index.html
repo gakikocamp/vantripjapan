@@ -21,6 +21,7 @@
     <link rel="alternate" hreflang="x-default" href="https://vantripjapan.jp/overnight-parking/michi-no-eki/kumamoto/toyo/">
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="/css/style.css?v=20260720j">
+    
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
@@ -69,6 +70,11 @@
     "addressRegion": "Kumamoto",
     "addressLocality": "Yatsushiro",
     "addressCountry": "JP"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 32.54781,
+    "longitude": 130.71558
   },
   "sameAs": "https://www.toyo-seseragi-michinoeki.com/"
 }
@@ -160,6 +166,11 @@
         .pref-chip .chip-n { font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary); font-variant-numeric: tabular-nums;
             background: var(--color-bg-secondary, #f4f4f2); border-radius: 100px; padding: 1px 8px; }
         .pref-block { scroll-margin-top: 90px; }
+        #ovnMap { height: 460px; border-radius: 16px; z-index: 0; }
+        #ovnMap .leaflet-popup-content { font-family: inherit; font-size: 0.9rem; line-height: 1.6; }
+        #ovnMap .leaflet-popup-content a { color: var(--color-accent); font-weight: 650; text-decoration: none; }
+        #ovnMap .leaflet-popup-content a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { #ovnMap { height: 360px; } }
         .legend-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; }
         .legend-item + .legend-item { border-top: 1px solid var(--color-border-light); }
         .legend-item .badge { margin-top: 2px; }
@@ -284,7 +295,7 @@
             <table class="ovn-table"><tr><th>Prefecture</th><td>Kumamoto</td></tr>
             <tr><th>City / Town</th><td>Yatsushiro（八代市）</td></tr>
             <tr><th>Official website</th><td><a href="https://www.toyo-seseragi-michinoeki.com/" target="_blank" rel="noopener nofollow">www.toyo-seseragi-michinoeki.com</a></td></tr>
-            <tr><th>Map</th><td><a href="https://www.google.com/maps/search/?api=1&query=%E9%81%93%E3%81%AE%E9%A7%85%E6%9D%B1%E9%99%BD" target="_blank" rel="noopener">Open in Google Maps</a></td></tr>
+            <tr><th>Map</th><td><a href="https://www.google.com/maps/search/?api=1&query=32.54781,130.71558" target="_blank" rel="noopener">Open in Google Maps</a></td></tr>
             <tr><th>RV park</th><td><span lang="ja">RVパークsmart 道の駅東陽（2台・¥2,500/泊・電源込）</span> — <a href="https://rvparksmart.jp/rv-smart/" target="_blank" rel="noopener nofollow">rvparksmart.jp</a></td></tr></table>
         </div>
         <div class="ovn-card"><h2>Sources</h2>
