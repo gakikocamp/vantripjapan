@@ -91,8 +91,11 @@
         }
       ],
       "rv_park": {
-        "name": "RVパーク 道の駅むなかた（6区画・電源あり・¥4,158/泊）",
-        "url": "https://www.michinoekimunakata.co.jp/pages/123/"
+        "name_ja": "RVパーク 道の駅むなかた",
+        "url": "https://www.michinoekimunakata.co.jp/pages/123/",
+        "spaces": 6,
+        "price_jpy": 4158,
+        "power": true
       }
     },
     {
@@ -195,7 +198,7 @@
         }
       ],
       "rv_park": {
-        "name": "RVパークsmart 道の駅おおき",
+        "name_ja": "RVパークsmart 道の駅おおき",
         "url": "https://rvparksmart.jp/rv-smart/post-1.html"
       }
     },
@@ -394,8 +397,9 @@
         }
       ],
       "rv_park": {
-        "name": "RVパークそのぎの荘（電源完備）",
-        "url": "https://www.kurumatabi.com/park/rvpark/574.html"
+        "name_ja": "RVパークそのぎの荘",
+        "url": "https://www.kurumatabi.com/park/rvpark/574.html",
+        "power": true
       }
     },
     {
@@ -574,7 +578,7 @@
         }
       ],
       "rv_park": {
-        "name": "RVパークsmart 道の駅あそ望の郷くぎの",
+        "name_ja": "RVパークsmart 道の駅あそ望の郷くぎの",
         "url": "https://www.kurumatabi.com/park/rvpark/758.html"
       }
     },
@@ -602,7 +606,7 @@
         }
       ],
       "rv_park": {
-        "name": "RVパークsmart 道の駅きくすい",
+        "name_ja": "RVパークsmart 道の駅きくすい",
         "url": "https://www.kurumatabi.com/park/rvpark/759.html"
       }
     },
@@ -687,8 +691,11 @@
         }
       ],
       "rv_park": {
-        "name": "RVパークsmart 道の駅有明リップルランド（3台・¥3,000/泊・電源込）",
-        "url": "https://www.kurumatabi.com/park/rvpark/1223.html"
+        "name_ja": "RVパークsmart 道の駅有明リップルランド",
+        "url": "https://www.kurumatabi.com/park/rvpark/1223.html",
+        "spaces": 3,
+        "price_jpy": 3000,
+        "power": true
       }
     },
     {
@@ -715,7 +722,7 @@
         }
       ],
       "rv_park": {
-        "name": "RVパークsmart 道の駅宮地岳かかしの里",
+        "name_ja": "RVパークsmart 道の駅宮地岳かかしの里",
         "url": "https://rvparksmart.jp/rv-smart/"
       }
     },
@@ -768,7 +775,7 @@
         }
       ],
       "rv_park": {
-        "name": "RVパークsmart 道の駅水辺プラザかもと",
+        "name_ja": "RVパークsmart 道の駅水辺プラザかもと",
         "url": "https://www.kurumatabi.com/park/rvpark/1118.html"
       }
     },
@@ -802,8 +809,11 @@
         }
       ],
       "rv_park": {
-        "name": "RVパークsmart 道の駅ウェルネスあらお（3台・¥3,500/泊・要ネット予約）",
-        "url": "https://rvparksmart.jp/rv-smart/"
+        "name_ja": "RVパークsmart 道の駅ウェルネスあらお",
+        "url": "https://rvparksmart.jp/rv-smart/",
+        "spaces": 3,
+        "price_jpy": 3500,
+        "booking": "online"
       }
     },
     {
@@ -830,8 +840,9 @@
         }
       ],
       "rv_park": {
-        "name": "RVパークsmart 道の駅子守唄の里五木（¥2,500/泊）",
-        "url": "https://rvparksmart.jp/rv-smart/"
+        "name_ja": "RVパークsmart 道の駅子守唄の里五木",
+        "url": "https://rvparksmart.jp/rv-smart/",
+        "price_jpy": 2500
       }
     },
     {
@@ -858,8 +869,10 @@
         }
       ],
       "rv_park": {
-        "name": "RVパークsmart 道の駅錦（2台・¥2,000/泊）",
-        "url": "https://rvparksmart.jp/rv-smart/"
+        "name_ja": "RVパークsmart 道の駅錦",
+        "url": "https://rvparksmart.jp/rv-smart/",
+        "spaces": 2,
+        "price_jpy": 2000
       }
     },
     {
@@ -886,8 +899,11 @@
         }
       ],
       "rv_park": {
-        "name": "RVパークsmart 道の駅東陽（2台・¥2,500/泊・電源込）",
-        "url": "https://rvparksmart.jp/rv-smart/"
+        "name_ja": "RVパークsmart 道の駅東陽",
+        "url": "https://rvparksmart.jp/rv-smart/",
+        "spaces": 2,
+        "price_jpy": 2500,
+        "power": true
       }
     },
     {

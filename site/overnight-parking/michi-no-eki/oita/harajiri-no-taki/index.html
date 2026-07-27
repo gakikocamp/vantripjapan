@@ -121,7 +121,7 @@
         .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 128px 20px 72px; text-align: center; }
         .ovn-hero h1 { font-family: var(--font-serif); font-size: clamp(1.75rem, 4.5vw, 2.75rem); margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.08; }
         .ovn-hero p { color: rgba(255,255,255,0.82); font-size: 1.02rem; max-width: 680px; margin: 0 auto; line-height: 1.65; }
-        .ovn-hero .crumbs { font-size: 0.78rem; letter-spacing: 0.02em; margin-bottom: 20px; color: rgba(255,255,255,0.78); }
+        .ovn-hero .crumbs { font-size: 0.85rem; letter-spacing: 0.02em; margin-bottom: 20px; color: rgba(255,255,255,0.82); }
         .ovn-hero .crumbs a { color: rgba(255,255,255,0.85); text-decoration: none; }
         .ovn-hero .crumbs a:hover { text-decoration: underline; }
         /* 駅ページ: 質問(h1)は控えめに、判定文が最大の活字になる */
@@ -138,7 +138,7 @@
         .ovn-card.boxed { background: #fff; border-radius: 20px; padding: 24px 28px 28px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05); margin-bottom: 36px; }
         .ovn-card.boxed h2 { font-size: 1.3rem; }
         .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap; }
+        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 13px; border-radius: 100px; font-size: 0.88rem; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap; }
         .badge-prohibited { background: var(--st-red-tint); color: var(--st-red-text); } .badge-prohibited .dot { background: var(--st-red); }
         .badge-noban { background: var(--st-teal-tint); color: var(--st-teal-text); } .badge-noban .dot { background: var(--st-teal); }
         .badge-paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); } .badge-paidonly .dot { background: var(--st-amber); }
@@ -163,7 +163,7 @@
         a.station-row:active { transform: scale(0.99); }
         a.station-row .st-main { min-width: 0; }
         a.station-row .st-name { display: block; font-weight: 650; color: var(--color-text); font-size: 0.97rem; line-height: 1.35; }
-        a.station-row .st-city { display: block; font-size: 0.82rem; color: var(--color-text-secondary); margin-top: 2px; }
+        a.station-row .st-city { display: block; font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 3px; }
         a.station-row .st-side { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
         a.station-row .chev { color: rgba(0,0,0,0.25); font-size: 1.05rem; transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1); }
         a.station-row:hover .chev { transform: translateX(2px); color: rgba(0,0,0,0.4); }
@@ -181,7 +181,14 @@
         .pref-chip:active { transform: scale(0.97); transition-duration: 100ms; }
         .pref-chip .chip-n { font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary); font-variant-numeric: tabular-nums;
             background: var(--color-bg-secondary, #f4f4f2); border-radius: 100px; padding: 1px 8px; }
-        .pref-block { scroll-margin-top: 90px; }
+        /* 言語スイッチャーは固定だと粘着チップ帯に重なりクリックを奪う → ページと一緒にスクロールさせる */
+        .lang-switcher { position: absolute; top: 96px; }
+        .pref-block { scroll-margin-top: 170px; }
+        .map-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 14px 4px 0; margin: 0; }
+        .map-legend li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.86rem; font-weight: 600; color: #5f5f66; }
+        .map-legend .dot { width: 10px; height: 10px; }
+        .st-chip.near-me { background: #fff; border-style: dashed; border-color: rgba(45,90,61,0.45); color: #2d5a3d; }
+        .st-chip.near-me:hover { background: #f2f7f3; }
         .filter-bar { margin: 4px 0 16px; }
         .status-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
         .st-chip { display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: 0.88rem; font-weight: 650;
@@ -231,8 +238,15 @@
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
-        .ovn-back { display: inline-block; margin-bottom: 12px; font-size: 0.9rem; color: var(--color-accent); text-decoration: none; }
-        .ovn-back:hover { text-decoration: underline; }
+        /* 戻るリンクは緑ヒーローに重なる位置に出るため、白ピル化（従来は約1.5:1でほぼ不可視）
+           あわせてタップ領域も拡大 */
+        .ovn-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px;
+            font-size: 0.95rem; font-weight: 650; color: #2d5a3d; text-decoration: none;
+            background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 100px;
+            padding: 10px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 150ms ease-out; }
+        .ovn-back:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.14); }
+        .ovn-back:active { transform: scale(0.97); transition-duration: 100ms; }
         .faq-item-s { margin-bottom: 16px; }
         .faq-item-s .q { font-weight: 650; color: var(--color-text); margin-bottom: 6px; font-size: 0.97rem; line-height: 1.4; }
         .pref-block h2 { display: flex; align-items: baseline; gap: 10px; }
@@ -267,12 +281,27 @@
         /* 共有部品の低コントラストをDBページ内で是正（#F5F5F7背景でも4.5:1超） */
         .footer-bottom span, .footer-col a, .footer-brand p { color: #5f5f66; }
         .lang-switcher .lang-btn:not(.active) { color: #6e6e73; }
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
             .ovn-card { padding: 8px 0 36px; }
             .ovn-card.boxed { padding: 20px 18px 24px; border-radius: 16px; }
             .status-banner { padding: 24px 22px; }
             .ovn-cta { padding: 32px 22px; }
-            .pref-chips { top: 62px; }
+            /* 粘着帯が画面の1/3を占拠しスクロールがカクつく問題 → 1行横スクロール・すりガラス解除 */
+            .pref-chips { top: 58px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; padding: 8px 12px; border-radius: 0;
+                background: #f9f9f7; backdrop-filter: none; -webkit-backdrop-filter: none;
+                box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
+            .pref-chips::-webkit-scrollbar { display: none; }
+            .pref-chip { flex: 0 0 auto; }
+            .pref-block { scroll-margin-top: 118px; }
+            .status-chips { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; scrollbar-width: none; }
+            .status-chips::-webkit-scrollbar { display: none; }
+            .st-chip { flex: 0 0 auto; }
+            /* 駅名の折り返しでカードが伸びるのを防ぐ（バッジを下段へ） */
+            a.station-row { flex-wrap: wrap; row-gap: 8px; }
+            a.station-row .st-main { flex: 1 1 100%; }
+            a.station-row .st-side { margin-left: 0; }
+            #ovnMap { height: 380px; }
         }
         @media (prefers-reduced-motion: reduce) {
             .status-banner { animation: none; }
@@ -322,7 +351,7 @@
         </div>
         
         <div class="action-row">
-            <a class="ovn-btn primary" href="https://www.google.com/maps/search/?api=1&query=32.96569,131.45237" target="_blank" rel="noopener">🧭 Open in Google Maps</a>
+            <a class="ovn-btn primary" href="https://www.google.com/maps/dir/?api=1&destination=32.96569,131.45237&travelmode=driving" target="_blank" rel="noopener">🧭 Open in Google Maps</a>
         </div>
         <div class="ovn-card">
             <h2>What this means for you</h2>
@@ -340,7 +369,7 @@
             <h2>Station details</h2>
             <table class="ovn-table"><tr><th>Prefecture</th><td>Oita</td></tr>
             <tr><th>City / Town</th><td>Bungo-Ono（豊後大野市）</td></tr>
-            <tr><th>Map</th><td><a href="https://www.google.com/maps/search/?api=1&query=32.96569,131.45237" target="_blank" rel="noopener">Open in Google Maps</a></td></tr></table>
+            <tr><th>Map</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=32.96569,131.45237&travelmode=driving" target="_blank" rel="noopener">Open in Google Maps</a></td></tr></table>
         </div>
         
         <div class="ovn-card">
@@ -352,17 +381,17 @@
         <div class="ovn-card boxed">
             <h2>Nearby stations</h2>
             <div class="station-list">
-                <a class="station-row" data-st="noban" data-rv="0" href="/overnight-parking/michi-no-eki/oita/nagayu-onsen/">
+                <a class="station-row" data-st="noban" data-rv="0" data-lat="33.07147" data-lng="131.38427" href="/overnight-parking/michi-no-eki/oita/nagayu-onsen/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Nagayu Onsen</span>
                 <span class="st-city">道の駅ながゆ温泉 · Taketa · 13&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
-                <a class="station-row" data-st="noban" data-rv="0" href="/overnight-parking/michi-no-eki/miyazaki/takachiho/">
+                <a class="station-row" data-st="noban" data-rv="0" data-lat="32.70857" data-lng="131.30095" href="/overnight-parking/michi-no-eki/miyazaki/takachiho/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Takachiho</span>
                 <span class="st-city">道の駅高千穂 · Takachiho Town · 32&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
-                <a class="station-row" data-st="noban" data-rv="0" href="/overnight-parking/michi-no-eki/oita/tanourara/">
+                <a class="station-row" data-st="noban" data-rv="0" data-lat="33.25585" data-lng="131.55601" href="/overnight-parking/michi-no-eki/oita/tanourara/">
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tanourara</span>
                 <span class="st-city">道の駅たのうらら · Oita · 34&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>

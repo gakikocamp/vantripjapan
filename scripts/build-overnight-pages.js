@@ -149,6 +149,15 @@ const T = {
         map_details: "Station details →",
         nearby_h: "Nearby stations",
         chip_all: "All",
+        rv_spaces: (n) => `${n} space${n === 1 ? "" : "s"}`,
+        rv_power: "power hookup",
+        rv_price: (p) => `¥${p}/night`,
+        rv_booking: "online booking required",
+        near_me: "📍 Nearest to me",
+        near_me_wait: "Finding your location…",
+        near_me_fail: "Could not get your location. Please pick a prefecture instead.",
+        near_me_done: "Sorted by distance from you.",
+        map_legend_h: "Pin colours",
         filter_ph: "Filter stations… (name or city)",
         filter_label: "Filter the station list",
         filter_none: "No stations match your filter.",
@@ -269,6 +278,15 @@ const T = {
         map_details: "Fiche station →",
         nearby_h: "Stations à proximité",
         chip_all: "Toutes",
+        rv_spaces: (n) => `${n} emplacement${n === 1 ? "" : "s"}`,
+        rv_power: "électricité",
+        rv_price: (p) => `${p} ¥/nuit`,
+        rv_booking: "réservation en ligne obligatoire",
+        near_me: "📍 Les plus proches",
+        near_me_wait: "Localisation en cours…",
+        near_me_fail: "Localisation impossible. Choisissez une préfecture.",
+        near_me_done: "Trié par distance depuis votre position.",
+        map_legend_h: "Couleurs des épingles",
         filter_ph: "Filtrer les stations… (nom ou ville)",
         filter_label: "Filtrer la liste des stations",
         filter_none: "Aucune station ne correspond au filtre.",
@@ -389,6 +407,15 @@ const T = {
         map_details: "Stationsdetails →",
         nearby_h: "Stationen in der Nähe",
         chip_all: "Alle",
+        rv_spaces: (n) => `${n} Stellplätze`,
+        rv_power: "Stromanschluss",
+        rv_price: (p) => `${p} ¥/Nacht`,
+        rv_booking: "Online-Buchung erforderlich",
+        near_me: "📍 In meiner Nähe",
+        near_me_wait: "Standort wird ermittelt…",
+        near_me_fail: "Standort nicht verfügbar. Bitte wählen Sie eine Präfektur.",
+        near_me_done: "Nach Entfernung von Ihnen sortiert.",
+        map_legend_h: "Pin-Farben",
         filter_ph: "Stationen filtern … (Name oder Ort)",
         filter_label: "Stationsliste filtern",
         filter_none: "Keine Station passt zum Filter.",
@@ -509,6 +536,15 @@ const T = {
         map_details: "站點詳情 →",
         nearby_h: "附近的道之驛",
         chip_all: "全部",
+        rv_spaces: (n) => `${n} 個車位`,
+        rv_power: "附電源",
+        rv_price: (p) => `每晚 ¥${p}`,
+        rv_booking: "需線上預約",
+        near_me: "📍 離我最近",
+        near_me_wait: "定位中…",
+        near_me_fail: "無法取得位置，請改用縣份選擇。",
+        near_me_done: "已依距離排序。",
+        map_legend_h: "圖釘顏色說明",
         filter_ph: "篩選站點…（站名或市町村）",
         filter_label: "篩選站點清單",
         filter_none: "沒有符合條件的站點。",
@@ -622,7 +658,7 @@ const SHARED_CSS = `
         .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 128px 20px 72px; text-align: center; }
         .ovn-hero h1 { font-family: var(--font-serif); font-size: clamp(1.75rem, 4.5vw, 2.75rem); margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.08; }
         .ovn-hero p { color: rgba(255,255,255,0.82); font-size: 1.02rem; max-width: 680px; margin: 0 auto; line-height: 1.65; }
-        .ovn-hero .crumbs { font-size: 0.78rem; letter-spacing: 0.02em; margin-bottom: 20px; color: rgba(255,255,255,0.78); }
+        .ovn-hero .crumbs { font-size: 0.85rem; letter-spacing: 0.02em; margin-bottom: 20px; color: rgba(255,255,255,0.82); }
         .ovn-hero .crumbs a { color: rgba(255,255,255,0.85); text-decoration: none; }
         .ovn-hero .crumbs a:hover { text-decoration: underline; }
         /* 駅ページ: 質問(h1)は控えめに、判定文が最大の活字になる */
@@ -639,7 +675,7 @@ const SHARED_CSS = `
         .ovn-card.boxed { background: #fff; border-radius: 20px; padding: 24px 28px 28px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05); margin-bottom: 36px; }
         .ovn-card.boxed h2 { font-size: 1.3rem; }
         .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap; }
+        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 13px; border-radius: 100px; font-size: 0.88rem; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap; }
         .badge-prohibited { background: var(--st-red-tint); color: var(--st-red-text); } .badge-prohibited .dot { background: var(--st-red); }
         .badge-noban { background: var(--st-teal-tint); color: var(--st-teal-text); } .badge-noban .dot { background: var(--st-teal); }
         .badge-paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); } .badge-paidonly .dot { background: var(--st-amber); }
@@ -664,7 +700,7 @@ const SHARED_CSS = `
         a.station-row:active { transform: scale(0.99); }
         a.station-row .st-main { min-width: 0; }
         a.station-row .st-name { display: block; font-weight: 650; color: var(--color-text); font-size: 0.97rem; line-height: 1.35; }
-        a.station-row .st-city { display: block; font-size: 0.82rem; color: var(--color-text-secondary); margin-top: 2px; }
+        a.station-row .st-city { display: block; font-size: 0.9rem; color: var(--color-text-secondary); margin-top: 3px; }
         a.station-row .st-side { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
         a.station-row .chev { color: rgba(0,0,0,0.25); font-size: 1.05rem; transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1); }
         a.station-row:hover .chev { transform: translateX(2px); color: rgba(0,0,0,0.4); }
@@ -682,7 +718,14 @@ const SHARED_CSS = `
         .pref-chip:active { transform: scale(0.97); transition-duration: 100ms; }
         .pref-chip .chip-n { font-size: 0.75rem; font-weight: 600; color: var(--color-text-secondary); font-variant-numeric: tabular-nums;
             background: var(--color-bg-secondary, #f4f4f2); border-radius: 100px; padding: 1px 8px; }
-        .pref-block { scroll-margin-top: 90px; }
+        /* 言語スイッチャーは固定だと粘着チップ帯に重なりクリックを奪う → ページと一緒にスクロールさせる */
+        .lang-switcher { position: absolute; top: 96px; }
+        .pref-block { scroll-margin-top: 170px; }
+        .map-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 14px 4px 0; margin: 0; }
+        .map-legend li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.86rem; font-weight: 600; color: #5f5f66; }
+        .map-legend .dot { width: 10px; height: 10px; }
+        .st-chip.near-me { background: #fff; border-style: dashed; border-color: rgba(45,90,61,0.45); color: #2d5a3d; }
+        .st-chip.near-me:hover { background: #f2f7f3; }
         .filter-bar { margin: 4px 0 16px; }
         .status-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
         .st-chip { display: inline-flex; align-items: center; gap: 7px; font: inherit; font-size: 0.88rem; font-weight: 650;
@@ -732,8 +775,15 @@ const SHARED_CSS = `
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
-        .ovn-back { display: inline-block; margin-bottom: 12px; font-size: 0.9rem; color: var(--color-accent); text-decoration: none; }
-        .ovn-back:hover { text-decoration: underline; }
+        /* 戻るリンクは緑ヒーローに重なる位置に出るため、白ピル化（従来は約1.5:1でほぼ不可視）
+           あわせてタップ領域も拡大 */
+        .ovn-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px;
+            font-size: 0.95rem; font-weight: 650; color: #2d5a3d; text-decoration: none;
+            background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 100px;
+            padding: 10px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 150ms ease-out; }
+        .ovn-back:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.14); }
+        .ovn-back:active { transform: scale(0.97); transition-duration: 100ms; }
         .faq-item-s { margin-bottom: 16px; }
         .faq-item-s .q { font-weight: 650; color: var(--color-text); margin-bottom: 6px; font-size: 0.97rem; line-height: 1.4; }
         .pref-block h2 { display: flex; align-items: baseline; gap: 10px; }
@@ -768,12 +818,27 @@ const SHARED_CSS = `
         /* 共有部品の低コントラストをDBページ内で是正（#F5F5F7背景でも4.5:1超） */
         .footer-bottom span, .footer-col a, .footer-brand p { color: #5f5f66; }
         .lang-switcher .lang-btn:not(.active) { color: #6e6e73; }
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
             .ovn-card { padding: 8px 0 36px; }
             .ovn-card.boxed { padding: 20px 18px 24px; border-radius: 16px; }
             .status-banner { padding: 24px 22px; }
             .ovn-cta { padding: 32px 22px; }
-            .pref-chips { top: 62px; }
+            /* 粘着帯が画面の1/3を占拠しスクロールがカクつく問題 → 1行横スクロール・すりガラス解除 */
+            .pref-chips { top: 58px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
+                scrollbar-width: none; padding: 8px 12px; border-radius: 0;
+                background: #f9f9f7; backdrop-filter: none; -webkit-backdrop-filter: none;
+                box-shadow: 0 1px 0 rgba(0,0,0,0.06); }
+            .pref-chips::-webkit-scrollbar { display: none; }
+            .pref-chip { flex: 0 0 auto; }
+            .pref-block { scroll-margin-top: 118px; }
+            .status-chips { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; scrollbar-width: none; }
+            .status-chips::-webkit-scrollbar { display: none; }
+            .st-chip { flex: 0 0 auto; }
+            /* 駅名の折り返しでカードが伸びるのを防ぐ（バッジを下段へ） */
+            a.station-row { flex-wrap: wrap; row-gap: 8px; }
+            a.station-row .st-main { flex: 1 1 100%; }
+            a.station-row .st-side { margin-left: 0; }
+            #ovnMap { height: 380px; }
         }
         @media (prefers-reduced-motion: reduce) {
             .status-banner { animation: none; }
@@ -961,7 +1026,7 @@ function stationRow(st, lang, distanceKm) {
         ? esc(cityName(st, lang))
         : `${esc(st.name.ja)} · ${esc(cityName(st, lang))}`;
     if (distanceKm != null) subtitle += ` · ${distanceKm}&nbsp;km`;
-    return `<a class="station-row" data-st="${stCls(st)}" data-rv="${st.rv_park ? 1 : 0}" href="${sectionPath(lang, sub)}">
+    return `<a class="station-row" data-st="${stCls(st)}" data-rv="${st.rv_park ? 1 : 0}"${st.lat ? ` data-lat="${st.lat}" data-lng="${st.lng}"` : ""} href="${sectionPath(lang, sub)}">
                 <span class="st-main"><span class="st-name">${esc(shownName)}</span>
                 <span class="st-city">${subtitle}</span></span>
                 <span class="st-side">${st.rv_park ? rvChip(lang) : ""}${badge(st, lang)}<span class="chev" aria-hidden="true">›</span></span>
@@ -975,6 +1040,20 @@ function haversineKm(a, b) {
     const h = Math.sin(dLat / 2) ** 2 +
         Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLng / 2) ** 2;
     return 2 * R * Math.asin(Math.sqrt(h));
+}
+
+/** RVパーク情報を構造化フィールドから各言語で組み立てる（日本語生データを出さない） */
+function rvParkText(rv, lang) {
+    const t = T[lang];
+    const bits = [];
+    if (rv.spaces) bits.push(t.rv_spaces(rv.spaces));
+    if (rv.power) bits.push(t.rv_power);
+    if (rv.price_jpy) bits.push(t.rv_price(rv.price_jpy.toLocaleString("en-US")));
+    if (rv.booking === "online") bits.push(t.rv_booking);
+    const host = rv.url ? (() => { try { return new URL(rv.url).hostname; } catch { return rv.url; } })() : "";
+    return `<span lang="ja">${esc(rv.name_ja || rv.name || "")}</span>`
+        + (bits.length ? ` · ${esc(bits.join(" · "))}` : "")
+        + (rv.url ? ` — <a href="${esc(rv.url)}" target="_blank" rel="noopener nofollow">${esc(host)}</a>` : "");
 }
 
 function nearbyStations(st, count = 3) {
@@ -1005,7 +1084,8 @@ function renderIndex(lang) {
 
     const nOk = DATA.stations.filter((s) => s.status !== "prohibited").length;
     const nRv = DATA.stations.filter((s) => s.rv_park).length;
-    const nNo = DATA.stations.filter((s) => s.status === "prohibited").length;
+    const nPaid = DATA.stations.filter((s) => s.status === "prohibited" && s.rv_park).length;
+    const nNo = DATA.stations.filter((s) => s.status === "prohibited" && !s.rv_park).length;
 
     const filterBar = `
         <div class="filter-bar">
@@ -1013,10 +1093,16 @@ function renderIndex(lang) {
                 <button type="button" class="st-chip active" data-f="all" aria-pressed="true">${esc(t.chip_all)}<span class="chip-n">${counts.total}</span></button>
                 <button type="button" class="st-chip" data-f="ok" aria-pressed="false"><span class="dot" style="background:var(--st-teal)"></span>${esc(t.st_no_ban_short)}<span class="chip-n">${nOk}</span></button>
                 <button type="button" class="st-chip" data-f="rv" aria-pressed="false"><span class="dot" style="background:var(--st-green)"></span>${esc(t.st_rv_short)}<span class="chip-n">${nRv}</span></button>
+                ${nPaid ? `<button type="button" class="st-chip" data-f="paid" aria-pressed="false"><span class="dot" style="background:var(--st-amber)"></span>${esc(t.st_paidonly_short)}<span class="chip-n">${nPaid}</span></button>` : ""}
                 <button type="button" class="st-chip" data-f="no" aria-pressed="false"><span class="dot" style="background:var(--st-red)"></span>${esc(t.st_prohibited_short)}<span class="chip-n">${nNo}</span></button>
+                <button type="button" class="st-chip near-me" id="ovnNearMe">${esc(t.near_me)}</button>
             </div>
             <input type="search" id="ovnFilter" placeholder="${esc(t.filter_ph)}" aria-label="${esc(t.filter_label)}" autocomplete="off">
             <p class="filter-none" id="ovnFilterNone" role="status" hidden></p>
+        </div>
+        <div class="ovn-card boxed" id="ovnNearWrap" hidden>
+            <h2>${esc(t.near_me)}</h2>
+            <div class="station-list" id="ovnNearList"></div>
         </div>
         <script>
         (function () {
@@ -1027,12 +1113,13 @@ function renderIndex(lang) {
             var oneText = ${JSON.stringify(t.filter_count(1))};
             var manyTemplate = ${JSON.stringify(t.filter_count("__N__"))};
             var activeF = 'all';
-            // fキー: all=全部 / ok=通常OK(noban) / rv=RVパークあり / no=不可・有料のみ(prohibited+paidonly)
+            // fキー: all / ok=通常OK / rv=RVパークあり / paid=無料不可だが有料OK / no=泊まれない
             function matchStatus(st, rv) {
                 if (activeF === 'all') return true;
                 if (activeF === 'ok') return st === 'noban';
                 if (activeF === 'rv') return rv === 1 || rv === '1';
-                return st === 'prohibited' || st === 'paidonly';
+                if (activeF === 'paid') return st === 'paidonly';
+                return st === 'prohibited';
             }
             function apply() {
                 var q = input.value.trim().toLowerCase();
@@ -1056,10 +1143,10 @@ function renderIndex(lang) {
                 status.textContent = total === 0 ? noneText : (total === 1 ? oneText : manyTemplate.replace('__N__', total));
             }
             input.addEventListener('input', apply);
-            document.querySelectorAll('.st-chip').forEach(function (btn) {
+            document.querySelectorAll('.st-chip[data-f]').forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     activeF = btn.getAttribute('data-f');
-                    document.querySelectorAll('.st-chip').forEach(function (b) {
+                    document.querySelectorAll('.st-chip[data-f]').forEach(function (b) {
                         var on = b === btn;
                         b.classList.toggle('active', on);
                         b.setAttribute('aria-pressed', on ? 'true' : 'false');
@@ -1067,6 +1154,44 @@ function renderIndex(lang) {
                     apply();
                 });
             });
+
+            // 現在地から近い順に並べ替え（夜間・急いでいる利用者の主動線）
+            var nearBtn = document.getElementById('ovnNearMe');
+            if (nearBtn && navigator.geolocation) {
+                nearBtn.addEventListener('click', function () {
+                    status.hidden = false;
+                    status.className = 'filter-none';
+                    status.textContent = ${JSON.stringify(t.near_me_wait)};
+                    navigator.geolocation.getCurrentPosition(function (pos) {
+                        var la = pos.coords.latitude, ln = pos.coords.longitude;
+                        var R = 6371, rad = function (d) { return d * Math.PI / 180; };
+                        var rows = [].slice.call(document.querySelectorAll('a.station-row[data-lat]'));
+                        rows.forEach(function (row) {
+                            var dLat = rad(parseFloat(row.getAttribute('data-lat')) - la);
+                            var dLng = rad(parseFloat(row.getAttribute('data-lng')) - ln);
+                            var h = Math.pow(Math.sin(dLat / 2), 2) + Math.cos(rad(la)) *
+                                Math.cos(rad(parseFloat(row.getAttribute('data-lat')))) * Math.pow(Math.sin(dLng / 2), 2);
+                            var km = Math.round(2 * R * Math.asin(Math.sqrt(h)));
+                            row.__km = km;
+                            var city = row.querySelector('.st-city');
+                            if (city && city.getAttribute('data-base') === null) city.setAttribute('data-base', city.textContent);
+                            if (city) city.textContent = (city.getAttribute('data-base') || city.textContent).split(' · ').slice(0, 2).join(' · ') + ' · ' + km + ' km';
+                        });
+                        rows.sort(function (a, b) { return a.__km - b.__km; });
+                        var host = document.getElementById('ovnNearList');
+                        host.innerHTML = '';
+                        rows.slice(0, 10).forEach(function (r) { host.appendChild(r.cloneNode(true)); });
+                        document.getElementById('ovnNearWrap').hidden = false;
+                        status.textContent = ${JSON.stringify(t.near_me_done)};
+                        document.getElementById('ovnNearWrap').scrollIntoView({ block: 'start' });
+                    }, function () {
+                        status.className = 'filter-none err';
+                        status.textContent = ${JSON.stringify(t.near_me_fail)};
+                    }, { timeout: 8000, maximumAge: 300000 });
+                });
+            } else if (nearBtn) {
+                nearBtn.hidden = true;
+            }
         })();
         </script>`;
 
@@ -1101,6 +1226,12 @@ ${rows}
             <h2>${esc(t.map_h)}</h2>
             <p style="margin-bottom:14px;">${esc(t.map_hint)}</p>
             <div id="ovnMap" role="application" aria-label="${esc(t.map_h)}"></div>
+            <ul class="map-legend" aria-label="${esc(t.map_legend_h)}">
+                <li><span class="dot" style="background:var(--st-teal)"></span>${esc(t.st_no_ban_short)}</li>
+                <li><span class="dot" style="background:var(--st-green)"></span>${esc(t.st_rv_short)}</li>
+                <li><span class="dot" style="background:var(--st-amber)"></span>${esc(t.st_paidonly_short)}</li>
+                <li><span class="dot" style="background:var(--st-red)"></span>${esc(t.st_prohibited_short)}</li>
+            </ul>
         </div>
         <script src="/js/vendor/leaflet.js"></script>
         <script src="/js/vendor/leaflet-gesture-handling.min.js"></script>
@@ -1123,9 +1254,11 @@ ${rows}
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
             var sts = ${JSON.stringify(markers)};
+            // 色覚特性に依存しないよう、RVパーク駅は一回り大きく。モバイルは全体を大きめに
+            var touch = window.matchMedia('(max-width: 640px)').matches;
             var mapMarkers = sts.map(function (s) {
                 var m = L.circleMarker([s.la, s.ln], {
-                    radius: 8, fillColor: s.c, fillOpacity: 0.92, color: '#fff', weight: 2
+                    radius: (s.rv ? 11 : 8) + (touch ? 3 : 0), fillColor: s.c, fillOpacity: 0.92, color: '#fff', weight: 2
                 }).addTo(map).bindPopup(
                     '<strong>' + s.n + '</strong><br><span style="color:' + s.c + ';font-weight:600;">' + s.b + '</span><br>' +
                     '<a href="' + s.u + '">${esc(t.map_details)}</a> · <a href="' + s.g + '" target="_blank" rel="noopener">Google Maps ↗</a>'
@@ -1302,13 +1435,15 @@ function renderStation(lang, st) {
     const mapsQuery = st.lat && st.lng
         ? `${st.lat},${st.lng}`
         : encodeURIComponent(st.name.ja);
+    // ワンタップでナビ開始（検索ピンではなく経路画面へ）。目的地名も渡して行き先を確認できるようにする
+    const mapsNavUrl = `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}&travelmode=driving`;
 
     const detailRows = [
         [t.d_pref, esc(pn)],
         [t.d_city, cityName(st, lang) === st.city.ja ? esc(st.city.ja) : `${esc(cityName(st, lang))}（${esc(st.city.ja)}）`],
         st.official_url ? [t.d_official, `<a href="${esc(st.official_url)}" target="_blank" rel="noopener nofollow">${esc(new URL(st.official_url).hostname)}</a>`] : null,
-        [t.d_map, `<a href="https://www.google.com/maps/search/?api=1&query=${mapsQuery}" target="_blank" rel="noopener">${esc(t.d_map_open)}</a>`],
-        st.rv_park ? [t.d_rvpark, `<span lang="ja">${esc(st.rv_park.name)}</span>${st.rv_park.url ? ` — <a href="${esc(st.rv_park.url)}" target="_blank" rel="noopener nofollow">${esc(new URL(st.rv_park.url).hostname)}</a>` : ""}`] : null,
+        [t.d_map, `<a href="${mapsNavUrl}" target="_blank" rel="noopener">${esc(t.d_map_open)}</a>`],
+        st.rv_park ? [t.d_rvpark, rvParkText(st.rv_park, lang)] : null,
     ].filter(Boolean);
 
     const evidence = (st.evidence || []).map((ev) => {
@@ -1340,7 +1475,7 @@ function renderStation(lang, st) {
             <div class="st-label"><span class="dot"></span>${esc(t.rv_banner)}</div>
         </div>` : ""}
         <div class="action-row">
-            <a class="ovn-btn primary" href="https://www.google.com/maps/search/?api=1&query=${mapsQuery}" target="_blank" rel="noopener">🧭 ${esc(t.d_map_open)}</a>
+            <a class="ovn-btn primary" href="${mapsNavUrl}" target="_blank" rel="noopener">🧭 ${esc(t.d_map_open)}</a>
         </div>
         <div class="ovn-card">
             <h2>${esc(t.what_h)}</h2>
