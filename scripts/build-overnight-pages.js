@@ -69,8 +69,10 @@ const T = {
         st_rv: "Official RV park on site",
         rv_banner: "Official RV park on site — overnight welcome (paid, reservation recommended)",
         st_prohibited_short: "Explicit ban",
+        st_paidonly_short: "Paid stay only",
         st_no_ban_short: "Rest tolerated",
         st_rv_short: "RV park",
+        legend_paidonly: "The free parking lot explicitly bans overnight stays — but the station has an official paid RV park where staying is welcome. Book a spot and sleep legally.",
         src_onsite: "Confirmed on site by the VAN TRIP JAPAN team",
         legend_prohibited: "The station has posted or published an explicit no-overnight rule. Please respect it — use a nearby campground or RV park instead.",
         legend_no_ban: "No explicit prohibition found as of the verification date — under Japan's national rule, a quiet one-night rest in your vehicle is generally tolerated here. Not a guarantee: no camping behavior, and always check signs on site.",
@@ -186,8 +188,10 @@ const T = {
         st_rv: "RV park officiel sur place",
         rv_banner: "RV park officiel sur place — nuitée bienvenue (payant, réservation recommandée)",
         st_prohibited_short: "Interdiction explicite",
+        st_paidonly_short: "Nuitée payante uniquement",
         st_no_ban_short: "Repos toléré",
         st_rv_short: "RV park",
+        legend_paidonly: "Le parking gratuit interdit explicitement la nuitée — mais la station dispose d'un RV park officiel payant où vous êtes le bienvenu. Réservez un emplacement et dormez en toute légalité.",
         src_onsite: "Constaté sur place par l'équipe VAN TRIP JAPAN",
         legend_prohibited: "La station affiche ou publie une interdiction explicite de nuitée. Respectez-la — préférez un camping ou un RV park à proximité.",
         legend_no_ban: "Aucune interdiction explicite trouvée à la date de vérification — selon la règle nationale, une nuit de repos discrète dans le véhicule y est généralement tolérée. Ce n'est pas une garantie : aucun comportement de camping, et vérifiez toujours les panneaux sur place.",
@@ -303,8 +307,10 @@ const T = {
         st_rv: "Offizieller RV-Park vor Ort",
         rv_banner: "Offizieller RV-Park vor Ort — Übernachten willkommen (kostenpflichtig, Reservierung empfohlen)",
         st_prohibited_short: "Ausdrückliches Verbot",
+        st_paidonly_short: "Nur bezahlte Übernachtung",
         st_no_ban_short: "Übernachten toleriert",
         st_rv_short: "RV-Park",
+        legend_paidonly: "Der kostenlose Parkplatz verbietet Übernachtungen ausdrücklich — die Station hat aber einen offiziellen, kostenpflichtigen RV-Park, in dem Sie willkommen sind. Stellplatz buchen und legal übernachten.",
         src_onsite: "Vor Ort bestätigt durch das VAN-TRIP-JAPAN-Team",
         legend_prohibited: "Die Station hat ein ausdrückliches Übernachtungsverbot ausgehängt oder veröffentlicht. Bitte respektieren Sie es — nutzen Sie stattdessen einen Campingplatz oder RV-Park in der Nähe.",
         legend_no_ban: "Zum Prüfdatum kein ausdrückliches Verbot gefunden — nach der nationalen Regel wird eine ruhige Nacht im Fahrzeug hier in der Regel toleriert. Keine Garantie: kein Camping-Verhalten, und beachten Sie immer die Schilder vor Ort.",
@@ -420,8 +426,10 @@ const T = {
         st_rv: "設有官方RV Park",
         rv_banner: "設有官方RV Park — 歡迎過夜（付費・建議預約）",
         st_prohibited_short: "明文禁止",
+        st_paidonly_short: "僅限付費過夜",
         st_no_ban_short: "可安靜休息",
         st_rv_short: "RV Park",
+        legend_paidonly: "免費停車場明文禁止過夜 — 但站內設有官方付費RV Park，歡迎入住。預訂車位即可合法過夜。",
         src_onsite: "由VAN TRIP JAPAN團隊現地確認",
         legend_prohibited: "該站已公告或發布明文禁止過夜。請務必遵守 — 改用附近的露營場或RV Park。",
         legend_no_ban: "截至查證日期未發現明文禁止 — 依全國規則，在車內安靜休息一晚在此通常被容許。但這不是保證：不做露營行為，並一律以現場告示為準。",
@@ -575,23 +583,23 @@ function langSwitcher(lang, sub) {
 const COLON = { en: ": ", fr: "&nbsp;: ", de: ": ", zh: "：" };
 
 // status は無料の一般駐車場のポリシー。rv_park は直交（併設の有無）。
-const STATUS_META = {
-    prohibited: { cls: "prohibited" },
-    no_explicit_ban: { cls: "noban" },
-};
+// 表示クラスは4値: prohibited(赤=泊まれない) / paidonly(黄=無料禁止だがRVパークで有料OK) / noban(ティール=容認)
+function stCls(st) {
+    if (st.status === "prohibited") return st.rv_park ? "paidonly" : "prohibited";
+    return "noban";
+}
 
 function statusLabel(st, lang, short = false) {
     const t = T[lang];
     if (st.status === "prohibited") {
-        if (short) return t.st_prohibited_short;
+        if (short) return st.rv_park ? t.st_paidonly_short : t.st_prohibited_short;
         return st.rv_park ? t.st_prohibited_rv : t.st_prohibited;
     }
     return short ? t.st_no_ban_short : t.st_no_ban;
 }
 
 function badge(st, lang) {
-    const m = STATUS_META[st.status];
-    return `<span class="badge badge-${m.cls}"><span class="dot"></span>${esc(statusLabel(st, lang, true))}</span>`;
+    return `<span class="badge badge-${stCls(st)}"><span class="dot"></span>${esc(statusLabel(st, lang, true))}</span>`;
 }
 
 function rvChip(lang) {
@@ -604,6 +612,7 @@ const SHARED_CSS = `
         :root {
             --st-red: #c93028; --st-red-text: #8e1f17; --st-red-tint: #fbedec;
             --st-teal: #12808a; --st-teal-text: #0e5a61; --st-teal-tint: #e7f4f5;
+            --st-amber: #d9a400; --st-amber-text: #6b5400; --st-amber-tint: #fdf6e2;
             --st-green: #2c9a44; --st-green-text: #1e5c28; --st-green-tint: #eaf6ec;
         }
         .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 128px 20px 72px; text-align: center; }
@@ -622,15 +631,17 @@ const SHARED_CSS = `
         .badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.01em; white-space: nowrap; }
         .badge-prohibited { background: var(--st-red-tint); color: var(--st-red-text); } .badge-prohibited .dot { background: var(--st-red); }
         .badge-noban { background: var(--st-teal-tint); color: var(--st-teal-text); } .badge-noban .dot { background: var(--st-teal); }
+        .badge-paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); } .badge-paidonly .dot { background: var(--st-amber); }
         .badge-rv { background: var(--st-green-tint); color: var(--st-green-text); } .badge-rv .dot { background: var(--st-green); }
         .c-red { color: var(--st-red-text); font-weight: 700; } .c-green { color: var(--st-green-text); font-weight: 700; }
         .status-banner { border-radius: 20px; padding: 26px 32px; margin-bottom: 20px; border: 1px solid rgba(0,0,0,0.05); animation: ovn-rise 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
         .status-banner.prohibited { background: var(--st-red-tint); color: var(--st-red-text); }
         .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
+        .status-banner.paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
         .status-banner .st-label { display: flex; align-items: center; gap: 12px; font-size: 1.35rem; font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.01em; line-height: 1.2; }
         .status-banner .st-label .dot { width: 12px; height: 12px; }
-        .status-banner.prohibited .dot { background: var(--st-red); } .status-banner.noban .dot { background: var(--st-teal); } .status-banner.rv .dot { background: var(--st-green); }
+        .status-banner.prohibited .dot { background: var(--st-red); } .status-banner.noban .dot { background: var(--st-teal); } .status-banner.rv .dot { background: var(--st-green); } .status-banner.paidonly .dot { background: var(--st-amber); }
         .status-banner .st-verified { margin-top: 8px; font-size: 0.85rem; opacity: 0.88; font-variant-numeric: tabular-nums; }
         @keyframes ovn-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
         .station-list { display: block; }
@@ -900,7 +911,7 @@ function writePage(lang, sub, html) {
 const byPref = {};
 for (const st of DATA.stations) (byPref[st.prefecture] ||= []).push(st);
 const PREF_ORDER = Object.keys(DATA.prefectures).filter((p) => byPref[p]);
-const sortKey = (s) => (s.status === "prohibited" ? 0 : s.rv_park ? 1 : 2);
+const sortKey = (s) => (s.status === "prohibited" ? (s.rv_park ? 1 : 0) : s.rv_park ? 2 : 3);
 for (const p of PREF_ORDER) byPref[p].sort((a, b) => sortKey(a) - sortKey(b) || a.id.localeCompare(b.id));
 
 const counts = {
@@ -950,6 +961,7 @@ function renderIndex(lang) {
             <h2>${esc(t.legend_h)}</h2>
             <p style="margin-bottom:8px;">${t.stats_line(counts.prohibited, counts.no_ban, counts.rv, counts.total)}</p>
             <div class="legend-item"><span class="badge badge-prohibited"><span class="dot"></span>${esc(t.st_prohibited_short)}</span><p>${esc(t.legend_prohibited)}</p></div>
+            <div class="legend-item"><span class="badge badge-paidonly"><span class="dot"></span>${esc(t.st_paidonly_short)}</span><p>${esc(t.legend_paidonly)}</p></div>
             <div class="legend-item"><span class="badge badge-noban"><span class="dot"></span>${esc(t.st_no_ban_short)}</span><p>${esc(t.legend_no_ban)}</p></div>
             <div class="legend-item"><span class="badge badge-rv"><span class="dot"></span>${esc(t.st_rv_short)}</span><p>${esc(t.legend_rv)}</p></div>
         </div>`;
@@ -1010,7 +1022,7 @@ ${rows}
     const markers = DATA.stations.filter((s) => s.lat && s.lng).map((s) => ({
         n: stationName(s, lang),
         la: s.lat, ln: s.lng,
-        c: s.status === "prohibited" ? "#c93028" : s.rv_park ? "#2c9a44" : "#12808a",
+        c: s.status === "prohibited" ? (s.rv_park ? "#d9a400" : "#c93028") : s.rv_park ? "#2c9a44" : "#12808a",
         b: esc(statusLabel(s, lang, true)) + (s.rv_park ? " · " + esc(t.st_rv_short) : ""),
         u: sectionPath(lang, `${s.prefecture}/${s.id}/`),
         g: `https://www.google.com/maps/search/?api=1&query=${s.lat},${s.lng}`,
@@ -1200,7 +1212,7 @@ function renderStation(lang, st) {
     const name = stationName(st, lang);
     const pn = prefName(st.prefecture, lang);
     const sub = `${st.prefecture}/${st.id}/`;
-    const m = STATUS_META[st.status];
+    const cls = stCls(st);
     const label = statusLabel(st, lang);
 
     // 4状態: (一般駐車場: 禁止/明示禁止なし) × (RVパーク: 有/無)
@@ -1244,7 +1256,7 @@ function renderStation(lang, st) {
 
     const body = `
         <a class="ovn-back" href="${sectionPath(lang, st.prefecture + "/")}">${esc(t.back_to_pref(pn))}</a>
-        <div class="status-banner ${m.cls}">
+        <div class="status-banner ${cls}">
             <div class="st-label"><span class="dot"></span>${esc(label)}</div>
             <div class="st-verified">${esc(t.verified_label)}${COLON[lang]}${esc(st.verified)}</div>
         </div>
