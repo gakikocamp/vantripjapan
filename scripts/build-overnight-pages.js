@@ -145,7 +145,7 @@ const T = {
         rf_err: "Could not send — please use WhatsApp below.",
         rf_or_wa: "or message us directly:",
         map_h: "Map view",
-        map_hint: "Tap a pin for rules, station details and Google Maps navigation.",
+        map_hint: "Tap a pin for rules, station details and Google Maps navigation. Pin numbers match the station list below.",
         map_details: "Station details →",
         nearby_h: "Nearby stations",
         chip_all: "All",
@@ -274,7 +274,7 @@ const T = {
         rf_err: "Échec de l'envoi — utilisez WhatsApp ci-dessous.",
         rf_or_wa: "ou écrivez-nous directement :",
         map_h: "Vue carte",
-        map_hint: "Touchez une épingle : règles, fiche station et navigation Google Maps.",
+        map_hint: "Touchez une épingle : règles, fiche station et navigation Google Maps. Les numéros des épingles correspondent à la liste ci-dessous.",
         map_details: "Fiche station →",
         nearby_h: "Stations à proximité",
         chip_all: "Toutes",
@@ -403,7 +403,7 @@ const T = {
         rf_err: "Senden fehlgeschlagen — bitte nutzen Sie WhatsApp unten.",
         rf_or_wa: "oder schreiben Sie uns direkt:",
         map_h: "Kartenansicht",
-        map_hint: "Tippen Sie auf einen Pin: Regeln, Stationsdetails und Google-Maps-Navigation.",
+        map_hint: "Tippen Sie auf einen Pin: Regeln, Stationsdetails und Google-Maps-Navigation. Die Pin-Nummern entsprechen der Stationsliste unten.",
         map_details: "Stationsdetails →",
         nearby_h: "Stationen in der Nähe",
         chip_all: "Alle",
@@ -532,7 +532,7 @@ const T = {
         rf_err: "送出失敗 — 請改用下方WhatsApp。",
         rf_or_wa: "或直接聯絡我們：",
         map_h: "地圖總覽",
-        map_hint: "點選圖釘查看規則、站點資訊與Google地圖導航。",
+        map_hint: "點選圖釘查看規則、站點資訊與Google地圖導航。圖釘上的號碼對應下方的站點清單。",
         map_details: "站點詳情 →",
         nearby_h: "附近的道之驛",
         chip_all: "全部",
@@ -655,14 +655,15 @@ const SHARED_CSS = `
             --st-amber: #d9a400; --st-amber-text: #6b5400; --st-amber-tint: #fdf6e2;
             --st-green: #2c9a44; --st-green-text: #1e5c28; --st-green-tint: #eaf6ec;
         }
-        .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 128px 20px 72px; text-align: center; }
+        /* padding-top は言語スイッチャー(絶対配置 top:96px・高さ約40px)の下端を必ず超えること */
+        .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 156px 20px 72px; text-align: center; }
         .ovn-hero h1 { font-family: var(--font-serif); font-size: clamp(1.75rem, 4.5vw, 2.75rem); margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.08; }
         .ovn-hero p { color: rgba(255,255,255,0.82); font-size: 1.02rem; max-width: 680px; margin: 0 auto; line-height: 1.65; }
         .ovn-hero .crumbs { font-size: 0.85rem; letter-spacing: 0.02em; margin-bottom: 20px; color: rgba(255,255,255,0.82); }
         .ovn-hero .crumbs a { color: rgba(255,255,255,0.85); text-decoration: none; }
         .ovn-hero .crumbs a:hover { text-decoration: underline; }
         /* 駅ページ: 質問(h1)は控えめに、判定文が最大の活字になる */
-        .ovn-hero.compact { padding: 116px 20px 56px; }
+        .ovn-hero.compact { padding: 148px 20px 56px; }
         .ovn-hero.compact h1 { font-size: clamp(1.35rem, 2.6vw, 1.85rem); letter-spacing: -0.015em; margin-bottom: 10px; }
         .ovn-wrap { max-width: 860px; margin: -30px auto 96px; padding: 0 20px; }
         /* Apple-2026調: コンテンツは箱なし+活字階層+余白、箱はリスト/フォーム等の操作モジュール(.boxed)のみ */
@@ -670,7 +671,9 @@ const SHARED_CSS = `
         .ovn-card h2 { font-family: var(--font-serif); font-size: 1.55rem; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 18px; color: var(--color-text); }
         .ovn-card p, .ovn-card li { font-size: 0.98rem; color: var(--color-text-secondary); line-height: 1.75; }
         .ovn-card p { max-width: 70ch; }
-        .ovn-card ul { padding-left: 1.2em; margin-top: 8px; max-width: 70ch; }
+        .ovn-card ul, .ovn-card ol { padding-left: 1.3em; margin-top: 8px; max-width: 70ch; }
+        .etiquette-list li { padding-left: 4px; }
+        .etiquette-list li::marker { font-weight: 700; color: #2d5a3d; }
         .ovn-card li { margin-bottom: 9px; }
         .ovn-card.boxed { background: #fff; border-radius: 20px; padding: 24px 28px 28px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05); margin-bottom: 36px; }
         .ovn-card.boxed h2 { font-size: 1.3rem; }
@@ -721,6 +724,15 @@ const SHARED_CSS = `
         /* 言語スイッチャーは固定だと粘着チップ帯に重なりクリックを奪う → ページと一緒にスクロールさせる */
         .lang-switcher { position: absolute; top: 96px; }
         .pref-block { scroll-margin-top: 170px; }
+        /* 番号ピン: 地図とリストを結ぶID（順位ではない） */
+        .ovn-pin span { display: flex; align-items: center; justify-content: center;
+            width: 30px; height: 30px; border-radius: 50%; color: #fff; font-size: 0.8rem; font-weight: 700;
+            border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.3); font-variant-numeric: tabular-nums; }
+        .st-num { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+            width: 28px; height: 28px; border-radius: 50%; margin-right: 14px;
+            font-size: 0.8rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+        .st-num-prohibited { background: var(--st-red); } .st-num-paidonly { background: var(--st-amber); }
+        .st-num-noban { background: var(--st-teal); }
         .map-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 14px 4px 0; margin: 0; }
         .map-legend li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.86rem; font-weight: 600; color: #5f5f66; }
         .map-legend .dot { width: 10px; height: 10px; }
@@ -1012,6 +1024,11 @@ const PREF_ORDER = Object.keys(DATA.prefectures).filter((p) => byPref[p]);
 const sortKey = (s) => (s.status === "prohibited" ? (s.rv_park ? 1 : 0) : s.rv_park ? 2 : 3);
 for (const p of PREF_ORDER) byPref[p].sort((a, b) => sortKey(a) - sortKey(b) || a.id.localeCompare(b.id));
 
+// 地図ピンとリスト行を結ぶ通し番号（順位ではなくID。県順→表示順で固定）
+const STATION_NUM = {};
+let _n = 0;
+for (const p of PREF_ORDER) for (const s of byPref[p]) STATION_NUM[s.id] = ++_n;
+
 const counts = {
     prohibited: DATA.stations.filter((s) => s.status === "prohibited").length,
     no_ban: DATA.stations.filter((s) => s.status === "no_explicit_ban").length,
@@ -1027,6 +1044,7 @@ function stationRow(st, lang, distanceKm) {
         : `${esc(st.name.ja)} · ${esc(cityName(st, lang))}`;
     if (distanceKm != null) subtitle += ` · ${distanceKm}&nbsp;km`;
     return `<a class="station-row" data-st="${stCls(st)}" data-rv="${st.rv_park ? 1 : 0}"${st.lat ? ` data-lat="${st.lat}" data-lng="${st.lng}"` : ""} href="${sectionPath(lang, sub)}">
+                <span class="st-num st-num-${stCls(st)}" aria-hidden="true">${STATION_NUM[st.id] || ""}</span>
                 <span class="st-main"><span class="st-name">${esc(shownName)}</span>
                 <span class="st-city">${subtitle}</span></span>
                 <span class="st-side">${st.rv_park ? rvChip(lang) : ""}${badge(st, lang)}<span class="chev" aria-hidden="true">›</span></span>
@@ -1212,6 +1230,7 @@ ${rows}
 
     // 地図マーカー: 色 = 禁止:赤 / RVパーク併設:緑 / 休憩容認:ティール
     const markers = DATA.stations.filter((s) => s.lat && s.lng).map((s) => ({
+        i: STATION_NUM[s.id],
         n: stationName(s, lang),
         la: s.lat, ln: s.lng,
         st: stCls(s), rv: s.rv_park ? 1 : 0,
@@ -1254,13 +1273,17 @@ ${rows}
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
             var sts = ${JSON.stringify(markers)};
-            // 色覚特性に依存しないよう、RVパーク駅は一回り大きく。モバイルは全体を大きめに
-            var touch = window.matchMedia('(max-width: 640px)').matches;
+            // 番号入りピン: 下のリストの同じ番号と対応する。色に依存しない手がかりにもなる
             var mapMarkers = sts.map(function (s) {
-                var m = L.circleMarker([s.la, s.ln], {
-                    radius: (s.rv ? 11 : 8) + (touch ? 3 : 0), fillColor: s.c, fillOpacity: 0.92, color: '#fff', weight: 2
+                var m = L.marker([s.la, s.ln], {
+                    icon: L.divIcon({
+                        className: 'ovn-pin',
+                        html: '<span style="background:' + s.c + '">' + s.i + '</span>',
+                        iconSize: [30, 30], iconAnchor: [15, 15], popupAnchor: [0, -14]
+                    }),
+                    title: s.i + '. ' + s.n
                 }).addTo(map).bindPopup(
-                    '<strong>' + s.n + '</strong><br><span style="color:' + s.c + ';font-weight:600;">' + s.b + '</span><br>' +
+                    '<strong>' + s.i + '. ' + s.n + '</strong><br><span style="color:' + s.c + ';font-weight:600;">' + s.b + '</span><br>' +
                     '<a href="' + s.u + '">${esc(t.map_details)}</a> · <a href="' + s.g + '" target="_blank" rel="noopener">Google Maps ↗</a>'
                 );
                 return { m: m, st: s.st, rv: s.rv };
@@ -1487,7 +1510,7 @@ function renderStation(lang, st) {
         </div>
         <div class="ovn-card">
             <h2>${esc(t.etiquette_h)}</h2>
-            <ul>${t.etiquette.map((e) => `<li>${esc(e)}</li>`).join("")}</ul>
+            <ol class="etiquette-list">${t.etiquette.map((e) => `<li>${esc(e)}</li>`).join("")}</ol>
         </div>
         <div class="ovn-card boxed">
             <h2>${esc(t.details_h)}</h2>

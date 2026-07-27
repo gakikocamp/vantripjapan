@@ -118,14 +118,15 @@
             --st-amber: #d9a400; --st-amber-text: #6b5400; --st-amber-tint: #fdf6e2;
             --st-green: #2c9a44; --st-green-text: #1e5c28; --st-green-tint: #eaf6ec;
         }
-        .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 128px 20px 72px; text-align: center; }
+        /* padding-top は言語スイッチャー(絶対配置 top:96px・高さ約40px)の下端を必ず超えること */
+        .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 156px 20px 72px; text-align: center; }
         .ovn-hero h1 { font-family: var(--font-serif); font-size: clamp(1.75rem, 4.5vw, 2.75rem); margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.08; }
         .ovn-hero p { color: rgba(255,255,255,0.82); font-size: 1.02rem; max-width: 680px; margin: 0 auto; line-height: 1.65; }
         .ovn-hero .crumbs { font-size: 0.85rem; letter-spacing: 0.02em; margin-bottom: 20px; color: rgba(255,255,255,0.82); }
         .ovn-hero .crumbs a { color: rgba(255,255,255,0.85); text-decoration: none; }
         .ovn-hero .crumbs a:hover { text-decoration: underline; }
         /* 駅ページ: 質問(h1)は控えめに、判定文が最大の活字になる */
-        .ovn-hero.compact { padding: 116px 20px 56px; }
+        .ovn-hero.compact { padding: 148px 20px 56px; }
         .ovn-hero.compact h1 { font-size: clamp(1.35rem, 2.6vw, 1.85rem); letter-spacing: -0.015em; margin-bottom: 10px; }
         .ovn-wrap { max-width: 860px; margin: -30px auto 96px; padding: 0 20px; }
         /* Apple-2026調: コンテンツは箱なし+活字階層+余白、箱はリスト/フォーム等の操作モジュール(.boxed)のみ */
@@ -133,7 +134,9 @@
         .ovn-card h2 { font-family: var(--font-serif); font-size: 1.55rem; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 18px; color: var(--color-text); }
         .ovn-card p, .ovn-card li { font-size: 0.98rem; color: var(--color-text-secondary); line-height: 1.75; }
         .ovn-card p { max-width: 70ch; }
-        .ovn-card ul { padding-left: 1.2em; margin-top: 8px; max-width: 70ch; }
+        .ovn-card ul, .ovn-card ol { padding-left: 1.3em; margin-top: 8px; max-width: 70ch; }
+        .etiquette-list li { padding-left: 4px; }
+        .etiquette-list li::marker { font-weight: 700; color: #2d5a3d; }
         .ovn-card li { margin-bottom: 9px; }
         .ovn-card.boxed { background: #fff; border-radius: 20px; padding: 24px 28px 28px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05); margin-bottom: 36px; }
         .ovn-card.boxed h2 { font-size: 1.3rem; }
@@ -184,6 +187,15 @@
         /* 言語スイッチャーは固定だと粘着チップ帯に重なりクリックを奪う → ページと一緒にスクロールさせる */
         .lang-switcher { position: absolute; top: 96px; }
         .pref-block { scroll-margin-top: 170px; }
+        /* 番号ピン: 地図とリストを結ぶID（順位ではない） */
+        .ovn-pin span { display: flex; align-items: center; justify-content: center;
+            width: 30px; height: 30px; border-radius: 50%; color: #fff; font-size: 0.8rem; font-weight: 700;
+            border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.3); font-variant-numeric: tabular-nums; }
+        .st-num { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+            width: 28px; height: 28px; border-radius: 50%; margin-right: 14px;
+            font-size: 0.8rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+        .st-num-prohibited { background: var(--st-red); } .st-num-paidonly { background: var(--st-amber); }
+        .st-num-noban { background: var(--st-teal); }
         .map-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 14px 4px 0; margin: 0; }
         .map-legend li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.86rem; font-weight: 600; color: #5f5f66; }
         .map-legend .dot { width: 10px; height: 10px; }
@@ -363,7 +375,7 @@
         </div>
         <div class="ovn-card">
             <h2>Étiquette de nuit (non négociable)</h2>
-            <ul><li>Une seule nuit — c'est une aire de repos, pas un camping</li><li>Moteur coupé, pas de ralenti (interdit par arrêté dans de nombreuses préfectures)</li><li>Rien à l'extérieur du van : ni chaises, ni tables, ni auvent, ni linge</li><li>Pas de barbecue, pas de flamme</li><li>Garez-vous au fond, loin de l'entrée de la boutique</li><li>Silence après 21 h — portières, voix, musique</li><li>Remportez tous vos déchets</li><li>Achetez quelque chose à la boutique — c'est ce qui garde les stations accueillantes</li></ul>
+            <ol class="etiquette-list"><li>Une seule nuit — c'est une aire de repos, pas un camping</li><li>Moteur coupé, pas de ralenti (interdit par arrêté dans de nombreuses préfectures)</li><li>Rien à l'extérieur du van : ni chaises, ni tables, ni auvent, ni linge</li><li>Pas de barbecue, pas de flamme</li><li>Garez-vous au fond, loin de l'entrée de la boutique</li><li>Silence après 21 h — portières, voix, musique</li><li>Remportez tous vos déchets</li><li>Achetez quelque chose à la boutique — c'est ce qui garde les stations accueillantes</li></ol>
         </div>
         <div class="ovn-card boxed">
             <h2>Informations sur la station</h2>
@@ -382,16 +394,19 @@
             <h2>Stations à proximité</h2>
             <div class="station-list">
                 <a class="station-row" data-st="noban" data-rv="1" data-lat="32.81846" data-lng="131.04116" href="/fr/overnight-parking/michi-no-eki/kumamoto/asobo-no-sato-kugino/">
+                <span class="st-num st-num-noban" aria-hidden="true">24</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Asobo no Sato Kugino</span>
                 <span class="st-city">道の駅あそ望の郷くぎの · Minamiaso Village · 27&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.96569" data-lng="131.45237" href="/fr/overnight-parking/michi-no-eki/oita/harajiri-no-taki/">
+                <span class="st-num st-num-noban" aria-hidden="true">39</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Harajiri no Taki</span>
                 <span class="st-city">道の駅原尻の滝 · Bungo-Ono · 32&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.93701" data-lng="131.08088" href="/fr/overnight-parking/michi-no-eki/kumamoto/aso/">
+                <span class="st-num st-num-noban" aria-hidden="true">31</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Aso</span>
                 <span class="st-city">道の駅阿蘇 · Aso · 33&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>

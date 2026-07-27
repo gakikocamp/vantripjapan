@@ -113,14 +113,15 @@
             --st-amber: #d9a400; --st-amber-text: #6b5400; --st-amber-tint: #fdf6e2;
             --st-green: #2c9a44; --st-green-text: #1e5c28; --st-green-tint: #eaf6ec;
         }
-        .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 128px 20px 72px; text-align: center; }
+        /* padding-top は言語スイッチャー(絶対配置 top:96px・高さ約40px)の下端を必ず超えること */
+        .ovn-hero { background: linear-gradient(160deg, #1a3a2a, #2d5a3d); color: #fff; padding: 156px 20px 72px; text-align: center; }
         .ovn-hero h1 { font-family: var(--font-serif); font-size: clamp(1.75rem, 4.5vw, 2.75rem); margin-bottom: 16px; letter-spacing: -0.02em; line-height: 1.08; }
         .ovn-hero p { color: rgba(255,255,255,0.82); font-size: 1.02rem; max-width: 680px; margin: 0 auto; line-height: 1.65; }
         .ovn-hero .crumbs { font-size: 0.85rem; letter-spacing: 0.02em; margin-bottom: 20px; color: rgba(255,255,255,0.82); }
         .ovn-hero .crumbs a { color: rgba(255,255,255,0.85); text-decoration: none; }
         .ovn-hero .crumbs a:hover { text-decoration: underline; }
         /* 駅ページ: 質問(h1)は控えめに、判定文が最大の活字になる */
-        .ovn-hero.compact { padding: 116px 20px 56px; }
+        .ovn-hero.compact { padding: 148px 20px 56px; }
         .ovn-hero.compact h1 { font-size: clamp(1.35rem, 2.6vw, 1.85rem); letter-spacing: -0.015em; margin-bottom: 10px; }
         .ovn-wrap { max-width: 860px; margin: -30px auto 96px; padding: 0 20px; }
         /* Apple-2026調: コンテンツは箱なし+活字階層+余白、箱はリスト/フォーム等の操作モジュール(.boxed)のみ */
@@ -128,7 +129,9 @@
         .ovn-card h2 { font-family: var(--font-serif); font-size: 1.55rem; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 18px; color: var(--color-text); }
         .ovn-card p, .ovn-card li { font-size: 0.98rem; color: var(--color-text-secondary); line-height: 1.75; }
         .ovn-card p { max-width: 70ch; }
-        .ovn-card ul { padding-left: 1.2em; margin-top: 8px; max-width: 70ch; }
+        .ovn-card ul, .ovn-card ol { padding-left: 1.3em; margin-top: 8px; max-width: 70ch; }
+        .etiquette-list li { padding-left: 4px; }
+        .etiquette-list li::marker { font-weight: 700; color: #2d5a3d; }
         .ovn-card li { margin-bottom: 9px; }
         .ovn-card.boxed { background: #fff; border-radius: 20px; padding: 24px 28px 28px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 12px 32px rgba(0,0,0,0.05); margin-bottom: 36px; }
         .ovn-card.boxed h2 { font-size: 1.3rem; }
@@ -179,6 +182,15 @@
         /* 言語スイッチャーは固定だと粘着チップ帯に重なりクリックを奪う → ページと一緒にスクロールさせる */
         .lang-switcher { position: absolute; top: 96px; }
         .pref-block { scroll-margin-top: 170px; }
+        /* 番号ピン: 地図とリストを結ぶID（順位ではない） */
+        .ovn-pin span { display: flex; align-items: center; justify-content: center;
+            width: 30px; height: 30px; border-radius: 50%; color: #fff; font-size: 0.8rem; font-weight: 700;
+            border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.3); font-variant-numeric: tabular-nums; }
+        .st-num { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+            width: 28px; height: 28px; border-radius: 50%; margin-right: 14px;
+            font-size: 0.8rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
+        .st-num-prohibited { background: var(--st-red); } .st-num-paidonly { background: var(--st-amber); }
+        .st-num-noban { background: var(--st-teal); }
         .map-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 14px 4px 0; margin: 0; }
         .map-legend li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.86rem; font-weight: 600; color: #5f5f66; }
         .map-legend .dot { width: 10px; height: 10px; }
@@ -343,36 +355,43 @@
         <div class="ovn-card boxed">
             <div class="station-list">
 <a class="station-row" data-st="prohibited" data-rv="0" data-lat="31.76861" data-lng="131.09572" href="/zh/overnight-parking/michi-no-eki/miyazaki/miyakonojo-niqll/">
+                <span class="st-num st-num-prohibited" aria-hidden="true">46</span>
                 <span class="st-main"><span class="st-name">道の駅都城NiQLL</span>
                 <span class="st-city">都城市</span></span>
                 <span class="st-side"><span class="badge badge-prohibited"><span class="dot"></span>不可過夜</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.05023" data-lng="130.80546" href="/zh/overnight-parking/michi-no-eki/miyazaki/ebino/">
+                <span class="st-num st-num-noban" aria-hidden="true">47</span>
                 <span class="st-main"><span class="st-name">道の駅えびの</span>
                 <span class="st-city">えびの市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.34322" data-lng="131.62412" href="/zh/overnight-parking/michi-no-eki/miyazaki/hyuga/">
+                <span class="st-num st-num-noban" aria-hidden="true">48</span>
                 <span class="st-main"><span class="st-name">道の駅日向</span>
                 <span class="st-city">日向市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.66607" data-lng="131.70468" href="/zh/overnight-parking/michi-no-eki/miyazaki/kitagawa-hayuma/">
+                <span class="st-num st-num-noban" aria-hidden="true">49</span>
                 <span class="st-main"><span class="st-name">道の駅北川はゆま</span>
                 <span class="st-city">延岡市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.50288" data-lng="131.37827" href="/zh/overnight-parking/michi-no-eki/miyazaki/nango/">
+                <span class="st-num st-num-noban" aria-hidden="true">50</span>
                 <span class="st-main"><span class="st-name">道の駅なんごう</span>
                 <span class="st-city">日南市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.76895" data-lng="131.47842" href="/zh/overnight-parking/michi-no-eki/miyazaki/phoenix/">
+                <span class="st-num st-num-noban" aria-hidden="true">51</span>
                 <span class="st-main"><span class="st-name">道の駅フェニックス</span>
                 <span class="st-city">宮崎市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.70857" data-lng="131.30095" href="/zh/overnight-parking/michi-no-eki/miyazaki/takachiho/">
+                <span class="st-num st-num-noban" aria-hidden="true">52</span>
                 <span class="st-main"><span class="st-name">道の駅高千穂</span>
                 <span class="st-city">西臼杵郡高千穂町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
