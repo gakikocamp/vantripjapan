@@ -22,6 +22,7 @@ export const OVERNIGHT_URLS = [
   "/overnight-parking/michi-no-eki/kumamoto/komoriuta-no-sato-itsuki/",
   "/overnight-parking/michi-no-eki/kumamoto/nishiki/",
   "/overnight-parking/michi-no-eki/kumamoto/toyo/",
+  "/overnight-parking/michi-no-eki/miyazaki/phoenix/",
   "/overnight-parking/michi-no-eki/miyazaki/miyakonojo-niqll/",
   "/overnight-parking/michi-no-eki/kumamoto/namino/",
   "/overnight-parking/michi-no-eki/miyazaki/seiunbashi/",

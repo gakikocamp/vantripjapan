@@ -6,7 +6,9 @@
     "schema_note": "statusは【無料の一般駐車場】のポリシー: prohibited (明示禁止・要evidence) | no_explicit_ban (明示禁止なし・国交省デフォルト適用)。rv_park は直交フィールド(公認RVパーク併設なら設定)。つまり『無料駐車場は禁止だがRVパークで有料宿泊可』(例:むなかた)を表現できる。verified = 最終確認日. evidence.type: official|blog|wiki|sign|assoc (urlなしのsign=現地確認)。駅の追加・更新はこのファイルを編集して node scripts/build-overnight-pages.js を再実行。地域は九州から開始だがスキーマは全国対応(prefecturesに県を足すだけ)。",
     "coverage_note": "verification:'listed' は公式名簿(OpenStreetMap経由の道の駅データ+逆ジオコーディングで県確定)から収録したのみで、駅固有のルールは未確認。ページはnoindexにし『未検証』と明示する。個別確認できたものは verification を外し(=checked扱い) verified に確認日を入れること。",
     "official_source": "国交省九州地方整備局の県別一覧(2026-07-27取得)と全件突合。公式145駅(一覧掲載144＋2025-06-13登録のウェルネスあらお)＝当DB145駅で完全一致。正式登録名と施設名の差異: 有明=有明リップルランド、大和=大和そよかぜ館(いずれも同一駅・施設名を採用)。要再確認: 道の駅ひまわりの座標が旧みずなし本陣ふかえ跡地と約75m近接。",
-    "verification_policy": "verification未設定=検証済み(その駅固有の出典をevidenceに保持していること)。verification:'listed'=未検証(noindex・「情報募集中」表示・sitemap除外)。全145駅は日本の公開禁止リスト群との照合は済んでいるが、それだけでは検証済みとしない。昇格は scripts/apply-verification.js 経由のみ(confidence=highかつ出典必須、prohibitedは一次情報必須)。"
+    "verification_policy": "verification未設定=検証済み(その駅固有の出典をevidenceに保持していること)。verification:'listed'=未検証(noindex・「情報募集中」表示・sitemap除外)。全145駅は日本の公開禁止リスト群との照合は済んでいるが、それだけでは検証済みとしない。昇格は scripts/apply-verification.js 経由のみ(confidence=highかつ出典必須、prohibitedは一次情報必須)。",
+    "ban_sweep": "2026-07-28",
+    "ban_sweep_note": "九州7県145駅を対象に禁止駅の一斉走査を実施。禁止リスト系6媒体(Jackery/EcoFlow/もりりんパパ/kochi-gwtp/BunBun HIACE/車中泊まとめWiki)と、看板の写真を載せる実地レポート系(令和とらべら〜ず/kurumatabi.net/みちくさファクトリー)を確認。結果: 福岡佐賀長崎40駅=禁止ゼロ、大分26駅=禁止ゼロ、熊本37駅=ウェルネスあらお1駅のみ。⚠️syachuhaku-blog.fxtec.infoはrobots.txtでClaudeBotを拒否しているためクロール不可(検索結果のみ)。"
   },
   "prefectures": {
     "fukuoka": {
@@ -822,15 +824,28 @@
       "verified": "2026-07-27",
       "evidence": [
         {
-          "url": "https://www.kurumatabi.com/park/rvpark/1118.html",
-          "type": "assoc",
-          "date": "2026-07-27"
+          "url": "https://kurumatabi.net/kyusyu/mizubeplaza/",
+          "type": "wiki",
+          "date": "2025-03",
+          "quote_ja": "車中泊専門メディアの実地取材（2025年3月更新）。禁止には一切触れず「広くてフラット、夜はすこぶる静か」と推奨"
         },
         {
           "url": "https://roadtrips.jp/spot/d/kumamoto/43028",
           "type": "blog",
+          "date": "2022-11-23",
+          "quote_ja": "2022年秋から、車中泊禁止になりとても残念です。（利用者口コミ1件のみ。以後の追随報告なし・公式記載なし）"
+        },
+        {
+          "url": "https://suzynoiroiroblog.com/syatyuuhakukumamoto/",
+          "type": "phone",
+          "date": "2022-04",
+          "quote_ja": "お店のご厚意で黙認してます（電話回答。禁止ではない）"
+        },
+        {
+          "url": "https://www.kurumatabi.com/park/rvpark/1118.html",
+          "type": "assoc",
           "date": "2026-07-27",
-          "quote_ja": "2022年秋から、車中泊禁止になり（利用者口コミ・公式記載は未確認）"
+          "quote_ja": "RVパークsmart 道の駅水辺プラザかもと（有料区画あり）"
         }
       ],
       "rv_park": {
@@ -1139,11 +1154,38 @@
       "lat": 31.76895,
       "lng": 131.47842,
       "official_url": "",
-      "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "status": "prohibited",
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://web.archive.org/web/20230202205916id_/http://michinoekiphoenix.jp/?p=34",
+          "type": "official",
+          "date": "2023-02-02",
+          "quote_ja": "道路利用者の休憩するための駐車場です。車中泊を目的での滞在はご遠慮ください。近隣のオートキャンプ場をご利用ください。"
+        },
+        {
+          "url": "https://web.archive.org/web/20240224124021id_/http://michinoekiphoenix.jp/?p=34",
+          "type": "official",
+          "date": "2024-02-24",
+          "quote_ja": "2024年2月以降のスナップショットでは上記の明示文が削除され、国交省の休憩施設ページへのリンクに差し替え。公式ドメインは現在失効しており最新の方針は未確認"
+        },
+        {
+          "url": "https://roadtrips.jp/spot/d/miyazaki/45014/",
+          "type": "blog",
+          "date": "2023-04-09",
+          "quote_ja": "車中泊禁止だそうですよ。HPに「道路利用者の休憩するための駐車場です。車中泊を目的での滞在はご遠慮ください。近隣のオートキャンプ場をご利用ください。」と記載があります"
+        },
+        {
+          "url": "https://tanamoba.com/2023/11/12/",
+          "type": "blog",
+          "date": "2023-11-12",
+          "quote_ja": "この道の駅はホームページに車中泊禁止の記載もあって、ちょこっと仮眠することにしました。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "parking_car": 95
+      }
     },
     {
       "id": "takachiho",
@@ -2026,6 +2068,12 @@
       "verified": "2026-07-28",
       "evidence": [
         {
+          "url": "https://syachuhaku-blog.fxtec.info/post-29484/",
+          "type": "wiki",
+          "date": "2025-02-15",
+          "quote_ja": "普通に車中泊可能。駐車場は無料・夜間閉鎖なし、トイレ24時間・夜間点灯。裏の駐車場は非常に静か（禁止看板への言及なし）"
+        },
+        {
           "url": "http://www.aso-kagura.com/access/index.html",
           "type": "official",
           "date": "2026-07-28",
@@ -2050,12 +2098,6 @@
           "quote_ja": "阿蘇市公式ページ。車中泊・駐車場利用ルールの記載なし"
         },
         {
-          "url": "https://syachuhaku-blog.fxtec.info/post-29484/",
-          "type": "wiki",
-          "date": "2025-02-15",
-          "quote_ja": "普通に車中泊可能。駐車場は無料・夜間閉鎖なし、トイレ24時間・夜間点灯。裏の駐車場は非常に静か（禁止看板への言及なし）"
-        },
-        {
           "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-namino",
           "type": "blog",
           "date": "2025-05-21",
@@ -2067,6 +2109,10 @@
         "toilet_24h": true,
         "parking_car": 250,
         "shop": true
+      },
+      "nearby": {
+        "onsen_km": 16,
+        "convenience_km": 10
       }
     },
     {
@@ -2207,6 +2253,12 @@
       "verified": "2026-07-28",
       "evidence": [
         {
+          "url": "https://kurumatabi.net/kyusyu/souunkyo/",
+          "type": "assoc",
+          "date": "2025-03",
+          "quote_ja": "駐車場は全体的に平坦で、特に車中泊に支障は感じられない。24時間トイレは駅舎の正面玄関の横にあり"
+        },
+        {
           "url": "https://hinokagecho.com/seiunbashi.html",
           "type": "official",
           "date": "2026-07-28",
@@ -2231,12 +2283,6 @@
           "quote_ja": "宮崎県道路保全課の管理ページ。駐車場59台（大型5・中型2・普通50・障がい者用2）。車中泊に関する注意書きなし"
         },
         {
-          "url": "https://kurumatabi.net/kyusyu/souunkyo/",
-          "type": "assoc",
-          "date": "2025-03",
-          "quote_ja": "駐車場は全体的に平坦で、特に車中泊に支障は感じられない。24時間トイレは駅舎の正面玄関の横にあり"
-        },
-        {
           "url": "https://keiban-tabicamp.com/seiunbashi/",
           "type": "blog",
           "date": "2023-06",
@@ -2250,6 +2296,10 @@
         "ev": true,
         "wifi": true,
         "shop": true
+      },
+      "nearby": {
+        "onsen_km": 2,
+        "convenience_km": 3
       }
     },
     {
@@ -3107,6 +3157,9 @@
         "ev": true,
         "wifi": true,
         "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0
       }
     },
     {

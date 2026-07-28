@@ -14,6 +14,7 @@
  *          >> phone(電話回答) — 電話は「確認すると断られる」ため掲示の実態とは別物。単独では禁止の根拠にしない
  *     "rv_park": null | { "name_ja","url","spaces","price_jpy","power","booking" },
  *     "facilities": { "toilet_24h":true, "parking_car":224, "onsen":false, "ev":true, "wifi":true, "shop":true },
+ *     "nearby":     { "onsen_km": 2, "convenience_km": 3 },   // 0=駅内。風呂と補給は車中泊の実務で最重要
  *     "official_url": ""
  *   }
  *   ※ facilities は構造化フラグで渡すこと（日本語の自由記述は多言語ページに出せない）
@@ -67,7 +68,13 @@ for (const r of list) {
     if (r.rv_park && !st.rv_park) st.rv_park = r.rv_park;
     if (r.official_url && !st.official_url) st.official_url = r.official_url;
     if (r.facilities && typeof r.facilities === "object") st.facilities = r.facilities;
-    if (ev.length) st.evidence = ev;
+    if (r.nearby && typeof r.nearby === "object") st.nearby = r.nearby;
+    // 出典は「置換」ではなく「URLをキーにしたマージ」。追加投入で既存の出典を失わないため
+    if (ev.length) {
+        const seen = new Map((st.evidence || []).map((e) => [e.url || `${e.type}:${e.date}`, e]));
+        for (const e of ev) seen.set(e.url || `${e.type}:${e.date}`, e);
+        st.evidence = [...seen.values()];
+    }
 
     const reasons = [];
     if (r.confidence !== "high") reasons.push(`confidence=${r.confidence}`);
