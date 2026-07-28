@@ -207,6 +207,7 @@
         .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
+        .status-banner.closed { background: var(--st-red-tint); color: var(--st-red-text); font-weight: 700; font-size: 0.95rem; padding: 18px 22px; }
         /* 答えがヒーロー: 判定文をページ最大の活字にする */
         .status-banner .st-label { display: flex; align-items: center; gap: 14px; font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.02em; line-height: 1.15; }
         .status-banner .st-label .dot { width: 14px; height: 14px; flex-shrink: 0; }
@@ -445,7 +446,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.614" data-lng="131.10091" href="/zh/overnight-parking/michi-no-eki/fukuoka/buzen-okoshikake/">
                 <span class="st-num st-num-noban" aria-hidden="true">3</span>
                 <span class="st-main"><span class="st-name">道の駅豊前おこしかけ</span>
-                <span class="st-city">豊前市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">豊前市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.46732" data-lng="130.6238" href="/zh/overnight-parking/michi-no-eki/fukuoka/chikuzen-minami-no-sato/">
@@ -457,19 +458,19 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.3537" data-lng="130.78488" href="/zh/overnight-parking/michi-no-eki/fukuoka/harazuru/">
                 <span class="st-num st-num-noban" aria-hidden="true">5</span>
                 <span class="st-main"><span class="st-name">道の駅原鶴</span>
-                <span class="st-city">朝倉市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">朝倉市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.64202" data-lng="130.76519" href="/zh/overnight-parking/michi-no-eki/fukuoka/itoda/">
                 <span class="st-num st-num-noban" aria-hidden="true">6</span>
                 <span class="st-main"><span class="st-name">道の駅いとだ</span>
-                <span class="st-city">田川郡糸田町 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">田川郡糸田町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.54963" data-lng="130.86005" href="/zh/overnight-parking/michi-no-eki/fukuoka/kanyusha-hikosan/">
                 <span class="st-num st-num-noban" aria-hidden="true">7</span>
                 <span class="st-main"><span class="st-name">道の駅歓遊舎ひこさん</span>
-                <span class="st-city">田川郡添田町 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">田川郡添田町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.67674" data-lng="130.86008" href="/zh/overnight-parking/michi-no-eki/fukuoka/kawara/">
@@ -481,37 +482,37 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.4652" data-lng="130.82599" href="/zh/overnight-parking/michi-no-eki/fukuoka/koishiwara/">
                 <span class="st-num st-num-noban" aria-hidden="true">9</span>
                 <span class="st-main"><span class="st-name">道の駅小石原</span>
-                <span class="st-city">朝倉郡東峰村 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">朝倉郡東峰村</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.31945" data-lng="130.59372" href="/zh/overnight-parking/michi-no-eki/fukuoka/kurume/">
                 <span class="st-num st-num-noban" aria-hidden="true">10</span>
                 <span class="st-main"><span class="st-name">道の駅くるめ</span>
-                <span class="st-city">久留米市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">久留米市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.14728" data-lng="130.48403" href="/zh/overnight-parking/michi-no-eki/fukuoka/miyama/">
                 <span class="st-num st-num-noban" aria-hidden="true">11</span>
                 <span class="st-main"><span class="st-name">道の駅みやま</span>
-                <span class="st-city">みやま市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">みやま市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.07325" data-lng="130.53219" href="/zh/overnight-parking/michi-no-eki/fukuoka/omuta/">
                 <span class="st-num st-num-noban" aria-hidden="true">12</span>
                 <span class="st-main"><span class="st-name">道の駅おおむた</span>
-                <span class="st-city">大牟田市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">大牟田市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.62568" data-lng="130.84585" href="/zh/overnight-parking/michi-no-eki/fukuoka/oto-sakura-kaido/">
                 <span class="st-num st-num-noban" aria-hidden="true">13</span>
                 <span class="st-main"><span class="st-name">道の駅おおとう桜街道</span>
-                <span class="st-city">田川郡大任町 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">田川郡大任町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.58868" data-lng="131.15422" href="/zh/overnight-parking/michi-no-eki/fukuoka/shin-yoshitomi/">
                 <span class="st-num st-num-noban" aria-hidden="true">14</span>
                 <span class="st-main"><span class="st-name">道の駅しんよしとみ</span>
-                <span class="st-city">築上郡上毛町 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">築上郡上毛町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.18761" data-lng="130.61039" href="/zh/overnight-parking/michi-no-eki/fukuoka/tachibana/">
@@ -523,13 +524,13 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.33419" data-lng="130.81824" href="/zh/overnight-parking/michi-no-eki/fukuoka/ukiha/">
                 <span class="st-num st-num-noban" aria-hidden="true">16</span>
                 <span class="st-main"><span class="st-name">道の駅うきは</span>
-                <span class="st-city">うきは市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">うきは市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.5639" data-lng="130.7132" href="/zh/overnight-parking/michi-no-eki/fukuoka/usui/">
                 <span class="st-num st-num-noban" aria-hidden="true">17</span>
                 <span class="st-main"><span class="st-name">道の駅うすい</span>
-                <span class="st-city">嘉麻市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">嘉麻市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>

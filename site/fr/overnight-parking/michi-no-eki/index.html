@@ -164,6 +164,7 @@
         .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
+        .status-banner.closed { background: var(--st-red-tint); color: var(--st-red-text); font-weight: 700; font-size: 0.95rem; padding: 18px 22px; }
         /* 答えがヒーロー: 判定文をページ最大の活字にする */
         .status-banner .st-label { display: flex; align-items: center; gap: 14px; font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.02em; line-height: 1.15; }
         .status-banner .st-label .dot { width: 14px; height: 14px; flex-shrink: 0; }
@@ -572,7 +573,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.614" data-lng="131.10091" href="/fr/overnight-parking/michi-no-eki/fukuoka/buzen-okoshikake/">
                 <span class="st-num st-num-noban" aria-hidden="true">3</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Buzen Okoshikake</span>
-                <span class="st-city">道の駅豊前おこしかけ · Buzen · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅豊前おこしかけ · Buzen</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.46732" data-lng="130.6238" href="/fr/overnight-parking/michi-no-eki/fukuoka/chikuzen-minami-no-sato/">
@@ -584,19 +585,19 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.3537" data-lng="130.78488" href="/fr/overnight-parking/michi-no-eki/fukuoka/harazuru/">
                 <span class="st-num st-num-noban" aria-hidden="true">5</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Harazuru</span>
-                <span class="st-city">道の駅原鶴 · Asakura · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅原鶴 · Asakura</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.64202" data-lng="130.76519" href="/fr/overnight-parking/michi-no-eki/fukuoka/itoda/">
                 <span class="st-num st-num-noban" aria-hidden="true">6</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Itoda</span>
-                <span class="st-city">道の駅いとだ · Itoda Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅いとだ · Itoda Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.54963" data-lng="130.86005" href="/fr/overnight-parking/michi-no-eki/fukuoka/kanyusha-hikosan/">
                 <span class="st-num st-num-noban" aria-hidden="true">7</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kanyusha Hikosan</span>
-                <span class="st-city">道の駅歓遊舎ひこさん · Soeda Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅歓遊舎ひこさん · Soeda Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.67674" data-lng="130.86008" href="/fr/overnight-parking/michi-no-eki/fukuoka/kawara/">
@@ -608,37 +609,37 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.4652" data-lng="130.82599" href="/fr/overnight-parking/michi-no-eki/fukuoka/koishiwara/">
                 <span class="st-num st-num-noban" aria-hidden="true">9</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Koishiwara</span>
-                <span class="st-city">道の駅小石原 · Toho Village · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅小石原 · Toho Village</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.31945" data-lng="130.59372" href="/fr/overnight-parking/michi-no-eki/fukuoka/kurume/">
                 <span class="st-num st-num-noban" aria-hidden="true">10</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kurume</span>
-                <span class="st-city">道の駅くるめ · Kurume · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅くるめ · Kurume</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.14728" data-lng="130.48403" href="/fr/overnight-parking/michi-no-eki/fukuoka/miyama/">
                 <span class="st-num st-num-noban" aria-hidden="true">11</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Miyama</span>
-                <span class="st-city">道の駅みやま · Miyama · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅みやま · Miyama</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.07325" data-lng="130.53219" href="/fr/overnight-parking/michi-no-eki/fukuoka/omuta/">
                 <span class="st-num st-num-noban" aria-hidden="true">12</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Omuta</span>
-                <span class="st-city">道の駅おおむた · Omuta · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅おおむた · Omuta</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.62568" data-lng="130.84585" href="/fr/overnight-parking/michi-no-eki/fukuoka/oto-sakura-kaido/">
                 <span class="st-num st-num-noban" aria-hidden="true">13</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Oto Sakura Kaido</span>
-                <span class="st-city">道の駅おおとう桜街道 · Oto Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅おおとう桜街道 · Oto Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.58868" data-lng="131.15422" href="/fr/overnight-parking/michi-no-eki/fukuoka/shin-yoshitomi/">
                 <span class="st-num st-num-noban" aria-hidden="true">14</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Shin-Yoshitomi</span>
-                <span class="st-city">道の駅しんよしとみ · Koge Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅しんよしとみ · Koge Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.18761" data-lng="130.61039" href="/fr/overnight-parking/michi-no-eki/fukuoka/tachibana/">
@@ -650,13 +651,13 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.33419" data-lng="130.81824" href="/fr/overnight-parking/michi-no-eki/fukuoka/ukiha/">
                 <span class="st-num st-num-noban" aria-hidden="true">16</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ukiha</span>
-                <span class="st-city">道の駅うきは · Ukiha · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅うきは · Ukiha</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.5639" data-lng="130.7132" href="/fr/overnight-parking/michi-no-eki/fukuoka/usui/">
                 <span class="st-num st-num-noban" aria-hidden="true">17</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Usui</span>
-                <span class="st-city">道の駅うすい · Kama · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅うすい · Kama</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
@@ -667,7 +668,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.31314" data-lng="129.92887" href="/fr/overnight-parking/michi-no-eki/saga/imari/">
                 <span class="st-num st-num-noban" aria-hidden="true">18</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Imari</span>
-                <span class="st-city">道の駅伊万里 · Imari · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅伊万里 · Imari</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.33408" data-lng="130.41722" href="/fr/overnight-parking/michi-no-eki/saga/kamimine/">
@@ -685,19 +686,19 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.31112" data-lng="130.07234" href="/fr/overnight-parking/michi-no-eki/saga/kyuragi/">
                 <span class="st-num st-num-noban" aria-hidden="true">21</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kyuragi</span>
-                <span class="st-city">道の駅厳木 · Karatsu · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅厳木 · Karatsu</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.52832" data-lng="129.87376" href="/fr/overnight-parking/michi-no-eki/saga/momoyama-tenkaichi/">
                 <span class="st-num st-num-noban" aria-hidden="true">22</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Momoyama Tenkaichi</span>
-                <span class="st-city">道の駅桃山天下市 · Karatsu · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅桃山天下市 · Karatsu</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.17723" data-lng="130.19572" href="/fr/overnight-parking/michi-no-eki/saga/shiroishi/">
                 <span class="st-num st-num-noban" aria-hidden="true">23</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Shiroishi</span>
-                <span class="st-city">道の駅しろいし · Shiroishi Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅しろいし · Shiroishi Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.04681" data-lng="130.16908" href="/fr/overnight-parking/michi-no-eki/saga/tara/">
@@ -715,13 +716,13 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.33928" data-lng="130.25769" href="/fr/overnight-parking/michi-no-eki/saga/yamato-soyokaze/">
                 <span class="st-num st-num-noban" aria-hidden="true">26</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yamato Soyokaze-kan</span>
-                <span class="st-city">道の駅大和そよかぜ館 · Saga · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅大和そよかぜ館 · Saga</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.19168" data-lng="129.95593" href="/fr/overnight-parking/michi-no-eki/saga/yamauchi/">
                 <span class="st-num st-num-noban" aria-hidden="true">27</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yamauchi</span>
-                <span class="st-city">道の駅山内 · Takeo · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅山内 · Takeo</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.38086" data-lng="130.39715" href="/fr/overnight-parking/michi-no-eki/saga/yoshinogari/">
@@ -744,19 +745,19 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.7395" data-lng="130.36767" href="/fr/overnight-parking/michi-no-eki/nagasaki/himawari/">
                 <span class="st-num st-num-noban" aria-hidden="true">30</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Himawari</span>
-                <span class="st-city">道の駅ひまわり · Minamishimabara · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅ひまわり · Minamishimabara</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.78537" data-lng="130.04601" href="/fr/overnight-parking/michi-no-eki/nagasaki/iimori-jaguar-road/">
                 <span class="st-num st-num-noban" aria-hidden="true">31</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki 251 Iimori Jaga-Road</span>
-                <span class="st-city">道の駅251いいもりじゃがーロード · Isahaya · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅251いいもりじゃがーロード · Isahaya</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.35526" data-lng="129.43372" href="/fr/overnight-parking/michi-no-eki/nagasaki/ikitsuki-ohashi/">
                 <span class="st-num st-num-noban" aria-hidden="true">32</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ikitsuki Ohashi</span>
-                <span class="st-city">道の駅生月大橋 · Hirado · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅生月大橋 · Hirado</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.73836" data-lng="128.69003" href="/fr/overnight-parking/michi-no-eki/nagasaki/kentoshi/">
@@ -768,43 +769,43 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.3175" data-lng="129.6031" href="/fr/overnight-parking/michi-no-eki/nagasaki/konchu-no-sato-tabira/">
                 <span class="st-num st-num-noban" aria-hidden="true">34</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Konchu no Sato Tabira</span>
-                <span class="st-city">道の駅昆虫の里たびら · Hirado · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅昆虫の里たびら · Hirado</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.34816" data-lng="129.70168" href="/fr/overnight-parking/michi-no-eki/nagasaki/matsuura/">
                 <span class="st-num st-num-noban" aria-hidden="true">35</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Matsuura Umi-no-Furusato-kan</span>
-                <span class="st-city">道の駅松浦海のふるさと館 · Matsuura · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅松浦海のふるさと館 · Matsuura</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.04283" data-lng="129.69605" href="/fr/overnight-parking/michi-no-eki/nagasaki/saikai/">
                 <span class="st-num st-num-noban" aria-hidden="true">36</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Saikai</span>
-                <span class="st-city">道の駅さいかい · Saikai · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅さいかい · Saikai</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.20176" data-lng="129.67194" href="/fr/overnight-parking/michi-no-eki/nagasaki/sasebo-box99/">
                 <span class="st-num st-num-noban" aria-hidden="true">37</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Sasebo Box 99</span>
-                <span class="st-city">道の駅させぼっくす９９ · Sasebo · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅させぼっくす９９ · Sasebo</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.88526" data-lng="130.00731" href="/fr/overnight-parking/michi-no-eki/nagasaki/suzuta-toge/">
                 <span class="st-num st-num-noban" aria-hidden="true">38</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Nagasaki-Kaido Suzuta-Toge</span>
-                <span class="st-city">道の駅長崎街道鈴田峠 · Omura · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅長崎街道鈴田峠 · Omura</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.43362" data-lng="129.78242" href="/fr/overnight-parking/michi-no-eki/nagasaki/takarashima/">
                 <span class="st-num st-num-noban" aria-hidden="true">39</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Takarashima</span>
-                <span class="st-city">道の駅鷹ら島 · Matsuura · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅鷹ら島 · Matsuura</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.83586" data-lng="129.70385" href="/fr/overnight-parking/michi-no-eki/nagasaki/yuhigaoka-sotome/">
                 <span class="st-num st-num-noban" aria-hidden="true">40</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yuhigaoka Sotome</span>
-                <span class="st-city">道の駅夕陽が丘そとめ · Nagasaki · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅夕陽が丘そとめ · Nagasaki</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
@@ -869,13 +870,13 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.54552" data-lng="130.13125" href="/fr/overnight-parking/michi-no-eki/kumamoto/amakusa-dolphin/">
                 <span class="st-num st-num-noban" aria-hidden="true">50</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Amakusa Dolphin Center</span>
-                <span class="st-city">道の駅天草市イルカセンター · Amakusa · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅天草市イルカセンター · Amakusa</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.30318" data-lng="130.50814" href="/fr/overnight-parking/michi-no-eki/kumamoto/ashikita-dekopon/">
                 <span class="st-num st-num-noban" aria-hidden="true">51</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ashikita Dekopon</span>
-                <span class="st-city">道の駅芦北でこぽん · Ashikita Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅芦北でこぽん · Ashikita Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.93701" data-lng="131.08088" href="/fr/overnight-parking/michi-no-eki/kumamoto/aso/">
@@ -887,13 +888,13 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.57325" data-lng="130.79639" href="/fr/overnight-parking/michi-no-eki/kumamoto/hikyo-no-sato-izumi/">
                 <span class="st-num st-num-noban" aria-hidden="true">53</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Hikyo-no-Sato Izumi</span>
-                <span class="st-city">道の駅秘境の郷いずみ · Yatsushiro · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅秘境の郷いずみ · Yatsushiro</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.19341" data-lng="130.78933" href="/fr/overnight-parking/michi-no-eki/kumamoto/hitoyoshi/">
                 <span class="st-num st-num-noban" aria-hidden="true">54</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Hitoyoshi</span>
-                <span class="st-city">道の駅人吉 · Hitoyoshi · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅人吉 · Hitoyoshi</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.11356" data-lng="130.66869" href="/fr/overnight-parking/michi-no-eki/kumamoto/kahoku/">
@@ -911,19 +912,19 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.93118" data-lng="130.8302" href="/fr/overnight-parking/michi-no-eki/kumamoto/kyokushi/">
                 <span class="st-num st-num-noban" aria-hidden="true">57</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kyokushi</span>
-                <span class="st-city">道の駅旭志 · Kikuchi · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅旭志 · Kikuchi</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.19933" data-lng="130.38211" href="/fr/overnight-parking/michi-no-eki/kumamoto/minamata/">
                 <span class="st-num st-num-noban" aria-hidden="true">58</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Minamata</span>
-                <span class="st-city">道の駅みなまた · Minamata · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅みなまた · Minamata</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.62375" data-lng="130.82264" href="/fr/overnight-parking/michi-no-eki/kumamoto/misato-samata/">
                 <span class="st-num st-num-noban" aria-hidden="true">59</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Misato Samata-no-Yu</span>
-                <span class="st-city">道の駅美里「佐俣の湯」 · Misato Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅美里「佐俣の湯」 · Misato Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.95965" data-lng="131.19731" href="/fr/overnight-parking/michi-no-eki/kumamoto/namino/">
@@ -941,7 +942,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.28989" data-lng="130.58222" href="/fr/overnight-parking/michi-no-eki/kumamoto/ono-onsen/">
                 <span class="st-num st-num-noban" aria-hidden="true">62</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ono Onsen</span>
-                <span class="st-city">道の駅大野温泉 · Ashikita Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅大野温泉 · Ashikita Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.88105" data-lng="130.89069" href="/fr/overnight-parking/michi-no-eki/kumamoto/ozu/">
@@ -953,25 +954,25 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.57718" data-lng="130.69513" href="/fr/overnight-parking/michi-no-eki/kumamoto/ryuhoku/">
                 <span class="st-num st-num-noban" aria-hidden="true">64</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ryuhoku</span>
-                <span class="st-city">道の駅竜北 · Hikawa Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅竜北 · Hikawa Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.42669" data-lng="130.64094" href="/fr/overnight-parking/michi-no-eki/kumamoto/sakamoto/">
                 <span class="st-num st-num-noban" aria-hidden="true">65</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Sakamoto</span>
-                <span class="st-city">道の駅坂本 · Yatsushiro · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅坂本 · Yatsushiro</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.3168" data-lng="130.02539" href="/fr/overnight-parking/michi-no-eki/kumamoto/sakitsu/">
                 <span class="st-num st-num-noban" aria-hidden="true">66</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Sakitsu</span>
-                <span class="st-city">道の駅﨑津 · Amakusa · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅﨑津 · Amakusa</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.69064" data-lng="131.09159" href="/fr/overnight-parking/michi-no-eki/kumamoto/seiwa-bunraku/">
                 <span class="st-num st-num-noban" aria-hidden="true">67</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Seiwa Bunraku-mura</span>
-                <span class="st-city">道の駅清和文楽邑 · Yamato Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅清和文楽邑 · Yamato Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.98037" data-lng="130.7702" href="/fr/overnight-parking/michi-no-eki/kumamoto/shichijo-melon-dome/">
@@ -989,7 +990,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.92505" data-lng="130.77146" href="/fr/overnight-parking/michi-no-eki/kumamoto/shisui/">
                 <span class="st-num st-num-noban" aria-hidden="true">70</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Shisui</span>
-                <span class="st-city">道の駅泗水 · Kikuchi · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅泗水 · Kikuchi</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.72661" data-lng="131.16347" href="/fr/overnight-parking/michi-no-eki/kumamoto/soyokaze-park/">
@@ -1007,31 +1008,31 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.36459" data-lng="130.51274" href="/fr/overnight-parking/michi-no-eki/kumamoto/tanoura/">
                 <span class="st-num st-num-noban" aria-hidden="true">73</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tanoura</span>
-                <span class="st-city">道の駅たのうら · Ashikita Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅たのうら · Ashikita Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.68848" data-lng="130.9906" href="/fr/overnight-parking/michi-no-eki/kumamoto/tsujunkyo/">
                 <span class="st-num st-num-noban" aria-hidden="true">74</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tsujunkyo</span>
-                <span class="st-city">道の駅通潤橋 · Yamato Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅通潤橋 · Yamato Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.65109" data-lng="130.69831" href="/fr/overnight-parking/michi-no-eki/kumamoto/uki-saikan/">
                 <span class="st-num st-num-noban" aria-hidden="true">75</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Uki</span>
-                <span class="st-city">道の駅うき · Uki · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅うき · Uki</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.194" data-lng="130.02734" href="/fr/overnight-parking/michi-no-eki/kumamoto/ushibuka-kaisaikan/">
                 <span class="st-num st-num-noban" aria-hidden="true">76</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ushibuka Kaisaikan</span>
-                <span class="st-city">道の駅うしぶか海彩館 · Amakusa · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅うしぶか海彩館 · Amakusa</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.66229" data-lng="130.52281" href="/fr/overnight-parking/michi-no-eki/kumamoto/uto-marina/">
                 <span class="st-num st-num-noban" aria-hidden="true">77</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Uto Marina</span>
-                <span class="st-city">道の駅宇土マリーナ · Uto · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅宇土マリーナ · Uto</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
@@ -1078,7 +1079,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.97166" data-lng="131.51821" href="/fr/overnight-parking/michi-no-eki/oita/kiyokawa/">
                 <span class="st-num st-num-noban" aria-hidden="true">84</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kiyokawa</span>
-                <span class="st-city">道の駅きよかわ · Bungo-Ono · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅きよかわ · Bungo-Ono</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.68029" data-lng="131.60539" href="/fr/overnight-parking/michi-no-eki/oita/kunimi/">
@@ -1215,55 +1216,55 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.05023" data-lng="130.80546" href="/fr/overnight-parking/michi-no-eki/miyazaki/ebino/">
                 <span class="st-num st-num-noban" aria-hidden="true">106</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ebino</span>
-                <span class="st-city">道の駅えびの · Ebino · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅えびの · Ebino</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.34322" data-lng="131.62412" href="/fr/overnight-parking/michi-no-eki/miyazaki/hyuga/">
                 <span class="st-num st-num-noban" aria-hidden="true">107</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Hyuga</span>
-                <span class="st-city">道の駅日向 · Hyuga · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅日向 · Hyuga</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.66607" data-lng="131.70468" href="/fr/overnight-parking/michi-no-eki/miyazaki/kitagawa-hayuma/">
                 <span class="st-num st-num-noban" aria-hidden="true">108</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kitagawa Hayuma</span>
-                <span class="st-city">道の駅北川はゆま · Nobeoka · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅北川はゆま · Nobeoka</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.67678" data-lng="131.37575" href="/fr/overnight-parking/michi-no-eki/miyazaki/kitago/">
                 <span class="st-num st-num-noban" aria-hidden="true">109</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kitago</span>
-                <span class="st-city">道の駅きたごう · Nichinan · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅きたごう · Nichinan</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.5954" data-lng="131.49167" href="/fr/overnight-parking/michi-no-eki/miyazaki/kitakata-yocchimiroya/">
                 <span class="st-num st-num-noban" aria-hidden="true">110</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kitakata Yocchimiro-ya</span>
-                <span class="st-city">道の駅北方よっちみろ屋 · Nobeoka · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅北方よっちみろ屋 · Nobeoka</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.68498" data-lng="131.80094" href="/fr/overnight-parking/michi-no-eki/miyazaki/kitaura/">
                 <span class="st-num st-num-noban" aria-hidden="true">111</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kitaura</span>
-                <span class="st-city">道の駅北浦 · Nobeoka · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅北浦 · Nobeoka</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.46267" data-lng="131.22898" href="/fr/overnight-parking/michi-no-eki/miyazaki/kushima/">
                 <span class="st-num st-num-noban" aria-hidden="true">112</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kushima</span>
-                <span class="st-city">道の駅くしま · Kushima · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅くしま · Kushima</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.50288" data-lng="131.37827" href="/fr/overnight-parking/michi-no-eki/miyazaki/nango/">
                 <span class="st-num st-num-noban" aria-hidden="true">113</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Nango</span>
-                <span class="st-city">道の駅なんごう · Nichinan · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅なんごう · Nichinan</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.64187" data-lng="131.26662" href="/fr/overnight-parking/michi-no-eki/miyazaki/sakatani/">
                 <span class="st-num st-num-noban" aria-hidden="true">114</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Sakatani</span>
-                <span class="st-city">道の駅酒谷 · Nichinan · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅酒谷 · Nichinan</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.66064" data-lng="131.38841" href="/fr/overnight-parking/michi-no-eki/miyazaki/seiunbashi/">
@@ -1275,43 +1276,43 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.70857" data-lng="131.30095" href="/fr/overnight-parking/michi-no-eki/miyazaki/takachiho/">
                 <span class="st-num st-num-noban" aria-hidden="true">116</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Takachiho</span>
-                <span class="st-city">道の駅高千穂 · Takachiho Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅高千穂 · Takachiho Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.94565" data-lng="131.34056" href="/fr/overnight-parking/michi-no-eki/miyazaki/takaoka/">
                 <span class="st-num st-num-noban" aria-hidden="true">117</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Takaoka</span>
-                <span class="st-city">道の駅高岡 · Miyazaki · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅高岡 · Miyazaki</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.79665" data-lng="131.30737" href="/fr/overnight-parking/michi-no-eki/miyazaki/tano/">
                 <span class="st-num st-num-noban" aria-hidden="true">118</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tano</span>
-                <span class="st-city">道の駅田野 · Miyazaki · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅田野 · Miyazaki</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.39131" data-lng="131.51292" href="/fr/overnight-parking/michi-no-eki/miyazaki/togo/">
                 <span class="st-num st-num-noban" aria-hidden="true">119</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Togo</span>
-                <span class="st-city">道の駅とうごう · Hyuga · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅とうごう · Hyuga</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.26035" data-lng="131.55753" href="/fr/overnight-parking/michi-no-eki/miyazaki/tsuno/">
                 <span class="st-num st-num-noban" aria-hidden="true">120</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tsuno</span>
-                <span class="st-city">道の駅つの · Tsuno Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅つの · Tsuno Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.79439" data-lng="131.20265" href="/fr/overnight-parking/michi-no-eki/miyazaki/yamanokuchi/">
                 <span class="st-num st-num-noban" aria-hidden="true">121</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yamanokuchi</span>
-                <span class="st-city">道の駅山之口 · Miyakonojo · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅山之口 · Miyakonojo</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.96438" data-lng="131.08239" href="/fr/overnight-parking/michi-no-eki/miyazaki/yuparu-nojiri/">
                 <span class="st-num st-num-noban" aria-hidden="true">122</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yu-paru Nojiri</span>
-                <span class="st-city">道の駅ゆ〜ぱるのじり · Kobayashi · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅ゆ〜ぱるのじり · Kobayashi</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
@@ -1322,139 +1323,139 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.94598" data-lng="130.21646" href="/fr/overnight-parking/michi-no-eki/kagoshima/akune/">
                 <span class="st-num st-num-noban" aria-hidden="true">123</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Akune</span>
-                <span class="st-city">道の駅阿久根 · Akune · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅阿久根 · Akune</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="28.25932" data-lng="129.40908" href="/fr/overnight-parking/michi-no-eki/kagoshima/amami-sumiyo/">
                 <span class="st-num st-num-noban" aria-hidden="true">124</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Amami-Oshima Sumiyo</span>
-                <span class="st-city">道の駅奄美大島住用 · Amami · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅奄美大島住用 · Amami</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.79642" data-lng="130.4075" href="/fr/overnight-parking/michi-no-eki/kagoshima/hiwaki/">
                 <span class="st-num st-num-noban" aria-hidden="true">125</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Hiwaki</span>
-                <span class="st-city">道の駅樋脇 · Satsumasendai · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅樋脇 · Satsumasendai</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.30207" data-lng="130.58958" href="/fr/overnight-parking/michi-no-eki/kagoshima/ibusuki/">
                 <span class="st-num st-num-noban" aria-hidden="true">126</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ibusuki</span>
-                <span class="st-city">道の駅いぶすき · Ibusuki · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅いぶすき · Ibusuki</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.41265" data-lng="130.43294" href="/fr/overnight-parking/michi-no-eki/kagoshima/kawanabe/">
                 <span class="st-num st-num-noban" aria-hidden="true">127</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kawanabe Yasuragi-no-Sato</span>
-                <span class="st-city">道の駅川辺やすらぎの郷 · Minamikyushu · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅川辺やすらぎの郷 · Minamikyushu</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.37892" data-lng="130.54539" href="/fr/overnight-parking/michi-no-eki/kagoshima/kiire/">
                 <span class="st-num st-num-noban" aria-hidden="true">128</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kiire</span>
-                <span class="st-city">道の駅喜入 · Kagoshima · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅喜入 · Kagoshima</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.27503" data-lng="130.793" href="/fr/overnight-parking/michi-no-eki/kagoshima/kinko-nishiki/">
                 <span class="st-num st-num-noban" aria-hidden="true">129</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kinko Nishiki-no-Sato</span>
-                <span class="st-city">道の駅錦江にしきの里 · Kinko Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅錦江にしきの里 · Kinko Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.46489" data-lng="130.34543" href="/fr/overnight-parking/michi-no-eki/kagoshima/kinpo-konohana/">
                 <span class="st-num st-num-noban" aria-hidden="true">130</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kinpo Konohana-kan</span>
-                <span class="st-city">道の駅きんぽう木花館 · Minamisatsuma · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅きんぽう木花館 · Minamisatsuma</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.86329" data-lng="130.85127" href="/fr/overnight-parking/michi-no-eki/kagoshima/kirishima/">
                 <span class="st-num st-num-noban" aria-hidden="true">131</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kirishima</span>
-                <span class="st-city">道の駅霧島 · Kirishima · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅霧島 · Kirishima</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.43811" data-lng="131.03078" href="/fr/overnight-parking/michi-no-eki/kagoshima/kuni-no-matsubara-osaki/">
                 <span class="st-num st-num-noban" aria-hidden="true">132</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kuni no Matsubara Osaki</span>
-                <span class="st-city">道の駅くにの松原おおさき · Osaki Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅くにの松原おおさき · Osaki Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.10845" data-lng="130.17038" href="/fr/overnight-parking/michi-no-eki/kagoshima/kuronoseto-dandan/">
                 <span class="st-num st-num-noban" aria-hidden="true">133</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kuronoseto Dandan Ichiba</span>
-                <span class="st-city">道の駅黒之瀬戸だんだん市場 · Nagashima Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅黒之瀬戸だんだん市場 · Nagashima Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.58173" data-lng="131.04242" href="/fr/overnight-parking/michi-no-eki/kagoshima/matsuyama/">
                 <span class="st-num st-num-noban" aria-hidden="true">134</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Matsuyama</span>
-                <span class="st-city">道の駅松山 · Shibushi · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅松山 · Shibushi</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.16197" data-lng="130.10927" href="/fr/overnight-parking/michi-no-eki/kagoshima/nagashima/">
                 <span class="st-num st-num-noban" aria-hidden="true">135</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Nagashima</span>
-                <span class="st-city">道の駅長島 · Nagashima Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅長島 · Nagashima Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.18553" data-lng="130.76715" href="/fr/overnight-parking/michi-no-eki/kagoshima/nejime/">
                 <span class="st-num st-num-noban" aria-hidden="true">136</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Nejime</span>
-                <span class="st-city">道の駅根占 · Minamiosumi Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅根占 · Minamiosumi Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.50013" data-lng="130.92411" href="/fr/overnight-parking/michi-no-eki/kagoshima/nogata-arasano/">
                 <span class="st-num st-num-noban" aria-hidden="true">137</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Nogata Arasano</span>
-                <span class="st-city">道の駅野方あらさの · Osaki Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅野方あらさの · Osaki Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.59005" data-lng="130.99019" href="/fr/overnight-parking/michi-no-eki/kagoshima/osumi-yagoro/">
                 <span class="st-num st-num-noban" aria-hidden="true">138</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Osumi Yagoro Densetsu-no-Sato</span>
-                <span class="st-city">道の駅おおすみ弥五郎伝説の里 · Soo · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅おおすみ弥五郎伝説の里 · Soo</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.58935" data-lng="130.59887" href="/fr/overnight-parking/michi-no-eki/kagoshima/sakurajima/">
                 <span class="st-num st-num-noban" aria-hidden="true">139</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Sakurajima</span>
-                <span class="st-city">道の駅桜島 · Kagoshima · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅桜島 · Kagoshima</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.68835" data-lng="130.97027" href="/fr/overnight-parking/michi-no-eki/kagoshima/sueyoshi/">
                 <span class="st-num st-num-noban" aria-hidden="true">140</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Sueyoshi</span>
-                <span class="st-city">道の駅すえよし · Soo · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅すえよし · Soo</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.72882" data-lng="130.99867" href="/fr/overnight-parking/michi-no-eki/kagoshima/takarabe-kirara/">
                 <span class="st-num st-num-noban" aria-hidden="true">141</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Takarabe</span>
-                <span class="st-city">道の駅たからべ · Soo · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅たからべ · Soo</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.55874" data-lng="130.74544" href="/fr/overnight-parking/michi-no-eki/kagoshima/tarumizu/">
                 <span class="st-num st-num-noban" aria-hidden="true">142</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tarumizu</span>
-                <span class="st-city">道の駅たるみず · Tarumizu · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅たるみず · Tarumizu</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.46843" data-lng="130.69828" href="/fr/overnight-parking/michi-no-eki/kagoshima/tarumizu-hamabira/">
                 <span class="st-num st-num-noban" aria-hidden="true">143</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tarumizu Hamabira</span>
-                <span class="st-city">道の駅たるみずはまびら · Tarumizu · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅たるみずはまびら · Tarumizu</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="27.8264" data-lng="128.95441" href="/fr/overnight-parking/michi-no-eki/kagoshima/tokunoshima/">
                 <span class="st-num st-num-noban" aria-hidden="true">144</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tokunoshima</span>
-                <span class="st-city">道の駅とくのしま · Tokunoshima Town · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅とくのしま · Tokunoshima Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.20289" data-lng="130.63488" href="/fr/overnight-parking/michi-no-eki/kagoshima/yamagawako-katsuo-kaido/">
                 <span class="st-num st-num-noban" aria-hidden="true">145</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yamagawako Katsuo-Kaido</span>
-                <span class="st-city">道の駅山川港活お海道 · Ibusuki · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅山川港活お海道 · Ibusuki</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
@@ -1475,7 +1476,7 @@
         <div class="ovn-card">
             <h2>Notre méthode de vérification</h2>
             <p>Chaque fiche cite ses sources — sites officiels des stations, registre de la Japan RV Association, remontées de la communauté vanlife japonaise — et porte la date de notre dernière vérification. Notre flotte de location parcourt ces routes chaque semaine et les retours de nos clients alimentent la base. Les règles changent ; dès qu'un changement est connu, la fiche et sa date sont mises à jour.</p>
-            <p style="margin-top:10px;">Les 145 stations ont été passées au crible des listes japonaises d'interdiction publiées le 2026-07-28, y compris les guides d'interdiction, les wikis vanlife japonais et les sites de relevés sur place qui photographient la signalétique. Au-delà, <strong>17 sont vérifiées individuellement</strong> : nous avons ouvert le site de la station et recoupé plusieurs sources, toutes liées sur sa fiche avec la date. Les <strong>128</strong> autres ne sont pas encore vérifiées individuellement et le disent clairement. Nous en vérifions davantage chaque semaine.</p>
+            <p style="margin-top:10px;">Les 145 stations ont été passées au crible des listes japonaises d'interdiction publiées le 2026-07-28, y compris les guides d'interdiction, les wikis vanlife japonais et les sites de relevés sur place qui photographient la signalétique. Au-delà, <strong>103 sont vérifiées individuellement</strong> : nous avons ouvert le site de la station et recoupé plusieurs sources, toutes liées sur sa fiche avec la date. Les <strong>42</strong> autres ne sont pas encore vérifiées individuellement et le disent clairement. Nous en vérifions davantage chaque semaine.</p>
             <p style="margin-top:10px;font-size:0.85rem;">Base mise à jour le&nbsp;: <strong>2026-07-27</strong></p>
         </div>
         <div class="ovn-card">

@@ -68,6 +68,7 @@ const T = {
         st_no_ban: "A quiet overnight rest is usually OK here",
         st_rv: "Official RV park on site",
         rv_banner: "Official RV park on site — overnight welcome (paid, book ahead)",
+        closed_banner: (date) => `⚠️ Currently closed for reconstruction (reopening ~${date}) — do not plan to stop here until then`,
         st_prohibited_short: "Not allowed",
         st_paidonly_short: "Paid only",
         st_no_ban_short: "Usually OK",
@@ -224,6 +225,7 @@ const T = {
         st_no_ban: "Une nuit de repos discrète est généralement OK ici",
         st_rv: "RV park officiel sur place",
         rv_banner: "RV park officiel sur place — nuitée bienvenue (payant, réservez à l'avance)",
+        closed_banner: (date) => `⚠️ Actuellement fermé pour reconstruction (réouverture prévue vers ${date}) — ne prévoyez pas de vous y arrêter d'ici là`,
         st_prohibited_short: "Interdit",
         st_paidonly_short: "Payant uniquement",
         st_no_ban_short: "Généralement OK",
@@ -380,6 +382,7 @@ const T = {
         st_no_ban: "Eine ruhige Nacht im Fahrzeug ist hier meist OK",
         st_rv: "Offizieller RV-Park vor Ort",
         rv_banner: "Offizieller RV-Park vor Ort — Übernachten willkommen (kostenpflichtig, vorab buchen)",
+        closed_banner: (date) => `⚠️ Derzeit wegen Wiederaufbau geschlossen (Wiedereröffnung ca. ${date}) — bis dahin nicht als Halt einplanen`,
         st_prohibited_short: "Nicht erlaubt",
         st_paidonly_short: "Nur bezahlt",
         st_no_ban_short: "Meist OK",
@@ -536,6 +539,7 @@ const T = {
         st_no_ban: "在車內安靜過一夜，這裡通常OK",
         st_rv: "設有官方RV Park",
         rv_banner: "設有官方RV Park — 歡迎過夜（付費・建議預約）",
+        closed_banner: (date) => `⚠️ 目前因重建工程暫停開放（預計約${date}重新開放）— 在此之前請勿計畫在此停留`,
         st_prohibited_short: "不可過夜",
         st_paidonly_short: "僅限付費",
         st_no_ban_short: "通常OK",
@@ -802,6 +806,7 @@ const SHARED_CSS = `
         .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
+        .status-banner.closed { background: var(--st-red-tint); color: var(--st-red-text); font-weight: 700; font-size: 0.95rem; padding: 18px 22px; }
         /* 答えがヒーロー: 判定文をページ最大の活字にする */
         .status-banner .st-label { display: flex; align-items: center; gap: 14px; font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.02em; line-height: 1.15; }
         .status-banner .st-label .dot { width: 14px; height: 14px; flex-shrink: 0; }
@@ -1665,6 +1670,7 @@ function renderStation(lang, st) {
         ${st.rv_park ? `<div class="status-banner rv">
             <div class="st-label"><span class="dot"></span>${esc(t.rv_banner)}</div>
         </div>` : ""}
+        ${st.closed_until ? `<div class="status-banner closed">${esc(t.closed_banner(st.closed_until))}</div>` : ""}
         <div class="action-row">
             <a class="ovn-btn primary" href="${mapsNavUrl}" target="_blank" rel="noopener">🧭 ${esc(t.d_map_open)}</a>
         </div>

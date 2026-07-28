@@ -75,7 +75,8 @@
     "@type": "GeoCoordinates",
     "latitude": 33.07147,
     "longitude": 131.38427
-  }
+  },
+  "sameAs": "https://www.michi-no-eki.jp/stations/views/19769"
 }
     </script>
     <script type="application/ld+json">
@@ -88,7 +89,7 @@
       "name": "Ist Übernachten am Michi-no-Eki Nagayu Onsen erlaubt?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — lesen Sie sie bitte bei der Ankunft."
+        "text": "Wir haben diese Station recherchiert, und die Quellen unten widersprechen sich oder sind veraltet. Eine Meldung spricht womöglich von einer Abweisung, während eine aktuelle Vor-Ort-Erhebung keine Beschilderung fand, oder der Parkplatz gehört der Gemeinde und nicht der Station. Deshalb legen wir uns hier noch nicht fest. Behandeln Sie sie als unsicher: leise bleiben, bei der Ankunft die Schilder lesen und bereit sein weiterzufahren. Waren Sie dort? Ihre Meldung unten klärt es schneller als alles andere."
       }
     },
     {
@@ -152,6 +153,7 @@
         .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
+        .status-banner.closed { background: var(--st-red-tint); color: var(--st-red-text); font-weight: 700; font-size: 0.95rem; padding: 18px 22px; }
         /* 答えがヒーロー: 判定文をページ最大の活字にする */
         .status-banner .st-label { display: flex; align-items: center; gap: 14px; font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.02em; line-height: 1.15; }
         .status-banner .st-label .dot { width: 14px; height: 14px; flex-shrink: 0; }
@@ -375,8 +377,9 @@
 
         <div class="status-banner noban">
             <div class="st-label"><span class="dot"></span>Eine ruhige Nacht im Fahrzeug ist hier meist OK</div>
-            <div class="st-verified">Wir haben die Regeln dieser Station noch nicht geprüft — helfen Sie uns</div>
+            <div class="st-verified">Geprüft — aber die Quellen widersprechen sich</div>
         </div>
+        
         
         <div class="action-row">
             <a class="ovn-btn primary" href="https://www.google.com/maps/dir/?api=1&destination=33.07147,131.38427&travelmode=driving" target="_blank" rel="noopener">🧭 In Google Maps öffnen</a>
@@ -427,8 +430,8 @@
         })();
         </script>
         <div class="ovn-card">
-            <h2>Was das für Sie bedeutet</h2>
-            <p>Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — lesen Sie sie bitte bei der Ankunft.</p>
+            <h2>Geprüft — aber die Quellen widersprechen sich</h2>
+            <p>Wir haben diese Station recherchiert, und die Quellen unten widersprechen sich oder sind veraltet. Eine Meldung spricht womöglich von einer Abweisung, während eine aktuelle Vor-Ort-Erhebung keine Beschilderung fand, oder der Parkplatz gehört der Gemeinde und nicht der Station. Deshalb legen wir uns hier noch nicht fest. Behandeln Sie sie als unsicher: leise bleiben, bei der Ankunft die Schilder lesen und bereit sein weiterzufahren. Waren Sie dort? Ihre Meldung unten klärt es schneller als alles andere.</p>
         </div>
         <div class="ovn-card">
             <h2>Die offizielle nationale Regel (zuerst lesen)</h2>
@@ -442,12 +445,18 @@
             <h2>Stationsdaten</h2>
             <table class="ovn-table"><tr><th>Präfektur</th><td>Ōita</td></tr>
             <tr><th>Stadt / Gemeinde</th><td>Taketa（竹田市）</td></tr>
-            <tr><th>Karte</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=33.07147,131.38427&travelmode=driving" target="_blank" rel="noopener">In Google Maps öffnen</a></td></tr></table>
+            <tr><th>Offizielle Website</th><td><a href="https://www.michi-no-eki.jp/stations/views/19769" target="_blank" rel="noopener nofollow">www.michi-no-eki.jp</a></td></tr>
+            <tr><th>Karte</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=33.07147,131.38427&travelmode=driving" target="_blank" rel="noopener">In Google Maps öffnen</a></td></tr>
+            <tr><th>Ausstattung</th><td>Toiletten rund um die Uhr · 62 Pkw-Stellplätze · Onsen / Bad · Laden / Restaurant</td></tr>
+            <tr><th>In der Nähe (für eine Nacht hier)</th><td>Onsen vor Ort · Supermarkt/Kiosk 0.4 km</td></tr></table>
         </div>
-        
+        <div class="ovn-card"><h2>Quellen</h2>
+            <div class="src-item"><span class="src-tag">Offiziell</span><a href="https://www.michi-no-eki.jp/stations/views/19769" target="_blank" rel="noopener nofollow">www.michi-no-eki.jp</a><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「公式データベース。駐車場「大型：5台 普通車：62（身障者用3）台」。温泉施設ありと表示。EV・無線LANは非対応。車中泊に関する記載無し。」</div></div>
+            <div class="src-item"><span class="src-tag">Community-Meldung</span><a href="https://kurumatabi.net/kyusyu/2019/04/06/%E9%81%93%E3%81%AE%E9%A7%85%E3%81%AA%E3%81%8C%E3%82%86%E6%B8%A9%E6%B3%89/" target="_blank" rel="noopener nofollow">kurumatabi.net</a> <span style="color:#5f5f66;">(2019-04)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「施設は「ゆのさとふれあい館」と24時間トイレのみで、他の施設は温泉市場側に集中。第2(大きい方)駐車場から24時間トイレまで約200m。禁止看板の記載は無い。ヤマザキYショップまで約400m。源泉かけ流しで飲泉も可能、「御前湯」は朝6時から利用可。」</div></div>
+        </div>
         <div class="ovn-card">
             <h2>Häufige Fragen</h2>
-            <div class="faq-item-s"><div class="q">Ist Übernachten am Michi-no-Eki Nagayu Onsen erlaubt?</div><p>Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — lesen Sie sie bitte bei der Ankunft.</p></div>
+            <div class="faq-item-s"><div class="q">Ist Übernachten am Michi-no-Eki Nagayu Onsen erlaubt?</div><p>Wir haben diese Station recherchiert, und die Quellen unten widersprechen sich oder sind veraltet. Eine Meldung spricht womöglich von einer Abweisung, während eine aktuelle Vor-Ort-Erhebung keine Beschilderung fand, oder der Parkplatz gehört der Gemeinde und nicht der Station. Deshalb legen wir uns hier noch nicht fest. Behandeln Sie sie als unsicher: leise bleiben, bei der Ankunft die Schilder lesen und bereit sein weiterzufahren. Waren Sie dort? Ihre Meldung unten klärt es schneller als alles andere.</p></div>
             <div class="faq-item-s"><div class="q">Welche Regeln gelten beim Schlafen an einem Michi-no-Eki?</div><p>Maximal eine ruhige Nacht, Motor aus, nichts außerhalb des Fahrzeugs, kein Feuer, abseits des Eingangs parken, Ruhe ab 21 Uhr, Müll mitnehmen und den Laden unterstützen. Einzelne Stationen können strengere Regeln aushängen — Schilder vor Ort haben immer Vorrang vor dieser Datenbank.</p></div>
             <div class="faq-item-s"><div class="q">Wo kann ich in der Nähe legal übernachten?</div><p>Offizielle RV-Parks (in der Regel 1.000–4.500 ¥/Nacht, reservierbar), Auto-Campingplätze (1.000–5.000 ¥) und manche Onsen mit Übernachtungs-Parkplatz. Jede Miete bei VAN TRIP JAPAN enthält eine kuratierte Übernachtungskarte für Kyushu — legale Plätze, an denen man Sie gern empfängt.</p></div>
         </div>

@@ -75,7 +75,8 @@
     "@type": "GeoCoordinates",
     "latitude": 32.88105,
     "longitude": 130.89069
-  }
+  },
+  "sameAs": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ozu/ozu.html"
 }
     </script>
     <script type="application/ld+json">
@@ -88,7 +89,7 @@
       "name": "Peut-on stationner la nuit à Michi-no-Eki Ozu ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — lisez-les en arrivant."
+        "text": "Nous avons enquêté sur cette station et les sources ci-dessous se contredisent ou sont anciennes. Un signalement peut indiquer un refus de nuitée alors qu'un relevé récent sur place n'a trouvé aucun panneau, ou le parking peut être géré par la commune et non par la station. Nous ne tranchons donc pas encore. Considérez-la comme incertaine : restez discret, lisez les panneaux à l'arrivée et soyez prêt à repartir. Si vous y êtes allé, votre signalement ci-dessous tranchera plus vite que tout le reste."
       }
     },
     {
@@ -152,6 +153,7 @@
         .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
+        .status-banner.closed { background: var(--st-red-tint); color: var(--st-red-text); font-weight: 700; font-size: 0.95rem; padding: 18px 22px; }
         /* 答えがヒーロー: 判定文をページ最大の活字にする */
         .status-banner .st-label { display: flex; align-items: center; gap: 14px; font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.02em; line-height: 1.15; }
         .status-banner .st-label .dot { width: 14px; height: 14px; flex-shrink: 0; }
@@ -375,8 +377,9 @@
 
         <div class="status-banner noban">
             <div class="st-label"><span class="dot"></span>Une nuit de repos discrète est généralement OK ici</div>
-            <div class="st-verified">Nous n'avons pas encore vérifié les règles de cette station — aidez-nous</div>
+            <div class="st-verified">Vérifiée — mais les sources divergent</div>
         </div>
+        
         
         <div class="action-row">
             <a class="ovn-btn primary" href="https://www.google.com/maps/dir/?api=1&destination=32.88105,130.89069&travelmode=driving" target="_blank" rel="noopener">🧭 Ouvrir dans Google Maps</a>
@@ -427,8 +430,8 @@
         })();
         </script>
         <div class="ovn-card">
-            <h2>Ce que cela signifie pour vous</h2>
-            <p>Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — lisez-les en arrivant.</p>
+            <h2>Vérifiée — mais les sources divergent</h2>
+            <p>Nous avons enquêté sur cette station et les sources ci-dessous se contredisent ou sont anciennes. Un signalement peut indiquer un refus de nuitée alors qu'un relevé récent sur place n'a trouvé aucun panneau, ou le parking peut être géré par la commune et non par la station. Nous ne tranchons donc pas encore. Considérez-la comme incertaine : restez discret, lisez les panneaux à l'arrivée et soyez prêt à repartir. Si vous y êtes allé, votre signalement ci-dessous tranchera plus vite que tout le reste.</p>
         </div>
         <div class="ovn-card">
             <h2>La règle nationale officielle (à lire d'abord)</h2>
@@ -442,12 +445,19 @@
             <h2>Informations sur la station</h2>
             <table class="ovn-table"><tr><th>Préfecture</th><td>Kumamoto</td></tr>
             <tr><th>Ville</th><td>Ozu Town（菊池郡大津町）</td></tr>
-            <tr><th>Carte</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=32.88105,130.89069&travelmode=driving" target="_blank" rel="noopener">Ouvrir dans Google Maps</a></td></tr></table>
+            <tr><th>Site officiel</th><td><a href="https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ozu/ozu.html" target="_blank" rel="noopener nofollow">www.qsr.mlit.go.jp</a></td></tr>
+            <tr><th>Carte</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=32.88105,130.89069&travelmode=driving" target="_blank" rel="noopener">Ouvrir dans Google Maps</a></td></tr>
+            <tr><th>Équipements</th><td>Toilettes 24h/24 · 122 places voitures</td></tr>
+            <tr><th>À proximité (pour y passer la nuit)</th><td>Onsen à 3 km · Supérette à 1.2 km</td></tr></table>
         </div>
-        
+        <div class="ovn-card"><h2>Sources</h2>
+            <div class="src-item"><span class="src-tag">Officiel</span><a href="https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ozu/ozu2.html" target="_blank" rel="noopener nofollow">www.qsr.mlit.go.jp</a> <span style="color:#5f5f66;">(2026-07)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「施設配置図: 大型車8台、普通車122台、合計130台。」</div></div>
+            <div class="src-item"><span class="src-tag">Wiki communautaire</span><a href="https://kurumatabi.net/kyusyu/2023/02/23/michinoeki_otsu/" target="_blank" rel="noopener nofollow">kurumatabi.net</a> <span style="color:#5f5f66;">(2023-02)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「24時間トイレ・ウォシュレット完備。最寄り温泉『スカイスパ』まで約3km、セブンイレブンまで約1.2km。車中泊禁止の看板・記載への言及は無い。」</div></div>
+            <div class="src-item"><span class="src-tag">Signalement communautaire</span><a href="https://keiban-tabicamp.com/ozu/" target="_blank" rel="noopener nofollow">keiban-tabicamp.com</a> <span style="color:#5f5f66;">(2023-06)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「『駐車場は24時間利用可能でした』。2023年6月に実際に車中泊した体験記で、禁止の注意書きへの言及なし。」</div></div>
+        </div>
         <div class="ovn-card">
             <h2>Questions fréquentes</h2>
-            <div class="faq-item-s"><div class="q">Peut-on stationner la nuit à Michi-no-Eki Ozu ?</div><p>Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — lisez-les en arrivant.</p></div>
+            <div class="faq-item-s"><div class="q">Peut-on stationner la nuit à Michi-no-Eki Ozu ?</div><p>Nous avons enquêté sur cette station et les sources ci-dessous se contredisent ou sont anciennes. Un signalement peut indiquer un refus de nuitée alors qu'un relevé récent sur place n'a trouvé aucun panneau, ou le parking peut être géré par la commune et non par la station. Nous ne tranchons donc pas encore. Considérez-la comme incertaine : restez discret, lisez les panneaux à l'arrivée et soyez prêt à repartir. Si vous y êtes allé, votre signalement ci-dessous tranchera plus vite que tout le reste.</p></div>
             <div class="faq-item-s"><div class="q">Quelles sont les règles pour dormir dans une Michi-no-Eki ?</div><p>Une seule nuit, moteur coupé, rien à l'extérieur du véhicule, pas de flamme, stationnement loin de l'entrée, silence après 21 h, déchets remportés, et un achat à la boutique. Certaines stations affichent des règles plus strictes — les panneaux sur place priment toujours sur cette base.</p></div>
             <div class="faq-item-s"><div class="q">Où passer la nuit légalement à proximité ?</div><p>RV parks officiels (généralement 1 000–4 500 ¥/nuit, réservables), campings auto (1 000–5 000 ¥) et certains onsen avec forfait nuit sur parking. Chaque location VAN TRIP JAPAN inclut une carte des spots de nuit recommandés à Kyushu — des lieux légaux où l'on vous accueille volontiers.</p></div>
         </div>
@@ -457,13 +467,13 @@
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.93118" data-lng="130.8302" href="/fr/overnight-parking/michi-no-eki/kumamoto/kyokushi/">
                 <span class="st-num st-num-noban" aria-hidden="true">57</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kyokushi</span>
-                <span class="st-city">道の駅旭志 · Kikuchi · 8&nbsp;km · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅旭志 · Kikuchi · 8&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.92505" data-lng="130.77146" href="/fr/overnight-parking/michi-no-eki/kumamoto/shisui/">
                 <span class="st-num st-num-noban" aria-hidden="true">70</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Shisui</span>
-                <span class="st-city">道の駅泗水 · Kikuchi · 12&nbsp;km · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅泗水 · Kikuchi · 12&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="1" data-lat="32.81846" data-lng="131.04116" href="/fr/overnight-parking/michi-no-eki/kumamoto/asobo-no-sato-kugino/">

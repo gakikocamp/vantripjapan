@@ -118,12 +118,31 @@
       },
       "lat": 33.33419,
       "lng": 130.81824,
-      "official_url": "",
+      "official_url": "https://michinoeki-ukiha.com/",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://michinoeki-ukiha.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "駐車場: 普通車320台、大型車9台、障がい者用3台。営業時間9:00〜18:00(第2火曜休)。車中泊・宿泊・夜間駐車についての記載は無し。近隣に「筑後川温泉」(車で15分)、宿泊施設「フェアフィールド・バイ・マリオット・福岡うきは」へのリンクあり。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ukiha/ukiha.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の道の駅個別ページ。EV充電設備・無料Wi-Fiのアイコンあり。宿泊施設アイコンは付帯情報として明記されているが車中泊・夜間駐車に関する制限文言は無し。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "ev": true,
+        "wifi": true,
+        "shop": true,
+        "parking_car": 320
+      },
+      "nearby": {}
     },
     {
       "id": "harazuru",
@@ -138,12 +157,29 @@
       },
       "lat": 33.3537,
       "lng": 130.78488,
-      "official_url": "",
+      "official_url": "https://fs-basaro.jp/",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/harazuru/harazuru.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局ページ。「無線LAN完備」「情報コーナー9:00〜17:30」の記載あり。「原鶴温泉　徒歩10分」と明記。車中泊・宿泊・夜間駐車の禁止に関する文言は確認できず。"
+        },
+        {
+          "url": "https://blog.goo.ne.jp/16hoursjourney/e/e63084ea748ec889fe7004d72cc0e5fa",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "実泊レビュー記事。屋根付き駐車場(大型15台+普通車4台)があり雨天でも安心、24時間トイレ(ウォシュレット洋式2基+多目的1基)、車内でも使える無料Wi-Fiと記載。禁止看板の言及は無し。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "oto-sakura-kaido",
@@ -158,12 +194,31 @@
       },
       "lat": 33.62568,
       "lng": 130.84585,
-      "official_url": "",
+      "official_url": "https://www.town.oto.fukuoka.jp/kiji003304/index.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ootousakurakaidou/ootousakurakaidou.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局ページ。「毎日届く新鮮な農産物、海産物のほか、農産物加工品等が並んだ直売所」、「天然温泉を利用した内湯・露天風呂・薬石浴などの温泉施設」(営業10:00〜22:00)を敷地内に併設と記載。宿泊施設アイコンはオフ。車中泊・夜間駐車の制限文言は確認できず。"
+        },
+        {
+          "url": "https://www.town.oto.fukuoka.jp/kiji003304/index.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "大任町公式サイト内ページ。物産館「もみじ館」(0947-63-4430)と温泉施設「さくら館」(0947-63-4126)の2施設で構成と案内。車中泊・宿泊・夜間駐車に関する記載は無し。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "onsen": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0
+      }
     },
     {
       "id": "itoda",
@@ -178,12 +233,29 @@
       },
       "lat": 33.64202,
       "lng": 130.76519,
-      "official_url": "",
+      "official_url": "https://www.town.itoda.lg.jp/roadside_tation/",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/itoda/itoda.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局ページ。「無料Wi-Fi利用可能」「直売所9:00〜18:00」「屋台村(飲食・軽食コーナー)9:00〜18:00」「情報コーナー24時間利用可能」と記載。車中泊・宿泊・夜間駐車についての制限文言は確認できず。"
+        },
+        {
+          "url": "https://www.town.itoda.lg.jp/roadside_tation/index.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "糸田町公式サイトの道の駅いとだページ。所在地・営業時間・直売所情報を掲載。車中泊・宿泊・夜間駐車に関する記載は無し。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "oki",
@@ -226,12 +298,34 @@
       },
       "lat": 33.31945,
       "lng": 130.59372,
-      "official_url": "",
+      "official_url": "https://www.michinoeki-kurume.com/",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kurume/kurume.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局ページ。「EV充電器」「無料Wi-Fi」「農産物直売館 ほとめきの里 9:00〜18:00」を付帯施設として記載。情報コーナーは7:30〜18:00。宿泊施設・温泉アイコンはオフ。車中泊・夜間駐車の制限文言は確認できず。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/kurume/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "車中泊専門メディアの実地チェック記事。「普通車111台収容、平坦で車中泊に支障はない」「トイレは2021年に改修されウォシュレット完備」「湯の坂久留米温泉まで約7km・20分」「セブンイレブンまで約1km」と記載。禁止看板の言及は無し。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "ev": true,
+        "wifi": true,
+        "shop": true,
+        "parking_car": 111
+      },
+      "nearby": {
+        "onsen_km": 7,
+        "convenience_km": 1
+      }
     },
     {
       "id": "tachibana",
@@ -246,12 +340,42 @@
       },
       "lat": 33.18761,
       "lng": 130.61039,
-      "official_url": "",
+      "official_url": "https://st-tachibana.jp/",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://st-tachibana.jp/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトに『駐車場（大型13台、普通127台、身障者用3台、二輪7台）』『トイレと誰でもトイレ』『EV車充電ポート』『無料Wi-Fi』が24時間使用可能な設備として記載。車中泊・仮眠に関する記載（可否いずれも）はなし。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tachibana/tachibana.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局ページにも車中泊・仮眠についての記載はなし（禁止の明記なし）。EV充電器・無料Wi-Fiありと記載。"
+        },
+        {
+          "url": "https://roadtrips.jp/spot/d/fukuoka/40007/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "『駐車場・屋外トイレは24時間利用可能』『普通車60台、大型車8台、身障者用2台』（公式サイトの台数と食い違いあり、要注意）。北西約5.9kmに日帰り入浴施設『べんがら村』（600円、10:00〜22:00）。禁止看板の記載はなし。第一駐車場は車中泊にはおすすめしないとの口コミあり（騒音理由、禁止根拠ではない）。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 143,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 5.9
+      }
     },
     {
       "id": "buzen-okoshikake",
@@ -266,12 +390,42 @@
       },
       "lat": 33.614,
       "lng": 131.10091,
-      "official_url": "",
+      "official_url": "https://okoshikake.jp/",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://kurumatabi.net/kyusyu/buzen_okoshikake/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "車中泊専門メディア(クルマ旅のプロ)による実地レポート。『禁止看板は記載されていません』『ルールを守れば原則OK』。普通車72台、24時間トイレあり。豊前温泉天狗の湯まで約3km・5分、セブンイレブンまで約300m。"
+        },
+        {
+          "url": "https://okoshikake.jp/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトに営業時間（店舗・売店8:00〜18:00等）とEV充電器・無料Wi-Fiの記載あり。車中泊・仮眠・夜間駐車に関する明記はなし（禁止の記載もなし）。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/buzen/buzen.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省ページにも車中泊関連の記載なし。「日本一おもいやりのあるトイレ」がコンセプト。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 72,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 3,
+        "convenience_km": 0.3
+      }
     },
     {
       "id": "kashima",
@@ -286,12 +440,41 @@
       },
       "lat": 33.07472,
       "lng": 130.14549,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kashima/kashima.html",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kashima/kashima.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の道の駅個別ページ。営業時間9:00〜18:00、施設一覧で温泉は「利用不可(spa_off)」表示。車中泊・夜間駐車の可否についての記載は無し(禁止・許可いずれの言及もない)。"
+        },
+        {
+          "url": "https://roadtrips.jp/spot/d/saga/41001/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "「『道の駅』の駐車場・屋外トイレは24時間利用可能です」。普通車200台、大型車10台。北西に5.9kmほどに日帰り入浴可能な『ひぜん祐徳温泉宝乃湯』(600円、10:00〜23:00)。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-kashima",
+          "type": "blog",
+          "date": "2024",
+          "quote_ja": "「こちらの記事を執筆時点では車中泊禁止との情報は出ておりません」。普通車239台・大型車11台・身障者用4台。セブン-イレブン肥前七浦店が約1km。夜間騒音は「そこまで気にならないレベル」。※この文言は同ブログの複数駅記事で共通しており定型文の可能性があるため単独の根拠としては弱い。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 239,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 5.9,
+        "convenience_km": 1
+      }
     },
     {
       "id": "imari",
@@ -306,12 +489,48 @@
       },
       "lat": 33.31314,
       "lng": 129.92887,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/imari/imari.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/imari/imari.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局ページ。EV充電器あり、無料Free-Wifi設置と明記。物産販売所(9:00〜18:00)。温泉は施設内なし(spa_off)。車中泊・夜間駐車についての言及なし。"
+        },
+        {
+          "url": "https://everydayfes.com/imari",
+          "type": "blog",
+          "date": "2020-02",
+          "quote_ja": "「実際に2020年2月に行ってチェックしてみましたが、車中泊できます」「車中泊禁止の看板もありませんでした」。24時間使用可能なトイレ・駐車場ありと明記。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki_imari/",
+          "type": "blog",
+          "date": "2024",
+          "quote_ja": "「第一駐車場はフラットで車中泊に支障はない」「施設の奥には未舗装の第2駐車場があり、24時間開いているのでそちらでも車中泊は可能」。普通車67台。伊万里温泉白磁乃湯まで約8km・15分、ファミリーマートまで約2.8km。"
+        },
+        {
+          "url": "https://www.jalan.net/kankou/spt_41205aa1030000505/kuchikomi/0000500134/",
+          "type": "blog",
+          "date": "2023",
+          "quote_ja": "口コミタイトル「車中泊の車でいっぱい」— 実際に車中泊利用者が多いことを示す現地レビュー。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 67,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 8,
+        "convenience_km": 2.8
+      }
     },
     {
       "id": "kyuragi",
@@ -326,12 +545,40 @@
       },
       "lat": 33.31112,
       "lng": 130.07234,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kyuragi/kyuragi.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kyuragi/kyuragi.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局ページ。物産館「風のふるさと館」で地場産品の即売。温泉は施設内になし、車中泊・夜間駐車についての記載なし。営業時間8:00〜18:00。"
+        },
+        {
+          "url": "https://reiwa-travelers.com/zenkoku/kyusyu-okinawa/saga-syachuhaku/michinoeki-kyuragi/",
+          "type": "sign",
+          "date": "2019-08",
+          "quote_ja": "「道の駅厳木の注意書きには具体的に車中泊(仮眠・休憩)禁止について書かれていませんので車中泊は問題ないです」。現地で確認された張り紙は「バイクの集会を禁止する内容」であり、車中泊(自動車)を対象にした禁止表示ではないことを明記。実体験として夜間バイクの来訪はゼロだったと報告。駐車場65台(普通60・大型3・身障者2)、屋外トイレ24時間利用可。厳木温泉佐用姫の湯まで1km(410円)。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-kyuragi",
+          "type": "blog",
+          "date": "2024",
+          "quote_ja": "「こちらの記事を執筆時点では車中泊禁止との情報は出ておりません」。普通車72台。セブン-イレブン佐賀多久小侍店まで約3km。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 65,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 1,
+        "convenience_km": 3
+      }
     },
     {
       "id": "yoshinogari",
@@ -346,12 +593,42 @@
       },
       "lat": 33.38086,
       "lng": 130.39715,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yoshino/yoshino.html",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yoshino/yoshino.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局ページ。EV充電設備を示すピクトグラムあり。物産館「さざんか千坊館」で地元農産物・パン販売。第一駐車場は情報コーナーが24時間提供との記載はあるが、車中泊・夜間駐車自体への言及はなし。周辺に東脊振温泉山茶花の湯(車で約7分)。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/yoshinogari/",
+          "type": "blog",
+          "date": "2024",
+          "quote_ja": "普通車51台。「24時間トイレは、多目的トイレにウォシュレットが備えられている」。駐車場は駅舎から下り斜面。山茶花の湯まで約5km・10分、ローソンまで約6km。禁止看板の有無は明記されていない(同サイト共通の「ルールを守れば原則OK」という一般論の記述あり、駅固有の断定ではない可能性に留意)。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-yishinogari",
+          "type": "blog",
+          "date": "2024",
+          "quote_ja": "「この時点では車中泊禁止との情報は出ておりません」。普通車53台。ローソン佐賀吉野ヶ里店まで6km以内。夜間騒音は「そこまで気にならないレベル」。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 51,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 5,
+        "convenience_km": 6
+      }
     },
     {
       "id": "tara",
@@ -366,12 +643,41 @@
       },
       "lat": 33.04681,
       "lng": 130.16908,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tara/tara.html",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tara/tara.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局ページ。物産館「たらふく館」「たらふく館別館」(9:00〜18:00)。温泉は施設内になし(spa_off)。車中泊・夜間駐車についての記載なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki_tara/",
+          "type": "blog",
+          "date": "2024",
+          "quote_ja": "「大型車を含めて約200台を収容する駐車場は、広大でフラット」、普通車181台。「24時間トイレも普通車の駐車エリアの近くにあり、ウォシュレットも完備」。可燃ゴミ捨て場も24時間利用可。祐徳温泉宝乃湯まで約10km・15分、ファミリーマートまで約2.4km。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-tara",
+          "type": "blog",
+          "date": "2021-12",
+          "quote_ja": "「この時点では車中泊禁止との情報は出ておりません」(2021年12月執筆、要最新確認との注記あり)。普通車200台・大型車14台。ファミリーマート藤津太良店まで3km以内。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 200,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 10,
+        "convenience_km": 2.4
+      }
     },
     {
       "id": "ureshino-maruku",
@@ -386,12 +692,42 @@
       },
       "lat": 33.10638,
       "lng": 129.99786,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ureshino/ureshino.html",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ureshino/ureshino.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局ページ。「どなたでも24時間トイレをご利用いただけます」。普通車63台・バス/トラック15台・身障者用4台。電気自動車用急速充電器完備、公衆無線LAN(無料Wi-Fi)利用可。西九州新幹線嬉野温泉駅に隣接(徒歩1分)、源泉掛け流しの手湯・足湯あり(施設内に本格入浴施設はなし)。嬉野温泉街まで車で5分との記載あり(具体的km数値の明記なし)。車中泊・夜間駐車についての言及はなし。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-ureshinomaruku",
+          "type": "blog",
+          "date": "2024",
+          "quote_ja": "「こちらの記事を執筆時点では車中泊禁止との情報は出ておりません」。普通車63台(公式と一致)。ローソン嬉野温泉駅前店まで約400m(最寄りの24時間営業店)。嬉野温泉公衆浴場シーボルトの湯が近隣。「街灯の数はきちんとあり、たまり場にもなっているという情報もない様子なので安心レベルは並み以上」。"
+        },
+        {
+          "url": "https://ameblo.jp/mmm-85a407/entry-12805903818.html",
+          "type": "blog",
+          "date": "2024",
+          "quote_ja": "ブログタイトル「うれしのまるく 車中泊人気みたい」— 実際の車中泊利用が一定数あることを示す傍証。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 63,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "convenience_km": 0.4
+      }
     },
     {
       "id": "sonogi-no-sho",
@@ -435,12 +771,52 @@
       },
       "lat": 33.35526,
       "lng": 129.43372,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ikitsuki/ikitsuki.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ikitsuki/ikitsuki.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "国交省九州地方整備局の公式個別ページ。物産館の営業時間は8:30〜17:30(8月は18:00まで)と記載。車中泊・夜間駐車を禁止する記載は無し。"
+        },
+        {
+          "url": "https://ja.wikipedia.org/wiki/%E9%81%93%E3%81%AE%E9%A7%85%E7%94%9F%E6%9C%88%E5%A4%A7%E6%A9%8B",
+          "type": "wiki",
+          "date": "2026-07-28",
+          "quote_ja": "駐車場は普通車45台・大型4台・身障者用2台、トイレは24時間利用可能(男大2小4・女5・身障者用1)と記載。車中泊を禁止する記載は無い。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/ikitukiohashi/",
+          "type": "blog",
+          "date": "2026-07-28",
+          "quote_ja": "「道の駅での車中泊は、ルールを守れば原則OK」との立場で紹介。普通車45台、ウォシュレットあり。近隣情報として『湯快リゾート 平戸千里ヶ浜温泉ホテル蘭風・道の駅から約13キロ』『ファミリーマートまで約350メートル』。禁止看板の記載なし。駐車場に傾斜があり海が近いため車中泊には環境的に不向きな面があると指摘(禁止ではなく快適性の問題)。"
+        },
+        {
+          "url": "https://tabitabi.kyonophoto.com/trip/kyusyu/nagasaki/michi-no-eki-ikitsuki-bridge/",
+          "type": "blog",
+          "date": "2026-07-28",
+          "quote_ja": "タイトルで『車中泊は厳しい？』と問いかけるが、本文は禁止看板等の記載はなく、駐車場の傾斜・海からの風雨など環境面の厳しさを指摘するのみ。「仮眠や休憩が原則」「長期滞在は厳禁」という一般的な道の駅マナーへの言及はあるが、当駅固有の禁止規定ではない。"
+        },
+        {
+          "url": "https://4travel.jp/dm_shisetsu/10019845",
+          "type": "blog",
+          "date": "2026-07-28",
+          "quote_ja": "利用者クチコミ。駐車場は「小さ目」、トイレは24時間・ウォシュレット付きと報告。禁止看板の言及はなし。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 45,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 13,
+        "convenience_km": 0.35
+      }
     },
     {
       "id": "konchu-no-sato-tabira",
@@ -455,12 +831,40 @@
       },
       "lat": 33.3175,
       "lng": 129.6031,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tabira/tabira.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tabira/tabira.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "国交省九州地方整備局の公式個別ページ。営業時間9:00〜19:00、温泉設備なし(温泉アイコンoff)。車中泊・夜間駐車を禁止する記載は無し。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/kontyu_tabira/",
+          "type": "blog",
+          "date": "2022-10",
+          "quote_ja": "『車中泊好適度をクルマ旅のプロがチェック』。駐車場のキャパシティー『普通車:42台』、24時間トイレ・ウォシュレット完備、駐車場は平坦で車中泊に支障なしと評価。近隣情報『鹿町温泉やすらぎ館・道の駅から約6キロ』『ファミリーマート・約3.5キロ』。禁止看板の記載なし。"
+        },
+        {
+          "url": "https://4travel.jp/dm_shisetsu_tips/14813060",
+          "type": "blog",
+          "date": "2026-07-28",
+          "quote_ja": "実泊レポートで車中泊評価『★★★★』。『安全性◎、静かさ◎』と高評価。24時間利用可能なウォシュレット付きトイレ(3台)ありと報告。禁止看板の言及なし。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 42,
+        "onsen": false,
+        "wifi": false
+      },
+      "nearby": {
+        "onsen_km": 6,
+        "convenience_km": 3.5
+      }
     },
     {
       "id": "yuhigaoka-sotome",
@@ -475,12 +879,46 @@
       },
       "lat": 32.83586,
       "lng": 129.70385,
-      "official_url": "",
+      "official_url": "https://www.yuhigaoka-sotome.com/",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.yuhigaoka-sotome.com/",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "公式サイト。休憩所は『24時間利用可能・無休』、物産販売所9:00〜18:00。駐車場は合計110台(普通車103・大型4・車いす用3)。車中泊を禁止する記載は無し。温泉施設の記載なし(無いと考えられる)。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sotome/sotome.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "国交省九州地方整備局の公式個別ページ。温泉設備なし(アイコンoff)。車中泊・夜間駐車を禁止する記載は無し。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/yuhigaoka_sotome/",
+          "type": "blog",
+          "date": "2023-02",
+          "quote_ja": "『道の駅での車中泊はルール遵守で原則OK』として車中泊可能な駅と紹介。禁止看板の記載なし。近隣『長崎あぐりの丘高原ホテル あぐりの湯・約20km』『Yショップまで約1km』。ゴミ箱は可燃・缶ビン対応だが夜間は館内に収納との注記あり。"
+        },
+        {
+          "url": "https://reiwa-travelers.com/zenkoku/kyusyu-okinawa/nagasaki-syachuhaku/michinoeki-yuhigaoka/",
+          "type": "blog",
+          "date": "2026-07-28",
+          "quote_ja": "タイトルで『車中泊できる？』と問いかけ、本文で『休憩施設に車中泊を禁止する明記はなく、車中泊は可能』『駐車場は24時間利用可能』と明記。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 103,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 20,
+        "convenience_km": 1
+      }
     },
     {
       "id": "sasebo-box99",
@@ -495,12 +933,54 @@
       },
       "lat": 33.20176,
       "lng": 129.67194,
-      "official_url": "",
+      "official_url": "https://sasebox99.com/",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://sasebox99.com/",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "公式サイト。『駐車場・トイレは24時間利用可能』、普通車84台/大型車8台、EV充電器2基、みんなのトイレ2室あり。車中泊を禁止する記載は無し。温泉・コンビニの記載なし(施設内には無い)。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sasebox99/sasebox99.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "国交省九州地方整備局の公式個別ページ。西九州自動車道・相浦中里IC近接、施設新しいとの紹介。車中泊を禁止する記載は無し。"
+        },
+        {
+          "url": "https://reiwa-travelers.com/zenkoku/kyusyu-okinawa/nagasaki-syachuhaku/michinoeki-sasebox99/",
+          "type": "sign",
+          "date": "2026-07-28",
+          "quote_ja": "現地の看板について言及する記事。看板の禁止内容は『夜間の集会、騒音、暴走行為』であり、車中泊(仮眠)自体を禁止する『車中泊禁止』看板ではないと明確に区別して説明。夜間の若者のたまり場として有名な駅なので注意が必要、と付記。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/sasebox99/",
+          "type": "blog",
+          "date": "2026-07-28",
+          "quote_ja": "『長崎県佐世保市「道の駅させぼっくす99」では、車中泊は特に禁止されていません』としつつ、『夜間地元の若者のたまり場として有名な道の駅なので注意が必要』と記載。近隣『九十九島シーサイドテラス ホテル&スパ 花みずき・南5km』『セブンイレブン・約800m』。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-sasebox99",
+          "type": "blog",
+          "date": "2026-07-28",
+          "quote_ja": "著者の個人的判断として『夜間にたまり場になっている情報多数の道の駅…こちらでの車中泊はおすすめしません(個人的意見です、営業妨害の意思はありません)』と記載。公式の禁止看板の引用はなく、治安上の懸念からの推奨に留まる。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 84,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 5,
+        "convenience_km": 0.8
+      }
     },
     {
       "id": "saikai",
@@ -515,12 +995,34 @@
       },
       "lat": 33.04283,
       "lng": 129.69605,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/saikai/saikai.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/saikai/saikai.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "国交省九州地方整備局の公式個別ページ。営業時間は3〜11月9:30〜18:00・12〜2月9:00〜17:00。体験交流施設『みかんドーム』を紹介。車中泊・夜間駐車を禁止する記載は無し(駐車台数・トイレ24時間の明記も無し)。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/saikai/",
+          "type": "blog",
+          "date": "2026-07-28",
+          "quote_ja": "『道の駅での車中泊はルールを守れば原則OK』として紹介。駐車場は普通車24台(第1駐車場10台程度+第2駐車場)。『休憩室は24時間利用できるようだ』とありトイレも24時間利用可能。多目的トイレは2019年改修でウォシュレット付き。近隣『西彼保健福祉センター遊湯館・約13km』『ヤマザキYショップが向かいにあり』。禁止看板の記載なし。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 24,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 13,
+        "convenience_km": 0
+      }
     },
     {
       "id": "aso",
@@ -535,12 +1037,42 @@
       },
       "lat": 32.93701,
       "lng": 131.08088,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/aso/aso.html",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/aso/aso.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "EV充電器を付帯施設として設置。無料Wi-Fi 8:00～20:00。温泉施設アイコンはオフ(敷地内温泉なし)。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/aso/aso2.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設配置図: 大型車15台、普通車147台、合計162台。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-aso/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "24時間トイレ・ウォシュレット完備。前の国道57号を渡ればローソンあり。阿蘇駅隣接の日帰り温泉『夢の湯』へ徒歩2分。車中泊禁止の看板・記載は無い。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 147,
+        "onsen": false,
+        "ev": true,
+        "wifi": true
+      },
+      "nearby": {
+        "onsen_km": 0.15,
+        "convenience_km": 0.1
+      }
     },
     {
       "id": "ozu",
@@ -555,12 +1087,40 @@
       },
       "lat": 32.88105,
       "lng": 130.89069,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ozu/ozu.html",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ozu/ozu2.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設配置図: 大型車8台、普通車122台、合計130台。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/2023/02/23/michinoeki_otsu/",
+          "type": "wiki",
+          "date": "2023-02",
+          "quote_ja": "24時間トイレ・ウォシュレット完備。最寄り温泉『スカイスパ』まで約3km、セブンイレブンまで約1.2km。車中泊禁止の看板・記載への言及は無い。"
+        },
+        {
+          "url": "https://keiban-tabicamp.com/ozu/",
+          "type": "blog",
+          "date": "2023-06",
+          "quote_ja": "『駐車場は24時間利用可能でした』。2023年6月に実際に車中泊した体験記で、禁止の注意書きへの言及なし。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 122,
+        "onsen": false
+      },
+      "nearby": {
+        "onsen_km": 3,
+        "convenience_km": 1.2
+      }
     },
     {
       "id": "oguni",
@@ -575,12 +1135,41 @@
       },
       "lat": 33.12311,
       "lng": 131.06474,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/oguni/oguni.html",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/oguni/oguni.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "EV充電器を付帯施設として記載。温泉施設アイコンはオフ(敷地内温泉なし)。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/oguni/oguni2.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設配置図: 大型車4台、普通車41台、合計45台。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-oguni/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "新しいトイレ棟で24時間利用可・ウォシュレット完備。奴留湯温泉まで車で約7分、ファミリーマートまで約200m。車中泊禁止の看板・記載は無い。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 41,
+        "onsen": false,
+        "ev": true
+      },
+      "nearby": {
+        "onsen_km": 4,
+        "convenience_km": 0.2
+      }
     },
     {
       "id": "asobo-no-sato-kugino",
@@ -651,12 +1240,46 @@
       },
       "lat": 32.98037,
       "lng": 130.7702,
-      "official_url": "",
+      "official_url": "https://www.melondome.co.jp/",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/shichijyo/shichijyo2.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設配置図: 大型車7台、普通車261台、合計268台。"
+        },
+        {
+          "url": "https://www.melondome.co.jp/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトに車中泊・宿泊に関する記載は無く、営業時間(物産館9:00-18:00等)のみ掲載。"
+        },
+        {
+          "url": "https://reiwa-travelers.com/zenkoku/kyusyu-okinawa/kumamoto-syachuhaku/michinoeki-shichijyomelondome/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "『掲示板には車中泊(仮眠)を禁止する具体的な記載はなく、夜間駐車は可能』。天然温泉 湯花里(水辺プラザかもと)まで2.4km。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki_nanaashiro/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "24時間トイレ(多目的トイレにウォシュレット)。ローソンまで約2.5km。車中泊禁止の看板・記載は無い。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 261,
+        "onsen": false
+      },
+      "nearby": {
+        "onsen_km": 2.4,
+        "convenience_km": 2.5
+      }
     },
     {
       "id": "suika-no-sato-ueki",
@@ -671,12 +1294,40 @@
       },
       "lat": 32.90819,
       "lng": 130.6934,
-      "official_url": "",
+      "official_url": "https://suikanosato-ueki.com/",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://suikanosato-ueki.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "駐車場(24H)、小型車99台/大型車7台、身障者用2台。無料Wi-Fiあり。車中泊・宿泊に関する明記は無い。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/suikanosatoueki/suika.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "営業時間9:00～18:30。休憩所・公園の利用可の記載あり。車中泊に関する記載は無い。"
+        },
+        {
+          "url": "https://roadtrips.jp/spot/d/kumamoto/43029/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "『駐車場・屋外トイレは24時間利用可能』『東に2.2kmの場所に植木温泉 星の湯があり日帰り入浴が可能』。利用者口コミに『車中泊の方がとまってました』とあり、禁止看板への言及は無い。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 99,
+        "onsen": false,
+        "wifi": true
+      },
+      "nearby": {
+        "onsen_km": 2.2
+      }
     },
     {
       "id": "kamiamakusa-sunpearl",
@@ -691,12 +1342,35 @@
       },
       "lat": 32.57719,
       "lng": 130.42006,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kamiamakusa/kamiamakusa.html",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://satton-tabitosyumi.com/mithinoekikamiamakusa/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "『普通車129台/大型11台』でほぼ平らな駐車場。建物向かって右側に24時間トイレ。無料Wi-Fi利用可。スパ・タラソ天草まで700m、ファミリーマートまで約300m。『何台か車中泊車が停まっていました』と報告、禁止の看板への言及は無い。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/sunparu/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "129台収容・ほぼフラットで車中泊に好適、ウォシュレット付きトイレあり。車中泊禁止の看板・記載は無い。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 129,
+        "onsen": false,
+        "wifi": true
+      },
+      "nearby": {
+        "onsen_km": 0.7,
+        "convenience_km": 0.3
+      }
     },
     {
       "id": "ariake-rippleland",
@@ -772,7 +1446,7 @@
       "lng": 130.78933,
       "official_url": "https://h-craftpark.com/",
       "status": "no_explicit_ban",
-      "verified": "",
+      "verified": "2026-07-28",
       "evidence": [
         {
           "url": "https://syachuhaku-blog.fxtec.info/post-28726/",
@@ -805,8 +1479,7 @@
           "quote_ja": "車中泊禁止との情報は出ておりません"
         }
       ],
-      "rv_park": null,
-      "verification": "listed"
+      "rv_park": null
     },
     {
       "id": "mizube-plaza-kamoto",
@@ -995,12 +1668,43 @@
       },
       "lat": 33.26064,
       "lng": 131.32722,
-      "official_url": "",
+      "official_url": "https://www.michinoekiyufuin.com/",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19764",
+          "type": "official",
+          "date": "",
+          "quote_ja": "全国「道の駅」連絡会の公式データベース。駐車場「大型：13台 普通車：90（身障者用3）台」、宿泊施設・温泉施設・EV充電・無線LANは対応なしと記載。車中泊の可否についての記載自体は無し。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yuhuin/yuhuin.html",
+          "type": "official",
+          "date": "",
+          "quote_ja": "国交省九州地方整備局の個別ページ。営業時間9:00〜17:00、あさぎり館・お食事処岳庵の記載あり。車中泊禁止等の記載は無し。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/2019/04/26/%E6%BA%80%E8%BB%8A%E6%99%82%E3%81%AE%E3%80%8C%E9%81%93%E3%81%AE%E9%A7%85%E3%82%86%E3%81%B5%E3%81%84%E3%82%93%E3%80%8D%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%80%81%E8%BB%8A%E4%B8%AD%E6%B3%8A%E3%81%AE/",
+          "type": "blog",
+          "date": "2022-12",
+          "quote_ja": "車中泊専門メディアの実地レビュー。第一駐車場の24時間トイレは2020年リニューアルでウォシュレット完備。禁止看板の記載は無く、傾斜と幹線道路の騒音が課題として挙げられている。最寄りコンビニ(ローソン)約3km、乙丸温泉館まで約4km。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 90,
+        "onsen": false,
+        "ev": false,
+        "wifi": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 4,
+        "convenience_km": 3
+      }
     },
     {
       "id": "harajiri-no-taki",
@@ -1015,12 +1719,37 @@
       },
       "lat": 32.96569,
       "lng": 131.45237,
-      "official_url": "",
+      "official_url": "https://www.michi-no-eki.jp/stations/views/19752",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19752",
+          "type": "official",
+          "date": "",
+          "quote_ja": "公式データベース。駐車場「大型：5台 普通車：110（身障者用2）台」。温泉・EV・無線LANは非対応。車中泊に関する記載無し。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/2018/12/20/post-783/",
+          "type": "blog",
+          "date": "2022-12",
+          "quote_ja": "第1〜第4駐車場、合計約200台。24時間トイレがある第2駐車場が無難な選択とされ、禁止看板についての記載は無い。ファミリーマートまで約1.3km、岡城天然温泉「月のしずく」まで約10km。近隣にラムネ温泉館・万象の湯もあり。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 110,
+        "onsen": false,
+        "ev": false,
+        "wifi": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 10,
+        "convenience_km": 1.3
+      }
     },
     {
       "id": "saganoseki",
@@ -1035,12 +1764,37 @@
       },
       "lat": 33.24728,
       "lng": 131.82845,
-      "official_url": "",
+      "official_url": "https://www.michi-no-eki.jp/stations/views/19755",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19755",
+          "type": "official",
+          "date": "",
+          "quote_ja": "公式データベース。駐車場「大型：3台 普通車：26（身障者用2）台」。営業時間9:00〜18:00。温泉・EV・無線LAN非対応。車中泊に関する記載無し。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/saganoseki/",
+          "type": "blog",
+          "date": "",
+          "quote_ja": "国道197号に面した縦長レイアウトで駅舎から離れるほど傾斜がきつい。24時間トイレはウォシュレット完備。禁止看板の記載は無い。セブンイレブンまで約6.4km、「ホテルトパーズ大在駅前 黄玉の湯」まで約13km。※検索スニペット段階では「コンビニ・銭湯はほぼ敷地内」との誤った要約が出たが、本文を精読した結果は上記の通り(距離あり)。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 26,
+        "onsen": false,
+        "ev": false,
+        "wifi": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 13,
+        "convenience_km": 6.4
+      }
     },
     {
       "id": "kunisaki",
@@ -1055,12 +1809,37 @@
       },
       "lat": 33.54545,
       "lng": 131.73956,
-      "official_url": "",
+      "official_url": "https://www.michi-no-eki.jp/stations/views/19766",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19766",
+          "type": "official",
+          "date": "",
+          "quote_ja": "公式データベース。駐車場「大型：2台 普通車：156（身障者用2）台」。無線LANは対応。営業時間8:30〜17:00。車中泊に関する記載無し。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/kunisaki/",
+          "type": "blog",
+          "date": "2023-02",
+          "quote_ja": "24時間トイレはあるが「道の駅のトイレというより黒津崎海岸の公衆トイレ」と指摘。禁止看板の記載は無い。ローソンまで約750m、スーパーあおき国東店まで約600m、湯の里渓泉まで約20km。裏手にビーチがあり散歩に良いとの記載。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 156,
+        "onsen": false,
+        "ev": false,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 20,
+        "convenience_km": 0.6
+      }
     },
     {
       "id": "dowa-no-sato-kusu",
@@ -1075,12 +1854,37 @@
       },
       "lat": 33.28952,
       "lng": 131.15697,
-      "official_url": "",
+      "official_url": "https://www.michi-no-eki.jp/stations/views/19772",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19772",
+          "type": "official",
+          "date": "",
+          "quote_ja": "公式データベース。駐車場「大型：6台 普通車：115（身障者用3）台」。EV充電施設は対応、温泉・無線LANは非対応。車中泊に関する記載無し。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-dowanosatokusu",
+          "type": "blog",
+          "date": "",
+          "quote_ja": "「九州地方で車中泊 道の駅童話の里くす（大分）は車中泊可！」とのタイトルで実泊体験を紹介。禁止看板の記載は無い。セブンイレブン玖珠森店まで1km以内、みしま温泉まで2km以内。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 115,
+        "onsen": false,
+        "ev": true,
+        "wifi": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 2,
+        "convenience_km": 1
+      }
     },
     {
       "id": "nakatsu",
@@ -1095,12 +1899,37 @@
       },
       "lat": 33.55114,
       "lng": 131.21316,
-      "official_url": "",
+      "official_url": "https://www.michi-no-eki.jp/stations/views/19774",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19774",
+          "type": "official",
+          "date": "",
+          "quote_ja": "公式データベース。駐車場「大型：17台 普通車：233（身障者用6）台」。EV充電・無線LANは対応。車中泊に関する記載無し。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/nakatsu/",
+          "type": "blog",
+          "date": "",
+          "quote_ja": "分散した駐車場のうち24時間トイレに近い約10台分が車中泊に適するとされ、著者は「ルールを守れば原則OK」との立場。禁止看板の記載は無い。湯の迫温泉大平楽まで約4km、ローソンまで約2km。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 233,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 4,
+        "convenience_km": 2
+      }
     },
     {
       "id": "nagayu-onsen",
@@ -1115,12 +1944,37 @@
       },
       "lat": 33.07147,
       "lng": 131.38427,
-      "official_url": "",
+      "official_url": "https://www.michi-no-eki.jp/stations/views/19769",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19769",
+          "type": "official",
+          "date": "",
+          "quote_ja": "公式データベース。駐車場「大型：5台 普通車：62（身障者用3）台」。温泉施設ありと表示。EV・無線LANは非対応。車中泊に関する記載無し。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/2019/04/06/%E9%81%93%E3%81%AE%E9%A7%85%E3%81%AA%E3%81%8C%E3%82%86%E6%B8%A9%E6%B3%89/",
+          "type": "blog",
+          "date": "2019-04",
+          "quote_ja": "施設は「ゆのさとふれあい館」と24時間トイレのみで、他の施設は温泉市場側に集中。第2(大きい方)駐車場から24時間トイレまで約200m。禁止看板の記載は無い。ヤマザキYショップまで約400m。源泉かけ流しで飲泉も可能、「御前湯」は朝6時から利用可。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 62,
+        "onsen": true,
+        "ev": false,
+        "wifi": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0,
+        "convenience_km": 0.4
+      }
     },
     {
       "id": "tanourara",
@@ -1135,12 +1989,40 @@
       },
       "lat": 33.25585,
       "lng": 131.55601,
-      "official_url": "",
+      "official_url": "https://www.tanourara.jp/",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://www.city.oita.oita.jp/o243/tanourara2.html",
+          "type": "official",
+          "date": "",
+          "quote_ja": "大分市公式ページ。「大型車29台、小型車236台、身障者・妊婦用5台」、24時間利用できる駐車場・屋外トイレ(多機能・オストメイト対応)ありと明記。車中泊禁止・夜間駐車禁止についての記載は無い。"
+        },
+        {
+          "url": "https://www.yamatoyama.online/tanourara/",
+          "type": "blog",
+          "date": "",
+          "quote_ja": "車中泊は「国道・側道・JR線路の三重の騒音で、静かに車中泊するのは難しい」として非推奨と評価。禁止看板・掲示についての言及は無く、除外理由はあくまで騒音環境。※注意: 検索エンジンの要約は「車中泊禁止と明記」と誤って返すことがあるが、この一次記事および大分市公式ページのいずれにも禁止掲示の記載は無い。熊本県「道の駅たのうら」とは別施設。"
+        },
+        {
+          "url": "https://edoya-group.com/tanourara/",
+          "type": "blog",
+          "date": "2024-07",
+          "quote_ja": "2024年7月7日オープン、大分県内25番目の道の駅。実際に車中泊した夫婦の体験記で「一晩過ごすのに、特に大きな問題のない快適な場所でした」「夜中でも交通量があり安心感がある」と記載。禁止看板の言及は無い。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "verification": "listed",
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 236,
+        "onsen": false,
+        "ev": false,
+        "wifi": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "phoenix",
@@ -1202,12 +2084,40 @@
       },
       "lat": 32.70857,
       "lng": 131.30095,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/takachiho/takachiho.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/takachiho/takachiho.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の公式ページ。駐車場・トイレ・売店・レストラン・EV充電(急速/100V/200V)の設置を確認。車中泊の可否についての明記はなし(禁止の記載もなし)。"
+        },
+        {
+          "url": "https://date-planner.net/michinoeki-takachiho-sleeping-in-the-car/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "「3つの注意点」として挙げられているのはレストランの夜間営業なし・駐車場の傾斜・第2駐車場にトイレがない点のみで、車中泊禁止の看板や案内についての言及は一切ない。検索AI要約が『看板に禁止と明記』と伝えることがあるが、この一次記事にはそのような記述は存在しない。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-takachiho/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "「道の駅での車中泊はルールを守れば原則OK」との立場で解説。禁止看板の言及なし。メイン駐車場30台(24時間トイレ・ウォシュレット完備)、第2駐車場50台(トイレなし)。天岩戸の湯まで車で15分、ヤマザキYショップまで750m、Aコープ高千穂店まで車で3分。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 80,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {
+        "convenience_km": 0.75
+      }
     },
     {
       "id": "miyakonojo-niqll",
@@ -1248,12 +2158,30 @@
       },
       "lat": 32.66607,
       "lng": 131.70468,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kitagawa/kitagawa.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kitagawa/kitagawa.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "「第１駐車場トイレ兼道路情報館内　24時間」利用可能と明記。車中泊についての言及なし(禁止の記載もなし)。"
+        },
+        {
+          "url": "https://keiban-tabicamp.com/kitagawahayuma/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "車中泊禁止に関する記述なし。普通車56台・大型22台、24時間利用可のトイレ(ウォシュレット完備・臭気なし)、コインシャワーあり(10分200円)と記載。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 56,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "hyuga",
@@ -1268,12 +2196,46 @@
       },
       "lat": 32.34322,
       "lng": 131.62412,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/hyuga/hyuga.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/hyuga/hyuga.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省公式ページ。駐車場・トイレ・売店等の設置を確認。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://reiwa-travelers.com/zenkoku/kyusyu-okinawa/miyazaki-syachuhaku/michinoeki-hyuga/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "「具体的に車中泊(仮眠・休憩)禁止について書かれた看板などは無かったので車中泊は可能」。駐車場は79台(一般74・身障者用2・大型3)でフラット。隣接の日向サンパーク温泉「お舟出の湯」まで約550mと記載(ただし下記の通り同温泉は既に休館)。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-hyuga/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "禁止看板の言及なし。24時間トイレ・ウォシュレット完備。隣接温泉は2020年11月から休館中、代替の「かどがわ温泉心の杜」まで約20km・30分。ファミリーマートまで約1.7km。"
+        },
+        {
+          "url": "https://www.the-miyanichi.co.jp/today/kennaiippan/399524.html",
+          "type": "official",
+          "date": "2024-11-28",
+          "quote_ja": "日向市は、休館中の日向サンパーク温泉「お舟出の湯」について、温泉施設としての再開を断念したと発表(2020年9月30日休館)。道の駅隣接の温泉は現在稼働していないため、facilities.onsenはfalseとし、代替施設までの距離を採用。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 74,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "convenience_km": 1.7,
+        "onsen_km": 20
+      }
     },
     {
       "id": "nango",
@@ -1288,12 +2250,34 @@
       },
       "lat": 31.50288,
       "lng": 131.37827,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/nango/nango.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/nango/nango.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省公式ページ。駐車場・トイレ・売店・レストランの設置を確認。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-nango/",
+          "type": "wiki",
+          "date": "2023-03",
+          "quote_ja": "車中泊禁止の看板等への言及なし。普通車44台、駐車場の大半は傾斜しフラットな車中泊好適スペースは全体の1/5程度(約10台)。24時間トイレはウォシュレット完備。天然温泉「ひなたの宿」まで約17km・30分、セブンイレブンまで約6km。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 44,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "convenience_km": 6,
+        "onsen_km": 17
+      }
     },
     {
       "id": "ebino",
@@ -1308,12 +2292,40 @@
       },
       "lat": 32.05023,
       "lng": 130.80546,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ebino/ebino.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ebino/ebino.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省公式ページ。えびのICから東へ1分、Wi-Fi利用可と明記。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-ebino/",
+          "type": "wiki",
+          "date": "2023-04",
+          "quote_ja": "「広くてフラットで車中泊に支障はない」、普通車80台収容、ウォシュレット完備。車中泊禁止の看板等への言及なし。十兵衛の湯まで車で約5分(入浴料550円)、セブン-イレブンまで約250m。"
+        },
+        {
+          "url": "https://kochi-gwtp.com/michinoeki-ebino-van/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "「公式には『車中泊OK』とは明言していませんが、設備の充実度や他の利用者の様子を見ても、マナーを守っていれば問題なく車中泊を楽しめる環境」。京町温泉まで車で約10分。禁止看板の言及なし。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 80,
+        "onsen": false,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "convenience_km": 0.25
+      }
     },
     {
       "id": "sakurajima",
@@ -1328,12 +2340,35 @@
       },
       "lat": 31.58935,
       "lng": 130.59887,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sakurajima/sakurajima.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sakurajima/sakurajima.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "物産9:00〜17:00、レストラン11:00〜14:30(第3月曜休)、温泉施設は「無」、無料Wi-Fi利用可。車中泊・夜間駐車・仮眠についての記載は一切なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-sakurajima/",
+          "type": "blog",
+          "date": "2023",
+          "quote_ja": "普通車68台。24時間トイレはウォシュレット完備だが駐車場から見て駅舎の一番奥で遠い。駐車場はかなりの傾斜があり平坦な場所が少ない。桜島マグマ温泉まで約350m(10-22時)、ファミリーマートまで約180m。禁止看板の記載なし。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 68,
+        "onsen": false,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0.35,
+        "convenience_km": 0.18
+      }
     },
     {
       "id": "kiire",
@@ -1348,12 +2383,34 @@
       },
       "lat": 31.37892,
       "lng": 130.54539,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kiire/kiire.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kiire/kiire.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "営業時間10:00〜21:00、温泉施設「八幡温泉保養館」併設(マリンピア喜入)。車中泊・仮眠についての記載は一切なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/2023/01/24/kiire/",
+          "type": "blog",
+          "date": "2023-01-24",
+          "quote_ja": "収容台数は全部で190台、全て路面フラット。24時間トイレあり(多目的トイレのみ洋式でウォシュレットなし)。八幡温泉保養館は大人390円・10時〜21時(第2月曜休)。ファミリーマートまで450m、タイヨー喜入店まで250m。禁止表示の記載なし。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 190,
+        "onsen": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0,
+        "convenience_km": 0.45
+      }
     },
     {
       "id": "kirishima",
@@ -1368,12 +2425,34 @@
       },
       "lat": 31.86329,
       "lng": 130.85127,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kirishima/kirishima.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kirishima/kirishima.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "営業時間9:00〜17:00、温泉施設は「無」。標高670m、国道223号沿い。車中泊についての記載は一切なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-kirishima/",
+          "type": "blog",
+          "date": "2023",
+          "quote_ja": "実際に66台、フラットなスペースは20台程度で車中泊に実用的な区画は限られる。24時間トイレあり(多目的のみ洋式でウォシュレットなし)。最寄り温泉は「さくらさくら温泉」等で約5km圏。アイショップ霧島神宮前店まで約3km、ローソンまで約6km。禁止表示の記載なし。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 66,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 5,
+        "convenience_km": 3
+      }
     },
     {
       "id": "tarumizu",
@@ -1388,12 +2467,33 @@
       },
       "lat": 31.55874,
       "lng": 130.74544,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tarumizu/tarumizu.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tarumizu/tarumizu.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設全般9:00〜19:00、温泉「湯っ足り館」13:00〜20:00(受付19:30まで)、ナトリウム塩化物泉。車中泊についての記載は一切なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/2018/01/28/post-361/",
+          "type": "blog",
+          "date": "2023",
+          "quote_ja": "普通車205台。24時間トイレは2022年12月の改修でウォシュレット完備。敷地内に「湯っ足り館」(ラドン泉かけ流し、露天風呂・家族湯)併設、大人350円。可燃ゴミも24時間捨てられる自販機横のゴミ箱あり。ヤマザキYショップまで約1.3km。禁止表示の記載なし。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 205,
+        "onsen": true
+      },
+      "nearby": {
+        "onsen_km": 0,
+        "convenience_km": 1.3
+      }
     },
     {
       "id": "tarumizu-hamabira",
@@ -1408,12 +2508,33 @@
       },
       "lat": 31.46843,
       "lng": 130.69828,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tarumizuhamabira/tarumizuhamabira.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tarumizuhamabira/tarumizuhamabira.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "情報提供室9:00〜18:30、温泉施設は「無」。隣接施設としてホテル「フェアフィールド・バイ・マリオット鹿児島たるみず桜島」等。車中泊についての記載は一切なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/tarumizu_hamabira/",
+          "type": "blog",
+          "date": "2023-01",
+          "quote_ja": "普通車205台を収容する駐車場は平坦。駐車場の隣にファミリーマートがある。最寄り温泉「財宝健康保養センター薩摩明治村」まで約1km(大人460円、13時〜19時30分)。禁止表示・看板の記載なし。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 205,
+        "onsen": false
+      },
+      "nearby": {
+        "onsen_km": 1,
+        "convenience_km": 0
+      }
     },
     {
       "id": "ibusuki",
@@ -1428,12 +2549,33 @@
       },
       "lat": 31.30207,
       "lng": 130.58958,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ibusuki/ibusuki.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ibusuki/ibusuki.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "パーキング・トイレ・休憩所・情報コーナーあり。国道226号沿い、錦江湾の眺望。車中泊についての記載は一切なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-ibusuki/",
+          "type": "blog",
+          "date": "2023",
+          "quote_ja": "第一駐車場70台+第二駐車場60台、路面は平坦。24時間トイレ(ウォシュレット完備)。かつて公式サイトに「車中泊歓迎」と記載があったが、リニューアル後は記載が無くなり現在は事実確認できない。最寄りの日帰り温泉「指宿こころの湯」まで約10km。ローソンまで約4km。ハイシーズン(年末年始・GW)は満車になりやすい。禁止表示の記載なし。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 130,
+        "onsen": false
+      },
+      "nearby": {
+        "onsen_km": 10,
+        "convenience_km": 4
+      }
     },
     {
       "id": "akune",
@@ -1448,12 +2590,33 @@
       },
       "lat": 31.94598,
       "lng": 130.21646,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/akune/akune.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/akune/akune.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "物産9:30〜18:00、レストラン11:00〜14:00、情報コーナー8:00〜17:30。温泉施設は「無」。車中泊・夜間駐車・仮眠に関する記載は一切なく、「禁止」という語も使われていない(国交省公式ページを直接確認して裏取り済み)。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-akune/",
+          "type": "blog",
+          "date": "2023",
+          "quote_ja": "普通車67台。24時間トイレ(ウォシュレット完備)。記事内に車中泊禁止の看板や禁止文言の記載はない。「周辺車中泊環境の充実度」はやや低め(△)と評価されているのみで、禁止情報ではない。川内岩風呂まで約8.5km、ローソンまで約4km。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 67,
+        "onsen": false
+      },
+      "nearby": {
+        "onsen_km": 8.5,
+        "convenience_km": 4
+      }
     },
     {
       "id": "kuni-no-matsubara-osaki",
@@ -1468,12 +2631,34 @@
       },
       "lat": 31.43811,
       "lng": 131.03078,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/osaki/osaki.html",
       "status": "no_explicit_ban",
-      "verified": "",
-      "evidence": [],
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/osaki/osaki.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "売店7:00〜19:00、温泉8:00〜22:00(受付21:30まで)、宿泊施設15:00〜翌10:00、レストラン11:00〜15:00。愛称「セントロランド」(旧あすぱる大崎、2022年11月改修再オープン)。車中泊についての記載は一切なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-oosaki/",
+          "type": "blog",
+          "date": "2023",
+          "quote_ja": "普通車270台。24時間トイレ(ウォシュレット完備)、隣に「おおさき総合案内所」。あすぱる温泉(大人500円、13時〜21時30分、月曜休)併設。ファミリーマートまで約2km。コインランドリー棟(ガス乾燥機)新設、RVキャンプサイト(5台、1泊3,850円)完成。禁止表示の記載なし。"
+        }
+      ],
       "rv_park": null,
-      "verification": "listed"
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 270,
+        "onsen": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0,
+        "convenience_km": 2
+      }
     },
     {
       "id": "shin-yoshitomi",
@@ -1488,12 +2673,34 @@
       },
       "lat": 33.58868,
       "lng": 131.15422,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/shinyoshitomi/shinyoshitomi.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://kurumatabi.net/kyusyu/shinyoshitomi/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "車中泊専門メディアの実地レポート。『禁止看板の記載はありません』『ルールを守れば原則OK』。普通車65台、駐車場はフラットで奥まった区画もあり車中泊に支障なしと評価。湯の迫温泉 大平楽まで約4km・10分、セブンイレブンまで約1.7km。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/shinyoshitomi/shinyoshitomi.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省ページに営業時間・無料Wi-Fiの記載あり。車中泊に関する言及なし（禁止の記載もなし）。史跡「大ノ瀬官衙遺跡」に隣接する道の駅。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 65,
+        "onsen": false,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 4,
+        "convenience_km": 1.7
+      }
     },
     {
       "id": "chikuzen-minami-no-sato",
@@ -1508,12 +2715,39 @@
       },
       "lat": 33.46732,
       "lng": 130.6238,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/chikuzen/chikuzen.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://roadtrips.jp/spot/d/fukuoka/40017/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "『「道の駅」の駐車場・屋外トイレは24時間利用可能』『トイレは建物内ですが24時間開放されていて』と利用者口コミ。駐車場274台。禁止看板の言及なし。別ページでは『ファーマーズマーケット側約200台、インフォメーション側普通車37台・障碍者用5台・大型車8台』との記載もあり（合計値に幅あり）。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/chikuzen/chikuzen.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省ページに直売所9:00〜17:00等の営業時間、無料Wi-Fiの記載あり。車中泊に関する言及なし（禁止の記載もなし）。2020年4月開駅。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-tikuzenminaminosato",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "検索結果の要約より：駐車スペースが広く、周辺道路も広く車通りが少ないため夜は静か。車中泊は『仮眠・休憩が原則、長期滞在禁止』というマナー啓発の一般論。原鶴温泉が近隣にあるとの記載（距離不明）。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 274,
+        "onsen": false,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "kawara",
@@ -1528,12 +2762,42 @@
       },
       "lat": 33.67674,
       "lng": 130.86008,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kawara/kawara.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://roadtrips.jp/spot/d/fukuoka/40012/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "『駐車場・屋外トイレは24時間利用可能』普通車75台・大型車26台・身障者用2台。南に4.5kmの『かきした温泉』（600円、10:00〜22:00）。禁止看板の記載はなし。ただし『駐車台数が限定的で早朝から地元の方が多数訪問するため車中泊にはオススメしません』との利用者口コミあり（禁止ではなく個人の推奨としての注意）。"
+        },
+        {
+          "url": "https://kazutabi.blog.jp/archives/26456817.html",
+          "type": "blog",
+          "date": "2025",
+          "quote_ja": "『交通量も多く夜間の騒音を避けて、トイレが遠くなりますが、赤丸印の高台で車中泊する車両もいます』『（騒音があるので）車中泊場所としては推薦しません』。禁止看板の言及はなし（あくまで騒音を理由にした個人的な非推奨）。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kawara/kawara.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省ページにトイレ24時間利用可能、EV充電器・無料Wi-Fiありと記載。車中泊に関する言及なし。以前併設のファミリーマートは閉店したとの情報あり（コンビニ距離は不明）。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 103,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 4.5
+      }
     },
     {
       "id": "usui",
@@ -1548,12 +2812,42 @@
       },
       "lat": 33.5639,
       "lng": 130.7132,
-      "official_url": "",
+      "official_url": "https://michinoeki-usui.jp/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://reiwa-travelers.com/zenkoku/kyusyu-okinawa/fukuoka-syachuhaku/michinoeki-usui/",
+          "type": "blog",
+          "date": "2019-08",
+          "quote_ja": "実泊体験記（2019年8月訪問）。『「車中泊禁止」の明記がなく、仮眠・休憩としての利用は可能でした』『訪問時点では「車中泊禁止」の明確な注意書きはありませんでした』。駐車場175台（一般170・身障者2・大型3）、24時間トイレあり。セブンイレブンが駐車場向かいに位置。こうの湯温泉まで約15.4km・29分。※訪問時点の情報のため最新は要確認と筆者も付記。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/usui/usui.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省ページにEV急速充電器・無料Wi-Fiの記載あり。車中泊に関する言及なし（禁止の記載もなし）。"
+        },
+        {
+          "url": "https://michinoeki-usui.jp/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトに店舗一覧の記載あり。営業時間・車中泊関連の明記はページ内になし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 175,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 15.4,
+        "convenience_km": 0.2
+      }
     },
     {
       "id": "koishiwara",
@@ -1568,12 +2862,39 @@
       },
       "lat": 33.4652,
       "lng": 130.82599,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/koishiwara/koishiwara.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://roadtrips.jp/spot/d/fukuoka/40003/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "『駐車場・屋外トイレは24時間利用可能』。普通車36台・大型車3台・身障者用2台（計41台）。南に9.5kmの『保健福祉センターいずみ館』（大人300円、9:00〜21:00、月曜定休）。禁止看板の記載はなし。トイレは『やや匂う』との口コミあり。"
+        },
+        {
+          "url": "https://michikusa-factory.com/fukuoka-03/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "検索結果要約より：『車中泊を禁止する標識や警告はなく、駐車場とトイレは24時間利用可能』『標高が500m近くと高めのため夏季は過ごしやすい』『コンビニや銭湯が近くにある』との実地情報。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/koishiwara/koishiwara.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省ページに営業時間の記載あり（4〜10月9:00〜17:30等）。車中泊に関する言及なし。隣接に宿泊施設『アクアクレタ小石原』（車で1分）あり。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 41,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 9.5
+      }
     },
     {
       "id": "kanyusha-hikosan",
@@ -1590,10 +2911,30 @@
       "lng": 130.86005,
       "official_url": "https://kanyuusya.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://kanyuusya.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトを直接確認。物産センターの営業時間(9:00〜18:00)、山びこ食堂・中華味菜・もち工房・こどもわくわくパークの各営業時間を掲載。車中泊・宿泊・夜間駐車に関する記載は無し。24時間トイレ・EV充電・Wi-Fiについても本ページ内に明記なし。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/hikosan/hikosan.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局ページ。「駐車場: 大型1台・普通車35台(身障者用2台)」「EV充電器あり」「物産センターで農林産物・土産品・陶芸品を販売」「添田町クアハウス「ハピネス」(歩行用プール・足湯)が敷地横」と記載。これは温泉ではなく歩行用プール・足湯施設である点に注意。宿泊施設アイコンはオフ。車中泊・夜間駐車の制限文言は確認できず。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "ev": true,
+        "shop": true,
+        "parking_car": 35
+      },
+      "nearby": {
+        "onsen_km": 0
+      }
     },
     {
       "id": "sueyoshi",
@@ -1608,12 +2949,31 @@
       },
       "lat": 31.68835,
       "lng": 130.97027,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sueyosi/sueyosi.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sueyosi/sueyosi.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の公式ページ。駐車場(大型10台・普通92台〈身障者用2台含む〉)・トイレ等の施設一覧を掲載。温泉は「×」表示。車中泊・夜間駐車の可否についての記載は無し(禁止の明記なし)。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/kagoshima/c7e3113c6/michinoeki-sueyoshi",
+          "type": "blog",
+          "date": "2026-05",
+          "quote_ja": "「24時間使えるトイレがあり、夜間や早朝も安心して過ごせます」。車中泊禁止の記載は無し。ただし駐車台数は170台程度と記載されており公式(92台)と食い違いあり=このサイトの数値は参考程度に留める。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 92,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "yamagawako-katsuo-kaido",
@@ -1628,12 +2988,33 @@
       },
       "lat": 31.20289,
       "lng": 130.63488,
-      "official_url": "",
+      "official_url": "https://io-kaido.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://io-kaido.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "運営者公式サイト。住所(鹿児島県指宿市山川金生町1-10)・電話(0993-27-6507)を確認。車中泊・夜間駐車に関する記載は無し(禁止の明記なし)。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/kagoshima/c280a93a6/michinoeki-yamagawaminatoiokaidou",
+          "type": "blog",
+          "date": "2026",
+          "quote_ja": "24時間トイレ(ウォシュレット付き×2、身障者用×1)、駐車場約69台(普通車)、無料Wi-Fi利用可、給水設備あり。最寄りの入浴施設は「ヘルシーランド温泉保養館」(砂蒸し風呂)で約3km。車中泊禁止の記載は無し。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 69,
+        "onsen": false,
+        "wifi": true
+      },
+      "nearby": {
+        "onsen_km": 3
+      }
     },
     {
       "id": "takarabe-kirara",
@@ -1648,12 +3029,34 @@
       },
       "lat": 31.72882,
       "lng": 130.99867,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/takarabe/takarabe.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/takarabe/takarabe.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の公式ページ。営業時間9:00〜17:00、施設一覧で温泉は「×」表示。車中泊・夜間駐車についての記載・禁止の明記は無し。"
+        },
+        {
+          "url": "https://reiwa-travelers.com/zenkoku/kyusyu-okinawa/kagoshima-syachuhaku/michinoeki-takarabe/",
+          "type": "blog",
+          "date": "2020-03-09(2022-05-04更新)",
+          "quote_ja": "実訪問レポート。「具体的に車中泊(仮眠・休憩)禁止について書かれた看板などは無かったので車中泊は可能」と明記。駐車場40台(一般38・身障者用1・大型1)、24時間利用可能なトイレ、隣にコンビニあり、最寄り温泉は財部温泉健康センター(2.7km)。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 40,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 2.7,
+        "convenience_km": 0
+      }
     },
     {
       "id": "nagashima",
@@ -1668,12 +3071,25 @@
       },
       "lat": 32.16197,
       "lng": 130.10927,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/nagashima/nagashima.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/nagashima/nagashima.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の公式ページ。「24時間トイレ 入口物産館カウンター」と明記。温泉施設「温泉センター椿の湯」まで徒歩2分と案内。営業時間9:00〜18:00。車中泊・夜間駐車についての記載・禁止の明記は無し。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "onsen": true
+      },
+      "nearby": {
+        "onsen_km": 0.15
+      }
     },
     {
       "id": "kinpo-konohana",
@@ -1688,12 +3104,35 @@
       },
       "lat": 31.46489,
       "lng": 130.34543,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kinpo/kinpo.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kinpo/kinpo.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の公式ページ。営業時間9:00〜18:00(12/31は〜17:00)、駐車場・トイレ・売店等の設備一覧を掲載。車中泊・夜間駐車についての記載・禁止の明記は無し。"
+        },
+        {
+          "url": "https://4travel.jp/",
+          "type": "blog",
+          "date": "2026",
+          "quote_ja": "口コミ投稿:「トイレ：24H使用可」「無料Wi-fi：可」「駐車場：〇 国道沿いのみで、風がある日はよくない」。車中泊禁止の言及は無し。"
+        },
+        {
+          "url": "https://kurumatabi.net/index/",
+          "type": "blog",
+          "date": "2026",
+          "quote_ja": "「道の駅での車中泊は、ルールを守れば原則OK」との一般見解。同駅を車中泊利用可能スポットとして掲載。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "shop": true,
+        "toilet_24h": true
+      },
+      "nearby": {}
     },
     {
       "id": "matsuyama",
@@ -1708,12 +3147,29 @@
       },
       "lat": 31.58173,
       "lng": 131.04242,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/matsuyama/matsuyama.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/matsuyama/matsuyama.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の公式ページ。「営業時間9:00〜18:00、トイレ、電話、駐車場は24時間利用できます」と明記。車中泊禁止の記載は無し。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/kagoshima/c5571298f/michinoeki-matsuyama",
+          "type": "blog",
+          "date": "2026",
+          "quote_ja": "普通車駐車場 約79台。24時間トイレ・平坦駐車場との記載。車中泊禁止の言及は無し。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 79
+      },
+      "nearby": {}
     },
     {
       "id": "kawanabe",
@@ -1728,12 +3184,30 @@
       },
       "lat": 31.41265,
       "lng": 130.43294,
-      "official_url": "",
+      "official_url": "https://www.yasuraginosato.com",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kawanabe/kawanabe.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の公式ページ。物産館9:00〜18:00、レストラン11:00〜15:00(水休)。施設一覧で温泉は「×」表示(駅敷地内に温泉浴場は無い)。車中泊・夜間駐車についての記載・禁止の明記は無し。"
+        },
+        {
+          "url": "https://www.yasuraginosato.com",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "運営者公式サイト。住所(鹿児島県南九州市川辺町清水6910)・電話(0993-58-3131)・営業時間を確認。車中泊に関する記載は無し。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 109,
+        "onsen": false
+      },
+      "nearby": {}
     },
     {
       "id": "hiwaki",
@@ -1748,12 +3222,31 @@
       },
       "lat": 31.79642,
       "lng": 130.4075,
-      "official_url": "",
+      "official_url": "https://michinoeki-hiwaki.jp",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://michinoeki-hiwaki.jp",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "運営者公式サイト(道の駅樋脇 遊湯館)。「駐車場：78台(大型8台、普通69台、身障1台)」「24時間かけ流し」の足湯(島津の殿様湯)、温泉シャワー室(100円/18分)が敷地内にあり、市比野温泉へは「車で5分」と案内。車中泊・夜間駐車についての記載は無し。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/hiwaki/hiwaki.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の公式ページ。直売所「ふとどん市場」8:30〜18:00、レストラン「湯の茶屋」11:00〜15:00。車中泊禁止の記載は無し。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 78,
+        "onsen": true
+      },
+      "nearby": {
+        "onsen_km": 3
+      }
     },
     {
       "id": "nogata-arasano",
@@ -1768,12 +3261,47 @@
       },
       "lat": 31.50013,
       "lng": 130.92411,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/nokataarasano/nokataarasano.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/nokataarasano/nokataarasano.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国土交通省九州地方整備局の道の駅個別ページ。休憩施設・トイレは24時間利用可能、EV充電施設あり、無線LAN完備と記載。車中泊の可否についての言及はなし。"
+        },
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19812",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "全国「道の駅」連絡会公式ページ。駐車場「大型：3台　普通車：40（身障者用2）台」。EV充電施設・無線LANのアイコン表示あり、温泉アイコンなし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-arasano/",
+          "type": "blog",
+          "date": "2025-04",
+          "quote_ja": "「もっとも車中泊がしたければ、何ら問題なくできる」（最終取材2023年1月）。禁止看板の記載なし。駐車場は普通車40台でほぼ平坦、ローソンと24時間トイレ併設。可燃ゴミ用ゴミ箱が無い旨の張り紙（2021年撮影）あり。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/kagoshima/cdfecbf8a/michinoeki-nogataarasano",
+          "type": "blog",
+          "date": "2026-05",
+          "quote_ja": "24時間利用可能なトイレ・駐車場、コンビニ併設。禁止看板や禁止の明記なし。「テント設営・屋外調理・長時間滞在は本来の用途ではない」という一般的注意のみ。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 40,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "convenience_km": 0
+      }
     },
     {
       "id": "kuronoseto-dandan",
@@ -1788,12 +3316,41 @@
       },
       "lat": 32.10845,
       "lng": 130.17038,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kuronoseto/kuronoseto.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kuronoseto/kuronoseto.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国土交通省九州地方整備局ページ。「物産館」9:00～18:00、EV充電施設・無線LANのアイコン表示あり。「温泉センター東泉望」は駅の直営施設ではなく周辺施設として紹介。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19809",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "駐車場「大型：3台　普通車：36（身障者用2）台」。EV充電施設ありのアイコン表示、無線LANとしきの記載は「なし」。温泉施設なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-kuronoseto/",
+          "type": "blog",
+          "date": "2025-04",
+          "quote_ja": "取材時期は2015年1月（2025年4月加筆更新、現地状況が変化している可能性に注意書きあり）。禁止看板の明記なし。市場前駐車場は国道389号に面し落ち着けないため第2駐車場を推奨。長島温泉センター椿の湯まで約13km・20分、ファミリーマートまで約3km。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 36,
+        "onsen": false,
+        "ev": true,
+        "wifi": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 13,
+        "convenience_km": 3
+      }
     },
     {
       "id": "minamata",
@@ -1810,8 +3367,7 @@
       "lng": 130.38211,
       "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/minamata/minamata.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
+      "verified": "2026-07-28",
       "evidence": [
         {
           "url": "https://syachuhaku-blog.fxtec.info/post-28211/",
@@ -1853,12 +3409,36 @@
       },
       "lat": 32.63354,
       "lng": 130.62923,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/shiranui/shiranui.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/shiranui/shiranui.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "EV充電器・無料Wi-Fiを付帯施設として記載。宿泊施設(ホテル等)アイコンは無し。営業時間は物産館9:00-17:00で24時間営業ではない。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/shiranui/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "『駐車場はほぼフラット水平』『夜間閉鎖無し』、トイレも『夜間閉鎖無し。夜間も電気つく』。温泉施設が閉館した現在は道の駅うきの方が車中泊に適すると評価。なごみ温泉やすらぎの湯まで約12km、セブンイレブンまで約4km。車中泊禁止の看板・記載は無い。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 213,
+        "onsen": false,
+        "ev": true,
+        "wifi": true
+      },
+      "nearby": {
+        "onsen_km": 12,
+        "convenience_km": 4
+      }
     },
     {
       "id": "amakusa-dolphin",
@@ -1873,12 +3453,41 @@
       },
       "lat": 32.54552,
       "lng": 130.13125,
-      "official_url": "",
+      "official_url": "https://www.amakusa-dolphin.jp/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/amakusairuka/amakusairuka.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の道の駅個別ページ。EV充電器あり、情報発信コーナーのみ24時間利用可、直売所9:00〜18:00。車中泊・夜間駐車に関する記載なし（禁止の明記なし）。"
+        },
+        {
+          "url": "https://www.amakusa-dolphin.jp/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設公式サイト。フロアガイド・FAQへの案内のみで、車中泊・夜間駐車に関する記載は確認できず。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/irukasenter/",
+          "type": "blog",
+          "date": "2025-03",
+          "quote_ja": "「駐車場は、海に向かってかなりの傾斜があるため車中泊は厳しい」（普通車23台、ウォシュレット付トイレ、麟泉の湯まで約10km、デイリーヤマザキまで約500m）。禁止看板の記載はなく、傾斜による物理的な不向きさが理由。最終取材2022年12月、記事公開2025年3月31日。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": false,
+        "parking_car": 23,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 10,
+        "convenience_km": 0.5
+      }
     },
     {
       "id": "kyokushi",
@@ -1893,12 +3502,31 @@
       },
       "lat": 32.93118,
       "lng": 130.8302,
-      "official_url": "",
+      "official_url": "https://www.kyokushi.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kyokushi/kyokushi.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の道の駅個別ページ。物産館9:00〜18:00、食彩館11:00〜21:00。車中泊・夜間駐車についての記載なし（禁止の明記なし）。"
+        },
+        {
+          "url": "https://www.kyokushi.com/about",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設公式サイト。「普通車180台、大型車15台、身障者用2台、急速充電あり」と明記。車中泊・夜間駐車に関する記載なし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 180,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "sakitsu",
@@ -1913,12 +3541,35 @@
       },
       "lat": 32.3168,
       "lng": 130.02539,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sakitsu/sakitsu.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sakitsu/sakitsu.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の道の駅個別ページ。営業時間9:00〜17:30、休館日12/30・31・1/1。付帯施設としてEV充電器・無線LAN・売店の記載あり。車中泊・夜間駐車についての記載なし（禁止の明記なし）。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/sakitsu/",
+          "type": "blog",
+          "date": "2025-03",
+          "quote_ja": "普通車48台。天然温泉「愛夢里」まで約8km、デイリーヤマザキまで約8km。禁止看板の記載なし。最終取材2022年12月29日、記事公開2025年3月31日。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 48,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 8,
+        "convenience_km": 8
+      }
     },
     {
       "id": "uki-saikan",
@@ -1933,12 +3584,41 @@
       },
       "lat": 32.65109,
       "lng": 130.69831,
-      "official_url": "",
+      "official_url": "https://www.city.uki.kumamoto.jp/2011042",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.city.uki.kumamoto.jp/2011042",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "宇城市公式サイト。「158台(大型車21台、小型車133台、身障者用4台)」と明記。営業時間9:00〜18:00。車中泊・夜間駐車についての記載なし（禁止の明記なし）。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/uki/uki.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の道の駅個別ページ。EV充電器・無線LAN・売店の記載あり。車中泊に関する記載なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/uki/",
+          "type": "blog",
+          "date": "2025-03",
+          "quote_ja": "「敷地の中央に広い駐車場」「全体的に平坦で車中泊に支障はない」。古保山リゾート（温泉）まで約4km、セブンイレブンまで約500m。禁止看板の記載なし。記事更新2025年3月31日。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 158,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 4,
+        "convenience_km": 0.5
+      }
     },
     {
       "id": "ushibuka-kaisaikan",
@@ -1953,12 +3633,40 @@
       },
       "lat": 32.194,
       "lng": 130.02734,
-      "official_url": "",
+      "official_url": "https://kaisaikan.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://kaisaikan.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設公式サイト。夢市場・原かまぼこ店が9:00〜18:00営業。周辺温泉として「やすらぎの湯」の案内あり（敷地内ではない）。車中泊・夜間駐車についての記載なし。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ushibuka/ushibuka.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の道の駅個別ページ。EV充電器・売店の記載あり。トイレ設備の記載はあるが24時間利用の明記なし。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/ushibuka/",
+          "type": "blog",
+          "date": "2025-03",
+          "quote_ja": "普通車58台。「天草市牛深温泉やすらぎの湯」まで約8km、ヤマザキYショップまで約1km。禁止看板の記載なし。2024年1月にトイレ改修工事実施。最終取材2020年12月、記事公開2025年3月31日。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 58,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 8,
+        "convenience_km": 1
+      }
     },
     {
       "id": "ashikita-dekopon",
@@ -1973,12 +3681,35 @@
       },
       "lat": 32.30318,
       "lng": 130.50814,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/asikitadekopon/asikitadekopon.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/asikitadekopon/asikitadekopon.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の道の駅個別ページ。「EV充電器」「無料Wi-Fi」完備、直売所9:00〜19:00。車中泊・夜間駐車についての記載なし（禁止の明記なし）。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki_ashikitadekopon/",
+          "type": "blog",
+          "date": "2025-03",
+          "quote_ja": "普通車104台、ウォシュレット付トイレ。計石温泉センターまで約4.4km、セブンイレブンまで約300m。禁止看板の記載なし。最終取材2019年2月10日、記事公開2025年3月31日。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 104,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 4.4,
+        "convenience_km": 0.3
+      }
     },
     {
       "id": "tsujunkyo",
@@ -1995,14 +3726,13 @@
       "lng": 130.9906,
       "official_url": "https://tsujun-yamato.jp/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
+      "verified": "2026-07-28",
       "evidence": [
         {
           "url": "https://tsujun-yamato.jp/",
           "type": "official",
           "date": "2026-07-28",
-          "quote_ja": "公式サイト全ページを確認したが、車中泊・宿泊・仮眠・長時間駐車・キャンプに関する記載は一切なし"
+          "quote_ja": "移転後の現公式サイト全ページを確認したが、車中泊・宿泊・仮眠・長時間駐車・キャンプに関する記載は一切なし"
         },
         {
           "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tujyunkyo/tujyunkyo.html",
@@ -2045,12 +3775,39 @@
       },
       "lat": 32.92505,
       "lng": 130.77146,
-      "official_url": "",
+      "official_url": "https://www.shisui-youjou.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.shisui-youjou.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設公式サイト「養生市場」。営業時間9:00〜18:00、隣接する孔子公園の案内あり。車中泊・夜間駐車についての記載なし。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/shisui/shisui.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の道の駅個別ページ。営業時間9:00〜18:00（12/30は15:00まで）。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki_shisui/",
+          "type": "blog",
+          "date": "2025-03",
+          "quote_ja": "「駐車場は平坦で、普通車115台」、24時間トイレ（2021年リニューアルで新設、ウォシュレット完備）。「とよみずの湯」まで約650m、セブンイレブンまで約1km。禁止看板の記載なし。最終取材2022年6月18日、記事公開2025年3月31日。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 115,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0.65,
+        "convenience_km": 1
+      }
     },
     {
       "id": "namino",
@@ -2130,12 +3887,34 @@
       },
       "lat": 32.69064,
       "lng": 131.09159,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/seiwa/seiwa.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/seiwa/seiwa.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式ページに営業時間(物産館9:00-17:00、レストラン11:00-15:00、火曜休)・所在地(熊本県上益城郡山都町大平152番地)は記載されるが、駐車場台数・トイレ24時間利用・車中泊の可否についての明記はなし。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-seiwabunrakumura",
+          "type": "blog",
+          "date": "2022-07",
+          "quote_ja": "駐車場は普通車61台・大型車4台・身障者用3台。「車中泊禁止との情報は出ておりません」。コンビニまで約10km(車12分)、佐俣の湯温泉まで約33km(車40分)。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": false,
+        "parking_car": 61,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 33,
+        "convenience_km": 10
+      }
     },
     {
       "id": "ryuhoku",
@@ -2150,12 +3929,31 @@
       },
       "lat": 32.57718,
       "lng": 130.69513,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ryuhoku/ryuhoku.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ryuhoku/ryuhoku.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "所在地：熊本県八代郡氷川町大野875-3。付帯施設一覧で宿泊施設・温泉・シャワーは「なし」と明示。トイレ24時間可否・車中泊の可否についての明記はなし。"
+        },
+        {
+          "url": "https://reiwa-travelers.com/zenkoku/kyusyu-okinawa/kumamoto-syachuhaku/michinoeki-ryuhoku/",
+          "type": "blog",
+          "date": "2020-02",
+          "quote_ja": "2019年9月の実泊レポート。「具体的に車中泊（仮眠・休憩）禁止について書かれた看板などは無かったので車中泊は可能です」。駐車スペース85台、トイレはウォシュレット付きで24時間利用可能、夜間車中泊者は全体の約2割。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 85,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "kitakata-yocchimiroya",
@@ -2172,10 +3970,36 @@
       "lng": 131.49167,
       "official_url": "http://www.yottimiroya.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "http://www.yottimiroya.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "道の駅北方よっちみろ屋の公式サイト。所在地(延岡市北方町早日渡巳175-1)・電話番号を確認。車中泊についての記載は無し(禁止表記も無し)。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kitakatayochimiroya/kitakatayocchimiroya.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省公式ページ。24時間利用可能なトイレ、EV充電器、無線LANが利用可能と明記。温泉施設はなし。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/miyazaki/c6db5035b/michinoeki-kitakatayocchimiroya",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "車中泊禁止の看板や案内についての言及なし。駐車スペースは平坦、24時間使えるトイレがあり夜間や早朝も安心して過ごせると記載。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "kitaura",
@@ -2190,12 +4014,31 @@
       },
       "lat": 32.68498,
       "lng": 131.80094,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kitaura/kitaura.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kitaura/kitaura.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省公式ページ。温泉施設はなし(温水プールは併設)。宿泊施設「浜木綿村」、キャンプ場、シャワー、テニスコートあり。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://keiban-tabicamp.com/kitaura/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "車中泊禁止の看板や案内についての具体的な記載なし。「普通車18台　大型5台　身障者用2台」、比較的フラットな駐車場。24時間利用可のトイレでウォシュレット完備。隣の道の駅「北川はゆま」の方が快適との評価あり。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 18,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "yamanokuchi",
@@ -2210,12 +4053,40 @@
       },
       "lat": 31.79439,
       "lng": 131.20265,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yamanokuchi/yamanokuchi.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yamanokuchi/yamanokuchi.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省公式ページ。温泉あり(青井岳温泉、車で5分)と紹介、施設自体は駐車場・トイレ・売店・レストランを完備。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-yamanokuti",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "「こちらの記事を執筆時点では車中泊禁止との情報は出ておりません」と明記。普通車40台・大型34台・身障者用3台、セブン-イレブンまで約6km(車8分)、観音さくらの里(温泉・銭湯)まで約10km(車14分)。夜間は幹線道路沿いでトラック走行音がやや気になるレベル。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/miyazaki/c4be1cbae/michinoeki-yamanokuchi",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "車中泊禁止の看板や案内についての言及なし。「普通車 約40台分の駐車スペース」、24時間利用可能なトイレ・駐車場、駐車スペースは平坦。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 40,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "convenience_km": 6,
+        "onsen_km": 10
+      }
     },
     {
       "id": "tano",
@@ -2230,12 +4101,31 @@
       },
       "lat": 31.79665,
       "lng": 131.30737,
-      "official_url": "",
+      "official_url": "https://michikusa-bussan.jp/?mode=f3",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tano/tano.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "物産施設は令和7年3月23日をもって閉店しましたが、トイレと駐車場はご利用いただけます。車中泊・夜間駐車の可否についての記載はなし。EV充電器は有。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/miyazaki/cbcca99f8/michinoeki-tano",
+          "type": "blog",
+          "date": "2026-05",
+          "quote_ja": "駐車台数: 普通車約41台分。24時間トイレ: あり。車中泊禁止の明示的な看板・注意書きへの言及なし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 41,
+        "onsen": false,
+        "ev": true,
+        "shop": false
+      },
+      "nearby": {}
     },
     {
       "id": "seiunbashi",
@@ -2317,12 +4207,40 @@
       },
       "lat": 31.94565,
       "lng": 131.34056,
-      "official_url": "",
+      "official_url": "https://vitaminkan.miyazaki.jp/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/takaoka/takaoka.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設一覧に温泉アイコンなし(温泉施設なし)。車中泊・夜間駐車の可否についての記載はなし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-takaoka/",
+          "type": "blog",
+          "date": "2026",
+          "quote_ja": "車中泊禁止の明記や看板についての記載なし。駐車場は普通車57台・ほぼフラット、トイレは24時間利用可能・ウォシュレット完備。ローソンまで約500m。極楽湯宮崎店まで約10km・20分。「ホークスファンにとってのベストスポット」として車中泊利用が想定された紹介がされている。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/miyazaki/cc1b6e2c0/michinoeki-takaoka",
+          "type": "blog",
+          "date": "2026-05",
+          "quote_ja": "駐車場: 普通車約57台、トイレ24時間利用可能。車中泊禁止の明示的な記載なし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 57,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 10,
+        "convenience_km": 0.5
+      }
     },
     {
       "id": "kushima",
@@ -2337,12 +4255,40 @@
       },
       "lat": 31.46267,
       "lng": 131.22898,
-      "official_url": "",
+      "official_url": "https://michinoeki-kushima.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kushima/kushima.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "「休憩所、トイレ　24時間利用可」。温泉アイコンは非該当(温泉施設なし)。EV充電器2台。車中泊・夜間駐車の可否についての記載はなし。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-kushima",
+          "type": "blog",
+          "date": "2026",
+          "quote_ja": "「車中泊禁止との情報は出ておりません」。駐車場は大型車6台・普通車125台・身障用2台。セブン-イレブン串間本町店まで約250m(車で約1分)。「駐車スペースが平均より大きめで、夜間騒音はそこまでない」と評価。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/miyazaki/c00382bc5/michinoeki-kushima",
+          "type": "blog",
+          "date": "2026-05",
+          "quote_ja": "「24時間利用可能なトイレ・駐車場」。EV充電あり。禁止表示への言及なし。2022年4月開設。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 125,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {
+        "convenience_km": 0.25
+      }
     },
     {
       "id": "tsuno",
@@ -2357,12 +4303,38 @@
       },
       "lat": 32.26035,
       "lng": 131.55753,
-      "official_url": "",
+      "official_url": "https://michinoeki-tsuno.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tuno/tuno.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "「情報休憩室（24時間開放）」の記載あり(トイレ自体の24時間利用の明記は無し)。温泉・コンビニは施設一覧で非該当。車中泊・夜間駐車の可否についての記載はなし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-tsuno/",
+          "type": "blog",
+          "date": "2023-04",
+          "quote_ja": "駐車場は普通車148台、「駐車場は広くて平坦、さらに大型車の駐車場も離れて用意されているので、車中泊に支障はない」。ローソンまで約400m、木城温泉館 湯らら まで約15km・20分(入浴料600円)。隣接していた温泉施設は2020年11月に休業。記事内に車中泊禁止の看板や注意書きへの言及なし。"
+        },
+        {
+          "url": "https://syachuhaku-blog.fxtec.info/post-28724/",
+          "type": "blog",
+          "date": "2025-02",
+          "quote_ja": "(検索スニペット経由、直接fetch不可)2025年2月撮影の写真とともに「トイレ、車中泊やめろ的な掲示無し」と明記。禁止看板が存在しないことを現地確認した傍証。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 148,
+        "onsen": false
+      },
+      "nearby": {
+        "onsen_km": 15,
+        "convenience_km": 0.4
+      }
     },
     {
       "id": "togo",
@@ -2377,12 +4349,33 @@
       },
       "lat": 32.39131,
       "lng": 131.51292,
-      "official_url": "",
+      "official_url": "https://www.hyugacity.jp/display.php?cont=140826225920",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/togo/togo.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "「建物正面入口駐車場前　24時間利用可」(情報コーナーについての記載でトイレ自体の24時間利用は明記なし)。温泉アイコンは非該当。物産直売所「詩季彩」あり。車中泊・夜間駐車の可否についての記載はなし。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-tougou",
+          "type": "blog",
+          "date": "2026",
+          "quote_ja": "「車中泊禁止との情報は出ておりません」。駐車場は普通車82台・大型車8台・身障者用2台、「夜間の騒音はかなり静か」。ファミリーマート日向東郷やまげ店まで約2km(車で約3分)。さいごう温泉美々川まで約9km(車で約10分)。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 82,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 9,
+        "convenience_km": 2
+      }
     },
     {
       "id": "sakatani",
@@ -2397,12 +4390,37 @@
       },
       "lat": 31.64187,
       "lng": 131.26662,
-      "official_url": "",
+      "official_url": "http://michinoeki-sakatani.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sakatani/sakatani.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "営業時間は4-9月8:30-18:00・10-3月8:30-17:00。温泉アイコンは非該当(温泉施設なし)。駐車場、休憩所、直売所、レストランあり。車中泊・夜間駐車の可否についての記載はなし。"
+        },
+        {
+          "url": "https://roadtrips.jp/spot/d/miyazaki/45007/",
+          "type": "blog",
+          "date": "2026",
+          "quote_ja": "「『道の駅』の駐車場・屋外トイレは24時間利用可能です」。駐車場は普通車63台・大型車3台・身障者用2台。西へ1kmの酒谷キャンプ場(運営は同じ酒谷むらおこし株式会社、630円〜、入浴可)を近隣施設として紹介。車中泊禁止・注意書きへの言及なし。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/miyazaki/cb3ce348e/michinoeki-sakatani",
+          "type": "blog",
+          "date": "2026-05",
+          "quote_ja": "駐車場は普通車約63台分。禁止の看板・注意書きは記載なしと明記。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 63,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "kentoshi",
@@ -2417,12 +4435,35 @@
       },
       "lat": 32.73836,
       "lng": 128.69003,
-      "official_url": "",
+      "official_url": "https://kentoushi-furusatokan.com/",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://kentoushi-furusatokan.com/",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "公式サイト。店舗・売店9:00〜18:00、レストラン11:30〜14:00。五感で楽しめるふるさとバイキング等を紹介。車中泊・夜間駐車についての記載は無く、駐車台数・トイレ24時間の明記も無い。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kentoushi/kentoushi.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "国交省九州地方整備局の公式個別ページ。長崎県初・九州で2番目の離島の道の駅と紹介。五島うどん等を使ったバイキングが特徴。車中泊に関する記載は無し。"
+        },
+        {
+          "url": "https://www.nagasaki-tabinet.com/islands/spot/684",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "長崎しま旅行こう(公式観光サイト)のスポットページ。営業時間9:00〜18:00、駐車場『有』(台数記載なし)。車中泊に関する言及は無し。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "suzuta-toge",
@@ -2437,12 +4478,41 @@
       },
       "lat": 32.88526,
       "lng": 130.00731,
-      "official_url": "",
+      "official_url": "https://www.michinoeki-suzutatouge.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.michinoeki-suzutatouge.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトに車中泊・夜間駐車の可否についての明記は無い。営業時間9:00〜18:00、隣接施設(鈴田峠農園)でEV充電・携帯充電コンセント・Wi-Fi(LAN)が24時間利用可能と記載。喫茶・軽食コーナーは2025年9月〜2026年3月改修工事のため休館中。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/suzutatouge/suzutatouge.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国土交通省九州地方整備局の個別ページ。所在地は大村市中里町452-22、駐車場は普通車24台・大型車3台。車中泊・夜間駐車に関する記載は無い。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-nagasakikaidou",
+          "type": "blog",
+          "date": "2023",
+          "quote_ja": "「こちらの記事を執筆時点では車中泊禁止との情報は出ておりません」。駐車場は普通車24台・大型車3台・身障者用2台で全国平均より小さめ。トイレは男(大2小4)女4身障者用1、Wi-Fiあり。コンビニは約2kmの位置、最寄り入浴施設は「のんのこ温水センター」。幹線道路沿いのため夜間も交通量ありやや騒音レベル。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": false,
+        "parking_car": 24,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "convenience_km": 2
+      }
     },
     {
       "id": "matsuura",
@@ -2457,12 +4527,41 @@
       },
       "lat": 33.34816,
       "lng": 129.70168,
-      "official_url": "",
+      "official_url": "https://umihuru.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://umihuru.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトに「【大歓迎！車中泊！】」と明記。電気自動車専用急速充電器設置(4時間タイプ)、100V電源使用料無料(1日限定1台、要予約 0120-062-004)。ページ下部には「【車中泊情報】只今工事中！」とあり詳細ページは準備中。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/matuura/matuura.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国土交通省九州地方整備局の個別ページ。所在地は松浦市志佐町庄野免226-30、EV充電器の設置を記載。車中泊・夜間駐車に関する明示的な記載は無い。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/matsuura/",
+          "type": "wiki",
+          "date": "2022",
+          "quote_ja": "「この道の駅は『車中泊歓迎』の旗色を鮮明にしている希少な存在」「広々としていてフラットなこの駐車場で、収容台数130台」「24時間トイレは、駅舎の横の独立した建物になっている」中はウォシュレット。近隣は松浦シティーホテル(温泉、約1km・500円)、セブンイレブン(約600m)、ハイマート松浦店(約1km)。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 130,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 1,
+        "convenience_km": 0.6
+      }
     },
     {
       "id": "takarashima",
@@ -2477,12 +4576,41 @@
       },
       "lat": 33.43362,
       "lng": 129.78242,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/takarajima/takarajima.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/takarajima/takarajima.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国土交通省九州地方整備局の個別ページ。所在地は松浦市鷹島町神崎免1636、営業時間8:30〜18:00。車中泊・夜間駐車に関する記載は無い。鷹島産本マグロ等の海鮮が名物。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-takarajima",
+          "type": "blog",
+          "date": "2023",
+          "quote_ja": "「こちらの記事を執筆時点では車中泊禁止との情報は出ておりません」。駐車場は普通車38台・大型車4台・身障者用3台と全国平均よりかなり小さめ、駐車場は傾斜があり車中泊しづらいとの指摘あり。24時間トイレはウォシュレット完備。Wi-Fiは「×」で無し。コンビニ(ファミリーマート切木店)まで約10.8km、最寄り入浴施設は「高串温泉」。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/takarajima/",
+          "type": "wiki",
+          "date": "2022",
+          "quote_ja": "「道の駅での車中泊は、ルールを守れば原則OKが本筋」であり本施設固有の禁止表示の記載は無い。「駐車場はフラットで、車中泊に支障はない」。高串温泉まで約9km・15分、ファミリーマートまで約10km、Aコープはぴる肥前店まで約4.5km。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 38,
+        "onsen": false,
+        "wifi": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 9,
+        "convenience_km": 10
+      }
     },
     {
       "id": "innai",
@@ -2497,12 +4625,34 @@
       },
       "lat": 33.42399,
       "lng": 131.32014,
-      "official_url": "",
+      "official_url": "https://www.michi-no-eki.jp/stations/views/19759",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19759",
+          "type": "official",
+          "date": "",
+          "quote_ja": "公式データベース。駐車場「大型：4台 普通車：34（身障者用2）台」。無線LAN対応、温泉・EV非対応。24時間トイレの明記は無し(通常営業8:00〜17:00)。"
+        },
+        {
+          "url": "https://barifuri-oita.com/spot/70314/",
+          "type": "blog",
+          "date": "",
+          "quote_ja": "バリアフリーツアーセンターの紹介ページ。「車中泊もOKな道の駅」と明記。禁止看板についての記載は無い。物産館・レストラン・レンタルサイクルあり、すっぽん料理やジビエが名物。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": false,
+        "parking_car": 34,
+        "onsen": false,
+        "ev": false,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "yamakuni",
@@ -2517,12 +4667,46 @@
       },
       "lat": 33.40657,
       "lng": 131.06188,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yamakuni/yamakuni.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yamakuni/yamakuni.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の個別ページ。物産売店・レストラン・トイレ・駐車場の記載はあるが、車中泊や夜間駐車の可否についての言及はない。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yamakuni/yamakuni2.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設配置図に「普通車：46台、大型車：10台」。24時間利用可の設備は「休憩所」のみでトイレの24時間対応は記載なし。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-yamakuni",
+          "type": "blog",
+          "date": "2019-03",
+          "quote_ja": "実泊レポートで「この時点では車中泊禁止との情報は出ておりません」と記載。ローソン山国町店・なかま温泉が徒歩1分程度と紹介。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/travel-beginner-syatyuhaku-5",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "同ブログの「車中泊禁止の道の駅」全国リスト(2026年最新版)を確認したが、大分県は『長者原駐車場』(九重町)のみで道の駅やまくにの記載はなし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 46,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0.1,
+        "convenience_km": 0.1
+      }
     },
     {
       "id": "yaba-topia",
@@ -2537,12 +4721,37 @@
       },
       "lat": 33.48964,
       "lng": 131.17441,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yaba/yaba.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yaba/yaba.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の個別ページ。そば打ち体験や物産販売の記載はあるが車中泊・夜間駐車についての言及はない。温泉アイコンはoff。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yaba/yaba2.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設配置図に「普通車：102台、大型車：5台」。24時間利用可は「休憩所」のみ、売店は10:00～16:30。"
+        },
+        {
+          "url": "https://www.city-nakatsu.jp/doc/2013102300099/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "中津市公式ページに「駐車場（24時間利用可）：109台（大型車5台、普通車102台、身障者用2台）」と明記。駐車場自体は24時間利用可能。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 102,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "oyama",
@@ -2557,12 +4766,38 @@
       },
       "lat": 33.24822,
       "lng": 130.97194,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/oyama/oyama.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/oyama/oyama.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の個別ページ。「EV充電器」の記載あり、温泉アイコンはoff。車中泊・夜間駐車の言及なし。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/oyama/oyama2.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設配置図に「普通車：96台、大型車：4台」。24時間利用可は「休憩所」のみ。"
+        },
+        {
+          "url": "https://tabitabi.kyonophoto.com/trip/kyusyu/oita/michi-no-eki-oyama/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "「道の駅での車中泊は『仮眠や休憩』が原則となっています。長期滞在などは厳禁ですので、周りの迷惑にならない様にマナーを守って利用して下さい」「駐車場は全部で100台以上…車中泊をするには十分な広さ」。川と山が近く雨天時は注意との記載あり。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 96,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "sugo",
@@ -2577,12 +4812,43 @@
       },
       "lat": 32.9564,
       "lng": 131.29417,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sugou/sugou.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sugou/sugou.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の個別ページ。「EV充電器」「無料Wi-Fi」の記載あり、温泉アイコンはoff。車中泊・夜間駐車の言及はない。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sugou/sugou2.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設配置図に「普通車：82台、大型車：5台」。乳幼児設備・休憩所が24時間利用可。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/sugo/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "車中泊専門メディアの実地チェックで「普通車85台収容、フラットで車中泊に支障なし」「24時間トイレあり（多目的トイレにウォシュレット設置）」「敷地内に24時間営業のローソン」「荻の里温泉まで約7キロ」と紹介。車中泊適地として評価されている。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 82,
+        "toilet_24h": true,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 7,
+        "convenience_km": 0
+      }
     },
     {
       "id": "ono",
@@ -2597,12 +4863,44 @@
       },
       "lat": 33.03673,
       "lng": 131.5028,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/oono/oono.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/oono/oono.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の個別ページ。「大野町物産館 大地」「レストラン 大地」の記載。温泉なし。車中泊・夜間駐車の言及はない。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/oono/oono2.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設配置図に「普通車：80台、大型車：2台」。24時間利用可と明記された設備なし。"
+        },
+        {
+          "url": "https://sj-kochi.jp/archives/154",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "実泊体験記。「お店は閉まっていましたが、トイレは24時間開放されていた」「朝方になると霧がものすごく、駐車場にとまっているほかの車でさえまったく見え」ず、と複数車両の夜間駐車を示唆する記述あり。車中泊禁止の看板等への言及はない。"
+        },
+        {
+          "url": "https://ryuudesu.blog.shinobi.jp/%E5%A4%A7%E5%88%86%E7%9C%8C%E3%81%AE%E9%81%93%E3%81%AE%E9%A7%85/%E5%A4%A7%E5%88%86%E7%9C%8C%E3%81%AE%E9%81%93%E3%81%AE%E9%A7%85%20-23%E3%80%8C%E3%81%8A%E3%81%8A%E3%81%AE%EF%BC%88%E5%A4%A7%E9%87%8E%EF%BC%89%E3%80%8D",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "訪問記に「飲酒等の禁止と書かれた貼り紙がありました」（物産館前スペース）とあるが、これは飲酒禁止であり車中泊禁止の掲示ではない。著者も「道の駅でこの様な貼り紙は見たことがありません」とコメント。車中泊自体を禁じる記載はなし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 80,
+        "toilet_24h": true,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "kamae",
@@ -2617,12 +4915,41 @@
       },
       "lat": 32.80209,
       "lng": 131.92471,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kamae/kamae.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kamae/kamae.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の個別ページ。「直売所」「レストラン海鳴り亭」の記載。温泉はなし。車中泊・夜間駐車の言及はない。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kamae/kamae2.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設配置図に「普通車：96台、大型車：5台」。乳幼児用設備・公園・休憩所が24時間利用可。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/kamae/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "車中泊専門メディアの実地チェックで「ルールを守れば原則OK」「普通車96台を収容できる駐車場は広いうえにフラットで、特にどこも車中泊に支障は見当たらなかった」「24時間トイレあり、ウォシュレット完備」「ローソンまで約4.3キロ」「やよいの湯まで約27キロ」と紹介。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 96,
+        "toilet_24h": true,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 27,
+        "convenience_km": 4.3
+      }
     },
     {
       "id": "kunimi",
@@ -2637,12 +4964,41 @@
       },
       "lat": 33.68029,
       "lng": 131.60539,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kunimi/kunimi.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kunimi/kunimi.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の個別ページ。「EV充電器（道の駅　駐車場内）」の記載あり。隣接する「くにみオートキャンプ場」は全サイトに流し台・電源設備ありと紹介。温泉の記載なし。車中泊・夜間駐車の言及はない。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kunimi/kunimi2.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設配置図に「普通車：36台」。トイレの24時間対応の記載はなし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/kunumi/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "車中泊専門メディアの実地チェックで「原則OK（ルール遵守が前提）」「収容台数34台のこじんまりした道の駅」「湯の里 渓泉まで約10km」「ヤマザキYショップまで約1km」と紹介。隣接するくにみオートキャンプ場は電源完備で3670円（電源・シャワー込み）。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 36,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 10,
+        "convenience_km": 1
+      }
     },
     {
       "id": "seseragi-kamitsue",
@@ -2657,12 +5013,43 @@
       },
       "lat": 33.11233,
       "lng": 130.96159,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kamitsue/kamitsue.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kamitsue/kamitsue.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の個別ページ。「EV充電器」「無線LAN」の記載あり。温泉はなし。旧川原小学校校舎を利用し2021年11月に全面リニューアル。車中泊・夜間駐車の言及はない。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kamitsue/kamitsue2.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設配置図に「普通車：75台、大型車：5台」。24時間利用可と明記された設備はなし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/seseraginosato/",
+          "type": "wiki",
+          "date": "2023-02",
+          "quote_ja": "車中泊専門メディアの実地チェック(2023年2月更新)で「ルールを守れば原則OK」「駐車場のキャパシティー＝普通車:55台」「フラットで24時間トイレに近い車中泊に適した場所」「24時間トイレが完備されておりウォシュレットあり」「湯夢プラザまで約13キロ」「ファミリーマートまで約14キロ」と紹介。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 75,
+        "toilet_24h": true,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 13,
+        "convenience_km": 14
+      }
     },
     {
       "id": "mie",
@@ -2677,12 +5064,30 @@
       },
       "lat": 33.02865,
       "lng": 131.62174,
-      "official_url": "",
+      "official_url": "https://michinoeki-mie.com/",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/mie/mie.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "営業時間 3月～10月9:00～18:00、11月～2月9:00～17:00。施設アイコンで温泉・宿泊施設は「利用不可」表示。車中泊・宿泊に関する記載なし。"
+        },
+        {
+          "url": "https://michinoeki-mie.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトに車中泊・宿泊・夜間駐車に関する案内や禁止事項の記載なし。物産館で地域産野菜・特産品を販売。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "yayoi",
@@ -2697,12 +5102,42 @@
       },
       "lat": 32.9645,
       "lng": 131.83871,
-      "official_url": "",
+      "official_url": "https://www.michinoeki-yayoi.com/",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yayoi/yayoi.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "「道路情報休憩所」は24時間利用可。やよいの湯10:00～21:00(受付21:20迄)。フリーWi-Fiあり。車中泊・宿泊に関する記載なし。"
+        },
+        {
+          "url": "https://michikusa-factory.com/ooita-michinoeki-yayoi/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "24時間トイレ・シャワーあり、駐車場約197台。セブンイレブンまで約86m(車1分)。向かいにコインランドリーあり。"
+        },
+        {
+          "url": "https://www.michinoeki-yayoi.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトに車中泊・宿泊・夜間駐車に関する案内や禁止事項の記載なし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 197,
+        "onsen": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0,
+        "convenience_km": 0.1
+      }
     },
     {
       "id": "ume",
@@ -2717,12 +5152,38 @@
       },
       "lat": 32.80381,
       "lng": 131.61065,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ume/ume.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ume/ume.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "営業時間10:00～17:00(1/1は10:00～)。温泉設備なし。宿泊施設なし。車中泊に関する記載なし。"
+        },
+        {
+          "url": "https://roadtrips.jp/spot/d/oita/44002/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "普通車138台・大型車12台・身障者用5台。駐車場・屋外トイレは24時間利用可能。付近にコンビニは見当たらない(雑貨屋なら)との口コミ。"
+        },
+        {
+          "url": "https://satton-tabitosyumi.com/michinoekiume/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "裏側の普通車専用駐車場を利用すると静か。表の駐車場は夜間照明あり、裏は照明なし。トイレは水洗洋式で夜間照明あり。禁止看板への言及なし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 138,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "taketa",
@@ -2737,12 +5198,32 @@
       },
       "lat": 32.98552,
       "lng": 131.34048,
-      "official_url": "",
+      "official_url": "https://www.taketa-wakaba.jp/t-sta/",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/takeda/takeda.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "農産物直売所9:00～17:00、善米食堂10:00～17:00。EV充電器・無料Wi-Fiあり。温泉・宿泊施設は「なし」表示。車中泊に関する記載なし。"
+        },
+        {
+          "url": "https://www.taketa-wakaba.jp/t-sta/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "運営団体(竹田市わかば公社)の公式ページ。営業時間9:00～17:00。駐車台数・車中泊/夜間駐車に関する記載なし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "ev": true,
+        "wifi": true,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "taio-kinzan",
@@ -2757,12 +5238,25 @@
       },
       "lat": 33.12878,
       "lng": 130.88233,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/taio/taio.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/taio/taio.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "3月～11月9:00～17:00、12月～2月10:00～16:30。隣接の宿泊施設(鯛生家族旅行村 貸別荘ログハウス・オートキャンプ場)はチェックイン15:30/アウト10:00。普通車108台・大型10台・身障者用2台。温泉設備なし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 108,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "yamauchi",
@@ -2777,12 +5271,47 @@
       },
       "lat": 33.19168,
       "lng": 129.95593,
-      "official_url": "",
+      "official_url": "https://www.michinoeki-yamauchi.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.michinoeki-yamauchi.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトに車中泊・夜間駐車の禁止/許可の明示的記載はなし。駐車場は乗用車58台・大型車3台・身障者用2台、トイレは24時間利用可能で多目的トイレ完備。2025年11月にEV急速充電設備を2台分新設と記載。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yamauchi/yamauchi.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の道の駅個別紹介ページ。営業時間8:30〜18:00の記載のみで、車中泊・夜間駐車についての言及はない。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki_yamauchi/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "車中泊専門メディアによる実地レビュー。禁止看板の記載なし。駐車場58台、最寄りの武雄温泉まで約7.5km・15分、ローソンまで約450m、隣接してスーパー「スマイル」ありと紹介。"
+        },
+        {
+          "url": "https://date-planner.net/michinoeki-yamauchi-sleeping-in-the-car/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "車中泊を前提に「飲食スペースがない」「駐車場58台のみで満車の可能性」という2点を注意点として挙げるのみで、禁止看板や公式の制限についての言及はない。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 58,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 7.5,
+        "convenience_km": 0.45
+      }
     },
     {
       "id": "shiroishi",
@@ -2797,12 +5326,38 @@
       },
       "lat": 33.17723,
       "lng": 130.19572,
-      "official_url": "",
+      "official_url": "https://www.michinoeki-shiroishi.jp/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.michinoeki-shiroishi.jp/facility/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設案内ページに車中泊・夜間駐車に関する記載はなし。第一駐車場105台(障害者用5台・EV充電用1台・大型車11台)、第二駐車場120台(身障者用4台)、屋外トイレは24時間利用可能と明記。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/shiroishi/shiroishi.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の個別紹介ページ。営業時間・所在地等の基本情報のみで車中泊に関する記載はない。"
+        },
+        {
+          "url": "https://everydayfes.com/shiroishi",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "実泊体験記の著者が現地を確認し「『車中泊禁止』の看板もありませんでした」と明記。全体的に車中泊に好意的な内容。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 225,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "yamato-soyokaze",
@@ -2817,12 +5372,34 @@
       },
       "lat": 33.33928,
       "lng": 130.25769,
-      "official_url": "",
+      "official_url": "https://www.soyokazekan.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://michi-no-eki-ninja.com/2020/09/30/yamato-soyokazekan/",
+          "type": "official",
+          "date": "2020-09-30",
+          "quote_ja": "佐賀市の担当者からの回答を引用: 一部利用者が「年中駐車場内で車上生活」し苦情が寄せられたため「車中泊禁止」の看板を設置したが、「利用者によっては、一晩の仮眠休憩も禁止されていると捉えられる状態」だったと認め、看板の文言を「宿泊目的での当駐車場の利用はご遠慮下さい」に変更したと説明。短時間の仮眠・休憩自体を禁じるものではないという趣旨。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/2021/12/12/michinoeki_yamato/",
+          "type": "wiki",
+          "date": "2022-12",
+          "quote_ja": "車中泊専門メディアが更新確認。かつての「車中泊禁止」表示は撤回済みで、他の道の駅同様に車中泊旅行者の休憩利用を容認していると記載。駐車場は普通車100台、24時間トイレ(ウォシュレット付)あり。最寄りの熊野川温泉ちどりの湯まで約5km・7分、ファミリーマートまで約2.6km。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 100,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 5,
+        "convenience_km": 2.6
+      }
     },
     {
       "id": "momoyama-tenkaichi",
@@ -2837,12 +5414,39 @@
       },
       "lat": 33.52832,
       "lng": 129.87376,
-      "official_url": "",
+      "official_url": "https://momo-ten.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://momo-ten.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトには営業時間・電話番号等の基本情報のみで、車中泊・夜間駐車禁止に関する記載はない。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/momoyama/momoyama.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の個別紹介ページ。設備一覧で温泉は「利用不可」と表示されるのみで、車中泊に関する記載はない。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/momoyamatenkaichi/",
+          "type": "wiki",
+          "date": "2022-10",
+          "quote_ja": "車中泊専門メディアの実地レビュー。「掲示板に車中泊(仮眠・休憩)を禁止する記載はなく、ルールを守れば原則OK」と明記。駐車場は普通車94台。ただし駐車場の傾斜が強く快眠には不向きな区画もあると指摘。最寄りの呼子台場の湯まで約4.3km・10分、セブンイレブンまで約120m。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 94,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 4.3,
+        "convenience_km": 0.12
+      }
     },
     {
       "id": "asaji",
@@ -2857,12 +5461,32 @@
       },
       "lat": 33.00259,
       "lng": 131.44804,
-      "official_url": "",
+      "official_url": "https://michinoeki-asaji.com/",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/asaji/asaji.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "営業時間9:00～17:30。情報発信休憩室は24時間利用可。温泉・宿泊施設は「なし」表示。車中泊に関する記載なし。"
+        },
+        {
+          "url": "https://michinoeki-asaji.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトに車中泊・宿泊・夜間駐車に関する案内や禁止事項の記載なし。EV充電スタンドあり。駐車場62台(大型8・普通56・身障者2)。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 56,
+        "ev": true,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "kiyokawa",
@@ -2877,12 +5501,36 @@
       },
       "lat": 32.97166,
       "lng": 131.51821,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kiyokawa/kiyokawa.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kiyokawa/kiyokawa.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "営業時間7:30～18:00(3～11月)/8:00～17:00(12～2月)。駐車台数84台(一般76・身障者3・大型5)。温泉・宿泊施設は「なし」表示。"
+        },
+        {
+          "url": "https://syachuhaku-blog.fxtec.info/post-29480/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "「車中泊やめろ的な掲示無し」と現地確認の上で明記。駐車場・トイレは24時間利用可能。ただし入浴施設やコンビニ・スーパーが近くにない点に注意と指摘。"
+        },
+        {
+          "url": "https://hatrip-blog.me/michinoeki-kiyokawa/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "道の駅きよかわでは車中泊は特に禁止されていないと紹介。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 76,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "nejime",
@@ -2897,12 +5545,38 @@
       },
       "lat": 31.18553,
       "lng": 130.76715,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/nejime/nejime.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/nejime/nejime.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国土交通省九州地方整備局ページ。物産館9:00～17:00、レストラン11:00～14:00、EV充電施設あり。温泉は駅内になく、近隣に「ねじめ温泉・ネッピー館」がある旨の記載。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/kagoshima/ce7ac501c/michinoeki-nejime",
+          "type": "blog",
+          "date": "2026-05",
+          "quote_ja": "24時間利用可能なトイレ、駐車場約87台（平坦）。「道の駅での車中泊は『休憩・仮眠』が前提」「テント設営・屋外調理・長時間滞在は本来の用途ではない」と国土交通省の見解を引用するのみで、当駅固有の禁止記載はなし。"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/michinoeki-nejime/",
+          "type": "blog",
+          "date": "2026",
+          "quote_ja": "「道の駅での車中泊は、簡単に『禁止』できるものではなく、ルールを守れば原則OKが本筋」という一般論での紹介。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 87,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "uto-marina",
@@ -2917,12 +5591,31 @@
       },
       "lat": 32.66229,
       "lng": 130.52281,
-      "official_url": "",
+      "official_url": "https://www.city.uto.lg.jp/article/list/1171.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/uto/uto.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "「潮風かおる絶景の道の駅」。宿泊施設(G-HOTEL)ありと明記。情報コーナーは24時間。御輿来海岸に隣接。温泉・コンビニの記載なし。車中泊の可否については明記なし。"
+        },
+        {
+          "url": "https://4travel.jp/dm_shisetsu/10019488",
+          "type": "blog",
+          "date": "2021-05",
+          "quote_ja": "口コミ投稿「車中泊：道の駅 宇土マリーナ（熊本県）★★★★」（2021年5月8日）。駐車場・24Hトイレ・無料Wi-fiに言及。車中泊禁止看板についての言及はなし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "onsen": false,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "yuparu-nojiri",
@@ -2937,12 +5630,39 @@
       },
       "lat": 31.96438,
       "lng": 131.08239,
-      "official_url": "",
+      "official_url": "https://yuparu-nojiri.com/wp/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/yuparu/yuparu.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "「物産販売店・レストラン・入浴施設がある道の駅」。入浴施設「こばやしのじりの湯」の営業時間は12:00-20:30(最終受付20:00)。車中泊・夜間駐車の可否についての記載はなし。"
+        },
+        {
+          "url": "https://yuparu-nojiri.com/wp/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "「75台収容の大駐車場を完備」。入浴施設「こばやしのじりの湯」11:00-20:30、毎月第1水曜定休。宿泊施設(素泊まり4,290円〜)は現在休止中。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://camp-db.com/spots/miyazaki-1814",
+          "type": "blog",
+          "date": "2026",
+          "quote_ja": "「黙認 — 車中泊に関する公式見解なし。温泉施設・24時間トイレあり。マナー遵守の上で自己判断」運営は小林市。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 75,
+        "onsen": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0
+      }
     },
     {
       "id": "osumi-yagoro",
@@ -2957,12 +5677,39 @@
       },
       "lat": 31.59005,
       "lng": 130.99019,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/osumi/osumi.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/osumi/osumi.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国土交通省九州地方整備局ページ。駅内に「弥五郎の湯」（9:00～20:00）、「やごろう農土家市」（9:00～18:00、黒豚肉専門店併設）。公式サイトは http://www.nodoka-1.jp/ 。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://www.city.soo.kagoshima.jp/kurashi/koukyousisetu/kannkousisetu/yagoroudennsetunosato.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "曽於市公式サイト。「道の駅があり農畜産物の直売施設『やごろう農土家市』が整備され、年間約50万人の来場者」。健康ふれあい館（入浴施設）、弥五郎まつり館などを紹介。駐車場台数・車中泊についての記載なし。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/kagoshima/c73f3336c/michinoeki-oosumiyagoroudensetsunosato",
+          "type": "blog",
+          "date": "2026-05",
+          "quote_ja": "24時間トイレあり、駐車場約327台（平坦）。「道の駅での車中泊は『休憩・仮眠』が前提」という一般的注意のみで、当駅固有の禁止記載はなし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 327,
+        "onsen": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0
+      }
     },
     {
       "id": "iimori-jaguar-road",
@@ -2977,12 +5724,45 @@
       },
       "lat": 32.78537,
       "lng": 130.04601,
-      "official_url": "",
+      "official_url": "https://www.city.isahaya.nagasaki.jp/soshiki/43/1675.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.city.isahaya.nagasaki.jp/soshiki/43/1675.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "諫早市公式サイト。令和7年1月31日付けで国土交通省の道の駅として登録、令和7年11月1日開駅。所在地は諫早市飯盛町上原1376。車中泊・夜間駐車・施設詳細(駐車台数等)の記載は無く、公式ホームページ(isahaya-michinoeki251.jp)へ誘導。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/iimori/iimori.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国土交通省九州地方整備局の個別ページ。情報提供施設は24時間利用可能、EV充電器・無料Wi-Fiを付帯施設として記載。車中泊・夜間駐車についての言及は無い。"
+        },
+        {
+          "url": "https://kurukura.jp/article/91942-20251110-30/",
+          "type": "blog",
+          "date": "2025-11",
+          "quote_ja": "「駐車場：普通車90台、大型車8台、身障者・妊婦用3台、EV車充電スペース有、駐輪約24台」。2025年11月にジャガイモ畑の中にオープンした新しい道の駅。"
+        },
+        {
+          "url": "https://syachuhaku-blog.fxtec.info/post-28122/",
+          "type": "blog",
+          "date": "2025-11",
+          "quote_ja": "「普通に車中泊可能」で禁止掲示は無し。表の駐車場は傾斜がありやや騒がしいが「東側奥の『臨時駐車場』が夜間も駐車可能」で静か(ただしイベント時は不可の可能性)。トイレは水洗洋式ウォシュレットで夜間閉鎖なし、夜も電気点灯。無料Wi-Fiあり。入浴施設は敷地内に無いが「車で少し走ればいくつかある」。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 90,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "omuta",
@@ -2997,12 +5777,31 @@
       },
       "lat": 33.07325,
       "lng": 130.53219,
-      "official_url": "",
+      "official_url": "https://hanapluskan.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/omuta/omuta.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局ページ。「EV充電器あり」「フリーWi-Fiあり」「1階に採れたて地元野菜と季節の花、大牟田の特産品を配置」「営業時間9:00〜18:00」と記載。宿泊施設・温泉アイコンはオフ。車中泊・夜間駐車の制限文言は確認できず。"
+        },
+        {
+          "url": "https://www.crossroadfukuoka.jp/spot/12693",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "福岡県観光サイト。「駐車場は大型6台、普通車52台(身障者用3台含む)」と記載(複数の検索結果で一致する数値のため参考採用)。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "ev": true,
+        "wifi": true,
+        "shop": true,
+        "parking_car": 52
+      },
+      "nearby": {}
     },
     {
       "id": "miyama",
@@ -3017,12 +5816,34 @@
       },
       "lat": 33.14728,
       "lng": 130.48403,
-      "official_url": "",
+      "official_url": "https://michinoeki-miyama.co.jp/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://michinoeki-miyama.co.jp/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトを直接確認。「駐車場: 普通車226台、大型車12台、身障者用2台(計240台)」「トイレ/24時間利用可能/身障者用多目的トイレ有」「EV充電あり」と明記。車中泊・宿泊・夜間駐車についての禁止文言は記載なし。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-miyama",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "車中泊実地レポート。「車中泊禁止との情報は出ておりません」と明記。「真横にセブン-イレブン みやま小川店、徒歩1分」「最寄りの天然温泉『大木の湯』は約11kmで車20分」と記載。禁止看板の言及なし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "ev": true,
+        "shop": true,
+        "parking_car": 226
+      },
+      "nearby": {
+        "onsen_km": 11,
+        "convenience_km": 0.1
+      }
     },
     {
       "id": "kamimine",
@@ -3037,12 +5858,45 @@
       },
       "lat": 33.33408,
       "lng": 130.41722,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kamimine/kamimine.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kamimine/kamimine.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国交省九州地方整備局の個別紹介ページ。無料Wi-Fiありと記載。車中泊・夜間駐車に関する言及はなし。EV充電器は「予定」表記でまだ未設置。"
+        },
+        {
+          "url": "https://yuru-to.net/michieki.php?eid=1223",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "駐車場は普通131台・大型18台(計149台)、身障者用3台。温泉施設は「なし」と明記。車中泊についての言及はない。"
+        },
+        {
+          "url": "https://michikusa-factory.com/saga-11/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "2025年4月6日開業、佐賀県で最も新しい道の駅と紹介。「裏手の駐車場は静かで車中泊に向いている」と記載。禁止に関する言及はない。開業から日が浅く一次情報・実泊記録は限定的。"
+        },
+        {
+          "url": "https://syachuhaku-blog.fxtec.info/post-6502/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "検索結果スニペットのみ確認(直接fetch不可)。「Sランク(暫定評価)」というタイトルで車中泊適性を高評価しているが、禁止表記の有無など詳細本文は未検証。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 149,
+        "onsen": false,
+        "ev": false,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "himawari",
@@ -3057,12 +5911,45 @@
       },
       "lat": 32.7395,
       "lng": 130.36767,
-      "official_url": "",
+      "official_url": "https://michinoeki-himawari.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://michinoeki-himawari.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイトトップページを直接確認。「車中泊」「禁止」「夜間駐車」「仮眠」等の文言はページ内に一切確認されない(記載なし)。営業時間はショップ9:00〜17:00、レストラン11:00〜15:00。二次媒体(kochi-gwtp.com等)は「公式サイトや案内板に車中泊禁止と明記」と記載しているが、公式サイト本文にその文言は存在しないことを実際にfetchして確認した。"
+        },
+        {
+          "url": "https://michinoeki-himawari.com/information/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "施設案内ページにも「車中泊」「禁止」「夜間駐車」等の関連語は見当たらない(記載なし)。営業時間(ショップ9-17時、レストラン10:30-15時)と電話番号のみ記載。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/himawari/himawari.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国土交通省九州地方整備局の個別ページ。駐車場は合計180台(大型車20・普通車157・身障者用3・EV充電1)、トイレ合計24器。車中泊・夜間駐車・禁止に関する記載は無い。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-himawari",
+          "type": "blog",
+          "date": "2023",
+          "quote_ja": "「こちらの記事を執筆時点では車中泊禁止との情報は出ておりません」。「駐車スペースが広大なので停める場所をきちんと選ぶことでそこまでは気にならないレベル」。コンビニ(ファミリーマート島原アリーナ店・24時間営業)まで約1km、最寄り入浴施設は「島原温泉ゆとろぎの湯」。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 157,
+        "onsen": false,
+        "ev": true,
+        "shop": true
+      },
+      "nearby": {
+        "convenience_km": 1
+      }
     },
     {
       "id": "sakamoto",
@@ -3077,12 +5964,31 @@
       },
       "lat": 32.42669,
       "lng": 130.64094,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sakamoto/sakamoto.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/sakamoto/sakamoto.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "「休業中（Ｒ９年頃再開予定)」。令和2年7月豪雨により被災し復旧工事中。宿泊施設は利用不可と表示。"
+        },
+        {
+          "url": "https://www.sakamoto-kureon.com/%E6%96%BD%E8%A8%AD%E6%A1%88%E5%86%85/%E9%81%93%E3%81%AE%E9%A7%85-%E5%9D%82%E6%9C%AC/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "「令和2年7月豪雨の復旧工事のため閉館休業中」。「2027年6月(予定)までトイレ・駐車場のご利用、道の駅スタンプへの対応はいたしかねます」。堤防・駐車場・国道219号を盛り土かさ上げし2027年7月頃リニューアルオープン予定。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": false,
+        "onsen": false,
+        "shop": false
+      },
+      "nearby": {},
+      "closed_until": "2027-06"
     },
     {
       "id": "kahoku",
@@ -3097,12 +6003,24 @@
       },
       "lat": 33.11356,
       "lng": 130.66869,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kahoku/kahoku.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kahoku/kahoku.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "所在地：熊本県山鹿市鹿北町岩野4186-130。宿泊施設「なし」、温泉「なし」。周辺観光情報として「平山温泉　車で20分」。駐車場台数・トイレ24時間可否・車中泊可否の明記なし。物産館「小栗館」、レストラン「あか牛食堂よかよか」、喫茶「ぷちかふぇおぐりの樹」併設。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "soyokaze-park",
@@ -3177,12 +6095,39 @@
       },
       "lat": 32.28989,
       "lng": 130.58222,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/oonoonsen/oonoonsen.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/oonoonsen/oonoonsen.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "温泉施設は駅内・敷地内に併設(営業時間10:00-20:00、最終受付19:30)。宿泊施設は利用不可と表示。トイレ24時間可否・車中泊可否についての明記なし。"
+        },
+        {
+          "url": "https://roadtrips.jp/spot/d/kumamoto/43023/",
+          "type": "wiki",
+          "date": "2026-07",
+          "quote_ja": "「普通車：62台、大型車：5台、身障者用：4台」「駐車場・屋外トイレは24時間利用可能」。登録日2017年02月01日、最新の個別レビュー投稿はなし。"
+        },
+        {
+          "url": "https://syachuhaku-blog.fxtec.info/post-6954/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "検索結果スニペットより:「【Sランク🤩】道の駅 大野温泉（熊本県葦北郡芦北町）車中泊適性評価！⇨採点結果は何点？」— 直接fetch不可のためタイトルのみ確認、本文未読。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 62,
+        "onsen": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0
+      }
     },
     {
       "id": "misato-samata",
@@ -3197,12 +6142,45 @@
       },
       "lat": 32.62375,
       "lng": 130.82264,
-      "official_url": "",
+      "official_url": "https://samatanoyu-misato.jp/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/misatosamatanoyu/misatosamatanoyu.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "「源泉掛け流しの天然温泉施設」が駅の敷地内にあり(営業10:00-21:00)。宿泊施設「さまたんロッジ」あり(15:00-翌10:00)。情報コーナーは24時間利用可。"
+        },
+        {
+          "url": "https://samatanoyu-misato.jp/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "所在地：熊本県下益城郡美里町佐俣705。露天風呂・内湯(檜風呂)・家族風呂を備えた温泉施設と「さまたんロッジ」宿泊施設を運営。"
+        },
+        {
+          "url": "https://reiwa-travelers.com/zenkoku/kyusyu-okinawa/kumamoto-syachuhaku/michinoeki-samatanoyu/",
+          "type": "blog",
+          "date": "2020-01",
+          "quote_ja": "2019年9月の実泊レポート。「注意書きには具体的に車中泊（仮眠・休憩）禁止について書かれていません」。駐車場95台(一般86/身障者用2/大型車7)、トイレは24時間利用可でウォシュレット付き。"
+        },
+        {
+          "url": "https://syachuhaku-blog.fxtec.info/post-3763/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "検索結果スニペットより:「【Sランク🤩】道の駅 美里 佐俣の湯♨️（熊本県下益城郡美里町）車中泊は可能？」— 直接fetch不可のためタイトルのみ確認、本文未読。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 95,
+        "onsen": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 0
+      }
     },
     {
       "id": "notsuharu",
@@ -3217,12 +6195,38 @@
       },
       "lat": 33.12681,
       "lng": 131.49267,
-      "official_url": "",
+      "official_url": "https://michi-notsuharu.com/",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/notsuharu/notsuharu.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "物産9:00～17:00、レストラン10:00～15:00。EV充電器あり。温泉・宿泊施設は「なし」表示。車中泊に関する記載なし。"
+        },
+        {
+          "url": "https://keiban-tabicamp.com/notsuharu/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "駐車場は24時間利用可能で普通車44台、比較的フラット。車中泊禁止の言及なし。山の中の静かな道の駅で夜は星が綺麗と紹介。"
+        },
+        {
+          "url": "https://syachuhaku-blog.fxtec.info/post-29483/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "車中泊禁止を明示する看板の記載はなし。ただし幹線国道沿いで遮音物がなく騒音が大きいため安眠は難しいと指摘、車中泊向けの総合評価は「除外ランク」(63/100点)。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 44,
+        "ev": true,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "kitago",
@@ -3237,12 +6241,45 @@
       },
       "lat": 31.67678,
       "lng": 131.37575,
-      "official_url": "",
+      "official_url": "https://michinoekikitago.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://michinoekikitago.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "駐車場: 大型車5台・普通車95台・身障者用2台・EV充電器2台。「トイレ　24時間利用可能」。温泉施設の記載なし。車中泊・夜間駐車に関する特別な記載なし。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kitagou/kitagou.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "「情報館、トイレは24時間利用可能」。温泉なし。車中泊・夜間駐車の可否についての記載はなし。2023年10月開業、日南北郷ICから車で約5分。"
+        },
+        {
+          "url": "https://michikusa-factory.com/miyazaki-19/",
+          "type": "blog",
+          "date": "2026",
+          "quote_ja": "宮崎県で一番新しい車中泊スポットとして紹介。無料WiFiあり。"
+        },
+        {
+          "url": "https://syachuhaku-blog.fxtec.info/post-28721/",
+          "type": "blog",
+          "date": "2026",
+          "quote_ja": "(検索スニペット経由)「Bランク」評価、詳細案内図とトイレ写真を掲載。「普通に車中泊可能」で明示的な禁止事項の記載はなしと紹介。幹線道沿いのため騒音がやや難点。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 95,
+        "onsen": false,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "kinko-nishiki",
@@ -3257,12 +6294,38 @@
       },
       "lat": 31.27503,
       "lng": 130.793,
-      "official_url": "",
+      "official_url": "http://www.kinko-nishikinosato.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kinnkounisikinosato/kinnpounisikinosato.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国土交通省九州地方整備局ページ。売店「にしきの里」あり（地産地消の農林産物・加工品・工芸品販売）。温泉・EV充電・無線LANのアイコンなし。営業時間8:30～18:00（12/31～1/3休館）。車中泊についての記載なし。"
+        },
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19811",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "駐車場「大型：1台　普通車：20（身障者用1）台」。温泉・EV充電・無線LANは「利用不可」表示。観光案内・身障者トイレ・ショップは利用可。"
+        },
+        {
+          "url": "https://reiwa-travelers.com/zenkoku/kyusyu-okinawa/kagoshima-syachuhaku/michinoeki-nishikino/",
+          "type": "blog",
+          "date": "2019-09",
+          "quote_ja": "2019年9月の実訪問記。「具体的に車中泊（仮眠・休憩）禁止について書かれた看板などは無かったので車中泊は可能です」。実際に車中泊を実行し、他に2台の車中泊者もいたと記載。ただし「その後に現地に行ったら車中泊禁止になっていた、という事もあり得ます」と時点情報である旨の注意書きあり。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 20,
+        "onsen": false,
+        "ev": false,
+        "wifi": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "tanoura",
@@ -3277,12 +6340,33 @@
       },
       "lat": 32.36459,
       "lng": 130.51274,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tanoura/tanoura.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tanoura/tanoura.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "所在地：熊本県葦北郡芦北町(「柑橘と潮風の香る万葉の里」)。宿泊施設は「利用不可」と表示。温泉は駅内になく、周辺施設として「道の駅大野温泉」を紹介。※本駅は大分県大分市の「道の駅たのうらら」とは別施設。"
+        },
+        {
+          "url": "https://reiwa-travelers.com/zenkoku/kyusyu-okinawa/kumamoto-syachuhaku/michinoeki-tanoura/",
+          "type": "blog",
+          "date": "2020-02",
+          "quote_ja": "2019年9月の実泊レポート。「具体的に車中泊（仮眠・休憩）禁止について書かれた看板などは無かったので車中泊は可能」。駐車スペース109台、トイレはウォシュレット付きで24時間利用可能。御立岬温泉センターまで4.1km。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 109,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 4.1
+      }
     },
     {
       "id": "jion-no-taki-kusu",
@@ -3297,12 +6381,40 @@
       },
       "lat": 33.26587,
       "lng": 131.06838,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/jionnotakikusu/jionnotakikusu.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/jionnotakikusu/jionnotakikusu.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "営業時間9:00～17:00(12～2月は9:00～16:30)。情報発信コーナー24時間利用可、トイレ利用可。温泉・シャワーは「なし」表示。宿泊施設なし。"
+        },
+        {
+          "url": "https://roadtrips.jp/spot/d/oita/44024/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "西2kmに湯ノ釣温泉、西4.4kmに天ヶ瀬温泉郷(共同湯約100円)。レストランなし、売店のみ。駐車場・屋外トイレは24時間利用可能。"
+        },
+        {
+          "url": "https://log-oita.com/mitinoekizionnotakikusu/",
+          "type": "blog",
+          "date": "2026-07",
+          "quote_ja": "無料駐車場は約40台分と広い。車中泊禁止に関する記載なし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "wifi": true,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 2
+      }
     },
     {
       "id": "amami-sumiyo",
@@ -3317,12 +6429,37 @@
       },
       "lat": 28.25932,
       "lng": 129.40908,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/amami/amami.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/amami/amami.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国土交通省九州地方整備局ページ。トイレ24時間利用可能。マングローブパーク内売店9:00～18:00、世界遺産センター内売店9:30～16:30。温泉なし。車中泊についての記載なし。離島の駅であることに留意。"
+        },
+        {
+          "url": "https://www.city.amami.lg.jp/ssangyo/kanko/michi.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "奄美市公式サイト。「黒潮の森マングローブパーク」の施設(トイレ、レストラン、売店、道の駅休憩室等)を紹介。開園時間 夏季9:00-18:00・冬季9:00-17:30。駐車場台数・車中泊についての記載なし。"
+        },
+        {
+          "url": "https://shachuhaku-note.com/spots/kagoshima/c8b47e968/michinoeki-amamiooshimasumiyou",
+          "type": "blog",
+          "date": "2026-05",
+          "quote_ja": "24時間利用可能なトイレ、駐車場約95台（平坦）。「道の駅での車中泊は『休憩・仮眠』が前提」という一般的注意のみで、当駅固有の禁止記載はなし。開設2024年12月と比較的新しい道の駅。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 95,
+        "onsen": false,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "tokunoshima",
@@ -3337,12 +6474,32 @@
       },
       "lat": 27.8264,
       "lng": 128.95441,
-      "official_url": "",
+      "official_url": "https://michinoeki-tokunoshima.jp/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://michinoeki-tokunoshima.jp/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "公式サイト。「大型車３台、普通車４２台、優先駐車場１台の計４６台が２４時間無料で利用できる駐車場」。「駐車機能及びお客様の利便性維持のため、乗り合わせ等運転手不在による長期駐車はご遠慮ください」（イベント会場化・占有利用も同様に制限）。車中泊そのものを名指しで禁止する記載はなく、あくまで運転手不在の長期駐車・占有利用への注意。無料Wi-Fi完備、販売所9:00～18:00。"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tokunosima/tokunosima.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "国土交通省九州地方整備局ページ。「道の駅（駐車場・屋外トイレ・案内ステーション・子育て支援室）24時間」利用可能。無料Wi-Fi完備、販売所9:00～18:00。温泉なし。車中泊についての記載なし。離島の駅であることに留意。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 46,
+        "onsen": false,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {}
     },
     {
       "id": "hikyo-no-sato-izumi",
@@ -3359,10 +6516,38 @@
       "lng": 130.79639,
       "official_url": "https://fureai-izumi.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/izumi/izumi.html",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "2024年4月20日開業、国道443号沿い、五家荘への玄関口。付帯施設一覧で宿泊施設・温泉・シャワーは「なし」。無料Wi-Fiは利用可能施設として明記。トイレ24時間可否・車中泊可否の明記なし。"
+        },
+        {
+          "url": "https://fureai-izumi.com/",
+          "type": "official",
+          "date": "2026-07",
+          "quote_ja": "所在地：熊本県八代市泉町下岳3296番地1。ショップ9:00-17:00、レストラン11:00-17:00、水曜定休(祝日営業)。TEL 0965-67-3500。駐車場台数・トイレ・車中泊についての記載なし。"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-hikyoizumi",
+          "type": "blog",
+          "date": "2025-11",
+          "quote_ja": "2025年11月10日の実泊レポート。「車中泊、さすが秘境の郷、お仲間無し、暗くて静かでした」。駐車場は普通車66台・身障者用1台(大型車枠なし)。コンビニ・佐俣の湯温泉ともに約11km(車15分)。禁止看板の言及なし。"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "parking_car": 66,
+        "onsen": false,
+        "wifi": true,
+        "shop": true
+      },
+      "nearby": {
+        "onsen_km": 11,
+        "convenience_km": 11
+      }
     }
   ]
 }

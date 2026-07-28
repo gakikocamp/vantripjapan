@@ -177,6 +177,7 @@
         .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
+        .status-banner.closed { background: var(--st-red-tint); color: var(--st-red-text); font-weight: 700; font-size: 0.95rem; padding: 18px 22px; }
         /* 答えがヒーロー: 判定文をページ最大の活字にする */
         .status-banner .st-label { display: flex; align-items: center; gap: 14px; font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.02em; line-height: 1.15; }
         .status-banner .st-label .dot { width: 14px; height: 14px; flex-shrink: 0; }
@@ -409,19 +410,19 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.7395" data-lng="130.36767" href="/zh/overnight-parking/michi-no-eki/nagasaki/himawari/">
                 <span class="st-num st-num-noban" aria-hidden="true">30</span>
                 <span class="st-main"><span class="st-name">道の駅ひまわり</span>
-                <span class="st-city">南島原市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">南島原市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.78537" data-lng="130.04601" href="/zh/overnight-parking/michi-no-eki/nagasaki/iimori-jaguar-road/">
                 <span class="st-num st-num-noban" aria-hidden="true">31</span>
                 <span class="st-main"><span class="st-name">道の駅251いいもりじゃがーロード</span>
-                <span class="st-city">諫早市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">諫早市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.35526" data-lng="129.43372" href="/zh/overnight-parking/michi-no-eki/nagasaki/ikitsuki-ohashi/">
                 <span class="st-num st-num-noban" aria-hidden="true">32</span>
                 <span class="st-main"><span class="st-name">道の駅生月大橋</span>
-                <span class="st-city">平戸市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">平戸市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.73836" data-lng="128.69003" href="/zh/overnight-parking/michi-no-eki/nagasaki/kentoshi/">
@@ -433,43 +434,43 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.3175" data-lng="129.6031" href="/zh/overnight-parking/michi-no-eki/nagasaki/konchu-no-sato-tabira/">
                 <span class="st-num st-num-noban" aria-hidden="true">34</span>
                 <span class="st-main"><span class="st-name">道の駅昆虫の里たびら</span>
-                <span class="st-city">平戸市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">平戸市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.34816" data-lng="129.70168" href="/zh/overnight-parking/michi-no-eki/nagasaki/matsuura/">
                 <span class="st-num st-num-noban" aria-hidden="true">35</span>
                 <span class="st-main"><span class="st-name">道の駅松浦海のふるさと館</span>
-                <span class="st-city">松浦市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">松浦市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.04283" data-lng="129.69605" href="/zh/overnight-parking/michi-no-eki/nagasaki/saikai/">
                 <span class="st-num st-num-noban" aria-hidden="true">36</span>
                 <span class="st-main"><span class="st-name">道の駅さいかい</span>
-                <span class="st-city">西海市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">西海市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.20176" data-lng="129.67194" href="/zh/overnight-parking/michi-no-eki/nagasaki/sasebo-box99/">
                 <span class="st-num st-num-noban" aria-hidden="true">37</span>
                 <span class="st-main"><span class="st-name">道の駅させぼっくす９９</span>
-                <span class="st-city">佐世保市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">佐世保市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.88526" data-lng="130.00731" href="/zh/overnight-parking/michi-no-eki/nagasaki/suzuta-toge/">
                 <span class="st-num st-num-noban" aria-hidden="true">38</span>
                 <span class="st-main"><span class="st-name">道の駅長崎街道鈴田峠</span>
-                <span class="st-city">大村市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">大村市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.43362" data-lng="129.78242" href="/zh/overnight-parking/michi-no-eki/nagasaki/takarashima/">
                 <span class="st-num st-num-noban" aria-hidden="true">39</span>
                 <span class="st-main"><span class="st-name">道の駅鷹ら島</span>
-                <span class="st-city">松浦市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">松浦市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.83586" data-lng="129.70385" href="/zh/overnight-parking/michi-no-eki/nagasaki/yuhigaoka-sotome/">
                 <span class="st-num st-num-noban" aria-hidden="true">40</span>
                 <span class="st-main"><span class="st-name">道の駅夕陽が丘そとめ</span>
-                <span class="st-city">長崎市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">長崎市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>

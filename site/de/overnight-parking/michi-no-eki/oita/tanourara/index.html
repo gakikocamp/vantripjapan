@@ -75,7 +75,8 @@
     "@type": "GeoCoordinates",
     "latitude": 33.25585,
     "longitude": 131.55601
-  }
+  },
+  "sameAs": "https://www.tanourara.jp/"
 }
     </script>
     <script type="application/ld+json">
@@ -88,7 +89,7 @@
       "name": "Ist Übernachten am Michi-no-Eki Tanourara erlaubt?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — lesen Sie sie bitte bei der Ankunft."
+        "text": "Wir haben diese Station recherchiert, und die Quellen unten widersprechen sich oder sind veraltet. Eine Meldung spricht womöglich von einer Abweisung, während eine aktuelle Vor-Ort-Erhebung keine Beschilderung fand, oder der Parkplatz gehört der Gemeinde und nicht der Station. Deshalb legen wir uns hier noch nicht fest. Behandeln Sie sie als unsicher: leise bleiben, bei der Ankunft die Schilder lesen und bereit sein weiterzufahren. Waren Sie dort? Ihre Meldung unten klärt es schneller als alles andere."
       }
     },
     {
@@ -152,6 +153,7 @@
         .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
+        .status-banner.closed { background: var(--st-red-tint); color: var(--st-red-text); font-weight: 700; font-size: 0.95rem; padding: 18px 22px; }
         /* 答えがヒーロー: 判定文をページ最大の活字にする */
         .status-banner .st-label { display: flex; align-items: center; gap: 14px; font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.02em; line-height: 1.15; }
         .status-banner .st-label .dot { width: 14px; height: 14px; flex-shrink: 0; }
@@ -375,8 +377,9 @@
 
         <div class="status-banner noban">
             <div class="st-label"><span class="dot"></span>Eine ruhige Nacht im Fahrzeug ist hier meist OK</div>
-            <div class="st-verified">Wir haben die Regeln dieser Station noch nicht geprüft — helfen Sie uns</div>
+            <div class="st-verified">Geprüft — aber die Quellen widersprechen sich</div>
         </div>
+        
         
         <div class="action-row">
             <a class="ovn-btn primary" href="https://www.google.com/maps/dir/?api=1&destination=33.25585,131.55601&travelmode=driving" target="_blank" rel="noopener">🧭 In Google Maps öffnen</a>
@@ -427,8 +430,8 @@
         })();
         </script>
         <div class="ovn-card">
-            <h2>Was das für Sie bedeutet</h2>
-            <p>Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — lesen Sie sie bitte bei der Ankunft.</p>
+            <h2>Geprüft — aber die Quellen widersprechen sich</h2>
+            <p>Wir haben diese Station recherchiert, und die Quellen unten widersprechen sich oder sind veraltet. Eine Meldung spricht womöglich von einer Abweisung, während eine aktuelle Vor-Ort-Erhebung keine Beschilderung fand, oder der Parkplatz gehört der Gemeinde und nicht der Station. Deshalb legen wir uns hier noch nicht fest. Behandeln Sie sie als unsicher: leise bleiben, bei der Ankunft die Schilder lesen und bereit sein weiterzufahren. Waren Sie dort? Ihre Meldung unten klärt es schneller als alles andere.</p>
         </div>
         <div class="ovn-card">
             <h2>Die offizielle nationale Regel (zuerst lesen)</h2>
@@ -442,12 +445,18 @@
             <h2>Stationsdaten</h2>
             <table class="ovn-table"><tr><th>Präfektur</th><td>Ōita</td></tr>
             <tr><th>Stadt / Gemeinde</th><td>Oita（大分市）</td></tr>
-            <tr><th>Karte</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=33.25585,131.55601&travelmode=driving" target="_blank" rel="noopener">In Google Maps öffnen</a></td></tr></table>
+            <tr><th>Offizielle Website</th><td><a href="https://www.tanourara.jp/" target="_blank" rel="noopener nofollow">www.tanourara.jp</a></td></tr>
+            <tr><th>Karte</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=33.25585,131.55601&travelmode=driving" target="_blank" rel="noopener">In Google Maps öffnen</a></td></tr>
+            <tr><th>Ausstattung</th><td>Toiletten rund um die Uhr · 236 Pkw-Stellplätze · Laden / Restaurant</td></tr></table>
         </div>
-        
+        <div class="ovn-card"><h2>Quellen</h2>
+            <div class="src-item"><span class="src-tag">Offiziell</span><a href="https://www.city.oita.oita.jp/o243/tanourara2.html" target="_blank" rel="noopener nofollow">www.city.oita.oita.jp</a><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「大分市公式ページ。「大型車29台、小型車236台、身障者・妊婦用5台」、24時間利用できる駐車場・屋外トイレ(多機能・オストメイト対応)ありと明記。車中泊禁止・夜間駐車禁止についての記載は無い。」</div></div>
+            <div class="src-item"><span class="src-tag">Community-Meldung</span><a href="https://www.yamatoyama.online/tanourara/" target="_blank" rel="noopener nofollow">www.yamatoyama.online</a><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「車中泊は「国道・側道・JR線路の三重の騒音で、静かに車中泊するのは難しい」として非推奨と評価。禁止看板・掲示についての言及は無く、除外理由はあくまで騒音環境。※注意: 検索エンジンの要約は「車中泊禁止と明記」と誤って返すことがあるが、この一次記事および大分市公式ページのいずれにも禁止掲示の記載は無い。熊本県「道の駅たのうら」とは別施設。」</div></div>
+            <div class="src-item"><span class="src-tag">Community-Meldung</span><a href="https://edoya-group.com/tanourara/" target="_blank" rel="noopener nofollow">edoya-group.com</a> <span style="color:#5f5f66;">(2024-07)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「2024年7月7日オープン、大分県内25番目の道の駅。実際に車中泊した夫婦の体験記で「一晩過ごすのに、特に大きな問題のない快適な場所でした」「夜中でも交通量があり安心感がある」と記載。禁止看板の言及は無い。」</div></div>
+        </div>
         <div class="ovn-card">
             <h2>Häufige Fragen</h2>
-            <div class="faq-item-s"><div class="q">Ist Übernachten am Michi-no-Eki Tanourara erlaubt?</div><p>Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — lesen Sie sie bitte bei der Ankunft.</p></div>
+            <div class="faq-item-s"><div class="q">Ist Übernachten am Michi-no-Eki Tanourara erlaubt?</div><p>Wir haben diese Station recherchiert, und die Quellen unten widersprechen sich oder sind veraltet. Eine Meldung spricht womöglich von einer Abweisung, während eine aktuelle Vor-Ort-Erhebung keine Beschilderung fand, oder der Parkplatz gehört der Gemeinde und nicht der Station. Deshalb legen wir uns hier noch nicht fest. Behandeln Sie sie als unsicher: leise bleiben, bei der Ankunft die Schilder lesen und bereit sein weiterzufahren. Waren Sie dort? Ihre Meldung unten klärt es schneller als alles andere.</p></div>
             <div class="faq-item-s"><div class="q">Welche Regeln gelten beim Schlafen an einem Michi-no-Eki?</div><p>Maximal eine ruhige Nacht, Motor aus, nichts außerhalb des Fahrzeugs, kein Feuer, abseits des Eingangs parken, Ruhe ab 21 Uhr, Müll mitnehmen und den Laden unterstützen. Einzelne Stationen können strengere Regeln aushängen — Schilder vor Ort haben immer Vorrang vor dieser Datenbank.</p></div>
             <div class="faq-item-s"><div class="q">Wo kann ich in der Nähe legal übernachten?</div><p>Offizielle RV-Parks (in der Regel 1.000–4.500 ¥/Nacht, reservierbar), Auto-Campingplätze (1.000–5.000 ¥) und manche Onsen mit Übernachtungs-Parkplatz. Jede Miete bei VAN TRIP JAPAN enthält eine kuratierte Übernachtungskarte für Kyushu — legale Plätze, an denen man Sie gern empfängt.</p></div>
         </div>

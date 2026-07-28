@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, follow">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <title>Michi-no-Eki Harazuru — Übernachtungsregeln 2026 | VAN TRIP JAPAN</title>
     <meta name="description" content="Darf man am Michi-no-Eki Harazuru im Campervan übernachten? Aktueller Status: Eine ruhige Nacht im Fahrzeug ist hier meist OK. Regeln, Quellen, Prüfdatum und legale Alternativen in der Nähe.">
     <meta property="og:title" content="Michi-no-Eki Harazuru — Übernachtungsregeln 2026 | VAN TRIP JAPAN">
@@ -75,7 +75,8 @@
     "@type": "GeoCoordinates",
     "latitude": 33.3537,
     "longitude": 130.78488
-  }
+  },
+  "sameAs": "https://fs-basaro.jp/"
 }
     </script>
     <script type="application/ld+json">
@@ -88,7 +89,7 @@
       "name": "Ist Übernachten am Michi-no-Eki Harazuru erlaubt?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — lesen Sie sie bitte bei der Ankunft."
+        "text": "Bei unserer letzten Prüfung (2026-07-28) haben wir am Michi-no-Eki Harazuru kein ausdrückliches Verbot gefunden. Es gilt Japans nationale Regel für Raststationen: ruhiges Ausruhen im Fahrzeug wird toleriert, Camping-Verhalten nicht. Beachten Sie immer die Schilder vor Ort."
       }
     },
     {
@@ -152,6 +153,7 @@
         .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
+        .status-banner.closed { background: var(--st-red-tint); color: var(--st-red-text); font-weight: 700; font-size: 0.95rem; padding: 18px 22px; }
         /* 答えがヒーロー: 判定文をページ最大の活字にする */
         .status-banner .st-label { display: flex; align-items: center; gap: 14px; font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.02em; line-height: 1.15; }
         .status-banner .st-label .dot { width: 14px; height: 14px; flex-shrink: 0; }
@@ -375,17 +377,14 @@
 
         <div class="status-banner noban">
             <div class="st-label"><span class="dot"></span>Eine ruhige Nacht im Fahrzeug ist hier meist OK</div>
-            <div class="st-verified">Wir haben die Regeln dieser Station noch nicht geprüft — helfen Sie uns</div>
+            <div class="st-verified">Zuletzt geprüft: 2026-07-28</div>
         </div>
+        
         
         <div class="action-row">
             <a class="ovn-btn primary" href="https://www.google.com/maps/dir/?api=1&destination=33.3537,130.78488&travelmode=driving" target="_blank" rel="noopener">🧭 In Google Maps öffnen</a>
         </div>
-        <div class="ovn-card boxed help-card">
-            <h2>Schon dort gewesen? Helfen Sie anderen Reisenden</h2>
-            <p>Wir wissen, wo diese Station liegt — aber nicht, was auf ihren Schildern steht. Wenn Sie dort übernachtet haben oder vorbeigefahren sind, sagen Sie es uns in 30 Sekunden. Wir prüfen jede Meldung anhand der Quellen der Station, aktualisieren dann diese Seite und nennen Sie als Quelle.</p>
-            <p style="margin-top:14px;"><a href="#rfForm" class="ovn-btn primary" style="font-size:0.92rem;padding:12px 26px;">Melden, was Sie gesehen haben ↓</a></p>
-        </div>
+        
         <div class="ovn-card boxed vote-card">
             <h2 class="vote-q">Konnten Sie hier übernachten?</h2>
             <div class="vote-btns" id="ovnVote">
@@ -428,7 +427,7 @@
         </script>
         <div class="ovn-card">
             <h2>Was das für Sie bedeutet</h2>
-            <p>Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — lesen Sie sie bitte bei der Ankunft.</p>
+            <p>Gute Nachricht: Eine ruhige Nacht im Fahrzeug wird hier in der Regel toleriert — zum Prüfdatum haben wir kein ausdrückliches Verbot gefunden, es gilt also Japans nationaler Standard. Aber Sie sind Gast auf einem Parkplatz, nicht auf einem Campingplatz. Halten Sie sich an die Etikette unten; sagen Schilder oder Personal vor Ort etwas anderes, gilt immer das.</p>
         </div>
         <div class="ovn-card">
             <h2>Die offizielle nationale Regel (zuerst lesen)</h2>
@@ -442,12 +441,17 @@
             <h2>Stationsdaten</h2>
             <table class="ovn-table"><tr><th>Präfektur</th><td>Fukuoka</td></tr>
             <tr><th>Stadt / Gemeinde</th><td>Asakura（朝倉市）</td></tr>
-            <tr><th>Karte</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=33.3537,130.78488&travelmode=driving" target="_blank" rel="noopener">In Google Maps öffnen</a></td></tr></table>
+            <tr><th>Offizielle Website</th><td><a href="https://fs-basaro.jp/" target="_blank" rel="noopener nofollow">fs-basaro.jp</a></td></tr>
+            <tr><th>Karte</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=33.3537,130.78488&travelmode=driving" target="_blank" rel="noopener">In Google Maps öffnen</a></td></tr>
+            <tr><th>Ausstattung</th><td>Kostenloses WLAN · Laden / Restaurant</td></tr></table>
         </div>
-        
+        <div class="ovn-card"><h2>Quellen</h2>
+            <div class="src-item"><span class="src-tag">Offiziell</span><a href="https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/harazuru/harazuru.html" target="_blank" rel="noopener nofollow">www.qsr.mlit.go.jp</a> <span style="color:#5f5f66;">(2026-07)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「国交省九州地方整備局ページ。「無線LAN完備」「情報コーナー9:00〜17:30」の記載あり。「原鶴温泉　徒歩10分」と明記。車中泊・宿泊・夜間駐車の禁止に関する文言は確認できず。」</div></div>
+            <div class="src-item"><span class="src-tag">Community-Meldung</span><a href="https://blog.goo.ne.jp/16hoursjourney/e/e63084ea748ec889fe7004d72cc0e5fa" target="_blank" rel="noopener nofollow">blog.goo.ne.jp</a> <span style="color:#5f5f66;">(2026-07)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「実泊レビュー記事。屋根付き駐車場(大型15台+普通車4台)があり雨天でも安心、24時間トイレ(ウォシュレット洋式2基+多目的1基)、車内でも使える無料Wi-Fiと記載。禁止看板の言及は無し。」</div></div>
+        </div>
         <div class="ovn-card">
             <h2>Häufige Fragen</h2>
-            <div class="faq-item-s"><div class="q">Ist Übernachten am Michi-no-Eki Harazuru erlaubt?</div><p>Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — lesen Sie sie bitte bei der Ankunft.</p></div>
+            <div class="faq-item-s"><div class="q">Ist Übernachten am Michi-no-Eki Harazuru erlaubt?</div><p>Bei unserer letzten Prüfung (2026-07-28) haben wir am Michi-no-Eki Harazuru kein ausdrückliches Verbot gefunden. Es gilt Japans nationale Regel für Raststationen: ruhiges Ausruhen im Fahrzeug wird toleriert, Camping-Verhalten nicht. Beachten Sie immer die Schilder vor Ort.</p></div>
             <div class="faq-item-s"><div class="q">Welche Regeln gelten beim Schlafen an einem Michi-no-Eki?</div><p>Maximal eine ruhige Nacht, Motor aus, nichts außerhalb des Fahrzeugs, kein Feuer, abseits des Eingangs parken, Ruhe ab 21 Uhr, Müll mitnehmen und den Laden unterstützen. Einzelne Stationen können strengere Regeln aushängen — Schilder vor Ort haben immer Vorrang vor dieser Datenbank.</p></div>
             <div class="faq-item-s"><div class="q">Wo kann ich in der Nähe legal übernachten?</div><p>Offizielle RV-Parks (in der Regel 1.000–4.500 ¥/Nacht, reservierbar), Auto-Campingplätze (1.000–5.000 ¥) und manche Onsen mit Übernachtungs-Parkplatz. Jede Miete bei VAN TRIP JAPAN enthält eine kuratierte Übernachtungskarte für Kyushu — legale Plätze, an denen man Sie gern empfängt.</p></div>
         </div>
@@ -457,19 +461,19 @@
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.33419" data-lng="130.81824" href="/de/overnight-parking/michi-no-eki/fukuoka/ukiha/">
                 <span class="st-num st-num-noban" aria-hidden="true">16</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ukiha</span>
-                <span class="st-city">道の駅うきは · Ukiha · 4&nbsp;km · <span class="st-unverified">Infos gesucht</span></span></span>
+                <span class="st-city">道の駅うきは · Ukiha · 4&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Meist OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.4652" data-lng="130.82599" href="/de/overnight-parking/michi-no-eki/fukuoka/koishiwara/">
                 <span class="st-num st-num-noban" aria-hidden="true">9</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Koishiwara</span>
-                <span class="st-city">道の駅小石原 · Toho Village · 13&nbsp;km · <span class="st-unverified">Infos gesucht</span></span></span>
+                <span class="st-city">道の駅小石原 · Toho Village · 13&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Meist OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.31945" data-lng="130.59372" href="/de/overnight-parking/michi-no-eki/fukuoka/kurume/">
                 <span class="st-num st-num-noban" aria-hidden="true">10</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kurume</span>
-                <span class="st-city">道の駅くるめ · Kurume · 18&nbsp;km · <span class="st-unverified">Infos gesucht</span></span></span>
+                <span class="st-city">道の駅くるめ · Kurume · 18&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Meist OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>

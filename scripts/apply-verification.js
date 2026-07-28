@@ -80,7 +80,9 @@ for (const r of list) {
     if (r.confidence !== "high") reasons.push(`confidence=${r.confidence}`);
     if (r.status === "prohibited" && !hasPrimary) reasons.push("prohibited判定に一次情報(sign/official)の出典が無い");
     if (r.status === "prohibited" && phoneOnly) reasons.push("電話回答のみが根拠(電話は聞けば断られるため掲示の有無とは別物)");
-    if (!ev.length) reasons.push("出典ゼロ");
+    // 出典の有無は「今回の投入分」ではなく「マージ後の累計」で判定する。
+    // 既存出典がある駅へ nearby/facilities だけを追加投入するケースで誤って「出典ゼロ」と却下しないため
+    if (!(st.evidence && st.evidence.length)) reasons.push("出典ゼロ");
     if (r.status === "prohibited" && hasSign) console.log(`   ※ ${r.id}: 現地の掲示を確認 — 最も強い証拠`);
 
     if (reasons.length) {

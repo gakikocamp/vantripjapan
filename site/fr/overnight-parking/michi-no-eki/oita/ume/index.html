@@ -75,7 +75,8 @@
     "@type": "GeoCoordinates",
     "latitude": 32.80381,
     "longitude": 131.61065
-  }
+  },
+  "sameAs": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ume/ume.html"
 }
     </script>
     <script type="application/ld+json">
@@ -88,7 +89,7 @@
       "name": "Peut-on stationner la nuit à Michi-no-Eki Ume ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — lisez-les en arrivant."
+        "text": "Nous avons enquêté sur cette station et les sources ci-dessous se contredisent ou sont anciennes. Un signalement peut indiquer un refus de nuitée alors qu'un relevé récent sur place n'a trouvé aucun panneau, ou le parking peut être géré par la commune et non par la station. Nous ne tranchons donc pas encore. Considérez-la comme incertaine : restez discret, lisez les panneaux à l'arrivée et soyez prêt à repartir. Si vous y êtes allé, votre signalement ci-dessous tranchera plus vite que tout le reste."
       }
     },
     {
@@ -152,6 +153,7 @@
         .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
+        .status-banner.closed { background: var(--st-red-tint); color: var(--st-red-text); font-weight: 700; font-size: 0.95rem; padding: 18px 22px; }
         /* 答えがヒーロー: 判定文をページ最大の活字にする */
         .status-banner .st-label { display: flex; align-items: center; gap: 14px; font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.02em; line-height: 1.15; }
         .status-banner .st-label .dot { width: 14px; height: 14px; flex-shrink: 0; }
@@ -375,8 +377,9 @@
 
         <div class="status-banner noban">
             <div class="st-label"><span class="dot"></span>Une nuit de repos discrète est généralement OK ici</div>
-            <div class="st-verified">Nous n'avons pas encore vérifié les règles de cette station — aidez-nous</div>
+            <div class="st-verified">Vérifiée — mais les sources divergent</div>
         </div>
+        
         
         <div class="action-row">
             <a class="ovn-btn primary" href="https://www.google.com/maps/dir/?api=1&destination=32.80381,131.61065&travelmode=driving" target="_blank" rel="noopener">🧭 Ouvrir dans Google Maps</a>
@@ -427,8 +430,8 @@
         })();
         </script>
         <div class="ovn-card">
-            <h2>Ce que cela signifie pour vous</h2>
-            <p>Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — lisez-les en arrivant.</p>
+            <h2>Vérifiée — mais les sources divergent</h2>
+            <p>Nous avons enquêté sur cette station et les sources ci-dessous se contredisent ou sont anciennes. Un signalement peut indiquer un refus de nuitée alors qu'un relevé récent sur place n'a trouvé aucun panneau, ou le parking peut être géré par la commune et non par la station. Nous ne tranchons donc pas encore. Considérez-la comme incertaine : restez discret, lisez les panneaux à l'arrivée et soyez prêt à repartir. Si vous y êtes allé, votre signalement ci-dessous tranchera plus vite que tout le reste.</p>
         </div>
         <div class="ovn-card">
             <h2>La règle nationale officielle (à lire d'abord)</h2>
@@ -442,12 +445,18 @@
             <h2>Informations sur la station</h2>
             <table class="ovn-table"><tr><th>Préfecture</th><td>Ōita</td></tr>
             <tr><th>Ville</th><td>Saiki（佐伯市）</td></tr>
-            <tr><th>Carte</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=32.80381,131.61065&travelmode=driving" target="_blank" rel="noopener">Ouvrir dans Google Maps</a></td></tr></table>
+            <tr><th>Site officiel</th><td><a href="https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ume/ume.html" target="_blank" rel="noopener nofollow">www.qsr.mlit.go.jp</a></td></tr>
+            <tr><th>Carte</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=32.80381,131.61065&travelmode=driving" target="_blank" rel="noopener">Ouvrir dans Google Maps</a></td></tr>
+            <tr><th>Équipements</th><td>Toilettes 24h/24 · 138 places voitures · Boutique / restaurant</td></tr></table>
         </div>
-        
+        <div class="ovn-card"><h2>Sources</h2>
+            <div class="src-item"><span class="src-tag">Officiel</span><a href="https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/ume/ume.html" target="_blank" rel="noopener nofollow">www.qsr.mlit.go.jp</a> <span style="color:#5f5f66;">(2026-07)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「営業時間10:00～17:00(1/1は10:00～)。温泉設備なし。宿泊施設なし。車中泊に関する記載なし。」</div></div>
+            <div class="src-item"><span class="src-tag">Signalement communautaire</span><a href="https://roadtrips.jp/spot/d/oita/44002/" target="_blank" rel="noopener nofollow">roadtrips.jp</a> <span style="color:#5f5f66;">(2026-07)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「普通車138台・大型車12台・身障者用5台。駐車場・屋外トイレは24時間利用可能。付近にコンビニは見当たらない(雑貨屋なら)との口コミ。」</div></div>
+            <div class="src-item"><span class="src-tag">Signalement communautaire</span><a href="https://satton-tabitosyumi.com/michinoekiume/" target="_blank" rel="noopener nofollow">satton-tabitosyumi.com</a> <span style="color:#5f5f66;">(2026-07)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「裏側の普通車専用駐車場を利用すると静か。表の駐車場は夜間照明あり、裏は照明なし。トイレは水洗洋式で夜間照明あり。禁止看板への言及なし。」</div></div>
+        </div>
         <div class="ovn-card">
             <h2>Questions fréquentes</h2>
-            <div class="faq-item-s"><div class="q">Peut-on stationner la nuit à Michi-no-Eki Ume ?</div><p>Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — lisez-les en arrivant.</p></div>
+            <div class="faq-item-s"><div class="q">Peut-on stationner la nuit à Michi-no-Eki Ume ?</div><p>Nous avons enquêté sur cette station et les sources ci-dessous se contredisent ou sont anciennes. Un signalement peut indiquer un refus de nuitée alors qu'un relevé récent sur place n'a trouvé aucun panneau, ou le parking peut être géré par la commune et non par la station. Nous ne tranchons donc pas encore. Considérez-la comme incertaine : restez discret, lisez les panneaux à l'arrivée et soyez prêt à repartir. Si vous y êtes allé, votre signalement ci-dessous tranchera plus vite que tout le reste.</p></div>
             <div class="faq-item-s"><div class="q">Quelles sont les règles pour dormir dans une Michi-no-Eki ?</div><p>Une seule nuit, moteur coupé, rien à l'extérieur du véhicule, pas de flamme, stationnement loin de l'entrée, silence après 21 h, déchets remportés, et un achat à la boutique. Certaines stations affichent des règles plus strictes — les panneaux sur place priment toujours sur cette base.</p></div>
             <div class="faq-item-s"><div class="q">Où passer la nuit légalement à proximité ?</div><p>RV parks officiels (généralement 1 000–4 500 ¥/nuit, réservables), campings auto (1 000–5 000 ¥) et certains onsen avec forfait nuit sur parking. Chaque location VAN TRIP JAPAN inclut une carte des spots de nuit recommandés à Kyushu — des lieux légaux où l'on vous accueille volontiers.</p></div>
         </div>
@@ -457,19 +466,19 @@
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.66607" data-lng="131.70468" href="/fr/overnight-parking/michi-no-eki/miyazaki/kitagawa-hayuma/">
                 <span class="st-num st-num-noban" aria-hidden="true">108</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kitagawa Hayuma</span>
-                <span class="st-city">道の駅北川はゆま · Nobeoka · 18&nbsp;km · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅北川はゆま · Nobeoka · 18&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.97166" data-lng="131.51821" href="/fr/overnight-parking/michi-no-eki/oita/kiyokawa/">
                 <span class="st-num st-num-noban" aria-hidden="true">84</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kiyokawa</span>
-                <span class="st-city">道の駅きよかわ · Bungo-Ono · 21&nbsp;km · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅きよかわ · Bungo-Ono · 21&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.68498" data-lng="131.80094" href="/fr/overnight-parking/michi-no-eki/miyazaki/kitaura/">
                 <span class="st-num st-num-noban" aria-hidden="true">111</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kitaura</span>
-                <span class="st-city">道の駅北浦 · Nobeoka · 22&nbsp;km · <span class="st-unverified">Infos recherchées</span></span></span>
+                <span class="st-city">道の駅北浦 · Nobeoka · 22&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>

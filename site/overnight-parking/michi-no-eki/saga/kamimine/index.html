@@ -75,7 +75,8 @@
     "@type": "GeoCoordinates",
     "latitude": 33.33408,
     "longitude": 130.41722
-  }
+  },
+  "sameAs": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kamimine/kamimine.html"
 }
     </script>
     <script type="application/ld+json">
@@ -88,7 +89,7 @@
       "name": "Is overnight parking allowed at Michi-no-Eki Kamimine?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "This station is in the official Michi-no-Eki registry, but we have not yet checked its own signage or website. Japan's national rule applies by default: a quiet rest in your vehicle is usually tolerated, camping behaviour is not. Signs on site always win — so please read them when you arrive."
+        "text": "We have researched this station, and the sources below disagree or are out of date. One report may say overnight stays are turned away while a recent on-site survey found no signage, or the parking lot may be run by the town rather than the station itself. So we are not calling this one either way yet. Treat it as uncertain: keep it quiet, read the signs when you arrive, and be ready to move on. If you've been, your report below settles it faster than anything."
       }
     },
     {
@@ -152,6 +153,7 @@
         .status-banner.noban { background: var(--st-teal-tint); color: var(--st-teal-text); }
         .status-banner.paidonly { background: var(--st-amber-tint); color: var(--st-amber-text); }
         .status-banner.rv { background: var(--st-green-tint); color: var(--st-green-text); }
+        .status-banner.closed { background: var(--st-red-tint); color: var(--st-red-text); font-weight: 700; font-size: 0.95rem; padding: 18px 22px; }
         /* 答えがヒーロー: 判定文をページ最大の活字にする */
         .status-banner .st-label { display: flex; align-items: center; gap: 14px; font-size: clamp(1.5rem, 3.2vw, 2.1rem); font-weight: 800; font-family: var(--font-serif); letter-spacing: -0.02em; line-height: 1.15; }
         .status-banner .st-label .dot { width: 14px; height: 14px; flex-shrink: 0; }
@@ -375,8 +377,9 @@
 
         <div class="status-banner noban">
             <div class="st-label"><span class="dot"></span>A quiet overnight rest is usually OK here</div>
-            <div class="st-verified">We haven't checked this station's own rules yet — help us verify it</div>
+            <div class="st-verified">We checked — but the picture is mixed</div>
         </div>
+        
         
         <div class="action-row">
             <a class="ovn-btn primary" href="https://www.google.com/maps/dir/?api=1&destination=33.33408,130.41722&travelmode=driving" target="_blank" rel="noopener">🧭 Open in Google Maps</a>
@@ -427,8 +430,8 @@
         })();
         </script>
         <div class="ovn-card">
-            <h2>What this means for you</h2>
-            <p>This station is in the official Michi-no-Eki registry, but we have not yet checked its own signage or website. Japan's national rule applies by default: a quiet rest in your vehicle is usually tolerated, camping behaviour is not. Signs on site always win — so please read them when you arrive.</p>
+            <h2>We checked — but the picture is mixed</h2>
+            <p>We have researched this station, and the sources below disagree or are out of date. One report may say overnight stays are turned away while a recent on-site survey found no signage, or the parking lot may be run by the town rather than the station itself. So we are not calling this one either way yet. Treat it as uncertain: keep it quiet, read the signs when you arrive, and be ready to move on. If you've been, your report below settles it faster than anything.</p>
         </div>
         <div class="ovn-card">
             <h2>The official national rule (read this first)</h2>
@@ -442,12 +445,19 @@
             <h2>Station details</h2>
             <table class="ovn-table"><tr><th>Prefecture</th><td>Saga</td></tr>
             <tr><th>City / Town</th><td>Kamimine Town（三養基郡上峰町）</td></tr>
-            <tr><th>Map</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=33.33408,130.41722&travelmode=driving" target="_blank" rel="noopener">Open in Google Maps</a></td></tr></table>
+            <tr><th>Official website</th><td><a href="https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kamimine/kamimine.html" target="_blank" rel="noopener nofollow">www.qsr.mlit.go.jp</a></td></tr>
+            <tr><th>Map</th><td><a href="https://www.google.com/maps/dir/?api=1&destination=33.33408,130.41722&travelmode=driving" target="_blank" rel="noopener">Open in Google Maps</a></td></tr>
+            <tr><th>Facilities</th><td>149 car spaces · Free Wi-Fi · Shop / restaurant</td></tr></table>
         </div>
-        
+        <div class="ovn-card"><h2>Sources</h2>
+            <div class="src-item"><span class="src-tag">Official</span><a href="https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/kamimine/kamimine.html" target="_blank" rel="noopener nofollow">www.qsr.mlit.go.jp</a> <span style="color:#5f5f66;">(2026-07)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「国交省九州地方整備局の個別紹介ページ。無料Wi-Fiありと記載。車中泊・夜間駐車に関する言及はなし。EV充電器は「予定」表記でまだ未設置。」</div></div>
+            <div class="src-item"><span class="src-tag">Community wiki</span><a href="https://yuru-to.net/michieki.php?eid=1223" target="_blank" rel="noopener nofollow">yuru-to.net</a> <span style="color:#5f5f66;">(2026-07)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「駐車場は普通131台・大型18台(計149台)、身障者用3台。温泉施設は「なし」と明記。車中泊についての言及はない。」</div></div>
+            <div class="src-item"><span class="src-tag">Community report</span><a href="https://michikusa-factory.com/saga-11/" target="_blank" rel="noopener nofollow">michikusa-factory.com</a> <span style="color:#5f5f66;">(2026-07)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「2025年4月6日開業、佐賀県で最も新しい道の駅と紹介。「裏手の駐車場は静かで車中泊に向いている」と記載。禁止に関する言及はない。開業から日が浅く一次情報・実泊記録は限定的。」</div></div>
+            <div class="src-item"><span class="src-tag">Community report</span><a href="https://syachuhaku-blog.fxtec.info/post-6502/" target="_blank" rel="noopener nofollow">syachuhaku-blog.fxtec.info</a> <span style="color:#5f5f66;">(2026-07)</span><div lang="ja" style="color:#5f5f66;margin-top:2px;font-size:0.82rem;">「検索結果スニペットのみ確認(直接fetch不可)。「Sランク(暫定評価)」というタイトルで車中泊適性を高評価しているが、禁止表記の有無など詳細本文は未検証。」</div></div>
+        </div>
         <div class="ovn-card">
             <h2>Frequently asked questions</h2>
-            <div class="faq-item-s"><div class="q">Is overnight parking allowed at Michi-no-Eki Kamimine?</div><p>This station is in the official Michi-no-Eki registry, but we have not yet checked its own signage or website. Japan's national rule applies by default: a quiet rest in your vehicle is usually tolerated, camping behaviour is not. Signs on site always win — so please read them when you arrive.</p></div>
+            <div class="faq-item-s"><div class="q">Is overnight parking allowed at Michi-no-Eki Kamimine?</div><p>We have researched this station, and the sources below disagree or are out of date. One report may say overnight stays are turned away while a recent on-site survey found no signage, or the parking lot may be run by the town rather than the station itself. So we are not calling this one either way yet. Treat it as uncertain: keep it quiet, read the signs when you arrive, and be ready to move on. If you've been, your report below settles it faster than anything.</p></div>
             <div class="faq-item-s"><div class="q">What are the rules for sleeping at a Michi-no-Eki?</div><p>One quiet night maximum, engine off, nothing outside the vehicle, no flames, park away from the entrance, keep quiet after 21:00, take your trash, and support the shop. Individual stations may post stricter rules — signs on site always override this database.</p></div>
             <div class="faq-item-s"><div class="q">Where can I legally stay overnight nearby?</div><p>Official RV parks (typically ¥1,000–4,500/night, bookable), auto-campgrounds (¥1,000–5,000), and some onsen facilities with overnight parking plans. Every VAN TRIP JAPAN rental includes a curated overnight spot map for Kyushu with legal, welcoming places to sleep.</p></div>
         </div>
@@ -469,7 +479,7 @@
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.33928" data-lng="130.25769" href="/overnight-parking/michi-no-eki/saga/yamato-soyokaze/">
                 <span class="st-num st-num-noban" aria-hidden="true">26</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yamato Soyokaze-kan</span>
-                <span class="st-city">道の駅大和そよかぜ館 · Saga · 15&nbsp;km · <span class="st-unverified">Info wanted</span></span></span>
+                <span class="st-city">道の駅大和そよかぜ館 · Saga · 15&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
