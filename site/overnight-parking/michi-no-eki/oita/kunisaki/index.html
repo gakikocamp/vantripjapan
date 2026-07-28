@@ -196,6 +196,7 @@
             font-size: 0.8rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
         .st-num-prohibited { background: var(--st-red); } .st-num-paidonly { background: var(--st-amber); }
         .st-num-noban { background: var(--st-teal); }
+        .st-unverified { color: #7a6a3d; background: #fbf7ea; border-radius: 5px; padding: 1px 7px; font-size: 0.82rem; }
         .map-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 14px 4px 0; margin: 0; }
         .map-legend li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.86rem; font-weight: 600; color: #5f5f66; }
         .map-legend .dot { width: 10px; height: 10px; }
@@ -393,22 +394,22 @@
         <div class="ovn-card boxed">
             <h2>Nearby stations</h2>
             <div class="station-list">
+                <a class="station-row" data-st="noban" data-rv="0" data-lat="33.68029" data-lng="131.60539" href="/overnight-parking/michi-no-eki/oita/kunimi/">
+                <span class="st-num st-num-noban" aria-hidden="true">73</span>
+                <span class="st-main"><span class="st-name">Michi-no-Eki Kunimi</span>
+                <span class="st-city">道の駅くにみ · Kunisaki · 19&nbsp;km · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.24728" data-lng="131.82845" href="/overnight-parking/michi-no-eki/oita/saganoseki/">
-                <span class="st-num st-num-noban" aria-hidden="true">43</span>
+                <span class="st-num st-num-noban" aria-hidden="true">80</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Saganoseki</span>
                 <span class="st-city">道の駅佐賀関 · Oita · 34&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.25585" data-lng="131.55601" href="/overnight-parking/michi-no-eki/oita/tanourara/">
-                <span class="st-num st-num-noban" aria-hidden="true">44</span>
+                <span class="st-num st-num-noban" aria-hidden="true">85</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tanourara</span>
                 <span class="st-city">道の駅たのうらら · Oita · 36&nbsp;km</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
-            </a>
-                <a class="station-row" data-st="noban" data-rv="0" data-lat="33.55114" data-lng="131.21316" href="/overnight-parking/michi-no-eki/oita/nakatsu/">
-                <span class="st-num st-num-noban" aria-hidden="true">42</span>
-                <span class="st-main"><span class="st-name">Michi-no-Eki Nakatsu</span>
-                <span class="st-city">道の駅なかつ · Nakatsu · 49&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>

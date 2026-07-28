@@ -196,6 +196,7 @@
             font-size: 0.8rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
         .st-num-prohibited { background: var(--st-red); } .st-num-paidonly { background: var(--st-amber); }
         .st-num-noban { background: var(--st-teal); }
+        .st-unverified { color: #7a6a3d; background: #fbf7ea; border-radius: 5px; padding: 1px 7px; font-size: 0.82rem; }
         .map-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 14px 4px 0; margin: 0; }
         .map-legend li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.86rem; font-weight: 600; color: #5f5f66; }
         .map-legend .dot { width: 10px; height: 10px; }
@@ -393,23 +394,23 @@
         <div class="ovn-card boxed">
             <h2>附近的道之驛</h2>
             <div class="station-list">
+                <a class="station-row" data-st="noban" data-rv="0" data-lat="31.46267" data-lng="131.22898" href="/zh/overnight-parking/michi-no-eki/miyazaki/kushima/">
+                <span class="st-num st-num-noban" aria-hidden="true">97</span>
+                <span class="st-main"><span class="st-name">道の駅くしま</span>
+                <span class="st-city">串間市 · 15&nbsp;km · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+                <a class="station-row" data-st="noban" data-rv="0" data-lat="31.64187" data-lng="131.26662" href="/zh/overnight-parking/michi-no-eki/miyazaki/sakatani/">
+                <span class="st-num st-num-noban" aria-hidden="true">100</span>
+                <span class="st-main"><span class="st-name">道の駅酒谷</span>
+                <span class="st-city">日南市 · 19&nbsp;km · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.76895" data-lng="131.47842" href="/zh/overnight-parking/michi-no-eki/miyazaki/phoenix/">
-                <span class="st-num st-num-noban" aria-hidden="true">51</span>
+                <span class="st-num st-num-noban" aria-hidden="true">99</span>
                 <span class="st-main"><span class="st-name">道の駅フェニックス</span>
                 <span class="st-city">宮崎市 · 31&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
-            </a>
-                <a class="station-row" data-st="noban" data-rv="0" data-lat="31.43811" data-lng="131.03078" href="/zh/overnight-parking/michi-no-eki/kagoshima/kuni-no-matsubara-osaki/">
-                <span class="st-num st-num-noban" aria-hidden="true">57</span>
-                <span class="st-main"><span class="st-name">道の駅くにの松原おおさき</span>
-                <span class="st-city">曽於郡大崎町 · 34&nbsp;km</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
-            </a>
-                <a class="station-row" data-st="prohibited" data-rv="0" data-lat="31.76861" data-lng="131.09572" href="/zh/overnight-parking/michi-no-eki/miyazaki/miyakonojo-niqll/">
-                <span class="st-num st-num-prohibited" aria-hidden="true">46</span>
-                <span class="st-main"><span class="st-name">道の駅都城NiQLL</span>
-                <span class="st-city">都城市 · 40&nbsp;km</span></span>
-                <span class="st-side"><span class="badge badge-prohibited"><span class="dot"></span>不可過夜</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
         </div>

@@ -4,6 +4,7 @@
     "region": "Kyushu",
     "updated": "2026-07-27",
     "schema_note": "statusは【無料の一般駐車場】のポリシー: prohibited (明示禁止・要evidence) | no_explicit_ban (明示禁止なし・国交省デフォルト適用)。rv_park は直交フィールド(公認RVパーク併設なら設定)。つまり『無料駐車場は禁止だがRVパークで有料宿泊可』(例:むなかた)を表現できる。verified = 最終確認日. evidence.type: official|blog|wiki|sign|assoc (urlなしのsign=現地確認)。駅の追加・更新はこのファイルを編集して node scripts/build-overnight-pages.js を再実行。地域は九州から開始だがスキーマは全国対応(prefecturesに県を足すだけ)。",
+    "coverage_note": "verification:'listed' は公式名簿(OpenStreetMap経由の道の駅データ+逆ジオコーディングで県確定)から収録したのみで、駅固有のルールは未確認。ページはnoindexにし『未検証』と明示する。個別確認できたものは verification を外し(=checked扱い) verified に確認日を入れること。",
     "source": "https://vantripjapan.jp/overnight-parking/michi-no-eki/",
     "license": "CC BY 4.0 — attribution required: VAN TRIP JAPAN (vantripjapan.jp)"
   },
@@ -1349,6 +1350,1366 @@
       "official_url": "",
       "status": "no_explicit_ban",
       "verified": "2026-07-27",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "shin-yoshitomi",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅しんよしとみ",
+        "en": "Michi-no-Eki Shin-Yoshitomi"
+      },
+      "city": {
+        "ja": "築上郡上毛町",
+        "en": "Koge Town"
+      },
+      "lat": 33.58868,
+      "lng": 131.15422,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "chikuzen-minami-no-sato",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅筑前みなみの里",
+        "en": "Michi-no-Eki Chikuzen Minami-no-Sato"
+      },
+      "city": {
+        "ja": "朝倉郡筑前町",
+        "en": "Chikuzen Town"
+      },
+      "lat": 33.46732,
+      "lng": 130.6238,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kawara",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅香春",
+        "en": "Michi-no-Eki Kawara"
+      },
+      "city": {
+        "ja": "田川郡香春町",
+        "en": "Kawara Town"
+      },
+      "lat": 33.67674,
+      "lng": 130.86008,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "usui",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅うすい",
+        "en": "Michi-no-Eki Usui"
+      },
+      "city": {
+        "ja": "嘉麻市",
+        "en": "Kama"
+      },
+      "lat": 33.5639,
+      "lng": 130.7132,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "koishiwara",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅小石原",
+        "en": "Michi-no-Eki Koishiwara"
+      },
+      "city": {
+        "ja": "朝倉郡東峰村",
+        "en": "Toho Village"
+      },
+      "lat": 33.4652,
+      "lng": 130.82599,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kanyusha-hikosan",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅歓遊舎ひこさん",
+        "en": "Michi-no-Eki Kanyusha Hikosan"
+      },
+      "city": {
+        "ja": "田川郡添田町",
+        "en": "Soeda Town"
+      },
+      "lat": 33.54963,
+      "lng": 130.86005,
+      "official_url": "https://kanyuusya.com/",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "sueyoshi",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅すえよし",
+        "en": "Michi-no-Eki Sueyoshi"
+      },
+      "city": {
+        "ja": "曽於市",
+        "en": "Soo"
+      },
+      "lat": 31.68835,
+      "lng": 130.97027,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "yamagawako-katsuo-kaido",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅山川港活お海道",
+        "en": "Michi-no-Eki Yamagawako Katsuo-Kaido"
+      },
+      "city": {
+        "ja": "指宿市",
+        "en": "Ibusuki"
+      },
+      "lat": 31.20289,
+      "lng": 130.63488,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "takarabe-kirara",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅財部きらら館",
+        "en": "Michi-no-Eki Takarabe Kirara-kan"
+      },
+      "city": {
+        "ja": "曽於市",
+        "en": "Soo"
+      },
+      "lat": 31.72882,
+      "lng": 130.99867,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "nagashima",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅長島",
+        "en": "Michi-no-Eki Nagashima"
+      },
+      "city": {
+        "ja": "出水郡長島町",
+        "en": "Nagashima Town"
+      },
+      "lat": 32.16197,
+      "lng": 130.10927,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kinpo-konohana",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅きんぽう木花館",
+        "en": "Michi-no-Eki Kinpo Konohana-kan"
+      },
+      "city": {
+        "ja": "南さつま市",
+        "en": "Minamisatsuma"
+      },
+      "lat": 31.46489,
+      "lng": 130.34543,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "matsuyama",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅松山",
+        "en": "Michi-no-Eki Matsuyama"
+      },
+      "city": {
+        "ja": "志布志市",
+        "en": "Shibushi"
+      },
+      "lat": 31.58173,
+      "lng": 131.04242,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kawanabe",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅川辺やすらぎの郷",
+        "en": "Michi-no-Eki Kawanabe Yasuragi-no-Sato"
+      },
+      "city": {
+        "ja": "南九州市",
+        "en": "Minamikyushu"
+      },
+      "lat": 31.41265,
+      "lng": 130.43294,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "hiwaki",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅樋脇",
+        "en": "Michi-no-Eki Hiwaki"
+      },
+      "city": {
+        "ja": "薩摩川内市",
+        "en": "Satsumasendai"
+      },
+      "lat": 31.79642,
+      "lng": 130.4075,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "nogata-arasano",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅野方あらさの",
+        "en": "Michi-no-Eki Nogata Arasano"
+      },
+      "city": {
+        "ja": "曽於郡大崎町",
+        "en": "Osaki Town"
+      },
+      "lat": 31.50013,
+      "lng": 130.92411,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kuronoseto-dandan",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅黒之瀬戸だんだん市場",
+        "en": "Michi-no-Eki Kuronoseto Dandan Ichiba"
+      },
+      "city": {
+        "ja": "出水郡長島町",
+        "en": "Nagashima Town"
+      },
+      "lat": 32.10845,
+      "lng": 130.17038,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "minamata",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅みなまた",
+        "en": "Michi-no-Eki Minamata"
+      },
+      "city": {
+        "ja": "水俣市",
+        "en": "Minamata"
+      },
+      "lat": 32.19933,
+      "lng": 130.38211,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "shiranuhi",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅不知火",
+        "en": "Michi-no-Eki Shiranuhi"
+      },
+      "city": {
+        "ja": "宇城市",
+        "en": "Uki"
+      },
+      "lat": 32.63354,
+      "lng": 130.62923,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "amakusa-dolphin",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅天草市イルカセンター",
+        "en": "Michi-no-Eki Amakusa Dolphin Center"
+      },
+      "city": {
+        "ja": "天草市",
+        "en": "Amakusa"
+      },
+      "lat": 32.54552,
+      "lng": 130.13125,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kyokushi",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅旭志",
+        "en": "Michi-no-Eki Kyokushi"
+      },
+      "city": {
+        "ja": "菊池市",
+        "en": "Kikuchi"
+      },
+      "lat": 32.93118,
+      "lng": 130.8302,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "sakitsu",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅﨑津",
+        "en": "Michi-no-Eki Sakitsu"
+      },
+      "city": {
+        "ja": "天草市",
+        "en": "Amakusa"
+      },
+      "lat": 32.3168,
+      "lng": 130.02539,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "uki-saikan",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅宇城彩館",
+        "en": "Michi-no-Eki Uki Saikan"
+      },
+      "city": {
+        "ja": "宇城市",
+        "en": "Uki"
+      },
+      "lat": 32.65109,
+      "lng": 130.69831,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "ushibuka-kaisaikan",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅うしぶか海彩館",
+        "en": "Michi-no-Eki Ushibuka Kaisaikan"
+      },
+      "city": {
+        "ja": "天草市",
+        "en": "Amakusa"
+      },
+      "lat": 32.194,
+      "lng": 130.02734,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "ashikita-dekopon",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅芦北でこぽん",
+        "en": "Michi-no-Eki Ashikita Dekopon"
+      },
+      "city": {
+        "ja": "葦北郡芦北町",
+        "en": "Ashikita Town"
+      },
+      "lat": 32.30318,
+      "lng": 130.50814,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "tsujunkyo",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅通潤橋",
+        "en": "Michi-no-Eki Tsujunkyo"
+      },
+      "city": {
+        "ja": "上益城郡山都町",
+        "en": "Yamato Town"
+      },
+      "lat": 32.68848,
+      "lng": 130.9906,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "shisui",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅泗水",
+        "en": "Michi-no-Eki Shisui"
+      },
+      "city": {
+        "ja": "菊池市",
+        "en": "Kikuchi"
+      },
+      "lat": 32.92505,
+      "lng": 130.77146,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "namino",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅波野",
+        "en": "Michi-no-Eki Namino"
+      },
+      "city": {
+        "ja": "阿蘇市",
+        "en": "Aso"
+      },
+      "lat": 32.95965,
+      "lng": 131.19731,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "seiwa-bunraku",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅清和文楽邑",
+        "en": "Michi-no-Eki Seiwa Bunraku-mura"
+      },
+      "city": {
+        "ja": "上益城郡山都町",
+        "en": "Yamato Town"
+      },
+      "lat": 32.69064,
+      "lng": 131.09159,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "ryuhoku",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅竜北",
+        "en": "Michi-no-Eki Ryuhoku"
+      },
+      "city": {
+        "ja": "八代郡氷川町",
+        "en": "Hikawa Town"
+      },
+      "lat": 32.57718,
+      "lng": 130.69513,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kitakata-yocchimiroya",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅北方よっちみろ屋",
+        "en": "Michi-no-Eki Kitakata Yocchimiro-ya"
+      },
+      "city": {
+        "ja": "延岡市",
+        "en": "Nobeoka"
+      },
+      "lat": 32.5954,
+      "lng": 131.49167,
+      "official_url": "http://www.yottimiroya.com/",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kitaura",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅北浦",
+        "en": "Michi-no-Eki Kitaura"
+      },
+      "city": {
+        "ja": "延岡市",
+        "en": "Nobeoka"
+      },
+      "lat": 32.68498,
+      "lng": 131.80094,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "yamanokuchi",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅山之口",
+        "en": "Michi-no-Eki Yamanokuchi"
+      },
+      "city": {
+        "ja": "都城市",
+        "en": "Miyakonojo"
+      },
+      "lat": 31.79439,
+      "lng": 131.20265,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "tano",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅田野",
+        "en": "Michi-no-Eki Tano"
+      },
+      "city": {
+        "ja": "宮崎市",
+        "en": "Miyazaki"
+      },
+      "lat": 31.79665,
+      "lng": 131.30737,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "seiunbashi",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅青雲橋",
+        "en": "Michi-no-Eki Seiunbashi"
+      },
+      "city": {
+        "ja": "西臼杵郡日之影町",
+        "en": "Hinokage Town"
+      },
+      "lat": 32.66064,
+      "lng": 131.38841,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "takaoka",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅高岡",
+        "en": "Michi-no-Eki Takaoka"
+      },
+      "city": {
+        "ja": "宮崎市",
+        "en": "Miyazaki"
+      },
+      "lat": 31.94565,
+      "lng": 131.34056,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kushima",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅くしま",
+        "en": "Michi-no-Eki Kushima"
+      },
+      "city": {
+        "ja": "串間市",
+        "en": "Kushima"
+      },
+      "lat": 31.46267,
+      "lng": 131.22898,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "tsuno",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅つの",
+        "en": "Michi-no-Eki Tsuno"
+      },
+      "city": {
+        "ja": "児湯郡都農町",
+        "en": "Tsuno Town"
+      },
+      "lat": 32.26035,
+      "lng": 131.55753,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "togo",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅とうごう",
+        "en": "Michi-no-Eki Togo"
+      },
+      "city": {
+        "ja": "日向市",
+        "en": "Hyuga"
+      },
+      "lat": 32.39131,
+      "lng": 131.51292,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "sakatani",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅酒谷",
+        "en": "Michi-no-Eki Sakatani"
+      },
+      "city": {
+        "ja": "日南市",
+        "en": "Nichinan"
+      },
+      "lat": 31.64187,
+      "lng": 131.26662,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kentoshi",
+      "prefecture": "nagasaki",
+      "name": {
+        "ja": "道の駅遣唐使ふるさと館",
+        "en": "Michi-no-Eki Kentoshi Furusato-kan"
+      },
+      "city": {
+        "ja": "五島市",
+        "en": "Goto"
+      },
+      "lat": 32.73836,
+      "lng": 128.69003,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "suzuta-toge",
+      "prefecture": "nagasaki",
+      "name": {
+        "ja": "道の駅長崎街道鈴田峠",
+        "en": "Michi-no-Eki Nagasaki-Kaido Suzuta-Toge"
+      },
+      "city": {
+        "ja": "大村市",
+        "en": "Omura"
+      },
+      "lat": 32.88526,
+      "lng": 130.00731,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "matsuura",
+      "prefecture": "nagasaki",
+      "name": {
+        "ja": "道の駅松浦海のふるさと館",
+        "en": "Michi-no-Eki Matsuura Umi-no-Furusato-kan"
+      },
+      "city": {
+        "ja": "松浦市",
+        "en": "Matsuura"
+      },
+      "lat": 33.34816,
+      "lng": 129.70168,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "takarashima",
+      "prefecture": "nagasaki",
+      "name": {
+        "ja": "道の駅鷹ら島",
+        "en": "Michi-no-Eki Takarashima"
+      },
+      "city": {
+        "ja": "松浦市",
+        "en": "Matsuura"
+      },
+      "lat": 33.43362,
+      "lng": 129.78242,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "innai",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅いんない",
+        "en": "Michi-no-Eki Innai"
+      },
+      "city": {
+        "ja": "宇佐市",
+        "en": "Usa"
+      },
+      "lat": 33.42399,
+      "lng": 131.32014,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "yamakuni",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅やまくに",
+        "en": "Michi-no-Eki Yamakuni"
+      },
+      "city": {
+        "ja": "中津市",
+        "en": "Nakatsu"
+      },
+      "lat": 33.40657,
+      "lng": 131.06188,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "yaba-topia",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅耶馬トピア",
+        "en": "Michi-no-Eki Yaba Topia"
+      },
+      "city": {
+        "ja": "中津市",
+        "en": "Nakatsu"
+      },
+      "lat": 33.48964,
+      "lng": 131.17441,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "oyama",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅水辺の郷おおやま",
+        "en": "Michi-no-Eki Mizube-no-Sato Oyama"
+      },
+      "city": {
+        "ja": "日田市",
+        "en": "Hita"
+      },
+      "lat": 33.24822,
+      "lng": 130.97194,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "sugo",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅すごう",
+        "en": "Michi-no-Eki Sugo"
+      },
+      "city": {
+        "ja": "竹田市",
+        "en": "Taketa"
+      },
+      "lat": 32.9564,
+      "lng": 131.29417,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "ono",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅おおの",
+        "en": "Michi-no-Eki Ono"
+      },
+      "city": {
+        "ja": "豊後大野市",
+        "en": "Bungo-Ono"
+      },
+      "lat": 33.03673,
+      "lng": 131.5028,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kamae",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅かまえ",
+        "en": "Michi-no-Eki Kamae"
+      },
+      "city": {
+        "ja": "佐伯市",
+        "en": "Saiki"
+      },
+      "lat": 32.80209,
+      "lng": 131.92471,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kunimi",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅くにみ",
+        "en": "Michi-no-Eki Kunimi"
+      },
+      "city": {
+        "ja": "国東市",
+        "en": "Kunisaki"
+      },
+      "lat": 33.68029,
+      "lng": 131.60539,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "seseragi-kamitsue",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅せせらぎ郷かみつえ",
+        "en": "Michi-no-Eki Seseragi-no-Sato Kamitsue"
+      },
+      "city": {
+        "ja": "日田市",
+        "en": "Hita"
+      },
+      "lat": 33.11233,
+      "lng": 130.96159,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "mie",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅みえ",
+        "en": "Michi-no-Eki Mie"
+      },
+      "city": {
+        "ja": "豊後大野市",
+        "en": "Bungo-Ono"
+      },
+      "lat": 33.02865,
+      "lng": 131.62174,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "yayoi",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅やよい",
+        "en": "Michi-no-Eki Yayoi"
+      },
+      "city": {
+        "ja": "佐伯市",
+        "en": "Saiki"
+      },
+      "lat": 32.9645,
+      "lng": 131.83871,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "ume",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅宇目",
+        "en": "Michi-no-Eki Ume"
+      },
+      "city": {
+        "ja": "佐伯市",
+        "en": "Saiki"
+      },
+      "lat": 32.80381,
+      "lng": 131.61065,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "taketa",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅竹田",
+        "en": "Michi-no-Eki Taketa"
+      },
+      "city": {
+        "ja": "竹田市",
+        "en": "Taketa"
+      },
+      "lat": 32.98552,
+      "lng": 131.34048,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "taio-kinzan",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅鯛生金山",
+        "en": "Michi-no-Eki Taio Kinzan"
+      },
+      "city": {
+        "ja": "日田市",
+        "en": "Hita"
+      },
+      "lat": 33.12878,
+      "lng": 130.88233,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "yamauchi",
+      "prefecture": "saga",
+      "name": {
+        "ja": "道の駅山内",
+        "en": "Michi-no-Eki Yamauchi"
+      },
+      "city": {
+        "ja": "武雄市",
+        "en": "Takeo"
+      },
+      "lat": 33.19168,
+      "lng": 129.95593,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "shiroishi",
+      "prefecture": "saga",
+      "name": {
+        "ja": "道の駅しろいし",
+        "en": "Michi-no-Eki Shiroishi"
+      },
+      "city": {
+        "ja": "杵島郡白石町",
+        "en": "Shiroishi Town"
+      },
+      "lat": 33.17723,
+      "lng": 130.19572,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "yamato-soyokaze",
+      "prefecture": "saga",
+      "name": {
+        "ja": "道の駅大和そよかぜ館",
+        "en": "Michi-no-Eki Yamato Soyokaze-kan"
+      },
+      "city": {
+        "ja": "佐賀市",
+        "en": "Saga"
+      },
+      "lat": 33.33928,
+      "lng": 130.25769,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "momoyama-tenkaichi",
+      "prefecture": "saga",
+      "name": {
+        "ja": "道の駅桃山天下市",
+        "en": "Michi-no-Eki Momoyama Tenkaichi"
+      },
+      "city": {
+        "ja": "唐津市",
+        "en": "Karatsu"
+      },
+      "lat": 33.52832,
+      "lng": 129.87376,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "asaji",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅あさじ",
+        "en": "Michi-no-Eki Asaji"
+      },
+      "city": {
+        "ja": "豊後大野市",
+        "en": "Bungo-Ono"
+      },
+      "lat": 33.00259,
+      "lng": 131.44804,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kiyokawa",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅きよかわ",
+        "en": "Michi-no-Eki Kiyokawa"
+      },
+      "city": {
+        "ja": "豊後大野市",
+        "en": "Bungo-Ono"
+      },
+      "lat": 32.97166,
+      "lng": 131.51821,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "nejime",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅ねじめ",
+        "en": "Michi-no-Eki Nejime"
+      },
+      "city": {
+        "ja": "肝属郡南大隅町",
+        "en": "Minamiosumi Town"
+      },
+      "lat": 31.18553,
+      "lng": 130.76715,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "uto-marina",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅宇土マリーナ",
+        "en": "Michi-no-Eki Uto Marina"
+      },
+      "city": {
+        "ja": "宇土市",
+        "en": "Uto"
+      },
+      "lat": 32.66229,
+      "lng": 130.52281,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "yuparu-nojiri",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅ゆ〜ぱるのじり",
+        "en": "Michi-no-Eki Yu-paru Nojiri"
+      },
+      "city": {
+        "ja": "小林市",
+        "en": "Kobayashi"
+      },
+      "lat": 31.96438,
+      "lng": 131.08239,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "osumi-yagoro",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅おおすみ弥五郎伝説の里",
+        "en": "Michi-no-Eki Osumi Yagoro Densetsu-no-Sato"
+      },
+      "city": {
+        "ja": "曽於市",
+        "en": "Soo"
+      },
+      "lat": 31.59005,
+      "lng": 130.99019,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "iimori-jaguar-road",
+      "prefecture": "nagasaki",
+      "name": {
+        "ja": "道の駅251いいもりジャガーロード",
+        "en": "Michi-no-Eki Iimori Jaguar Road"
+      },
+      "city": {
+        "ja": "諫早市",
+        "en": "Isahaya"
+      },
+      "lat": 32.78537,
+      "lng": 130.04601,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
       "evidence": [],
       "rv_park": null
     }

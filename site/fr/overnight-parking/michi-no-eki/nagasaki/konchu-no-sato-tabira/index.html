@@ -196,6 +196,7 @@
             font-size: 0.8rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
         .st-num-prohibited { background: var(--st-red); } .st-num-paidonly { background: var(--st-amber); }
         .st-num-noban { background: var(--st-teal); }
+        .st-unverified { color: #7a6a3d; background: #fbf7ea; border-radius: 5px; padding: 1px 7px; font-size: 0.82rem; }
         .map-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 14px 4px 0; margin: 0; }
         .map-legend li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.86rem; font-weight: 600; color: #5f5f66; }
         .map-legend .dot { width: 10px; height: 10px; }
@@ -393,22 +394,22 @@
         <div class="ovn-card boxed">
             <h2>Stations à proximité</h2>
             <div class="station-list">
+                <a class="station-row" data-st="noban" data-rv="0" data-lat="33.34816" data-lng="129.70168" href="/fr/overnight-parking/michi-no-eki/nagasaki/matsuura/">
+                <span class="st-num st-num-noban" aria-hidden="true">31</span>
+                <span class="st-main"><span class="st-name">Michi-no-Eki Matsuura Umi-no-Furusato-kan</span>
+                <span class="st-city">道の駅松浦海のふるさと館 · Matsuura · 10&nbsp;km · <span class="st-unverified">Non vérifiée</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.20176" data-lng="129.67194" href="/fr/overnight-parking/michi-no-eki/nagasaki/sasebo-box99/">
-                <span class="st-num st-num-noban" aria-hidden="true">20</span>
+                <span class="st-num st-num-noban" aria-hidden="true">33</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Sasebo Box 99</span>
                 <span class="st-city">道の駅させぼっくす９９ · Sasebo · 14&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.35526" data-lng="129.43372" href="/fr/overnight-parking/michi-no-eki/nagasaki/ikitsuki-ohashi/">
-                <span class="st-num st-num-noban" aria-hidden="true">17</span>
+                <span class="st-num st-num-noban" aria-hidden="true">28</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ikitsuki Ohashi</span>
                 <span class="st-city">道の駅生月大橋 · Hirado · 16&nbsp;km</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
-            </a>
-                <a class="station-row" data-st="noban" data-rv="0" data-lat="33.31314" data-lng="129.92887" href="/fr/overnight-parking/michi-no-eki/saga/imari/">
-                <span class="st-num st-num-noban" aria-hidden="true">10</span>
-                <span class="st-main"><span class="st-name">Michi-no-Eki Imari</span>
-                <span class="st-city">道の駅伊万里 · Imari · 30&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>

@@ -196,6 +196,7 @@
             font-size: 0.8rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
         .st-num-prohibited { background: var(--st-red); } .st-num-paidonly { background: var(--st-amber); }
         .st-num-noban { background: var(--st-teal); }
+        .st-unverified { color: #7a6a3d; background: #fbf7ea; border-radius: 5px; padding: 1px 7px; font-size: 0.82rem; }
         .map-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 14px 4px 0; margin: 0; }
         .map-legend li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.86rem; font-weight: 600; color: #5f5f66; }
         .map-legend .dot { width: 10px; height: 10px; }
@@ -393,22 +394,22 @@
         <div class="ovn-card boxed">
             <h2>Stations à proximité</h2>
             <div class="station-list">
+                <a class="station-row" data-st="noban" data-rv="0" data-lat="33.58868" data-lng="131.15422" href="/fr/overnight-parking/michi-no-eki/fukuoka/shin-yoshitomi/">
+                <span class="st-num st-num-noban" aria-hidden="true">12</span>
+                <span class="st-main"><span class="st-name">Michi-no-Eki Shin-Yoshitomi</span>
+                <span class="st-city">道の駅しんよしとみ · Koge Town · 7&nbsp;km · <span class="st-unverified">Non vérifiée</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+                <a class="station-row" data-st="noban" data-rv="0" data-lat="33.48964" data-lng="131.17441" href="/fr/overnight-parking/michi-no-eki/oita/yaba-topia/">
+                <span class="st-num st-num-noban" aria-hidden="true">87</span>
+                <span class="st-main"><span class="st-name">Michi-no-Eki Yaba Topia</span>
+                <span class="st-city">道の駅耶馬トピア · Nakatsu · 8&nbsp;km · <span class="st-unverified">Non vérifiée</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.614" data-lng="131.10091" href="/fr/overnight-parking/michi-no-eki/fukuoka/buzen-okoshikake/">
                 <span class="st-num st-num-noban" aria-hidden="true">3</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Buzen Okoshikake</span>
                 <span class="st-city">道の駅豊前おこしかけ · Buzen · 13&nbsp;km</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
-            </a>
-                <a class="station-row" data-st="noban" data-rv="0" data-lat="33.28952" data-lng="131.15697" href="/fr/overnight-parking/michi-no-eki/oita/dowa-no-sato-kusu/">
-                <span class="st-num st-num-noban" aria-hidden="true">38</span>
-                <span class="st-main"><span class="st-name">Michi-no-Eki Dowa no Sato Kusu</span>
-                <span class="st-city">道の駅童話の里くす · Kusu Town · 30&nbsp;km</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
-            </a>
-                <a class="station-row" data-st="noban" data-rv="0" data-lat="33.26064" data-lng="131.32722" href="/fr/overnight-parking/michi-no-eki/oita/yufuin/">
-                <span class="st-num st-num-noban" aria-hidden="true">45</span>
-                <span class="st-main"><span class="st-name">Michi-no-Eki Yufuin</span>
-                <span class="st-city">道の駅ゆふいん · Yufu · 34&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>

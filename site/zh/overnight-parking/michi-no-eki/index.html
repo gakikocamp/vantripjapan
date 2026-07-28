@@ -208,6 +208,7 @@
             font-size: 0.8rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
         .st-num-prohibited { background: var(--st-red); } .st-num-paidonly { background: var(--st-amber); }
         .st-num-noban { background: var(--st-teal); }
+        .st-unverified { color: #7a6a3d; background: #fbf7ea; border-radius: 5px; padding: 1px 7px; font-size: 0.82rem; }
         .map-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 14px 4px 0; margin: 0; }
         .map-legend li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.86rem; font-weight: 600; color: #5f5f66; }
         .map-legend .dot { width: 10px; height: 10px; }
@@ -369,13 +370,13 @@
     <div class="ovn-wrap">
 
         <nav class="pref-chips" aria-label="Prefectures">
-            <a class="pref-chip" href="#fukuoka">福岡縣<span class="chip-n">9</span></a>
-            <a class="pref-chip" href="#saga">佐賀縣<span class="chip-n">6</span></a>
-            <a class="pref-chip" href="#nagasaki">長崎縣<span class="chip-n">6</span></a>
-            <a class="pref-chip" href="#kumamoto">熊本縣<span class="chip-n">16</span></a>
-            <a class="pref-chip" href="#oita">大分縣<span class="chip-n">8</span></a>
-            <a class="pref-chip" href="#miyazaki">宮崎縣<span class="chip-n">7</span></a>
-            <a class="pref-chip" href="#kagoshima">鹿兒島縣<span class="chip-n">8</span></a>
+            <a class="pref-chip" href="#fukuoka">福岡縣<span class="chip-n">15</span></a>
+            <a class="pref-chip" href="#saga">佐賀縣<span class="chip-n">10</span></a>
+            <a class="pref-chip" href="#nagasaki">長崎縣<span class="chip-n">11</span></a>
+            <a class="pref-chip" href="#kumamoto">熊本縣<span class="chip-n">30</span></a>
+            <a class="pref-chip" href="#oita">大分縣<span class="chip-n">24</span></a>
+            <a class="pref-chip" href="#miyazaki">宮崎縣<span class="chip-n">18</span></a>
+            <a class="pref-chip" href="#kagoshima">鹿兒島縣<span class="chip-n">20</span></a>
         </nav>
 
         <div class="ovn-card">
@@ -405,7 +406,7 @@
                 maxZoom: 18,
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             }).addTo(map);
-            var sts = [{"i":1,"n":"道の駅むなかた","la":33.84816,"ln":130.50326,"st":"paidonly","rv":1,"c":"#d9a400","b":"僅限付費 · RV Park","u":"/zh/overnight-parking/michi-no-eki/fukuoka/munakata/","g":"https://www.google.com/maps/search/?api=1&query=33.84816,130.50326"},{"i":9,"n":"道の駅うきは","la":33.33419,"ln":130.81824,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/ukiha/","g":"https://www.google.com/maps/search/?api=1&query=33.33419,130.81824"},{"i":4,"n":"道の駅原鶴","la":33.3537,"ln":130.78488,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/harazuru/","g":"https://www.google.com/maps/search/?api=1&query=33.3537,130.78488"},{"i":7,"n":"道の駅おおとう桜街道","la":33.62568,"ln":130.84585,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/oto-sakura-kaido/","g":"https://www.google.com/maps/search/?api=1&query=33.62568,130.84585"},{"i":5,"n":"道の駅いとだ","la":33.64202,"ln":130.76519,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/itoda/","g":"https://www.google.com/maps/search/?api=1&query=33.64202,130.76519"},{"i":2,"n":"道の駅おおき","la":33.218,"ln":130.43801,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/fukuoka/oki/","g":"https://www.google.com/maps/search/?api=1&query=33.218,130.43801"},{"i":6,"n":"道の駅くるめ","la":33.31945,"ln":130.59372,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/kurume/","g":"https://www.google.com/maps/search/?api=1&query=33.31945,130.59372"},{"i":8,"n":"道の駅たちばな","la":33.18761,"ln":130.61039,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/tachibana/","g":"https://www.google.com/maps/search/?api=1&query=33.18761,130.61039"},{"i":3,"n":"道の駅豊前おこしかけ","la":33.614,"ln":131.10091,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/buzen-okoshikake/","g":"https://www.google.com/maps/search/?api=1&query=33.614,131.10091"},{"i":11,"n":"道の駅鹿島","la":33.07472,"ln":130.14549,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/kashima/","g":"https://www.google.com/maps/search/?api=1&query=33.07472,130.14549"},{"i":10,"n":"道の駅伊万里","la":33.31314,"ln":129.92887,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/imari/","g":"https://www.google.com/maps/search/?api=1&query=33.31314,129.92887"},{"i":12,"n":"道の駅厳木","la":33.31112,"ln":130.07234,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/kyuragi/","g":"https://www.google.com/maps/search/?api=1&query=33.31112,130.07234"},{"i":15,"n":"道の駅吉野ヶ里","la":33.38086,"ln":130.39715,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/yoshinogari/","g":"https://www.google.com/maps/search/?api=1&query=33.38086,130.39715"},{"i":13,"n":"道の駅太良","la":33.04681,"ln":130.16908,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/tara/","g":"https://www.google.com/maps/search/?api=1&query=33.04681,130.16908"},{"i":14,"n":"道の駅うれしの まるく","la":33.10638,"ln":129.99786,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/ureshino-maruku/","g":"https://www.google.com/maps/search/?api=1&query=33.10638,129.99786"},{"i":16,"n":"道の駅彼杵の荘","la":33.03583,"ln":129.91994,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/nagasaki/sonogi-no-sho/","g":"https://www.google.com/maps/search/?api=1&query=33.03583,129.91994"},{"i":17,"n":"道の駅生月大橋","la":33.35526,"ln":129.43372,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/ikitsuki-ohashi/","g":"https://www.google.com/maps/search/?api=1&query=33.35526,129.43372"},{"i":18,"n":"道の駅昆虫の里たびら","la":33.3175,"ln":129.6031,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/konchu-no-sato-tabira/","g":"https://www.google.com/maps/search/?api=1&query=33.3175,129.6031"},{"i":21,"n":"道の駅夕陽が丘そとめ","la":32.83586,"ln":129.70385,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/yuhigaoka-sotome/","g":"https://www.google.com/maps/search/?api=1&query=32.83586,129.70385"},{"i":20,"n":"道の駅させぼっくす９９","la":33.20176,"ln":129.67194,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/sasebo-box99/","g":"https://www.google.com/maps/search/?api=1&query=33.20176,129.67194"},{"i":19,"n":"道の駅さいかい","la":33.04283,"ln":129.69605,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/saikai/","g":"https://www.google.com/maps/search/?api=1&query=33.04283,129.69605"},{"i":31,"n":"道の駅阿蘇","la":32.93701,"ln":131.08088,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/aso/","g":"https://www.google.com/maps/search/?api=1&query=32.93701,131.08088"},{"i":35,"n":"道の駅大津","la":32.88105,"ln":130.89069,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/ozu/","g":"https://www.google.com/maps/search/?api=1&query=32.88105,130.89069"},{"i":34,"n":"道の駅小国","la":33.12311,"ln":131.06474,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/oguni/","g":"https://www.google.com/maps/search/?api=1&query=33.12311,131.06474"},{"i":24,"n":"道の駅あそ望の郷くぎの","la":32.81846,"ln":131.04116,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/asobo-no-sato-kugino/","g":"https://www.google.com/maps/search/?api=1&query=32.81846,131.04116"},{"i":25,"n":"道の駅きくすい","la":32.97349,"ln":130.60226,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/kikusui/","g":"https://www.google.com/maps/search/?api=1&query=32.97349,130.60226"},{"i":36,"n":"道の駅七城メロンドーム","la":32.98037,"ln":130.7702,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/shichijo-melon-dome/","g":"https://www.google.com/maps/search/?api=1&query=32.98037,130.7702"},{"i":37,"n":"道の駅すいかの里 植木","la":32.90819,"ln":130.6934,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/suika-no-sato-ueki/","g":"https://www.google.com/maps/search/?api=1&query=32.90819,130.6934"},{"i":33,"n":"道の駅上天草さんぱーる","la":32.57719,"ln":130.42006,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/kamiamakusa-sunpearl/","g":"https://www.google.com/maps/search/?api=1&query=32.57719,130.42006"},{"i":23,"n":"道の駅有明リップルランド","la":32.50556,"ln":130.30572,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/ariake-rippleland/","g":"https://www.google.com/maps/search/?api=1&query=32.50556,130.30572"},{"i":27,"n":"道の駅宮地岳かかしの里","la":32.38489,"ln":130.12645,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/miyajidake-kakashi-no-sato/","g":"https://www.google.com/maps/search/?api=1&query=32.38489,130.12645"},{"i":32,"n":"道の駅人吉","la":32.19341,"ln":130.78933,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/hitoyoshi/","g":"https://www.google.com/maps/search/?api=1&query=32.19341,130.78933"},{"i":28,"n":"道の駅水辺プラザかもと","la":32.98696,"ln":130.75572,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/mizube-plaza-kamoto/","g":"https://www.google.com/maps/search/?api=1&query=32.98696,130.75572"},{"i":22,"n":"道の駅ウェルネスあらお","la":32.99115,"ln":130.42791,"st":"paidonly","rv":1,"c":"#d9a400","b":"僅限付費 · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/wellness-arao/","g":"https://www.google.com/maps/search/?api=1&query=32.99115,130.42791"},{"i":26,"n":"道の駅子守唄の里五木","la":32.39881,"ln":130.82689,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/komoriuta-no-sato-itsuki/","g":"https://www.google.com/maps/search/?api=1&query=32.39881,130.82689"},{"i":29,"n":"道の駅錦","la":32.20565,"ln":130.84486,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/nishiki/","g":"https://www.google.com/maps/search/?api=1&query=32.20565,130.84486"},{"i":30,"n":"道の駅東陽","la":32.54781,"ln":130.71558,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/toyo/","g":"https://www.google.com/maps/search/?api=1&query=32.54781,130.71558"},{"i":45,"n":"道の駅ゆふいん","la":33.26064,"ln":131.32722,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/yufuin/","g":"https://www.google.com/maps/search/?api=1&query=33.26064,131.32722"},{"i":39,"n":"道の駅原尻の滝","la":32.96569,"ln":131.45237,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/harajiri-no-taki/","g":"https://www.google.com/maps/search/?api=1&query=32.96569,131.45237"},{"i":43,"n":"道の駅佐賀関","la":33.24728,"ln":131.82845,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/saganoseki/","g":"https://www.google.com/maps/search/?api=1&query=33.24728,131.82845"},{"i":40,"n":"道の駅くにさき","la":33.54545,"ln":131.73956,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/kunisaki/","g":"https://www.google.com/maps/search/?api=1&query=33.54545,131.73956"},{"i":38,"n":"道の駅童話の里くす","la":33.28952,"ln":131.15697,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/dowa-no-sato-kusu/","g":"https://www.google.com/maps/search/?api=1&query=33.28952,131.15697"},{"i":42,"n":"道の駅なかつ","la":33.55114,"ln":131.21316,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/nakatsu/","g":"https://www.google.com/maps/search/?api=1&query=33.55114,131.21316"},{"i":41,"n":"道の駅ながゆ温泉","la":33.07147,"ln":131.38427,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/nagayu-onsen/","g":"https://www.google.com/maps/search/?api=1&query=33.07147,131.38427"},{"i":44,"n":"道の駅たのうらら","la":33.25585,"ln":131.55601,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/tanourara/","g":"https://www.google.com/maps/search/?api=1&query=33.25585,131.55601"},{"i":51,"n":"道の駅フェニックス","la":31.76895,"ln":131.47842,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/phoenix/","g":"https://www.google.com/maps/search/?api=1&query=31.76895,131.47842"},{"i":52,"n":"道の駅高千穂","la":32.70857,"ln":131.30095,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/takachiho/","g":"https://www.google.com/maps/search/?api=1&query=32.70857,131.30095"},{"i":46,"n":"道の駅都城NiQLL","la":31.76861,"ln":131.09572,"st":"prohibited","rv":0,"c":"#c93028","b":"不可過夜","u":"/zh/overnight-parking/michi-no-eki/miyazaki/miyakonojo-niqll/","g":"https://www.google.com/maps/search/?api=1&query=31.76861,131.09572"},{"i":49,"n":"道の駅北川はゆま","la":32.66607,"ln":131.70468,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/kitagawa-hayuma/","g":"https://www.google.com/maps/search/?api=1&query=32.66607,131.70468"},{"i":48,"n":"道の駅日向","la":32.34322,"ln":131.62412,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/hyuga/","g":"https://www.google.com/maps/search/?api=1&query=32.34322,131.62412"},{"i":50,"n":"道の駅なんごう","la":31.50288,"ln":131.37827,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/nango/","g":"https://www.google.com/maps/search/?api=1&query=31.50288,131.37827"},{"i":47,"n":"道の駅えびの","la":32.05023,"ln":130.80546,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/ebino/","g":"https://www.google.com/maps/search/?api=1&query=32.05023,130.80546"},{"i":58,"n":"道の駅桜島","la":31.58935,"ln":130.59887,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/sakurajima/","g":"https://www.google.com/maps/search/?api=1&query=31.58935,130.59887"},{"i":55,"n":"道の駅喜入","la":31.37892,"ln":130.54539,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/kiire/","g":"https://www.google.com/maps/search/?api=1&query=31.37892,130.54539"},{"i":56,"n":"道の駅霧島","la":31.86329,"ln":130.85127,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/kirishima/","g":"https://www.google.com/maps/search/?api=1&query=31.86329,130.85127"},{"i":59,"n":"道の駅たるみず","la":31.55874,"ln":130.74544,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/tarumizu/","g":"https://www.google.com/maps/search/?api=1&query=31.55874,130.74544"},{"i":60,"n":"道の駅たるみずはまびら","la":31.46843,"ln":130.69828,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/tarumizu-hamabira/","g":"https://www.google.com/maps/search/?api=1&query=31.46843,130.69828"},{"i":54,"n":"道の駅いぶすき","la":31.30207,"ln":130.58958,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/ibusuki/","g":"https://www.google.com/maps/search/?api=1&query=31.30207,130.58958"},{"i":53,"n":"道の駅阿久根","la":31.94598,"ln":130.21646,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/akune/","g":"https://www.google.com/maps/search/?api=1&query=31.94598,130.21646"},{"i":57,"n":"道の駅くにの松原おおさき","la":31.43811,"ln":131.03078,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/kuni-no-matsubara-osaki/","g":"https://www.google.com/maps/search/?api=1&query=31.43811,131.03078"}];
+            var sts = [{"i":1,"n":"道の駅むなかた","la":33.84816,"ln":130.50326,"st":"paidonly","rv":1,"c":"#d9a400","b":"僅限付費 · RV Park","u":"/zh/overnight-parking/michi-no-eki/fukuoka/munakata/","g":"https://www.google.com/maps/search/?api=1&query=33.84816,130.50326"},{"i":14,"n":"道の駅うきは","la":33.33419,"ln":130.81824,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/ukiha/","g":"https://www.google.com/maps/search/?api=1&query=33.33419,130.81824"},{"i":5,"n":"道の駅原鶴","la":33.3537,"ln":130.78488,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/harazuru/","g":"https://www.google.com/maps/search/?api=1&query=33.3537,130.78488"},{"i":11,"n":"道の駅おおとう桜街道","la":33.62568,"ln":130.84585,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/oto-sakura-kaido/","g":"https://www.google.com/maps/search/?api=1&query=33.62568,130.84585"},{"i":6,"n":"道の駅いとだ","la":33.64202,"ln":130.76519,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/itoda/","g":"https://www.google.com/maps/search/?api=1&query=33.64202,130.76519"},{"i":2,"n":"道の駅おおき","la":33.218,"ln":130.43801,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/fukuoka/oki/","g":"https://www.google.com/maps/search/?api=1&query=33.218,130.43801"},{"i":10,"n":"道の駅くるめ","la":33.31945,"ln":130.59372,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/kurume/","g":"https://www.google.com/maps/search/?api=1&query=33.31945,130.59372"},{"i":13,"n":"道の駅たちばな","la":33.18761,"ln":130.61039,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/tachibana/","g":"https://www.google.com/maps/search/?api=1&query=33.18761,130.61039"},{"i":3,"n":"道の駅豊前おこしかけ","la":33.614,"ln":131.10091,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/buzen-okoshikake/","g":"https://www.google.com/maps/search/?api=1&query=33.614,131.10091"},{"i":17,"n":"道の駅鹿島","la":33.07472,"ln":130.14549,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/kashima/","g":"https://www.google.com/maps/search/?api=1&query=33.07472,130.14549"},{"i":16,"n":"道の駅伊万里","la":33.31314,"ln":129.92887,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/imari/","g":"https://www.google.com/maps/search/?api=1&query=33.31314,129.92887"},{"i":18,"n":"道の駅厳木","la":33.31112,"ln":130.07234,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/kyuragi/","g":"https://www.google.com/maps/search/?api=1&query=33.31112,130.07234"},{"i":25,"n":"道の駅吉野ヶ里","la":33.38086,"ln":130.39715,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/yoshinogari/","g":"https://www.google.com/maps/search/?api=1&query=33.38086,130.39715"},{"i":21,"n":"道の駅太良","la":33.04681,"ln":130.16908,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/tara/","g":"https://www.google.com/maps/search/?api=1&query=33.04681,130.16908"},{"i":22,"n":"道の駅うれしの まるく","la":33.10638,"ln":129.99786,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/ureshino-maruku/","g":"https://www.google.com/maps/search/?api=1&query=33.10638,129.99786"},{"i":26,"n":"道の駅彼杵の荘","la":33.03583,"ln":129.91994,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/nagasaki/sonogi-no-sho/","g":"https://www.google.com/maps/search/?api=1&query=33.03583,129.91994"},{"i":28,"n":"道の駅生月大橋","la":33.35526,"ln":129.43372,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/ikitsuki-ohashi/","g":"https://www.google.com/maps/search/?api=1&query=33.35526,129.43372"},{"i":30,"n":"道の駅昆虫の里たびら","la":33.3175,"ln":129.6031,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/konchu-no-sato-tabira/","g":"https://www.google.com/maps/search/?api=1&query=33.3175,129.6031"},{"i":36,"n":"道の駅夕陽が丘そとめ","la":32.83586,"ln":129.70385,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/yuhigaoka-sotome/","g":"https://www.google.com/maps/search/?api=1&query=32.83586,129.70385"},{"i":33,"n":"道の駅させぼっくす９９","la":33.20176,"ln":129.67194,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/sasebo-box99/","g":"https://www.google.com/maps/search/?api=1&query=33.20176,129.67194"},{"i":32,"n":"道の駅さいかい","la":33.04283,"ln":129.69605,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/saikai/","g":"https://www.google.com/maps/search/?api=1&query=33.04283,129.69605"},{"i":48,"n":"道の駅阿蘇","la":32.93701,"ln":131.08088,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/aso/","g":"https://www.google.com/maps/search/?api=1&query=32.93701,131.08088"},{"i":55,"n":"道の駅大津","la":32.88105,"ln":130.89069,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/ozu/","g":"https://www.google.com/maps/search/?api=1&query=32.88105,130.89069"},{"i":54,"n":"道の駅小国","la":33.12311,"ln":131.06474,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/oguni/","g":"https://www.google.com/maps/search/?api=1&query=33.12311,131.06474"},{"i":39,"n":"道の駅あそ望の郷くぎの","la":32.81846,"ln":131.04116,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/asobo-no-sato-kugino/","g":"https://www.google.com/maps/search/?api=1&query=32.81846,131.04116"},{"i":40,"n":"道の駅きくすい","la":32.97349,"ln":130.60226,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/kikusui/","g":"https://www.google.com/maps/search/?api=1&query=32.97349,130.60226"},{"i":59,"n":"道の駅七城メロンドーム","la":32.98037,"ln":130.7702,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/shichijo-melon-dome/","g":"https://www.google.com/maps/search/?api=1&query=32.98037,130.7702"},{"i":62,"n":"道の駅すいかの里 植木","la":32.90819,"ln":130.6934,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/suika-no-sato-ueki/","g":"https://www.google.com/maps/search/?api=1&query=32.90819,130.6934"},{"i":50,"n":"道の駅上天草さんぱーる","la":32.57719,"ln":130.42006,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/kamiamakusa-sunpearl/","g":"https://www.google.com/maps/search/?api=1&query=32.57719,130.42006"},{"i":38,"n":"道の駅有明リップルランド","la":32.50556,"ln":130.30572,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/ariake-rippleland/","g":"https://www.google.com/maps/search/?api=1&query=32.50556,130.30572"},{"i":42,"n":"道の駅宮地岳かかしの里","la":32.38489,"ln":130.12645,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/miyajidake-kakashi-no-sato/","g":"https://www.google.com/maps/search/?api=1&query=32.38489,130.12645"},{"i":49,"n":"道の駅人吉","la":32.19341,"ln":130.78933,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/hitoyoshi/","g":"https://www.google.com/maps/search/?api=1&query=32.19341,130.78933"},{"i":43,"n":"道の駅水辺プラザかもと","la":32.98696,"ln":130.75572,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/mizube-plaza-kamoto/","g":"https://www.google.com/maps/search/?api=1&query=32.98696,130.75572"},{"i":37,"n":"道の駅ウェルネスあらお","la":32.99115,"ln":130.42791,"st":"paidonly","rv":1,"c":"#d9a400","b":"僅限付費 · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/wellness-arao/","g":"https://www.google.com/maps/search/?api=1&query=32.99115,130.42791"},{"i":41,"n":"道の駅子守唄の里五木","la":32.39881,"ln":130.82689,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/komoriuta-no-sato-itsuki/","g":"https://www.google.com/maps/search/?api=1&query=32.39881,130.82689"},{"i":44,"n":"道の駅錦","la":32.20565,"ln":130.84486,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/nishiki/","g":"https://www.google.com/maps/search/?api=1&query=32.20565,130.84486"},{"i":45,"n":"道の駅東陽","la":32.54781,"ln":130.71558,"st":"noban","rv":1,"c":"#2c9a44","b":"通常OK · RV Park","u":"/zh/overnight-parking/michi-no-eki/kumamoto/toyo/","g":"https://www.google.com/maps/search/?api=1&query=32.54781,130.71558"},{"i":90,"n":"道の駅ゆふいん","la":33.26064,"ln":131.32722,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/yufuin/","g":"https://www.google.com/maps/search/?api=1&query=33.26064,131.32722"},{"i":69,"n":"道の駅原尻の滝","la":32.96569,"ln":131.45237,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/harajiri-no-taki/","g":"https://www.google.com/maps/search/?api=1&query=32.96569,131.45237"},{"i":80,"n":"道の駅佐賀関","la":33.24728,"ln":131.82845,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/saganoseki/","g":"https://www.google.com/maps/search/?api=1&query=33.24728,131.82845"},{"i":74,"n":"道の駅くにさき","la":33.54545,"ln":131.73956,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/kunisaki/","g":"https://www.google.com/maps/search/?api=1&query=33.54545,131.73956"},{"i":68,"n":"道の駅童話の里くす","la":33.28952,"ln":131.15697,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/dowa-no-sato-kusu/","g":"https://www.google.com/maps/search/?api=1&query=33.28952,131.15697"},{"i":77,"n":"道の駅なかつ","la":33.55114,"ln":131.21316,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/nakatsu/","g":"https://www.google.com/maps/search/?api=1&query=33.55114,131.21316"},{"i":76,"n":"道の駅ながゆ温泉","la":33.07147,"ln":131.38427,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/nagayu-onsen/","g":"https://www.google.com/maps/search/?api=1&query=33.07147,131.38427"},{"i":85,"n":"道の駅たのうらら","la":33.25585,"ln":131.55601,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/tanourara/","g":"https://www.google.com/maps/search/?api=1&query=33.25585,131.55601"},{"i":99,"n":"道の駅フェニックス","la":31.76895,"ln":131.47842,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/phoenix/","g":"https://www.google.com/maps/search/?api=1&query=31.76895,131.47842"},{"i":102,"n":"道の駅高千穂","la":32.70857,"ln":131.30095,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/takachiho/","g":"https://www.google.com/maps/search/?api=1&query=32.70857,131.30095"},{"i":91,"n":"道の駅都城NiQLL","la":31.76861,"ln":131.09572,"st":"prohibited","rv":0,"c":"#c93028","b":"不可過夜","u":"/zh/overnight-parking/michi-no-eki/miyazaki/miyakonojo-niqll/","g":"https://www.google.com/maps/search/?api=1&query=31.76861,131.09572"},{"i":94,"n":"道の駅北川はゆま","la":32.66607,"ln":131.70468,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/kitagawa-hayuma/","g":"https://www.google.com/maps/search/?api=1&query=32.66607,131.70468"},{"i":93,"n":"道の駅日向","la":32.34322,"ln":131.62412,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/hyuga/","g":"https://www.google.com/maps/search/?api=1&query=32.34322,131.62412"},{"i":98,"n":"道の駅なんごう","la":31.50288,"ln":131.37827,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/nango/","g":"https://www.google.com/maps/search/?api=1&query=31.50288,131.37827"},{"i":92,"n":"道の駅えびの","la":32.05023,"ln":130.80546,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/ebino/","g":"https://www.google.com/maps/search/?api=1&query=32.05023,130.80546"},{"i":123,"n":"道の駅桜島","la":31.58935,"ln":130.59887,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/sakurajima/","g":"https://www.google.com/maps/search/?api=1&query=31.58935,130.59887"},{"i":113,"n":"道の駅喜入","la":31.37892,"ln":130.54539,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/kiire/","g":"https://www.google.com/maps/search/?api=1&query=31.37892,130.54539"},{"i":115,"n":"道の駅霧島","la":31.86329,"ln":130.85127,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/kirishima/","g":"https://www.google.com/maps/search/?api=1&query=31.86329,130.85127"},{"i":126,"n":"道の駅たるみず","la":31.55874,"ln":130.74544,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/tarumizu/","g":"https://www.google.com/maps/search/?api=1&query=31.55874,130.74544"},{"i":127,"n":"道の駅たるみずはまびら","la":31.46843,"ln":130.69828,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/tarumizu-hamabira/","g":"https://www.google.com/maps/search/?api=1&query=31.46843,130.69828"},{"i":111,"n":"道の駅いぶすき","la":31.30207,"ln":130.58958,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/ibusuki/","g":"https://www.google.com/maps/search/?api=1&query=31.30207,130.58958"},{"i":109,"n":"道の駅阿久根","la":31.94598,"ln":130.21646,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/akune/","g":"https://www.google.com/maps/search/?api=1&query=31.94598,130.21646"},{"i":116,"n":"道の駅くにの松原おおさき","la":31.43811,"ln":131.03078,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/kuni-no-matsubara-osaki/","g":"https://www.google.com/maps/search/?api=1&query=31.43811,131.03078"},{"i":12,"n":"道の駅しんよしとみ","la":33.58868,"ln":131.15422,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/shin-yoshitomi/","g":"https://www.google.com/maps/search/?api=1&query=33.58868,131.15422"},{"i":4,"n":"道の駅筑前みなみの里","la":33.46732,"ln":130.6238,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/chikuzen-minami-no-sato/","g":"https://www.google.com/maps/search/?api=1&query=33.46732,130.6238"},{"i":8,"n":"道の駅香春","la":33.67674,"ln":130.86008,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/kawara/","g":"https://www.google.com/maps/search/?api=1&query=33.67674,130.86008"},{"i":15,"n":"道の駅うすい","la":33.5639,"ln":130.7132,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/usui/","g":"https://www.google.com/maps/search/?api=1&query=33.5639,130.7132"},{"i":9,"n":"道の駅小石原","la":33.4652,"ln":130.82599,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/koishiwara/","g":"https://www.google.com/maps/search/?api=1&query=33.4652,130.82599"},{"i":7,"n":"道の駅歓遊舎ひこさん","la":33.54963,"ln":130.86005,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/fukuoka/kanyusha-hikosan/","g":"https://www.google.com/maps/search/?api=1&query=33.54963,130.86005"},{"i":124,"n":"道の駅すえよし","la":31.68835,"ln":130.97027,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/sueyoshi/","g":"https://www.google.com/maps/search/?api=1&query=31.68835,130.97027"},{"i":128,"n":"道の駅山川港活お海道","la":31.20289,"ln":130.63488,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/yamagawako-katsuo-kaido/","g":"https://www.google.com/maps/search/?api=1&query=31.20289,130.63488"},{"i":125,"n":"道の駅財部きらら館","la":31.72882,"ln":130.99867,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/takarabe-kirara/","g":"https://www.google.com/maps/search/?api=1&query=31.72882,130.99867"},{"i":119,"n":"道の駅長島","la":32.16197,"ln":130.10927,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/nagashima/","g":"https://www.google.com/maps/search/?api=1&query=32.16197,130.10927"},{"i":114,"n":"道の駅きんぽう木花館","la":31.46489,"ln":130.34543,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/kinpo-konohana/","g":"https://www.google.com/maps/search/?api=1&query=31.46489,130.34543"},{"i":118,"n":"道の駅松山","la":31.58173,"ln":131.04242,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/matsuyama/","g":"https://www.google.com/maps/search/?api=1&query=31.58173,131.04242"},{"i":112,"n":"道の駅川辺やすらぎの郷","la":31.41265,"ln":130.43294,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/kawanabe/","g":"https://www.google.com/maps/search/?api=1&query=31.41265,130.43294"},{"i":110,"n":"道の駅樋脇","la":31.79642,"ln":130.4075,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/hiwaki/","g":"https://www.google.com/maps/search/?api=1&query=31.79642,130.4075"},{"i":121,"n":"道の駅野方あらさの","la":31.50013,"ln":130.92411,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/nogata-arasano/","g":"https://www.google.com/maps/search/?api=1&query=31.50013,130.92411"},{"i":117,"n":"道の駅黒之瀬戸だんだん市場","la":32.10845,"ln":130.17038,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/kuronoseto-dandan/","g":"https://www.google.com/maps/search/?api=1&query=32.10845,130.17038"},{"i":52,"n":"道の駅みなまた","la":32.19933,"ln":130.38211,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/minamata/","g":"https://www.google.com/maps/search/?api=1&query=32.19933,130.38211"},{"i":60,"n":"道の駅不知火","la":32.63354,"ln":130.62923,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/shiranuhi/","g":"https://www.google.com/maps/search/?api=1&query=32.63354,130.62923"},{"i":46,"n":"道の駅天草市イルカセンター","la":32.54552,"ln":130.13125,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/amakusa-dolphin/","g":"https://www.google.com/maps/search/?api=1&query=32.54552,130.13125"},{"i":51,"n":"道の駅旭志","la":32.93118,"ln":130.8302,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/kyokushi/","g":"https://www.google.com/maps/search/?api=1&query=32.93118,130.8302"},{"i":57,"n":"道の駅﨑津","la":32.3168,"ln":130.02539,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/sakitsu/","g":"https://www.google.com/maps/search/?api=1&query=32.3168,130.02539"},{"i":64,"n":"道の駅宇城彩館","la":32.65109,"ln":130.69831,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/uki-saikan/","g":"https://www.google.com/maps/search/?api=1&query=32.65109,130.69831"},{"i":65,"n":"道の駅うしぶか海彩館","la":32.194,"ln":130.02734,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/ushibuka-kaisaikan/","g":"https://www.google.com/maps/search/?api=1&query=32.194,130.02734"},{"i":47,"n":"道の駅芦北でこぽん","la":32.30318,"ln":130.50814,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/ashikita-dekopon/","g":"https://www.google.com/maps/search/?api=1&query=32.30318,130.50814"},{"i":63,"n":"道の駅通潤橋","la":32.68848,"ln":130.9906,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/tsujunkyo/","g":"https://www.google.com/maps/search/?api=1&query=32.68848,130.9906"},{"i":61,"n":"道の駅泗水","la":32.92505,"ln":130.77146,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/shisui/","g":"https://www.google.com/maps/search/?api=1&query=32.92505,130.77146"},{"i":53,"n":"道の駅波野","la":32.95965,"ln":131.19731,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/namino/","g":"https://www.google.com/maps/search/?api=1&query=32.95965,131.19731"},{"i":58,"n":"道の駅清和文楽邑","la":32.69064,"ln":131.09159,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/seiwa-bunraku/","g":"https://www.google.com/maps/search/?api=1&query=32.69064,131.09159"},{"i":56,"n":"道の駅竜北","la":32.57718,"ln":130.69513,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/ryuhoku/","g":"https://www.google.com/maps/search/?api=1&query=32.57718,130.69513"},{"i":95,"n":"道の駅北方よっちみろ屋","la":32.5954,"ln":131.49167,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/kitakata-yocchimiroya/","g":"https://www.google.com/maps/search/?api=1&query=32.5954,131.49167"},{"i":96,"n":"道の駅北浦","la":32.68498,"ln":131.80094,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/kitaura/","g":"https://www.google.com/maps/search/?api=1&query=32.68498,131.80094"},{"i":107,"n":"道の駅山之口","la":31.79439,"ln":131.20265,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/yamanokuchi/","g":"https://www.google.com/maps/search/?api=1&query=31.79439,131.20265"},{"i":104,"n":"道の駅田野","la":31.79665,"ln":131.30737,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/tano/","g":"https://www.google.com/maps/search/?api=1&query=31.79665,131.30737"},{"i":101,"n":"道の駅青雲橋","la":32.66064,"ln":131.38841,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/seiunbashi/","g":"https://www.google.com/maps/search/?api=1&query=32.66064,131.38841"},{"i":103,"n":"道の駅高岡","la":31.94565,"ln":131.34056,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/takaoka/","g":"https://www.google.com/maps/search/?api=1&query=31.94565,131.34056"},{"i":97,"n":"道の駅くしま","la":31.46267,"ln":131.22898,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/kushima/","g":"https://www.google.com/maps/search/?api=1&query=31.46267,131.22898"},{"i":106,"n":"道の駅つの","la":32.26035,"ln":131.55753,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/tsuno/","g":"https://www.google.com/maps/search/?api=1&query=32.26035,131.55753"},{"i":105,"n":"道の駅とうごう","la":32.39131,"ln":131.51292,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/togo/","g":"https://www.google.com/maps/search/?api=1&query=32.39131,131.51292"},{"i":100,"n":"道の駅酒谷","la":31.64187,"ln":131.26662,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/sakatani/","g":"https://www.google.com/maps/search/?api=1&query=31.64187,131.26662"},{"i":29,"n":"道の駅遣唐使ふるさと館","la":32.73836,"ln":128.69003,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/kentoshi/","g":"https://www.google.com/maps/search/?api=1&query=32.73836,128.69003"},{"i":34,"n":"道の駅長崎街道鈴田峠","la":32.88526,"ln":130.00731,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/suzuta-toge/","g":"https://www.google.com/maps/search/?api=1&query=32.88526,130.00731"},{"i":31,"n":"道の駅松浦海のふるさと館","la":33.34816,"ln":129.70168,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/matsuura/","g":"https://www.google.com/maps/search/?api=1&query=33.34816,129.70168"},{"i":35,"n":"道の駅鷹ら島","la":33.43362,"ln":129.78242,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/takarashima/","g":"https://www.google.com/maps/search/?api=1&query=33.43362,129.78242"},{"i":70,"n":"道の駅いんない","la":33.42399,"ln":131.32014,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/innai/","g":"https://www.google.com/maps/search/?api=1&query=33.42399,131.32014"},{"i":88,"n":"道の駅やまくに","la":33.40657,"ln":131.06188,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/yamakuni/","g":"https://www.google.com/maps/search/?api=1&query=33.40657,131.06188"},{"i":87,"n":"道の駅耶馬トピア","la":33.48964,"ln":131.17441,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/yaba-topia/","g":"https://www.google.com/maps/search/?api=1&query=33.48964,131.17441"},{"i":79,"n":"道の駅水辺の郷おおやま","la":33.24822,"ln":130.97194,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/oyama/","g":"https://www.google.com/maps/search/?api=1&query=33.24822,130.97194"},{"i":82,"n":"道の駅すごう","la":32.9564,"ln":131.29417,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/sugo/","g":"https://www.google.com/maps/search/?api=1&query=32.9564,131.29417"},{"i":78,"n":"道の駅おおの","la":33.03673,"ln":131.5028,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/ono/","g":"https://www.google.com/maps/search/?api=1&query=33.03673,131.5028"},{"i":71,"n":"道の駅かまえ","la":32.80209,"ln":131.92471,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/kamae/","g":"https://www.google.com/maps/search/?api=1&query=32.80209,131.92471"},{"i":73,"n":"道の駅くにみ","la":33.68029,"ln":131.60539,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/kunimi/","g":"https://www.google.com/maps/search/?api=1&query=33.68029,131.60539"},{"i":81,"n":"道の駅せせらぎ郷かみつえ","la":33.11233,"ln":130.96159,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/seseragi-kamitsue/","g":"https://www.google.com/maps/search/?api=1&query=33.11233,130.96159"},{"i":75,"n":"道の駅みえ","la":33.02865,"ln":131.62174,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/mie/","g":"https://www.google.com/maps/search/?api=1&query=33.02865,131.62174"},{"i":89,"n":"道の駅やよい","la":32.9645,"ln":131.83871,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/yayoi/","g":"https://www.google.com/maps/search/?api=1&query=32.9645,131.83871"},{"i":86,"n":"道の駅宇目","la":32.80381,"ln":131.61065,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/ume/","g":"https://www.google.com/maps/search/?api=1&query=32.80381,131.61065"},{"i":84,"n":"道の駅竹田","la":32.98552,"ln":131.34048,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/taketa/","g":"https://www.google.com/maps/search/?api=1&query=32.98552,131.34048"},{"i":83,"n":"道の駅鯛生金山","la":33.12878,"ln":130.88233,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/taio-kinzan/","g":"https://www.google.com/maps/search/?api=1&query=33.12878,130.88233"},{"i":24,"n":"道の駅山内","la":33.19168,"ln":129.95593,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/yamauchi/","g":"https://www.google.com/maps/search/?api=1&query=33.19168,129.95593"},{"i":20,"n":"道の駅しろいし","la":33.17723,"ln":130.19572,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/shiroishi/","g":"https://www.google.com/maps/search/?api=1&query=33.17723,130.19572"},{"i":23,"n":"道の駅大和そよかぜ館","la":33.33928,"ln":130.25769,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/yamato-soyokaze/","g":"https://www.google.com/maps/search/?api=1&query=33.33928,130.25769"},{"i":19,"n":"道の駅桃山天下市","la":33.52832,"ln":129.87376,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/saga/momoyama-tenkaichi/","g":"https://www.google.com/maps/search/?api=1&query=33.52832,129.87376"},{"i":67,"n":"道の駅あさじ","la":33.00259,"ln":131.44804,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/asaji/","g":"https://www.google.com/maps/search/?api=1&query=33.00259,131.44804"},{"i":72,"n":"道の駅きよかわ","la":32.97166,"ln":131.51821,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/oita/kiyokawa/","g":"https://www.google.com/maps/search/?api=1&query=32.97166,131.51821"},{"i":120,"n":"道の駅ねじめ","la":31.18553,"ln":130.76715,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/nejime/","g":"https://www.google.com/maps/search/?api=1&query=31.18553,130.76715"},{"i":66,"n":"道の駅宇土マリーナ","la":32.66229,"ln":130.52281,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kumamoto/uto-marina/","g":"https://www.google.com/maps/search/?api=1&query=32.66229,130.52281"},{"i":108,"n":"道の駅ゆ〜ぱるのじり","la":31.96438,"ln":131.08239,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/miyazaki/yuparu-nojiri/","g":"https://www.google.com/maps/search/?api=1&query=31.96438,131.08239"},{"i":122,"n":"道の駅おおすみ弥五郎伝説の里","la":31.59005,"ln":130.99019,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/kagoshima/osumi-yagoro/","g":"https://www.google.com/maps/search/?api=1&query=31.59005,130.99019"},{"i":27,"n":"道の駅251いいもりジャガーロード","la":32.78537,"ln":130.04601,"st":"noban","rv":0,"c":"#12808a","b":"通常OK","u":"/zh/overnight-parking/michi-no-eki/nagasaki/iimori-jaguar-road/","g":"https://www.google.com/maps/search/?api=1&query=32.78537,130.04601"}];
             // 番号入りピン: 下のリストの同じ番号と対応する。色に依存しない手がかりにもなる
             var mapMarkers = sts.map(function (s) {
                 var m = L.marker([s.la, s.ln], {
@@ -433,8 +434,8 @@
 
         <div class="filter-bar">
             <div class="status-chips" role="group" aria-label="篩選站點清單">
-                <button type="button" class="st-chip active" data-f="all" aria-pressed="true">全部<span class="chip-n">60</span></button>
-                <button type="button" class="st-chip" data-f="ok" aria-pressed="false"><span class="dot" style="background:var(--st-teal)"></span>通常OK<span class="chip-n">57</span></button>
+                <button type="button" class="st-chip active" data-f="all" aria-pressed="true">全部<span class="chip-n">128</span></button>
+                <button type="button" class="st-chip" data-f="ok" aria-pressed="false"><span class="dot" style="background:var(--st-teal)"></span>通常OK<span class="chip-n">125</span></button>
                 <button type="button" class="st-chip" data-f="rv" aria-pressed="false"><span class="dot" style="background:var(--st-green)"></span>RV Park<span class="chip-n">12</span></button>
                 <button type="button" class="st-chip" data-f="paid" aria-pressed="false"><span class="dot" style="background:var(--st-amber)"></span>僅限付費<span class="chip-n">2</span></button>
                 <button type="button" class="st-chip" data-f="no" aria-pressed="false"><span class="dot" style="background:var(--st-red)"></span>不可過夜<span class="chip-n">1</span></button>
@@ -538,7 +539,7 @@
         })();
         </script>
 <div class="ovn-card boxed pref-block" id="fukuoka">
-            <h2><a href="/zh/overnight-parking/michi-no-eki/fukuoka/" style="color:inherit;text-decoration:none;">福岡縣</a> <span class="cnt">已收錄 9 站</span></h2>
+            <h2><a href="/zh/overnight-parking/michi-no-eki/fukuoka/" style="color:inherit;text-decoration:none;">福岡縣</a> <span class="cnt">已收錄 15 站</span></h2>
             <div class="station-list">
 <a class="station-row" data-st="paidonly" data-rv="1" data-lat="33.84816" data-lng="130.50326" href="/zh/overnight-parking/michi-no-eki/fukuoka/munakata/">
                 <span class="st-num st-num-paidonly" aria-hidden="true">1</span>
@@ -558,79 +559,139 @@
                 <span class="st-city">豊前市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
-<a class="station-row" data-st="noban" data-rv="0" data-lat="33.3537" data-lng="130.78488" href="/zh/overnight-parking/michi-no-eki/fukuoka/harazuru/">
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.46732" data-lng="130.6238" href="/zh/overnight-parking/michi-no-eki/fukuoka/chikuzen-minami-no-sato/">
                 <span class="st-num st-num-noban" aria-hidden="true">4</span>
+                <span class="st-main"><span class="st-name">道の駅筑前みなみの里</span>
+                <span class="st-city">朝倉郡筑前町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.3537" data-lng="130.78488" href="/zh/overnight-parking/michi-no-eki/fukuoka/harazuru/">
+                <span class="st-num st-num-noban" aria-hidden="true">5</span>
                 <span class="st-main"><span class="st-name">道の駅原鶴</span>
                 <span class="st-city">朝倉市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.64202" data-lng="130.76519" href="/zh/overnight-parking/michi-no-eki/fukuoka/itoda/">
-                <span class="st-num st-num-noban" aria-hidden="true">5</span>
+                <span class="st-num st-num-noban" aria-hidden="true">6</span>
                 <span class="st-main"><span class="st-name">道の駅いとだ</span>
                 <span class="st-city">田川郡糸田町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.54963" data-lng="130.86005" href="/zh/overnight-parking/michi-no-eki/fukuoka/kanyusha-hikosan/">
+                <span class="st-num st-num-noban" aria-hidden="true">7</span>
+                <span class="st-main"><span class="st-name">道の駅歓遊舎ひこさん</span>
+                <span class="st-city">田川郡添田町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.67674" data-lng="130.86008" href="/zh/overnight-parking/michi-no-eki/fukuoka/kawara/">
+                <span class="st-num st-num-noban" aria-hidden="true">8</span>
+                <span class="st-main"><span class="st-name">道の駅香春</span>
+                <span class="st-city">田川郡香春町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.4652" data-lng="130.82599" href="/zh/overnight-parking/michi-no-eki/fukuoka/koishiwara/">
+                <span class="st-num st-num-noban" aria-hidden="true">9</span>
+                <span class="st-main"><span class="st-name">道の駅小石原</span>
+                <span class="st-city">朝倉郡東峰村 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.31945" data-lng="130.59372" href="/zh/overnight-parking/michi-no-eki/fukuoka/kurume/">
-                <span class="st-num st-num-noban" aria-hidden="true">6</span>
+                <span class="st-num st-num-noban" aria-hidden="true">10</span>
                 <span class="st-main"><span class="st-name">道の駅くるめ</span>
                 <span class="st-city">久留米市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.62568" data-lng="130.84585" href="/zh/overnight-parking/michi-no-eki/fukuoka/oto-sakura-kaido/">
-                <span class="st-num st-num-noban" aria-hidden="true">7</span>
+                <span class="st-num st-num-noban" aria-hidden="true">11</span>
                 <span class="st-main"><span class="st-name">道の駅おおとう桜街道</span>
                 <span class="st-city">田川郡大任町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.58868" data-lng="131.15422" href="/zh/overnight-parking/michi-no-eki/fukuoka/shin-yoshitomi/">
+                <span class="st-num st-num-noban" aria-hidden="true">12</span>
+                <span class="st-main"><span class="st-name">道の駅しんよしとみ</span>
+                <span class="st-city">築上郡上毛町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.18761" data-lng="130.61039" href="/zh/overnight-parking/michi-no-eki/fukuoka/tachibana/">
-                <span class="st-num st-num-noban" aria-hidden="true">8</span>
+                <span class="st-num st-num-noban" aria-hidden="true">13</span>
                 <span class="st-main"><span class="st-name">道の駅たちばな</span>
                 <span class="st-city">八女市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.33419" data-lng="130.81824" href="/zh/overnight-parking/michi-no-eki/fukuoka/ukiha/">
-                <span class="st-num st-num-noban" aria-hidden="true">9</span>
+                <span class="st-num st-num-noban" aria-hidden="true">14</span>
                 <span class="st-main"><span class="st-name">道の駅うきは</span>
                 <span class="st-city">うきは市</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.5639" data-lng="130.7132" href="/zh/overnight-parking/michi-no-eki/fukuoka/usui/">
+                <span class="st-num st-num-noban" aria-hidden="true">15</span>
+                <span class="st-main"><span class="st-name">道の駅うすい</span>
+                <span class="st-city">嘉麻市 · <span class="st-unverified">尚未查證</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
         </div>
 <div class="ovn-card boxed pref-block" id="saga">
-            <h2><a href="/zh/overnight-parking/michi-no-eki/saga/" style="color:inherit;text-decoration:none;">佐賀縣</a> <span class="cnt">已收錄 6 站</span></h2>
+            <h2><a href="/zh/overnight-parking/michi-no-eki/saga/" style="color:inherit;text-decoration:none;">佐賀縣</a> <span class="cnt">已收錄 10 站</span></h2>
             <div class="station-list">
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.31314" data-lng="129.92887" href="/zh/overnight-parking/michi-no-eki/saga/imari/">
-                <span class="st-num st-num-noban" aria-hidden="true">10</span>
+                <span class="st-num st-num-noban" aria-hidden="true">16</span>
                 <span class="st-main"><span class="st-name">道の駅伊万里</span>
                 <span class="st-city">伊万里市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.07472" data-lng="130.14549" href="/zh/overnight-parking/michi-no-eki/saga/kashima/">
-                <span class="st-num st-num-noban" aria-hidden="true">11</span>
+                <span class="st-num st-num-noban" aria-hidden="true">17</span>
                 <span class="st-main"><span class="st-name">道の駅鹿島</span>
                 <span class="st-city">鹿島市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.31112" data-lng="130.07234" href="/zh/overnight-parking/michi-no-eki/saga/kyuragi/">
-                <span class="st-num st-num-noban" aria-hidden="true">12</span>
+                <span class="st-num st-num-noban" aria-hidden="true">18</span>
                 <span class="st-main"><span class="st-name">道の駅厳木</span>
                 <span class="st-city">唐津市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.52832" data-lng="129.87376" href="/zh/overnight-parking/michi-no-eki/saga/momoyama-tenkaichi/">
+                <span class="st-num st-num-noban" aria-hidden="true">19</span>
+                <span class="st-main"><span class="st-name">道の駅桃山天下市</span>
+                <span class="st-city">唐津市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.17723" data-lng="130.19572" href="/zh/overnight-parking/michi-no-eki/saga/shiroishi/">
+                <span class="st-num st-num-noban" aria-hidden="true">20</span>
+                <span class="st-main"><span class="st-name">道の駅しろいし</span>
+                <span class="st-city">杵島郡白石町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.04681" data-lng="130.16908" href="/zh/overnight-parking/michi-no-eki/saga/tara/">
-                <span class="st-num st-num-noban" aria-hidden="true">13</span>
+                <span class="st-num st-num-noban" aria-hidden="true">21</span>
                 <span class="st-main"><span class="st-name">道の駅太良</span>
                 <span class="st-city">藤津郡太良町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.10638" data-lng="129.99786" href="/zh/overnight-parking/michi-no-eki/saga/ureshino-maruku/">
-                <span class="st-num st-num-noban" aria-hidden="true">14</span>
+                <span class="st-num st-num-noban" aria-hidden="true">22</span>
                 <span class="st-main"><span class="st-name">道の駅うれしの まるく</span>
                 <span class="st-city">嬉野市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.33928" data-lng="130.25769" href="/zh/overnight-parking/michi-no-eki/saga/yamato-soyokaze/">
+                <span class="st-num st-num-noban" aria-hidden="true">23</span>
+                <span class="st-main"><span class="st-name">道の駅大和そよかぜ館</span>
+                <span class="st-city">佐賀市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.19168" data-lng="129.95593" href="/zh/overnight-parking/michi-no-eki/saga/yamauchi/">
+                <span class="st-num st-num-noban" aria-hidden="true">24</span>
+                <span class="st-main"><span class="st-name">道の駅山内</span>
+                <span class="st-city">武雄市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.38086" data-lng="130.39715" href="/zh/overnight-parking/michi-no-eki/saga/yoshinogari/">
-                <span class="st-num st-num-noban" aria-hidden="true">15</span>
+                <span class="st-num st-num-noban" aria-hidden="true">25</span>
                 <span class="st-main"><span class="st-name">道の駅吉野ヶ里</span>
                 <span class="st-city">神埼郡吉野ヶ里町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
@@ -638,40 +699,70 @@
             </div>
         </div>
 <div class="ovn-card boxed pref-block" id="nagasaki">
-            <h2><a href="/zh/overnight-parking/michi-no-eki/nagasaki/" style="color:inherit;text-decoration:none;">長崎縣</a> <span class="cnt">已收錄 6 站</span></h2>
+            <h2><a href="/zh/overnight-parking/michi-no-eki/nagasaki/" style="color:inherit;text-decoration:none;">長崎縣</a> <span class="cnt">已收錄 11 站</span></h2>
             <div class="station-list">
 <a class="station-row" data-st="noban" data-rv="1" data-lat="33.03583" data-lng="129.91994" href="/zh/overnight-parking/michi-no-eki/nagasaki/sonogi-no-sho/">
-                <span class="st-num st-num-noban" aria-hidden="true">16</span>
+                <span class="st-num st-num-noban" aria-hidden="true">26</span>
                 <span class="st-main"><span class="st-name">道の駅彼杵の荘</span>
                 <span class="st-city">東彼杵郡東彼杵町</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV Park</span><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.78537" data-lng="130.04601" href="/zh/overnight-parking/michi-no-eki/nagasaki/iimori-jaguar-road/">
+                <span class="st-num st-num-noban" aria-hidden="true">27</span>
+                <span class="st-main"><span class="st-name">道の駅251いいもりジャガーロード</span>
+                <span class="st-city">諫早市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.35526" data-lng="129.43372" href="/zh/overnight-parking/michi-no-eki/nagasaki/ikitsuki-ohashi/">
-                <span class="st-num st-num-noban" aria-hidden="true">17</span>
+                <span class="st-num st-num-noban" aria-hidden="true">28</span>
                 <span class="st-main"><span class="st-name">道の駅生月大橋</span>
                 <span class="st-city">平戸市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.73836" data-lng="128.69003" href="/zh/overnight-parking/michi-no-eki/nagasaki/kentoshi/">
+                <span class="st-num st-num-noban" aria-hidden="true">29</span>
+                <span class="st-main"><span class="st-name">道の駅遣唐使ふるさと館</span>
+                <span class="st-city">五島市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.3175" data-lng="129.6031" href="/zh/overnight-parking/michi-no-eki/nagasaki/konchu-no-sato-tabira/">
-                <span class="st-num st-num-noban" aria-hidden="true">18</span>
+                <span class="st-num st-num-noban" aria-hidden="true">30</span>
                 <span class="st-main"><span class="st-name">道の駅昆虫の里たびら</span>
                 <span class="st-city">平戸市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.34816" data-lng="129.70168" href="/zh/overnight-parking/michi-no-eki/nagasaki/matsuura/">
+                <span class="st-num st-num-noban" aria-hidden="true">31</span>
+                <span class="st-main"><span class="st-name">道の駅松浦海のふるさと館</span>
+                <span class="st-city">松浦市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.04283" data-lng="129.69605" href="/zh/overnight-parking/michi-no-eki/nagasaki/saikai/">
-                <span class="st-num st-num-noban" aria-hidden="true">19</span>
+                <span class="st-num st-num-noban" aria-hidden="true">32</span>
                 <span class="st-main"><span class="st-name">道の駅さいかい</span>
                 <span class="st-city">西海市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.20176" data-lng="129.67194" href="/zh/overnight-parking/michi-no-eki/nagasaki/sasebo-box99/">
-                <span class="st-num st-num-noban" aria-hidden="true">20</span>
+                <span class="st-num st-num-noban" aria-hidden="true">33</span>
                 <span class="st-main"><span class="st-name">道の駅させぼっくす９９</span>
                 <span class="st-city">佐世保市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.88526" data-lng="130.00731" href="/zh/overnight-parking/michi-no-eki/nagasaki/suzuta-toge/">
+                <span class="st-num st-num-noban" aria-hidden="true">34</span>
+                <span class="st-main"><span class="st-name">道の駅長崎街道鈴田峠</span>
+                <span class="st-city">大村市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.43362" data-lng="129.78242" href="/zh/overnight-parking/michi-no-eki/nagasaki/takarashima/">
+                <span class="st-num st-num-noban" aria-hidden="true">35</span>
+                <span class="st-main"><span class="st-name">道の駅鷹ら島</span>
+                <span class="st-city">松浦市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.83586" data-lng="129.70385" href="/zh/overnight-parking/michi-no-eki/nagasaki/yuhigaoka-sotome/">
-                <span class="st-num st-num-noban" aria-hidden="true">21</span>
+                <span class="st-num st-num-noban" aria-hidden="true">36</span>
                 <span class="st-main"><span class="st-name">道の駅夕陽が丘そとめ</span>
                 <span class="st-city">長崎市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
@@ -679,153 +770,333 @@
             </div>
         </div>
 <div class="ovn-card boxed pref-block" id="kumamoto">
-            <h2><a href="/zh/overnight-parking/michi-no-eki/kumamoto/" style="color:inherit;text-decoration:none;">熊本縣</a> <span class="cnt">已收錄 16 站</span></h2>
+            <h2><a href="/zh/overnight-parking/michi-no-eki/kumamoto/" style="color:inherit;text-decoration:none;">熊本縣</a> <span class="cnt">已收錄 30 站</span></h2>
             <div class="station-list">
 <a class="station-row" data-st="paidonly" data-rv="1" data-lat="32.99115" data-lng="130.42791" href="/zh/overnight-parking/michi-no-eki/kumamoto/wellness-arao/">
-                <span class="st-num st-num-paidonly" aria-hidden="true">22</span>
+                <span class="st-num st-num-paidonly" aria-hidden="true">37</span>
                 <span class="st-main"><span class="st-name">道の駅ウェルネスあらお</span>
                 <span class="st-city">荒尾市</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV Park</span><span class="badge badge-paidonly"><span class="dot"></span>僅限付費</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="1" data-lat="32.50556" data-lng="130.30572" href="/zh/overnight-parking/michi-no-eki/kumamoto/ariake-rippleland/">
-                <span class="st-num st-num-noban" aria-hidden="true">23</span>
+                <span class="st-num st-num-noban" aria-hidden="true">38</span>
                 <span class="st-main"><span class="st-name">道の駅有明リップルランド</span>
                 <span class="st-city">天草市</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV Park</span><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="1" data-lat="32.81846" data-lng="131.04116" href="/zh/overnight-parking/michi-no-eki/kumamoto/asobo-no-sato-kugino/">
-                <span class="st-num st-num-noban" aria-hidden="true">24</span>
+                <span class="st-num st-num-noban" aria-hidden="true">39</span>
                 <span class="st-main"><span class="st-name">道の駅あそ望の郷くぎの</span>
                 <span class="st-city">阿蘇郡南阿蘇村</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV Park</span><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="1" data-lat="32.97349" data-lng="130.60226" href="/zh/overnight-parking/michi-no-eki/kumamoto/kikusui/">
-                <span class="st-num st-num-noban" aria-hidden="true">25</span>
+                <span class="st-num st-num-noban" aria-hidden="true">40</span>
                 <span class="st-main"><span class="st-name">道の駅きくすい</span>
                 <span class="st-city">玉名郡和水町</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV Park</span><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="1" data-lat="32.39881" data-lng="130.82689" href="/zh/overnight-parking/michi-no-eki/kumamoto/komoriuta-no-sato-itsuki/">
-                <span class="st-num st-num-noban" aria-hidden="true">26</span>
+                <span class="st-num st-num-noban" aria-hidden="true">41</span>
                 <span class="st-main"><span class="st-name">道の駅子守唄の里五木</span>
                 <span class="st-city">球磨郡五木村</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV Park</span><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="1" data-lat="32.38489" data-lng="130.12645" href="/zh/overnight-parking/michi-no-eki/kumamoto/miyajidake-kakashi-no-sato/">
-                <span class="st-num st-num-noban" aria-hidden="true">27</span>
+                <span class="st-num st-num-noban" aria-hidden="true">42</span>
                 <span class="st-main"><span class="st-name">道の駅宮地岳かかしの里</span>
                 <span class="st-city">天草市</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV Park</span><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="1" data-lat="32.98696" data-lng="130.75572" href="/zh/overnight-parking/michi-no-eki/kumamoto/mizube-plaza-kamoto/">
-                <span class="st-num st-num-noban" aria-hidden="true">28</span>
+                <span class="st-num st-num-noban" aria-hidden="true">43</span>
                 <span class="st-main"><span class="st-name">道の駅水辺プラザかもと</span>
                 <span class="st-city">山鹿市</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV Park</span><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="1" data-lat="32.20565" data-lng="130.84486" href="/zh/overnight-parking/michi-no-eki/kumamoto/nishiki/">
-                <span class="st-num st-num-noban" aria-hidden="true">29</span>
+                <span class="st-num st-num-noban" aria-hidden="true">44</span>
                 <span class="st-main"><span class="st-name">道の駅錦</span>
                 <span class="st-city">球磨郡錦町</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV Park</span><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="1" data-lat="32.54781" data-lng="130.71558" href="/zh/overnight-parking/michi-no-eki/kumamoto/toyo/">
-                <span class="st-num st-num-noban" aria-hidden="true">30</span>
+                <span class="st-num st-num-noban" aria-hidden="true">45</span>
                 <span class="st-main"><span class="st-name">道の駅東陽</span>
                 <span class="st-city">八代市</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV Park</span><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.54552" data-lng="130.13125" href="/zh/overnight-parking/michi-no-eki/kumamoto/amakusa-dolphin/">
+                <span class="st-num st-num-noban" aria-hidden="true">46</span>
+                <span class="st-main"><span class="st-name">道の駅天草市イルカセンター</span>
+                <span class="st-city">天草市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.30318" data-lng="130.50814" href="/zh/overnight-parking/michi-no-eki/kumamoto/ashikita-dekopon/">
+                <span class="st-num st-num-noban" aria-hidden="true">47</span>
+                <span class="st-main"><span class="st-name">道の駅芦北でこぽん</span>
+                <span class="st-city">葦北郡芦北町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.93701" data-lng="131.08088" href="/zh/overnight-parking/michi-no-eki/kumamoto/aso/">
-                <span class="st-num st-num-noban" aria-hidden="true">31</span>
+                <span class="st-num st-num-noban" aria-hidden="true">48</span>
                 <span class="st-main"><span class="st-name">道の駅阿蘇</span>
                 <span class="st-city">阿蘇市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.19341" data-lng="130.78933" href="/zh/overnight-parking/michi-no-eki/kumamoto/hitoyoshi/">
-                <span class="st-num st-num-noban" aria-hidden="true">32</span>
+                <span class="st-num st-num-noban" aria-hidden="true">49</span>
                 <span class="st-main"><span class="st-name">道の駅人吉</span>
                 <span class="st-city">人吉市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.57719" data-lng="130.42006" href="/zh/overnight-parking/michi-no-eki/kumamoto/kamiamakusa-sunpearl/">
-                <span class="st-num st-num-noban" aria-hidden="true">33</span>
+                <span class="st-num st-num-noban" aria-hidden="true">50</span>
                 <span class="st-main"><span class="st-name">道の駅上天草さんぱーる</span>
                 <span class="st-city">上天草市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.93118" data-lng="130.8302" href="/zh/overnight-parking/michi-no-eki/kumamoto/kyokushi/">
+                <span class="st-num st-num-noban" aria-hidden="true">51</span>
+                <span class="st-main"><span class="st-name">道の駅旭志</span>
+                <span class="st-city">菊池市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.19933" data-lng="130.38211" href="/zh/overnight-parking/michi-no-eki/kumamoto/minamata/">
+                <span class="st-num st-num-noban" aria-hidden="true">52</span>
+                <span class="st-main"><span class="st-name">道の駅みなまた</span>
+                <span class="st-city">水俣市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.95965" data-lng="131.19731" href="/zh/overnight-parking/michi-no-eki/kumamoto/namino/">
+                <span class="st-num st-num-noban" aria-hidden="true">53</span>
+                <span class="st-main"><span class="st-name">道の駅波野</span>
+                <span class="st-city">阿蘇市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.12311" data-lng="131.06474" href="/zh/overnight-parking/michi-no-eki/kumamoto/oguni/">
-                <span class="st-num st-num-noban" aria-hidden="true">34</span>
+                <span class="st-num st-num-noban" aria-hidden="true">54</span>
                 <span class="st-main"><span class="st-name">道の駅小国</span>
                 <span class="st-city">阿蘇郡小国町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.88105" data-lng="130.89069" href="/zh/overnight-parking/michi-no-eki/kumamoto/ozu/">
-                <span class="st-num st-num-noban" aria-hidden="true">35</span>
+                <span class="st-num st-num-noban" aria-hidden="true">55</span>
                 <span class="st-main"><span class="st-name">道の駅大津</span>
                 <span class="st-city">菊池郡大津町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.57718" data-lng="130.69513" href="/zh/overnight-parking/michi-no-eki/kumamoto/ryuhoku/">
+                <span class="st-num st-num-noban" aria-hidden="true">56</span>
+                <span class="st-main"><span class="st-name">道の駅竜北</span>
+                <span class="st-city">八代郡氷川町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.3168" data-lng="130.02539" href="/zh/overnight-parking/michi-no-eki/kumamoto/sakitsu/">
+                <span class="st-num st-num-noban" aria-hidden="true">57</span>
+                <span class="st-main"><span class="st-name">道の駅﨑津</span>
+                <span class="st-city">天草市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.69064" data-lng="131.09159" href="/zh/overnight-parking/michi-no-eki/kumamoto/seiwa-bunraku/">
+                <span class="st-num st-num-noban" aria-hidden="true">58</span>
+                <span class="st-main"><span class="st-name">道の駅清和文楽邑</span>
+                <span class="st-city">上益城郡山都町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.98037" data-lng="130.7702" href="/zh/overnight-parking/michi-no-eki/kumamoto/shichijo-melon-dome/">
-                <span class="st-num st-num-noban" aria-hidden="true">36</span>
+                <span class="st-num st-num-noban" aria-hidden="true">59</span>
                 <span class="st-main"><span class="st-name">道の駅七城メロンドーム</span>
                 <span class="st-city">菊池市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.63354" data-lng="130.62923" href="/zh/overnight-parking/michi-no-eki/kumamoto/shiranuhi/">
+                <span class="st-num st-num-noban" aria-hidden="true">60</span>
+                <span class="st-main"><span class="st-name">道の駅不知火</span>
+                <span class="st-city">宇城市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.92505" data-lng="130.77146" href="/zh/overnight-parking/michi-no-eki/kumamoto/shisui/">
+                <span class="st-num st-num-noban" aria-hidden="true">61</span>
+                <span class="st-main"><span class="st-name">道の駅泗水</span>
+                <span class="st-city">菊池市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.90819" data-lng="130.6934" href="/zh/overnight-parking/michi-no-eki/kumamoto/suika-no-sato-ueki/">
-                <span class="st-num st-num-noban" aria-hidden="true">37</span>
+                <span class="st-num st-num-noban" aria-hidden="true">62</span>
                 <span class="st-main"><span class="st-name">道の駅すいかの里 植木</span>
                 <span class="st-city">熊本市北区</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.68848" data-lng="130.9906" href="/zh/overnight-parking/michi-no-eki/kumamoto/tsujunkyo/">
+                <span class="st-num st-num-noban" aria-hidden="true">63</span>
+                <span class="st-main"><span class="st-name">道の駅通潤橋</span>
+                <span class="st-city">上益城郡山都町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.65109" data-lng="130.69831" href="/zh/overnight-parking/michi-no-eki/kumamoto/uki-saikan/">
+                <span class="st-num st-num-noban" aria-hidden="true">64</span>
+                <span class="st-main"><span class="st-name">道の駅宇城彩館</span>
+                <span class="st-city">宇城市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.194" data-lng="130.02734" href="/zh/overnight-parking/michi-no-eki/kumamoto/ushibuka-kaisaikan/">
+                <span class="st-num st-num-noban" aria-hidden="true">65</span>
+                <span class="st-main"><span class="st-name">道の駅うしぶか海彩館</span>
+                <span class="st-city">天草市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.66229" data-lng="130.52281" href="/zh/overnight-parking/michi-no-eki/kumamoto/uto-marina/">
+                <span class="st-num st-num-noban" aria-hidden="true">66</span>
+                <span class="st-main"><span class="st-name">道の駅宇土マリーナ</span>
+                <span class="st-city">宇土市 · <span class="st-unverified">尚未查證</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
         </div>
 <div class="ovn-card boxed pref-block" id="oita">
-            <h2><a href="/zh/overnight-parking/michi-no-eki/oita/" style="color:inherit;text-decoration:none;">大分縣</a> <span class="cnt">已收錄 8 站</span></h2>
+            <h2><a href="/zh/overnight-parking/michi-no-eki/oita/" style="color:inherit;text-decoration:none;">大分縣</a> <span class="cnt">已收錄 24 站</span></h2>
             <div class="station-list">
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.00259" data-lng="131.44804" href="/zh/overnight-parking/michi-no-eki/oita/asaji/">
+                <span class="st-num st-num-noban" aria-hidden="true">67</span>
+                <span class="st-main"><span class="st-name">道の駅あさじ</span>
+                <span class="st-city">豊後大野市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.28952" data-lng="131.15697" href="/zh/overnight-parking/michi-no-eki/oita/dowa-no-sato-kusu/">
-                <span class="st-num st-num-noban" aria-hidden="true">38</span>
+                <span class="st-num st-num-noban" aria-hidden="true">68</span>
                 <span class="st-main"><span class="st-name">道の駅童話の里くす</span>
                 <span class="st-city">玖珠郡玖珠町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.96569" data-lng="131.45237" href="/zh/overnight-parking/michi-no-eki/oita/harajiri-no-taki/">
-                <span class="st-num st-num-noban" aria-hidden="true">39</span>
+                <span class="st-num st-num-noban" aria-hidden="true">69</span>
                 <span class="st-main"><span class="st-name">道の駅原尻の滝</span>
                 <span class="st-city">豊後大野市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.42399" data-lng="131.32014" href="/zh/overnight-parking/michi-no-eki/oita/innai/">
+                <span class="st-num st-num-noban" aria-hidden="true">70</span>
+                <span class="st-main"><span class="st-name">道の駅いんない</span>
+                <span class="st-city">宇佐市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.80209" data-lng="131.92471" href="/zh/overnight-parking/michi-no-eki/oita/kamae/">
+                <span class="st-num st-num-noban" aria-hidden="true">71</span>
+                <span class="st-main"><span class="st-name">道の駅かまえ</span>
+                <span class="st-city">佐伯市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.97166" data-lng="131.51821" href="/zh/overnight-parking/michi-no-eki/oita/kiyokawa/">
+                <span class="st-num st-num-noban" aria-hidden="true">72</span>
+                <span class="st-main"><span class="st-name">道の駅きよかわ</span>
+                <span class="st-city">豊後大野市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.68029" data-lng="131.60539" href="/zh/overnight-parking/michi-no-eki/oita/kunimi/">
+                <span class="st-num st-num-noban" aria-hidden="true">73</span>
+                <span class="st-main"><span class="st-name">道の駅くにみ</span>
+                <span class="st-city">国東市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.54545" data-lng="131.73956" href="/zh/overnight-parking/michi-no-eki/oita/kunisaki/">
-                <span class="st-num st-num-noban" aria-hidden="true">40</span>
+                <span class="st-num st-num-noban" aria-hidden="true">74</span>
                 <span class="st-main"><span class="st-name">道の駅くにさき</span>
                 <span class="st-city">国東市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.02865" data-lng="131.62174" href="/zh/overnight-parking/michi-no-eki/oita/mie/">
+                <span class="st-num st-num-noban" aria-hidden="true">75</span>
+                <span class="st-main"><span class="st-name">道の駅みえ</span>
+                <span class="st-city">豊後大野市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.07147" data-lng="131.38427" href="/zh/overnight-parking/michi-no-eki/oita/nagayu-onsen/">
-                <span class="st-num st-num-noban" aria-hidden="true">41</span>
+                <span class="st-num st-num-noban" aria-hidden="true">76</span>
                 <span class="st-main"><span class="st-name">道の駅ながゆ温泉</span>
                 <span class="st-city">竹田市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.55114" data-lng="131.21316" href="/zh/overnight-parking/michi-no-eki/oita/nakatsu/">
-                <span class="st-num st-num-noban" aria-hidden="true">42</span>
+                <span class="st-num st-num-noban" aria-hidden="true">77</span>
                 <span class="st-main"><span class="st-name">道の駅なかつ</span>
                 <span class="st-city">中津市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.03673" data-lng="131.5028" href="/zh/overnight-parking/michi-no-eki/oita/ono/">
+                <span class="st-num st-num-noban" aria-hidden="true">78</span>
+                <span class="st-main"><span class="st-name">道の駅おおの</span>
+                <span class="st-city">豊後大野市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.24822" data-lng="130.97194" href="/zh/overnight-parking/michi-no-eki/oita/oyama/">
+                <span class="st-num st-num-noban" aria-hidden="true">79</span>
+                <span class="st-main"><span class="st-name">道の駅水辺の郷おおやま</span>
+                <span class="st-city">日田市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.24728" data-lng="131.82845" href="/zh/overnight-parking/michi-no-eki/oita/saganoseki/">
-                <span class="st-num st-num-noban" aria-hidden="true">43</span>
+                <span class="st-num st-num-noban" aria-hidden="true">80</span>
                 <span class="st-main"><span class="st-name">道の駅佐賀関</span>
                 <span class="st-city">大分市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.11233" data-lng="130.96159" href="/zh/overnight-parking/michi-no-eki/oita/seseragi-kamitsue/">
+                <span class="st-num st-num-noban" aria-hidden="true">81</span>
+                <span class="st-main"><span class="st-name">道の駅せせらぎ郷かみつえ</span>
+                <span class="st-city">日田市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.9564" data-lng="131.29417" href="/zh/overnight-parking/michi-no-eki/oita/sugo/">
+                <span class="st-num st-num-noban" aria-hidden="true">82</span>
+                <span class="st-main"><span class="st-name">道の駅すごう</span>
+                <span class="st-city">竹田市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.12878" data-lng="130.88233" href="/zh/overnight-parking/michi-no-eki/oita/taio-kinzan/">
+                <span class="st-num st-num-noban" aria-hidden="true">83</span>
+                <span class="st-main"><span class="st-name">道の駅鯛生金山</span>
+                <span class="st-city">日田市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.98552" data-lng="131.34048" href="/zh/overnight-parking/michi-no-eki/oita/taketa/">
+                <span class="st-num st-num-noban" aria-hidden="true">84</span>
+                <span class="st-main"><span class="st-name">道の駅竹田</span>
+                <span class="st-city">竹田市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.25585" data-lng="131.55601" href="/zh/overnight-parking/michi-no-eki/oita/tanourara/">
-                <span class="st-num st-num-noban" aria-hidden="true">44</span>
+                <span class="st-num st-num-noban" aria-hidden="true">85</span>
                 <span class="st-main"><span class="st-name">道の駅たのうらら</span>
                 <span class="st-city">大分市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.80381" data-lng="131.61065" href="/zh/overnight-parking/michi-no-eki/oita/ume/">
+                <span class="st-num st-num-noban" aria-hidden="true">86</span>
+                <span class="st-main"><span class="st-name">道の駅宇目</span>
+                <span class="st-city">佐伯市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.48964" data-lng="131.17441" href="/zh/overnight-parking/michi-no-eki/oita/yaba-topia/">
+                <span class="st-num st-num-noban" aria-hidden="true">87</span>
+                <span class="st-main"><span class="st-name">道の駅耶馬トピア</span>
+                <span class="st-city">中津市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.40657" data-lng="131.06188" href="/zh/overnight-parking/michi-no-eki/oita/yamakuni/">
+                <span class="st-num st-num-noban" aria-hidden="true">88</span>
+                <span class="st-main"><span class="st-name">道の駅やまくに</span>
+                <span class="st-city">中津市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.9645" data-lng="131.83871" href="/zh/overnight-parking/michi-no-eki/oita/yayoi/">
+                <span class="st-num st-num-noban" aria-hidden="true">89</span>
+                <span class="st-main"><span class="st-name">道の駅やよい</span>
+                <span class="st-city">佐伯市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.26064" data-lng="131.32722" href="/zh/overnight-parking/michi-no-eki/oita/yufuin/">
-                <span class="st-num st-num-noban" aria-hidden="true">45</span>
+                <span class="st-num st-num-noban" aria-hidden="true">90</span>
                 <span class="st-main"><span class="st-name">道の駅ゆふいん</span>
                 <span class="st-city">由布市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
@@ -833,101 +1104,239 @@
             </div>
         </div>
 <div class="ovn-card boxed pref-block" id="miyazaki">
-            <h2><a href="/zh/overnight-parking/michi-no-eki/miyazaki/" style="color:inherit;text-decoration:none;">宮崎縣</a> <span class="cnt">已收錄 7 站</span></h2>
+            <h2><a href="/zh/overnight-parking/michi-no-eki/miyazaki/" style="color:inherit;text-decoration:none;">宮崎縣</a> <span class="cnt">已收錄 18 站</span></h2>
             <div class="station-list">
 <a class="station-row" data-st="prohibited" data-rv="0" data-lat="31.76861" data-lng="131.09572" href="/zh/overnight-parking/michi-no-eki/miyazaki/miyakonojo-niqll/">
-                <span class="st-num st-num-prohibited" aria-hidden="true">46</span>
+                <span class="st-num st-num-prohibited" aria-hidden="true">91</span>
                 <span class="st-main"><span class="st-name">道の駅都城NiQLL</span>
                 <span class="st-city">都城市</span></span>
                 <span class="st-side"><span class="badge badge-prohibited"><span class="dot"></span>不可過夜</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.05023" data-lng="130.80546" href="/zh/overnight-parking/michi-no-eki/miyazaki/ebino/">
-                <span class="st-num st-num-noban" aria-hidden="true">47</span>
+                <span class="st-num st-num-noban" aria-hidden="true">92</span>
                 <span class="st-main"><span class="st-name">道の駅えびの</span>
                 <span class="st-city">えびの市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.34322" data-lng="131.62412" href="/zh/overnight-parking/michi-no-eki/miyazaki/hyuga/">
-                <span class="st-num st-num-noban" aria-hidden="true">48</span>
+                <span class="st-num st-num-noban" aria-hidden="true">93</span>
                 <span class="st-main"><span class="st-name">道の駅日向</span>
                 <span class="st-city">日向市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.66607" data-lng="131.70468" href="/zh/overnight-parking/michi-no-eki/miyazaki/kitagawa-hayuma/">
-                <span class="st-num st-num-noban" aria-hidden="true">49</span>
+                <span class="st-num st-num-noban" aria-hidden="true">94</span>
                 <span class="st-main"><span class="st-name">道の駅北川はゆま</span>
                 <span class="st-city">延岡市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.5954" data-lng="131.49167" href="/zh/overnight-parking/michi-no-eki/miyazaki/kitakata-yocchimiroya/">
+                <span class="st-num st-num-noban" aria-hidden="true">95</span>
+                <span class="st-main"><span class="st-name">道の駅北方よっちみろ屋</span>
+                <span class="st-city">延岡市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.68498" data-lng="131.80094" href="/zh/overnight-parking/michi-no-eki/miyazaki/kitaura/">
+                <span class="st-num st-num-noban" aria-hidden="true">96</span>
+                <span class="st-main"><span class="st-name">道の駅北浦</span>
+                <span class="st-city">延岡市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.46267" data-lng="131.22898" href="/zh/overnight-parking/michi-no-eki/miyazaki/kushima/">
+                <span class="st-num st-num-noban" aria-hidden="true">97</span>
+                <span class="st-main"><span class="st-name">道の駅くしま</span>
+                <span class="st-city">串間市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.50288" data-lng="131.37827" href="/zh/overnight-parking/michi-no-eki/miyazaki/nango/">
-                <span class="st-num st-num-noban" aria-hidden="true">50</span>
+                <span class="st-num st-num-noban" aria-hidden="true">98</span>
                 <span class="st-main"><span class="st-name">道の駅なんごう</span>
                 <span class="st-city">日南市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.76895" data-lng="131.47842" href="/zh/overnight-parking/michi-no-eki/miyazaki/phoenix/">
-                <span class="st-num st-num-noban" aria-hidden="true">51</span>
+                <span class="st-num st-num-noban" aria-hidden="true">99</span>
                 <span class="st-main"><span class="st-name">道の駅フェニックス</span>
                 <span class="st-city">宮崎市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.64187" data-lng="131.26662" href="/zh/overnight-parking/michi-no-eki/miyazaki/sakatani/">
+                <span class="st-num st-num-noban" aria-hidden="true">100</span>
+                <span class="st-main"><span class="st-name">道の駅酒谷</span>
+                <span class="st-city">日南市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.66064" data-lng="131.38841" href="/zh/overnight-parking/michi-no-eki/miyazaki/seiunbashi/">
+                <span class="st-num st-num-noban" aria-hidden="true">101</span>
+                <span class="st-main"><span class="st-name">道の駅青雲橋</span>
+                <span class="st-city">西臼杵郡日之影町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.70857" data-lng="131.30095" href="/zh/overnight-parking/michi-no-eki/miyazaki/takachiho/">
-                <span class="st-num st-num-noban" aria-hidden="true">52</span>
+                <span class="st-num st-num-noban" aria-hidden="true">102</span>
                 <span class="st-main"><span class="st-name">道の駅高千穂</span>
                 <span class="st-city">西臼杵郡高千穂町</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.94565" data-lng="131.34056" href="/zh/overnight-parking/michi-no-eki/miyazaki/takaoka/">
+                <span class="st-num st-num-noban" aria-hidden="true">103</span>
+                <span class="st-main"><span class="st-name">道の駅高岡</span>
+                <span class="st-city">宮崎市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.79665" data-lng="131.30737" href="/zh/overnight-parking/michi-no-eki/miyazaki/tano/">
+                <span class="st-num st-num-noban" aria-hidden="true">104</span>
+                <span class="st-main"><span class="st-name">道の駅田野</span>
+                <span class="st-city">宮崎市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.39131" data-lng="131.51292" href="/zh/overnight-parking/michi-no-eki/miyazaki/togo/">
+                <span class="st-num st-num-noban" aria-hidden="true">105</span>
+                <span class="st-main"><span class="st-name">道の駅とうごう</span>
+                <span class="st-city">日向市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.26035" data-lng="131.55753" href="/zh/overnight-parking/michi-no-eki/miyazaki/tsuno/">
+                <span class="st-num st-num-noban" aria-hidden="true">106</span>
+                <span class="st-main"><span class="st-name">道の駅つの</span>
+                <span class="st-city">児湯郡都農町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.79439" data-lng="131.20265" href="/zh/overnight-parking/michi-no-eki/miyazaki/yamanokuchi/">
+                <span class="st-num st-num-noban" aria-hidden="true">107</span>
+                <span class="st-main"><span class="st-name">道の駅山之口</span>
+                <span class="st-city">都城市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.96438" data-lng="131.08239" href="/zh/overnight-parking/michi-no-eki/miyazaki/yuparu-nojiri/">
+                <span class="st-num st-num-noban" aria-hidden="true">108</span>
+                <span class="st-main"><span class="st-name">道の駅ゆ〜ぱるのじり</span>
+                <span class="st-city">小林市 · <span class="st-unverified">尚未查證</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
         </div>
 <div class="ovn-card boxed pref-block" id="kagoshima">
-            <h2><a href="/zh/overnight-parking/michi-no-eki/kagoshima/" style="color:inherit;text-decoration:none;">鹿兒島縣</a> <span class="cnt">已收錄 8 站</span></h2>
+            <h2><a href="/zh/overnight-parking/michi-no-eki/kagoshima/" style="color:inherit;text-decoration:none;">鹿兒島縣</a> <span class="cnt">已收錄 20 站</span></h2>
             <div class="station-list">
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.94598" data-lng="130.21646" href="/zh/overnight-parking/michi-no-eki/kagoshima/akune/">
-                <span class="st-num st-num-noban" aria-hidden="true">53</span>
+                <span class="st-num st-num-noban" aria-hidden="true">109</span>
                 <span class="st-main"><span class="st-name">道の駅阿久根</span>
                 <span class="st-city">阿久根市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.79642" data-lng="130.4075" href="/zh/overnight-parking/michi-no-eki/kagoshima/hiwaki/">
+                <span class="st-num st-num-noban" aria-hidden="true">110</span>
+                <span class="st-main"><span class="st-name">道の駅樋脇</span>
+                <span class="st-city">薩摩川内市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.30207" data-lng="130.58958" href="/zh/overnight-parking/michi-no-eki/kagoshima/ibusuki/">
-                <span class="st-num st-num-noban" aria-hidden="true">54</span>
+                <span class="st-num st-num-noban" aria-hidden="true">111</span>
                 <span class="st-main"><span class="st-name">道の駅いぶすき</span>
                 <span class="st-city">指宿市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.41265" data-lng="130.43294" href="/zh/overnight-parking/michi-no-eki/kagoshima/kawanabe/">
+                <span class="st-num st-num-noban" aria-hidden="true">112</span>
+                <span class="st-main"><span class="st-name">道の駅川辺やすらぎの郷</span>
+                <span class="st-city">南九州市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.37892" data-lng="130.54539" href="/zh/overnight-parking/michi-no-eki/kagoshima/kiire/">
-                <span class="st-num st-num-noban" aria-hidden="true">55</span>
+                <span class="st-num st-num-noban" aria-hidden="true">113</span>
                 <span class="st-main"><span class="st-name">道の駅喜入</span>
                 <span class="st-city">鹿児島市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.46489" data-lng="130.34543" href="/zh/overnight-parking/michi-no-eki/kagoshima/kinpo-konohana/">
+                <span class="st-num st-num-noban" aria-hidden="true">114</span>
+                <span class="st-main"><span class="st-name">道の駅きんぽう木花館</span>
+                <span class="st-city">南さつま市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.86329" data-lng="130.85127" href="/zh/overnight-parking/michi-no-eki/kagoshima/kirishima/">
-                <span class="st-num st-num-noban" aria-hidden="true">56</span>
+                <span class="st-num st-num-noban" aria-hidden="true">115</span>
                 <span class="st-main"><span class="st-name">道の駅霧島</span>
                 <span class="st-city">霧島市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.43811" data-lng="131.03078" href="/zh/overnight-parking/michi-no-eki/kagoshima/kuni-no-matsubara-osaki/">
-                <span class="st-num st-num-noban" aria-hidden="true">57</span>
+                <span class="st-num st-num-noban" aria-hidden="true">116</span>
                 <span class="st-main"><span class="st-name">道の駅くにの松原おおさき</span>
                 <span class="st-city">曽於郡大崎町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.10845" data-lng="130.17038" href="/zh/overnight-parking/michi-no-eki/kagoshima/kuronoseto-dandan/">
+                <span class="st-num st-num-noban" aria-hidden="true">117</span>
+                <span class="st-main"><span class="st-name">道の駅黒之瀬戸だんだん市場</span>
+                <span class="st-city">出水郡長島町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.58173" data-lng="131.04242" href="/zh/overnight-parking/michi-no-eki/kagoshima/matsuyama/">
+                <span class="st-num st-num-noban" aria-hidden="true">118</span>
+                <span class="st-main"><span class="st-name">道の駅松山</span>
+                <span class="st-city">志布志市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="32.16197" data-lng="130.10927" href="/zh/overnight-parking/michi-no-eki/kagoshima/nagashima/">
+                <span class="st-num st-num-noban" aria-hidden="true">119</span>
+                <span class="st-main"><span class="st-name">道の駅長島</span>
+                <span class="st-city">出水郡長島町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.18553" data-lng="130.76715" href="/zh/overnight-parking/michi-no-eki/kagoshima/nejime/">
+                <span class="st-num st-num-noban" aria-hidden="true">120</span>
+                <span class="st-main"><span class="st-name">道の駅ねじめ</span>
+                <span class="st-city">肝属郡南大隅町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.50013" data-lng="130.92411" href="/zh/overnight-parking/michi-no-eki/kagoshima/nogata-arasano/">
+                <span class="st-num st-num-noban" aria-hidden="true">121</span>
+                <span class="st-main"><span class="st-name">道の駅野方あらさの</span>
+                <span class="st-city">曽於郡大崎町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.59005" data-lng="130.99019" href="/zh/overnight-parking/michi-no-eki/kagoshima/osumi-yagoro/">
+                <span class="st-num st-num-noban" aria-hidden="true">122</span>
+                <span class="st-main"><span class="st-name">道の駅おおすみ弥五郎伝説の里</span>
+                <span class="st-city">曽於市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.58935" data-lng="130.59887" href="/zh/overnight-parking/michi-no-eki/kagoshima/sakurajima/">
-                <span class="st-num st-num-noban" aria-hidden="true">58</span>
+                <span class="st-num st-num-noban" aria-hidden="true">123</span>
                 <span class="st-main"><span class="st-name">道の駅桜島</span>
                 <span class="st-city">鹿児島市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.68835" data-lng="130.97027" href="/zh/overnight-parking/michi-no-eki/kagoshima/sueyoshi/">
+                <span class="st-num st-num-noban" aria-hidden="true">124</span>
+                <span class="st-main"><span class="st-name">道の駅すえよし</span>
+                <span class="st-city">曽於市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.72882" data-lng="130.99867" href="/zh/overnight-parking/michi-no-eki/kagoshima/takarabe-kirara/">
+                <span class="st-num st-num-noban" aria-hidden="true">125</span>
+                <span class="st-main"><span class="st-name">道の駅財部きらら館</span>
+                <span class="st-city">曽於市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.55874" data-lng="130.74544" href="/zh/overnight-parking/michi-no-eki/kagoshima/tarumizu/">
-                <span class="st-num st-num-noban" aria-hidden="true">59</span>
+                <span class="st-num st-num-noban" aria-hidden="true">126</span>
                 <span class="st-main"><span class="st-name">道の駅たるみず</span>
                 <span class="st-city">垂水市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.46843" data-lng="130.69828" href="/zh/overnight-parking/michi-no-eki/kagoshima/tarumizu-hamabira/">
-                <span class="st-num st-num-noban" aria-hidden="true">60</span>
+                <span class="st-num st-num-noban" aria-hidden="true">127</span>
                 <span class="st-main"><span class="st-name">道の駅たるみずはまびら</span>
                 <span class="st-city">垂水市</span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="31.20289" data-lng="130.63488" href="/zh/overnight-parking/michi-no-eki/kagoshima/yamagawako-katsuo-kaido/">
+                <span class="st-num st-num-noban" aria-hidden="true">128</span>
+                <span class="st-main"><span class="st-name">道の駅山川港活お海道</span>
+                <span class="st-city">指宿市 · <span class="st-unverified">尚未查證</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
@@ -939,7 +1348,7 @@
 
         <div class="ovn-card">
             <h2>狀態說明</h2>
-            <p style="margin-bottom:8px;">目前追蹤九州 <strong>60 座道之驛</strong>：<span class="c-red">3 座的免費停車場明文禁止過夜</span>、57 座容許安靜休息（未發現明文禁止）— 另有 <span class="c-green">12 座設有官方RV Park</span>，付費過夜隨時歡迎。</p>
+            <p style="margin-bottom:8px;">目前追蹤九州 <strong>128 座道之驛</strong>：<span class="c-red">3 座的免費停車場明文禁止過夜</span>、125 座容許安靜休息（未發現明文禁止）— 另有 <span class="c-green">12 座設有官方RV Park</span>，付費過夜隨時歡迎。</p>
             <div class="legend-item"><span class="badge badge-prohibited"><span class="dot"></span>不可過夜</span><p>該站已公告或發布明文禁止過夜。請務必遵守 — 改用附近的露營場或RV Park。</p></div>
             <div class="legend-item"><span class="badge badge-paidonly"><span class="dot"></span>僅限付費</span><p>免費停車場明文禁止過夜 — 但站內設有官方付費RV Park，歡迎入住。預訂車位即可合法過夜。</p></div>
             <div class="legend-item"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><p>截至查證日期未發現明文禁止 — 依全國規則，在車內安靜休息一晚在此通常被容許。但這不是保證：不做露營行為，並一律以現場告示為準。</p></div>
@@ -948,6 +1357,7 @@
         <div class="ovn-card">
             <h2>我們如何查證</h2>
             <p>每筆資料都附上來源 — 各站官方網站、日本RV協會登錄名單、日本車中泊社群的回報 — 並標註最後查證日期。我們的租賃車隊每週行駛這些路線，客人的回報也會回饋到資料庫。規則會變；一旦得知變動，就會更新該筆資料與日期。</p>
+            <p style="margin-top:10px;">目前 <strong>60 座站點已逐一查證</strong>，其餘 <strong>68</strong> 座則是依官方名冊收錄（含位置與全國規則），但尚未查證各站自訂告示 — 這些頁面會明確標示。我們每週持續增加查證數量。</p>
             <p style="margin-top:10px;font-size:0.85rem;">資料庫更新日：<strong>2026-07-27</strong></p>
         </div>
         <div class="ovn-card">

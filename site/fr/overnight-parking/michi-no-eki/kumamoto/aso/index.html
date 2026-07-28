@@ -196,6 +196,7 @@
             font-size: 0.8rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
         .st-num-prohibited { background: var(--st-red); } .st-num-paidonly { background: var(--st-amber); }
         .st-num-noban { background: var(--st-teal); }
+        .st-unverified { color: #7a6a3d; background: #fbf7ea; border-radius: 5px; padding: 1px 7px; font-size: 0.82rem; }
         .map-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 14px 4px 0; margin: 0; }
         .map-legend li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.86rem; font-weight: 600; color: #5f5f66; }
         .map-legend .dot { width: 10px; height: 10px; }
@@ -393,22 +394,22 @@
         <div class="ovn-card boxed">
             <h2>Stations à proximité</h2>
             <div class="station-list">
+                <a class="station-row" data-st="noban" data-rv="0" data-lat="32.95965" data-lng="131.19731" href="/fr/overnight-parking/michi-no-eki/kumamoto/namino/">
+                <span class="st-num st-num-noban" aria-hidden="true">53</span>
+                <span class="st-main"><span class="st-name">Michi-no-Eki Namino</span>
+                <span class="st-city">道の駅波野 · Aso · 11&nbsp;km · <span class="st-unverified">Non vérifiée</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
                 <a class="station-row" data-st="noban" data-rv="1" data-lat="32.81846" data-lng="131.04116" href="/fr/overnight-parking/michi-no-eki/kumamoto/asobo-no-sato-kugino/">
-                <span class="st-num st-num-noban" aria-hidden="true">24</span>
+                <span class="st-num st-num-noban" aria-hidden="true">39</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Asobo no Sato Kugino</span>
                 <span class="st-city">道の駅あそ望の郷くぎの · Minamiaso Village · 14&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.88105" data-lng="130.89069" href="/fr/overnight-parking/michi-no-eki/kumamoto/ozu/">
-                <span class="st-num st-num-noban" aria-hidden="true">35</span>
+                <span class="st-num st-num-noban" aria-hidden="true">55</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ozu</span>
                 <span class="st-city">道の駅大津 · Ozu Town · 19&nbsp;km</span></span>
-                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
-            </a>
-                <a class="station-row" data-st="noban" data-rv="0" data-lat="33.12311" data-lng="131.06474" href="/fr/overnight-parking/michi-no-eki/kumamoto/oguni/">
-                <span class="st-num st-num-noban" aria-hidden="true">34</span>
-                <span class="st-main"><span class="st-name">Michi-no-Eki Oguni</span>
-                <span class="st-city">道の駅小国 · Oguni Town · 21&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>

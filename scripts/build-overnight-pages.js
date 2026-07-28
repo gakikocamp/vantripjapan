@@ -80,7 +80,8 @@ const T = {
         stats_line: (p, n, r, total) =>
             `Currently tracking <strong>${total} stations</strong> in Kyushu: <span class="c-red">${p === 1 ? "1 free lot with an explicit overnight ban" : `${p} free lots with explicit overnight bans`}</span> and ${n} where a quiet rest is tolerated (no explicit ban found) — plus <span class="c-green">${r === 1 ? "1 official RV park" : `${r} official RV parks`}</span> where paid overnight stay is always welcome.`,
         method_h: "How we verify",
-        method_p: "Each entry links its sources — official station websites, the Japan RV Association register, and reports from the Japanese vanlife community — and carries the date we last checked it. Our rental fleet drives these routes weekly, and guest reports flow back into the database. Rules change; when we learn of a change, the entry and its date are updated.",
+        method_p: "Verified entries link their sources — official station websites, the Japan RV Association register, and reports from the Japanese vanlife community — and carry the date we last checked them. Our rental fleet drives these routes weekly, and guest reports flow back into the database. Rules change; when we learn of a change, the entry and its date are updated.",
+        method_split: (c, l) => `Right now <strong>${c} stations are individually verified</strong>. The other <strong>${l}</strong> are listed from the official registry with their location and the national rule, but we have not checked their own signage yet — those entries say so plainly. We verify more every week.`,
         pref_h_prefix: "Stations by prefecture",
         pref_title: (pref) => `Michi-no-Eki Overnight Rules in ${pref} ${YEAR} — Station List | VAN TRIP JAPAN`,
         pref_desc: (pref) => `Overnight campervan parking rules for every tracked Michi-no-Eki in ${pref}, Japan — explicit bans, RV parks and verified dates.`,
@@ -89,6 +90,9 @@ const T = {
         station_desc: (name, statusLabel) => `Can you sleep overnight at ${name}? Current status: ${statusLabel}. Rules, sources, verification date and nearby legal alternatives for campervan travelers.`,
         station_h1: (name) => `Can you sleep overnight at ${name}?`,
         verified_label: "Last verified",
+        st_listed: "Listed — this station's own rules not checked yet",
+        listed_note: "This station is in the official Michi-no-Eki registry, but we have not yet checked its own signage or website. Japan's national rule applies by default: a quiet rest in your vehicle is usually tolerated, camping behaviour is not. Signs on site always win — and if you visit, please tell us what you saw so we can verify this entry.",
+        listed_short: "Not verified yet",
         updated_label: "Database updated",
         what_h: "What this means for you",
         what_prohibited: "This station explicitly prohibits overnight stays. Please don't sleep here — every ignored sign leads to new bans for everyone. Use an official RV park or campground in the area instead, where you are genuinely welcome — or ask us on WhatsApp for nearby spots.",
@@ -209,6 +213,7 @@ const T = {
         stats_line: (p, n, r, total) =>
             `<strong>${total} stations</strong> suivies à Kyushu : <span class="c-red">${p === 1 ? "1 parking gratuit avec interdiction explicite de nuitée" : `${p} parkings gratuits avec interdiction explicite de nuitée`}</span> et ${n} où le repos discret est toléré (aucune interdiction explicite trouvée) — plus <span class="c-green">${r === 1 ? "1 RV park officiel" : `${r} RV parks officiels`}</span> où la nuitée payante est toujours bienvenue.`,
         method_h: "Notre méthode de vérification",
+        method_split: (c, l) => `Actuellement, <strong>${c} stations sont vérifiées individuellement</strong>. Les <strong>${l}</strong> autres sont répertoriées d'après le registre officiel, avec leur localisation et la règle nationale, mais leur signalétique propre n'a pas encore été vérifiée — ces fiches le disent clairement. Nous en vérifions davantage chaque semaine.`,
         method_p: "Chaque fiche cite ses sources — sites officiels des stations, registre de la Japan RV Association, remontées de la communauté vanlife japonaise — et porte la date de notre dernière vérification. Notre flotte de location parcourt ces routes chaque semaine et les retours de nos clients alimentent la base. Les règles changent ; dès qu'un changement est connu, la fiche et sa date sont mises à jour.",
         pref_h_prefix: "Stations par préfecture",
         pref_title: (pref) => `Michi-no-Eki : règles de nuit — ${pref} ${YEAR} | VAN TRIP JAPAN`,
@@ -218,6 +223,9 @@ const T = {
         station_desc: (name, statusLabel) => `Peut-on dormir en van à ${name} ? Statut actuel : ${statusLabel}. Règles, sources, date de vérification et alternatives légales à proximité.`,
         station_h1: (name) => `Peut-on passer la nuit à ${name} ?`,
         verified_label: "Dernière vérification",
+        st_listed: "Répertoriée — règles propres à cette station non vérifiées",
+        listed_note: "Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — et si vous y passez, dites-nous ce que vous avez vu pour que nous puissions vérifier cette fiche.",
+        listed_short: "Non vérifiée",
         updated_label: "Base mise à jour le",
         what_h: "Ce que cela signifie pour vous",
         what_prohibited: "Cette station interdit explicitement la nuitée. N'y dormez pas — chaque panneau ignoré entraîne de nouvelles interdictions pour tous. Utilisez plutôt un RV park officiel ou un camping du secteur, où vous êtes réellement les bienvenus — ou demandez-nous des spots proches sur WhatsApp.",
@@ -338,6 +346,7 @@ const T = {
         stats_line: (p, n, r, total) =>
             `Aktuell erfasst: <strong>${total} Stationen</strong> in Kyushu — <span class="c-red">${p === 1 ? "1 kostenloser Parkplatz mit ausdrücklichem Übernachtungsverbot" : `${p} kostenlose Parkplätze mit ausdrücklichem Übernachtungsverbot`}</span>; bei ${n} wird ruhiges Übernachten toleriert (kein ausdrückliches Verbot gefunden) — dazu <span class="c-green">${r === 1 ? "1 offizieller RV-Park" : `${r} offizielle RV-Parks`}</span>, wo bezahltes Übernachten immer willkommen ist.`,
         method_h: "So verifizieren wir",
+        method_split: (c, l) => `Derzeit sind <strong>${c} Stationen einzeln geprüft</strong>. Die übrigen <strong>${l}</strong> stammen aus dem offiziellen Register — mit Lage und nationaler Regel, aber ohne Prüfung der eigenen Beschilderung; diese Einträge sagen das ausdrücklich. Wir prüfen wöchentlich weitere.`,
         method_p: "Jeder Eintrag verlinkt seine Quellen — offizielle Stations-Websites, das Register der Japan RV Association und Meldungen aus der japanischen Vanlife-Community — und trägt das Datum unserer letzten Prüfung. Unsere Mietflotte fährt diese Routen wöchentlich, und Rückmeldungen unserer Gäste fließen in die Datenbank ein. Regeln ändern sich; sobald wir von einer Änderung erfahren, werden Eintrag und Datum aktualisiert.",
         pref_h_prefix: "Stationen nach Präfektur",
         pref_title: (pref) => `Michi-no-Eki-Übernachtungsregeln in ${pref} ${YEAR} — Stationsliste | VAN TRIP JAPAN`,
@@ -347,6 +356,9 @@ const T = {
         station_desc: (name, statusLabel) => `Darf man am ${name} im Campervan übernachten? Aktueller Status: ${statusLabel}. Regeln, Quellen, Prüfdatum und legale Alternativen in der Nähe.`,
         station_h1: (name) => `Darf man am ${name} übernachten?`,
         verified_label: "Zuletzt geprüft",
+        st_listed: "Erfasst — eigene Regeln dieser Station noch nicht geprüft",
+        listed_note: "Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — und wenn Sie dort sind, sagen Sie uns bitte, was Sie gesehen haben, damit wir diesen Eintrag verifizieren können.",
+        listed_short: "Noch ungeprüft",
         updated_label: "Datenbank aktualisiert",
         what_h: "Was das für Sie bedeutet",
         what_prohibited: "Diese Station verbietet Übernachtungen ausdrücklich. Bitte schlafen Sie nicht hier — jedes ignorierte Schild führt zu neuen Verboten für alle. Nutzen Sie stattdessen einen offiziellen RV-Park oder Campingplatz in der Umgebung, wo Sie wirklich willkommen sind — oder fragen Sie uns auf WhatsApp nach Plätzen in der Nähe.",
@@ -467,6 +479,7 @@ const T = {
         stats_line: (p, n, r, total) =>
             `目前追蹤九州 <strong>${total} 座道之驛</strong>：<span class="c-red">${p} 座的免費停車場明文禁止過夜</span>、${n} 座容許安靜休息（未發現明文禁止）— 另有 <span class="c-green">${r} 座設有官方RV Park</span>，付費過夜隨時歡迎。`,
         method_h: "我們如何查證",
+        method_split: (c, l) => `目前 <strong>${c} 座站點已逐一查證</strong>，其餘 <strong>${l}</strong> 座則是依官方名冊收錄（含位置與全國規則），但尚未查證各站自訂告示 — 這些頁面會明確標示。我們每週持續增加查證數量。`,
         method_p: "每筆資料都附上來源 — 各站官方網站、日本RV協會登錄名單、日本車中泊社群的回報 — 並標註最後查證日期。我們的租賃車隊每週行駛這些路線，客人的回報也會回饋到資料庫。規則會變；一旦得知變動，就會更新該筆資料與日期。",
         pref_h_prefix: "依縣份瀏覽",
         pref_title: (pref) => `${pref}道之驛過夜規則 ${YEAR} — 站點清單 | VAN TRIP JAPAN`,
@@ -476,6 +489,9 @@ const T = {
         station_desc: (name, statusLabel) => `${name}可以車中泊過夜嗎？目前狀態：${statusLabel}。規則、來源、查證日期與附近合法替代地點。`,
         station_h1: (name) => `${name} 可以過夜嗎？`,
         verified_label: "最後查證",
+        st_listed: "已收錄 — 本站自訂規則尚未查證",
+        listed_note: "本站已收錄於官方道之驛名冊，但我們尚未查證其現場告示或官網。預設適用日本全國規則：在車內安靜休息通常被容許，露營行為則否。現場告示永遠優先 — 若你造訪此站，歡迎回報你看到的情況，協助我們完成查證。",
+        listed_short: "尚未查證",
         updated_label: "資料庫更新日",
         what_h: "這對你的意義",
         what_prohibited: "本站明文禁止過夜。請不要在此過夜 — 每一次無視告示，都會為所有人帶來新的禁令。請改用附近的官方RV Park或露營場，那裡真心歡迎你 — 也可以透過WhatsApp問我們附近的推薦地點。",
@@ -629,6 +645,9 @@ function stCls(st) {
     return "noban";
 }
 
+/** 公式名簿から収録しただけで、その駅固有のルールは未確認 → 検証済みと偽らない */
+const isListed = (st) => st.verification === "listed";
+
 function statusLabel(st, lang, short = false) {
     const t = T[lang];
     if (st.status === "prohibited") {
@@ -733,6 +752,7 @@ const SHARED_CSS = `
             font-size: 0.8rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; }
         .st-num-prohibited { background: var(--st-red); } .st-num-paidonly { background: var(--st-amber); }
         .st-num-noban { background: var(--st-teal); }
+        .st-unverified { color: #7a6a3d; background: #fbf7ea; border-radius: 5px; padding: 1px 7px; font-size: 0.82rem; }
         .map-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; list-style: none; padding: 14px 4px 0; margin: 0; }
         .map-legend li { display: inline-flex; align-items: center; gap: 7px; font-size: 0.86rem; font-weight: 600; color: #5f5f66; }
         .map-legend .dot { width: 10px; height: 10px; }
@@ -859,7 +879,7 @@ const SHARED_CSS = `
         }
 `;
 
-function shell({ lang, sub, title, desc, h1, heroSub, crumbsHtml, jsonld, body, ogImage, extraHead = "", heroCompact = false }) {
+function shell({ lang, sub, title, desc, h1, heroSub, crumbsHtml, jsonld, body, ogImage, extraHead = "", heroCompact = false, noindex = false }) {
     const t = T[lang];
     const url = pageUrl(lang, sub);
     const dirAttr = ""; // all 4 langs are LTR
@@ -868,7 +888,7 @@ function shell({ lang, sub, title, desc, h1, heroSub, crumbsHtml, jsonld, body, 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="robots" content="${noindex ? "noindex, follow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"}">
     <title>${esc(title)}</title>
     <meta name="description" content="${esc(desc)}">
     <meta property="og:title" content="${esc(title)}">
@@ -1034,6 +1054,8 @@ const counts = {
     no_ban: DATA.stations.filter((s) => s.status === "no_explicit_ban").length,
     rv: DATA.stations.filter((s) => s.rv_park).length,
     total: DATA.stations.length,
+    checked: DATA.stations.filter((s) => !isListed(s)).length,
+    listed: DATA.stations.filter((s) => isListed(s)).length,
 };
 
 function stationRow(st, lang, distanceKm) {
@@ -1043,6 +1065,7 @@ function stationRow(st, lang, distanceKm) {
         ? esc(cityName(st, lang))
         : `${esc(st.name.ja)} · ${esc(cityName(st, lang))}`;
     if (distanceKm != null) subtitle += ` · ${distanceKm}&nbsp;km`;
+    if (isListed(st)) subtitle += ` · <span class="st-unverified">${esc(T[lang].listed_short)}</span>`;
     return `<a class="station-row" data-st="${stCls(st)}" data-rv="${st.rv_park ? 1 : 0}"${st.lat ? ` data-lat="${st.lat}" data-lng="${st.lng}"` : ""} href="${sectionPath(lang, sub)}">
                 <span class="st-num st-num-${stCls(st)}" aria-hidden="true">${STATION_NUM[st.id] || ""}</span>
                 <span class="st-main"><span class="st-name">${esc(shownName)}</span>
@@ -1311,6 +1334,7 @@ ${legend}
         <div class="ovn-card">
             <h2>${esc(t.method_h)}</h2>
             <p>${esc(t.method_p)}</p>
+            <p style="margin-top:10px;">${t.method_split(counts.checked, counts.listed)}</p>
             <p style="margin-top:10px;font-size:0.85rem;">${esc(t.updated_label)}${COLON[lang]}<strong>${DATA.meta.updated}</strong></p>
         </div>
         <div class="ovn-card">
@@ -1451,9 +1475,11 @@ function renderStation(lang, st) {
     const whatText = st.status === "prohibited"
         ? (st.rv_park ? t.what_prohibited_rv : t.what_prohibited)
         : (st.rv_park ? t.what_rv : t.what_no_ban);
-    const faqA1 = st.status === "prohibited"
-        ? (st.rv_park ? t.faq_a1_prohibited_rv(name) : t.faq_a1_prohibited(name))
-        : (st.rv_park ? t.faq_a1_rv(name) : t.faq_a1_no_ban(name, st.verified));
+    const faqA1 = isListed(st)
+        ? t.listed_note
+        : st.status === "prohibited"
+            ? (st.rv_park ? t.faq_a1_prohibited_rv(name) : t.faq_a1_prohibited(name))
+            : (st.rv_park ? t.faq_a1_rv(name) : t.faq_a1_no_ban(name, st.verified));
 
     const mapsQuery = st.lat && st.lng
         ? `${st.lat},${st.lng}`
@@ -1492,7 +1518,9 @@ function renderStation(lang, st) {
         <a class="ovn-back" href="${sectionPath(lang, st.prefecture + "/")}">${esc(t.back_to_pref(pn))}</a>
         <div class="status-banner ${cls}">
             <div class="st-label"><span class="dot"></span>${esc(label)}</div>
-            <div class="st-verified">${esc(t.verified_label)}${COLON[lang]}${esc(st.verified)}</div>
+            <div class="st-verified">${isListed(st)
+                ? esc(t.st_listed)
+                : `${esc(t.verified_label)}${COLON[lang]}${esc(st.verified)}`}</div>
         </div>
         ${st.rv_park ? `<div class="status-banner rv">
             <div class="st-label"><span class="dot"></span>${esc(t.rv_banner)}</div>
@@ -1502,7 +1530,7 @@ function renderStation(lang, st) {
         </div>
         <div class="ovn-card">
             <h2>${esc(t.what_h)}</h2>
-            <p>${esc(whatText)}</p>
+            <p>${esc(isListed(st) ? t.listed_note : whatText)}</p>
         </div>
         <div class="ovn-card">
             <h2>${esc(t.national_h)}</h2>
@@ -1625,6 +1653,7 @@ function renderStation(lang, st) {
         jsonld,
         body,
         heroCompact: true,
+        noindex: isListed(st),
     }));
 }
 
@@ -1657,10 +1686,10 @@ fs.writeFileSync(
 );
 console.log(`  ✅ open data → site/${SECTION}/data.json`);
 
-// Sitemap URL list for functions/sitemap.xml.js
+// Sitemap URL list for functions/sitemap.xml.js（未検証=noindexの駅は載せない）
 const urls = ["/" + SECTION + "/"];
 for (const p of PREF_ORDER) urls.push(`/${SECTION}/${p}/`);
-for (const st of DATA.stations) urls.push(`/${SECTION}/${st.prefecture}/${st.id}/`);
+for (const st of DATA.stations) if (!isListed(st)) urls.push(`/${SECTION}/${st.prefecture}/${st.id}/`);
 const libDir = path.join(ROOT, "functions", "lib");
 fs.mkdirSync(libDir, { recursive: true });
 fs.writeFileSync(
