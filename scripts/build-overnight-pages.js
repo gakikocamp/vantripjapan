@@ -90,9 +90,18 @@ const T = {
         station_desc: (name, statusLabel) => `Can you sleep overnight at ${name}? Current status: ${statusLabel}. Rules, sources, verification date and nearby legal alternatives for campervan travelers.`,
         station_h1: (name) => `Can you sleep overnight at ${name}?`,
         verified_label: "Last verified",
-        st_listed: "Listed — this station's own rules not checked yet",
-        listed_note: "This station is in the official Michi-no-Eki registry, but we have not yet checked its own signage or website. Japan's national rule applies by default: a quiet rest in your vehicle is usually tolerated, camping behaviour is not. Signs on site always win — and if you visit, please tell us what you saw so we can verify this entry.",
-        listed_short: "Not verified yet",
+        st_listed: "We haven't checked this station's own rules yet — help us verify it",
+        listed_note: "This station is in the official Michi-no-Eki registry, but we have not yet checked its own signage or website. Japan's national rule applies by default: a quiet rest in your vehicle is usually tolerated, camping behaviour is not. Signs on site always win — so please read them when you arrive.",
+        listed_short: "Info wanted",
+        help_h: "Been here? Help other travellers",
+        help_p: "We know where this station is — but not what its signs say. If you've stayed here or just driven past, tell us in 30 seconds. We verify every report against the station's own sources, then update this page and credit you.",
+        help_btn: "Report what you saw ↓",
+        vote_q: "Were you able to stay overnight here?",
+        vote_yes: "○ Yes, I stayed",
+        vote_no: "✕ No, I couldn't",
+        vote_thanks: "Thanks! Your report helps the next traveller.",
+        vote_tally: (y, n) => `${y} said yes · ${n} said no`,
+        vote_disclaimer: "Traveller reports — not our own verification. We check every report against the station's sources before changing this page.",
         updated_label: "Database updated",
         what_h: "What this means for you",
         what_prohibited: "This station explicitly prohibits overnight stays. Please don't sleep here — every ignored sign leads to new bans for everyone. Use an official RV park or campground in the area instead, where you are genuinely welcome — or ask us on WhatsApp for nearby spots.",
@@ -223,9 +232,18 @@ const T = {
         station_desc: (name, statusLabel) => `Peut-on dormir en van à ${name} ? Statut actuel : ${statusLabel}. Règles, sources, date de vérification et alternatives légales à proximité.`,
         station_h1: (name) => `Peut-on passer la nuit à ${name} ?`,
         verified_label: "Dernière vérification",
-        st_listed: "Répertoriée — règles propres à cette station non vérifiées",
-        listed_note: "Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — et si vous y passez, dites-nous ce que vous avez vu pour que nous puissions vérifier cette fiche.",
-        listed_short: "Non vérifiée",
+        st_listed: "Nous n'avons pas encore vérifié les règles de cette station — aidez-nous",
+        listed_note: "Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — lisez-les en arrivant.",
+        listed_short: "Infos recherchées",
+        help_h: "Vous y êtes allé ? Aidez les autres voyageurs",
+        help_p: "Nous savons où se trouve cette station — mais pas ce que disent ses panneaux. Si vous y avez dormi ou êtes simplement passé, dites-le-nous en 30 secondes. Nous vérifions chaque signalement auprès des sources de la station, puis nous mettons la fiche à jour en vous créditant.",
+        help_btn: "Signaler ce que vous avez vu ↓",
+        vote_q: "Avez-vous pu passer la nuit ici ?",
+        vote_yes: "○ Oui, j'ai dormi",
+        vote_no: "✕ Non, impossible",
+        vote_thanks: "Merci ! Votre retour aide le prochain voyageur.",
+        vote_tally: (y, n) => `${y} oui · ${n} non`,
+        vote_disclaimer: "Retours de voyageurs — pas notre propre vérification. Nous confrontons chaque signalement aux sources de la station avant de modifier cette fiche.",
         updated_label: "Base mise à jour le",
         what_h: "Ce que cela signifie pour vous",
         what_prohibited: "Cette station interdit explicitement la nuitée. N'y dormez pas — chaque panneau ignoré entraîne de nouvelles interdictions pour tous. Utilisez plutôt un RV park officiel ou un camping du secteur, où vous êtes réellement les bienvenus — ou demandez-nous des spots proches sur WhatsApp.",
@@ -356,9 +374,18 @@ const T = {
         station_desc: (name, statusLabel) => `Darf man am ${name} im Campervan übernachten? Aktueller Status: ${statusLabel}. Regeln, Quellen, Prüfdatum und legale Alternativen in der Nähe.`,
         station_h1: (name) => `Darf man am ${name} übernachten?`,
         verified_label: "Zuletzt geprüft",
-        st_listed: "Erfasst — eigene Regeln dieser Station noch nicht geprüft",
-        listed_note: "Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — und wenn Sie dort sind, sagen Sie uns bitte, was Sie gesehen haben, damit wir diesen Eintrag verifizieren können.",
-        listed_short: "Noch ungeprüft",
+        st_listed: "Wir haben die Regeln dieser Station noch nicht geprüft — helfen Sie uns",
+        listed_note: "Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — lesen Sie sie bitte bei der Ankunft.",
+        listed_short: "Infos gesucht",
+        help_h: "Schon dort gewesen? Helfen Sie anderen Reisenden",
+        help_p: "Wir wissen, wo diese Station liegt — aber nicht, was auf ihren Schildern steht. Wenn Sie dort übernachtet haben oder vorbeigefahren sind, sagen Sie es uns in 30 Sekunden. Wir prüfen jede Meldung anhand der Quellen der Station, aktualisieren dann diese Seite und nennen Sie als Quelle.",
+        help_btn: "Melden, was Sie gesehen haben ↓",
+        vote_q: "Konnten Sie hier übernachten?",
+        vote_yes: "○ Ja, ich habe übernachtet",
+        vote_no: "✕ Nein, ging nicht",
+        vote_thanks: "Danke! Ihre Meldung hilft dem nächsten Reisenden.",
+        vote_tally: (y, n) => `${y} × ja · ${n} × nein`,
+        vote_disclaimer: "Reisendenmeldungen — keine eigene Prüfung. Wir gleichen jede Meldung mit den Quellen der Station ab, bevor wir diese Seite ändern.",
         updated_label: "Datenbank aktualisiert",
         what_h: "Was das für Sie bedeutet",
         what_prohibited: "Diese Station verbietet Übernachtungen ausdrücklich. Bitte schlafen Sie nicht hier — jedes ignorierte Schild führt zu neuen Verboten für alle. Nutzen Sie stattdessen einen offiziellen RV-Park oder Campingplatz in der Umgebung, wo Sie wirklich willkommen sind — oder fragen Sie uns auf WhatsApp nach Plätzen in der Nähe.",
@@ -489,9 +516,18 @@ const T = {
         station_desc: (name, statusLabel) => `${name}可以車中泊過夜嗎？目前狀態：${statusLabel}。規則、來源、查證日期與附近合法替代地點。`,
         station_h1: (name) => `${name} 可以過夜嗎？`,
         verified_label: "最後查證",
-        st_listed: "已收錄 — 本站自訂規則尚未查證",
-        listed_note: "本站已收錄於官方道之驛名冊，但我們尚未查證其現場告示或官網。預設適用日本全國規則：在車內安靜休息通常被容許，露營行為則否。現場告示永遠優先 — 若你造訪此站，歡迎回報你看到的情況，協助我們完成查證。",
-        listed_short: "尚未查證",
+        st_listed: "本站的規則我們尚未查證 — 歡迎協助",
+        listed_note: "本站已收錄於官方道之驛名冊，但我們尚未查證其現場告示或官網。預設適用日本全國規則：在車內安靜休息通常被容許，露營行為則否。現場告示永遠優先 — 抵達時請先確認。",
+        listed_short: "徵求資訊",
+        help_h: "去過這裡嗎？幫助其他旅行者",
+        help_p: "我們知道這座站點的位置 — 但不知道現場告示寫了什麼。如果你曾在此過夜或只是路過，只要30秒告訴我們。每則回報我們都會對照官方來源查證，然後更新本頁並註明你的貢獻。",
+        help_btn: "回報你看到的情況 ↓",
+        vote_q: "你在這裡順利過夜了嗎？",
+        vote_yes: "○ 有，順利過夜",
+        vote_no: "✕ 沒有，不行",
+        vote_thanks: "謝謝！你的回報會幫助下一位旅行者。",
+        vote_tally: (y, n) => `${y} 人可以 · ${n} 人不行`,
+        vote_disclaimer: "旅行者回報 — 非我們的查證結果。變更本頁前，我們會逐一對照官方來源查證。",
         updated_label: "資料庫更新日",
         what_h: "這對你的意義",
         what_prohibited: "本站明文禁止過夜。請不要在此過夜 — 每一次無視告示，都會為所有人帶來新的禁令。請改用附近的官方RV Park或露營場，那裡真心歡迎你 — 也可以透過WhatsApp問我們附近的推薦地點。",
@@ -804,6 +840,23 @@ const SHARED_CSS = `
         .ovn-btn:active { transform: scale(0.97); transition-duration: 100ms; }
         .ovn-btn.ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.55); }
         .action-row { margin: 4px 0 28px; }
+        /* ○×投票: 1タップで現地の実態を集める。表示は集計の提示にとどめ、判定は人が行う */
+        .vote-card .vote-q { font-size: 1.15rem; margin-bottom: 16px; }
+        .vote-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+        .vote-btn { flex: 1 1 180px; font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer;
+            border-radius: 14px; padding: 16px 20px; border: 2px solid rgba(0,0,0,0.1); background: #fff; color: var(--color-text);
+            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 150ms, background-color 150ms; }
+        .vote-btn.yes:hover { border-color: var(--st-green); background: var(--st-green-tint); color: var(--st-green-text); }
+        .vote-btn.no:hover { border-color: var(--st-red); background: var(--st-red-tint); color: var(--st-red-text); }
+        .vote-btn:active { transform: scale(0.97); transition-duration: 100ms; }
+        .vote-btn.picked.yes { border-color: var(--st-green); background: var(--st-green-tint); color: var(--st-green-text); }
+        .vote-btn.picked.no { border-color: var(--st-red); background: var(--st-red-tint); color: var(--st-red-text); }
+        .vote-btn:disabled { cursor: default; opacity: 0.75; }
+        .vote-btn:disabled.picked { opacity: 1; }
+        .vote-tally { margin-top: 14px; font-weight: 650; color: var(--color-text); font-variant-numeric: tabular-nums; }
+        .vote-note { margin-top: 8px; font-size: 0.85rem; color: #5f5f66; }
+        .help-card { background: var(--st-teal-tint); border-color: rgba(18,128,138,0.18); }
+        @media (prefers-reduced-motion: reduce) { .vote-btn { transition: none; } .vote-btn:active { transform: none; } }
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
@@ -1525,6 +1578,51 @@ function renderStation(lang, st) {
         <div class="action-row">
             <a class="ovn-btn primary" href="${mapsNavUrl}" target="_blank" rel="noopener">🧭 ${esc(t.d_map_open)}</a>
         </div>
+        ${isListed(st) ? `<div class="ovn-card boxed help-card">
+            <h2>${esc(t.help_h)}</h2>
+            <p>${esc(t.help_p)}</p>
+            <p style="margin-top:14px;"><a href="#rfForm" class="ovn-btn primary" style="font-size:0.92rem;padding:12px 26px;">${esc(t.help_btn)}</a></p>
+        </div>` : ""}
+        <div class="ovn-card boxed vote-card">
+            <h2 class="vote-q">${esc(t.vote_q)}</h2>
+            <div class="vote-btns" id="ovnVote">
+                <button type="button" class="vote-btn yes" data-v="yes">${esc(t.vote_yes)}</button>
+                <button type="button" class="vote-btn no" data-v="no">${esc(t.vote_no)}</button>
+            </div>
+            <p class="vote-tally" id="ovnTally" role="status" hidden></p>
+            <p class="vote-note">${esc(t.vote_disclaimer)}</p>
+        </div>
+        <script>
+        (function () {
+            var box = document.getElementById('ovnVote'), out = document.getElementById('ovnTally');
+            if (!box || !out) return;
+            var sid = ${JSON.stringify(st.id)}, lang = ${JSON.stringify(lang)};
+            var THANKS = ${JSON.stringify(t.vote_thanks)};
+            var TALLY = ${JSON.stringify(t.vote_tally("__Y__", "__N__"))};
+            function show(d, thanks) {
+                var total = (d.yes || 0) + (d.no || 0);
+                if (!total) { out.hidden = true; return; }
+                out.hidden = false;
+                out.textContent = (thanks ? THANKS + ' ' : '') +
+                    TALLY.replace('__Y__', d.yes || 0).replace('__N__', d.no || 0);
+            }
+            fetch('/api/overnight-vote?station=' + encodeURIComponent(sid))
+                .then(function (r) { return r.json(); }).then(function (d) { show(d, false); })
+                .catch(function () {});
+            box.addEventListener('click', function (e) {
+                var b = e.target.closest('.vote-btn');
+                if (!b) return;
+                [].forEach.call(box.querySelectorAll('.vote-btn'), function (x) { x.disabled = true; });
+                b.classList.add('picked');
+                fetch('/api/overnight-vote', {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ station_id: sid, vote: b.getAttribute('data-v'), lang: lang })
+                }).then(function (r) { return r.json(); })
+                  .then(function (d) { show(d, true); })
+                  .catch(function () { out.hidden = false; out.textContent = THANKS; });
+            });
+        })();
+        </script>
         <div class="ovn-card">
             <h2>${esc(t.what_h)}</h2>
             <p>${esc(isListed(st) ? t.listed_note : whatText)}</p>

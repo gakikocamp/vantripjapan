@@ -423,6 +423,23 @@
         .ovn-btn:active { transform: scale(0.97); transition-duration: 100ms; }
         .ovn-btn.ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.55); }
         .action-row { margin: 4px 0 28px; }
+        /* ○×投票: 1タップで現地の実態を集める。表示は集計の提示にとどめ、判定は人が行う */
+        .vote-card .vote-q { font-size: 1.15rem; margin-bottom: 16px; }
+        .vote-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+        .vote-btn { flex: 1 1 180px; font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer;
+            border-radius: 14px; padding: 16px 20px; border: 2px solid rgba(0,0,0,0.1); background: #fff; color: var(--color-text);
+            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 150ms, background-color 150ms; }
+        .vote-btn.yes:hover { border-color: var(--st-green); background: var(--st-green-tint); color: var(--st-green-text); }
+        .vote-btn.no:hover { border-color: var(--st-red); background: var(--st-red-tint); color: var(--st-red-text); }
+        .vote-btn:active { transform: scale(0.97); transition-duration: 100ms; }
+        .vote-btn.picked.yes { border-color: var(--st-green); background: var(--st-green-tint); color: var(--st-green-text); }
+        .vote-btn.picked.no { border-color: var(--st-red); background: var(--st-red-tint); color: var(--st-red-text); }
+        .vote-btn:disabled { cursor: default; opacity: 0.75; }
+        .vote-btn:disabled.picked { opacity: 1; }
+        .vote-tally { margin-top: 14px; font-weight: 650; color: var(--color-text); font-variant-numeric: tabular-nums; }
+        .vote-note { margin-top: 8px; font-size: 0.85rem; color: #5f5f66; }
+        .help-card { background: var(--st-teal-tint); border-color: rgba(18,128,138,0.18); }
+        @media (prefers-reduced-motion: reduce) { .vote-btn { transition: none; } .vote-btn:active { transform: none; } }
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
@@ -590,13 +607,13 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.54552" data-lng="130.13125" href="/zh/overnight-parking/michi-no-eki/kumamoto/amakusa-dolphin/">
                 <span class="st-num st-num-noban" aria-hidden="true">50</span>
                 <span class="st-main"><span class="st-name">道の駅天草市イルカセンター</span>
-                <span class="st-city">天草市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">天草市 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.30318" data-lng="130.50814" href="/zh/overnight-parking/michi-no-eki/kumamoto/ashikita-dekopon/">
                 <span class="st-num st-num-noban" aria-hidden="true">51</span>
                 <span class="st-main"><span class="st-name">道の駅芦北でこぽん</span>
-                <span class="st-city">葦北郡芦北町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">葦北郡芦北町 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.93701" data-lng="131.08088" href="/zh/overnight-parking/michi-no-eki/kumamoto/aso/">
@@ -608,7 +625,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.57325" data-lng="130.79639" href="/zh/overnight-parking/michi-no-eki/kumamoto/hikyo-no-sato-izumi/">
                 <span class="st-num st-num-noban" aria-hidden="true">53</span>
                 <span class="st-main"><span class="st-name">道の駅秘境の郷いずみ</span>
-                <span class="st-city">八代市泉町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">八代市泉町 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.19341" data-lng="130.78933" href="/zh/overnight-parking/michi-no-eki/kumamoto/hitoyoshi/">
@@ -620,7 +637,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.11356" data-lng="130.66869" href="/zh/overnight-parking/michi-no-eki/kumamoto/kahoku/">
                 <span class="st-num st-num-noban" aria-hidden="true">55</span>
                 <span class="st-main"><span class="st-name">道の駅鹿北</span>
-                <span class="st-city">山鹿市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">山鹿市 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.57719" data-lng="130.42006" href="/zh/overnight-parking/michi-no-eki/kumamoto/kamiamakusa-sunpearl/">
@@ -632,25 +649,25 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.93118" data-lng="130.8302" href="/zh/overnight-parking/michi-no-eki/kumamoto/kyokushi/">
                 <span class="st-num st-num-noban" aria-hidden="true">57</span>
                 <span class="st-main"><span class="st-name">道の駅旭志</span>
-                <span class="st-city">菊池市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">菊池市 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.19933" data-lng="130.38211" href="/zh/overnight-parking/michi-no-eki/kumamoto/minamata/">
                 <span class="st-num st-num-noban" aria-hidden="true">58</span>
                 <span class="st-main"><span class="st-name">道の駅みなまた</span>
-                <span class="st-city">水俣市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">水俣市 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.62375" data-lng="130.82264" href="/zh/overnight-parking/michi-no-eki/kumamoto/misato-samata/">
                 <span class="st-num st-num-noban" aria-hidden="true">59</span>
                 <span class="st-main"><span class="st-name">道の駅美里「佐俣の湯」</span>
-                <span class="st-city">下益城郡美里町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">下益城郡美里町 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.95965" data-lng="131.19731" href="/zh/overnight-parking/michi-no-eki/kumamoto/namino/">
                 <span class="st-num st-num-noban" aria-hidden="true">60</span>
                 <span class="st-main"><span class="st-name">道の駅波野</span>
-                <span class="st-city">阿蘇市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">阿蘇市 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.12311" data-lng="131.06474" href="/zh/overnight-parking/michi-no-eki/kumamoto/oguni/">
@@ -662,7 +679,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.28989" data-lng="130.58222" href="/zh/overnight-parking/michi-no-eki/kumamoto/ono-onsen/">
                 <span class="st-num st-num-noban" aria-hidden="true">62</span>
                 <span class="st-main"><span class="st-name">道の駅大野温泉</span>
-                <span class="st-city">葦北郡芦北町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">葦北郡芦北町 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.88105" data-lng="130.89069" href="/zh/overnight-parking/michi-no-eki/kumamoto/ozu/">
@@ -674,25 +691,25 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.57718" data-lng="130.69513" href="/zh/overnight-parking/michi-no-eki/kumamoto/ryuhoku/">
                 <span class="st-num st-num-noban" aria-hidden="true">64</span>
                 <span class="st-main"><span class="st-name">道の駅竜北</span>
-                <span class="st-city">八代郡氷川町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">八代郡氷川町 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.42669" data-lng="130.64094" href="/zh/overnight-parking/michi-no-eki/kumamoto/sakamoto/">
                 <span class="st-num st-num-noban" aria-hidden="true">65</span>
                 <span class="st-main"><span class="st-name">道の駅坂本</span>
-                <span class="st-city">八代市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">八代市 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.3168" data-lng="130.02539" href="/zh/overnight-parking/michi-no-eki/kumamoto/sakitsu/">
                 <span class="st-num st-num-noban" aria-hidden="true">66</span>
                 <span class="st-main"><span class="st-name">道の駅﨑津</span>
-                <span class="st-city">天草市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">天草市 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.69064" data-lng="131.09159" href="/zh/overnight-parking/michi-no-eki/kumamoto/seiwa-bunraku/">
                 <span class="st-num st-num-noban" aria-hidden="true">67</span>
                 <span class="st-main"><span class="st-name">道の駅清和文楽邑</span>
-                <span class="st-city">上益城郡山都町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">上益城郡山都町 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.98037" data-lng="130.7702" href="/zh/overnight-parking/michi-no-eki/kumamoto/shichijo-melon-dome/">
@@ -704,19 +721,19 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.63354" data-lng="130.62923" href="/zh/overnight-parking/michi-no-eki/kumamoto/shiranuhi/">
                 <span class="st-num st-num-noban" aria-hidden="true">69</span>
                 <span class="st-main"><span class="st-name">道の駅不知火</span>
-                <span class="st-city">宇城市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">宇城市 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.92505" data-lng="130.77146" href="/zh/overnight-parking/michi-no-eki/kumamoto/shisui/">
                 <span class="st-num st-num-noban" aria-hidden="true">70</span>
                 <span class="st-main"><span class="st-name">道の駅泗水</span>
-                <span class="st-city">菊池市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">菊池市 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.72661" data-lng="131.16347" href="/zh/overnight-parking/michi-no-eki/kumamoto/soyokaze-park/">
                 <span class="st-num st-num-noban" aria-hidden="true">71</span>
                 <span class="st-main"><span class="st-name">道の駅そよ風パーク</span>
-                <span class="st-city">上益城郡山都町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">上益城郡山都町 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.90819" data-lng="130.6934" href="/zh/overnight-parking/michi-no-eki/kumamoto/suika-no-sato-ueki/">
@@ -728,31 +745,31 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.36459" data-lng="130.51274" href="/zh/overnight-parking/michi-no-eki/kumamoto/tanoura/">
                 <span class="st-num st-num-noban" aria-hidden="true">73</span>
                 <span class="st-main"><span class="st-name">道の駅たのうら</span>
-                <span class="st-city">葦北郡芦北町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">葦北郡芦北町 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.68848" data-lng="130.9906" href="/zh/overnight-parking/michi-no-eki/kumamoto/tsujunkyo/">
                 <span class="st-num st-num-noban" aria-hidden="true">74</span>
                 <span class="st-main"><span class="st-name">道の駅通潤橋</span>
-                <span class="st-city">上益城郡山都町 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">上益城郡山都町 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.65109" data-lng="130.69831" href="/zh/overnight-parking/michi-no-eki/kumamoto/uki-saikan/">
                 <span class="st-num st-num-noban" aria-hidden="true">75</span>
                 <span class="st-main"><span class="st-name">道の駅うき</span>
-                <span class="st-city">宇城市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">宇城市 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.194" data-lng="130.02734" href="/zh/overnight-parking/michi-no-eki/kumamoto/ushibuka-kaisaikan/">
                 <span class="st-num st-num-noban" aria-hidden="true">76</span>
                 <span class="st-main"><span class="st-name">道の駅うしぶか海彩館</span>
-                <span class="st-city">天草市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">天草市 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.66229" data-lng="130.52281" href="/zh/overnight-parking/michi-no-eki/kumamoto/uto-marina/">
                 <span class="st-num st-num-noban" aria-hidden="true">77</span>
                 <span class="st-main"><span class="st-name">道の駅宇土マリーナ</span>
-                <span class="st-city">宇土市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">宇土市 · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>

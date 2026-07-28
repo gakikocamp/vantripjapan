@@ -267,6 +267,23 @@
         .ovn-btn:active { transform: scale(0.97); transition-duration: 100ms; }
         .ovn-btn.ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.55); }
         .action-row { margin: 4px 0 28px; }
+        /* ○×投票: 1タップで現地の実態を集める。表示は集計の提示にとどめ、判定は人が行う */
+        .vote-card .vote-q { font-size: 1.15rem; margin-bottom: 16px; }
+        .vote-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+        .vote-btn { flex: 1 1 180px; font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer;
+            border-radius: 14px; padding: 16px 20px; border: 2px solid rgba(0,0,0,0.1); background: #fff; color: var(--color-text);
+            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 150ms, background-color 150ms; }
+        .vote-btn.yes:hover { border-color: var(--st-green); background: var(--st-green-tint); color: var(--st-green-text); }
+        .vote-btn.no:hover { border-color: var(--st-red); background: var(--st-red-tint); color: var(--st-red-text); }
+        .vote-btn:active { transform: scale(0.97); transition-duration: 100ms; }
+        .vote-btn.picked.yes { border-color: var(--st-green); background: var(--st-green-tint); color: var(--st-green-text); }
+        .vote-btn.picked.no { border-color: var(--st-red); background: var(--st-red-tint); color: var(--st-red-text); }
+        .vote-btn:disabled { cursor: default; opacity: 0.75; }
+        .vote-btn:disabled.picked { opacity: 1; }
+        .vote-tally { margin-top: 14px; font-weight: 650; color: var(--color-text); font-variant-numeric: tabular-nums; }
+        .vote-note { margin-top: 8px; font-size: 0.85rem; color: #5f5f66; }
+        .help-card { background: var(--st-teal-tint); border-color: rgba(18,128,138,0.18); }
+        @media (prefers-reduced-motion: reduce) { .vote-btn { transition: none; } .vote-btn:active { transform: none; } }
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
@@ -386,7 +403,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.33408" data-lng="130.41722" href="/overnight-parking/michi-no-eki/saga/kamimine/">
                 <span class="st-num st-num-noban" aria-hidden="true">19</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kamimine</span>
-                <span class="st-city">道の駅かみみね · Kamimine Town · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅かみみね · Kamimine Town · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.07472" data-lng="130.14549" href="/overnight-parking/michi-no-eki/saga/kashima/">
@@ -404,13 +421,13 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.52832" data-lng="129.87376" href="/overnight-parking/michi-no-eki/saga/momoyama-tenkaichi/">
                 <span class="st-num st-num-noban" aria-hidden="true">22</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Momoyama Tenkaichi</span>
-                <span class="st-city">道の駅桃山天下市 · Karatsu · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅桃山天下市 · Karatsu · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.17723" data-lng="130.19572" href="/overnight-parking/michi-no-eki/saga/shiroishi/">
                 <span class="st-num st-num-noban" aria-hidden="true">23</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Shiroishi</span>
-                <span class="st-city">道の駅しろいし · Shiroishi Town · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅しろいし · Shiroishi Town · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.04681" data-lng="130.16908" href="/overnight-parking/michi-no-eki/saga/tara/">
@@ -428,13 +445,13 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.33928" data-lng="130.25769" href="/overnight-parking/michi-no-eki/saga/yamato-soyokaze/">
                 <span class="st-num st-num-noban" aria-hidden="true">26</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yamato Soyokaze-kan</span>
-                <span class="st-city">道の駅大和そよかぜ館 · Saga · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅大和そよかぜ館 · Saga · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.19168" data-lng="129.95593" href="/overnight-parking/michi-no-eki/saga/yamauchi/">
                 <span class="st-num st-num-noban" aria-hidden="true">27</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yamauchi</span>
-                <span class="st-city">道の駅山内 · Takeo · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅山内 · Takeo · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.38086" data-lng="130.39715" href="/overnight-parking/michi-no-eki/saga/yoshinogari/">

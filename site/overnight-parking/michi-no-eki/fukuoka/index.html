@@ -303,6 +303,23 @@
         .ovn-btn:active { transform: scale(0.97); transition-duration: 100ms; }
         .ovn-btn.ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.55); }
         .action-row { margin: 4px 0 28px; }
+        /* ○×投票: 1タップで現地の実態を集める。表示は集計の提示にとどめ、判定は人が行う */
+        .vote-card .vote-q { font-size: 1.15rem; margin-bottom: 16px; }
+        .vote-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+        .vote-btn { flex: 1 1 180px; font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer;
+            border-radius: 14px; padding: 16px 20px; border: 2px solid rgba(0,0,0,0.1); background: #fff; color: var(--color-text);
+            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 150ms, background-color 150ms; }
+        .vote-btn.yes:hover { border-color: var(--st-green); background: var(--st-green-tint); color: var(--st-green-text); }
+        .vote-btn.no:hover { border-color: var(--st-red); background: var(--st-red-tint); color: var(--st-red-text); }
+        .vote-btn:active { transform: scale(0.97); transition-duration: 100ms; }
+        .vote-btn.picked.yes { border-color: var(--st-green); background: var(--st-green-tint); color: var(--st-green-text); }
+        .vote-btn.picked.no { border-color: var(--st-red); background: var(--st-red-tint); color: var(--st-red-text); }
+        .vote-btn:disabled { cursor: default; opacity: 0.75; }
+        .vote-btn:disabled.picked { opacity: 1; }
+        .vote-tally { margin-top: 14px; font-weight: 650; color: var(--color-text); font-variant-numeric: tabular-nums; }
+        .vote-note { margin-top: 8px; font-size: 0.85rem; color: #5f5f66; }
+        .help-card { background: var(--st-teal-tint); border-color: rgba(18,128,138,0.18); }
+        @media (prefers-reduced-motion: reduce) { .vote-btn { transition: none; } .vote-btn:active { transform: none; } }
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
@@ -434,7 +451,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.46732" data-lng="130.6238" href="/overnight-parking/michi-no-eki/fukuoka/chikuzen-minami-no-sato/">
                 <span class="st-num st-num-noban" aria-hidden="true">4</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Chikuzen Minami-no-Sato</span>
-                <span class="st-city">道の駅筑前みなみの里 · Chikuzen Town · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅筑前みなみの里 · Chikuzen Town · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.3537" data-lng="130.78488" href="/overnight-parking/michi-no-eki/fukuoka/harazuru/">
@@ -452,19 +469,19 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.54963" data-lng="130.86005" href="/overnight-parking/michi-no-eki/fukuoka/kanyusha-hikosan/">
                 <span class="st-num st-num-noban" aria-hidden="true">7</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kanyusha Hikosan</span>
-                <span class="st-city">道の駅歓遊舎ひこさん · Soeda Town · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅歓遊舎ひこさん · Soeda Town · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.67674" data-lng="130.86008" href="/overnight-parking/michi-no-eki/fukuoka/kawara/">
                 <span class="st-num st-num-noban" aria-hidden="true">8</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kawara</span>
-                <span class="st-city">道の駅香春 · Kawara Town · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅香春 · Kawara Town · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.4652" data-lng="130.82599" href="/overnight-parking/michi-no-eki/fukuoka/koishiwara/">
                 <span class="st-num st-num-noban" aria-hidden="true">9</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Koishiwara</span>
-                <span class="st-city">道の駅小石原 · Toho Village · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅小石原 · Toho Village · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.31945" data-lng="130.59372" href="/overnight-parking/michi-no-eki/fukuoka/kurume/">
@@ -476,13 +493,13 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.14728" data-lng="130.48403" href="/overnight-parking/michi-no-eki/fukuoka/miyama/">
                 <span class="st-num st-num-noban" aria-hidden="true">11</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Miyama</span>
-                <span class="st-city">道の駅みやま · Miyama · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅みやま · Miyama · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.07325" data-lng="130.53219" href="/overnight-parking/michi-no-eki/fukuoka/omuta/">
                 <span class="st-num st-num-noban" aria-hidden="true">12</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Omuta</span>
-                <span class="st-city">道の駅おおむた · Omuta · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅おおむた · Omuta · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.62568" data-lng="130.84585" href="/overnight-parking/michi-no-eki/fukuoka/oto-sakura-kaido/">
@@ -494,7 +511,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.58868" data-lng="131.15422" href="/overnight-parking/michi-no-eki/fukuoka/shin-yoshitomi/">
                 <span class="st-num st-num-noban" aria-hidden="true">14</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Shin-Yoshitomi</span>
-                <span class="st-city">道の駅しんよしとみ · Koge Town · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅しんよしとみ · Koge Town · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.18761" data-lng="130.61039" href="/overnight-parking/michi-no-eki/fukuoka/tachibana/">
@@ -512,7 +529,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.5639" data-lng="130.7132" href="/overnight-parking/michi-no-eki/fukuoka/usui/">
                 <span class="st-num st-num-noban" aria-hidden="true">17</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Usui</span>
-                <span class="st-city">道の駅うすい · Kama · <span class="st-unverified">Not verified yet</span></span></span>
+                <span class="st-city">道の駅うすい · Kama · <span class="st-unverified">Info wanted</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Usually OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>

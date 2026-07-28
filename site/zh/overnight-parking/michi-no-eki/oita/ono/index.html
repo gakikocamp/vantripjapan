@@ -88,7 +88,7 @@
       "name": "道の駅おおの可以過夜停車嗎？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "本站已收錄於官方道之驛名冊，但我們尚未查證其現場告示或官網。預設適用日本全國規則：在車內安靜休息通常被容許，露營行為則否。現場告示永遠優先 — 若你造訪此站，歡迎回報你看到的情況，協助我們完成查證。"
+        "text": "本站已收錄於官方道之驛名冊，但我們尚未查證其現場告示或官網。預設適用日本全國規則：在車內安靜休息通常被容許，露營行為則否。現場告示永遠優先 — 抵達時請先確認。"
       }
     },
     {
@@ -248,6 +248,23 @@
         .ovn-btn:active { transform: scale(0.97); transition-duration: 100ms; }
         .ovn-btn.ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.55); }
         .action-row { margin: 4px 0 28px; }
+        /* ○×投票: 1タップで現地の実態を集める。表示は集計の提示にとどめ、判定は人が行う */
+        .vote-card .vote-q { font-size: 1.15rem; margin-bottom: 16px; }
+        .vote-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+        .vote-btn { flex: 1 1 180px; font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer;
+            border-radius: 14px; padding: 16px 20px; border: 2px solid rgba(0,0,0,0.1); background: #fff; color: var(--color-text);
+            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 150ms, background-color 150ms; }
+        .vote-btn.yes:hover { border-color: var(--st-green); background: var(--st-green-tint); color: var(--st-green-text); }
+        .vote-btn.no:hover { border-color: var(--st-red); background: var(--st-red-tint); color: var(--st-red-text); }
+        .vote-btn:active { transform: scale(0.97); transition-duration: 100ms; }
+        .vote-btn.picked.yes { border-color: var(--st-green); background: var(--st-green-tint); color: var(--st-green-text); }
+        .vote-btn.picked.no { border-color: var(--st-red); background: var(--st-red-tint); color: var(--st-red-text); }
+        .vote-btn:disabled { cursor: default; opacity: 0.75; }
+        .vote-btn:disabled.picked { opacity: 1; }
+        .vote-tally { margin-top: 14px; font-weight: 650; color: var(--color-text); font-variant-numeric: tabular-nums; }
+        .vote-note { margin-top: 8px; font-size: 0.85rem; color: #5f5f66; }
+        .help-card { background: var(--st-teal-tint); border-color: rgba(18,128,138,0.18); }
+        @media (prefers-reduced-motion: reduce) { .vote-btn { transition: none; } .vote-btn:active { transform: none; } }
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
@@ -358,15 +375,60 @@
 
         <div class="status-banner noban">
             <div class="st-label"><span class="dot"></span>在車內安靜過一夜，這裡通常OK</div>
-            <div class="st-verified">已收錄 — 本站自訂規則尚未查證</div>
+            <div class="st-verified">本站的規則我們尚未查證 — 歡迎協助</div>
         </div>
         
         <div class="action-row">
             <a class="ovn-btn primary" href="https://www.google.com/maps/dir/?api=1&destination=33.03673,131.5028&travelmode=driving" target="_blank" rel="noopener">🧭 在Google地圖開啟</a>
         </div>
+        <div class="ovn-card boxed help-card">
+            <h2>去過這裡嗎？幫助其他旅行者</h2>
+            <p>我們知道這座站點的位置 — 但不知道現場告示寫了什麼。如果你曾在此過夜或只是路過，只要30秒告訴我們。每則回報我們都會對照官方來源查證，然後更新本頁並註明你的貢獻。</p>
+            <p style="margin-top:14px;"><a href="#rfForm" class="ovn-btn primary" style="font-size:0.92rem;padding:12px 26px;">回報你看到的情況 ↓</a></p>
+        </div>
+        <div class="ovn-card boxed vote-card">
+            <h2 class="vote-q">你在這裡順利過夜了嗎？</h2>
+            <div class="vote-btns" id="ovnVote">
+                <button type="button" class="vote-btn yes" data-v="yes">○ 有，順利過夜</button>
+                <button type="button" class="vote-btn no" data-v="no">✕ 沒有，不行</button>
+            </div>
+            <p class="vote-tally" id="ovnTally" role="status" hidden></p>
+            <p class="vote-note">旅行者回報 — 非我們的查證結果。變更本頁前，我們會逐一對照官方來源查證。</p>
+        </div>
+        <script>
+        (function () {
+            var box = document.getElementById('ovnVote'), out = document.getElementById('ovnTally');
+            if (!box || !out) return;
+            var sid = "ono", lang = "zh";
+            var THANKS = "謝謝！你的回報會幫助下一位旅行者。";
+            var TALLY = "__Y__ 人可以 · __N__ 人不行";
+            function show(d, thanks) {
+                var total = (d.yes || 0) + (d.no || 0);
+                if (!total) { out.hidden = true; return; }
+                out.hidden = false;
+                out.textContent = (thanks ? THANKS + ' ' : '') +
+                    TALLY.replace('__Y__', d.yes || 0).replace('__N__', d.no || 0);
+            }
+            fetch('/api/overnight-vote?station=' + encodeURIComponent(sid))
+                .then(function (r) { return r.json(); }).then(function (d) { show(d, false); })
+                .catch(function () {});
+            box.addEventListener('click', function (e) {
+                var b = e.target.closest('.vote-btn');
+                if (!b) return;
+                [].forEach.call(box.querySelectorAll('.vote-btn'), function (x) { x.disabled = true; });
+                b.classList.add('picked');
+                fetch('/api/overnight-vote', {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ station_id: sid, vote: b.getAttribute('data-v'), lang: lang })
+                }).then(function (r) { return r.json(); })
+                  .then(function (d) { show(d, true); })
+                  .catch(function () { out.hidden = false; out.textContent = THANKS; });
+            });
+        })();
+        </script>
         <div class="ovn-card">
             <h2>這對你的意義</h2>
-            <p>本站已收錄於官方道之驛名冊，但我們尚未查證其現場告示或官網。預設適用日本全國規則：在車內安靜休息通常被容許，露營行為則否。現場告示永遠優先 — 若你造訪此站，歡迎回報你看到的情況，協助我們完成查證。</p>
+            <p>本站已收錄於官方道之驛名冊，但我們尚未查證其現場告示或官網。預設適用日本全國規則：在車內安靜休息通常被容許，露營行為則否。現場告示永遠優先 — 抵達時請先確認。</p>
         </div>
         <div class="ovn-card">
             <h2>全國官方規則（請先讀這裡）</h2>
@@ -385,7 +447,7 @@
         
         <div class="ovn-card">
             <h2>常見問題</h2>
-            <div class="faq-item-s"><div class="q">道の駅おおの可以過夜停車嗎？</div><p>本站已收錄於官方道之驛名冊，但我們尚未查證其現場告示或官網。預設適用日本全國規則：在車內安靜休息通常被容許，露營行為則否。現場告示永遠優先 — 若你造訪此站，歡迎回報你看到的情況，協助我們完成查證。</p></div>
+            <div class="faq-item-s"><div class="q">道の駅おおの可以過夜停車嗎？</div><p>本站已收錄於官方道之驛名冊，但我們尚未查證其現場告示或官網。預設適用日本全國規則：在車內安靜休息通常被容許，露營行為則否。現場告示永遠優先 — 抵達時請先確認。</p></div>
             <div class="faq-item-s"><div class="q">在道之驛過夜要遵守哪些規則？</div><p>最多安靜住一晚、熄火、車外不擺東西、禁明火、停遠離入口、21:00後安靜、垃圾帶走、在商店消費支持站點。個別站點可能有更嚴格的公告 — 現場告示永遠優先於本資料庫。</p></div>
             <div class="faq-item-s"><div class="q">附近哪裡可以合法過夜？</div><p>官方RV Park（一般每晚1,000–4,500日圓、可預約）、汽車露營場（1,000–5,000日圓）、部分附過夜停車方案的溫泉設施。VAN TRIP JAPAN每筆租賃都附九州精選過夜地圖 — 合法且歡迎你的地點。</p></div>
         </div>
@@ -395,13 +457,13 @@
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.00259" data-lng="131.44804" href="/zh/overnight-parking/michi-no-eki/oita/asaji/">
                 <span class="st-num st-num-noban" aria-hidden="true">78</span>
                 <span class="st-main"><span class="st-name">道の駅あさじ</span>
-                <span class="st-city">豊後大野市 · 6&nbsp;km · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">豊後大野市 · 6&nbsp;km · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.97166" data-lng="131.51821" href="/zh/overnight-parking/michi-no-eki/oita/kiyokawa/">
                 <span class="st-num st-num-noban" aria-hidden="true">84</span>
                 <span class="st-main"><span class="st-name">道の駅きよかわ</span>
-                <span class="st-city">豊後大野市 · 7&nbsp;km · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-city">豊後大野市 · 7&nbsp;km · <span class="st-unverified">徵求資訊</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.96569" data-lng="131.45237" href="/zh/overnight-parking/michi-no-eki/oita/harajiri-no-taki/">

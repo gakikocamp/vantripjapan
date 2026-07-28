@@ -75,6 +75,8 @@ function isPublicRequest(request) {
   if (path === '/api/quote' && method === 'POST') return true;
   // Public: POST overnight DB field report (honeypot+レート制限はエンドポイント内)
   if (path === '/api/overnight-report' && method === 'POST') return true;
+  // Public: 車中泊DBの○×投票（GET=集計取得 / POST=投票。IPハッシュで重複防止）
+  if (path === '/api/overnight-vote' && (method === 'GET' || method === 'POST')) return true;
   // Public: OPTIONS (CORS preflight)
   if (method === 'OPTIONS') return true;
 

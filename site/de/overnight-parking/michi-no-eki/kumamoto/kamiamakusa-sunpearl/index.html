@@ -248,6 +248,23 @@
         .ovn-btn:active { transform: scale(0.97); transition-duration: 100ms; }
         .ovn-btn.ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.55); }
         .action-row { margin: 4px 0 28px; }
+        /* ○×投票: 1タップで現地の実態を集める。表示は集計の提示にとどめ、判定は人が行う */
+        .vote-card .vote-q { font-size: 1.15rem; margin-bottom: 16px; }
+        .vote-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+        .vote-btn { flex: 1 1 180px; font: inherit; font-size: 1rem; font-weight: 700; cursor: pointer;
+            border-radius: 14px; padding: 16px 20px; border: 2px solid rgba(0,0,0,0.1); background: #fff; color: var(--color-text);
+            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 150ms, background-color 150ms; }
+        .vote-btn.yes:hover { border-color: var(--st-green); background: var(--st-green-tint); color: var(--st-green-text); }
+        .vote-btn.no:hover { border-color: var(--st-red); background: var(--st-red-tint); color: var(--st-red-text); }
+        .vote-btn:active { transform: scale(0.97); transition-duration: 100ms; }
+        .vote-btn.picked.yes { border-color: var(--st-green); background: var(--st-green-tint); color: var(--st-green-text); }
+        .vote-btn.picked.no { border-color: var(--st-red); background: var(--st-red-tint); color: var(--st-red-text); }
+        .vote-btn:disabled { cursor: default; opacity: 0.75; }
+        .vote-btn:disabled.picked { opacity: 1; }
+        .vote-tally { margin-top: 14px; font-weight: 650; color: var(--color-text); font-variant-numeric: tabular-nums; }
+        .vote-note { margin-top: 8px; font-size: 0.85rem; color: #5f5f66; }
+        .help-card { background: var(--st-teal-tint); border-color: rgba(18,128,138,0.18); }
+        @media (prefers-reduced-motion: reduce) { .vote-btn { transition: none; } .vote-btn:active { transform: none; } }
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
@@ -364,6 +381,47 @@
         <div class="action-row">
             <a class="ovn-btn primary" href="https://www.google.com/maps/dir/?api=1&destination=32.57719,130.42006&travelmode=driving" target="_blank" rel="noopener">🧭 In Google Maps öffnen</a>
         </div>
+        
+        <div class="ovn-card boxed vote-card">
+            <h2 class="vote-q">Konnten Sie hier übernachten?</h2>
+            <div class="vote-btns" id="ovnVote">
+                <button type="button" class="vote-btn yes" data-v="yes">○ Ja, ich habe übernachtet</button>
+                <button type="button" class="vote-btn no" data-v="no">✕ Nein, ging nicht</button>
+            </div>
+            <p class="vote-tally" id="ovnTally" role="status" hidden></p>
+            <p class="vote-note">Reisendenmeldungen — keine eigene Prüfung. Wir gleichen jede Meldung mit den Quellen der Station ab, bevor wir diese Seite ändern.</p>
+        </div>
+        <script>
+        (function () {
+            var box = document.getElementById('ovnVote'), out = document.getElementById('ovnTally');
+            if (!box || !out) return;
+            var sid = "kamiamakusa-sunpearl", lang = "de";
+            var THANKS = "Danke! Ihre Meldung hilft dem nächsten Reisenden.";
+            var TALLY = "__Y__ × ja · __N__ × nein";
+            function show(d, thanks) {
+                var total = (d.yes || 0) + (d.no || 0);
+                if (!total) { out.hidden = true; return; }
+                out.hidden = false;
+                out.textContent = (thanks ? THANKS + ' ' : '') +
+                    TALLY.replace('__Y__', d.yes || 0).replace('__N__', d.no || 0);
+            }
+            fetch('/api/overnight-vote?station=' + encodeURIComponent(sid))
+                .then(function (r) { return r.json(); }).then(function (d) { show(d, false); })
+                .catch(function () {});
+            box.addEventListener('click', function (e) {
+                var b = e.target.closest('.vote-btn');
+                if (!b) return;
+                [].forEach.call(box.querySelectorAll('.vote-btn'), function (x) { x.disabled = true; });
+                b.classList.add('picked');
+                fetch('/api/overnight-vote', {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ station_id: sid, vote: b.getAttribute('data-v'), lang: lang })
+                }).then(function (r) { return r.json(); })
+                  .then(function (d) { show(d, true); })
+                  .catch(function () { out.hidden = false; out.textContent = THANKS; });
+            });
+        })();
+        </script>
         <div class="ovn-card">
             <h2>Was das für Sie bedeutet</h2>
             <p>Gute Nachricht: Eine ruhige Nacht im Fahrzeug wird hier in der Regel toleriert — zum Prüfdatum haben wir kein ausdrückliches Verbot gefunden, es gilt also Japans nationaler Standard. Aber Sie sind Gast auf einem Parkplatz, nicht auf einem Campingplatz. Halten Sie sich an die Etikette unten; sagen Schilder oder Personal vor Ort etwas anderes, gilt immer das.</p>
@@ -401,13 +459,13 @@
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.66229" data-lng="130.52281" href="/de/overnight-parking/michi-no-eki/kumamoto/uto-marina/">
                 <span class="st-num st-num-noban" aria-hidden="true">77</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Uto Marina</span>
-                <span class="st-city">道の駅宇土マリーナ · Uto · 13&nbsp;km · <span class="st-unverified">Noch ungeprüft</span></span></span>
+                <span class="st-city">道の駅宇土マリーナ · Uto · 13&nbsp;km · <span class="st-unverified">Infos gesucht</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Meist OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.7395" data-lng="130.36767" href="/de/overnight-parking/michi-no-eki/nagasaki/himawari/">
                 <span class="st-num st-num-noban" aria-hidden="true">30</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Himawari</span>
-                <span class="st-city">道の駅ひまわり · Minamishimabara · 19&nbsp;km · <span class="st-unverified">Noch ungeprüft</span></span></span>
+                <span class="st-city">道の駅ひまわり · Minamishimabara · 19&nbsp;km · <span class="st-unverified">Infos gesucht</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Meist OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
             </div>
