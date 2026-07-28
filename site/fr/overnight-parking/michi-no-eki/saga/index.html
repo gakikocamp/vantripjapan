@@ -58,7 +58,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Michi-no-Eki : règles de nuit — Saga",
-  "numberOfItems": 10,
+  "numberOfItems": 11,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -69,54 +69,60 @@
     {
       "@type": "ListItem",
       "position": 2,
+      "name": "Michi-no-Eki Kamimine",
+      "url": "https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/saga/kamimine/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
       "name": "Michi-no-Eki Kashima",
       "url": "https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/saga/kashima/"
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 4,
       "name": "Michi-no-Eki Kyuragi",
       "url": "https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/saga/kyuragi/"
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 5,
       "name": "Michi-no-Eki Momoyama Tenkaichi",
       "url": "https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/saga/momoyama-tenkaichi/"
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 6,
       "name": "Michi-no-Eki Shiroishi",
       "url": "https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/saga/shiroishi/"
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 7,
       "name": "Michi-no-Eki Tara",
       "url": "https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/saga/tara/"
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 8,
       "name": "Michi-no-Eki Ureshino Maruku",
       "url": "https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/saga/ureshino-maruku/"
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 9,
       "name": "Michi-no-Eki Yamato Soyokaze-kan",
       "url": "https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/saga/yamato-soyokaze/"
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 10,
       "name": "Michi-no-Eki Yamauchi",
       "url": "https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/saga/yamauchi/"
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 11,
       "name": "Michi-no-Eki Yoshinogari",
       "url": "https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/saga/yoshinogari/"
     }
@@ -264,15 +270,14 @@
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
-        /* 戻るリンクは緑ヒーローに重なる位置に出るため、白ピル化（従来は約1.5:1でほぼ不可視）
-           あわせてタップ領域も拡大 */
-        .ovn-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px;
-            font-size: 0.95rem; font-weight: 650; color: #2d5a3d; text-decoration: none;
-            background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 100px;
-            padding: 10px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 150ms ease-out; }
-        .ovn-back:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.14); }
-        .ovn-back:active { transform: scale(0.97); transition-duration: 100ms; }
+        /* 上位階層への移動はヒーローのパンくず1本に集約（浮いた戻るボタンは廃止）。
+           パンくずは十分な文字サイズとタップ余白を持たせ、これ自体をナビゲーションとして機能させる */
+        .ovn-hero .crumbs { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2px 4px; }
+        .ovn-hero .crumbs a { display: inline-block; padding: 6px 10px; margin: -2px 0; border-radius: 8px;
+            font-weight: 600; text-decoration: none; transition: background-color 120ms ease-out; }
+        .ovn-hero .crumbs a:hover { background: rgba(255,255,255,0.14); text-decoration: none; }
+        .ovn-hero .crumbs .sep { opacity: 0.5; }
+        .ovn-hero .crumbs .here { padding: 6px 2px; opacity: 0.85; }
         .faq-item-s { margin-bottom: 16px; }
         .faq-item-s .q { font-weight: 650; color: var(--color-text); margin-bottom: 6px; font-size: 0.97rem; line-height: 1.4; }
         .pref-block h2 { display: flex; align-items: baseline; gap: 10px; }
@@ -363,72 +368,77 @@
     </div>
 
     <div class="ovn-hero">
-        <div class="crumbs"><a href="/fr/overnight-parking/michi-no-eki/">Base de données : nuit en Michi-no-Eki</a> › Saga</div>
+        <div class="crumbs"><a href="/fr/overnight-parking/michi-no-eki/">Base de données : nuit en Michi-no-Eki</a><span class="sep">›</span><span class="here">Saga</span></div>
         <h1>Michi-no-Eki : règles de nuit — Saga</h1>
         
     </div>
 
     <div class="ovn-wrap">
 
-        <a class="ovn-back" href="/fr/overnight-parking/michi-no-eki/">← Base complète des stations</a>
         <div class="ovn-card boxed">
             <div class="station-list">
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.31314" data-lng="129.92887" href="/fr/overnight-parking/michi-no-eki/saga/imari/">
-                <span class="st-num st-num-noban" aria-hidden="true">16</span>
+                <span class="st-num st-num-noban" aria-hidden="true">18</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Imari</span>
                 <span class="st-city">道の駅伊万里 · Imari</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.33408" data-lng="130.41722" href="/fr/overnight-parking/michi-no-eki/saga/kamimine/">
+                <span class="st-num st-num-noban" aria-hidden="true">19</span>
+                <span class="st-main"><span class="st-name">Michi-no-Eki Kamimine</span>
+                <span class="st-city">道の駅かみみね · Kamimine Town · <span class="st-unverified">Non vérifiée</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.07472" data-lng="130.14549" href="/fr/overnight-parking/michi-no-eki/saga/kashima/">
-                <span class="st-num st-num-noban" aria-hidden="true">17</span>
+                <span class="st-num st-num-noban" aria-hidden="true">20</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kashima</span>
                 <span class="st-city">道の駅鹿島 · Kashima</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.31112" data-lng="130.07234" href="/fr/overnight-parking/michi-no-eki/saga/kyuragi/">
-                <span class="st-num st-num-noban" aria-hidden="true">18</span>
+                <span class="st-num st-num-noban" aria-hidden="true">21</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kyuragi</span>
                 <span class="st-city">道の駅厳木 · Karatsu</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.52832" data-lng="129.87376" href="/fr/overnight-parking/michi-no-eki/saga/momoyama-tenkaichi/">
-                <span class="st-num st-num-noban" aria-hidden="true">19</span>
+                <span class="st-num st-num-noban" aria-hidden="true">22</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Momoyama Tenkaichi</span>
                 <span class="st-city">道の駅桃山天下市 · Karatsu · <span class="st-unverified">Non vérifiée</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.17723" data-lng="130.19572" href="/fr/overnight-parking/michi-no-eki/saga/shiroishi/">
-                <span class="st-num st-num-noban" aria-hidden="true">20</span>
+                <span class="st-num st-num-noban" aria-hidden="true">23</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Shiroishi</span>
                 <span class="st-city">道の駅しろいし · Shiroishi Town · <span class="st-unverified">Non vérifiée</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.04681" data-lng="130.16908" href="/fr/overnight-parking/michi-no-eki/saga/tara/">
-                <span class="st-num st-num-noban" aria-hidden="true">21</span>
+                <span class="st-num st-num-noban" aria-hidden="true">24</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Tara</span>
                 <span class="st-city">道の駅太良 · Tara Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.10638" data-lng="129.99786" href="/fr/overnight-parking/michi-no-eki/saga/ureshino-maruku/">
-                <span class="st-num st-num-noban" aria-hidden="true">22</span>
+                <span class="st-num st-num-noban" aria-hidden="true">25</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Ureshino Maruku</span>
                 <span class="st-city">道の駅うれしの まるく · Ureshino</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.33928" data-lng="130.25769" href="/fr/overnight-parking/michi-no-eki/saga/yamato-soyokaze/">
-                <span class="st-num st-num-noban" aria-hidden="true">23</span>
+                <span class="st-num st-num-noban" aria-hidden="true">26</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yamato Soyokaze-kan</span>
                 <span class="st-city">道の駅大和そよかぜ館 · Saga · <span class="st-unverified">Non vérifiée</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.19168" data-lng="129.95593" href="/fr/overnight-parking/michi-no-eki/saga/yamauchi/">
-                <span class="st-num st-num-noban" aria-hidden="true">24</span>
+                <span class="st-num st-num-noban" aria-hidden="true">27</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yamauchi</span>
                 <span class="st-city">道の駅山内 · Takeo · <span class="st-unverified">Non vérifiée</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.38086" data-lng="130.39715" href="/fr/overnight-parking/michi-no-eki/saga/yoshinogari/">
-                <span class="st-num st-num-noban" aria-hidden="true">25</span>
+                <span class="st-num st-num-noban" aria-hidden="true">28</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yoshinogari</span>
                 <span class="st-city">道の駅吉野ヶ里 · Yoshinogari Town</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>

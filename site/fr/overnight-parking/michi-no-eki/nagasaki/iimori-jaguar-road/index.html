@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, follow">
-    <title>Michi-no-Eki Iimori Jaguar Road — peut-on y passer la nuit ? Règles 2026 | VAN TRIP JAPAN</title>
-    <meta name="description" content="Peut-on dormir en van à Michi-no-Eki Iimori Jaguar Road ? Statut actuel : Une nuit de repos discrète est généralement OK ici. Règles, sources, date de vérification et alternatives légales à proximité.">
-    <meta property="og:title" content="Michi-no-Eki Iimori Jaguar Road — peut-on y passer la nuit ? Règles 2026 | VAN TRIP JAPAN">
-    <meta property="og:description" content="Peut-on dormir en van à Michi-no-Eki Iimori Jaguar Road ? Statut actuel : Une nuit de repos discrète est généralement OK ici. Règles, sources, date de vérification et alternatives légales à proximité.">
+    <title>Michi-no-Eki 251 Iimori Jaga-Road — peut-on y passer la nuit ? Règles 2026 | VAN TRIP JAPAN</title>
+    <meta name="description" content="Peut-on dormir en van à Michi-no-Eki 251 Iimori Jaga-Road ? Statut actuel : Une nuit de repos discrète est généralement OK ici. Règles, sources, date de vérification et alternatives légales à proximité.">
+    <meta property="og:title" content="Michi-no-Eki 251 Iimori Jaga-Road — peut-on y passer la nuit ? Règles 2026 | VAN TRIP JAPAN">
+    <meta property="og:description" content="Peut-on dormir en van à Michi-no-Eki 251 Iimori Jaga-Road ? Statut actuel : Une nuit de repos discrète est généralement OK ici. Règles, sources, date de vérification et alternatives légales à proximité.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/nagasaki/iimori-jaguar-road/">
     <meta property="og:image" content="https://vantripjapan.jp/images/hero-vanlife.jpg">
@@ -53,7 +53,7 @@
     {
       "@type": "ListItem",
       "position": 4,
-      "name": "Michi-no-Eki Iimori Jaguar Road",
+      "name": "Michi-no-Eki 251 Iimori Jaga-Road",
       "item": "https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/nagasaki/iimori-jaguar-road/"
     }
   ]
@@ -63,7 +63,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Place",
-  "name": "Michi-no-Eki Iimori Jaguar Road (道の駅251いいもりジャガーロード)",
+  "name": "Michi-no-Eki 251 Iimori Jaga-Road (道の駅251いいもりじゃがーロード)",
   "url": "https://vantripjapan.jp/fr/overnight-parking/michi-no-eki/nagasaki/iimori-jaguar-road/",
   "address": {
     "@type": "PostalAddress",
@@ -85,7 +85,7 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Peut-on stationner la nuit à Michi-no-Eki Iimori Jaguar Road ?",
+      "name": "Peut-on stationner la nuit à Michi-no-Eki 251 Iimori Jaga-Road ?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — et si vous y passez, dites-nous ce que vous avez vu pour que nous puissions vérifier cette fiche."
@@ -251,15 +251,14 @@
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
-        /* 戻るリンクは緑ヒーローに重なる位置に出るため、白ピル化（従来は約1.5:1でほぼ不可視）
-           あわせてタップ領域も拡大 */
-        .ovn-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px;
-            font-size: 0.95rem; font-weight: 650; color: #2d5a3d; text-decoration: none;
-            background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 100px;
-            padding: 10px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 150ms ease-out; }
-        .ovn-back:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.14); }
-        .ovn-back:active { transform: scale(0.97); transition-duration: 100ms; }
+        /* 上位階層への移動はヒーローのパンくず1本に集約（浮いた戻るボタンは廃止）。
+           パンくずは十分な文字サイズとタップ余白を持たせ、これ自体をナビゲーションとして機能させる */
+        .ovn-hero .crumbs { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2px 4px; }
+        .ovn-hero .crumbs a { display: inline-block; padding: 6px 10px; margin: -2px 0; border-radius: 8px;
+            font-weight: 600; text-decoration: none; transition: background-color 120ms ease-out; }
+        .ovn-hero .crumbs a:hover { background: rgba(255,255,255,0.14); text-decoration: none; }
+        .ovn-hero .crumbs .sep { opacity: 0.5; }
+        .ovn-hero .crumbs .here { padding: 6px 2px; opacity: 0.85; }
         .faq-item-s { margin-bottom: 16px; }
         .faq-item-s .q { font-weight: 650; color: var(--color-text); margin-bottom: 6px; font-size: 0.97rem; line-height: 1.4; }
         .pref-block h2 { display: flex; align-items: baseline; gap: 10px; }
@@ -350,14 +349,13 @@
     </div>
 
     <div class="ovn-hero compact">
-        <div class="crumbs"><a href="/fr/overnight-parking/michi-no-eki/">Base de données : nuit en Michi-no-Eki</a> › <a href="/fr/overnight-parking/michi-no-eki/nagasaki/">Nagasaki</a> › Michi-no-Eki Iimori Jaguar Road</div>
-        <h1>Peut-on passer la nuit à Michi-no-Eki Iimori Jaguar Road ?</h1>
-        <p>道の駅251いいもりジャガーロード · Nagasaki</p>
+        <div class="crumbs"><a href="/fr/overnight-parking/michi-no-eki/">Base de données : nuit en Michi-no-Eki</a><span class="sep">›</span><a href="/fr/overnight-parking/michi-no-eki/nagasaki/">Nagasaki</a><span class="sep">›</span><span class="here">Michi-no-Eki 251 Iimori Jaga-Road</span></div>
+        <h1>Peut-on passer la nuit à Michi-no-Eki 251 Iimori Jaga-Road ?</h1>
+        <p>道の駅251いいもりじゃがーロード · Nagasaki</p>
     </div>
 
     <div class="ovn-wrap">
 
-        <a class="ovn-back" href="/fr/overnight-parking/michi-no-eki/nagasaki/">← Toutes les stations — Nagasaki</a>
         <div class="status-banner noban">
             <div class="st-label"><span class="dot"></span>Une nuit de repos discrète est généralement OK ici</div>
             <div class="st-verified">Répertoriée — règles propres à cette station non vérifiées</div>
@@ -387,7 +385,7 @@
         
         <div class="ovn-card">
             <h2>Questions fréquentes</h2>
-            <div class="faq-item-s"><div class="q">Peut-on stationner la nuit à Michi-no-Eki Iimori Jaguar Road ?</div><p>Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — et si vous y passez, dites-nous ce que vous avez vu pour que nous puissions vérifier cette fiche.</p></div>
+            <div class="faq-item-s"><div class="q">Peut-on stationner la nuit à Michi-no-Eki 251 Iimori Jaga-Road ?</div><p>Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — et si vous y passez, dites-nous ce que vous avez vu pour que nous puissions vérifier cette fiche.</p></div>
             <div class="faq-item-s"><div class="q">Quelles sont les règles pour dormir dans une Michi-no-Eki ?</div><p>Une seule nuit, moteur coupé, rien à l'extérieur du véhicule, pas de flamme, stationnement loin de l'entrée, silence après 21 h, déchets remportés, et un achat à la boutique. Certaines stations affichent des règles plus strictes — les panneaux sur place priment toujours sur cette base.</p></div>
             <div class="faq-item-s"><div class="q">Où passer la nuit légalement à proximité ?</div><p>RV parks officiels (généralement 1 000–4 500 ¥/nuit, réservables), campings auto (1 000–5 000 ¥) et certains onsen avec forfait nuit sur parking. Chaque location VAN TRIP JAPAN inclut une carte des spots de nuit recommandés à Kyushu — des lieux légaux où l'on vous accueille volontiers.</p></div>
         </div>
@@ -395,19 +393,19 @@
             <h2>Stations à proximité</h2>
             <div class="station-list">
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.88526" data-lng="130.00731" href="/fr/overnight-parking/michi-no-eki/nagasaki/suzuta-toge/">
-                <span class="st-num st-num-noban" aria-hidden="true">34</span>
+                <span class="st-num st-num-noban" aria-hidden="true">38</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Nagasaki-Kaido Suzuta-Toge</span>
                 <span class="st-city">道の駅長崎街道鈴田峠 · Omura · 12&nbsp;km · <span class="st-unverified">Non vérifiée</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.54552" data-lng="130.13125" href="/fr/overnight-parking/michi-no-eki/kumamoto/amakusa-dolphin/">
-                <span class="st-num st-num-noban" aria-hidden="true">46</span>
+                <span class="st-num st-num-noban" aria-hidden="true">50</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Amakusa Dolphin Center</span>
                 <span class="st-city">道の駅天草市イルカセンター · Amakusa · 28&nbsp;km · <span class="st-unverified">Non vérifiée</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="1" data-lat="33.03583" data-lng="129.91994" href="/fr/overnight-parking/michi-no-eki/nagasaki/sonogi-no-sho/">
-                <span class="st-num st-num-noban" aria-hidden="true">26</span>
+                <span class="st-num st-num-noban" aria-hidden="true">29</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Sonogi no Sho</span>
                 <span class="st-city">道の駅彼杵の荘 · Higashisonogi Town · 30&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-rv"><span class="dot"></span>RV park</span><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
@@ -433,7 +431,7 @@
                     <span class="rf-status" id="rfStatus" role="status" aria-live="polite"></span>
                 </div>
             </form>
-            <p style="margin-top:14px;font-size:0.88rem;">ou écrivez-nous directement : <a href="https://wa.me/817093757129?text=Report%20for%20%E9%81%93%E3%81%AE%E9%A7%85251%E3%81%84%E3%81%84%E3%82%82%E3%82%8A%E3%82%B8%E3%83%A3%E3%82%AC%E3%83%BC%E3%83%AD%E3%83%BC%E3%83%89%20(iimori-jaguar-road)%3A%20" target="_blank" rel="noopener" style="color:var(--color-accent);font-weight:700;">💬 Signaler un changement</a></p>
+            <p style="margin-top:14px;font-size:0.88rem;">ou écrivez-nous directement : <a href="https://wa.me/817093757129?text=Report%20for%20%E9%81%93%E3%81%AE%E9%A7%85251%E3%81%84%E3%81%84%E3%82%82%E3%82%8A%E3%81%98%E3%82%83%E3%81%8C%E3%83%BC%E3%83%AD%E3%83%BC%E3%83%89%20(iimori-jaguar-road)%3A%20" target="_blank" rel="noopener" style="color:var(--color-accent);font-weight:700;">💬 Signaler un changement</a></p>
         </div>
         <script>
         (function () {

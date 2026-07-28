@@ -58,7 +58,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "道之驛過夜規則 — 福岡縣",
-  "numberOfItems": 15,
+  "numberOfItems": 17,
   "itemListElement": [
     {
       "@type": "ListItem",
@@ -123,30 +123,42 @@
     {
       "@type": "ListItem",
       "position": 11,
+      "name": "道の駅みやま",
+      "url": "https://vantripjapan.jp/zh/overnight-parking/michi-no-eki/fukuoka/miyama/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "name": "道の駅おおむた",
+      "url": "https://vantripjapan.jp/zh/overnight-parking/michi-no-eki/fukuoka/omuta/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
       "name": "道の駅おおとう桜街道",
       "url": "https://vantripjapan.jp/zh/overnight-parking/michi-no-eki/fukuoka/oto-sakura-kaido/"
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 14,
       "name": "道の駅しんよしとみ",
       "url": "https://vantripjapan.jp/zh/overnight-parking/michi-no-eki/fukuoka/shin-yoshitomi/"
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 15,
       "name": "道の駅たちばな",
       "url": "https://vantripjapan.jp/zh/overnight-parking/michi-no-eki/fukuoka/tachibana/"
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 16,
       "name": "道の駅うきは",
       "url": "https://vantripjapan.jp/zh/overnight-parking/michi-no-eki/fukuoka/ukiha/"
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 17,
       "name": "道の駅うすい",
       "url": "https://vantripjapan.jp/zh/overnight-parking/michi-no-eki/fukuoka/usui/"
     }
@@ -294,15 +306,14 @@
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
-        /* 戻るリンクは緑ヒーローに重なる位置に出るため、白ピル化（従来は約1.5:1でほぼ不可視）
-           あわせてタップ領域も拡大 */
-        .ovn-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px;
-            font-size: 0.95rem; font-weight: 650; color: #2d5a3d; text-decoration: none;
-            background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 100px;
-            padding: 10px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 150ms ease-out; }
-        .ovn-back:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.14); }
-        .ovn-back:active { transform: scale(0.97); transition-duration: 100ms; }
+        /* 上位階層への移動はヒーローのパンくず1本に集約（浮いた戻るボタンは廃止）。
+           パンくずは十分な文字サイズとタップ余白を持たせ、これ自体をナビゲーションとして機能させる */
+        .ovn-hero .crumbs { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2px 4px; }
+        .ovn-hero .crumbs a { display: inline-block; padding: 6px 10px; margin: -2px 0; border-radius: 8px;
+            font-weight: 600; text-decoration: none; transition: background-color 120ms ease-out; }
+        .ovn-hero .crumbs a:hover { background: rgba(255,255,255,0.14); text-decoration: none; }
+        .ovn-hero .crumbs .sep { opacity: 0.5; }
+        .ovn-hero .crumbs .here { padding: 6px 2px; opacity: 0.85; }
         .faq-item-s { margin-bottom: 16px; }
         .faq-item-s .q { font-weight: 650; color: var(--color-text); margin-bottom: 6px; font-size: 0.97rem; line-height: 1.4; }
         .pref-block h2 { display: flex; align-items: baseline; gap: 10px; }
@@ -393,14 +404,13 @@
     </div>
 
     <div class="ovn-hero">
-        <div class="crumbs"><a href="/zh/overnight-parking/michi-no-eki/">道之驛過夜規則資料庫</a> › 福岡縣</div>
+        <div class="crumbs"><a href="/zh/overnight-parking/michi-no-eki/">道之驛過夜規則資料庫</a><span class="sep">›</span><span class="here">福岡縣</span></div>
         <h1>道之驛過夜規則 — 福岡縣</h1>
         
     </div>
 
     <div class="ovn-wrap">
 
-        <a class="ovn-back" href="/zh/overnight-parking/michi-no-eki/">← 完整站點資料庫</a>
         <div class="ovn-card boxed">
             <div class="station-list">
 <a class="station-row" data-st="paidonly" data-rv="1" data-lat="33.84816" data-lng="130.50326" href="/zh/overnight-parking/michi-no-eki/fukuoka/munakata/">
@@ -463,32 +473,44 @@
                 <span class="st-city">久留米市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
-<a class="station-row" data-st="noban" data-rv="0" data-lat="33.62568" data-lng="130.84585" href="/zh/overnight-parking/michi-no-eki/fukuoka/oto-sakura-kaido/">
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.14728" data-lng="130.48403" href="/zh/overnight-parking/michi-no-eki/fukuoka/miyama/">
                 <span class="st-num st-num-noban" aria-hidden="true">11</span>
+                <span class="st-main"><span class="st-name">道の駅みやま</span>
+                <span class="st-city">みやま市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.07325" data-lng="130.53219" href="/zh/overnight-parking/michi-no-eki/fukuoka/omuta/">
+                <span class="st-num st-num-noban" aria-hidden="true">12</span>
+                <span class="st-main"><span class="st-name">道の駅おおむた</span>
+                <span class="st-city">大牟田市 · <span class="st-unverified">尚未查證</span></span></span>
+                <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
+            </a>
+<a class="station-row" data-st="noban" data-rv="0" data-lat="33.62568" data-lng="130.84585" href="/zh/overnight-parking/michi-no-eki/fukuoka/oto-sakura-kaido/">
+                <span class="st-num st-num-noban" aria-hidden="true">13</span>
                 <span class="st-main"><span class="st-name">道の駅おおとう桜街道</span>
                 <span class="st-city">田川郡大任町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.58868" data-lng="131.15422" href="/zh/overnight-parking/michi-no-eki/fukuoka/shin-yoshitomi/">
-                <span class="st-num st-num-noban" aria-hidden="true">12</span>
+                <span class="st-num st-num-noban" aria-hidden="true">14</span>
                 <span class="st-main"><span class="st-name">道の駅しんよしとみ</span>
                 <span class="st-city">築上郡上毛町 · <span class="st-unverified">尚未查證</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.18761" data-lng="130.61039" href="/zh/overnight-parking/michi-no-eki/fukuoka/tachibana/">
-                <span class="st-num st-num-noban" aria-hidden="true">13</span>
+                <span class="st-num st-num-noban" aria-hidden="true">15</span>
                 <span class="st-main"><span class="st-name">道の駅たちばな</span>
                 <span class="st-city">八女市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.33419" data-lng="130.81824" href="/zh/overnight-parking/michi-no-eki/fukuoka/ukiha/">
-                <span class="st-num st-num-noban" aria-hidden="true">14</span>
+                <span class="st-num st-num-noban" aria-hidden="true">16</span>
                 <span class="st-main"><span class="st-name">道の駅うきは</span>
                 <span class="st-city">うきは市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.5639" data-lng="130.7132" href="/zh/overnight-parking/michi-no-eki/fukuoka/usui/">
-                <span class="st-num st-num-noban" aria-hidden="true">15</span>
+                <span class="st-num st-num-noban" aria-hidden="true">17</span>
                 <span class="st-main"><span class="st-name">道の駅うすい</span>
                 <span class="st-city">嘉麻市 · <span class="st-unverified">尚未查證</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>

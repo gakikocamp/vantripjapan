@@ -4,7 +4,8 @@
     "region": "Kyushu",
     "updated": "2026-07-27",
     "schema_note": "statusは【無料の一般駐車場】のポリシー: prohibited (明示禁止・要evidence) | no_explicit_ban (明示禁止なし・国交省デフォルト適用)。rv_park は直交フィールド(公認RVパーク併設なら設定)。つまり『無料駐車場は禁止だがRVパークで有料宿泊可』(例:むなかた)を表現できる。verified = 最終確認日. evidence.type: official|blog|wiki|sign|assoc (urlなしのsign=現地確認)。駅の追加・更新はこのファイルを編集して node scripts/build-overnight-pages.js を再実行。地域は九州から開始だがスキーマは全国対応(prefecturesに県を足すだけ)。",
-    "coverage_note": "verification:'listed' は公式名簿(OpenStreetMap経由の道の駅データ+逆ジオコーディングで県確定)から収録したのみで、駅固有のルールは未確認。ページはnoindexにし『未検証』と明示する。個別確認できたものは verification を外し(=checked扱い) verified に確認日を入れること。"
+    "coverage_note": "verification:'listed' は公式名簿(OpenStreetMap経由の道の駅データ+逆ジオコーディングで県確定)から収録したのみで、駅固有のルールは未確認。ページはnoindexにし『未検証』と明示する。個別確認できたものは verification を外し(=checked扱い) verified に確認日を入れること。",
+    "official_source": "国交省九州地方整備局の県別一覧(2026-07-27取得)と全件突合。公式145駅(一覧掲載144＋2025-06-13登録のウェルネスあらお)＝当DB145駅で完全一致。正式登録名と施設名の差異: 有明=有明リップルランド、大和=大和そよかぜ館(いずれも同一駅・施設名を採用)。要再確認: 道の駅ひまわりの座標が旧みずなし本陣ふかえ跡地と約75m近接。"
   },
   "prefectures": {
     "fukuoka": {
@@ -1515,8 +1516,8 @@
       "id": "takarabe-kirara",
       "prefecture": "kagoshima",
       "name": {
-        "ja": "道の駅財部きらら館",
-        "en": "Michi-no-Eki Takarabe Kirara-kan"
+        "ja": "道の駅たからべ",
+        "en": "Michi-no-Eki Takarabe"
       },
       "city": {
         "ja": "曽於市",
@@ -1775,8 +1776,8 @@
       "id": "uki-saikan",
       "prefecture": "kumamoto",
       "name": {
-        "ja": "道の駅宇城彩館",
-        "en": "Michi-no-Eki Uki Saikan"
+        "ja": "道の駅うき",
+        "en": "Michi-no-Eki Uki"
       },
       "city": {
         "ja": "宇城市",
@@ -2615,7 +2616,7 @@
       "id": "nejime",
       "prefecture": "kagoshima",
       "name": {
-        "ja": "道の駅ねじめ",
+        "ja": "道の駅根占",
         "en": "Michi-no-Eki Nejime"
       },
       "city": {
@@ -2695,8 +2696,8 @@
       "id": "iimori-jaguar-road",
       "prefecture": "nagasaki",
       "name": {
-        "ja": "道の駅251いいもりジャガーロード",
-        "en": "Michi-no-Eki Iimori Jaguar Road"
+        "ja": "道の駅251いいもりじゃがーロード",
+        "en": "Michi-no-Eki 251 Iimori Jaga-Road"
       },
       "city": {
         "ja": "諫早市",
@@ -2705,6 +2706,346 @@
       "lat": 32.78537,
       "lng": 130.04601,
       "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "omuta",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅おおむた",
+        "en": "Michi-no-Eki Omuta"
+      },
+      "city": {
+        "ja": "大牟田市",
+        "en": "Omuta"
+      },
+      "lat": 33.07325,
+      "lng": 130.53219,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "miyama",
+      "prefecture": "fukuoka",
+      "name": {
+        "ja": "道の駅みやま",
+        "en": "Michi-no-Eki Miyama"
+      },
+      "city": {
+        "ja": "みやま市",
+        "en": "Miyama"
+      },
+      "lat": 33.14728,
+      "lng": 130.48403,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kamimine",
+      "prefecture": "saga",
+      "name": {
+        "ja": "道の駅かみみね",
+        "en": "Michi-no-Eki Kamimine"
+      },
+      "city": {
+        "ja": "三養基郡上峰町",
+        "en": "Kamimine Town"
+      },
+      "lat": 33.33408,
+      "lng": 130.41722,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "himawari",
+      "prefecture": "nagasaki",
+      "name": {
+        "ja": "道の駅ひまわり",
+        "en": "Michi-no-Eki Himawari"
+      },
+      "city": {
+        "ja": "南島原市",
+        "en": "Minamishimabara"
+      },
+      "lat": 32.7395,
+      "lng": 130.36767,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "sakamoto",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅坂本",
+        "en": "Michi-no-Eki Sakamoto"
+      },
+      "city": {
+        "ja": "八代市",
+        "en": "Yatsushiro"
+      },
+      "lat": 32.42669,
+      "lng": 130.64094,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kahoku",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅鹿北",
+        "en": "Michi-no-Eki Kahoku"
+      },
+      "city": {
+        "ja": "山鹿市",
+        "en": "Yamaga"
+      },
+      "lat": 33.11356,
+      "lng": 130.66869,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "soyokaze-park",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅そよ風パーク",
+        "en": "Michi-no-Eki Soyokaze Park"
+      },
+      "city": {
+        "ja": "上益城郡山都町",
+        "en": "Yamato Town"
+      },
+      "lat": 32.72661,
+      "lng": 131.16347,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "ono-onsen",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅大野温泉",
+        "en": "Michi-no-Eki Ono Onsen"
+      },
+      "city": {
+        "ja": "葦北郡芦北町",
+        "en": "Ashikita Town"
+      },
+      "lat": 32.28989,
+      "lng": 130.58222,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "misato-samata",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅美里「佐俣の湯」",
+        "en": "Michi-no-Eki Misato Samata-no-Yu"
+      },
+      "city": {
+        "ja": "下益城郡美里町",
+        "en": "Misato Town"
+      },
+      "lat": 32.62375,
+      "lng": 130.82264,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "notsuharu",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅のつはる",
+        "en": "Michi-no-Eki Notsuharu"
+      },
+      "city": {
+        "ja": "大分市",
+        "en": "Oita"
+      },
+      "lat": 33.12681,
+      "lng": 131.49267,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kitago",
+      "prefecture": "miyazaki",
+      "name": {
+        "ja": "道の駅きたごう",
+        "en": "Michi-no-Eki Kitago"
+      },
+      "city": {
+        "ja": "日南市",
+        "en": "Nichinan"
+      },
+      "lat": 31.67678,
+      "lng": 131.37575,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "kinko-nishiki",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅錦江にしきの里",
+        "en": "Michi-no-Eki Kinko Nishiki-no-Sato"
+      },
+      "city": {
+        "ja": "肝属郡錦江町",
+        "en": "Kinko Town"
+      },
+      "lat": 31.27503,
+      "lng": 130.793,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "tanoura",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅たのうら",
+        "en": "Michi-no-Eki Tanoura"
+      },
+      "city": {
+        "ja": "葦北郡芦北町",
+        "en": "Ashikita Town"
+      },
+      "lat": 32.36459,
+      "lng": 130.51274,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "jion-no-taki-kusu",
+      "prefecture": "oita",
+      "name": {
+        "ja": "道の駅慈恩の滝くす",
+        "en": "Michi-no-Eki Jion-no-Taki Kusu"
+      },
+      "city": {
+        "ja": "玖珠郡玖珠町",
+        "en": "Kusu Town"
+      },
+      "lat": 33.26587,
+      "lng": 131.06838,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "amami-sumiyo",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅奄美大島住用",
+        "en": "Michi-no-Eki Amami-Oshima Sumiyo"
+      },
+      "city": {
+        "ja": "奄美市",
+        "en": "Amami"
+      },
+      "lat": 28.25932,
+      "lng": 129.40908,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "tokunoshima",
+      "prefecture": "kagoshima",
+      "name": {
+        "ja": "道の駅とくのしま",
+        "en": "Michi-no-Eki Tokunoshima"
+      },
+      "city": {
+        "ja": "大島郡徳之島町",
+        "en": "Tokunoshima Town"
+      },
+      "lat": 27.8264,
+      "lng": 128.95441,
+      "official_url": "",
+      "status": "no_explicit_ban",
+      "verification": "listed",
+      "verified": "",
+      "evidence": [],
+      "rv_park": null
+    },
+    {
+      "id": "hikyo-no-sato-izumi",
+      "prefecture": "kumamoto",
+      "name": {
+        "ja": "道の駅秘境の郷いずみ",
+        "en": "Michi-no-Eki Hikyo-no-Sato Izumi"
+      },
+      "city": {
+        "ja": "八代市泉町",
+        "en": "Yatsushiro"
+      },
+      "lat": 32.57325,
+      "lng": 130.79639,
+      "official_url": "https://fureai-izumi.com/",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",

@@ -807,15 +807,14 @@ const SHARED_CSS = `
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
-        /* 戻るリンクは緑ヒーローに重なる位置に出るため、白ピル化（従来は約1.5:1でほぼ不可視）
-           あわせてタップ領域も拡大 */
-        .ovn-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px;
-            font-size: 0.95rem; font-weight: 650; color: #2d5a3d; text-decoration: none;
-            background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 100px;
-            padding: 10px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 150ms ease-out; }
-        .ovn-back:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.14); }
-        .ovn-back:active { transform: scale(0.97); transition-duration: 100ms; }
+        /* 上位階層への移動はヒーローのパンくず1本に集約（浮いた戻るボタンは廃止）。
+           パンくずは十分な文字サイズとタップ余白を持たせ、これ自体をナビゲーションとして機能させる */
+        .ovn-hero .crumbs { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2px 4px; }
+        .ovn-hero .crumbs a { display: inline-block; padding: 6px 10px; margin: -2px 0; border-radius: 8px;
+            font-weight: 600; text-decoration: none; transition: background-color 120ms ease-out; }
+        .ovn-hero .crumbs a:hover { background: rgba(255,255,255,0.14); text-decoration: none; }
+        .ovn-hero .crumbs .sep { opacity: 0.5; }
+        .ovn-hero .crumbs .here { padding: 6px 2px; opacity: 0.85; }
         .faq-item-s { margin-bottom: 16px; }
         .faq-item-s .q { font-weight: 650; color: var(--color-text); margin-bottom: 6px; font-size: 0.97rem; line-height: 1.4; }
         .pref-block h2 { display: flex; align-items: baseline; gap: 10px; }
@@ -1418,7 +1417,6 @@ function renderPref(lang, prefKey) {
     const rows = byPref[prefKey].map((st) => stationRow(st, lang)).join("\n");
 
     const body = `
-        <a class="ovn-back" href="${sectionPath(lang, "")}">${esc(t.back_to_index)}</a>
         <div class="ovn-card boxed">
             <div class="station-list">
 ${rows}
@@ -1457,7 +1455,7 @@ ${rows}
         desc: t.pref_desc(pn),
         h1: t.pref_h1(pn),
         heroSub: null,
-        crumbsHtml: `<a href="${sectionPath(lang, "")}">${esc(t.db_name)}</a> › ${esc(pn)}`,
+        crumbsHtml: `<a href="${sectionPath(lang, "")}">${esc(t.db_name)}</a><span class="sep">›</span><span class="here">${esc(pn)}</span>`,
         jsonld,
         body,
     }));
@@ -1515,7 +1513,6 @@ function renderStation(lang, st) {
     ];
 
     const body = `
-        <a class="ovn-back" href="${sectionPath(lang, st.prefecture + "/")}">${esc(t.back_to_pref(pn))}</a>
         <div class="status-banner ${cls}">
             <div class="st-label"><span class="dot"></span>${esc(label)}</div>
             <div class="st-verified">${isListed(st)
@@ -1649,7 +1646,7 @@ function renderStation(lang, st) {
         desc: t.station_desc(name, label),
         h1: t.station_h1(name),
         heroSub: `${esc(st.name.ja)} · ${esc(pn)}`,
-        crumbsHtml: `<a href="${sectionPath(lang, "")}">${esc(t.db_name)}</a> › <a href="${sectionPath(lang, st.prefecture + "/")}">${esc(pn)}</a> › ${esc(name)}`,
+        crumbsHtml: `<a href="${sectionPath(lang, "")}">${esc(t.db_name)}</a><span class="sep">›</span><a href="${sectionPath(lang, st.prefecture + "/")}">${esc(pn)}</a><span class="sep">›</span><span class="here">${esc(name)}</span>`,
         jsonld,
         body,
         heroCompact: true,

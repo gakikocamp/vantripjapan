@@ -251,15 +251,14 @@
         .ovn-btn.primary { background: #2d5a3d; color: #fff; font-size: 1rem; padding: 15px 32px; margin: 0; }
         .ovn-btn.primary:hover { box-shadow: 0 8px 24px rgba(45,90,61,0.35); }
         .ovn-note { font-size: 0.8rem; color: var(--color-text-secondary); line-height: 1.6; }
-        /* 戻るリンクは緑ヒーローに重なる位置に出るため、白ピル化（従来は約1.5:1でほぼ不可視）
-           あわせてタップ領域も拡大 */
-        .ovn-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 16px;
-            font-size: 0.95rem; font-weight: 650; color: #2d5a3d; text-decoration: none;
-            background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 100px;
-            padding: 10px 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 150ms ease-out; }
-        .ovn-back:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(0,0,0,0.14); }
-        .ovn-back:active { transform: scale(0.97); transition-duration: 100ms; }
+        /* 上位階層への移動はヒーローのパンくず1本に集約（浮いた戻るボタンは廃止）。
+           パンくずは十分な文字サイズとタップ余白を持たせ、これ自体をナビゲーションとして機能させる */
+        .ovn-hero .crumbs { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2px 4px; }
+        .ovn-hero .crumbs a { display: inline-block; padding: 6px 10px; margin: -2px 0; border-radius: 8px;
+            font-weight: 600; text-decoration: none; transition: background-color 120ms ease-out; }
+        .ovn-hero .crumbs a:hover { background: rgba(255,255,255,0.14); text-decoration: none; }
+        .ovn-hero .crumbs .sep { opacity: 0.5; }
+        .ovn-hero .crumbs .here { padding: 6px 2px; opacity: 0.85; }
         .faq-item-s { margin-bottom: 16px; }
         .faq-item-s .q { font-weight: 650; color: var(--color-text); margin-bottom: 6px; font-size: 0.97rem; line-height: 1.4; }
         .pref-block h2 { display: flex; align-items: baseline; gap: 10px; }
@@ -350,14 +349,13 @@
     </div>
 
     <div class="ovn-hero compact">
-        <div class="crumbs"><a href="/fr/overnight-parking/michi-no-eki/">Base de données : nuit en Michi-no-Eki</a> › <a href="/fr/overnight-parking/michi-no-eki/miyazaki/">Miyazaki</a> › Michi-no-Eki Yu-paru Nojiri</div>
+        <div class="crumbs"><a href="/fr/overnight-parking/michi-no-eki/">Base de données : nuit en Michi-no-Eki</a><span class="sep">›</span><a href="/fr/overnight-parking/michi-no-eki/miyazaki/">Miyazaki</a><span class="sep">›</span><span class="here">Michi-no-Eki Yu-paru Nojiri</span></div>
         <h1>Peut-on passer la nuit à Michi-no-Eki Yu-paru Nojiri ?</h1>
         <p>道の駅ゆ〜ぱるのじり · Miyazaki</p>
     </div>
 
     <div class="ovn-wrap">
 
-        <a class="ovn-back" href="/fr/overnight-parking/michi-no-eki/miyazaki/">← Toutes les stations — Miyazaki</a>
         <div class="status-banner noban">
             <div class="st-label"><span class="dot"></span>Une nuit de repos discrète est généralement OK ici</div>
             <div class="st-verified">Répertoriée — règles propres à cette station non vérifiées</div>
@@ -395,19 +393,19 @@
             <h2>Stations à proximité</h2>
             <div class="station-list">
                 <a class="station-row" data-st="prohibited" data-rv="0" data-lat="31.76861" data-lng="131.09572" href="/fr/overnight-parking/michi-no-eki/miyazaki/miyakonojo-niqll/">
-                <span class="st-num st-num-prohibited" aria-hidden="true">91</span>
+                <span class="st-num st-num-prohibited" aria-hidden="true">104</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Miyakonojo NiQLL</span>
                 <span class="st-city">道の駅都城NiQLL · Miyakonojo · 22&nbsp;km</span></span>
                 <span class="st-side"><span class="badge badge-prohibited"><span class="dot"></span>Interdit</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.79439" data-lng="131.20265" href="/fr/overnight-parking/michi-no-eki/miyazaki/yamanokuchi/">
-                <span class="st-num st-num-noban" aria-hidden="true">107</span>
+                <span class="st-num st-num-noban" aria-hidden="true">121</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Yamanokuchi</span>
                 <span class="st-city">道の駅山之口 · Miyakonojo · 22&nbsp;km · <span class="st-unverified">Non vérifiée</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
                 <a class="station-row" data-st="noban" data-rv="0" data-lat="31.94565" data-lng="131.34056" href="/fr/overnight-parking/michi-no-eki/miyazaki/takaoka/">
-                <span class="st-num st-num-noban" aria-hidden="true">103</span>
+                <span class="st-num st-num-noban" aria-hidden="true">117</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Takaoka</span>
                 <span class="st-city">道の駅高岡 · Miyazaki · 24&nbsp;km · <span class="st-unverified">Non vérifiée</span></span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Généralement OK</span><span class="chev" aria-hidden="true">›</span></span>
