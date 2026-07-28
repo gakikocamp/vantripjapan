@@ -6,6 +6,7 @@
     "schema_note": "statusは【無料の一般駐車場】のポリシー: prohibited (明示禁止・要evidence) | no_explicit_ban (明示禁止なし・国交省デフォルト適用)。rv_park は直交フィールド(公認RVパーク併設なら設定)。つまり『無料駐車場は禁止だがRVパークで有料宿泊可』(例:むなかた)を表現できる。verified = 最終確認日. evidence.type: official|blog|wiki|sign|assoc (urlなしのsign=現地確認)。駅の追加・更新はこのファイルを編集して node scripts/build-overnight-pages.js を再実行。地域は九州から開始だがスキーマは全国対応(prefecturesに県を足すだけ)。",
     "coverage_note": "verification:'listed' は公式名簿(OpenStreetMap経由の道の駅データ+逆ジオコーディングで県確定)から収録したのみで、駅固有のルールは未確認。ページはnoindexにし『未検証』と明示する。個別確認できたものは verification を外し(=checked扱い) verified に確認日を入れること。",
     "official_source": "国交省九州地方整備局の県別一覧(2026-07-27取得)と全件突合。公式145駅(一覧掲載144＋2025-06-13登録のウェルネスあらお)＝当DB145駅で完全一致。正式登録名と施設名の差異: 有明=有明リップルランド、大和=大和そよかぜ館(いずれも同一駅・施設名を採用)。要再確認: 道の駅ひまわりの座標が旧みずなし本陣ふかえ跡地と約75m近接。",
+    "verification_policy": "verification未設定=検証済み(その駅固有の出典をevidenceに保持していること)。verification:'listed'=未検証(noindex・「情報募集中」表示・sitemap除外)。全145駅は日本の公開禁止リスト群との照合は済んでいるが、それだけでは検証済みとしない。昇格は scripts/apply-verification.js 経由のみ(confidence=highかつ出典必須、prohibitedは一次情報必須)。",
     "source": "https://vantripjapan.jp/overnight-parking/michi-no-eki/",
     "license": "CC BY 4.0 — attribution required: VAN TRIP JAPAN (vantripjapan.jp)"
   },
@@ -117,9 +118,10 @@
       "lng": 130.81824,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "harazuru",
@@ -136,9 +138,10 @@
       "lng": 130.78488,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "oto-sakura-kaido",
@@ -155,9 +158,10 @@
       "lng": 130.84585,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "itoda",
@@ -174,9 +178,10 @@
       "lng": 130.76519,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "oki",
@@ -221,9 +226,10 @@
       "lng": 130.59372,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "tachibana",
@@ -240,9 +246,10 @@
       "lng": 130.61039,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "buzen-okoshikake",
@@ -259,9 +266,10 @@
       "lng": 131.10091,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "kashima",
@@ -278,9 +286,10 @@
       "lng": 130.14549,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "imari",
@@ -297,9 +306,10 @@
       "lng": 129.92887,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "kyuragi",
@@ -316,9 +326,10 @@
       "lng": 130.07234,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "yoshinogari",
@@ -335,9 +346,10 @@
       "lng": 130.39715,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "tara",
@@ -354,9 +366,10 @@
       "lng": 130.16908,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "ureshino-maruku",
@@ -373,9 +386,10 @@
       "lng": 129.99786,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "sonogi-no-sho",
@@ -421,9 +435,10 @@
       "lng": 129.43372,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "konchu-no-sato-tabira",
@@ -440,9 +455,10 @@
       "lng": 129.6031,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "yuhigaoka-sotome",
@@ -459,9 +475,10 @@
       "lng": 129.70385,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "sasebo-box99",
@@ -478,9 +495,10 @@
       "lng": 129.67194,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "saikai",
@@ -497,9 +515,10 @@
       "lng": 129.69605,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "aso",
@@ -516,9 +535,10 @@
       "lng": 131.08088,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "ozu",
@@ -535,9 +555,10 @@
       "lng": 130.89069,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "oguni",
@@ -554,9 +575,10 @@
       "lng": 131.06474,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "asobo-no-sato-kugino",
@@ -629,9 +651,10 @@
       "lng": 130.7702,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "suika-no-sato-ueki",
@@ -648,9 +671,10 @@
       "lng": 130.6934,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "kamiamakusa-sunpearl",
@@ -667,9 +691,10 @@
       "lng": 130.42006,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "ariake-rippleland",
@@ -745,9 +770,10 @@
       "lng": 130.78933,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "mizube-plaza-kamoto",
@@ -925,9 +951,10 @@
       "lng": 131.32722,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "harajiri-no-taki",
@@ -944,9 +971,10 @@
       "lng": 131.45237,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "saganoseki",
@@ -963,9 +991,10 @@
       "lng": 131.82845,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "kunisaki",
@@ -982,9 +1011,10 @@
       "lng": 131.73956,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "dowa-no-sato-kusu",
@@ -1001,9 +1031,10 @@
       "lng": 131.15697,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "nakatsu",
@@ -1020,9 +1051,10 @@
       "lng": 131.21316,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "nagayu-onsen",
@@ -1039,9 +1071,10 @@
       "lng": 131.38427,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "tanourara",
@@ -1058,9 +1091,10 @@
       "lng": 131.55601,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "phoenix",
@@ -1077,9 +1111,10 @@
       "lng": 131.47842,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "takachiho",
@@ -1096,9 +1131,10 @@
       "lng": 131.30095,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "miyakonojo-niqll",
@@ -1141,9 +1177,10 @@
       "lng": 131.70468,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "hyuga",
@@ -1160,9 +1197,10 @@
       "lng": 131.62412,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "nango",
@@ -1179,9 +1217,10 @@
       "lng": 131.37827,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "ebino",
@@ -1198,9 +1237,10 @@
       "lng": 130.80546,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "sakurajima",
@@ -1217,9 +1257,10 @@
       "lng": 130.59887,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "kiire",
@@ -1236,9 +1277,10 @@
       "lng": 130.54539,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "kirishima",
@@ -1255,9 +1297,10 @@
       "lng": 130.85127,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "tarumizu",
@@ -1274,9 +1317,10 @@
       "lng": 130.74544,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "tarumizu-hamabira",
@@ -1293,9 +1337,10 @@
       "lng": 130.69828,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "ibusuki",
@@ -1312,9 +1357,10 @@
       "lng": 130.58958,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "akune",
@@ -1331,9 +1377,10 @@
       "lng": 130.21646,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "kuni-no-matsubara-osaki",
@@ -1350,9 +1397,10 @@
       "lng": 131.03078,
       "official_url": "",
       "status": "no_explicit_ban",
-      "verified": "2026-07-27",
+      "verified": "",
       "evidence": [],
-      "rv_park": null
+      "rv_park": null,
+      "verification": "listed"
     },
     {
       "id": "shin-yoshitomi",
@@ -1847,12 +1895,44 @@
       },
       "lat": 32.68848,
       "lng": 130.9906,
-      "official_url": "",
+      "official_url": "https://tsujun-yamato.jp/",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "evidence": [
+        {
+          "url": "https://tsujun-yamato.jp/",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "公式サイト全ページを確認したが、車中泊・宿泊・仮眠・長時間駐車・キャンプに関する記載は一切なし"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/tujyunkyo/tujyunkyo.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "国交省九州地方整備局の個別ページ。車中泊/宿泊/仮眠/長時間駐車の禁止記載なし"
+        },
+        {
+          "url": "https://www.town.kumamoto-yamato.lg.jp/kanko/kiji0033645/index.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "山都町公式ページ。車中泊・宿泊に関する利用ルールの記載なし"
+        },
+        {
+          "url": "https://ameblo.jp/subaxv201906/entry-12841920812.html",
+          "type": "blog",
+          "date": "2024-02-24",
+          "quote_ja": "駐車場での「車中泊」についても「許可済み」となっております。（移転後の新駅で施設側から許可を得たとの記載）"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": false,
+        "parking_car": 46,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      }
     },
     {
       "id": "shisui",
@@ -1887,12 +1967,53 @@
       },
       "lat": 32.95965,
       "lng": 131.19731,
-      "official_url": "",
+      "official_url": "http://www.aso-kagura.com/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "http://www.aso-kagura.com/access/index.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "駐車場 大型車10台 小型車250台収容／トイレ 大・小・身障者用完備 ※24時間ご利用になれます。（車中泊を禁止する記載はなし）"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/namino/namino.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "国交省九州地方整備局の個別ページ。車中泊・仮眠・宿泊の可否に関する記述は本文・注意事項ともに存在しない"
+        },
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19729",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "全国「道の駅」連絡会の公式データ。車中泊・仮眠に関する記載なし"
+        },
+        {
+          "url": "https://www.city.aso.kumamoto.jp/tourism/tourism_link/aso-kagura/",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "阿蘇市公式ページ。車中泊・駐車場利用ルールの記載なし"
+        },
+        {
+          "url": "https://syachuhaku-blog.fxtec.info/post-29484/",
+          "type": "wiki",
+          "date": "2025-02-15",
+          "quote_ja": "普通に車中泊可能。駐車場は無料・夜間閉鎖なし、トイレ24時間・夜間点灯。裏の駐車場は非常に静か（禁止看板への言及なし）"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-namino",
+          "type": "blog",
+          "date": "2025-05-21",
+          "quote_ja": "車中泊禁止との情報は出ておりません"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 250,
+        "shop": true
+      }
     },
     {
       "id": "seiwa-bunraku",
@@ -2027,12 +2148,55 @@
       },
       "lat": 32.66064,
       "lng": 131.38841,
-      "official_url": "",
+      "official_url": "https://hinokagecho.com/seiunbashi.html",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://hinokagecho.com/seiunbashi.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "運営会社の公式ページ。車中泊・宿泊・仮眠・長時間駐車に関する記載は一切なし"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/seiunbashi/seiunbashi.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "国交省九州地方整備局の個別ページ。急速EV充電器・無料Wi-Fi・トイレあり。車中泊禁止の文言なし"
+        },
+        {
+          "url": "https://www.town.hinokage.lg.jp/docs/2016030900041/",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "日之影町公式サイト。車中泊・宿泊・仮眠・長時間駐車の記載なし"
+        },
+        {
+          "url": "https://www.pref.miyazaki.lg.jp/dorohozen/kurashi/shakaikiban/mitiek-seiun.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "宮崎県道路保全課の管理ページ。駐車場59台（大型5・中型2・普通50・障がい者用2）。車中泊に関する注意書きなし"
+        },
+        {
+          "url": "https://kurumatabi.net/kyusyu/souunkyo/",
+          "type": "assoc",
+          "date": "2025-03",
+          "quote_ja": "駐車場は全体的に平坦で、特に車中泊に支障は感じられない。24時間トイレは駅舎の正面玄関の横にあり"
+        },
+        {
+          "url": "https://keiban-tabicamp.com/seiunbashi/",
+          "type": "blog",
+          "date": "2023-06",
+          "quote_ja": "実際に車中泊した体験記。禁止の看板・掲示についての言及なし。24時間利用可能、掃除されており綺麗"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 53,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      }
     },
     {
       "id": "takaoka",
@@ -2847,12 +3011,49 @@
       },
       "lat": 32.72661,
       "lng": 131.16347,
-      "official_url": "",
+      "official_url": "https://soyokaze-park.jp/",
       "status": "no_explicit_ban",
-      "verification": "listed",
-      "verified": "",
-      "evidence": [],
-      "rv_park": null
+      "verified": "2026-07-28",
+      "evidence": [
+        {
+          "url": "https://soyokaze-park.jp/",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "公式サイト全ページに車中泊・宿泊目的の利用・長時間駐車に関する禁止の記載なし"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/soyokaze/soyokaze.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "国交省九州地方整備局の個別ページ。車中泊・宿泊目的利用の禁止文言なし"
+        },
+        {
+          "url": "https://www.michi-no-eki.jp/stations/views/19749",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "全国「道の駅」連絡会の公式データ。利用上の注意に車中泊関連の記載なし"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-soyokazepark",
+          "type": "blog",
+          "date": "2025-04-26",
+          "quote_ja": "こちらの記事を執筆時点では車中泊禁止との情報は出ておりません。"
+        },
+        {
+          "url": "https://satton-tabitosyumi.com/soyokazepa-ku/",
+          "type": "blog",
+          "date": "2024-04",
+          "quote_ja": "令和6年4月訪問の実地レポート。禁止の看板・掲示への言及なし。24時間利用可能な駐車場と24時間トイレあり"
+        }
+      ],
+      "rv_park": null,
+      "facilities": {
+        "toilet_24h": true,
+        "parking_car": 224,
+        "ev": true,
+        "wifi": true,
+        "shop": true
+      }
     },
     {
       "id": "ono-onsen",

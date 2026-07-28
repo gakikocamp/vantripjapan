@@ -11,8 +11,10 @@
  *     "confidence": "high" | "medium" | "low",
  *     "evidence": [{ "url": "", "type": "official|blog|wiki|assoc|sign", "date": "", "quote_ja": "" }],
  *     "rv_park": null | { "name_ja","url","spaces","price_jpy","power","booking" },
+ *     "facilities": { "toilet_24h":true, "parking_car":224, "onsen":false, "ev":true, "wifi":true, "shop":true },
  *     "official_url": ""
  *   }
+ *   ※ facilities は構造化フラグで渡すこと（日本語の自由記述は多言語ページに出せない）
  *
  * 安全装置（＝「検証していないものを検証済みにしない」ための門番）:
  *   - confidence が high 以外は verification:"listed"（未検証）のまま据え置く
@@ -55,9 +57,10 @@ for (const r of list) {
     const ev = (r.evidence || []).filter((e) => e && (e.url || e.type === "sign"));
     const hasPrimary = ev.some((e) => e.type === "official" || e.type === "sign");
 
-    // RVパーク情報は confidence によらず反映してよい（存在の事実であり可否判断ではない）
+    // RVパーク・設備・公式URLは「存在の事実」であり可否判断ではないので confidence によらず反映
     if (r.rv_park && !st.rv_park) st.rv_park = r.rv_park;
     if (r.official_url && !st.official_url) st.official_url = r.official_url;
+    if (r.facilities && typeof r.facilities === "object") st.facilities = r.facilities;
     if (ev.length) st.evidence = ev;
 
     const reasons = [];

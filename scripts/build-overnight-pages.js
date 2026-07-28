@@ -81,7 +81,7 @@ const T = {
             `Currently tracking <strong>${total} stations</strong> in Kyushu: <span class="c-red">${p === 1 ? "1 free lot with an explicit overnight ban" : `${p} free lots with explicit overnight bans`}</span> and ${n} where a quiet rest is tolerated (no explicit ban found) — plus <span class="c-green">${r === 1 ? "1 official RV park" : `${r} official RV parks`}</span> where paid overnight stay is always welcome.`,
         method_h: "How we verify",
         method_p: "Verified entries link their sources — official station websites, the Japan RV Association register, and reports from the Japanese vanlife community — and carry the date we last checked them. Our rental fleet drives these routes weekly, and guest reports flow back into the database. Rules change; when we learn of a change, the entry and its date are updated.",
-        method_split: (c, l) => `Right now <strong>${c} stations are individually verified</strong>. The other <strong>${l}</strong> are listed from the official registry with their location and the national rule, but we have not checked their own signage yet — those entries say so plainly. We verify more every week.`,
+        method_split: (c, l) => `All ${c + l} stations have been screened against Japan's published no-overnight lists. Beyond that, <strong>${c} are individually verified</strong> — we opened that station's own website and cross-checked several sources, and every source is linked on its page with the date. The other <strong>${l}</strong> are not individually verified yet and say so plainly. We verify more every week.`,
         pref_h_prefix: "Stations by prefecture",
         pref_title: (pref) => `Michi-no-Eki Overnight Rules in ${pref} ${YEAR} — Station List | VAN TRIP JAPAN`,
         pref_desc: (pref) => `Overnight campervan parking rules for every tracked Michi-no-Eki in ${pref}, Japan — explicit bans, RV parks and verified dates.`,
@@ -126,6 +126,13 @@ const T = {
         d_map: "Map",
         d_map_open: "Open in Google Maps",
         d_rvpark: "RV park",
+        d_facilities: "Facilities",
+        f_toilet24: "24h toilets",
+        f_parking: (n) => `${n} car spaces`,
+        f_ev: "EV charging",
+        f_onsen: "Hot spring / bath",
+        f_wifi: "Free Wi-Fi",
+        f_shop: "Shop / restaurant",
         sources_h: "Sources",
         src_type: { official: "Official", blog: "Community report", wiki: "Community wiki", sign: "On-site sign", assoc: "RV association" },
         faq_h: "Frequently asked questions",
@@ -222,7 +229,7 @@ const T = {
         stats_line: (p, n, r, total) =>
             `<strong>${total} stations</strong> suivies à Kyushu : <span class="c-red">${p === 1 ? "1 parking gratuit avec interdiction explicite de nuitée" : `${p} parkings gratuits avec interdiction explicite de nuitée`}</span> et ${n} où le repos discret est toléré (aucune interdiction explicite trouvée) — plus <span class="c-green">${r === 1 ? "1 RV park officiel" : `${r} RV parks officiels`}</span> où la nuitée payante est toujours bienvenue.`,
         method_h: "Notre méthode de vérification",
-        method_split: (c, l) => `Actuellement, <strong>${c} stations sont vérifiées individuellement</strong>. Les <strong>${l}</strong> autres sont répertoriées d'après le registre officiel, avec leur localisation et la règle nationale, mais leur signalétique propre n'a pas encore été vérifiée — ces fiches le disent clairement. Nous en vérifions davantage chaque semaine.`,
+        method_split: (c, l) => `Les ${c + l} stations ont toutes été passées au crible des listes japonaises d'interdiction publiées. Au-delà, <strong>${c} sont vérifiées individuellement</strong> : nous avons ouvert le site de la station et recoupé plusieurs sources, toutes liées sur sa fiche avec la date. Les <strong>${l}</strong> autres ne sont pas encore vérifiées individuellement et le disent clairement. Nous en vérifions davantage chaque semaine.`,
         method_p: "Chaque fiche cite ses sources — sites officiels des stations, registre de la Japan RV Association, remontées de la communauté vanlife japonaise — et porte la date de notre dernière vérification. Notre flotte de location parcourt ces routes chaque semaine et les retours de nos clients alimentent la base. Les règles changent ; dès qu'un changement est connu, la fiche et sa date sont mises à jour.",
         pref_h_prefix: "Stations par préfecture",
         pref_title: (pref) => `Michi-no-Eki : règles de nuit — ${pref} ${YEAR} | VAN TRIP JAPAN`,
@@ -268,6 +275,13 @@ const T = {
         d_map: "Carte",
         d_map_open: "Ouvrir dans Google Maps",
         d_rvpark: "RV park",
+        d_facilities: "Équipements",
+        f_toilet24: "Toilettes 24h/24",
+        f_parking: (n) => `${n} places voitures`,
+        f_ev: "Recharge électrique",
+        f_onsen: "Onsen / bains",
+        f_wifi: "Wi-Fi gratuit",
+        f_shop: "Boutique / restaurant",
         sources_h: "Sources",
         src_type: { official: "Officiel", blog: "Signalement communautaire", wiki: "Wiki communautaire", sign: "Panneau sur place", assoc: "Association RV" },
         faq_h: "Questions fréquentes",
@@ -364,7 +378,7 @@ const T = {
         stats_line: (p, n, r, total) =>
             `Aktuell erfasst: <strong>${total} Stationen</strong> in Kyushu — <span class="c-red">${p === 1 ? "1 kostenloser Parkplatz mit ausdrücklichem Übernachtungsverbot" : `${p} kostenlose Parkplätze mit ausdrücklichem Übernachtungsverbot`}</span>; bei ${n} wird ruhiges Übernachten toleriert (kein ausdrückliches Verbot gefunden) — dazu <span class="c-green">${r === 1 ? "1 offizieller RV-Park" : `${r} offizielle RV-Parks`}</span>, wo bezahltes Übernachten immer willkommen ist.`,
         method_h: "So verifizieren wir",
-        method_split: (c, l) => `Derzeit sind <strong>${c} Stationen einzeln geprüft</strong>. Die übrigen <strong>${l}</strong> stammen aus dem offiziellen Register — mit Lage und nationaler Regel, aber ohne Prüfung der eigenen Beschilderung; diese Einträge sagen das ausdrücklich. Wir prüfen wöchentlich weitere.`,
+        method_split: (c, l) => `Alle ${c + l} Stationen wurden gegen Japans veröffentlichte Übernachtungsverbots-Listen abgeglichen. Darüber hinaus sind <strong>${c} einzeln geprüft</strong>: Wir haben die Website der jeweiligen Station geöffnet und mehrere Quellen abgeglichen, die alle mit Datum auf ihrer Seite verlinkt sind. Die übrigen <strong>${l}</strong> sind noch nicht einzeln geprüft und sagen das ausdrücklich. Wir prüfen wöchentlich weitere.`,
         method_p: "Jeder Eintrag verlinkt seine Quellen — offizielle Stations-Websites, das Register der Japan RV Association und Meldungen aus der japanischen Vanlife-Community — und trägt das Datum unserer letzten Prüfung. Unsere Mietflotte fährt diese Routen wöchentlich, und Rückmeldungen unserer Gäste fließen in die Datenbank ein. Regeln ändern sich; sobald wir von einer Änderung erfahren, werden Eintrag und Datum aktualisiert.",
         pref_h_prefix: "Stationen nach Präfektur",
         pref_title: (pref) => `Michi-no-Eki-Übernachtungsregeln in ${pref} ${YEAR} — Stationsliste | VAN TRIP JAPAN`,
@@ -410,6 +424,13 @@ const T = {
         d_map: "Karte",
         d_map_open: "In Google Maps öffnen",
         d_rvpark: "RV-Park",
+        d_facilities: "Ausstattung",
+        f_toilet24: "Toiletten rund um die Uhr",
+        f_parking: (n) => `${n} Pkw-Stellplätze`,
+        f_ev: "E-Ladestation",
+        f_onsen: "Onsen / Bad",
+        f_wifi: "Kostenloses WLAN",
+        f_shop: "Laden / Restaurant",
         sources_h: "Quellen",
         src_type: { official: "Offiziell", blog: "Community-Meldung", wiki: "Community-Wiki", sign: "Schild vor Ort", assoc: "RV-Verband" },
         faq_h: "Häufige Fragen",
@@ -506,7 +527,7 @@ const T = {
         stats_line: (p, n, r, total) =>
             `目前追蹤九州 <strong>${total} 座道之驛</strong>：<span class="c-red">${p} 座的免費停車場明文禁止過夜</span>、${n} 座容許安靜休息（未發現明文禁止）— 另有 <span class="c-green">${r} 座設有官方RV Park</span>，付費過夜隨時歡迎。`,
         method_h: "我們如何查證",
-        method_split: (c, l) => `目前 <strong>${c} 座站點已逐一查證</strong>，其餘 <strong>${l}</strong> 座則是依官方名冊收錄（含位置與全國規則），但尚未查證各站自訂告示 — 這些頁面會明確標示。我們每週持續增加查證數量。`,
+        method_split: (c, l) => `全部 ${c + l} 座站點都已比對過日本已公開的「禁止過夜」清單。在此之上，<strong>${c} 座已逐一查證</strong> — 我們實際開啟該站官網並交叉比對多個來源，所有來源都附日期列在該站頁面上。其餘 <strong>${l}</strong> 座尚未逐一查證，頁面會明確標示。我們每週持續增加查證數量。`,
         method_p: "每筆資料都附上來源 — 各站官方網站、日本RV協會登錄名單、日本車中泊社群的回報 — 並標註最後查證日期。我們的租賃車隊每週行駛這些路線，客人的回報也會回饋到資料庫。規則會變；一旦得知變動，就會更新該筆資料與日期。",
         pref_h_prefix: "依縣份瀏覽",
         pref_title: (pref) => `${pref}道之驛過夜規則 ${YEAR} — 站點清單 | VAN TRIP JAPAN`,
@@ -552,6 +573,13 @@ const T = {
         d_map: "地圖",
         d_map_open: "在Google地圖開啟",
         d_rvpark: "RV Park",
+        d_facilities: "設施",
+        f_toilet24: "24小時廁所",
+        f_parking: (n) => `小客車 ${n} 格`,
+        f_ev: "電動車充電",
+        f_onsen: "溫泉／浴場",
+        f_wifi: "免費Wi-Fi",
+        f_shop: "商店／餐廳",
         sources_h: "資料來源",
         src_type: { official: "官方", blog: "社群回報", wiki: "社群Wiki", sign: "現場告示", assoc: "RV協會" },
         faq_h: "常見問題",
@@ -1149,6 +1177,21 @@ function rvParkText(rv, lang) {
         + (rv.url ? ` — <a href="${esc(rv.url)}" target="_blank" rel="noopener nofollow">${esc(host)}</a>` : "");
 }
 
+/** 設備は構造化フラグで持ち、表示は各言語の辞書から組み立てる（日本語生データを出さない）
+ *  車中泊利用者が最も知りたい順に並べる: 24hトイレ → 駐車台数 → 温泉 → EV → Wi-Fi → 売店 */
+function facilitiesText(f, lang) {
+    if (!f) return "";
+    const t = T[lang];
+    const bits = [];
+    if (f.toilet_24h) bits.push(t.f_toilet24);
+    if (f.parking_car) bits.push(t.f_parking(f.parking_car));
+    if (f.onsen) bits.push(t.f_onsen);
+    if (f.ev) bits.push(t.f_ev);
+    if (f.wifi) bits.push(t.f_wifi);
+    if (f.shop) bits.push(t.f_shop);
+    return bits.length ? esc(bits.join(" · ")) : "";
+}
+
 function nearbyStations(st, count = 3) {
     if (!st.lat || !st.lng) return [];
     return DATA.stations
@@ -1544,6 +1587,7 @@ function renderStation(lang, st) {
         st.official_url ? [t.d_official, `<a href="${esc(st.official_url)}" target="_blank" rel="noopener nofollow">${esc(new URL(st.official_url).hostname)}</a>`] : null,
         [t.d_map, `<a href="${mapsNavUrl}" target="_blank" rel="noopener">${esc(t.d_map_open)}</a>`],
         st.rv_park ? [t.d_rvpark, rvParkText(st.rv_park, lang)] : null,
+        facilitiesText(st.facilities, lang) ? [t.d_facilities, facilitiesText(st.facilities, lang)] : null,
     ].filter(Boolean);
 
     const evidence = (st.evidence || []).map((ev) => {
