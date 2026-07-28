@@ -93,6 +93,8 @@ const T = {
         st_listed: "We haven't checked this station's own rules yet — help us verify it",
         listed_note: "This station is in the official Michi-no-Eki registry, but we have not yet checked its own signage or website. Japan's national rule applies by default: a quiet rest in your vehicle is usually tolerated, camping behaviour is not. Signs on site always win — so please read them when you arrive.",
         listed_short: "Info wanted",
+        mixed_h: "We checked — but the picture is mixed",
+        mixed_note: "We have researched this station, and the sources below disagree or are out of date. One report may say overnight stays are turned away while a recent on-site survey found no signage, or the parking lot may be run by the town rather than the station itself. So we are not calling this one either way yet. Treat it as uncertain: keep it quiet, read the signs when you arrive, and be ready to move on. If you've been, your report below settles it faster than anything.",
         help_h: "Been here? Help other travellers",
         help_p: "We know where this station is — but not what its signs say. If you've stayed here or just driven past, tell us in 30 seconds. We verify every report against the station's own sources, then update this page and credit you.",
         help_btn: "Report what you saw ↓",
@@ -134,7 +136,7 @@ const T = {
         f_wifi: "Free Wi-Fi",
         f_shop: "Shop / restaurant",
         sources_h: "Sources",
-        src_type: { official: "Official", blog: "Community report", wiki: "Community wiki", sign: "On-site sign", assoc: "RV association" },
+        src_type: { official: "Official", blog: "Community report", wiki: "Community wiki", sign: "On-site sign (photo)", phone: "Phone enquiry", assoc: "RV association" },
         faq_h: "Frequently asked questions",
         faq_q1: (name) => `Is overnight parking allowed at ${name}?`,
         faq_a1_prohibited: (name) => `No. ${name} explicitly prohibits overnight stays (sources are listed on this page). Use a nearby RV park or campground instead — sleeping here risks trouble and hurts the reputation of all campervan travelers.`,
@@ -242,6 +244,8 @@ const T = {
         st_listed: "Nous n'avons pas encore vérifié les règles de cette station — aidez-nous",
         listed_note: "Cette station figure au registre officiel des Michi-no-Eki, mais nous n'avons pas encore vérifié sa signalétique ni son site. La règle nationale s'applique par défaut : un repos discret dans le véhicule est généralement toléré, le comportement de camping non. Les panneaux sur place priment toujours — lisez-les en arrivant.",
         listed_short: "Infos recherchées",
+        mixed_h: "Vérifiée — mais les sources divergent",
+        mixed_note: "Nous avons enquêté sur cette station et les sources ci-dessous se contredisent ou sont anciennes. Un signalement peut indiquer un refus de nuitée alors qu'un relevé récent sur place n'a trouvé aucun panneau, ou le parking peut être géré par la commune et non par la station. Nous ne tranchons donc pas encore. Considérez-la comme incertaine : restez discret, lisez les panneaux à l'arrivée et soyez prêt à repartir. Si vous y êtes allé, votre signalement ci-dessous tranchera plus vite que tout le reste.",
         help_h: "Vous y êtes allé ? Aidez les autres voyageurs",
         help_p: "Nous savons où se trouve cette station — mais pas ce que disent ses panneaux. Si vous y avez dormi ou êtes simplement passé, dites-le-nous en 30 secondes. Nous vérifions chaque signalement auprès des sources de la station, puis nous mettons la fiche à jour en vous créditant.",
         help_btn: "Signaler ce que vous avez vu ↓",
@@ -283,7 +287,7 @@ const T = {
         f_wifi: "Wi-Fi gratuit",
         f_shop: "Boutique / restaurant",
         sources_h: "Sources",
-        src_type: { official: "Officiel", blog: "Signalement communautaire", wiki: "Wiki communautaire", sign: "Panneau sur place", assoc: "Association RV" },
+        src_type: { official: "Officiel", blog: "Signalement communautaire", wiki: "Wiki communautaire", sign: "Panneau sur place (photo)", phone: "Appel téléphonique", assoc: "Association RV" },
         faq_h: "Questions fréquentes",
         faq_q1: (name) => `Peut-on stationner la nuit à ${name} ?`,
         faq_a1_prohibited: (name) => `Non. ${name} interdit explicitement la nuitée (les sources sont listées sur cette page). Y dormir vous expose à des ennuis et nuit à tous les voyageurs en van — préférez un RV park ou un camping proche.`,
@@ -391,6 +395,8 @@ const T = {
         st_listed: "Wir haben die Regeln dieser Station noch nicht geprüft — helfen Sie uns",
         listed_note: "Diese Station steht im offiziellen Michi-no-Eki-Register, aber wir haben ihre Beschilderung und Website noch nicht geprüft. Es gilt zunächst Japans nationale Regel: ruhiges Ausruhen im Fahrzeug wird meist toleriert, Camping-Verhalten nicht. Schilder vor Ort haben immer Vorrang — lesen Sie sie bitte bei der Ankunft.",
         listed_short: "Infos gesucht",
+        mixed_h: "Geprüft — aber die Quellen widersprechen sich",
+        mixed_note: "Wir haben diese Station recherchiert, und die Quellen unten widersprechen sich oder sind veraltet. Eine Meldung spricht womöglich von einer Abweisung, während eine aktuelle Vor-Ort-Erhebung keine Beschilderung fand, oder der Parkplatz gehört der Gemeinde und nicht der Station. Deshalb legen wir uns hier noch nicht fest. Behandeln Sie sie als unsicher: leise bleiben, bei der Ankunft die Schilder lesen und bereit sein weiterzufahren. Waren Sie dort? Ihre Meldung unten klärt es schneller als alles andere.",
         help_h: "Schon dort gewesen? Helfen Sie anderen Reisenden",
         help_p: "Wir wissen, wo diese Station liegt — aber nicht, was auf ihren Schildern steht. Wenn Sie dort übernachtet haben oder vorbeigefahren sind, sagen Sie es uns in 30 Sekunden. Wir prüfen jede Meldung anhand der Quellen der Station, aktualisieren dann diese Seite und nennen Sie als Quelle.",
         help_btn: "Melden, was Sie gesehen haben ↓",
@@ -432,7 +438,7 @@ const T = {
         f_wifi: "Kostenloses WLAN",
         f_shop: "Laden / Restaurant",
         sources_h: "Quellen",
-        src_type: { official: "Offiziell", blog: "Community-Meldung", wiki: "Community-Wiki", sign: "Schild vor Ort", assoc: "RV-Verband" },
+        src_type: { official: "Offiziell", blog: "Community-Meldung", wiki: "Community-Wiki", sign: "Schild vor Ort (Foto)", phone: "Telefonische Auskunft", assoc: "RV-Verband" },
         faq_h: "Häufige Fragen",
         faq_q1: (name) => `Ist Übernachten am ${name} erlaubt?`,
         faq_a1_prohibited: (name) => `Nein. ${name} verbietet Übernachtungen ausdrücklich (siehe Quellen auf dieser Seite). Nutzen Sie einen RV-Park oder Campingplatz in der Nähe — hier zu schlafen bedeutet Ärger und schadet allen Campervan-Reisenden.`,
@@ -540,6 +546,8 @@ const T = {
         st_listed: "本站的規則我們尚未查證 — 歡迎協助",
         listed_note: "本站已收錄於官方道之驛名冊，但我們尚未查證其現場告示或官網。預設適用日本全國規則：在車內安靜休息通常被容許，露營行為則否。現場告示永遠優先 — 抵達時請先確認。",
         listed_short: "徵求資訊",
+        mixed_h: "已查證 — 但各方資訊分歧",
+        mixed_note: "我們已調查過本站，但下方的來源彼此矛盾或已過時。可能有回報說過夜會被勸離，而最近的現地調查卻找不到任何告示；也可能停車場是由當地政府而非道之驛管理。因此我們目前不下定論。請視為「不確定」：保持安靜、抵達時先看告示、並做好隨時離開的準備。如果你去過，下方的回報比任何資料都更能幫我們確定。",
         help_h: "去過這裡嗎？幫助其他旅行者",
         help_p: "我們知道這座站點的位置 — 但不知道現場告示寫了什麼。如果你曾在此過夜或只是路過，只要30秒告訴我們。每則回報我們都會對照官方來源查證，然後更新本頁並註明你的貢獻。",
         help_btn: "回報你看到的情況 ↓",
@@ -581,7 +589,7 @@ const T = {
         f_wifi: "免費Wi-Fi",
         f_shop: "商店／餐廳",
         sources_h: "資料來源",
-        src_type: { official: "官方", blog: "社群回報", wiki: "社群Wiki", sign: "現場告示", assoc: "RV協會" },
+        src_type: { official: "官方", blog: "社群回報", wiki: "社群Wiki", sign: "現場告示（照片）", phone: "電話詢問", assoc: "RV協會" },
         faq_h: "常見問題",
         faq_q1: (name) => `${name}可以過夜停車嗎？`,
         faq_a1_prohibited: (name) => `不可以。${name}明文禁止過夜（見本頁來源）。請改用附近的RV Park或露營場 — 在此過夜可能惹上麻煩，也會損害所有露營車旅行者的形象。`,
@@ -711,6 +719,8 @@ function stCls(st) {
 
 /** 公式名簿から収録しただけで、その駅固有のルールは未確認 → 検証済みと偽らない */
 const isListed = (st) => st.verification === "listed";
+/** 調査はしたが情報が食い違う・古い等で断定できない駅（未検証だが出典はある） */
+const isMixed = (st) => isListed(st) && (st.evidence || []).length > 0;
 
 function statusLabel(st, lang, short = false) {
     const t = T[lang];
@@ -1569,7 +1579,9 @@ function renderStation(lang, st) {
     const whatText = st.status === "prohibited"
         ? (st.rv_park ? t.what_prohibited_rv : t.what_prohibited)
         : (st.rv_park ? t.what_rv : t.what_no_ban);
-    const faqA1 = isListed(st)
+    const faqA1 = isMixed(st)
+        ? t.mixed_note
+        : isListed(st)
         ? t.listed_note
         : st.status === "prohibited"
             ? (st.rv_park ? t.faq_a1_prohibited_rv(name) : t.faq_a1_prohibited(name))
@@ -1612,9 +1624,11 @@ function renderStation(lang, st) {
     const body = `
         <div class="status-banner ${cls}">
             <div class="st-label"><span class="dot"></span>${esc(label)}</div>
-            <div class="st-verified">${isListed(st)
-                ? esc(t.st_listed)
-                : `${esc(t.verified_label)}${COLON[lang]}${esc(st.verified)}`}</div>
+            <div class="st-verified">${isMixed(st)
+                ? esc(t.mixed_h)
+                : isListed(st)
+                    ? esc(t.st_listed)
+                    : `${esc(t.verified_label)}${COLON[lang]}${esc(st.verified)}`}</div>
         </div>
         ${st.rv_park ? `<div class="status-banner rv">
             <div class="st-label"><span class="dot"></span>${esc(t.rv_banner)}</div>
@@ -1668,8 +1682,8 @@ function renderStation(lang, st) {
         })();
         </script>
         <div class="ovn-card">
-            <h2>${esc(t.what_h)}</h2>
-            <p>${esc(isListed(st) ? t.listed_note : whatText)}</p>
+            <h2>${esc(isMixed(st) ? t.mixed_h : t.what_h)}</h2>
+            <p>${esc(isMixed(st) ? t.mixed_note : isListed(st) ? t.listed_note : whatText)}</p>
         </div>
         <div class="ovn-card">
             <h2>${esc(t.national_h)}</h2>

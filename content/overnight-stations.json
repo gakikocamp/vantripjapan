@@ -766,10 +766,41 @@
       },
       "lat": 32.19341,
       "lng": 130.78933,
-      "official_url": "",
+      "official_url": "https://h-craftpark.com/",
       "status": "no_explicit_ban",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://syachuhaku-blog.fxtec.info/post-28726/",
+          "type": "wiki",
+          "date": "2025-02",
+          "quote_ja": "現地調査：車中泊を禁ずる掲示は無し。夜間閉鎖も無し"
+        },
+        {
+          "url": "https://suzynoiroiroblog.com/syatyuuhakukumamoto/",
+          "type": "phone",
+          "date": "2022-04",
+          "quote_ja": "電話回答「禁止です。」（掲示・条例の根拠の説明はなし。電話は確認すると断られる性質があるため掲示の有無とは別物）"
+        },
+        {
+          "url": "https://h-craftpark.com/",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "公式サイトに車中泊・宿泊・夜間駐車を禁じる記載なし"
+        },
+        {
+          "url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/hitoyoshi/hitoyoshi.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "国交省九州地方整備局の個別ページ。車中泊禁止の記載なし"
+        },
+        {
+          "url": "https://syatyuhaku-moririnpapa.com/roadsidestation-hitoyoshi",
+          "type": "blog",
+          "date": "2024-02-25",
+          "quote_ja": "車中泊禁止との情報は出ておりません"
+        }
+      ],
       "rv_park": null,
       "verification": "listed"
     },
@@ -1733,11 +1764,36 @@
       },
       "lat": 32.19933,
       "lng": 130.38211,
-      "official_url": "",
+      "official_url": "https://www.qsr.mlit.go.jp/n-michi/michi_no_eki/kobetu/minamata/minamata.html",
       "status": "no_explicit_ban",
       "verification": "listed",
       "verified": "",
-      "evidence": [],
+      "evidence": [
+        {
+          "url": "https://syachuhaku-blog.fxtec.info/post-28211/",
+          "type": "wiki",
+          "date": "2025-02",
+          "quote_ja": "現地調査：トイレ棟含め車中泊を禁ずる掲示は無し。駐車場無料・夜間閉鎖なし"
+        },
+        {
+          "url": "https://suzynoiroiroblog.com/syatyuuhakukumamoto/",
+          "type": "phone",
+          "date": "2022-04",
+          "quote_ja": "電話回答「駐車場は道の駅の管轄外のため禁止」（＝市の公園駐車場のため可否を約束できないという趣旨で、駅固有の禁止規定を示すものではない）"
+        },
+        {
+          "url": "https://minamata-kouen.com/infomation.html",
+          "type": "official",
+          "date": "2026-07-28",
+          "quote_ja": "駐車場の管理主体であるエコパーク水俣の公式情報。車中泊・宿泊の禁止事項の記載なし"
+        },
+        {
+          "url": "https://reiwa-travelers.com/zenkoku/kyusyu-okinawa/kumamoto-syachuhaku/michinoeki-minamata/",
+          "type": "blog",
+          "date": "2022-05",
+          "quote_ja": "注意書きには具体的に車中泊（仮眠・休憩）禁止について書かれていません"
+        }
+      ],
       "rv_park": null
     },
     {

@@ -9,7 +9,9 @@
  *     "id": "namino",
  *     "status": "prohibited" | "no_explicit_ban",
  *     "confidence": "high" | "medium" | "low",
- *     "evidence": [{ "url": "", "type": "official|blog|wiki|assoc|sign", "date": "", "quote_ja": "" }],
+ *     "evidence": [{ "url": "", "type": "sign|official|phone|assoc|wiki|blog", "date": "", "quote_ja": "" }],
+ *       ※ 証拠の強さ: sign(現地の看板・貼り紙・その写真)=決定的 > official(公式サイトの記載)
+ *          >> phone(電話回答) — 電話は「確認すると断られる」ため掲示の実態とは別物。単独では禁止の根拠にしない
  *     "rv_park": null | { "name_ja","url","spaces","price_jpy","power","booking" },
  *     "facilities": { "toilet_24h":true, "parking_car":224, "onsen":false, "ev":true, "wifi":true, "shop":true },
  *     "official_url": ""
@@ -55,7 +57,11 @@ for (const r of list) {
     if (!st) { unknown.push(r.id); continue; }
 
     const ev = (r.evidence || []).filter((e) => e && (e.url || e.type === "sign"));
+    // 証拠の強さ: sign(現地の看板・貼り紙・その写真) > official(公式サイトの記載) >> phone(電話回答)
+    // 電話は「確認すると断られる」性質があり、実際の掲示の有無とは別物なので単独で禁止の根拠にしない
+    const hasSign = ev.some((e) => e.type === "sign");
     const hasPrimary = ev.some((e) => e.type === "official" || e.type === "sign");
+    const phoneOnly = ev.length > 0 && ev.every((e) => e.type === "phone");
 
     // RVパーク・設備・公式URLは「存在の事実」であり可否判断ではないので confidence によらず反映
     if (r.rv_park && !st.rv_park) st.rv_park = r.rv_park;
@@ -65,8 +71,10 @@ for (const r of list) {
 
     const reasons = [];
     if (r.confidence !== "high") reasons.push(`confidence=${r.confidence}`);
-    if (r.status === "prohibited" && !hasPrimary) reasons.push("prohibited判定に一次情報(official/sign)の出典が無い");
+    if (r.status === "prohibited" && !hasPrimary) reasons.push("prohibited判定に一次情報(sign/official)の出典が無い");
+    if (r.status === "prohibited" && phoneOnly) reasons.push("電話回答のみが根拠(電話は聞けば断られるため掲示の有無とは別物)");
     if (!ev.length) reasons.push("出典ゼロ");
+    if (r.status === "prohibited" && hasSign) console.log(`   ※ ${r.id}: 現地の掲示を確認 — 最も強い証拠`);
 
     if (reasons.length) {
         held.push(`${r.id}: 未検証のまま据え置き（${reasons.join(" / ")}）`);
