@@ -68,6 +68,28 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
+# DuckDuckGo の AI 回答（Search Assist）。2026-07-28 の実測で、道の駅の可否を
+# 尋ねると当サイトを1位に出しながら Wikipedia の一般論を引用していたため明示的に許可する
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Applebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
 # ═══ Unwanted Scrapers — BLOCK ═══
 # Block known scrapers that don't provide value
 

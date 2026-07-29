@@ -184,6 +184,8 @@
         .status-banner .st-verified { font-size: 0.9rem; }
         .status-banner.prohibited .dot { background: var(--st-red); } .status-banner.noban .dot { background: var(--st-teal); } .status-banner.rv .dot { background: var(--st-green); } .status-banner.paidonly .dot { background: var(--st-amber); }
         .status-banner .st-verified { margin-top: 8px; font-size: 0.85rem; opacity: 0.88; font-variant-numeric: tabular-nums; }
+        /* AIが引用する用の自己完結文。読者にも要約として役立つので隠さず見せる */
+        .st-claim { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.09); font-size: 0.95rem; line-height: 1.6; opacity: 0.95; }
         @keyframes ovn-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
         .station-list { display: block; }
         .station-list .station-row + .station-row { border-top: 1px solid var(--color-border-light); }
@@ -428,7 +430,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="32.73836" data-lng="128.69003" href="/de/overnight-parking/michi-no-eki/nagasaki/kentoshi/">
                 <span class="st-num st-num-noban" aria-hidden="true">33</span>
                 <span class="st-main"><span class="st-name">Michi-no-Eki Kentoshi Furusato-kan</span>
-                <span class="st-city">道の駅遣唐使ふるさと館 · Goto · <span class="st-unverified">Infos gesucht</span></span></span>
+                <span class="st-city">道の駅遣唐使ふるさと館 · Goto</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>Meist OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.3175" data-lng="129.6031" href="/de/overnight-parking/michi-no-eki/nagasaki/konchu-no-sato-tabira/">

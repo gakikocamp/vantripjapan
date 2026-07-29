@@ -214,6 +214,8 @@
         .status-banner .st-verified { font-size: 0.9rem; }
         .status-banner.prohibited .dot { background: var(--st-red); } .status-banner.noban .dot { background: var(--st-teal); } .status-banner.rv .dot { background: var(--st-green); } .status-banner.paidonly .dot { background: var(--st-amber); }
         .status-banner .st-verified { margin-top: 8px; font-size: 0.85rem; opacity: 0.88; font-variant-numeric: tabular-nums; }
+        /* AIが引用する用の自己完結文。読者にも要約として役立つので隠さず見せる */
+        .st-claim { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.09); font-size: 0.95rem; line-height: 1.6; opacity: 0.95; }
         @keyframes ovn-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
         .station-list { display: block; }
         .station-list .station-row + .station-row { border-top: 1px solid var(--color-border-light); }
@@ -452,7 +454,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.46732" data-lng="130.6238" href="/zh/overnight-parking/michi-no-eki/fukuoka/chikuzen-minami-no-sato/">
                 <span class="st-num st-num-noban" aria-hidden="true">4</span>
                 <span class="st-main"><span class="st-name">道の駅筑前みなみの里</span>
-                <span class="st-city">朝倉郡筑前町 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">朝倉郡筑前町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.3537" data-lng="130.78488" href="/zh/overnight-parking/michi-no-eki/fukuoka/harazuru/">
@@ -476,7 +478,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.67674" data-lng="130.86008" href="/zh/overnight-parking/michi-no-eki/fukuoka/kawara/">
                 <span class="st-num st-num-noban" aria-hidden="true">8</span>
                 <span class="st-main"><span class="st-name">道の駅香春</span>
-                <span class="st-city">田川郡香春町 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">田川郡香春町</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.4652" data-lng="130.82599" href="/zh/overnight-parking/michi-no-eki/fukuoka/koishiwara/">
@@ -518,7 +520,7 @@
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.18761" data-lng="130.61039" href="/zh/overnight-parking/michi-no-eki/fukuoka/tachibana/">
                 <span class="st-num st-num-noban" aria-hidden="true">15</span>
                 <span class="st-main"><span class="st-name">道の駅たちばな</span>
-                <span class="st-city">八女市 · <span class="st-unverified">徵求資訊</span></span></span>
+                <span class="st-city">八女市</span></span>
                 <span class="st-side"><span class="badge badge-noban"><span class="dot"></span>通常OK</span><span class="chev" aria-hidden="true">›</span></span>
             </a>
 <a class="station-row" data-st="noban" data-rv="0" data-lat="33.33419" data-lng="130.81824" href="/zh/overnight-parking/michi-no-eki/fukuoka/ukiha/">
