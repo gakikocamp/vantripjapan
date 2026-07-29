@@ -733,13 +733,33 @@ function prefName(prefKey, lang) {
     return p[lang] || p.en;
 }
 
+/**
+ * 日本の新字体 → 繁体字(正字)。駅名・市名に実在する文字だけを対象にした保守的な表。
+ * 「駅」は台湾・香港のIME(注音・倉頡)で入力できないため、これを直さないと
+ * 繁体字圏のユーザーは駅名を検索窓に打ち込めない。
+ * ※「糸田」の糸は絲に変換しない — 福岡県公式繁体字サイトが「糸田」のまま表記しているため。
+ * ※「の」は変換しない — 台湾では「の＝的」として日常的に使われ、入力もできる。
+ */
+const SHINJITAI_TO_TRAD = {
+    駅: "驛", 桜: "櫻", 豊: "豐", 万: "萬", 荘: "莊", 戸: "戶", 国: "國", 辺: "邊",
+    滝: "瀧", 温: "溫", 児: "兒", 内: "內", 黒: "黑", 楽: "樂", 竜: "龍", 伝: "傳",
+    説: "說", 弥: "彌", 沢: "澤", 実: "實", 湾: "灣", 県: "縣", 営: "營", 彦: "彥",
+};
+const toTraditional = (s) => s.replace(/[駅桜豊万荘戸国辺滝温児内黒楽竜伝説弥沢実湾県営彦]/g, (c) => SHINJITAI_TO_TRAD[c] || c);
+
+/** 繁体字の駅名。name.zh(公式対訳)があればそれを、無ければ日本語名を繁体字化して使う */
+function zhStationName(st) {
+    const core = st.name.zh || st.name.ja.replace(/^道の駅/, "").trim();
+    return `道之驛${toTraditional(core)}`;
+}
+
 function stationName(st, lang) {
-    if (lang === "zh") return st.name.zh || st.name.ja; // 漢字圏は日本語名で案内
+    if (lang === "zh") return zhStationName(st);
     return st.name.en; // fr/de use the romaji name
 }
 
 function cityName(st, lang) {
-    if (lang === "zh") return st.city.zh || st.city.ja;
+    if (lang === "zh") return toTraditional(st.city.zh || st.city.ja);
     return st.city.en;
 }
 

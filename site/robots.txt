@@ -90,11 +90,16 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
+# Common Crawl。多くのLLMの学習・検索コーパスの基盤になっている。
+# 道の駅DBを CC BY 4.0（帰属表示necessary）で公開している以上、最大の配布経路を
+# 自分で塞ぐのは矛盾するため許可する。帰属表示が条件なので、使われるほど言及が増える
+User-agent: CCBot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
 # ═══ Unwanted Scrapers — BLOCK ═══
 # Block known scrapers that don't provide value
-
-User-agent: CCBot
-Disallow: /
 
 User-agent: MJ12bot
 Disallow: /

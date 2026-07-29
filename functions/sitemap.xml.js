@@ -129,6 +129,17 @@ export async function onRequest(context) {
     ].join('\n'));
   });
 
+  // 公開オープンデータ本体（CC BY 4.0）。AI・研究者がDBそのものを取得する入口なので
+  // sitemap にも載せて発見可能にする。言語クラスタは無いので hreflang は付けない
+  ovnEntries.push([
+    '  <url>',
+    `    <loc>${BASE_URL}/overnight-parking/michi-no-eki/data.json</loc>`,
+    `    <lastmod>${OVERNIGHT_LASTMOD}</lastmod>`,
+    '    <changefreq>weekly</changefreq>',
+    '    <priority>0.6</priority>',
+    '  </url>',
+  ].join('\n'));
+
   const articleEntries = articles.map(a => {
     const lastmod = (a.updated_at || a.published_at || today).slice(0, 10);
     return urlEntry({

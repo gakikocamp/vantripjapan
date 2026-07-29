@@ -69,7 +69,8 @@
       "prefecture": "fukuoka",
       "name": {
         "ja": "道の駅むなかた",
-        "en": "Michi-no-Eki Munakata"
+        "en": "Michi-no-Eki Munakata",
+        "zh": "宗像"
       },
       "city": {
         "ja": "宗像市",
@@ -110,7 +111,8 @@
       "prefecture": "fukuoka",
       "name": {
         "ja": "道の駅うきは",
-        "en": "Michi-no-Eki Ukiha"
+        "en": "Michi-no-Eki Ukiha",
+        "zh": "浮羽"
       },
       "city": {
         "ja": "うきは市",
@@ -186,7 +188,8 @@
       "prefecture": "fukuoka",
       "name": {
         "ja": "道の駅おおとう桜街道",
-        "en": "Michi-no-Eki Oto Sakura Kaido"
+        "en": "Michi-no-Eki Oto Sakura Kaido",
+        "zh": "大任櫻街道"
       },
       "city": {
         "ja": "田川郡大任町",
@@ -225,7 +228,8 @@
       "prefecture": "fukuoka",
       "name": {
         "ja": "道の駅いとだ",
-        "en": "Michi-no-Eki Itoda"
+        "en": "Michi-no-Eki Itoda",
+        "zh": "糸田"
       },
       "city": {
         "ja": "田川郡糸田町",
@@ -262,7 +266,8 @@
       "prefecture": "fukuoka",
       "name": {
         "ja": "道の駅おおき",
-        "en": "Michi-no-Eki Oki"
+        "en": "Michi-no-Eki Oki",
+        "zh": "大木"
       },
       "city": {
         "ja": "三潴郡大木町",
@@ -290,7 +295,8 @@
       "prefecture": "fukuoka",
       "name": {
         "ja": "道の駅くるめ",
-        "en": "Michi-no-Eki Kurume"
+        "en": "Michi-no-Eki Kurume",
+        "zh": "久留米"
       },
       "city": {
         "ja": "久留米市",
@@ -332,7 +338,8 @@
       "prefecture": "fukuoka",
       "name": {
         "ja": "道の駅たちばな",
-        "en": "Michi-no-Eki Tachibana"
+        "en": "Michi-no-Eki Tachibana",
+        "zh": "立花"
       },
       "city": {
         "ja": "八女市",
@@ -381,7 +388,8 @@
       "prefecture": "fukuoka",
       "name": {
         "ja": "道の駅豊前おこしかけ",
-        "en": "Michi-no-Eki Buzen Okoshikake"
+        "en": "Michi-no-Eki Buzen Okoshikake",
+        "zh": "豐前休憩站"
       },
       "city": {
         "ja": "豊前市",
@@ -583,7 +591,8 @@
       "prefecture": "saga",
       "name": {
         "ja": "道の駅吉野ヶ里",
-        "en": "Michi-no-Eki Yoshinogari"
+        "en": "Michi-no-Eki Yoshinogari",
+        "zh": "吉野里"
       },
       "city": {
         "ja": "神埼郡吉野ヶ里町",
@@ -680,7 +689,8 @@
       "prefecture": "saga",
       "name": {
         "ja": "道の駅うれしの まるく",
-        "en": "Michi-no-Eki Ureshino Maruku"
+        "en": "Michi-no-Eki Ureshino Maruku",
+        "zh": "嬉野"
       },
       "city": {
         "ja": "嬉野市",
@@ -818,7 +828,8 @@
       "prefecture": "nagasaki",
       "name": {
         "ja": "道の駅昆虫の里たびら",
-        "en": "Michi-no-Eki Konchu no Sato Tabira"
+        "en": "Michi-no-Eki Konchu no Sato Tabira",
+        "zh": "昆蟲之里田平"
       },
       "city": {
         "ja": "平戸市",
@@ -866,7 +877,8 @@
       "prefecture": "nagasaki",
       "name": {
         "ja": "道の駅夕陽が丘そとめ",
-        "en": "Michi-no-Eki Yuhigaoka Sotome"
+        "en": "Michi-no-Eki Yuhigaoka Sotome",
+        "zh": "夕陽丘外海"
       },
       "city": {
         "ja": "長崎市",
@@ -920,7 +932,8 @@
       "prefecture": "nagasaki",
       "name": {
         "ja": "道の駅させぼっくす９９",
-        "en": "Michi-no-Eki Sasebo Box 99"
+        "en": "Michi-no-Eki Sasebo Box 99",
+        "zh": "SASEBOX99"
       },
       "city": {
         "ja": "佐世保市",
@@ -982,7 +995,8 @@
       "prefecture": "nagasaki",
       "name": {
         "ja": "道の駅さいかい",
-        "en": "Michi-no-Eki Saikai"
+        "en": "Michi-no-Eki Saikai",
+        "zh": "西海"
       },
       "city": {
         "ja": "西海市",
@@ -1168,7 +1182,8 @@
       "prefecture": "kumamoto",
       "name": {
         "ja": "道の駅あそ望の郷くぎの",
-        "en": "Michi-no-Eki Asobo no Sato Kugino"
+        "en": "Michi-no-Eki Asobo no Sato Kugino",
+        "zh": "阿蘇望之鄉久木野"
       },
       "city": {
         "ja": "阿蘇郡南阿蘇村",
@@ -1196,7 +1211,8 @@
       "prefecture": "kumamoto",
       "name": {
         "ja": "道の駅きくすい",
-        "en": "Michi-no-Eki Kikusui"
+        "en": "Michi-no-Eki Kikusui",
+        "zh": "菊水"
       },
       "city": {
         "ja": "玉名郡和水町",
@@ -1277,7 +1293,8 @@
       "prefecture": "kumamoto",
       "name": {
         "ja": "道の駅すいかの里 植木",
-        "en": "Michi-no-Eki Suika no Sato Ueki"
+        "en": "Michi-no-Eki Suika no Sato Ueki",
+        "zh": "西瓜之里植木"
       },
       "city": {
         "ja": "熊本市北区",
@@ -1650,7 +1667,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅ゆふいん",
-        "en": "Michi-no-Eki Yufuin"
+        "en": "Michi-no-Eki Yufuin",
+        "zh": "由布院"
       },
       "city": {
         "ja": "由布市",
@@ -1700,7 +1718,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅原尻の滝",
-        "en": "Michi-no-Eki Harajiri no Taki"
+        "en": "Michi-no-Eki Harajiri no Taki",
+        "zh": "原尻瀑布"
       },
       "city": {
         "ja": "豊後大野市",
@@ -1788,7 +1807,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅くにさき",
-        "en": "Michi-no-Eki Kunisaki"
+        "en": "Michi-no-Eki Kunisaki",
+        "zh": "國東"
       },
       "city": {
         "ja": "国東市",
@@ -1832,7 +1852,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅童話の里くす",
-        "en": "Michi-no-Eki Dowa no Sato Kusu"
+        "en": "Michi-no-Eki Dowa no Sato Kusu",
+        "zh": "童話之里玖珠"
       },
       "city": {
         "ja": "玖珠郡玖珠町",
@@ -1876,7 +1897,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅なかつ",
-        "en": "Michi-no-Eki Nakatsu"
+        "en": "Michi-no-Eki Nakatsu",
+        "zh": "中津"
       },
       "city": {
         "ja": "中津市",
@@ -1920,7 +1942,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅ながゆ温泉",
-        "en": "Michi-no-Eki Nagayu Onsen"
+        "en": "Michi-no-Eki Nagayu Onsen",
+        "zh": "長湯溫泉"
       },
       "city": {
         "ja": "竹田市",
@@ -1964,7 +1987,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅たのうらら",
-        "en": "Michi-no-Eki Tanourara"
+        "en": "Michi-no-Eki Tanourara",
+        "zh": "Tanourara"
       },
       "city": {
         "ja": "大分市",
@@ -2011,7 +2035,8 @@
       "prefecture": "miyazaki",
       "name": {
         "ja": "道の駅フェニックス",
-        "en": "Michi-no-Eki Phoenix"
+        "en": "Michi-no-Eki Phoenix",
+        "zh": "鳳凰"
       },
       "city": {
         "ja": "宮崎市",
@@ -2132,7 +2157,8 @@
       "prefecture": "miyazaki",
       "name": {
         "ja": "道の駅北川はゆま",
-        "en": "Michi-no-Eki Kitagawa Hayuma"
+        "en": "Michi-no-Eki Kitagawa Hayuma",
+        "zh": "北川驛馬"
       },
       "city": {
         "ja": "延岡市",
@@ -2224,7 +2250,8 @@
       "prefecture": "miyazaki",
       "name": {
         "ja": "道の駅なんごう",
-        "en": "Michi-no-Eki Nango"
+        "en": "Michi-no-Eki Nango",
+        "zh": "南鄉"
       },
       "city": {
         "ja": "日南市",
@@ -2266,7 +2293,8 @@
       "prefecture": "miyazaki",
       "name": {
         "ja": "道の駅えびの",
-        "en": "Michi-no-Eki Ebino"
+        "en": "Michi-no-Eki Ebino",
+        "zh": "蝦野"
       },
       "city": {
         "ja": "えびの市",
@@ -2441,7 +2469,8 @@
       "prefecture": "kagoshima",
       "name": {
         "ja": "道の駅たるみず",
-        "en": "Michi-no-Eki Tarumizu"
+        "en": "Michi-no-Eki Tarumizu",
+        "zh": "垂水"
       },
       "city": {
         "ja": "垂水市",
@@ -2482,7 +2511,8 @@
       "prefecture": "kagoshima",
       "name": {
         "ja": "道の駅たるみずはまびら",
-        "en": "Michi-no-Eki Tarumizu Hamabira"
+        "en": "Michi-no-Eki Tarumizu Hamabira",
+        "zh": "垂水濱平"
       },
       "city": {
         "ja": "垂水市",
@@ -2523,7 +2553,8 @@
       "prefecture": "kagoshima",
       "name": {
         "ja": "道の駅いぶすき",
-        "en": "Michi-no-Eki Ibusuki"
+        "en": "Michi-no-Eki Ibusuki",
+        "zh": "指宿"
       },
       "city": {
         "ja": "指宿市",
@@ -2605,7 +2636,8 @@
       "prefecture": "kagoshima",
       "name": {
         "ja": "道の駅くにの松原おおさき",
-        "en": "Michi-no-Eki Kuni no Matsubara Osaki"
+        "en": "Michi-no-Eki Kuni no Matsubara Osaki",
+        "zh": "國之松原大崎"
       },
       "city": {
         "ja": "曽於郡大崎町",
@@ -2647,7 +2679,8 @@
       "prefecture": "fukuoka",
       "name": {
         "ja": "道の駅しんよしとみ",
-        "en": "Michi-no-Eki Shin-Yoshitomi"
+        "en": "Michi-no-Eki Shin-Yoshitomi",
+        "zh": "新吉富"
       },
       "city": {
         "ja": "築上郡上毛町",
@@ -2784,7 +2817,8 @@
       "prefecture": "fukuoka",
       "name": {
         "ja": "道の駅うすい",
-        "en": "Michi-no-Eki Usui"
+        "en": "Michi-no-Eki Usui",
+        "zh": "碓井"
       },
       "city": {
         "ja": "嘉麻市",
@@ -2881,7 +2915,8 @@
       "prefecture": "fukuoka",
       "name": {
         "ja": "道の駅歓遊舎ひこさん",
-        "en": "Michi-no-Eki Kanyusha Hikosan"
+        "en": "Michi-no-Eki Kanyusha Hikosan",
+        "zh": "歡遊舍英彥山"
       },
       "city": {
         "ja": "田川郡添田町",
@@ -2921,7 +2956,8 @@
       "prefecture": "kagoshima",
       "name": {
         "ja": "道の駅すえよし",
-        "en": "Michi-no-Eki Sueyoshi"
+        "en": "Michi-no-Eki Sueyoshi",
+        "zh": "末吉"
       },
       "city": {
         "ja": "曽於市",
@@ -3001,7 +3037,8 @@
       "prefecture": "kagoshima",
       "name": {
         "ja": "道の駅たからべ",
-        "en": "Michi-no-Eki Takarabe"
+        "en": "Michi-no-Eki Takarabe",
+        "zh": "財部"
       },
       "city": {
         "ja": "曽於市",
@@ -3077,7 +3114,8 @@
       "prefecture": "kagoshima",
       "name": {
         "ja": "道の駅きんぽう木花館",
-        "en": "Michi-no-Eki Kinpo Konohana-kan"
+        "en": "Michi-no-Eki Kinpo Konohana-kan",
+        "zh": "金峰木花館"
       },
       "city": {
         "ja": "南さつま市",
@@ -3338,7 +3376,8 @@
       "prefecture": "kumamoto",
       "name": {
         "ja": "道の駅みなまた",
-        "en": "Michi-no-Eki Minamata"
+        "en": "Michi-no-Eki Minamata",
+        "zh": "水俁"
       },
       "city": {
         "ja": "水俣市",
@@ -3425,7 +3464,8 @@
       "prefecture": "kumamoto",
       "name": {
         "ja": "道の駅天草市イルカセンター",
-        "en": "Michi-no-Eki Amakusa Dolphin Center"
+        "en": "Michi-no-Eki Amakusa Dolphin Center",
+        "zh": "天草市海豚中心"
       },
       "city": {
         "ja": "天草市",
@@ -3556,7 +3596,8 @@
       "prefecture": "kumamoto",
       "name": {
         "ja": "道の駅うき",
-        "en": "Michi-no-Eki Uki"
+        "en": "Michi-no-Eki Uki",
+        "zh": "宇城"
       },
       "city": {
         "ja": "宇城市",
@@ -3605,7 +3646,8 @@
       "prefecture": "kumamoto",
       "name": {
         "ja": "道の駅うしぶか海彩館",
-        "en": "Michi-no-Eki Ushibuka Kaisaikan"
+        "en": "Michi-no-Eki Ushibuka Kaisaikan",
+        "zh": "牛深海彩館"
       },
       "city": {
         "ja": "天草市",
@@ -4227,7 +4269,8 @@
       "prefecture": "miyazaki",
       "name": {
         "ja": "道の駅くしま",
-        "en": "Michi-no-Eki Kushima"
+        "en": "Michi-no-Eki Kushima",
+        "zh": "串間"
       },
       "city": {
         "ja": "串間市",
@@ -4275,7 +4318,8 @@
       "prefecture": "miyazaki",
       "name": {
         "ja": "道の駅つの",
-        "en": "Michi-no-Eki Tsuno"
+        "en": "Michi-no-Eki Tsuno",
+        "zh": "都農"
       },
       "city": {
         "ja": "児湯郡都農町",
@@ -4321,7 +4365,8 @@
       "prefecture": "miyazaki",
       "name": {
         "ja": "道の駅とうごう",
-        "en": "Michi-no-Eki Togo"
+        "en": "Michi-no-Eki Togo",
+        "zh": "東鄉"
       },
       "city": {
         "ja": "日向市",
@@ -4407,7 +4452,8 @@
       "prefecture": "nagasaki",
       "name": {
         "ja": "道の駅遣唐使ふるさと館",
-        "en": "Michi-no-Eki Kentoshi Furusato-kan"
+        "en": "Michi-no-Eki Kentoshi Furusato-kan",
+        "zh": "遣唐使故鄉館"
       },
       "city": {
         "ja": "五島市",
@@ -4498,7 +4544,8 @@
       "prefecture": "nagasaki",
       "name": {
         "ja": "道の駅松浦海のふるさと館",
-        "en": "Michi-no-Eki Matsuura Umi-no-Furusato-kan"
+        "en": "Michi-no-Eki Matsuura Umi-no-Furusato-kan",
+        "zh": "松浦海之故鄉館"
       },
       "city": {
         "ja": "松浦市",
@@ -4596,7 +4643,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅いんない",
-        "en": "Michi-no-Eki Innai"
+        "en": "Michi-no-Eki Innai",
+        "zh": "院內"
       },
       "city": {
         "ja": "宇佐市",
@@ -4637,7 +4685,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅やまくに",
-        "en": "Michi-no-Eki Yamakuni"
+        "en": "Michi-no-Eki Yamakuni",
+        "zh": "山國"
       },
       "city": {
         "ja": "中津市",
@@ -4690,7 +4739,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅耶馬トピア",
-        "en": "Michi-no-Eki Yaba Topia"
+        "en": "Michi-no-Eki Yaba Topia",
+        "zh": "耶馬Topia"
       },
       "city": {
         "ja": "中津市",
@@ -4734,7 +4784,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅水辺の郷おおやま",
-        "en": "Michi-no-Eki Mizube-no-Sato Oyama"
+        "en": "Michi-no-Eki Mizube-no-Sato Oyama",
+        "zh": "水邊之鄉大山"
       },
       "city": {
         "ja": "日田市",
@@ -4779,7 +4830,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅すごう",
-        "en": "Michi-no-Eki Sugo"
+        "en": "Michi-no-Eki Sugo",
+        "zh": "菅生"
       },
       "city": {
         "ja": "竹田市",
@@ -4829,7 +4881,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅おおの",
-        "en": "Michi-no-Eki Ono"
+        "en": "Michi-no-Eki Ono",
+        "zh": "大野"
       },
       "city": {
         "ja": "豊後大野市",
@@ -4880,7 +4933,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅かまえ",
-        "en": "Michi-no-Eki Kamae"
+        "en": "Michi-no-Eki Kamae",
+        "zh": "蒲江"
       },
       "city": {
         "ja": "佐伯市",
@@ -4928,7 +4982,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅くにみ",
-        "en": "Michi-no-Eki Kunimi"
+        "en": "Michi-no-Eki Kunimi",
+        "zh": "國見"
       },
       "city": {
         "ja": "国東市",
@@ -4976,7 +5031,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅せせらぎ郷かみつえ",
-        "en": "Michi-no-Eki Seseragi-no-Sato Kamitsue"
+        "en": "Michi-no-Eki Seseragi-no-Sato Kamitsue",
+        "zh": "Seseragi鄉上津江"
       },
       "city": {
         "ja": "日田市",
@@ -5026,7 +5082,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅みえ",
-        "en": "Michi-no-Eki Mie"
+        "en": "Michi-no-Eki Mie",
+        "zh": "三重"
       },
       "city": {
         "ja": "豊後大野市",
@@ -5063,7 +5120,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅やよい",
-        "en": "Michi-no-Eki Yayoi"
+        "en": "Michi-no-Eki Yayoi",
+        "zh": "彌生"
       },
       "city": {
         "ja": "佐伯市",
@@ -5284,7 +5342,8 @@
       "prefecture": "saga",
       "name": {
         "ja": "道の駅しろいし",
-        "en": "Michi-no-Eki Shiroishi"
+        "en": "Michi-no-Eki Shiroishi",
+        "zh": "白石"
       },
       "city": {
         "ja": "杵島郡白石町",
@@ -5330,7 +5389,8 @@
       "prefecture": "saga",
       "name": {
         "ja": "道の駅大和そよかぜ館",
-        "en": "Michi-no-Eki Yamato Soyokaze-kan"
+        "en": "Michi-no-Eki Yamato Soyokaze-kan",
+        "zh": "大和"
       },
       "city": {
         "ja": "佐賀市",
@@ -5419,7 +5479,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅あさじ",
-        "en": "Michi-no-Eki Asaji"
+        "en": "Michi-no-Eki Asaji",
+        "zh": "朝地"
       },
       "city": {
         "ja": "豊後大野市",
@@ -5458,7 +5519,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅きよかわ",
-        "en": "Michi-no-Eki Kiyokawa"
+        "en": "Michi-no-Eki Kiyokawa",
+        "zh": "清川"
       },
       "city": {
         "ja": "豊後大野市",
@@ -5634,7 +5696,8 @@
       "prefecture": "kagoshima",
       "name": {
         "ja": "道の駅おおすみ弥五郎伝説の里",
-        "en": "Michi-no-Eki Osumi Yagoro Densetsu-no-Sato"
+        "en": "Michi-no-Eki Osumi Yagoro Densetsu-no-Sato",
+        "zh": "大隅彌五郎傳說之里"
       },
       "city": {
         "ja": "曽於市",
@@ -5734,7 +5797,8 @@
       "prefecture": "fukuoka",
       "name": {
         "ja": "道の駅おおむた",
-        "en": "Michi-no-Eki Omuta"
+        "en": "Michi-no-Eki Omuta",
+        "zh": "大牟田"
       },
       "city": {
         "ja": "大牟田市",
@@ -5815,7 +5879,8 @@
       "prefecture": "saga",
       "name": {
         "ja": "道の駅かみみね",
-        "en": "Michi-no-Eki Kamimine"
+        "en": "Michi-no-Eki Kamimine",
+        "zh": "上峰"
       },
       "city": {
         "ja": "三養基郡上峰町",
@@ -6098,7 +6163,8 @@
       "prefecture": "kumamoto",
       "name": {
         "ja": "道の駅美里「佐俣の湯」",
-        "en": "Michi-no-Eki Misato Samata-no-Yu"
+        "en": "Michi-no-Eki Misato Samata-no-Yu",
+        "zh": "美里「佐俁之湯」"
       },
       "city": {
         "ja": "下益城郡美里町",
@@ -6151,7 +6217,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅のつはる",
-        "en": "Michi-no-Eki Notsuharu"
+        "en": "Michi-no-Eki Notsuharu",
+        "zh": "野津原"
       },
       "city": {
         "ja": "大分市",
@@ -6196,7 +6263,8 @@
       "prefecture": "miyazaki",
       "name": {
         "ja": "道の駅きたごう",
-        "en": "Michi-no-Eki Kitago"
+        "en": "Michi-no-Eki Kitago",
+        "zh": "北鄉"
       },
       "city": {
         "ja": "日南市",
@@ -6295,7 +6363,8 @@
       "prefecture": "kumamoto",
       "name": {
         "ja": "道の駅たのうら",
-        "en": "Michi-no-Eki Tanoura"
+        "en": "Michi-no-Eki Tanoura",
+        "zh": "田浦"
       },
       "city": {
         "ja": "葦北郡芦北町",
@@ -6336,7 +6405,8 @@
       "prefecture": "oita",
       "name": {
         "ja": "道の駅慈恩の滝くす",
-        "en": "Michi-no-Eki Jion-no-Taki Kusu"
+        "en": "Michi-no-Eki Jion-no-Taki Kusu",
+        "zh": "慈恩瀑布玖珠"
       },
       "city": {
         "ja": "玖珠郡玖珠町",
@@ -6428,7 +6498,8 @@
       "prefecture": "kagoshima",
       "name": {
         "ja": "道の駅とくのしま",
-        "en": "Michi-no-Eki Tokunoshima"
+        "en": "Michi-no-Eki Tokunoshima",
+        "zh": "德之島"
       },
       "city": {
         "ja": "大島郡徳之島町",
