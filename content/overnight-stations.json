@@ -2994,7 +2994,8 @@
       "prefecture": "kagoshima",
       "name": {
         "ja": "道の駅山川港活お海道",
-        "en": "Michi-no-Eki Yamagawako Katsuo-Kaido"
+        "en": "Michi-no-Eki Yamagawako Katsuo-Kaido",
+        "zh": "山川港飛魚海道"
       },
       "city": {
         "ja": "指宿市",
@@ -3270,7 +3271,8 @@
       "prefecture": "kagoshima",
       "name": {
         "ja": "道の駅野方あらさの",
-        "en": "Michi-no-Eki Nogata Arasano"
+        "en": "Michi-no-Eki Nogata Arasano",
+        "zh": "野方荒佐野"
       },
       "city": {
         "ja": "曽於郡大崎町",
@@ -3980,7 +3982,8 @@
       "prefecture": "miyazaki",
       "name": {
         "ja": "道の駅北方よっちみろ屋",
-        "en": "Michi-no-Eki Kitakata Yocchimiro-ya"
+        "en": "Michi-no-Eki Kitakata Yocchimiro-ya",
+        "zh": "Yocchimiro屋"
       },
       "city": {
         "ja": "延岡市",
@@ -5647,7 +5650,8 @@
       "prefecture": "miyazaki",
       "name": {
         "ja": "道の駅ゆ〜ぱるのじり",
-        "en": "Michi-no-Eki Yu-paru Nojiri"
+        "en": "Michi-no-Eki Yu-paru Nojiri",
+        "zh": "Yuparu野尻"
       },
       "city": {
         "ja": "小林市",
