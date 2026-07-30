@@ -1711,7 +1711,10 @@ function calculateBaseTotal(baseRate, days) {
     const weeklyTotal = (5 * baseRate) + (2 * weekendRate);
     const fullWeeks = Math.floor(days / 7);
     const remainderDays = days % 7;
-    return (fullWeeks * weeklyTotal) + (remainderDays * baseRate);
+    // VTJ公式ルール: 各週の1-5日目=平日料金、6日目=週末料金（6日レンタルは5平日+1週末）
+    const remWeekday = Math.min(remainderDays, 5);
+    const remWeekend = Math.max(0, remainderDays - 5);
+    return (fullWeeks * weeklyTotal) + (remWeekday * baseRate) + (remWeekend * weekendRate);
 }
 
 function getDiscount(days) {

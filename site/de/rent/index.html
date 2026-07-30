@@ -1606,7 +1606,10 @@
                 var weeklyTotal = (5 * _calcVehicle) + (2 * weekendRate);
                 var fullWeeks = Math.floor(_calcDays / 7);
                 var remainderDays = _calcDays % 7;
-                var baseTotal = (fullWeeks * weeklyTotal) + (remainderDays * _calcVehicle); // Assume remaining days are weekdays for estimate
+                // VTJ公式ルール: 各週の1-5日目=平日料金、6日目=週末料金（6日=5平日+1週末）
+                var remWeekday = Math.min(remainderDays, 5);
+                var remWeekend = Math.max(0, remainderDays - 5);
+                var baseTotal = (fullWeeks * weeklyTotal) + (remWeekday * _calcVehicle) + (remWeekend * weekendRate);
 
                 // Apply long-stay discount
                 var discount = _getDiscount(_calcDays);

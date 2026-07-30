@@ -29,7 +29,9 @@ function estimateBookingTotal(vehicleType, pickup, returns) {
   if (!(days > 0)) return { total: null, label: null };
   const weekendRate = Math.round(base * 1.5);
   const weeklyTotal = (5 * base) + (2 * weekendRate);
-  const baseTotal = (Math.floor(days / 7) * weeklyTotal) + ((days % 7) * base);
+  // VTJ公式ルール: 各週の1-5日目=平日料金、6日目=週末料金（6日=5平日+1週末）
+  const rem = days % 7;
+  const baseTotal = (Math.floor(days / 7) * weeklyTotal) + (Math.min(rem, 5) * base) + (Math.max(0, rem - 5) * weekendRate);
   const tier = DISCOUNT_TIERS.find((t) => days >= t.minDays);
   const total = Math.round(baseTotal * (1 - (tier ? tier.rate : 0)));
   return { total, label: tier ? tier.label : null, days };
