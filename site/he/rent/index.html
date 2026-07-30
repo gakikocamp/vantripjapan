@@ -1570,14 +1570,15 @@
             { minDays: 7,  rate: 0.10, label: '10% OFF'  }
         ];
 
-        // Exchange rates (Today's rate in May 2026)
+        // Exchange rates — 2026-07 実勢に更新（四半期ごとに点検）。
+        // 1¥あたりの外貨。USD≈163¥ / EUR≈185¥ / GBP≈218¥ / ILS≈54¥。/book/ の eurHint と整合。
         var _calcCurrency = 'JPY';
         var EX_RATES = {
             JPY: { symbol: '¥', factor: 1 },
-            USD: { symbol: '$', factor: 0.0065 },
-            EUR: { symbol: '€', factor: 0.0060 },
-            GBP: { symbol: '£', factor: 0.0051 },
-            ILS: { symbol: '₪', factor: 0.024 }
+            USD: { symbol: '$', factor: 0.00613 },
+            EUR: { symbol: '€', factor: 0.00541 },
+            GBP: { symbol: '£', factor: 0.00459 },
+            ILS: { symbol: '₪', factor: 0.01852 }
         };
 
         function _fmtCurrency(n, curr) {
