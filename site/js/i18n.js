@@ -3,6 +3,34 @@
  * Supports: English, French, German, Traditional Chinese
  */
 
+/* First-touch attribution — records where the visitor originally came from.
+   Read at booking submit and stored in bookings.referral_source (D1).
+   Same pattern as JDLTC (survives ad-blockers, unlike GA4 events). */
+(function () {
+    try {
+        var KEY = 'vtj-attr';
+        if (localStorage.getItem(KEY)) return;
+        var p = new URLSearchParams(location.search);
+        var ref = '(direct)';
+        try {
+            if (document.referrer) {
+                var host = new URL(document.referrer).hostname;
+                ref = (host === location.hostname) ? '(internal)' : host;
+            }
+        } catch (e) { /* keep (direct) */ }
+        var attr = {
+            ref: ref,
+            lp: location.pathname,
+            utm_source: p.get('utm_source') || '',
+            utm_medium: p.get('utm_medium') || '',
+            utm_campaign: p.get('utm_campaign') || '',
+            gclid: p.get('gclid') || '',
+            ts: new Date().toISOString().slice(0, 10)
+        };
+        localStorage.setItem(KEY, JSON.stringify(attr).slice(0, 500));
+    } catch (e) { /* storage unavailable — ignore */ }
+})();
+
 const translations = {
     en: {
         "pricing.fx_note": "All prices are billed in Japanese yen (¥). Amounts shown in other currencies are approximate, for reference only — the final charge depends on your card's exchange rate.",

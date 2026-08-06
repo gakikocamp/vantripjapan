@@ -1291,7 +1291,7 @@
     </p>
 </div>
 
-<script src="/js/i18n.js?v=2026071902"></script>
+<script src="/js/i18n.js?v=2026080401"></script>
 <script>
 // i18n helper: bt() は辞書参照のフォールバック付きラッパー（i18n.js は直前で読込済み）。
 function bt(key, fallback) {
@@ -2204,6 +2204,8 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
         camping_gear_notes: form.camping_gear_notes.value || null,
         translation_needed: form.translation_needed.checked,
         lang: (typeof currentLang !== 'undefined' && currentLang) || 'en',
+        // First-touch attribution captured by i18n.js on the visitor's landing page
+        referral_source: (function () { try { return localStorage.getItem('vtj-attr') || null; } catch (e) { return null; } })(),
     };
 
     try {
