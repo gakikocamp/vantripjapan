@@ -3922,6 +3922,14 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
     margin-bottom: 80px;
 }
 
+/* stickyは基準ルールを先に置く。メディアクエリは詳細度を上げないため、
+   モバイル用の position:relative を必ず後段に置いて勝たせる（でないと
+   スマホでもギャラリーが貼り付き、タイトルが画像の裏に潜り込む）。 */
+.detail-gallery-wrap {
+    position: sticky;
+    top: 100px;
+}
+
 @media (max-width: 992px) {
     .detail-layout {
         grid-template-columns: 1fr;
@@ -3934,11 +3942,6 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
     .dimensions-visual-card {
         padding: 16px 8px;
     }
-}
-
-.detail-gallery-wrap {
-    position: sticky;
-    top: 100px;
 }
 
 .detail-gallery-main {
