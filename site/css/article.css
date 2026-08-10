@@ -3,6 +3,17 @@
    Apple-inspired clean reading experience
    ══════════════════════════════════════════════ */
 
+/* 押下フィードバック(Apple: 触れた瞬間に応答する) */
+.article-cta-btn:active,
+.floating-cta a:active,
+.related-card:active {
+    transform: scale(0.97);
+    transition: transform 100ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+    .article-cta-btn:active, .floating-cta a:active, .related-card:active { transform: none; }
+}
+
 /* Article Hero */
 .article-hero {
     margin-top: var(--nav-height);
@@ -24,18 +35,19 @@
 .article-hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.35) 60%, rgba(0, 0, 0, 0.72) 100%);
+    /* テキストを画像に重ねない設計に変更したため、写真の質感を活かす薄いフェードのみ */
+    background: linear-gradient(180deg, transparent 70%, rgba(0, 0, 0, 0.16) 100%);
 }
 
-/* Article Header */
+/* Article Header — 画像の下・白背景のクリーンなヘッダー(Apple Newsroom方式)。
+   旧: -140pxで画像に重ね、白グローのtext-shadowで可読性を稼いでいたが、
+   写真次第で濁って見え「壊れた白パネル」状に見えていた。 */
 .article-header {
     max-width: var(--max-width-narrow);
-    margin: -140px auto 0;
+    margin: 48px auto 0;
     padding: 0 var(--space-lg);
     position: relative;
     z-index: 2;
-    /* transparent over image → white below image */
-    background: linear-gradient(to bottom, transparent 0px, transparent 100px, white 170px);
 }
 
 .article-meta {
@@ -59,24 +71,18 @@
 
 .article-date {
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--color-text-secondary, #6e6e73);
     font-weight: 500;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .article-page-title {
     font-family: var(--font-serif);
-    font-size: clamp(28px, 4vw, 44px);
+    font-size: clamp(30px, 4vw, 46px);
     font-weight: 600;
-    line-height: 1.25;
-    letter-spacing: -1px;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
     color: var(--color-text);
     margin-bottom: var(--space-md);
-    /* white glow: readable on dark image, invisible on white bg */
-    text-shadow:
-        0 0 24px rgba(255, 255, 255, 1),
-        0 0 10px rgba(255, 255, 255, 0.95),
-        0 2px 6px rgba(255, 255, 255, 0.8);
 }
 
 .article-excerpt-text {
@@ -288,8 +294,7 @@
     }
 
     .article-header {
-        margin-top: -40px;
-        background: white;
+        margin-top: 32px;
     }
 
     .article-page-title {

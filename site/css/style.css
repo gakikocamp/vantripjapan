@@ -1210,6 +1210,20 @@ body {
   50% { box-shadow: 0 4px 28px rgba(37, 211, 102, 0.6); }
 }
 
+/* 押下フィードバック(Apple: pointer-downの瞬間に応答) — 主要CTA共通 */
+.nav-cta:active,
+.hero-cta:active,
+.rental-banner-cta:active,
+.floating-whatsapp:active,
+.back-to-top-btn:active {
+    transform: scale(0.96);
+    transition: transform 100ms ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+    .nav-cta:active, .hero-cta:active, .rental-banner-cta:active,
+    .floating-whatsapp:active, .back-to-top-btn:active { transform: none; }
+}
+
 /* Back-to-top — sits on the same vertical axis as .floating-whatsapp,
    centered above it with a consistent gap. Rises into view (Apple: hint
    in the direction of the gesture) rather than a plain fade. */

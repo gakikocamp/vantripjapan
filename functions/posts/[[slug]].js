@@ -176,11 +176,11 @@ function renderArticlePage(article) {
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="${canonicalUrl}">
   <link rel="icon" type="image/png" href="/images/favicon.png">
-  <link rel="stylesheet" href="/css/style.css?v=20260719">
+  <link rel="stylesheet" href="/css/style.css?v=20260810a">
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
-  <link rel="stylesheet" href="/css/article.css">
+  <link rel="stylesheet" href="/css/article.css?v=20260810a">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
