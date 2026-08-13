@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/style.css?v=20260810a">
-    <link rel="stylesheet" href="/css/rent.css?v=20260724c">
+    <link rel="stylesheet" href="/css/rent.css?v=20260810b">
     <!-- Google Analytics -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
@@ -2213,6 +2213,91 @@
         </div>
     </div>
 
+
+    <!-- ═══ KAYAK-style search results mode (?from&to&guests) ═══ -->
+    <script>
+    (function () {
+        var P = new URLSearchParams(location.search);
+        var from = P.get('from'), to = P.get('to');
+        var guests = parseInt(P.get('guests') || '2', 10) || 2;
+        if (!from || !to) return;
+        var d1 = new Date(from), d2 = new Date(to);
+        var days = Math.ceil((d2 - d1) / 86400000);
+        if (!(days > 0) || days > 60) return;
+
+        var LP = (window.VTJ_FORCE_LANG && window.VTJ_FORCE_LANG !== 'en') ? '/' + window.VTJ_FORCE_LANG : '';
+        function tr(k, fb) {
+            try {
+                var lang = window.VTJ_FORCE_LANG || (typeof currentLang !== 'undefined' ? currentLang : 'en');
+                if (typeof translations !== 'undefined' && translations[lang] && translations[lang][k]) return translations[lang][k];
+            } catch (e) {}
+            return fb;
+        }
+        // VTJ公式料金式(1-5日=平日/6日目=週末/7,14,21日割引) — /book/・APIと同一
+        function quote(base) {
+            var wr = Math.round(base * 1.5), weekly = 5 * base + 2 * wr;
+            var fw = Math.floor(days / 7), rem = days % 7;
+            var bt = fw * weekly + Math.min(rem, 5) * base + Math.max(0, rem - 5) * wr;
+            var t = days >= 21 ? 0.20 : days >= 14 ? 0.15 : days >= 7 ? 0.10 : 0;
+            return { total: Math.round(bt * (1 - t)), disc: t };
+        }
+        var VEHICLES = [
+            { slug: 'probox', api: 'TOYOTA PROBOX', base: 22000, cap: 2 },
+            { slug: 'bongo', api: 'MAZDA BONGO', base: 22000, cap: 3 },
+            { slug: 'loft', api: 'DAIHATSU POCKET LOFT', base: 25000, cap: 4 }
+        ];
+        function conflicts(ranges) {
+            for (var i = 0; i < (ranges || []).length; i++) {
+                if (from < ranges[i].to && to > ranges[i].from) return true;
+            }
+            return false;
+        }
+        fetch('/api/availability').then(function (r) { return r.json(); }).then(function (data) {
+            var grid = document.querySelector('.vehicles-grid');
+            if (!grid) return;
+            // 検索サマリーバナー
+            var banner = document.createElement('div');
+            banner.className = 'search-results-banner';
+            banner.innerHTML = '🔍 <b>' + from + ' → ' + to + '</b> · ' + days + ' ' + tr('results.days', 'days') +
+                ' · 👥' + guests + ' <a href="' + LP + '/#hero">' + tr('results.change', 'Change dates') + '</a>';
+            grid.parentNode.insertBefore(banner, grid);
+
+            VEHICLES.forEach(function (v) {
+                var link = document.querySelector('.vehicle-card a[href$="/rent/' + v.slug + '/"]');
+                var card = link ? link.closest('.vehicle-card') : null;
+                if (!card) return;
+                var anchor = card.querySelector('.vehicle-insurance-note') || card.querySelector('.vehicle-price');
+                var strip = document.createElement('div');
+                var booked = conflicts((data.vehicles || {})[v.api]);
+                var q = quote(v.base);
+                if (!booked) {
+                    var discTxt = q.disc ? ' · -' + Math.round(q.disc * 100) + '%' : '';
+                    var fitsTxt = guests > v.cap ? '<div class="rs-fits">⚠️ ' + tr('results.fits', 'Fits up to {N} guests').replace('{N}', v.cap) + '</div>' : '';
+                    strip.className = 'result-strip ok' + (guests > v.cap ? ' dim' : '');
+                    strip.innerHTML =
+                        '<div class="rs-status">✅ ' + tr('results.available', 'Available for your dates') + '</div>' +
+                        '<div class="rs-total">¥' + q.total.toLocaleString() + '<small> · ' + days + ' ' + tr('results.days', 'days') + discTxt + '</small></div>' +
+                        '<div class="rs-est">' + tr('results.est', 'Estimated total — not a confirmed booking yet. Karen confirms availability & final quote (no payment now).') + '</div>' + fitsTxt +
+                        '<a class="rs-select" data-track="select_' + v.slug + '" href="' + LP + '/book/?vehicle=' + v.slug + '&from=' + from + '&to=' + to + '&guests=' + guests + '">' + tr('results.select', 'Request this van →') + '</a>';
+                } else {
+                    strip.className = 'result-strip full';
+                    strip.innerHTML =
+                        '<div class="rs-status">❌ ' + tr('results.full', 'Fully booked for these dates') + '</div>' +
+                        '<a class="rs-wa" target="_blank" rel="noopener" href="https://wa.me/817093757129?text=' +
+                        encodeURIComponent('Hi Karen! Is anything available around ' + from + ' - ' + to + '? (' + guests + ' guests)') + '">💬 ' +
+                        tr('results.askother', 'Ask Karen about these dates') + '</a>';
+                }
+                anchor.parentNode.insertBefore(strip, anchor.nextSibling);
+                var sel = strip.querySelector('.rs-select');
+                if (sel && typeof gtag === 'function') {
+                    sel.addEventListener('click', function () { gtag('event', 'select_vehicle', { vehicle: v.slug, days: days }); });
+                }
+            });
+            if (typeof gtag === 'function') gtag('event', 'view_search_results', { days: days, guests: guests });
+            setTimeout(function () { banner.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 250);
+        }).catch(function () { /* 取得失敗時は通常表示のまま */ });
+    })();
+    </script>
 
 
 </body></html>
