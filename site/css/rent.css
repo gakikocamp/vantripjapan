@@ -4716,3 +4716,6 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
 @media (prefers-reduced-motion: reduce) {
     .result-strip .rs-select:hover { transform: none; }
 }
+
+/* 結果モード時: ストリップは車名直下に置くため上マージン調整 */
+.vehicle-card.has-result .result-strip { margin: 10px 0 14px; }

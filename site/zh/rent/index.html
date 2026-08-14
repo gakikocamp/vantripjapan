@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="/css/style.css?v=20260810a">
-    <link rel="stylesheet" href="/css/rent.css?v=20260810b">
+    <link rel="stylesheet" href="/css/rent.css?v=20260814a">
     <!-- Google Analytics -->
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RC4937NTHC"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-RC4937NTHC');</script>
@@ -2223,6 +2223,9 @@
         if (!(days > 0) || days > 60) return;
 
         var LP = (window.VTJ_FORCE_LANG && window.VTJ_FORCE_LANG !== 'en') ? '/' + window.VTJ_FORCE_LANG : '';
+        var LOCALES = { en: 'en-US', fr: 'fr-FR', de: 'de-DE', zh: 'zh-TW', he: 'he-IL' };
+        var loc = LOCALES[window.VTJ_FORCE_LANG || 'en'] || 'en-US';
+        function fdate(d) { try { return d.toLocaleDateString(loc, { month: 'short', day: 'numeric' }); } catch (e) { return d.toISOString().slice(5, 10); } }
         function tr(k, fb) {
             try {
                 var lang = window.VTJ_FORCE_LANG || (typeof currentLang !== 'undefined' ? currentLang : 'en');
@@ -2255,15 +2258,15 @@
             // 検索サマリーバナー
             var banner = document.createElement('div');
             banner.className = 'search-results-banner';
-            banner.innerHTML = '🔍 <b>' + from + ' → ' + to + '</b> · ' + days + ' ' + tr('results.days', 'days') +
-                ' · 👥' + guests + ' <a href="' + LP + '/#hero">' + tr('results.change', 'Change dates') + '</a>';
+            banner.innerHTML = '🔍 <b>' + fdate(d1) + ' → ' + fdate(d2) + '</b> · ' + days + ' ' + tr('results.days', 'days') +
+                ' · 👥' + guests + ' <span class="srb-count"></span> <a href="' + LP + '/#hero">' + tr('results.change', 'Change dates') + '</a>';
             grid.parentNode.insertBefore(banner, grid);
 
             VEHICLES.forEach(function (v) {
                 var link = document.querySelector('.vehicle-card a[href$="/rent/' + v.slug + '/"]');
                 var card = link ? link.closest('.vehicle-card') : null;
                 if (!card) return;
-                var anchor = card.querySelector('.vehicle-insurance-note') || card.querySelector('.vehicle-price');
+                var anchor = card.querySelector('h3');
                 var strip = document.createElement('div');
                 var booked = conflicts((data.vehicles || {})[v.api]);
                 var q = quote(v.base);
@@ -2285,13 +2288,21 @@
                         tr('results.askother', 'Ask Karen about these dates') + '</a>';
                 }
                 anchor.parentNode.insertBefore(strip, anchor.nextSibling);
+                card.classList.add('has-result');
                 var sel = strip.querySelector('.rs-select');
                 if (sel && typeof gtag === 'function') {
                     sel.addEventListener('click', function () { gtag('event', 'select_vehicle', { vehicle: v.slug, days: days }); });
                 }
             });
-            if (typeof gtag === 'function') gtag('event', 'view_search_results', { days: days, guests: guests });
-            setTimeout(function () { banner.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 250);
+            var availCount = document.querySelectorAll('.result-strip.ok').length;
+            var cnt = banner.querySelector('.srb-count');
+            if (cnt) cnt.innerHTML = '· <b>' + availCount + '/3</b> ✅';
+            if (typeof gtag === 'function') gtag('event', 'view_search_results', { days: days, guests: guests, available: availCount });
+            setTimeout(function () { banner.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 600);
+            setTimeout(function () {
+                var r = banner.getBoundingClientRect();
+                if (r.top < 0 || r.top > 300) banner.scrollIntoView({ block: 'start' });
+            }, 1600);
         }).catch(function () { /* 取得失敗時は通常表示のまま */ });
     })();
     </script>
