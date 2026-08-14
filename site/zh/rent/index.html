@@ -1552,6 +1552,7 @@
     </div><!-- end .rent-page -->
 
     <script src="/js/nav.js?v=20260720j"></script>
+    <script src="/js/rate-calendar.js?v=20260814a"></script>
     <script>window.VTJ_FORCE_LANG='zh';</script><script src="/js/i18n.js?v=2026080401"></script>
     <script>
         // ── Price Calculator ──
@@ -2270,12 +2271,19 @@
                 var strip = document.createElement('div');
                 var booked = conflicts((data.vehicles || {})[v.api]);
                 var q = quote(v.base);
+                var rf = (window.VTJ_rateFactor) ? window.VTJ_rateFactor(from, days, v.slug) : { factor: 1, seasons: {} };
+                q.total = Math.round(q.total * rf.factor);
+                var seasonHtml = '';
+                for (var sk in rf.seasons) {
+                    seasonHtml += '<div class="rs-season">' + tr('season.' + sk, sk) +
+                        (rf.seasons[sk].early ? ' · <b>' + tr('season.earlybird', 'Early-bird rate — rises Feb 1') + '</b>' : '') + '</div>';
+                }
                 if (!booked) {
                     var discTxt = q.disc ? ' · -' + Math.round(q.disc * 100) + '%' : '';
                     var fitsTxt = guests > v.cap ? '<div class="rs-fits">⚠️ ' + tr('results.fits', 'Fits up to {N} guests').replace('{N}', v.cap) + '</div>' : '';
                     strip.className = 'result-strip ok' + (guests > v.cap ? ' dim' : '');
                     strip.innerHTML =
-                        '<div class="rs-status">✅ ' + tr('results.available', 'Available for your dates') + '</div>' +
+                        '<div class="rs-status">✅ ' + tr('results.available', 'Available for your dates') + '</div>' + seasonHtml +
                         '<div class="rs-total">¥' + q.total.toLocaleString() + '<small> · ' + days + ' ' + tr('results.days', 'days') + discTxt + '</small></div>' +
                         '<div class="rs-est">' + tr('results.est', 'Estimated total — not a confirmed booking yet. Karen confirms availability & final quote (no payment now).') + '</div>' + fitsTxt +
                         '<a class="rs-select" data-track="select_' + v.slug + '" href="' + LP + '/book/?vehicle=' + v.slug + '&from=' + from + '&to=' + to + '&guests=' + guests + '">' + tr('results.select', 'Request this van →') + '</a>';

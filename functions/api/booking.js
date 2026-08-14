@@ -7,6 +7,7 @@
  */
 
 import { encrypt, decrypt } from './_crypto.js';
+import { rateFactor } from '../_rate-calendar.js';
 import { buildCompleteToken } from './_complete-token.js';
 
 function ensureBookingBindings(env) {
@@ -31,7 +32,8 @@ function estimateBookingTotal(vehicleType, pickup, returns) {
   const weeklyTotal = (5 * base) + (2 * weekendRate);
   // VTJ公式ルール: 各週の1-5日目=平日料金、6日目=週末料金（6日=5平日+1週末）
   const rem = days % 7;
-  const baseTotal = (Math.floor(days / 7) * weeklyTotal) + (Math.min(rem, 5) * base) + (Math.max(0, rem - 5) * weekendRate);
+  let baseTotal = (Math.floor(days / 7) * weeklyTotal) + (Math.min(rem, 5) * base) + (Math.max(0, rem - 5) * weekendRate);
+  baseTotal = Math.round(baseTotal * rateFactor(pickup, days, vehicleType)); // シーズン係数(桜等)
   const tier = DISCOUNT_TIERS.find((t) => days >= t.minDays);
   const total = Math.round(baseTotal * (1 - (tier ? tier.rate : 0)));
   return { total, label: tier ? tier.label : null, days };

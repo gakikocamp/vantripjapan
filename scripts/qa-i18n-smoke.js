@@ -85,3 +85,18 @@ console.log(`ENページ: ${enOk}/${EN_PAGES.length} OK`);
 
 if (fail > 0) { console.log(`\n🚫 QA FAIL: ${fail}件`); process.exit(1); }
 console.log("\n🧪 QA PASS");
+
+// ═══ 料金カレンダー: クライアント/サーバのRATE_DATA一致検査 ═══
+(function () {
+  const fs = require('fs');
+  const ex = (f) => {
+    const t = fs.readFileSync(f, 'utf-8');
+    const m = t.match(/RATE_DATA_START \*\/([\s\S]*?)\/\* RATE_DATA_END/);
+    if (!m) throw new Error('RATE_DATAマーカーが見つからない: ' + f);
+    return m[1].replace(/\s+/g, ' ').trim();
+  };
+  const a = ex('site/js/rate-calendar.js');
+  const b = ex('functions/_rate-calendar.js');
+  if (a !== b) { console.error('❌ RATE_DATA不一致: site/js/rate-calendar.js と functions/_rate-calendar.js を同期すること'); process.exit(1); }
+  console.log('✅ 料金カレンダー同期OK');
+})();

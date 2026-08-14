@@ -894,6 +894,7 @@
             margin-top: 4px;
         }
     </style>
+    <script src="/js/rate-calendar.js?v=20260814a"></script>
 </head>
 <body>
 <div class="container">
@@ -1714,7 +1715,20 @@ function calculateBaseTotal(baseRate, days) {
     // VTJ公式ルール: 各週の1-5日目=平日料金、6日目=週末料金（6日レンタルは5平日+1週末）
     const remWeekday = Math.min(remainderDays, 5);
     const remWeekend = Math.max(0, remainderDays - 5);
-    return (fullWeeks * weeklyTotal) + (remWeekday * baseRate) + (remWeekend * weekendRate);
+    let total = (fullWeeks * weeklyTotal) + (remWeekday * baseRate) + (remWeekend * weekendRate);
+    // シーズン係数(桜・紅葉等) — rate-calendar.js。選択中の取車日+車種をDOMから読む
+    try {
+        if (window.VTJ_rateFactor) {
+            const pEl = document.getElementById('pickup_datetime');
+            const vEl = document.querySelector('input[name="vehicle_type"]:checked');
+            const SLUGS = { 'TOYOTA PROBOX': 'probox', 'MAZDA BONGO': 'bongo', 'DAIHATSU POCKET LOFT': 'loft' };
+            if (pEl && pEl.value && pEl.value.length >= 10) {
+                const rf = window.VTJ_rateFactor(pEl.value.slice(0, 10), days, vEl ? (SLUGS[vEl.value] || '') : '');
+                total = Math.round(total * rf.factor);
+            }
+        }
+    } catch (e) { /* 係数取得失敗時は基本料金のまま */ }
+    return total;
 }
 
 function getDiscount(days) {
