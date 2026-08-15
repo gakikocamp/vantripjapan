@@ -42,6 +42,21 @@ node scripts/qa-i18n-smoke.js
 
 echo ""
 echo "═══ 4/5 Cloudflare Pages デプロイ ═══"
+# wrangler 4.112 以降は Node 22+ を要求する。ビルド・QAは Node 20 でも通るので、
+# ここだけ必要なら nvm で切り替える（切り替えられなければ理由を出して止める）
+WRANGLER_MIN=$(node -p "try{require('./node_modules/wrangler/package.json').engines.node.replace(/[^0-9.]/g,'').split('.')[0]}catch(e){'22'}")
+NODE_MAJOR=$(node -p "process.versions.node.split('.')[0]")
+if [ "$NODE_MAJOR" -lt "$WRANGLER_MIN" ]; then
+  echo "  ℹ️  wrangler は Node ${WRANGLER_MIN}+ が必要（現在 v$(node -v | tr -d v)）— nvm で切り替えます"
+  # shellcheck disable=SC1090
+  if [ -s "$HOME/.nvm/nvm.sh" ]; then . "$HOME/.nvm/nvm.sh"; nvm use "$WRANGLER_MIN" >/dev/null 2>&1 || true; fi
+  NODE_MAJOR=$(node -p "process.versions.node.split('.')[0]")
+  if [ "$NODE_MAJOR" -lt "$WRANGLER_MIN" ]; then
+    echo "  ❌ Node ${WRANGLER_MIN}+ に切り替えられませんでした。'nvm install ${WRANGLER_MIN}' の上で再実行してください"
+    exit 1
+  fi
+  echo "  ✅ Node $(node -v) で実行します"
+fi
 npx wrangler pages deploy
 
 echo ""
