@@ -44,6 +44,7 @@ const PAGES = [
     "rent/probox/",
     "road-trip-planner/",
     "contact/",
+    "support/",
 ];
 
 // SEO title / meta description per language and page.
@@ -82,6 +83,10 @@ const META = {
             title: "Contact — VAN TRIP JAPAN | Location de campervan à Fukuoka",
             desc: "Des questions sur la location d'un van à Fukuoka ? Écrivez-nous sur WhatsApp, LINE ou via le formulaire. Réponse sous 24 h.",
         },
+        "support/": {
+            title: "24/7 assistance humaine — incluse avec chaque location | VAN TRIP JAPAN",
+            description: "Réservation de campings en japonais, aide médicale en cas d'urgence et conseils d'itinéraire par une famille locale — inclus gratuitement avec chaque location de van au Kyushu.",
+        },
     },
     de: {
         "": {
@@ -115,6 +120,10 @@ const META = {
         "contact/": {
             title: "Kontakt — VAN TRIP JAPAN | Campervan mieten in Fukuoka",
             desc: "Fragen zur Campervan-Miete in Fukuoka? Schreiben Sie uns auf WhatsApp, LINE oder über das Formular. Antwort innerhalb von 24 Stunden.",
+        },
+        "support/": {
+            title: "24/7 persönlicher Support — bei jeder Miete inklusive | VAN TRIP JAPAN",
+            description: "Campingplatz-Buchungen auf Japanisch, medizinische Hilfe im Notfall und Routentipps von einer einheimischen Familie — bei jeder Campervan-Miete in Kyushu kostenlos inklusive.",
         },
     },
     zh: {
@@ -150,6 +159,10 @@ const META = {
             title: "聯絡我們 — VAN TRIP JAPAN | 福岡露營車租借",
             desc: "關於福岡露營車租借的問題？透過WhatsApp、LINE或表單與我們聯繫。24小時內回覆。",
         },
+        "support/": {
+            title: "24小時真人支援——每趟租車都包含 | VAN TRIP JAPAN",
+            description: "以日文代訂露營地、緊急時協助就醫、在地家庭推薦的路線與景點——租車即享，完全免費。",
+        },
     },
     he: {
         "": {
@@ -183,6 +196,10 @@ const META = {
         "contact/": {
             title: "צרו קשר — VAN TRIP JAPAN | השכרת קרוואנים בפוקואוקה",
             desc: "שאלות על השכרת קרוואן בפוקואוקה? כתבו לנו בוואטסאפ, ב-LINE או בטופס. מענה תוך 24 שעות.",
+        },
+        "support/": {
+            title: "תמיכה אנושית 24/7 — כלולה בכל השכרה | VAN TRIP JAPAN",
+            description: "הזמנת אתרי קמפינג ביפנית, סיוע רפואי בחירום וייעוץ מסלולים ממשפחה מקומית — כלול בחינם בכל השכרת קרוואן בקיושו.",
         },
     },
 };

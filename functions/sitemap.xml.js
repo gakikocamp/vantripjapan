@@ -23,6 +23,7 @@ const STATIC_PAGES = [
   { loc: '/category/',         changefreq: 'monthly', priority: '0.7', hreflang: false },
   { loc: '/faq/',              changefreq: 'monthly', priority: '0.6', hreflang: true  },
   { loc: '/contact/',          changefreq: 'monthly', priority: '0.6', hreflang: true  },
+  { loc: '/support/',          changefreq: 'monthly', priority: '0.7', hreflang: true  },
   { loc: '/rent/bongo/',       changefreq: 'monthly', priority: '0.6', hreflang: true  },
   { loc: '/rent/loft/',        changefreq: 'monthly', priority: '0.6', hreflang: true  },
   { loc: '/rent/probox/',      changefreq: 'monthly', priority: '0.6', hreflang: true  },
