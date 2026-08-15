@@ -20,7 +20,7 @@
     <link rel="alternate" hreflang="zh-Hant" href="https://vantripjapan.jp/zh/overnight-parking/michi-no-eki/fukuoka/omuta/">
     <link rel="alternate" hreflang="x-default" href="https://vantripjapan.jp/overnight-parking/michi-no-eki/fukuoka/omuta/">
     <link rel="icon" type="image/png" href="/images/favicon.png">
-    <link rel="stylesheet" href="/css/style.css?v=20260810a">
+    <link rel="stylesheet" href="/css/style.css?v=20260720j">
     
 
     <!-- Google Analytics -->
@@ -179,6 +179,16 @@
         .status-banner.prohibited .dot { background: var(--st-red); } .status-banner.noban .dot { background: var(--st-teal); } .status-banner.rv .dot { background: var(--st-green); } .status-banner.paidonly .dot { background: var(--st-amber); }
         .status-banner .st-verified { margin-top: 8px; font-size: 0.85rem; opacity: 0.88; font-variant-numeric: tabular-nums; }
         /* AIが引用する用の自己完結文。読者にも要約として役立つので隠さず見せる */
+        /* 上流ピラー: 答えを最大活字にし、禁止駅は個別カードで引用しやすくする */
+        .pillar-answer { border-left: 5px solid var(--st-teal); }
+        .pillar-claim { font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.65; font-weight: 600; }
+        .pillar-ban { border-left: 5px solid var(--st-red); margin-bottom: 16px; }
+        .pillar-ban.paidonly { border-left-color: var(--st-amber); }
+        .pillar-ban h3 { margin: 6px 0 0; font-size: 1.15rem; font-family: var(--font-serif); }
+        .pillar-ban h3 a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+        .pillar-ban-label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--st-red-text); }
+        .pillar-ban.paidonly .pillar-ban-label { color: var(--st-amber-text); }
+        .pillar-cta { background: var(--st-teal-tint); }
         .st-claim { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(0,0,0,0.09); font-size: 0.95rem; line-height: 1.6; opacity: 0.95; }
         @keyframes ovn-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
         .station-list { display: block; }

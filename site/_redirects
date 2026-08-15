@@ -39,9 +39,10 @@ https://admin.vantripjapan.jp/ /admin/ 302
 # /book/ re-enabled 2026-06-11 — direct booking funnel from /rent/ CTAs
 /book /book/ 301
 
-# Overnight DB — section root redirects to the michi-no-eki database
-/overnight-parking /overnight-parking/michi-no-eki/ 301
-/overnight-parking/ /overnight-parking/michi-no-eki/ 301
+# Overnight DB — /overnight-parking/ は上流ピラー（「日本で車中泊は合法か」）の実ページ。
+# 以前はDBへ301していたが、仏独の検索需要が駅名ではなく合法性の問いに集中しているため
+# 実ページに変更した。末尾スラッシュ無しだけ正規化する。
+/overnight-parking /overnight-parking/ 301
 
 # Deprecated pages redirect
 /writer/ /category/ 301

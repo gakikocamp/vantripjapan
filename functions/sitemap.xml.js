@@ -118,7 +118,8 @@ export async function onRequest(context) {
 
   // 車中泊DB（overnight DB）— 4言語クラスタ、lastmod はDB更新日
   const ovnEntries = OVERNIGHT_URLS.flatMap(loc => {
-    const isIndex = loc === '/overnight-parking/michi-no-eki/';
+    // 上流ピラーとDBトップを最上位の優先度に置く（下層は駅ページ）
+    const isIndex = loc === '/overnight-parking/michi-no-eki/' || loc === '/overnight-parking/';
     return ['', ...Object.values(OVN_LANG_DIRS)].map(dir => [
       '  <url>',
       `    <loc>${BASE_URL}${dir}${loc}</loc>`,

@@ -45,6 +45,23 @@
             text-decoration: line-through !important;
             background: transparent !important;
         }
+
+        /* 日別価格タグ（カレンダー） */
+        .flatpickr-day { position: relative; }
+        .fp-day-price {
+            position: absolute; left: 0; right: 0; bottom: 1px;
+            font-size: 8.5px; line-height: 1; font-weight: 700;
+            color: #8A8172; letter-spacing: -0.2px; pointer-events: none;
+        }
+        .fp-day-price.wknd { color: #C4704B; }
+        .fp-day-price.peak { color: #B45309; }
+        .flatpickr-day.selected .fp-day-price,
+        .flatpickr-day.startRange .fp-day-price,
+        .flatpickr-day.endRange .fp-day-price { color: rgba(255,255,255,0.9); }
+        .flatpickr-day { height: 42px; line-height: 34px; }
+        .fp-legend {
+            font-size: 11.5px; color: var(--text-sec); margin-top: 6px; line-height: 1.6;
+        }
     </style>
     <style>
         :root {
@@ -1465,6 +1482,31 @@ function initFlatpickr(vehicle) {
     const FP_LOCALE = (fpLang && flatpickr.l10ns && flatpickr.l10ns[fpLang]) ? fpLang : 'default';
     
     const pickupConfig = {
+        onDayCreate: function(dObj, dStr, fp, dayElem) {
+            // 日別の目安価格を表示（航空会社のカレンダーと同じ発想）。
+            // 表示するのはシーズン係数のみ＝公開価格。直前割のような"後から安くなる"要素は
+            // 一切入れないため、早く予約した人が損をすることがない。
+            try {
+                if (!window.VTJ_rateFactor || dayElem.classList.contains('flatpickr-disabled')) return;
+                const d = dayElem.dateObj;
+                if (!d) return;
+                const iso = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+                const vEl = document.querySelector('input[name="vehicle_type"]:checked');
+                const SLUGS = { 'TOYOTA PROBOX': 'probox', 'MAZDA BONGO': 'bongo', 'DAIHATSU POCKET LOFT': 'loft' };
+                const BASES = { 'TOYOTA PROBOX': 22000, 'MAZDA BONGO': 22000, 'DAIHATSU POCKET LOFT': 25000 };
+                const base = vEl ? (BASES[vEl.value] || 22000) : 22000;
+                const slug = vEl ? (SLUGS[vEl.value] || '') : '';
+                const dow = d.getDay();
+                const dayRate = (dow === 0 || dow === 6) ? Math.round(base * 1.5) : base;   // 週末=1.5倍
+                const rf = window.VTJ_rateFactor(iso, 1, slug);
+                const price = Math.round(dayRate * rf.factor);
+                const tag = document.createElement('span');
+                tag.className = 'fp-day-price' + (rf.factor > 1 ? ' peak' : (dow === 0 || dow === 6 ? ' wknd' : ''));
+                tag.textContent = '¥' + Math.round(price / 1000) + 'k';
+                dayElem.appendChild(tag);
+                if (rf.factor > 1) dayElem.title = 'Season rate';
+            } catch (e) { /* 価格表示に失敗してもカレンダー自体は動かす */ }
+        },
         enableTime: true,
         dateFormat: "Y-m-d H:i",
         time_24hr: true,
@@ -1480,6 +1522,31 @@ function initFlatpickr(vehicle) {
     };
     
     const returnConfig = {
+        onDayCreate: function(dObj, dStr, fp, dayElem) {
+            // 日別の目安価格を表示（航空会社のカレンダーと同じ発想）。
+            // 表示するのはシーズン係数のみ＝公開価格。直前割のような"後から安くなる"要素は
+            // 一切入れないため、早く予約した人が損をすることがない。
+            try {
+                if (!window.VTJ_rateFactor || dayElem.classList.contains('flatpickr-disabled')) return;
+                const d = dayElem.dateObj;
+                if (!d) return;
+                const iso = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+                const vEl = document.querySelector('input[name="vehicle_type"]:checked');
+                const SLUGS = { 'TOYOTA PROBOX': 'probox', 'MAZDA BONGO': 'bongo', 'DAIHATSU POCKET LOFT': 'loft' };
+                const BASES = { 'TOYOTA PROBOX': 22000, 'MAZDA BONGO': 22000, 'DAIHATSU POCKET LOFT': 25000 };
+                const base = vEl ? (BASES[vEl.value] || 22000) : 22000;
+                const slug = vEl ? (SLUGS[vEl.value] || '') : '';
+                const dow = d.getDay();
+                const dayRate = (dow === 0 || dow === 6) ? Math.round(base * 1.5) : base;   // 週末=1.5倍
+                const rf = window.VTJ_rateFactor(iso, 1, slug);
+                const price = Math.round(dayRate * rf.factor);
+                const tag = document.createElement('span');
+                tag.className = 'fp-day-price' + (rf.factor > 1 ? ' peak' : (dow === 0 || dow === 6 ? ' wknd' : ''));
+                tag.textContent = '¥' + Math.round(price / 1000) + 'k';
+                dayElem.appendChild(tag);
+                if (rf.factor > 1) dayElem.title = 'Season rate';
+            } catch (e) { /* 価格表示に失敗してもカレンダー自体は動かす */ }
+        },
         enableTime: true,
         dateFormat: "Y-m-d H:i",
         time_24hr: true,

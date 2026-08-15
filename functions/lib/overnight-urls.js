@@ -2,6 +2,7 @@
 // Overnight DB pages exist in en (no prefix) + fr/de/zh dirs. lastmod = database 'updated'.
 export const OVERNIGHT_LASTMOD = "2026-07-27";
 export const OVERNIGHT_URLS = [
+  "/overnight-parking/",
   "/overnight-parking/michi-no-eki/",
   "/overnight-parking/michi-no-eki/fukuoka/",
   "/overnight-parking/michi-no-eki/saga/",
