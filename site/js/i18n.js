@@ -563,7 +563,7 @@ const translations = {
         "home.hero.trust1": "🚐 From ¥22,000/day",
         "home.hero.trust2": "📍 10 min from Airport",
         "home.hero.trust3": "🌏 100+ Languages",
-        "home.hero.trust4": "⭐️ Google Rating: 5.0 (40+ reviews)",
+        "home.hero.trust4": "⭐️ Rated 5.0 on Google",
 
         // FAQ page translations
         "faq.page.title": "Campervan Rental Japan — FAQ",
@@ -1343,7 +1343,7 @@ const translations = {
         "home.hero.trust1": "🚐 Dès 22 000 ¥/jour (env. 119 €)",
         "home.hero.trust2": "📍 À 10 min de l'aéroport",
         "home.hero.trust3": "🌏 Plus de 100 langues",
-        "home.hero.trust4": "⭐️ Note Google: 5.0 (40+ avis)",
+        "home.hero.trust4": "⭐️ Note Google : 5,0",
 
         // FAQ page translations
         "faq.page.title": "Location de camping-car au Japon — FAQ",
@@ -2125,7 +2125,7 @@ const translations = {
         "home.hero.trust1": "🚐 Ab ¥22.000/Tag (ca. 119 €)",
         "home.hero.trust2": "📍 10 Min. vom Flughafen",
         "home.hero.trust3": "🌏 100+ Sprachen",
-        "home.hero.trust4": "⭐️ Google-Bewertung: 5.0 (40+ Rezensionen)",
+        "home.hero.trust4": "⭐️ Google-Bewertung: 5,0",
 
         // FAQ page translations
         "faq.page.title": "Wohnmobil-Vermietung in Japan — FAQ",
@@ -2907,7 +2907,7 @@ const translations = {
         "home.hero.trust1": "🚐 每日 22,000 日圓起",
         "home.hero.trust2": "📍 距機場 10 分鐘",
         "home.hero.trust3": "🌏 支援 100+ 種語言",
-        "home.hero.trust4": "⭐️ Google 評分: 5.0 (40+ 則評論)",
+        "home.hero.trust4": "⭐️ Google 評分 5.0",
 
         // FAQ page translations
         "faq.page.title": "日本露營車租賃 — FAQ",
@@ -3673,7 +3673,7 @@ const translations = {
         "home.hero.trust1": "🚐 החל מ-¥22,000 ליום (כ־₪407)",
         "home.hero.trust2": "📍 10 דקות מהשדה",
         "home.hero.trust3": "🌏 100+ שפות",
-        "home.hero.trust4": "⭐️ דירוג גוגל: 5.0 (40+ חוות דעת)",
+        "home.hero.trust4": "⭐️ דירוג 5.0 בגוגל",
 
         // FAQ page translations
         "faq.page.title": "השכרת קרוואנים ביפן — שאלות ותשובות",
