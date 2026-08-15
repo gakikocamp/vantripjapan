@@ -11,7 +11,6 @@ Disallow: /admin/
 Disallow: /api/
 Disallow: /book/
 Disallow: /booking/
-Disallow: /privacy/
 Disallow: /rent/terms/
 Disallow: /scripts/
 Disallow: /404/
