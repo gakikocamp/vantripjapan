@@ -7,14 +7,24 @@ https://admin.vantripjapan.jp/ /admin/ 302
 # Duplicate articles: redirect thin old versions to full new versions
 /posts/japan-rv-rental-foreigners/ /posts/rv-rental-japan-foreigners-guide/ 301
 /posts/vanlife-japan-beginners/ /posts/vanlife-japan-beginners-guide/ 301
-/posts/solo-female-campervan-japan/ /posts/solo-female-campervan-japan-safety/ 301
+/posts/solo-female-campervan-japan/ /posts/kyushu-campervan-road-trip-itinerary/ 301
 /posts/sakurajima-campervan-guide/ /posts/sakurajima-volcano-campervan-guide/ 301
 /posts/yakushima-road-trip-guide/ /posts/yakushima-complete-campervan-ferry-guide/ 301
-/posts/campervan-rental-fukuoka-guide/ /posts/campervan-rental-fukuoka-guide-2026/ 301
+/posts/campervan-rental-fukuoka-guide/ /posts/fukuoka-campervan-rental/ 301
 /posts/japan-campervan-rental-cost-breakdown/ /posts/japan-campervan-trip-cost-breakdown-2026/ 301
 /posts/campervan-vs-train-japan/ /category/ 301
 /posts/japan-road-trip-budget-2026/ /posts/kyushu-road-trip-budget-2026/ 301
-/posts/campervan-rental-japan-guide-2026/ /posts/campervan-rental-fukuoka-guide-2026/ 301
+/posts/campervan-rental-japan-guide-2026/ /posts/fukuoka-campervan-rental/ 301
+
+# 削除済み記事 → 現行の近縁記事へ（GSC 404レポート 2026-08-15 検出分）
+/posts/japan-roadside-stations /overnight-parking/michi-no-eki/ 301
+/posts/japan-roadside-stations/ /overnight-parking/michi-no-eki/ 301
+/posts/fukuoka-to-kagoshima-campervan-scenic-route/ /posts/fukuoka-to-kagoshima-campervan/ 301
+/posts/campervan-rental-fukuoka-guide-2026/ /posts/fukuoka-campervan-rental/ 301
+/posts/solo-female-campervan-japan-safety/ /posts/kyushu-campervan-road-trip-itinerary/ 301
+/posts/family-campervan-trip-japan/ /posts/campervan-rental-fukuoka-for-families/ 301
+/posts/onsen-manners-foreigners/ /posts/kurokawa-onsen-guide/ 301
+/posts/campground-etiquette-japan/ /posts/book-campsite-japan-foreigner/ 301
 
 # Historical slug redirect
 /posts/drive-foreign-license/ /posts/german-license-japan/ 301

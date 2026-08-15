@@ -15,7 +15,7 @@
 
 import { decrypt } from '../_crypto.js';
 
-const FALLBACK_REVIEW_URL = 'https://maps.app.goo.gl/3uuep4h3zypPY6UYA';
+const FALLBACK_REVIEW_URL = 'https://g.page/r/CSd2nPFH92XIEAE/review'; // GBP「レビューをリクエスト」の直リンク(投稿画面が直接開く)
 const WA = 'https://wa.me/817093757129';
 
 const MAIL = {
