@@ -1,0 +1,98 @@
+{
+  "date": "2026-08-15",
+  "target": "vantripjapan.jp",
+  "results": [
+    {
+      "query": "Can you sleep overnight at Michi-no-Eki Takachiho",
+      "note": "AIが「禁止」と捏造した駅",
+      "rank": 1,
+      "url": "https://vantripjapan.jp/overnight-parking/michi-no-eki/miyazaki/takachiho/",
+      "top": [
+        "vantripjapan.jp",
+        "michistops.com",
+        "samuraicampers.com",
+        "hokkaido-campingcar.jp",
+        "ryukoch.com",
+        "prince-campervan.com",
+        "teraglide.com",
+        "japantravelplanning.com"
+      ],
+      "error": null
+    },
+    {
+      "query": "Michi-no-Eki Akune overnight parking allowed",
+      "note": "AIが逆に「可」と断定した駅",
+      "rank": 1,
+      "url": "https://vantripjapan.jp/overnight-parking/michi-no-eki/kagoshima/akune/",
+      "top": [
+        "vantripjapan.jp",
+        "hokkaido-campingcar.jp",
+        "michistops.com",
+        "samuraicampers.com",
+        "prince-campervan.com",
+        "facebook.com",
+        "teraglide.com"
+      ],
+      "error": null
+    },
+    {
+      "query": "michi no eki overnight parking allowed Kyushu",
+      "note": "一般クエリ",
+      "rank": 1,
+      "url": "https://vantripjapan.jp/overnight-parking/michi-no-eki/",
+      "top": [
+        "vantripjapan.jp",
+        "hokkaido-campingcar.jp",
+        "michistops.com",
+        "japan.travel",
+        "samuraicampers.com",
+        "drivejapan.net",
+        "relax-rentacar.com",
+        "michi-no-eki.com"
+      ],
+      "error": null
+    },
+    {
+      "query": "Is car camping legal at Japanese roadside stations",
+      "note": "上流クエリ（ピラーの標的）",
+      "rank": null,
+      "url": null,
+      "top": [
+        "netmaru.com",
+        "teraglide.com",
+        "ryukoch.com",
+        "nowpattern.com",
+        "roamandrollcampervan.com",
+        "mitmunk.com",
+        "holidaylandmark.com",
+        "medium.com"
+      ],
+      "error": null
+    },
+    {
+      "query": "is it legal to sleep in your car in Japan",
+      "note": "上流クエリ（ピラーの標的）",
+      "rank": null,
+      "url": null,
+      "top": [
+        "is-this-legal.com",
+        "teraglide.com",
+        "medium.com",
+        "unseen-japan.com",
+        "samuraicampers.com",
+        "reddit.com",
+        "tokyoweekender.com",
+        "emgoto.com"
+      ],
+      "error": null
+    },
+    {
+      "query": "which michi no eki ban overnight parking",
+      "note": "禁止リスト（独自の数字の標的）",
+      "rank": null,
+      "url": null,
+      "top": [],
+      "error": null
+    }
+  ]
+}
