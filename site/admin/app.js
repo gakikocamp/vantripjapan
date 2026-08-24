@@ -253,6 +253,12 @@ function nextActionOf(b) {
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const dd = (d) => { const x = new Date(d); if (isNaN(x)) return null; x.setHours(0,0,0,0); return Math.round((x - today) / 86400000); };
     const pd = dd(b.pickup_datetime), rd = dd(b.return_datetime);
+    // 返却日を過ぎているのに旅前ステータスのまま = レビュー依頼メールが永久に飛ばない状態。
+    // 何より先に気付けるよう最優先の「要対応」にする。
+    if (rd !== null && rd < 0 &&
+        ['form_submitted', 'docs_requested', 'docs_received', 'payment_sent', 'confirmed'].includes(b.status)) {
+        return { t: '⚠️ 返却済み？「完了にする」を押す', urgent: true };
+    }
     if (b.status === 'payment_sent') return { t: '💰 入金を確認する', urgent: true };
     if (b.status === 'docs_received') return { t: '💳 決済リンクを送る', urgent: true };
     if (b.status === 'form_submitted') return { t: '📩 返事をする', urgent: true };

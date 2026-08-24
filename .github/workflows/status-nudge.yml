@@ -1,0 +1,21 @@
+name: Status Nudge (予約ステータスの進め忘れ通知)
+
+on:
+  schedule:
+    # 毎日 日本時間 09:00 (00:00 UTC) — Karenの朝の確認タイミングに合わせる
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    # 手動実行用
+
+jobs:
+  status-nudge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call status-nudge endpoint
+        run: |
+          if [ -z "${{ secrets.CRON_SECRET }}" ]; then
+            echo "::error::CRON_SECRET is not set in GitHub repository secrets"; exit 1
+          fi
+          RESPONSE=$(curl -fsS -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "https://vantripjapan.jp/api/cron/status-nudge")
+          echo "Response: $RESPONSE"
