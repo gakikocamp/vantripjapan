@@ -2300,9 +2300,16 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
             if (typeof gtag === 'function') {
+                gtag('event', 'booking_request_submitted', {
+                    booking_id: String(bookingId),
+                    vehicle: data.vehicle_type,
+                    rental_days: Math.ceil((new Date(data.return_datetime) - new Date(data.pickup_datetime)) / 86400000),
+                    page_path: window.location.pathname
+                });
                 gtag('event', 'generate_lead', {
                     lead_type: 'booking_request',
-                    vehicle: data.vehicle_type
+                    vehicle: data.vehicle_type,
+                    booking_id: String(bookingId)
                 });
             }
         } else {

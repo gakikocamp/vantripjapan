@@ -1836,6 +1836,15 @@
                     if (!res.ok) throw new Error('API error');
                     return res.json();
                 }).then(function() {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'quote_request_submitted', {
+                            vehicle: vehicleName,
+                            rental_days: _calcDays,
+                            travelers: _calcPeople,
+                            page_path: window.location.pathname
+                        });
+                        gtag('event', 'generate_lead', { lead_type: 'quote_request', vehicle: vehicleName });
+                    }
                     showQuoteSuccess();
                 }).catch(function() {
                     // Fallback: open mailto
@@ -1853,6 +1862,9 @@
                          '• Email: ' + email + '\n\n' +
                          'Please send me a detailed quote. Thanks!'
                     );
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'quote_mailto_fallback', { vehicle: vehicleName, page_path: window.location.pathname });
+                    }
                     window.open('mailto:info@vantripjapan.jp?subject=' + subject + '&body=' + body, '_blank');
                     showQuoteSuccess();
                 });
@@ -1999,22 +2011,6 @@
             });
             card.addEventListener('mouseleave', function() {
                 card.style.transform = 'perspective(800px) rotateY(0) rotateX(0) translateY(0)';
-            });
-        });
-
-        // ── CTA click tracking (all CTAs including WhatsApp) ──
-        document.querySelectorAll('[data-track]').forEach(function(el) {
-            el.addEventListener('click', function() {
-                if (typeof gtag === 'function') {
-                    var trackId = el.getAttribute('data-track') || 'unknown';
-                    var isWhatsApp = trackId.indexOf('wa_') === 0;
-                    gtag('event', isWhatsApp ? 'generate_lead' : 'begin_booking', {
-                        cta_type: trackId,
-                        cta_text: el.textContent.trim().slice(0, 50),
-                        page_section: (el.closest('section') || {}).id || 'sticky',
-                        page: window.location.pathname
-                    });
-                }
             });
         });
 

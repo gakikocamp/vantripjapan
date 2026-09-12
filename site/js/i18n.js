@@ -31,6 +31,37 @@
     } catch (e) { /* storage unavailable — ignore */ }
 })();
 
+/* Funnel event definitions shared by rental, booking, vehicle and contact pages.
+   Channel clicks are intent signals only; successful form responses are tracked separately. */
+(function () {
+    if (typeof document === 'undefined') return;
+    document.addEventListener('click', function (event) {
+        var link = event.target.closest && event.target.closest('a');
+        if (!link || typeof gtag !== 'function') return;
+
+        var href = link.getAttribute('href') || '';
+        var trackId = link.getAttribute('data-track') || '';
+        var channel = '';
+        if (href.indexOf('wa.me/') !== -1) channel = 'whatsapp';
+        else if (href.indexOf('lin.ee/') !== -1) channel = 'line';
+        else if (href.indexOf('mailto:') === 0) channel = 'email';
+
+        var params = {
+            cta_id: trackId || link.getAttribute('aria-label') || 'unlabeled',
+            cta_text: (link.textContent || '').trim().slice(0, 80),
+            page_path: location.pathname,
+            page_section: (link.closest('section') || {}).id || 'other'
+        };
+
+        if (channel) {
+            params.channel = channel;
+            gtag('event', 'contact_channel_click', params);
+        } else if (trackId.indexOf('book_') === 0 || trackId.indexOf('select_') === 0) {
+            gtag('event', 'booking_cta_click', params);
+        }
+    });
+})();
+
 const translations = {
     en: {
         "pricing.fx_note": "All prices are billed in Japanese yen (¥). Amounts shown in other currencies are approximate, for reference only — the final charge depends on your card's exchange rate.",

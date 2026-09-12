@@ -1,0 +1,18 @@
+VTJ funnel measurement definitions
+==================================
+
+These definitions keep intent clicks separate from completed inquiries and operational outcomes.
+
+- Contact intent — `contact_channel_click`: count when a visitor opens WhatsApp, LINE, or email. Do not count it as a lead or inquiry.
+- Booking intent — `booking_cta_click`: count when a visitor opens a booking/request path or selects a vehicle from results. Do not count it as a submitted request.
+- Search results — `view_search_results`: count when date-based vehicle results render. Do not report the available vehicle count when `availability_complete` is false.
+- Quote request — `quote_request_submitted`: count only when `/api/quote` returns success. Do not count a mail-client fallback or button click.
+- Booking request — `booking_request_submitted`: count only when `/api/booking` returns a booking ID. Do not count it as a confirmed booking.
+- General GA4 lead — `generate_lead`: count only when a quote, booking, or contact form returns success. Do not fire it for WhatsApp, LINE, or email clicks.
+- Confirmed booking — D1 `bookings.status = confirmed`: count when Karen has confirmed the booking under the operating procedure. A form submission alone is insufficient.
+- Paid booking — D1 payment record/status: count only after payment has been verified. Sending a payment link is insufficient.
+- Rental completed — D1 `bookings.status = completed`: count after the vehicle has been returned and the rental closed. Do not count future confirmed revenue here.
+
+Use `booking_id` as the booking-form reconciliation key. Channel conversations without a booking ID must be matched to one operational record before they count as confirmed or completed. Deduplicate repeated events by booking ID for booking requests and by the operational record for downstream revenue reporting.
+
+GA4 reports describe the online funnel. D1 remains the source of truth for confirmed bookings, payments, actual rental days, cancellations, refunds, and revenue.

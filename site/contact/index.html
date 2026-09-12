@@ -393,6 +393,13 @@
         if (window.location.search.includes('sent=true')) {
             document.getElementById('contactForm').style.display = 'none';
             document.getElementById('formSuccess').style.display = 'block';
+            try {
+                if (!sessionStorage.getItem('vtj-contact-submitted') && typeof gtag === 'function') {
+                    sessionStorage.setItem('vtj-contact-submitted', '1');
+                    gtag('event', 'contact_form_submitted', { page_path: window.location.pathname });
+                    gtag('event', 'generate_lead', { lead_type: 'contact_form' });
+                }
+            } catch (e) { /* analytics must never block the success screen */ }
         }
     </script>
 </body>
