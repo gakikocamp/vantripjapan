@@ -4072,6 +4072,21 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
     padding-bottom: 8px;
 }
 
+.detail-photo-summary {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    margin: 2px 0 0;
+    color: var(--rent-text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.detail-photo-summary > span:first-child {
+    color: var(--rent-forest);
+    font-weight: 800;
+}
+
 .detail-thumb {
     width: 80px;
     height: 60px;
