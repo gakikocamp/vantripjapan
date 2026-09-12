@@ -603,7 +603,6 @@ const translations = {
         "whyus.oneway_title": "One-Way Drops",
         "social.viewers_label": "{n} travelers are looking at this van right now",
         "social.bookings_label": "{n} booking requests received in the last 7 days!",
-        "social.high_demand_banner": "⚡ <strong>High Demand Season</strong>: 78% of summer dates are already booked! We recommend requesting your dates early to secure a vehicle.",
         "social.recent_inquiry": "👀 Popular Choice: {n} travelers are looking at this vehicle for summer dates right now.",
         "social.recent_bookings": "📝 Recently Requested: {n} bookings requested for this van in the last 7 days.",
 
@@ -1400,7 +1399,6 @@ const translations = {
         "whyus.oneway_title": "Dépôts en aller simple",
         "social.viewers_label": "{n} voyageurs consultent ce van en ce moment",
         "social.bookings_label": "{n} demandes de réservation reçues ces 7 derniers jours !",
-        "social.high_demand_banner": "⚡ <strong>Saison à forte demande</strong> : 78% des dates d'été sont déjà réservées ! Nous vous recommandons de faire votre demande tôt pour garantir votre véhicule.",
         "social.recent_inquiry": "👀 Choix populaire : {n} voyageurs consultent ce véhicule pour des dates d'été en ce moment.",
         "social.recent_bookings": "📝 Récemment demandé : {n} réservations demandées pour ce van ces 7 derniers jours.",
 
@@ -2199,7 +2197,6 @@ const translations = {
         "whyus.oneway_title": "Einweg-Miete",
         "social.viewers_label": "{n} Reisende sehen sich diesen Van gerade an",
         "social.bookings_label": "{n} Buchungsanfragen in den letzten 7 Tagen eingegangen!",
-        "social.high_demand_banner": "⚡ <strong>Hochsaison</strong>: 78 % der Sommertermine sind bereits ausgebucht! Wir empfehlen, Ihre Termine frühzeitig anzufragen, um sich ein Fahrzeug zu sichern.",
         "social.recent_inquiry": "👀 Beliebte Wahl: {n} Reisende interessieren sich gerade für diesen Van im Sommer.",
         "social.recent_bookings": "📝 Kürzlich angefragt: {n} Buchungen für diesen Van in den letzten 7 Tagen angefragt.",
 
@@ -2998,7 +2995,6 @@ const translations = {
         "whyus.oneway_title": "單程甲租乙還",
         "social.viewers_label": "👀 目前有 {n} 位旅客正在瀏覽這輛露營車",
         "social.bookings_label": "📝 過去 7 天內已收到 {n} 筆預約申請！",
-        "social.high_demand_banner": "⚡ <strong>熱門預約季節</strong>：夏季 78% 的日期已售罄！建議您儘早送出預約申請以確保車輛。",
         "social.recent_inquiry": "👀 熱門選擇：目前有 {n} 位旅客正在關注夏季這輛露營車。",
         "social.recent_bookings": "📝 最近預約：過去 7 天內這輛露營車已有 {n} 筆預約申請。",
 
@@ -3781,7 +3777,6 @@ const translations = {
         "whyus.oneway_title": "החזרה בכיוון אחד",
         "social.viewers_label": "👀 {n} מטיילים צופים בוואן הזה ברגע זה",
         "social.bookings_label": "📝 {n} בקשות להזמנה התקבלו ב-7 הימים האחרונים!",
-        "social.high_demand_banner": "⚡ <strong>עונה בביקוש גבוה</strong>: 78% מתאריכי הקיץ כבר מוזמנים! אנו מומלץ לבקש את התאריכים שלך מוקדם כדי להבטיח רכב.",
         "social.recent_inquiry": "👀 בחירה פופולרית: {n} מטיילים מתעניינים ברכב זה לתאריכי קיץ כעת.",
         "social.recent_bookings": "📝 התבקש לאחרונה: {n} הזמנות התבקשו לוואן זה ב-7 הימים האחרונים.",
 
