@@ -1863,7 +1863,7 @@ function checkVehiclesFilter() {
                 if (fromDate && toDate && toDate > fromDate) {
                     const days = Math.ceil((new Date(toDate) - new Date(fromDate)) / (1000 * 60 * 60 * 24));
                     if (days > 0) {
-                        const baseTotal = calculateBaseTotal(config.base, days);
+                        const baseTotal = calculateBaseTotal(config.base, days, vKey);
                         const discount = getDiscount(days);
                         const finalPrice = Math.round(baseTotal * (1 - discount.rate));
                         priceMsg.innerHTML = `<strong>¥${finalPrice.toLocaleString()}</strong>${eurHint(finalPrice)} for ${days} days ${discount.rate > 0 ? `<small style="color:var(--accent); font-weight:700">(${discount.label})</small>` : ''}`;
@@ -1878,15 +1878,16 @@ function checkVehiclesFilter() {
     });
 }
 
-function calculateBaseTotal(baseRate, days) {
+function calculateBaseTotal(baseRate, days, vehicleType) {
     const pEl = document.getElementById('pickup_datetime');
     const vEl = document.querySelector('input[name="vehicle_type"]:checked');
     const SLUGS = { 'TOYOTA PROBOX': 'probox', 'MAZDA BONGO': 'bongo', 'DAIHATSU POCKET LOFT': 'loft' };
     const pickupDate = pEl && pEl.value ? pEl.value.slice(0, 10) : '';
+    const quoteVehicle = vehicleType || (vEl ? vEl.value : '');
 
     try {
         if (window.VTJ_quoteRental && pickupDate) {
-            const quote = window.VTJ_quoteRental(baseRate, pickupDate, days, vEl ? (SLUGS[vEl.value] || '') : '');
+            const quote = window.VTJ_quoteRental(baseRate, pickupDate, days, SLUGS[quoteVehicle] || '');
             if (quote) return quote.subtotal;
         }
     } catch (e) { /* 共通料金関数が失敗した場合は下の基本計算へ */ }
