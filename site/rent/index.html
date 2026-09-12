@@ -2176,6 +2176,34 @@
             { slug: 'bongo', api: 'MAZDA BONGO', base: 22000, cap: 3 },
             { slug: 'loft', api: 'DAIHATSU POCKET LOFT', base: 25000, cap: 4 }
         ];
+        function recordDemand(availableCount, availabilityIsComplete) {
+            var attribution = {};
+            try {
+                var stored = JSON.parse(localStorage.getItem('vtj-attr') || '{}');
+                attribution = {
+                    ref: stored.ref || '',
+                    lp: stored.lp || '',
+                    utm_source: stored.utm_source || '',
+                    utm_medium: stored.utm_medium || '',
+                    utm_campaign: stored.utm_campaign || ''
+                };
+            } catch (e) {}
+            fetch('/api/demand', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                keepalive: true,
+                body: JSON.stringify({
+                    pickup_date: from,
+                    return_date: to,
+                    guests: guests,
+                    compatible_count: VEHICLES.filter(function (v) { return guests <= v.cap; }).length,
+                    available_count: availabilityIsComplete ? availableCount : null,
+                    availability_complete: availabilityIsComplete,
+                    language: window.VTJ_FORCE_LANG || (typeof currentLang !== 'undefined' ? currentLang : 'en'),
+                    attribution: attribution
+                })
+            }).catch(function () { /* analytics must never block vehicle results */ });
+        }
         function conflicts(ranges) {
             for (var i = 0; i < (ranges || []).length; i++) {
                 if (from < ranges[i].to && to > ranges[i].from) return true;
@@ -2253,6 +2281,7 @@
                 available: needsVerification ? -1 : availCount,
                 availability_complete: !needsVerification
             });
+            recordDemand(availCount, !needsVerification);
             setTimeout(function () { banner.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 600);
             setTimeout(function () {
                 var r = banner.getBoundingClientRect();
@@ -2264,6 +2293,7 @@
                 encodeURIComponent('Hi Karen! Is anything available around ' + from + ' - ' + to + '? (' + guests + ' guests)') + '">💬 ' +
                 tr('results.askother', 'Ask Karen about these dates') + '</a>';
             if (typeof gtag === 'function') gtag('event', 'availability_load_failed', { page_path: window.location.pathname });
+            recordDemand(null, false);
         });
     })();
     </script>

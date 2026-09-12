@@ -23,3 +23,5 @@ These definitions keep intent clicks separate from completed inquiries and opera
 Use `booking_id` as the booking-form reconciliation key. Channel conversations without a booking ID must be matched to one operational record before they count as confirmed or completed. Deduplicate repeated events by booking ID for booking requests and by the operational record for downstream revenue reporting.
 
 GA4 reports describe the online funnel. D1 remains the source of truth for confirmed bookings, payments, actual rental days, cancellations, refunds, and revenue.
+
+Date searches are also written to the privacy-safe D1 `rental_searches` table through `POST /api/demand`. This operational log captures requested dates, party size, compatible/available vehicle counts and coarse attribution. It never stores contact details, raw IP addresses, user agents, gclid values or WhatsApp text. Use authenticated `GET /api/admin/demand-summary?days=90` for aggregated pricing and capacity analysis.

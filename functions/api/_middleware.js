@@ -73,6 +73,8 @@ function isPublicRequest(request) {
   if (path === '/api/cron/pickup-reminder' && method === 'GET') return true;
   // Public: POST quote request
   if (path === '/api/quote' && method === 'POST') return true;
+  // Public: privacy-safe rental search demand capture
+  if (path === '/api/demand' && method === 'POST') return true;
   // Public: POST overnight DB field report (honeypot+レート制限はエンドポイント内)
   if (path === '/api/overnight-report' && method === 'POST') return true;
   // Public: 車中泊DBの○×投票（GET=集計取得 / POST=投票。IPハッシュで重複防止）
