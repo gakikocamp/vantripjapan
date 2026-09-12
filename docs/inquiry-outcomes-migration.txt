@@ -1,0 +1,25 @@
+-- VanTripJapan inquiry outcome migration
+-- ======================================
+-- Target binding/database: CUSTOMERS_DB / vtj-customers
+--
+-- The table deliberately excludes names, phone numbers, email addresses,
+-- message text, raw IP addresses and external conversation IDs.
+
+CREATE TABLE IF NOT EXISTS inquiry_outcomes (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  inquiry_date TEXT NOT NULL,
+  channel TEXT NOT NULL,
+  outcome TEXT NOT NULL,
+  loss_reason TEXT NOT NULL DEFAULT '',
+  desired_from TEXT,
+  desired_to TEXT,
+  guests INTEGER,
+  vehicle TEXT NOT NULL DEFAULT 'unsure',
+  language TEXT NOT NULL DEFAULT '',
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_inquiry_outcomes_date
+  ON inquiry_outcomes(inquiry_date);
+CREATE INDEX IF NOT EXISTS idx_inquiry_outcomes_result
+  ON inquiry_outcomes(outcome, loss_reason);

@@ -111,15 +111,96 @@ function switchPage(pageName) {
 
     const titles = {
         bookings: '予約',
+        demand: '需要分析',
         crm: 'メルマガ・CRM',
     };
     $('#pageTitle').textContent = titles[pageName] || pageName;
 
     if (pageName === 'bookings') loadBookings();
+    if (pageName === 'demand') loadDemand();
     if (pageName === 'crm') loadCRM();
 
     $('#sidebar').classList.remove('open');
 }
+
+// ============================================================
+// Demand & inquiry outcome analysis
+// ============================================================
+
+const INQUIRY_CHANNEL_LABELS = { whatsapp: 'WhatsApp', gmail: 'Gmail', form: '予約フォーム', other: 'その他' };
+const INQUIRY_OUTCOME_LABELS = { open: '対応中', won: '成約', lost: '失注' };
+const INQUIRY_VEHICLE_LABELS = { bongo: 'Bongo', probox: 'Probox', loft: 'Pocket Loft', any: 'どれでも', unsure: '未定' };
+
+window.loadDemand = async function() {
+    try {
+        const [searches, inquiries] = await Promise.all([
+            api('/api/admin/demand-summary?days=90'),
+            api('/api/admin/inquiry-outcomes?days=90')
+        ]);
+        const st = searches.totals || {};
+        $('#demandSearches').textContent = st.searches || 0;
+        $('#demandSoldOut').textContent = st.sold_out_searches || 0;
+        $('#demandUnsupported').textContent = st.unsupported_party_searches || 0;
+        $('#demandLeadDays').textContent = st.average_lead_days == null ? '—' : `${st.average_lead_days}日`;
+        $('#demandMonthsBody').innerHTML = (searches.pickup_months || []).map(row => `<tr>
+            <td><strong>${row.pickup_month}</strong></td><td>${row.searches}</td><td>${row.average_rental_days ?? '—'}日</td>
+            <td>${row.average_available_vehicles ?? '—'}台</td><td>${row.sold_out_searches || 0}</td>
+        </tr>`).join('') || '<tr><td colspan="5">まだ検索データがありません</td></tr>';
+        $('#demandDatesBody').innerHTML = (searches.top_date_ranges || []).map(row => `<tr>
+            <td><strong>${row.pickup_date} → ${row.return_date}</strong></td><td>${row.guests}名</td><td>${row.searches}</td>
+            <td>${row.sold_out_searches || 0}</td><td>${row.unsupported_party_searches || 0}</td>
+        </tr>`).join('') || '<tr><td colspan="5">まだ検索データがありません</td></tr>';
+
+        const it = inquiries.totals || {};
+        $('#inquiryTotal').textContent = it.inquiries || 0;
+        $('#inquiryWon').textContent = it.won || 0;
+        $('#inquiryLost').textContent = it.lost || 0;
+        $('#inquiryOpen').textContent = it.open || 0;
+        $('#lossReasonsBody').innerHTML = (inquiries.loss_reasons || []).map(row => `<div><span>${LOSS_REASON_LABELS[row.loss_reason] || 'その他'}</span><strong>${row.inquiries}</strong></div>`).join('') || '<p>まだ失注データがありません</p>';
+        $('#inquiryChannelsBody').innerHTML = (inquiries.channels || []).map(row => `<div><span>${INQUIRY_CHANNEL_LABELS[row.channel] || row.channel}</span><strong>${row.won || 0}成約 / ${row.inquiries}件</strong></div>`).join('') || '<p>まだ問い合わせデータがありません</p>';
+        $('#inquiryRecentBody').innerHTML = (inquiries.recent || []).map(row => `<tr>
+            <td>${row.inquiry_date}</td><td>${INQUIRY_CHANNEL_LABELS[row.channel] || row.channel}</td>
+            <td>${INQUIRY_OUTCOME_LABELS[row.outcome] || row.outcome}${row.loss_reason ? `<small class="loss-reason-inline">${LOSS_REASON_LABELS[row.loss_reason] || row.loss_reason}</small>` : ''}</td>
+            <td>${row.desired_from || '—'}${row.desired_to ? ` → ${row.desired_to}` : ''}</td><td>${row.guests || '—'}</td>
+            <td>${INQUIRY_VEHICLE_LABELS[row.vehicle] || row.vehicle}</td>
+        </tr>`).join('') || '<tr><td colspan="6">まだ問い合わせ結果がありません</td></tr>';
+    } catch (e) { /* shown by api() */ }
+};
+
+window.toggleInquiryLossReason = function(outcome) {
+    const group = $('#inquiryLossReasonGroup');
+    const select = group?.querySelector('select');
+    const lost = outcome === 'lost';
+    if (group) group.style.display = lost ? '' : 'none';
+    if (select) select.required = lost;
+};
+
+window.openInquiryOutcomeModal = function() {
+    const form = $('#inquiryOutcomeForm');
+    form.reset();
+    const now = new Date();
+    const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+    form.elements.inquiry_date.value = localDate;
+    toggleInquiryLossReason(form.elements.outcome.value);
+    $('#inquiryOutcomeModal').classList.add('active');
+};
+
+window.submitInquiryOutcome = async function(event) {
+    event.preventDefault();
+    const form = event.target;
+    const values = Object.fromEntries(new FormData(form).entries());
+    if (values.outcome !== 'lost') values.loss_reason = '';
+    try {
+        await api('/api/admin/inquiry-outcomes', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(values)
+        });
+        closeModal('inquiryOutcomeModal');
+        showToast('問い合わせ結果を記録しました');
+        loadDemand();
+    } catch (e) { /* shown by api() */ }
+};
 
 
 // ============================================================

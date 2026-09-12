@@ -23,6 +23,10 @@
                 <i class="fas fa-calendar-check"></i>
                 <span>予約</span>
             </li>
+            <li class="nav-item" data-page="demand">
+                <i class="fas fa-chart-line"></i>
+                <span>需要分析</span>
+            </li>
             <li class="nav-item" data-page="crm">
                 <i class="fas fa-paper-plane"></i>
                 <span>メルマガ・CRM</span>
@@ -77,6 +81,49 @@
             <p class="empty-state" id="bookingsEmpty" style="display:none;">予約がありません</p>
             <div style="text-align:center; margin-top:18px;">
                 <a href="/book/" target="_blank" class="formlink"><i class="fas fa-external-link-alt"></i> お客様用の予約フォームを開く</a>
+            </div>
+        </section>
+
+        <!-- Demand & Inquiry Outcomes Page -->
+        <section class="page" id="page-demand">
+            <div class="page-actions">
+                <button class="btn btn-primary btn-big" onclick="openInquiryOutcomeModal()">
+                    <i class="fas fa-plus"></i> 問い合わせ結果を記録
+                </button>
+                <button class="btn btn-secondary" onclick="loadDemand()"><i class="fas fa-rotate"></i> 更新</button>
+            </div>
+            <p class="analysis-note">検索数だけで自動値上げはしません。満車検索、失注理由、実際の成約を合わせて料金判断に使います。</p>
+
+            <h2 class="section-heading">日程検索（直近90日）</h2>
+            <div class="stat-tiles demand-tiles">
+                <div class="stat-tile"><span class="tile-num" id="demandSearches">—</span><span class="tile-label">検索</span></div>
+                <div class="stat-tile"><span class="tile-num" id="demandSoldOut">—</span><span class="tile-label">満車検索</span></div>
+                <div class="stat-tile"><span class="tile-num" id="demandUnsupported">—</span><span class="tile-label">対応外人数</span></div>
+                <div class="stat-tile"><span class="tile-num" id="demandLeadDays">—</span><span class="tile-label">平均予約リード</span></div>
+            </div>
+            <div class="card demand-card">
+                <div class="card-header"><h3><i class="fas fa-calendar-days"></i> 利用月別の検索需要</h3></div>
+                <div class="table-responsive"><table class="data-table"><thead><tr><th>利用月</th><th>検索</th><th>平均日数</th><th>平均空車</th><th>満車</th></tr></thead><tbody id="demandMonthsBody"></tbody></table></div>
+            </div>
+            <div class="card demand-card">
+                <div class="card-header"><h3><i class="fas fa-fire"></i> 検索が多い具体的な日程</h3></div>
+                <div class="table-responsive"><table class="data-table"><thead><tr><th>希望日</th><th>人数</th><th>検索</th><th>満車</th><th>対応外人数</th></tr></thead><tbody id="demandDatesBody"></tbody></table></div>
+            </div>
+
+            <h2 class="section-heading">問い合わせ結果（直近90日）</h2>
+            <div class="stat-tiles demand-tiles">
+                <div class="stat-tile"><span class="tile-num" id="inquiryTotal">—</span><span class="tile-label">問い合わせ</span></div>
+                <div class="stat-tile"><span class="tile-num" id="inquiryWon">—</span><span class="tile-label">成約</span></div>
+                <div class="stat-tile"><span class="tile-num" id="inquiryLost">—</span><span class="tile-label">失注</span></div>
+                <div class="stat-tile"><span class="tile-num" id="inquiryOpen">—</span><span class="tile-label">対応中</span></div>
+            </div>
+            <div class="demand-grid">
+                <div class="card demand-card"><div class="card-header"><h3>失注理由</h3></div><div id="lossReasonsBody" class="metric-list"></div></div>
+                <div class="card demand-card"><div class="card-header"><h3>チャネル別</h3></div><div id="inquiryChannelsBody" class="metric-list"></div></div>
+            </div>
+            <div class="card demand-card">
+                <div class="card-header"><h3>最近の問い合わせ結果</h3></div>
+                <div class="table-responsive"><table class="data-table"><thead><tr><th>日付</th><th>経路</th><th>結果</th><th>希望日</th><th>人数</th><th>車種</th></tr></thead><tbody id="inquiryRecentBody"></tbody></table></div>
             </div>
         </section>
 
@@ -177,6 +224,32 @@
                 </div>
             </div>
         </section>
+
+        <div class="modal-overlay" id="inquiryOutcomeModal">
+            <div class="modal" style="max-width:620px;">
+                <div class="modal-header">
+                    <h3><i class="fas fa-chart-line"></i> 問い合わせ結果を記録</h3>
+                    <button class="modal-close" onclick="closeModal('inquiryOutcomeModal')"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form id="inquiryOutcomeForm" onsubmit="submitInquiryOutcome(event)">
+                        <p class="modal-hint">個人名・連絡先・会話本文は保存しません。需要と失注理由だけを記録します。</p>
+                        <div class="fgrid">
+                            <div class="fg"><label>問い合わせ日 <em>*</em></label><input type="date" name="inquiry_date" required></div>
+                            <div class="fg"><label>経路 <em>*</em></label><select name="channel" required><option value="whatsapp">WhatsApp</option><option value="gmail">Gmail</option><option value="form">予約フォーム</option><option value="other">その他</option></select></div>
+                            <div class="fg"><label>結果 <em>*</em></label><select name="outcome" required onchange="toggleInquiryLossReason(this.value)"><option value="lost">失注</option><option value="won">成約</option><option value="open">対応中</option></select></div>
+                            <div class="fg" id="inquiryLossReasonGroup"><label>失注理由 <em>*</em></label><select name="loss_reason"><option value="no_availability">希望日が満車</option><option value="price">料金が合わなかった</option><option value="vehicle_fit">人数・車種が合わなかった</option><option value="dates_changed">日程変更・旅行中止</option><option value="no_response">返信が途絶えた</option><option value="license_requirements">免許条件</option><option value="chose_other">他社・別手段</option><option value="other">その他</option></select></div>
+                            <div class="fg"><label>希望開始日</label><input type="date" name="desired_from"></div>
+                            <div class="fg"><label>希望終了日</label><input type="date" name="desired_to"></div>
+                            <div class="fg"><label>人数</label><input type="number" name="guests" min="1" max="10"></div>
+                            <div class="fg"><label>希望車種</label><select name="vehicle"><option value="unsure">未定</option><option value="any">どれでも</option><option value="bongo">Bongo</option><option value="probox">Probox</option><option value="loft">Pocket Loft</option></select></div>
+                            <div class="fg span2"><label>言語</label><select name="language"><option value="">不明</option><option value="en">英語</option><option value="fr">フランス語</option><option value="de">ドイツ語</option><option value="zh">繁体字中国語</option><option value="he">ヘブライ語</option><option value="ja">日本語</option></select></div>
+                        </div>
+                        <div class="modal-actions"><button type="button" class="btn btn-secondary" onclick="closeModal('inquiryOutcomeModal')">キャンセル</button><button type="submit" class="btn btn-primary">記録する</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
         <!-- Test Email Modal -->
         <div class="modal-overlay" id="testEmailModal">
@@ -307,6 +380,9 @@
     <nav class="tabbar" id="tabbar">
         <button class="tab-item active" data-page="bookings">
             <i class="fas fa-calendar-check"></i><span>予約</span>
+        </button>
+        <button class="tab-item" data-page="demand">
+            <i class="fas fa-chart-line"></i><span>需要</span>
         </button>
         <button class="tab-item" data-page="crm">
             <i class="fas fa-paper-plane"></i><span>メルマガ</span>
