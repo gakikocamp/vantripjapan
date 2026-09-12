@@ -1341,6 +1341,50 @@ let bookingId = null;
 let fpPickup = null;
 let fpReturn = null;
 
+const BOOKING_VEHICLE_SLUGS = {
+    'MAZDA BONGO': 'bongo',
+    'TOYOTA PROBOX': 'probox',
+    'DAIHATSU POCKET LOFT': 'loft'
+};
+let bookingFormStarted = false;
+let lastAvailabilityEventKey = '';
+
+// Funnel events intentionally contain no names, email addresses, phone numbers,
+// exact dates, notes or WhatsApp message text.
+function trackBookingFunnel(eventName, params = {}) {
+    if (typeof gtag !== 'function') return;
+    gtag('event', eventName, Object.assign({
+        page_path: window.location.pathname,
+        language: (typeof currentLang !== 'undefined' && currentLang) || 'en'
+    }, params));
+}
+
+function selectedVehicleSlug() {
+    const selected = document.querySelector('input[name="vehicle_type"]:checked');
+    return selected ? (BOOKING_VEHICLE_SLUGS[selected.value] || 'unknown') : 'none';
+}
+
+function selectedRentalDays() {
+    const pickup = document.querySelector('input[name="pickup_datetime"]')?.value;
+    const dropoff = document.querySelector('input[name="return_datetime"]')?.value;
+    if (!pickup || !dropoff) return 0;
+    const ms = new Date(dropoff.replace(' ', 'T')) - new Date(pickup.replace(' ', 'T'));
+    return ms > 0 ? Math.ceil(ms / 86400000) : 0;
+}
+
+function trackAvailabilityResult(status, vehicleValue, pickup, dropoff) {
+    const key = [status, vehicleValue, pickup, dropoff].join('|');
+    if (key === lastAvailabilityEventKey) return;
+    lastAvailabilityEventKey = key;
+    trackBookingFunnel('availability_check_result', {
+        availability_status: status,
+        vehicle: BOOKING_VEHICLE_SLUGS[vehicleValue] || 'unknown',
+        rental_days: selectedRentalDays()
+    });
+}
+
+trackBookingFunnel('booking_form_view', { step: 1 });
+
 // Pricing Tiers (Matching rent calculator)
 const DISCOUNT_TIERS = [
     { minDays: 21, rate: 0.20, label: '20% OFF' },
@@ -1579,6 +1623,11 @@ async function loadBookedRanges() {
 function goToStep(stepNum) {
     if (stepNum > 1) {
         if (!validateStep(stepNum - 1)) return;
+        trackBookingFunnel('booking_step_completed', {
+            step: stepNum - 1,
+            vehicle: selectedVehicleSlug(),
+            rental_days: selectedRentalDays()
+        });
     }
 
     document.querySelectorAll('.step').forEach((el, index) => {
@@ -1593,6 +1642,7 @@ function goToStep(stepNum) {
 
     document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
     document.getElementById('step-c-' + stepNum).classList.add('active');
+    trackBookingFunnel('booking_step_viewed', { step: stepNum });
     
     window.scrollTo({ top: 150, behavior: 'smooth' });
 }
@@ -1649,6 +1699,12 @@ function validateStep(stepNum) {
             isValid = false;
         }
     }
+    if (!isValid) {
+        trackBookingFunnel('booking_validation_error', {
+            step: stepNum,
+            error_count: document.querySelectorAll('.field-error').length
+        });
+    }
     return isValid;
 }
 
@@ -1676,20 +1732,24 @@ function checkAvailability() {
                 box.style.background = 'var(--primary-glow)';
                 box.style.color = 'var(--primary)';
                 box.innerHTML = bt('book.js.available_msg', '<i class="fas fa-circle-check"></i> <strong>This van is available for your dates.</strong> Submit request to secure your booking.');
+                trackAvailabilityResult('available', vehicle.value, pickup, dropoff);
             } else if (data.available === false) {
                 box.style.background = 'rgba(196,112,75,0.1)';
                 box.style.color = 'var(--accent)';
                 const waUrl = getWhatsAppURL();
                 box.innerHTML = bt('book.js.conflict_msg', '<i class="fas fa-triangle-exclamation"></i> <strong>This van has a scheduling conflict.</strong> You can still submit — we\'ll suggest another van or nearby dates. Or <a href="{WA_URL}" target="_blank" style="color:var(--accent); text-decoration:underline;">ask Karen on WhatsApp</a>.').replace('{WA_URL}', waUrl);
+                trackAvailabilityResult('conflict', vehicle.value, pickup, dropoff);
             } else {
                 box.style.background = 'rgba(180,83,9,0.1)';
                 box.style.color = '#92400e';
                 box.innerHTML = bt('book.js.verify_msg', '<i class="fas fa-clock"></i> <strong>Live calendar confirmation is temporarily unavailable.</strong> You can still send your request and Karen will confirm the dates before payment.');
+                trackAvailabilityResult('confirmation_needed', vehicle.value, pickup, dropoff);
             }
         } catch (e) {
             box.style.background = 'rgba(180,83,9,0.1)';
             box.style.color = '#92400e';
             box.innerHTML = bt('book.js.verify_msg', '<i class="fas fa-clock"></i> <strong>Live calendar confirmation is temporarily unavailable.</strong> You can still send your request and Karen will confirm the dates before payment.');
+            trackAvailabilityResult('request_failed', vehicle.value, pickup, dropoff);
         }
     }, 400);
 }
@@ -2113,6 +2173,30 @@ document.getElementById('nextMonthBtn').addEventListener('click', (e) => {
 });
 
 // Bind events to update summary, filters and availability
+const bookingFormElement = document.getElementById('bookingForm');
+['input', 'change'].forEach(eventType => {
+    bookingFormElement.addEventListener(eventType, () => {
+        if (bookingFormStarted) return;
+        bookingFormStarted = true;
+        trackBookingFunnel('booking_form_start', { step: 1 });
+    });
+});
+
+document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href*="wa.me/"]');
+    if (!link) return;
+    let placement = 'page';
+    if (link.id === 'step1WALink') placement = 'step_1';
+    else if (link.id === 'summaryWALink') placement = 'summary';
+    else if (link.id === 'successWALink') placement = 'success';
+    else if (link.closest('#availabilityStatus')) placement = 'availability_conflict';
+    trackBookingFunnel('booking_whatsapp_clicked', {
+        placement,
+        vehicle: selectedVehicleSlug(),
+        rental_days: selectedRentalDays()
+    });
+});
+
 document.querySelector('select[name="num_guests"]').addEventListener('change', () => {
     checkVehiclesFilter();
     updateSummary();
@@ -2148,6 +2232,10 @@ document.querySelectorAll('input[name="vehicle_type"]').forEach(radio => {
         updateSummary();
         updateVehiclePreview();
         renderCalendar(radio.value);
+        trackBookingFunnel('booking_vehicle_selected', {
+            vehicle: BOOKING_VEHICLE_SLUGS[radio.value] || 'unknown',
+            rental_days: selectedRentalDays()
+        });
 
         // Auto-open calendar content on vehicle select
         const content = document.getElementById('calendarContent');
@@ -2273,6 +2361,14 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
         referral_source: (function () { try { return localStorage.getItem('vtj-attr') || null; } catch (e) { return null; } })(),
     };
 
+    trackBookingFunnel('booking_request_attempted', {
+        vehicle: BOOKING_VEHICLE_SLUGS[data.vehicle_type] || 'unknown',
+        rental_days: Math.ceil((new Date(data.return_datetime) - new Date(data.pickup_datetime)) / 86400000),
+        has_phone: Boolean(data.phone),
+        has_gear_request: Boolean(data.camping_gear_notes),
+        translation_requested: data.translation_needed
+    });
+
     try {
         const res = await fetch('/api/booking', {
             method: 'POST',
@@ -2302,17 +2398,22 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
             if (typeof gtag === 'function') {
                 gtag('event', 'booking_request_submitted', {
                     booking_id: String(bookingId),
-                    vehicle: data.vehicle_type,
+                    vehicle: BOOKING_VEHICLE_SLUGS[data.vehicle_type] || 'unknown',
                     rental_days: Math.ceil((new Date(data.return_datetime) - new Date(data.pickup_datetime)) / 86400000),
                     page_path: window.location.pathname
                 });
                 gtag('event', 'generate_lead', {
                     lead_type: 'booking_request',
-                    vehicle: data.vehicle_type,
+                    vehicle: BOOKING_VEHICLE_SLUGS[data.vehicle_type] || 'unknown',
                     booking_id: String(bookingId)
                 });
             }
         } else {
+            trackBookingFunnel('booking_request_failed', {
+                failure_type: 'api_error',
+                http_status: res.status,
+                vehicle: BOOKING_VEHICLE_SLUGS[data.vehicle_type] || 'unknown'
+            });
             // Show inline error instead of alert for API errors
             const errorMsg = result.error || result.detail || 'Submission failed. Please try again.';
             const notice = document.querySelector('.form-notice');
@@ -2327,6 +2428,10 @@ document.getElementById('bookingForm').addEventListener('submit', async (e) => {
             btn.innerHTML = bt('book.submit', '<i class="fas fa-paper-plane"></i> Submit Booking Request');
         }
     } catch (err) {
+        trackBookingFunnel('booking_request_failed', {
+            failure_type: 'network_error',
+            vehicle: BOOKING_VEHICLE_SLUGS[data.vehicle_type] || 'unknown'
+        });
         // Show inline error instead of alert for network errors
         const notice = document.querySelector('.form-notice');
         if (notice) {
