@@ -106,13 +106,10 @@ async function getCalendarBlocks(env) {
     'DAIHATSU POCKET LOFT': []
   };
 
-  let fetchedAny = false;
-
   // 1. Fetch Bongo Calendar
   if (env.GOOGLE_CALENDAR_ICS_URL_BONGO) {
     const events = await fetchCalendar(env.GOOGLE_CALENDAR_ICS_URL_BONGO);
     if (events) {
-      fetchedAny = true;
       for (const e of events) {
         blocks['MAZDA BONGO'].push({ start: e.start, end: e.end, summary: e.summary || '' });
       }
@@ -123,7 +120,6 @@ async function getCalendarBlocks(env) {
   if (env.GOOGLE_CALENDAR_ICS_URL_PROBOX) {
     const events = await fetchCalendar(env.GOOGLE_CALENDAR_ICS_URL_PROBOX);
     if (events) {
-      fetchedAny = true;
       for (const e of events) {
         blocks['TOYOTA PROBOX'].push({ start: e.start, end: e.end, summary: e.summary || '' });
       }
@@ -134,7 +130,6 @@ async function getCalendarBlocks(env) {
   if (env.GOOGLE_CALENDAR_ICS_URL_LOFT) {
     const events = await fetchCalendar(env.GOOGLE_CALENDAR_ICS_URL_LOFT);
     if (events) {
-      fetchedAny = true;
       for (const e of events) {
         blocks['DAIHATSU POCKET LOFT'].push({ start: e.start, end: e.end, summary: e.summary || '' });
       }
@@ -145,39 +140,11 @@ async function getCalendarBlocks(env) {
   if (env.GOOGLE_CALENDAR_ICS_URL) {
     const events = await fetchCalendar(env.GOOGLE_CALENDAR_ICS_URL);
     if (events) {
-      fetchedAny = true;
       for (const e of events) {
         const vehicleKey = mapSummaryToVehicle(e.summary);
         if (vehicleKey && blocks[vehicleKey]) {
           blocks[vehicleKey].push({ start: e.start, end: e.end, summary: e.summary || '' });
         }
-      }
-    }
-  }
-
-  // If no URLs are defined or all fetches failed, return mock fallback
-  if (!fetchedAny) {
-    console.log('No calendar URLs configured or all failed. Using mock fallback.');
-    const mockEvents = parseICS(`BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Google Inc//Google Calendar 70.9054//EN
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
-BEGIN:VEVENT
-DTSTART;VALUE=DATE:20260710
-DTEND;VALUE=DATE:20260715
-SUMMARY:[HiAce] Booked - Karen WhatsApp
-END:VEVENT
-BEGIN:VEVENT
-DTSTART;VALUE=DATE:20260720
-DTEND;VALUE=DATE:20260725
-SUMMARY:[Probox] Blocked - Karen WhatsApp
-END:VEVENT
-END:VCALENDAR`);
-    for (const e of mockEvents) {
-      const vehicleKey = mapSummaryToVehicle(e.summary);
-      if (vehicleKey && blocks[vehicleKey]) {
-        blocks[vehicleKey].push({ start: e.start, end: e.end, summary: e.summary || '' });
       }
     }
   }

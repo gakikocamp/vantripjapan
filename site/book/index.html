@@ -1433,50 +1433,6 @@ function updateVehiclePreview() {
     card.classList.add('show');
 }
 
-function injectDummyBlocks(ranges, vehicleKey) {
-    const today = new Date();
-    const currentYear = today.getFullYear();
-    const years = [currentYear, currentYear + 1];
-    const newRanges = [...ranges];
-    
-    years.forEach(year => {
-        for (let month = 0; month < 12; month++) {
-            let weekendCount = 0;
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            
-            for (let day = 1; day <= daysInMonth; day++) {
-                const date = new Date(year, month, day);
-                const dayOfWeek = date.getDay(); // 0 = Sunday, 5 = Friday, 6 = Saturday
-                
-                if (dayOfWeek === 5) { // Friday
-                    weekendCount++;
-                    
-                    let shouldBlock = false;
-                    if (vehicleKey === 'MAZDA BONGO' && weekendCount === 2) {
-                        shouldBlock = true;
-                    } else if (vehicleKey === 'TOYOTA PROBOX' && weekendCount === 3) {
-                        shouldBlock = true;
-                    } else if (vehicleKey === 'DAIHATSU POCKET LOFT' && (weekendCount === 1 || weekendCount === 3)) {
-                        shouldBlock = true;
-                    }
-                    
-                    if (shouldBlock) {
-                        const fromDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                        const monDate = new Date(year, month, day + 3);
-                        const toDate = `${monDate.getFullYear()}-${String(monDate.getMonth() + 1).padStart(2, '0')}-${String(monDate.getDate()).padStart(2, '0')}`;
-                        
-                        const hasOverlap = ranges.some(r => r.from < toDate && r.to > fromDate);
-                        if (!hasOverlap) {
-                            newRanges.push({ from: fromDate, to: toDate, isDummy: true });
-                        }
-                    }
-                }
-            }
-        }
-    });
-    return newRanges;
-}
-
 function initFlatpickr(vehicle) {
     const disabledDates = bookedRanges[vehicle] || [];
     const fpLangMap = { fr: 'fr', de: 'de', zh: 'zh_tw', he: 'he' };
@@ -1599,7 +1555,7 @@ async function loadBookedRanges() {
             const rawVehicles = data.vehicles || {};
             bookedRanges = {};
             Object.keys(rawVehicles).forEach(vKey => {
-                bookedRanges[vKey] = injectDummyBlocks(rawVehicles[vKey] || [], vKey);
+                bookedRanges[vKey] = rawVehicles[vKey] || [];
             });
             checkVehiclesFilter();
         }
