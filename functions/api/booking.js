@@ -18,6 +18,10 @@ function ensureBookingBindings(env) {
 
 // 予約フォーム(/book/)と同じ料金ロジック。見積総額と割引ラベルを返す。
 const VEHICLE_BASE = { 'MAZDA BONGO': 22000, 'TOYOTA PROBOX': 22000, 'DAIHATSU POCKET LOFT': 25000 };
+const LOSS_REASONS = new Set([
+  'no_availability', 'price', 'vehicle_fit', 'dates_changed',
+  'no_response', 'license_requirements', 'chose_other', 'other'
+]);
 function estimateBookingTotal(vehicleType, pickup, returns) {
   const base = VEHICLE_BASE[vehicleType];
   if (!base || !(pickup instanceof Date) || !(returns instanceof Date)) return { total: null, label: null };
@@ -651,20 +655,37 @@ async function handlePut(request, env, data) {
   if (!id) return Response.json({ error: 'Missing id' }, { status: 400 });
 
   if (body.status) {
-    const validStatuses = ['form_submitted', 'docs_requested', 'docs_received', 'payment_sent', 'confirmed', 'active', 'completed', 'cancelled'];
+    const validStatuses = ['form_submitted', 'docs_requested', 'docs_received', 'payment_sent', 'confirmed', 'active', 'completed', 'cancelled', 'lost'];
     if (!validStatuses.includes(body.status)) {
       return Response.json({ error: 'Invalid status' }, { status: 400 });
     }
 
-    await env.CUSTOMERS_DB.prepare(
-      "UPDATE bookings SET status = ?, updated_at = datetime('now') WHERE id = ?"
-    ).bind(body.status, id).run();
+    let auditDetail = `Status → ${body.status}`;
+    if (body.status === 'lost') {
+      if (!LOSS_REASONS.has(body.loss_reason)) {
+        return Response.json({ error: 'A valid loss_reason is required' }, { status: 400 });
+      }
+      const current = await env.CUSTOMERS_DB.prepare('SELECT notes FROM bookings WHERE id = ?').bind(id).first();
+      if (!current) return Response.json({ error: 'Not found' }, { status: 404 });
+      let meta = {};
+      try { meta = JSON.parse(current.notes || '{}'); } catch { meta = { legacy_note: String(current.notes || '').slice(0, 500) }; }
+      meta.loss_reason = body.loss_reason;
+      meta.lost_at = new Date().toISOString();
+      await env.CUSTOMERS_DB.prepare(
+        "UPDATE bookings SET status = ?, notes = ?, updated_at = datetime('now') WHERE id = ?"
+      ).bind(body.status, JSON.stringify(meta), id).run();
+      auditDetail += ` (${body.loss_reason})`;
+    } else {
+      await env.CUSTOMERS_DB.prepare(
+        "UPDATE bookings SET status = ?, updated_at = datetime('now') WHERE id = ?"
+      ).bind(body.status, id).run();
+    }
 
     // Log the status change
     const email = data?.userEmail || 'unknown';
     await env.CUSTOMERS_DB.prepare(
       'INSERT INTO access_logs (user_email, action, resource, detail) VALUES (?, ?, ?, ?)'
-    ).bind(email, 'status_change', `booking/${id}`, `Status → ${body.status}`).run();
+    ).bind(email, 'status_change', `booking/${id}`, auditDetail).run();
 
     // 「確定」に進めたら、お客様へ予約確定メール(ics+受取場所つき・5言語)を自動送信
     if (body.status === 'confirmed') {

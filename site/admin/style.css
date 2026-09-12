@@ -679,6 +679,29 @@ button { font-family: inherit; }
 
 .dstatus { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
+.loss-capture {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    padding: 12px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-control);
+    background: var(--fill-quaternary);
+}
+
+.loss-capture label { font-size: 0.82rem; font-weight: 700; color: var(--text-secondary); }
+.loss-capture select {
+    flex: 1 1 220px;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-control);
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
 .dhint {
     margin-top: 10px;
     font-size: 0.83rem;

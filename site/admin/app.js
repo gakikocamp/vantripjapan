@@ -203,6 +203,18 @@ const STATUS_LABELS = {
     active:         { label: '🚐 利用中', color: '#2E7FA3' },
     completed:      { label: '✨ 完了', color: '#5A8A6A' },
     cancelled:      { label: '❌ キャンセル', color: '#C25353' },
+    lost:           { label: '📉 失注', color: '#8B6F61' },
+};
+
+const LOSS_REASON_LABELS = {
+    no_availability: '希望日が満車',
+    price: '料金が合わなかった',
+    vehicle_fit: '人数・車種が合わなかった',
+    dates_changed: '日程変更・旅行中止',
+    no_response: '返信が途絶えた',
+    license_requirements: '免許条件を満たせなかった',
+    chose_other: '他社・別手段を選んだ',
+    other: 'その他',
 };
 
 const STATUS_FLOW = [
@@ -270,6 +282,7 @@ function nextActionOf(b) {
     if (b.status === 'active') return { t: '🚐 旅行中', urgent: false };
     if (b.status === 'completed') return { t: '✨ 終了', urgent: false, done: true };
     if (b.status === 'cancelled') return { t: '❌ キャンセル', urgent: false, done: true };
+    if (b.status === 'lost') return { t: `📉 失注${parseBookingMeta(b.notes).loss_reason ? `・${LOSS_REASON_LABELS[parseBookingMeta(b.notes).loss_reason] || '理由あり'}` : ''}`, urgent: false, done: true };
     return { t: b.status, urgent: false };
 }
 
@@ -295,7 +308,7 @@ function renderBookings(list) {
     let groups;
     if (currentBookingFilter === 'attention') groups = [['⚠️ やること', urgent]];
     else if (currentBookingFilter === 'upcoming') groups = [['🚐 出発待ち（日付順）', upcoming]];
-    else groups = [['⚠️ やること', urgent], ['🚐 出発待ち（日付順）', upcoming], ['✔️ 終了・キャンセル', done]];
+    else groups = [['⚠️ やること', urgent], ['🚐 出発待ち（日付順）', upcoming], ['✔️ 終了・キャンセル・失注', done]];
 
     const row = (i) => {
         const b = i.b, act = i.act;
@@ -365,6 +378,9 @@ window.openBookingDetail = async function(id) {
           if (!isNaN(pd) && !isNaN(rd)) { const n = Math.round((rd - pd) / 86400000); if (n > 0) nightsStr = `・${n}泊`; } }
         const IDP_LABELS = { idp_1949: '国際免許(1949)', jdltc_translation: '翻訳文(持参)', jdltc_order: '🎫 JDLTC注文希望', unsure: '未定（要案内）' };
         const guideHtml = buildGuide(b, meta);
+        const canMarkLost = ['form_submitted', 'docs_requested', 'docs_received', 'payment_sent'].includes(b.status);
+        const canCancel = ['confirmed', 'active'].includes(b.status);
+        const lossOptions = Object.entries(LOSS_REASON_LABELS).map(([value, label]) => `<option value="${value}">${label}</option>`).join('');
         const body = `
             ${guideHtml}
             <div class="dsec">
@@ -399,12 +415,18 @@ window.openBookingDetail = async function(id) {
                     ${nextStatus ? `<button class="btn btn-primary" onclick="changeBookingStatus(${b.id},'${nextStatus}')">
                         <i class="fas fa-arrow-right"></i> ${STATUS_LABELS[nextStatus].label} に進める
                     </button>` : ''}
-                    ${b.status !== 'cancelled' ? `<button class="btn btn-ghost-danger" onclick="changeBookingStatus(${b.id},'cancelled')">キャンセルにする</button>` : ''}
+                    ${canCancel ? `<button class="btn btn-ghost-danger" onclick="changeBookingStatus(${b.id},'cancelled')">予約後キャンセルにする</button>` : ''}
                 </div>
+                ${canMarkLost ? `<div class="loss-capture">
+                    <label for="lossReason-${b.id}">予約にならなかった理由</label>
+                    <select id="lossReason-${b.id}">${lossOptions}</select>
+                    <button class="btn btn-ghost-danger" onclick="markBookingLost(${b.id})">失注として記録</button>
+                </div>` : ''}
+                ${b.status === 'lost' ? `<p class="dhint">📉 失注理由: <strong>${LOSS_REASON_LABELS[meta.loss_reason] || 'その他'}</strong>${meta.lost_at ? `（${new Date(meta.lost_at).toLocaleDateString('ja-JP')}）` : ''}</p>` : ''}
                 ${b.status === 'docs_received' ? '<p class="dhint">💡 書類を確認したら「決済待ちに進める」→ Stripeリンクを送ってください。</p>' : ''}
                 ${b.status === 'payment_sent' ? '<p class="dhint">💡 入金を確認したら「確定に進める」→ 確定メール（カレンダー付き・5言語）が自動送信されます。</p>' : ''}
             </div>
-            <div class="dsec">
+            <div class="dsec" ${['lost', 'cancelled'].includes(b.status) ? 'style="display:none"' : ''}>
                 <div class="dsec-title">📋 お客様手続きページ（免許証アップ＋必要事項）</div>
                 <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
                     <button class="btn btn-primary" onclick="copyCompleteLink('${(b.complete_url || '').replace(/'/g, '')}')">
@@ -448,6 +470,22 @@ window.changeBookingStatus = async function(id, newStatus) {
             body: JSON.stringify({ status: newStatus }),
         });
         showToast(`ステータスを「${st.label}」に変更しました`);
+        openBookingDetail(id);
+        loadBookings();
+    } catch (e) { /* shown by api() */ }
+};
+
+window.markBookingLost = async function(id) {
+    const select = document.getElementById(`lossReason-${id}`);
+    const reason = select?.value;
+    if (!LOSS_REASON_LABELS[reason]) return;
+    try {
+        await api(`/api/booking?id=${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status: 'lost', loss_reason: reason }),
+        });
+        showToast(`失注理由「${LOSS_REASON_LABELS[reason]}」を記録しました`);
         openBookingDetail(id);
         loadBookings();
     } catch (e) { /* shown by api() */ }
