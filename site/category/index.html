@@ -55,6 +55,104 @@
             padding: 0 var(--space-lg);
         }
 
+        .guide-finder {
+            max-width: var(--max-width);
+            margin: 0 auto var(--space-2xl);
+            padding: 0 var(--space-lg);
+        }
+
+        .guide-finder-box {
+            padding: var(--space-lg);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            background: #fff;
+            box-shadow: 0 8px 30px rgba(44, 44, 44, 0.05);
+        }
+
+        .guide-finder h2 {
+            margin-bottom: 6px;
+            font-size: 1.25rem;
+        }
+
+        .guide-finder-intro {
+            margin-bottom: var(--space-md);
+            color: var(--color-muted);
+            font-size: 0.92rem;
+        }
+
+        .guide-search-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .guide-search {
+            flex: 1;
+            min-width: 0;
+            min-height: 46px;
+            padding: 10px 14px;
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            color: var(--color-text);
+            font: inherit;
+        }
+
+        .guide-search:focus {
+            border-color: var(--color-accent);
+            outline: 3px solid rgba(191, 78, 48, 0.12);
+        }
+
+        .guide-search-clear {
+            min-height: 46px;
+            padding: 0 16px;
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            background: #fff;
+            color: var(--color-text);
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .guide-filter-chips {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            padding-bottom: 2px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+
+        .guide-filter-chip {
+            flex: 0 0 auto;
+            padding: 8px 13px;
+            border: 1px solid var(--color-border);
+            border-radius: 999px;
+            background: #fff;
+            color: var(--color-text);
+            font: inherit;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .guide-filter-chip[aria-pressed="true"] {
+            border-color: var(--color-accent);
+            background: var(--color-accent);
+            color: #fff;
+        }
+
+        .guide-result-count {
+            min-height: 1.4em;
+            margin: 12px 0 0;
+            color: var(--color-muted);
+            font-size: 0.82rem;
+        }
+
+        .guide-no-results {
+            padding: var(--space-2xl) var(--space-lg);
+            text-align: center;
+            color: var(--color-muted);
+        }
+
         .cat-card {
             position: relative;
             border-radius: 16px;
@@ -133,6 +231,16 @@
             color: var(--color-muted);
             font-size: 0.95rem;
         }
+
+        @media (max-width: 576px) {
+            .guide-search-row {
+                align-items: stretch;
+            }
+
+            .guide-search-clear {
+                padding: 0 12px;
+            }
+        }
     </style>
 </head>
 
@@ -168,6 +276,19 @@
         <h1>Kyushu Travel Guides</h1>
         <p>Everything we've learned from years of driving Kyushu's back roads — the onsen worth soaking in, the routes worth taking, and the campgrounds nobody posts about online.</p>
     </div>
+
+    <section class="guide-finder" id="guide-finder" aria-labelledby="guide-finder-title">
+        <div class="guide-finder-box">
+            <h2 id="guide-finder-title">Find the right guide</h2>
+            <p class="guide-finder-intro">Search destinations, routes, onsen, campgrounds, or driving advice.</p>
+            <div class="guide-search-row">
+                <input class="guide-search" id="guide-search" type="search" placeholder="Try “Aso”, “7-day route”, or “onsen”" autocomplete="off">
+                <button class="guide-search-clear" id="guide-search-clear" type="button" hidden>Clear</button>
+            </div>
+            <div class="guide-filter-chips" id="guide-filter-chips" aria-label="Filter guides by category"></div>
+            <p class="guide-result-count" id="guide-result-count" aria-live="polite"></p>
+        </div>
+    </section>
 
     <!-- Category Cards -->
     <div class="cat-grid" id="cat-grid">
@@ -246,6 +367,54 @@
             return String(d).slice(0, 10).replace(/-/g, '.');
         }
 
+        let activeCategory = 'all';
+        let searchTimer;
+
+        function trackGuideFilter(type, resultCount, extra) {
+            if (typeof gtag !== 'function') return;
+            gtag('event', 'guide_filter_used', Object.assign({
+                filter_type: type,
+                result_count: resultCount,
+                page_path: location.pathname,
+            }, extra || {}));
+        }
+
+        function applyGuideFilters(trackType) {
+            const input = document.getElementById('guide-search');
+            const query = (input.value || '').trim().toLowerCase();
+            let visibleCount = 0;
+
+            document.querySelectorAll('.cat-articles .article-card').forEach(card => {
+                const categoryMatch = activeCategory === 'all' || card.dataset.category === activeCategory;
+                const searchMatch = !query || (card.dataset.search || '').includes(query);
+                card.hidden = !(categoryMatch && searchMatch);
+                if (!card.hidden) visibleCount += 1;
+            });
+
+            document.querySelectorAll('.cat-article-section').forEach(section => {
+                section.hidden = !section.querySelector('.article-card:not([hidden])');
+            });
+
+            document.querySelectorAll('.guide-filter-chip').forEach(button => {
+                button.setAttribute('aria-pressed', button.dataset.category === activeCategory ? 'true' : 'false');
+            });
+
+            document.getElementById('guide-search-clear').hidden = !query;
+            document.getElementById('guide-result-count').textContent = visibleCount === 1
+                ? '1 guide found'
+                : `${visibleCount} guides found`;
+            document.getElementById('guide-no-results').hidden = visibleCount !== 0;
+
+            if (trackType === 'category') {
+                trackGuideFilter('category', visibleCount, { category: activeCategory });
+            } else if (trackType === 'search') {
+                clearTimeout(searchTimer);
+                searchTimer = setTimeout(() => {
+                    trackGuideFilter('search', visibleCount, { query_length: query.length });
+                }, 500);
+            }
+        }
+
         async function loadCategories() {
             try {
                 let res = await fetch('/public-articles?lang=en');
@@ -282,7 +451,7 @@
                         const bgStyle = coverImg
                             ? `background-image: ${bg}, url('${esc(coverImg)}'); background-size: cover; background-position: center;`
                             : `background: ${bg};`;
-                        return `<a href="#cat-${esc(cat.toLowerCase().replace(/\s+/g,'-'))}" class="cat-card" style="${bgStyle}">
+                        return `<a href="#guide-finder" class="cat-card" data-category="${esc(cat)}" style="${bgStyle}">
                             <div class="cat-card-overlay"></div>
                             <div class="cat-card-content">
                                 <div class="cat-card-title">${icon} ${esc(cat)}</div>
@@ -292,6 +461,15 @@
                     }).join('');
                 document.getElementById('cat-grid').innerHTML = gridHtml;
 
+                const chips = [['all', `All guides (${articles.length})`]].concat(
+                    Object.entries(groups)
+                        .sort((a, b) => b[1].length - a[1].length)
+                        .map(([cat, items]) => [cat, `${cat} (${items.length})`])
+                );
+                document.getElementById('guide-filter-chips').innerHTML = chips.map(([value, label]) =>
+                    `<button type="button" class="guide-filter-chip" data-category="${esc(value)}" aria-pressed="${value === 'all'}">${esc(label)}</button>`
+                ).join('');
+
                 // Render article lists per category
                 const sectionsHtml = Object.entries(groups)
                     .sort((a, b) => b[1].length - a[1].length)
@@ -299,7 +477,7 @@
                         const icon = CAT_ICONS[cat] || '📄';
                         const id = `cat-${cat.toLowerCase().replace(/\s+/g,'-')}`;
                         const cardsHtml = items.map(a => `
-                            <a href="/posts/${esc(a.slug)}/" class="article-card">
+                            <a href="/posts/${esc(a.slug)}/" class="article-card" data-category="${esc(cat)}" data-search="${esc(`${a.title || ''} ${a.excerpt || ''} ${cat}`.toLowerCase())}">
                                 <div class="article-card-image">
                                     <img src="${esc(a.cover_image)}" loading="lazy" alt="${esc(a.title)}">
                                     <span class="article-card-category">${esc(a.category)}</span>
@@ -314,12 +492,33 @@
                                     </div>
                                 </div>
                             </a>`).join('');
-                        return `<div id="${id}" style="margin-bottom: var(--space-3xl);">
+                        return `<div id="${id}" class="cat-article-section" style="margin-bottom: var(--space-3xl);">
                             <h2 class="cat-section-title">${icon} ${esc(cat)}</h2>
                             <div class="cat-articles-grid">${cardsHtml}</div>
                         </div>`;
                     }).join('');
-                document.getElementById('cat-articles').innerHTML = sectionsHtml;
+                document.getElementById('cat-articles').innerHTML = sectionsHtml + '<p class="guide-no-results" id="guide-no-results" hidden>No matching guides. Try another destination or category.</p>';
+
+                document.getElementById('guide-filter-chips').addEventListener('click', event => {
+                    const button = event.target.closest('.guide-filter-chip');
+                    if (!button) return;
+                    activeCategory = button.dataset.category;
+                    applyGuideFilters('category');
+                });
+                document.getElementById('cat-grid').addEventListener('click', event => {
+                    const card = event.target.closest('.cat-card');
+                    if (!card) return;
+                    activeCategory = card.dataset.category;
+                    applyGuideFilters('category');
+                });
+                document.getElementById('guide-search').addEventListener('input', () => applyGuideFilters('search'));
+                document.getElementById('guide-search-clear').addEventListener('click', () => {
+                    const input = document.getElementById('guide-search');
+                    input.value = '';
+                    input.focus();
+                    applyGuideFilters('search');
+                });
+                applyGuideFilters();
 
                 // Smooth scroll to category if URL hash
                 if (window.location.hash) {
