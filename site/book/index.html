@@ -449,6 +449,10 @@
             background: rgba(196, 112, 75, 0.1);
             color: var(--accent);
         }
+        .vehicle-option .status-badge.verification {
+            background: rgba(180, 83, 9, 0.1);
+            color: #92400e;
+        }
         .vehicle-option .status-badge.capacity-error {
             background: rgba(0, 0, 0, 0.05);
             color: #666;
@@ -1359,6 +1363,7 @@ const VEHICLE_PREVIEW = {
 
 // Global variables for availability state
 let bookedRanges = {};
+let availabilityComplete = true;
 let calendarMonth = new Date().getMonth();
 let calendarYear = new Date().getFullYear();
 let currentVehicleCalendar = '';
@@ -1553,13 +1558,19 @@ async function loadBookedRanges() {
         if (res.ok) {
             const data = await res.json();
             const rawVehicles = data.vehicles || {};
+            availabilityComplete = !data.availability || data.availability.complete !== false;
             bookedRanges = {};
             Object.keys(rawVehicles).forEach(vKey => {
                 bookedRanges[vKey] = rawVehicles[vKey] || [];
             });
             checkVehiclesFilter();
+        } else {
+            availabilityComplete = false;
+            checkVehiclesFilter();
         }
     } catch (e) {
+        availabilityComplete = false;
+        checkVehiclesFilter();
         console.error("Failed to load availability:", e);
     }
 }
@@ -1661,18 +1672,24 @@ function checkAvailability() {
             const res = await fetch('/api/availability?' + params);
             if (!res.ok) throw new Error('unavailable');
             const data = await res.json();
-            if (data.available) {
+            if (data.available === true) {
                 box.style.background = 'var(--primary-glow)';
                 box.style.color = 'var(--primary)';
                 box.innerHTML = bt('book.js.available_msg', '<i class="fas fa-circle-check"></i> <strong>This van is available for your dates.</strong> Submit request to secure your booking.');
-            } else {
+            } else if (data.available === false) {
                 box.style.background = 'rgba(196,112,75,0.1)';
                 box.style.color = 'var(--accent)';
                 const waUrl = getWhatsAppURL();
                 box.innerHTML = bt('book.js.conflict_msg', '<i class="fas fa-triangle-exclamation"></i> <strong>This van has a scheduling conflict.</strong> You can still submit — we\'ll suggest another van or nearby dates. Or <a href="{WA_URL}" target="_blank" style="color:var(--accent); text-decoration:underline;">ask Karen on WhatsApp</a>.').replace('{WA_URL}', waUrl);
+            } else {
+                box.style.background = 'rgba(180,83,9,0.1)';
+                box.style.color = '#92400e';
+                box.innerHTML = bt('book.js.verify_msg', '<i class="fas fa-clock"></i> <strong>Live calendar confirmation is temporarily unavailable.</strong> You can still send your request and Karen will confirm the dates before payment.');
             }
         } catch (e) {
-            box.style.display = 'none';
+            box.style.background = 'rgba(180,83,9,0.1)';
+            box.style.color = '#92400e';
+            box.innerHTML = bt('book.js.verify_msg', '<i class="fas fa-clock"></i> <strong>Live calendar confirmation is temporarily unavailable.</strong> You can still send your request and Karen will confirm the dates before payment.');
         }
     }, 400);
 }
@@ -1723,7 +1740,9 @@ function checkVehiclesFilter() {
             } else {
                 label.classList.remove('disabled');
                 radio.disabled = false;
-                statusMsg.innerHTML = bt('book.js.avail_badge', '<span class="status-badge available"><i class="fas fa-circle-check"></i> Available</span>');
+                statusMsg.innerHTML = availabilityComplete
+                    ? bt('book.js.avail_badge', '<span class="status-badge available"><i class="fas fa-circle-check"></i> Available</span>')
+                    : bt('book.js.verify_badge', '<span class="status-badge verification"><i class="fas fa-clock"></i> Confirmation needed</span>');
 
                 if (fromDate && toDate && toDate > fromDate) {
                     const days = Math.ceil((new Date(toDate) - new Date(fromDate)) / (1000 * 60 * 60 * 24));

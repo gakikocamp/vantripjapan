@@ -4673,7 +4673,12 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
     background: #EFF6F0;
     border: 1.5px solid #7CA982;
 }
-.result-strip.ok.dim { opacity: 0.75; }
+.result-strip.pending {
+    background: #FFFBEB;
+    border: 1.5px solid #D6A94F;
+}
+.result-strip.ok.dim,
+.result-strip.pending.dim { opacity: 0.75; }
 .result-strip.full {
     background: #FBF1EC;
     border: 1.5px solid #E0B8A4;

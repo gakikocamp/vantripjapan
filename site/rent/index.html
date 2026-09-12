@@ -2210,9 +2210,13 @@
             }
             return false;
         }
-        fetch('/api/availability').then(function (r) { return r.json(); }).then(function (data) {
+        fetch('/api/availability').then(function (r) {
+            if (!r.ok) throw new Error('availability request failed');
+            return r.json();
+        }).then(function (data) {
             var grid = document.querySelector('.vehicles-grid');
             if (!grid) return;
+            var needsVerification = data.availability && data.availability.complete === false;
             // 検索サマリーバナー
             var banner = document.createElement('div');
             banner.className = 'search-results-banner';
@@ -2238,9 +2242,11 @@
                 if (!booked) {
                     var discTxt = q.disc ? ' · -' + Math.round(q.disc * 100) + '%' : '';
                     var fitsTxt = guests > v.cap ? '<div class="rs-fits">⚠️ ' + tr('results.fits', 'Fits up to {N} guests').replace('{N}', v.cap) + '</div>' : '';
-                    strip.className = 'result-strip ok' + (guests > v.cap ? ' dim' : '');
+                    strip.className = 'result-strip ' + (needsVerification ? 'pending' : 'ok') + (guests > v.cap ? ' dim' : '');
                     strip.innerHTML =
-                        '<div class="rs-status">✅ ' + tr('results.available', 'Available for your dates') + '</div>' + seasonHtml +
+                        '<div class="rs-status">' + (needsVerification
+                            ? '⚠️ ' + tr('results.verify', 'Availability needs confirmation')
+                            : '✅ ' + tr('results.available', 'Available for your dates')) + '</div>' + seasonHtml +
                         '<div class="rs-total">¥' + q.total.toLocaleString() + '<small> · ' + days + ' ' + tr('results.days', 'days') + discTxt + '</small></div>' +
                         '<div class="rs-est">' + tr('results.est', 'Estimated total — not a confirmed booking yet. Karen confirms availability & final quote (no payment now).') + '</div>' + fitsTxt +
                         '<a class="rs-select" data-track="select_' + v.slug + '" href="' + LP + '/book/?vehicle=' + v.slug + '&from=' + from + '&to=' + to + '&guests=' + guests + '">' + tr('results.select', 'Request this van →') + '</a>';
@@ -2261,8 +2267,15 @@
             });
             var availCount = document.querySelectorAll('.result-strip.ok').length;
             var cnt = banner.querySelector('.srb-count');
-            if (cnt) cnt.innerHTML = '· <b>' + availCount + '/3</b> ✅';
-            if (typeof gtag === 'function') gtag('event', 'view_search_results', { days: days, guests: guests, available: availCount });
+            if (cnt) cnt.innerHTML = needsVerification
+                ? '· ⚠️ ' + tr('results.verify', 'Availability needs confirmation')
+                : '· <b>' + availCount + '/3</b> ✅';
+            if (typeof gtag === 'function') gtag('event', 'view_search_results', {
+                days: days,
+                guests: guests,
+                available: needsVerification ? -1 : availCount,
+                availability_complete: !needsVerification
+            });
             setTimeout(function () { banner.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 600);
             setTimeout(function () {
                 var r = banner.getBoundingClientRect();

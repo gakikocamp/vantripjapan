@@ -105,51 +105,32 @@ async function getCalendarBlocks(env) {
     'TOYOTA PROBOX': [],
     'DAIHATSU POCKET LOFT': []
   };
+  const sources = [
+    { url: env.GOOGLE_CALENDAR_ICS_URL_BONGO, vehicle: 'MAZDA BONGO' },
+    { url: env.GOOGLE_CALENDAR_ICS_URL_PROBOX, vehicle: 'TOYOTA PROBOX' },
+    { url: env.GOOGLE_CALENDAR_ICS_URL_LOFT, vehicle: 'DAIHATSU POCKET LOFT' },
+    { url: env.GOOGLE_CALENDAR_ICS_URL, vehicle: null }
+  ].filter(source => source.url);
+  const status = { configured: sources.length, succeeded: 0, failed: 0, complete: true };
 
-  // 1. Fetch Bongo Calendar
-  if (env.GOOGLE_CALENDAR_ICS_URL_BONGO) {
-    const events = await fetchCalendar(env.GOOGLE_CALENDAR_ICS_URL_BONGO);
-    if (events) {
-      for (const e of events) {
-        blocks['MAZDA BONGO'].push({ start: e.start, end: e.end, summary: e.summary || '' });
+  for (const source of sources) {
+    const events = await fetchCalendar(source.url);
+    if (!events) {
+      status.failed++;
+      status.complete = false;
+      continue;
+    }
+
+    status.succeeded++;
+    for (const event of events) {
+      const vehicleKey = source.vehicle || mapSummaryToVehicle(event.summary);
+      if (vehicleKey && blocks[vehicleKey]) {
+        blocks[vehicleKey].push({ start: event.start, end: event.end, summary: event.summary || '' });
       }
     }
   }
 
-  // 2. Fetch Probox Calendar
-  if (env.GOOGLE_CALENDAR_ICS_URL_PROBOX) {
-    const events = await fetchCalendar(env.GOOGLE_CALENDAR_ICS_URL_PROBOX);
-    if (events) {
-      for (const e of events) {
-        blocks['TOYOTA PROBOX'].push({ start: e.start, end: e.end, summary: e.summary || '' });
-      }
-    }
-  }
-
-  // 3. Fetch Loft Calendar
-  if (env.GOOGLE_CALENDAR_ICS_URL_LOFT) {
-    const events = await fetchCalendar(env.GOOGLE_CALENDAR_ICS_URL_LOFT);
-    if (events) {
-      for (const e of events) {
-        blocks['DAIHATSU POCKET LOFT'].push({ start: e.start, end: e.end, summary: e.summary || '' });
-      }
-    }
-  }
-
-  // 4. Fetch Legacy / Unified Calendar
-  if (env.GOOGLE_CALENDAR_ICS_URL) {
-    const events = await fetchCalendar(env.GOOGLE_CALENDAR_ICS_URL);
-    if (events) {
-      for (const e of events) {
-        const vehicleKey = mapSummaryToVehicle(e.summary);
-        if (vehicleKey && blocks[vehicleKey]) {
-          blocks[vehicleKey].push({ start: e.start, end: e.end, summary: e.summary || '' });
-        }
-      }
-    }
-  }
-
-  return blocks;
+  return { blocks, status };
 }
 
 export async function onRequestGet({ request, env }) {
@@ -166,7 +147,14 @@ export async function onRequestGet({ request, env }) {
   const cacheHeaders = { 'Cache-Control': 'public, max-age=300' };
 
   // Fetch Google Calendar blocks grouped by vehicle
-  const calBlocks = await getCalendarBlocks(env);
+  const calendar = await getCalendarBlocks(env);
+  const calBlocks = calendar.blocks;
+  const availability = {
+    complete: calendar.status.complete,
+    calendarConfigured: calendar.status.configured > 0,
+    calendarSources: calendar.status.configured,
+    failedCalendarSources: calendar.status.failed
+  };
 
   // Normalise query dates
   const fromDate = from ? from.slice(0, 10) : null;
@@ -204,7 +192,8 @@ export async function onRequestGet({ request, env }) {
     }));
 
     const conflicts = [...calConflicts, ...dbConflicts];
-    return Response.json({ available: conflicts.length === 0, conflicts }, { headers: cacheHeaders });
+    const available = conflicts.length > 0 ? false : (availability.complete ? true : null);
+    return Response.json({ available, conflicts, availability }, { headers: cacheHeaders });
   }
 
   // Overview: booked ranges per vehicle for the next 6 months
@@ -253,5 +242,5 @@ export async function onRequestGet({ request, env }) {
     vehicles[key].sort((a, b) => a.from.localeCompare(b.from));
   }
 
-  return Response.json({ vehicles }, { headers: cacheHeaders });
+  return Response.json({ vehicles, availability }, { headers: cacheHeaders });
 }
