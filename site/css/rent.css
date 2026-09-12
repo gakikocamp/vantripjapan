@@ -1607,6 +1607,46 @@
     color: var(--rent-text-secondary);
 }
 
+.vehicle-card .vehicle-facts {
+    margin: 0 0 20px;
+    border: 1px solid var(--rent-border);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.vehicle-card .vehicle-facts > div {
+    display: grid;
+    grid-template-columns: minmax(92px, 0.75fr) minmax(0, 1.8fr);
+    gap: 12px;
+    padding: 11px 13px;
+    align-items: start;
+}
+
+.vehicle-card .vehicle-facts > div + div {
+    border-top: 1px solid var(--rent-border);
+}
+
+.vehicle-card .vehicle-facts dt,
+.vehicle-card .vehicle-facts dd {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.vehicle-card .vehicle-facts dt {
+    color: var(--rent-text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.vehicle-card .vehicle-facts dd {
+    color: var(--rent-text);
+    font-size: 13px;
+    font-weight: 650;
+}
+
 .vehicle-card .vehicle-price {
     font-size: 24px;
     font-weight: 800;
