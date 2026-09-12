@@ -60,6 +60,18 @@
             gtag('event', 'booking_cta_click', params);
         }
     });
+
+    document.addEventListener('submit', function (event) {
+        var form = event.target;
+        if (!form || !form.classList || !form.classList.contains('search-widget') || typeof gtag !== 'function') return;
+        var data = new FormData(form);
+        gtag('event', 'rental_search_submitted', {
+            pickup_date: String(data.get('from') || ''),
+            return_date: String(data.get('to') || ''),
+            guests: Number(data.get('guests') || 0),
+            page_path: location.pathname
+        });
+    });
 })();
 
 const translations = {
@@ -555,6 +567,8 @@ const translations = {
         "season.earlybird": "Early-bird rate — rises Feb 1",
         "results.available": "Available for your dates",
         "results.verify": "Availability needs confirmation",
+        "results.checking": "Checking live availability…",
+        "results.error": "Live availability could not be loaded.",
         "results.full": "Fully booked for these dates",
         "results.days": "days",
         "results.est": "Estimated total — not a confirmed booking yet. Karen confirms availability & final quote (no payment now).",
@@ -1339,6 +1353,8 @@ const translations = {
         "season.earlybird": "Tarif early-bird — augmente le 1er fév.",
         "results.available": "Disponible à vos dates",
         "results.verify": "Disponibilité à confirmer",
+        "results.checking": "Vérification des disponibilités en direct…",
+        "results.error": "Les disponibilités en direct n'ont pas pu être chargées.",
         "results.full": "Complet à ces dates",
         "results.days": "jours",
         "results.est": "Total estimé — pas encore une réservation confirmée. Karen confirme la disponibilité et le devis final (aucun paiement maintenant).",
@@ -2125,6 +2141,8 @@ const translations = {
         "season.earlybird": "Frühbucher-Tarif — steigt am 1. Feb.",
         "results.available": "Verfügbar für Ihre Daten",
         "results.verify": "Verfügbarkeit muss bestätigt werden",
+        "results.checking": "Live-Verfügbarkeit wird geprüft…",
+        "results.error": "Die Live-Verfügbarkeit konnte nicht geladen werden.",
         "results.full": "An diesen Daten ausgebucht",
         "results.days": "Tage",
         "results.est": "Geschätzter Gesamtpreis — noch keine bestätigte Buchung. Karen bestätigt Verfügbarkeit & endgültiges Angebot (noch keine Zahlung).",
@@ -2909,6 +2927,8 @@ const translations = {
         "season.earlybird": "早鳥價——2月1日起調漲",
         "results.available": "您的日期有空檔",
         "results.verify": "檔期需要人工確認",
+        "results.checking": "正在確認即時檔期…",
+        "results.error": "無法載入即時檔期。",
         "results.full": "此日期已滿",
         "results.days": "天",
         "results.est": "估算總額——尚非確定預約。Karen會親自確認檔期與最終金額（現在無需付款）。",
@@ -3679,6 +3699,8 @@ const translations = {
         "season.earlybird": "מחיר מוקדם — עולה ב-1 בפברואר",
         "results.available": "פנוי בתאריכים שלך",
         "results.verify": "הזמינות דורשת אישור",
+        "results.checking": "בודקים זמינות בזמן אמת…",
+        "results.error": "לא ניתן לטעון זמינות בזמן אמת.",
         "results.full": "מלא בתאריכים אלה",
         "results.days": "ימים",
         "results.est": "סכום משוער — עדיין לא הזמנה מאושרת. קארן תאשר זמינות ומחיר סופי (ללא תשלום כעת).",

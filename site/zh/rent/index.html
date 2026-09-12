@@ -381,27 +381,24 @@
         const pickupInput = document.getElementById('sw-pickup');
         const returnInput = document.getElementById('sw-return');
         if (pickupInput && returnInput) {
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            const tomorrowStr = tomorrow.toISOString().slice(0, 10);
-            
-            const defaultReturn = new Date();
-            defaultReturn.setDate(tomorrow.getDate() + 5);
-            const defaultReturnStr = defaultReturn.toISOString().slice(0, 10);
-            
-            pickupInput.value = tomorrowStr;
             pickupInput.min = new Date().toISOString().slice(0, 10);
-            
-            returnInput.value = defaultReturnStr;
-            returnInput.min = tomorrowStr;
+            returnInput.min = pickupInput.min;
+
+            const searchParams = new URLSearchParams(window.location.search);
+            const fromParam = searchParams.get('from');
+            const toParam = searchParams.get('to');
+            const guestsParam = searchParams.get('guests');
+            if (fromParam) pickupInput.value = fromParam;
+            if (toParam) returnInput.value = toParam;
+            if (fromParam) returnInput.min = fromParam;
+            const guestsInput = document.getElementById('sw-guests');
+            if (guestsInput && guestsParam && guestsInput.querySelector('option[value="' + guestsParam + '"]')) {
+                guestsInput.value = guestsParam;
+            }
             
             pickupInput.addEventListener('change', () => {
                 returnInput.min = pickupInput.value;
-                if (returnInput.value < pickupInput.value) {
-                    const newReturn = new Date(pickupInput.value);
-                    newReturn.setDate(newReturn.getDate() + 5);
-                    returnInput.value = newReturn.toISOString().slice(0, 10);
-                }
+                if (returnInput.value && returnInput.value <= pickupInput.value) returnInput.value = '';
             });
         }
     });
@@ -503,17 +500,17 @@
 
                     <!-- Search Widget -->
                     <div class="anim-slide-up anim-d5" style="margin: 24px 0 16px;">
-                        <form class="search-widget search-widget--light" action="/book/" method="GET" style="display: flex; flex-wrap: wrap; background: #ffffff; border: 1px solid #E8DFD1; border-radius: 16px; padding: 16px 20px; gap: 16px; align-items: center; box-shadow: 0 8px 30px rgba(44, 44, 44, 0.06); width: 100%; max-width: 650px;">
+                        <form class="search-widget search-widget--light" action="/rent/" method="GET" onsubmit="this.action=((window.VTJ_FORCE_LANG&amp;&amp;window.VTJ_FORCE_LANG!=='en')?'/'+window.VTJ_FORCE_LANG:'')+'/rent/';" style="display: flex; flex-wrap: wrap; background: #ffffff; border: 1px solid #E8DFD1; border-radius: 16px; padding: 16px 20px; gap: 16px; align-items: center; box-shadow: 0 8px 30px rgba(44, 44, 44, 0.06); width: 100%; max-width: 650px;">
                             <div class="search-widget-group" style="flex: 1; min-width: 130px; display: flex; flex-direction: column; gap: 4px;">
-                                <label for="sw-pickup" style="font-size: 0.7rem; font-weight: 700; color: #5C5446; text-transform: uppercase; letter-spacing: 0.5px;">Pickup Date</label>
+                                <label for="sw-pickup" style="font-size: 0.7rem; font-weight: 700; color: #5C5446; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="home.search.pickup">取車日期</label>
                                 <input type="date" id="sw-pickup" name="from" required="" style="padding: 8px 12px; border: 1px solid #E8DFD1; border-radius: 8px; font-size: 0.9rem; background: #FAF6F0; color: #2C2C2C; outline: none; transition: all 0.2s;">
                             </div>
                             <div class="search-widget-group" style="flex: 1; min-width: 130px; display: flex; flex-direction: column; gap: 4px;">
-                                <label for="sw-return" style="font-size: 0.7rem; font-weight: 700; color: #5C5446; text-transform: uppercase; letter-spacing: 0.5px;">Return Date</label>
+                                <label for="sw-return" style="font-size: 0.7rem; font-weight: 700; color: #5C5446; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="home.search.return">還車日期</label>
                                 <input type="date" id="sw-return" name="to" required="" style="padding: 8px 12px; border: 1px solid #E8DFD1; border-radius: 8px; font-size: 0.9rem; background: #FAF6F0; color: #2C2C2C; outline: none; transition: all 0.2s;">
                             </div>
                             <div class="search-widget-group" style="flex: 0.8; min-width: 100px; display: flex; flex-direction: column; gap: 4px;">
-                                <label for="sw-guests" style="font-size: 0.7rem; font-weight: 700; color: #5C5446; text-transform: uppercase; letter-spacing: 0.5px;">Guests</label>
+                                <label for="sw-guests" style="font-size: 0.7rem; font-weight: 700; color: #5C5446; text-transform: uppercase; letter-spacing: 0.5px;" data-i18n="home.search.guests">旅客人數</label>
                                 <select id="sw-guests" name="guests" required="" style="padding: 8px 12px; border: 1px solid #E8DFD1; border-radius: 8px; font-size: 0.9rem; background: #ffffff; color: #2C2C2C; outline: none; transition: all 0.2s; -webkit-appearance: none; appearance: none; background-image: url(&quot;data:image/svg+xml;utf8,&lt;svg fill='%235c5446' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'&gt;&lt;path d='M7 10l5 5 5-5z'/&gt;&lt;path d='M0 0h24v24H0z' fill='none'/&gt;&lt;/svg&gt;&quot;); background-repeat: no-repeat; background-position: right 8px center; padding-right: 28px;">
                                     <option value="1">1 Guest</option>
                                     <option value="2" selected="">2 Guests</option>
@@ -523,7 +520,7 @@
                                 </select>
                             </div>
                             <button type="submit" class="search-widget-btn" style="align-self: flex-end; padding: 10px 20px; background: #2D5A3D; color: #FFFFFF; border: none; border-radius: 8px; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; height: 38px; justify-content: center; margin-top: auto; border: 1px solid #2D5A3D;">
-                                <span>Search</span>
+                                <span data-i18n="home.search.btn">搜尋</span>
                                 <span class="btn-icon">→</span>
                             </button>
                         </form>
@@ -2243,19 +2240,23 @@
             }
             return false;
         }
+
+        var grid = document.querySelector('.vehicles-grid');
+        if (!grid) return;
+        var banner = document.createElement('div');
+        banner.className = 'search-results-banner';
+        banner.innerHTML = '🔍 <b>' + fdate(d1) + ' → ' + fdate(d2) + '</b> · ' + days + ' ' + tr('results.days', 'days') +
+            ' · 👥' + guests + ' <span class="srb-count">· ⏳ ' + tr('results.checking', 'Checking live availability…') + '</span>' +
+            ' <a href="' + LP + '/rent/#top">' + tr('results.change', 'Change dates') + '</a>';
+        grid.parentNode.insertBefore(banner, grid);
+
         fetch('/api/availability').then(function (r) {
             if (!r.ok) throw new Error('availability request failed');
             return r.json();
         }).then(function (data) {
-            var grid = document.querySelector('.vehicles-grid');
-            if (!grid) return;
             var needsVerification = data.availability && data.availability.complete === false;
-            // 検索サマリーバナー
-            var banner = document.createElement('div');
-            banner.className = 'search-results-banner';
             banner.innerHTML = '🔍 <b>' + fdate(d1) + ' → ' + fdate(d2) + '</b> · ' + days + ' ' + tr('results.days', 'days') +
-                ' · 👥' + guests + ' <span class="srb-count"></span> <a href="' + LP + '/#hero">' + tr('results.change', 'Change dates') + '</a>';
-            grid.parentNode.insertBefore(banner, grid);
+                ' · 👥' + guests + ' <span class="srb-count"></span> <a href="' + LP + '/rent/#top">' + tr('results.change', 'Change dates') + '</a>';
 
             VEHICLES.forEach(function (v) {
                 var link = document.querySelector('.vehicle-card a[href$="/rent/' + v.slug + '/"]');
@@ -2271,16 +2272,18 @@
                     seasonHtml += '<div class="rs-season">' + tr('season.' + sk, sk) +
                         (rf.seasons[sk].early ? ' · <b>' + tr('season.earlybird', 'Early-bird rate — rises Feb 1') + '</b>' : '') + '</div>';
                 }
-                if (!booked) {
+                if (guests > v.cap) {
+                    strip.className = 'result-strip incompatible';
+                    strip.innerHTML = '<div class="rs-status">⚠️ ' + tr('results.fits', 'Fits up to {N} guests').replace('{N}', v.cap) + '</div>';
+                } else if (!booked) {
                     var discTxt = q.disc ? ' · -' + Math.round(q.disc * 100) + '%' : '';
-                    var fitsTxt = guests > v.cap ? '<div class="rs-fits">⚠️ ' + tr('results.fits', 'Fits up to {N} guests').replace('{N}', v.cap) + '</div>' : '';
-                    strip.className = 'result-strip ' + (needsVerification ? 'pending' : 'ok') + (guests > v.cap ? ' dim' : '');
+                    strip.className = 'result-strip ' + (needsVerification ? 'pending' : 'ok');
                     strip.innerHTML =
                         '<div class="rs-status">' + (needsVerification
                             ? '⚠️ ' + tr('results.verify', 'Availability needs confirmation')
                             : '✅ ' + tr('results.available', 'Available for your dates')) + '</div>' + seasonHtml +
                         '<div class="rs-total">¥' + q.total.toLocaleString() + '<small> · ' + days + ' ' + tr('results.days', 'days') + discTxt + '</small></div>' +
-                        '<div class="rs-est">' + tr('results.est', 'Estimated total — not a confirmed booking yet. Karen confirms availability & final quote (no payment now).') + '</div>' + fitsTxt +
+                        '<div class="rs-est">' + tr('results.est', 'Estimated total — not a confirmed booking yet. Karen confirms availability & final quote (no payment now).') + '</div>' +
                         '<a class="rs-select" data-track="select_' + v.slug + '" href="' + LP + '/book/?vehicle=' + v.slug + '&from=' + from + '&to=' + to + '&guests=' + guests + '">' + tr('results.select', 'Request this van →') + '</a>';
                 } else {
                     strip.className = 'result-strip full';
@@ -2313,7 +2316,13 @@
                 var r = banner.getBoundingClientRect();
                 if (r.top < 0 || r.top > 300) banner.scrollIntoView({ block: 'start' });
             }, 1600);
-        }).catch(function () { /* 取得失敗時は通常表示のまま */ });
+        }).catch(function () {
+            banner.innerHTML = '⚠️ <b>' + tr('results.error', 'Live availability could not be loaded.') + '</b> ' +
+                '<a target="_blank" rel="noopener" href="https://wa.me/817093757129?text=' +
+                encodeURIComponent('Hi Karen! Is anything available around ' + from + ' - ' + to + '? (' + guests + ' guests)') + '">💬 ' +
+                tr('results.askother', 'Ask Karen about these dates') + '</a>';
+            if (typeof gtag === 'function') gtag('event', 'availability_load_failed', { page_path: window.location.pathname });
+        });
     })();
     </script>
 

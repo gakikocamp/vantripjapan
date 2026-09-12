@@ -347,27 +347,12 @@
         const pickupInput = document.getElementById('sw-pickup');
         const returnInput = document.getElementById('sw-return');
         if (pickupInput && returnInput) {
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            const tomorrowStr = tomorrow.toISOString().slice(0, 10);
-            
-            const defaultReturn = new Date();
-            defaultReturn.setDate(tomorrow.getDate() + 5);
-            const defaultReturnStr = defaultReturn.toISOString().slice(0, 10);
-            
-            pickupInput.value = tomorrowStr;
             pickupInput.min = new Date().toISOString().slice(0, 10);
-            
-            returnInput.value = defaultReturnStr;
-            returnInput.min = tomorrowStr;
+            returnInput.min = pickupInput.min;
             
             pickupInput.addEventListener('change', () => {
                 returnInput.min = pickupInput.value;
-                if (returnInput.value < pickupInput.value) {
-                    const newReturn = new Date(pickupInput.value);
-                    newReturn.setDate(newReturn.getDate() + 5);
-                    returnInput.value = newReturn.toISOString().slice(0, 10);
-                }
+                if (returnInput.value && returnInput.value <= pickupInput.value) returnInput.value = '';
             });
         }
     });

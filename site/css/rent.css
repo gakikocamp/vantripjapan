@@ -3612,7 +3612,6 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
 
 /* ── CVR: Mobile Hero Simplification ── */
 @media (max-width: 768px) {
-    .search-widget--light,
     .rent-hero-stats,
     .hero-alt-contact,
     .scroll-indicator,
@@ -3636,6 +3635,15 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
         width: 100%;
         justify-content: center;
         text-align: center;
+    }
+    .search-widget--light {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    .search-widget--light input,
+    .search-widget--light select,
+    .search-widget--light button {
+        min-height: 44px;
     }
 }
 
@@ -4657,6 +4665,7 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
+    scroll-margin-top: 84px;
 }
 .search-results-banner a {
     color: #fff;
@@ -4676,6 +4685,11 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
 .result-strip.pending {
     background: #FFFBEB;
     border: 1.5px solid #D6A94F;
+}
+.result-strip.incompatible {
+    background: #F5F5F4;
+    border: 1.5px solid #D6D3D1;
+    color: #57534E;
 }
 .result-strip.ok.dim,
 .result-strip.pending.dim { opacity: 0.75; }
