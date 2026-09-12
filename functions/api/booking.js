@@ -7,7 +7,7 @@
  */
 
 import { encrypt, decrypt } from './_crypto.js';
-import { rateFactor } from '../_rate-calendar.js';
+import { quoteRental } from '../_rate-calendar.js';
 import { buildCompleteToken } from './_complete-token.js';
 
 function ensureBookingBindings(env) {
@@ -18,25 +18,12 @@ function ensureBookingBindings(env) {
 
 // 予約フォーム(/book/)と同じ料金ロジック。見積総額と割引ラベルを返す。
 const VEHICLE_BASE = { 'MAZDA BONGO': 22000, 'TOYOTA PROBOX': 22000, 'DAIHATSU POCKET LOFT': 25000 };
-const DISCOUNT_TIERS = [
-  { minDays: 21, rate: 0.20, label: '20% OFF' },
-  { minDays: 14, rate: 0.15, label: '15% OFF' },
-  { minDays: 7, rate: 0.10, label: '10% OFF' },
-];
 function estimateBookingTotal(vehicleType, pickup, returns) {
   const base = VEHICLE_BASE[vehicleType];
   if (!base || !(pickup instanceof Date) || !(returns instanceof Date)) return { total: null, label: null };
   const days = Math.ceil((returns - pickup) / (1000 * 60 * 60 * 24));
   if (!(days > 0)) return { total: null, label: null };
-  const weekendRate = Math.round(base * 1.5);
-  const weeklyTotal = (5 * base) + (2 * weekendRate);
-  // VTJ公式ルール: 各週の1-5日目=平日料金、6日目=週末料金（6日=5平日+1週末）
-  const rem = days % 7;
-  let baseTotal = (Math.floor(days / 7) * weeklyTotal) + (Math.min(rem, 5) * base) + (Math.max(0, rem - 5) * weekendRate);
-  baseTotal = Math.round(baseTotal * rateFactor(pickup, days, vehicleType)); // シーズン係数(桜等)
-  const tier = DISCOUNT_TIERS.find((t) => days >= t.minDays);
-  const total = Math.round(baseTotal * (1 - (tier ? tier.rate : 0)));
-  return { total, label: tier ? tier.label : null, days };
+  return quoteRental(base, pickup, days, vehicleType) || { total: null, label: null };
 }
 
 // POST: Public — create a new booking

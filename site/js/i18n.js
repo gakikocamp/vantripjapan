@@ -257,7 +257,7 @@ const translations = {
         // Calculator
         "calc.badge": "Price Calculator",
         "calc.title": "How Much Does Your Trip Cost?",
-        "calc.subtitle": "Longer stays = better value per day. Compare with hotels.",
+        "calc.subtitle": "Choose a trip length for an estimate. Exact totals depend on your dates, including weekends and seasonal rates.",
         "calc.currency_label": "Display Currency:",
         "calc.days_label": "Number of days",
         "calc.days_unit": "days",
@@ -1050,7 +1050,7 @@ const translations = {
         // Calculator
         "calc.badge": "Calculateur de Prix",
         "calc.title": "Combien coûte votre voyage ?",
-        "calc.subtitle": "Plus le séjour est long, plus la valeur est grande. Comparez avec les hôtels.",
+        "calc.subtitle": "Choisissez une durée pour obtenir une estimation. Le total exact dépend de vos dates, notamment des week-ends et des tarifs saisonniers.",
         "calc.currency_label": "Devise d'affichage :",
         "calc.days_label": "Nombre de jours",
         "calc.days_unit": "jours",
@@ -1834,7 +1834,7 @@ const translations = {
         // Calculator
         "calc.badge": "Preisrechner",
         "calc.title": "Was kostet deine Reise?",
-        "calc.subtitle": "Längere Aufenthalte = besserer Tagespreis. Vergleiche mit Hotels.",
+        "calc.subtitle": "Wählen Sie eine Reisedauer für eine Schätzung. Der genaue Gesamtpreis hängt von Ihren Daten sowie Wochenend- und Saisontarifen ab.",
         "calc.currency_label": "Währung anzeigen:",
         "calc.days_label": "Anzahl der Tage",
         "calc.days_unit": "Tage",
@@ -2618,7 +2618,7 @@ const translations = {
         // Calculator
         "calc.badge": "費用試算",
         "calc.title": "您的旅程需要多少費用？",
-        "calc.subtitle": "住得越久，每天越划算。與飯店比較看看。",
+        "calc.subtitle": "選擇旅程天數以查看估算。實際總額會依日期、週末與季節費率而定。",
         "calc.currency_label": "顯示貨幣：",
         "calc.days_label": "天數",
         "calc.days_unit": "天",
@@ -3401,7 +3401,7 @@ const translations = {
         "faq.a7": "ישראל היא מדינת אמנת ז'נבה. השיגו IDP ב-MEMSI או דואר ישראל (~₪80). טיסות לפוקואוקה דרך סיאול/בנגקוק, והבסיס שלנו 10 דקות מהנחיתה!",
         "calc.badge": "מחשבון מחירים",
         "calc.title": "כמה עולה הטיול שלכם?",
-        "calc.subtitle": "שהייה ארוכה יותר = ערך טוב יותר ליום.",
+        "calc.subtitle": "בחרו את אורך הטיול לקבלת הערכה. הסכום המדויק תלוי בתאריכים, כולל תעריפי סוף שבוע ועונה.",
         "calc.currency_label": "מטבע תצוגה:",
         "calc.days_label": "מספר ימים",
         "calc.days_unit": "ימים",

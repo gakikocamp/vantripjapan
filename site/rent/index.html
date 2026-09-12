@@ -635,7 +635,7 @@
                 <div class="rent-section-header">
                     <span class="rent-badge">🧮 <span data-i18n="calc.badge">Price Calculator</span></span>
                     <h2 class="rent-section-title" data-i18n="calc.title">How Much Does Your Trip Cost?</h2>
-                    <p class="rent-section-subtitle" data-i18n="calc.subtitle">Longer stays = better value per day. Compare with hotels.</p>
+                    <p class="rent-section-subtitle" data-i18n="calc.subtitle">Choose a trip length for an estimate. Exact totals depend on your dates, including weekends and seasonal rates.</p>
                 </div>
 
                 <!-- Controls -->
@@ -1550,19 +1550,22 @@
             return null;
         }
 
+        function _baseTotalForDuration(base, days) {
+            var weekendRate = Math.round(base * 1.5);
+            var weeklyTotal = (5 * base) + (2 * weekendRate);
+            var fullWeeks = Math.floor(days / 7);
+            var remainderDays = days % 7;
+            return (fullWeeks * weeklyTotal) +
+                (Math.min(remainderDays, 5) * base) +
+                (Math.max(0, remainderDays - 5) * weekendRate);
+        }
+
         function _updateCalc() {
             try {
                 // Estimate weekdays vs weekends
                 // For every 7 days: 5 weekdays + 2 weekends. 
                 // We use an average weekly rate: 5 * basePrice + 2 * (basePrice * 1.5)
-                var weekendRate = Math.round(_calcVehicle * 1.5);
-                var weeklyTotal = (5 * _calcVehicle) + (2 * weekendRate);
-                var fullWeeks = Math.floor(_calcDays / 7);
-                var remainderDays = _calcDays % 7;
-                // VTJ公式ルール: 各週の1-5日目=平日料金、6日目=週末料金（6日=5平日+1週末）
-                var remWeekday = Math.min(remainderDays, 5);
-                var remWeekend = Math.max(0, remainderDays - 5);
-                var baseTotal = (fullWeeks * weeklyTotal) + (remWeekday * _calcVehicle) + (remWeekend * weekendRate);
+                var baseTotal = _baseTotalForDuration(_calcVehicle, _calcDays);
 
                 // Apply long-stay discount
                 var discount = _getDiscount(_calcDays);
@@ -1647,16 +1650,8 @@
                 // Keep Form CTA in sync with calculator selections
                 var formBtn = document.querySelector('a[data-track="book_calculator"]');
                 if (formBtn) {
-                    var pickupDate = new Date();
-                    pickupDate.setDate(pickupDate.getDate() + 1); // Tomorrow
-                    var returnDate = new Date(pickupDate);
-                    returnDate.setDate(returnDate.getDate() + _calcDays);
-                    
-                    var pickupStr = pickupDate.toISOString().slice(0, 10);
-                    var returnStr = returnDate.toISOString().slice(0, 10);
                     var vehicleParam = _calcVehicleName.toLowerCase().replace(/\s+/g, '');
-                    
-                    formBtn.href = '/book/?from=' + pickupStr + '&to=' + returnStr + '&guests=' + _calcPeople + '&vehicle=' + vehicleParam;
+                    formBtn.href = '/book/?guests=' + _calcPeople + '&vehicle=' + vehicleParam;
                 }
 
             } catch (e) {
@@ -1757,11 +1752,7 @@
                 btn.disabled = true;
                 btn.textContent = '⏳ Sending...';
 
-                var weekendRate2 = Math.round(_calcVehicle * 1.5);
-                var weeklyTotal2 = (5 * _calcVehicle) + (2 * weekendRate2);
-                var fullWeeks = Math.floor(_calcDays / 7);
-                var remainderDays = _calcDays % 7;
-                var baseTotal = (fullWeeks * weeklyTotal2) + (remainderDays * _calcVehicle);
+                var baseTotal = _baseTotalForDuration(_calcVehicle, _calcDays);
                 var discount = _getDiscount(_calcDays);
                 var discountedTotal = discount ? baseTotal * (1 - discount.rate) : baseTotal;
                 
@@ -2176,7 +2167,7 @@
         var from = P.get('from'), to = P.get('to');
         var guests = parseInt(P.get('guests') || '2', 10) || 2;
         if (!from || !to) return;
-        var d1 = new Date(from), d2 = new Date(to);
+        var d1 = new Date(from + 'T10:00:00'), d2 = new Date(to + 'T18:00:00');
         var days = Math.ceil((d2 - d1) / 86400000);
         if (!(days > 0) || days > 60) return;
 
@@ -2191,13 +2182,15 @@
             } catch (e) {}
             return fb;
         }
-        // VTJ公式料金式(1-5日=平日/6日目=週末/7,14,21日割引) — /book/・APIと同一
-        function quote(base) {
-            var wr = Math.round(base * 1.5), weekly = 5 * base + 2 * wr;
-            var fw = Math.floor(days / 7), rem = days % 7;
-            var bt = fw * weekly + Math.min(rem, 5) * base + Math.max(0, rem - 5) * wr;
-            var t = days >= 21 ? 0.20 : days >= 14 ? 0.15 : days >= 7 ? 0.10 : 0;
-            return { total: Math.round(bt * (1 - t)), disc: t };
+        // 日付別の平日・週末・季節料金と7/14/21日割引 — /book/・APIと同一
+        function quote(base, slug) {
+            if (window.VTJ_quoteRental) {
+                var exact = window.VTJ_quoteRental(base, from, days, slug);
+                if (exact) return { total: exact.total, disc: exact.discount.rate };
+            }
+            var bt = _baseTotalForDuration(base, days);
+            var discount = _getDiscount(days);
+            return { total: Math.round(bt * (1 - (discount ? discount.rate : 0))), disc: discount ? discount.rate : 0 };
         }
         var VEHICLES = [
             { slug: 'probox', api: 'TOYOTA PROBOX', base: 22000, cap: 2 },
@@ -2231,9 +2224,8 @@
                 var anchor = card.querySelector('h3');
                 var strip = document.createElement('div');
                 var booked = conflicts((data.vehicles || {})[v.api]);
-                var q = quote(v.base);
+                var q = quote(v.base, v.slug);
                 var rf = (window.VTJ_rateFactor) ? window.VTJ_rateFactor(from, days, v.slug) : { factor: 1, seasons: {} };
-                q.total = Math.round(q.total * rf.factor);
                 var seasonHtml = '';
                 for (var sk in rf.seasons) {
                     seasonHtml += '<div class="rs-season">' + tr('season.' + sk, sk) +

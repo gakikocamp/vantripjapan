@@ -23,30 +23,67 @@ var VTJ_RATE_DATA = [
 /* RATE_DATA_END */
 
 (function () {
+  var DISCOUNT_TIERS = [
+    { minDays: 21, rate: 0.20, label: '20% OFF' },
+    { minDays: 14, rate: 0.15, label: '15% OFF' },
+    { minDays: 7, rate: 0.10, label: '10% OFF' }
+  ];
+
   function entryFactor(e) {
     if (e.early && new Date().toISOString().slice(0, 10) <= e.early.until) return e.early.factor;
     return e.factor;
   }
+
+  function factorForDate(iso, slug, seasons) {
+    var today = new Date().toISOString().slice(0, 10);
+    for (var i = 0; i < VTJ_RATE_DATA.length; i++) {
+      var e = VTJ_RATE_DATA[i];
+      if (e.vehicles && e.vehicles.indexOf(slug) === -1) continue;
+      if (iso >= e.from && iso < e.to) {
+        var factor = entryFactor(e);
+        if (seasons && factor !== 1) seasons[e.key] = { early: !!(e.early && today <= e.early.until) };
+        return factor;
+      }
+    }
+    return 1;
+  }
+
   // from(YYYY-MM-DD)からdays日間・車種slugの平均係数と適用シーズン({key:{early}})を返す
   window.VTJ_rateFactor = function (fromStr, days, slug) {
     var total = 0, seasons = {};
-    var today = new Date().toISOString().slice(0, 10);
     var d = new Date(fromStr + 'T00:00:00Z');
     for (var i = 0; i < days; i++) {
       var iso = d.toISOString().slice(0, 10);
-      var f = 1;
-      for (var j = 0; j < VTJ_RATE_DATA.length; j++) {
-        var e = VTJ_RATE_DATA[j];
-        if (e.vehicles && slug && e.vehicles.indexOf(slug) === -1) continue;
-        if (iso >= e.from && iso < e.to) {
-          f = entryFactor(e);
-          if (f !== 1) seasons[e.key] = { early: !!(e.early && today <= e.early.until) };
-          break;
-        }
-      }
+      var f = factorForDate(iso, slug, seasons);
       total += f;
       d.setUTCDate(d.getUTCDate() + 1);
     }
     return { factor: days > 0 ? total / days : 1, seasons: seasons };
+  };
+
+  // 日付が確定した見積もりの共通式。各日ごとに週末・季節料金を計算後、長期割引を適用する。
+  window.VTJ_quoteRental = function (base, fromStr, days, slug) {
+    if (!(base > 0) || !(days > 0) || !/^\d{4}-\d{2}-\d{2}$/.test(fromStr || '')) return null;
+    var subtotal = 0, seasons = {};
+    var d = new Date(fromStr + 'T00:00:00Z');
+    for (var i = 0; i < days; i++) {
+      var iso = d.toISOString().slice(0, 10);
+      var weekendFactor = (d.getUTCDay() === 0 || d.getUTCDay() === 6) ? 1.5 : 1;
+      subtotal += Math.round(base * weekendFactor * factorForDate(iso, slug, seasons));
+      d.setUTCDate(d.getUTCDate() + 1);
+    }
+    var discount = { rate: 0, label: '' };
+    for (var j = 0; j < DISCOUNT_TIERS.length; j++) {
+      if (days >= DISCOUNT_TIERS[j].minDays) {
+        discount = DISCOUNT_TIERS[j];
+        break;
+      }
+    }
+    return {
+      subtotal: subtotal,
+      total: Math.round(subtotal * (1 - discount.rate)),
+      discount: discount,
+      seasons: seasons
+    };
   };
 })();

@@ -1763,26 +1763,25 @@ function checkVehiclesFilter() {
 }
 
 function calculateBaseTotal(baseRate, days) {
-    const weekendRate = Math.round(baseRate * 1.5);
-    const weeklyTotal = (5 * baseRate) + (2 * weekendRate);
-    const fullWeeks = Math.floor(days / 7);
-    const remainderDays = days % 7;
-    // VTJ公式ルール: 各週の1-5日目=平日料金、6日目=週末料金（6日レンタルは5平日+1週末）
-    const remWeekday = Math.min(remainderDays, 5);
-    const remWeekend = Math.max(0, remainderDays - 5);
-    let total = (fullWeeks * weeklyTotal) + (remWeekday * baseRate) + (remWeekend * weekendRate);
-    // シーズン係数(桜・紅葉等) — rate-calendar.js。選択中の取車日+車種をDOMから読む
+    const pEl = document.getElementById('pickup_datetime');
+    const vEl = document.querySelector('input[name="vehicle_type"]:checked');
+    const SLUGS = { 'TOYOTA PROBOX': 'probox', 'MAZDA BONGO': 'bongo', 'DAIHATSU POCKET LOFT': 'loft' };
+    const pickupDate = pEl && pEl.value ? pEl.value.slice(0, 10) : '';
+
     try {
-        if (window.VTJ_rateFactor) {
-            const pEl = document.getElementById('pickup_datetime');
-            const vEl = document.querySelector('input[name="vehicle_type"]:checked');
-            const SLUGS = { 'TOYOTA PROBOX': 'probox', 'MAZDA BONGO': 'bongo', 'DAIHATSU POCKET LOFT': 'loft' };
-            if (pEl && pEl.value && pEl.value.length >= 10) {
-                const rf = window.VTJ_rateFactor(pEl.value.slice(0, 10), days, vEl ? (SLUGS[vEl.value] || '') : '');
-                total = Math.round(total * rf.factor);
-            }
+        if (window.VTJ_quoteRental && pickupDate) {
+            const quote = window.VTJ_quoteRental(baseRate, pickupDate, days, vEl ? (SLUGS[vEl.value] || '') : '');
+            if (quote) return quote.subtotal;
         }
-    } catch (e) { /* 係数取得失敗時は基本料金のまま */ }
+    } catch (e) { /* 共通料金関数が失敗した場合は下の基本計算へ */ }
+
+    let total = 0;
+    const d = new Date((pickupDate || new Date().toISOString().slice(0, 10)) + 'T00:00:00Z');
+    for (let i = 0; i < days; i++) {
+        const weekend = d.getUTCDay() === 0 || d.getUTCDay() === 6;
+        total += Math.round(baseRate * (weekend ? 1.5 : 1));
+        d.setUTCDate(d.getUTCDate() + 1);
+    }
     return total;
 }
 
@@ -2182,19 +2181,16 @@ document.getElementById('referralDropdown').addEventListener('change', function(
 
     const params = new URLSearchParams(window.location.search);
     
-    // Parse pickup and return dates
+    // Parse and preserve conditions passed from search/results pages.
     const fromParam = params.get('from');
     const toParam = params.get('to');
     const guestsParam = params.get('guests');
-
-    if (fromParam) {
-        const pickupVal = fromParam.includes('T') ? fromParam.replace('T', ' ') : `${fromParam} 10:00`;
-        if (fpPickup) fpPickup.setDate(pickupVal);
-    }
-    if (toParam) {
-        const returnVal = toParam.includes('T') ? toParam.replace('T', ' ') : `${toParam} 18:00`;
-        if (fpReturn) fpReturn.setDate(returnVal);
-    }
+    const normalizeDateParam = (value, defaultTime) => {
+        if (!value) return '';
+        return value.includes('T') ? value.replace('T', ' ') : `${value} ${defaultTime}`;
+    };
+    const pickupParamValue = normalizeDateParam(fromParam, '10:00');
+    const returnParamValue = normalizeDateParam(toParam, '18:00');
     if (guestsParam) {
         const selectGuests = document.querySelector('select[name="num_guests"]');
         if (selectGuests) {
@@ -2219,10 +2215,6 @@ document.getElementById('referralDropdown').addEventListener('change', function(
             if (radio) {
                 radio.checked = true;
                 initFlatpickr(radio.value);
-                
-                // Set pickup and return value if they were set in URL
-                if (fromParam && fpPickup) fpPickup.setDate(fromParam.replace('T', ' '));
-                if (toParam && fpReturn) fpReturn.setDate(toParam.replace('T', ' '));
 
                 if (typeof VTJSocialProof !== 'undefined') {
                     VTJSocialProof.refresh(radio.value, '#social-proof-container');
@@ -2240,6 +2232,10 @@ document.getElementById('referralDropdown').addEventListener('change', function(
             }
         }
     }
+
+    // Set dates once, after vehicle selection has finished rebuilding Flatpickr.
+    if (pickupParamValue && fpPickup) fpPickup.setDate(pickupParamValue);
+    if (returnParamValue && fpReturn) fpReturn.setDate(returnParamValue);
 
     checkAvailability();
     checkVehiclesFilter();
