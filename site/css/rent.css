@@ -3975,6 +3975,10 @@ a.hero-trust-badge:hover { transform: translateY(-1px); }
     margin-bottom: 80px;
 }
 
+.detail-layout > * {
+    min-width: 0;
+}
+
 /* stickyは基準ルールを先に置く。メディアクエリは詳細度を上げないため、
    モバイル用の position:relative を必ず後段に置いて勝たせる（でないと
    スマホでもギャラリーが貼り付き、タイトルが画像の裏に潜り込む）。 */

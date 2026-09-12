@@ -612,6 +612,7 @@ ol {
 .article-card {
   display: flex;
   flex-direction: column;
+  min-width: 0;
   cursor: pointer;
   transition: all 0.4s var(--ease);
   border-radius: var(--radius);
@@ -1480,7 +1481,7 @@ body {
 
   /* Articles */
   .articles-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-xl);
   }
 
