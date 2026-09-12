@@ -761,12 +761,14 @@
         }
         async function loadArticles() {
             try {
+                const articleLang = window.VTJ_FORCE_LANG || 'en';
+                const articleQuery = '?lang=' + encodeURIComponent(articleLang);
                 // Try public endpoint first (bypasses /api middleware), then fallback
-                let res = await fetch('/public-articles');
+                let res = await fetch('/public-articles' + articleQuery);
                 // Validate we got JSON, not an HTML fallback
                 const ct1 = (res.headers.get('content-type') || '');
                 if (!res.ok || !ct1.includes('application/json')) {
-                    res = await fetch('/api/articles');
+                    res = await fetch('/api/articles' + articleQuery);
                 }
                 const ct2 = (res.headers.get('content-type') || '');
                 if (!res.ok || !ct2.includes('application/json')) {

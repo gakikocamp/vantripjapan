@@ -248,10 +248,10 @@
 
         async function loadCategories() {
             try {
-                let res = await fetch('/public-articles');
+                let res = await fetch('/public-articles?lang=en');
                 const ct1 = (res.headers.get('content-type') || '');
                 if (!res.ok || !ct1.includes('application/json')) {
-                    res = await fetch('/api/articles');
+                    res = await fetch('/api/articles?lang=en');
                 }
                 const ct2 = (res.headers.get('content-type') || '');
                 if (!res.ok || !ct2.includes('application/json')) {

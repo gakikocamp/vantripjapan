@@ -55,27 +55,33 @@ async function handleGet(request, env) {
   const url = new URL(request.url);
   const limit = Math.min(parseInt(url.searchParams.get('limit') || '100'), 200);
   const category = url.searchParams.get('category') || '';
+  const requestedLang = (url.searchParams.get('lang') || '').toLowerCase();
+  const lang = ['en', 'fr', 'de', 'zh', 'he'].includes(requestedLang) ? requestedLang : '';
 
-  let query, params;
+  const where = ["site = 'vantrip'", "status = 'published'"];
+  const params = [];
   if (category) {
-    query = `
-      SELECT id, slug, title, excerpt, cover_image, category, published_at
-      FROM articles
-      WHERE site = 'vantrip' AND status = 'published' AND category = ?
-      ORDER BY published_at DESC, created_at DESC
-      LIMIT ?
-    `;
-    params = [category, limit];
-  } else {
-    query = `
-      SELECT id, slug, title, excerpt, cover_image, category, published_at
-      FROM articles
-      WHERE site = 'vantrip' AND status = 'published'
-      ORDER BY published_at DESC, created_at DESC
-      LIMIT ?
-    `;
-    params = [limit];
+    where.push('category = ?');
+    params.push(category);
   }
+  if (lang === 'en') {
+    where.push("lower(COALESCE(tags, '')) NOT LIKE '%lang-fr%'");
+    where.push("lower(COALESCE(tags, '')) NOT LIKE '%lang-de%'");
+    where.push("lower(COALESCE(tags, '')) NOT LIKE '%lang-zh%'");
+    where.push("lower(COALESCE(tags, '')) NOT LIKE '%lang-he%'");
+  } else if (lang) {
+    where.push("lower(COALESCE(tags, '')) LIKE ?");
+    params.push(`%lang-${lang}%`);
+  }
+  params.push(limit);
+
+  const query = `
+    SELECT id, slug, title, excerpt, cover_image, category, published_at, tags
+    FROM articles
+    WHERE ${where.join(' AND ')}
+    ORDER BY published_at DESC, created_at DESC
+    LIMIT ?
+  `;
 
   const { results } = await env.DB.prepare(query).bind(...params).all();
   return new Response(JSON.stringify(results), {
