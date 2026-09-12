@@ -94,6 +94,23 @@
             </div>
             <p class="analysis-note">検索数だけで自動値上げはしません。満車検索、失注理由、実際の成約を合わせて料金判断に使います。</p>
 
+            <div class="revenue-heading-row">
+                <h2 class="section-heading">年商2,000万円への進捗</h2>
+                <label class="revenue-year-label">対象年 <select id="revenueYear" onchange="loadDemand()"></select></label>
+            </div>
+            <div class="stat-tiles demand-tiles">
+                <div class="stat-tile"><span class="tile-num tile-num-money" id="revenueBookedValue">—</span><span class="tile-label">確定予約額</span></div>
+                <div class="stat-tile"><span class="tile-num" id="revenueProgress">—</span><span class="tile-label">2,000万円進捗</span></div>
+                <div class="stat-tile"><span class="tile-num" id="revenueRentalDays">—</span><span class="tile-label">確定貸出日数</span></div>
+                <div class="stat-tile"><span class="tile-num tile-num-money" id="revenueAverage">—</span><span class="tile-label">平均予約単価</span></div>
+            </div>
+            <div class="revenue-progress" aria-label="年商2,000万円目標の進捗"><span id="revenueProgressBar"></span></div>
+            <p class="revenue-basis" id="revenueBasis">確定・利用中・完了の保存済み見積額を集計。返金、決済手数料、原価は未反映です。</p>
+            <div class="card demand-card">
+                <div class="card-header"><h3><i class="fas fa-yen-sign"></i> 出発月別の確定予約額</h3></div>
+                <div class="table-responsive"><table class="data-table"><thead><tr><th>出発月</th><th>予約</th><th>貸出日数</th><th>確定予約額</th></tr></thead><tbody id="revenueMonthsBody"></tbody></table></div>
+            </div>
+
             <h2 class="section-heading">料金判断アシスタント</h2>
             <div class="card demand-card">
                 <div class="card-header"><h3><i class="fas fa-scale-balanced"></i> 月別の価格シグナル</h3></div>

@@ -192,6 +192,14 @@ button { font-family: inherit; }
 .metric-list > div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--hairline); }
 .metric-list > p { color: var(--text-tertiary); padding: 12px 0; }
 .loss-reason-inline { display: block; color: var(--text-secondary); font-size: 0.72rem; }
+.revenue-heading-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 28px; }
+.revenue-heading-row .section-heading { margin: 0; }
+.revenue-year-label { display: flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 0.82rem; font-weight: 600; }
+.revenue-year-label select { min-height: 36px; padding: 6px 28px 6px 10px; border: 1px solid var(--hairline); border-radius: 9px; background: var(--bg-card); color: var(--text-primary); }
+.tile-num-money { font-size: clamp(1.05rem, 3vw, 1.35rem) !important; }
+.revenue-progress { height: 10px; margin-top: 12px; overflow: hidden; border-radius: 999px; background: var(--bg-grouped); }
+.revenue-progress span { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--tint), #5a8a6a); transition: width 350ms var(--ease-fluid); }
+.revenue-basis { margin: 8px 0 0; color: var(--text-tertiary); font-size: 0.75rem; line-height: 1.5; }
 .pricing-signal-note { padding: 0 18px 12px; color: var(--text-secondary); font-size: 0.8rem; line-height: 1.55; }
 .pricing-signal-badge { display: inline-flex; align-items: center; padding: 4px 9px; border-radius: 999px; font-size: 0.74rem; font-weight: 700; white-space: nowrap; }
 .pricing-signal-badge.collect { background: var(--bg-grouped); color: var(--text-secondary); }
@@ -840,6 +848,7 @@ button { font-family: inherit; }
 @media (max-width: 640px) {
     .demand-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .demand-grid { grid-template-columns: 1fr; }
+    .revenue-heading-row { align-items: flex-end; }
     .page-actions .btn-big { flex: 1 1 100%; }
     .status-tabs {
         overflow-x: auto;

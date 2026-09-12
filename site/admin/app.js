@@ -173,10 +173,26 @@ function renderPricingSignals(searchMonths, inquiryMonths) {
 
 window.loadDemand = async function() {
     try {
-        const [searches, inquiries] = await Promise.all([
+        const yearSelect = $('#revenueYear');
+        if (yearSelect && !yearSelect.options.length) {
+            const year = new Date().getFullYear();
+            [year - 1, year, year + 1].forEach(value => yearSelect.add(new Option(String(value), String(value), value === year, value === year)));
+        }
+        const reportYear = yearSelect?.value || String(new Date().getFullYear());
+        const [searches, inquiries, revenue] = await Promise.all([
             api('/api/admin/demand-summary?days=90'),
-            api('/api/admin/inquiry-outcomes?days=90')
+            api('/api/admin/inquiry-outcomes?days=90'),
+            api(`/api/admin/revenue-summary?year=${encodeURIComponent(reportYear)}`)
         ]);
+        const rt = revenue.totals || {};
+        $('#revenueBookedValue').textContent = fmtYen(rt.booked_value || 0);
+        $('#revenueProgress').textContent = `${revenue.target_progress_percent || 0}%`;
+        $('#revenueRentalDays').textContent = `${rt.rental_days || 0}日`;
+        $('#revenueAverage').textContent = fmtYen(rt.average_booking_value || 0);
+        $('#revenueProgressBar').style.width = `${Math.min(100, Math.max(0, Number(revenue.target_progress_percent || 0)))}%`;
+        $('#revenueMonthsBody').innerHTML = (revenue.pickup_months || []).map(row => `<tr>
+            <td><strong>${row.pickup_month}</strong></td><td>${row.bookings}</td><td>${row.rental_days}日</td><td><strong>${fmtYen(row.booked_value || 0)}</strong></td>
+        </tr>`).join('') || '<tr><td colspan="4">この年の確定予約はまだありません</td></tr>';
         const st = searches.totals || {};
         $('#demandSearches').textContent = st.searches || 0;
         $('#demandSoldOut').textContent = st.sold_out_searches || 0;
