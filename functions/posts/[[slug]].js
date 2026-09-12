@@ -62,7 +62,13 @@ function detectLang(article) {
 const CTA_I18N = {
   en: {
     ready: 'Ready to explore Kyushu by campervan?',
-    body: 'All-inclusive campervan rental from Fukuoka — from ¥22,000/day. Insurance, ETC card, bedding, and 24/7 English support included. Pickup 10 min from Fukuoka Airport.',
+    body: 'Campervan rental from Fukuoka — from ¥22,000/day. Insurance, bedding, and 24/7 English support included. An ETC card is available on advance request; tolls are charged separately. Pickup 10 min from Fukuoka Airport.',
+    searchTitle: 'Check real availability for your trip',
+    pickup: 'Pickup date',
+    return: 'Return date',
+    guests: 'Travelers',
+    guestOptions: ['1 traveler', '2 travelers', '3 travelers', '4 travelers', '5 travelers'],
+    search: 'Check dates & prices',
     view: 'View Rental Options →',
     wa: '💬 Ask on WhatsApp',
     waText: "Hi Karen! I just read your article and I'm interested in renting a campervan.",
@@ -74,7 +80,13 @@ const CTA_I18N = {
   },
   fr: {
     ready: 'Prêt à explorer Kyushu en camping-car ?',
-    body: "Location de camping-car tout compris au départ de Fukuoka — à partir de ¥22 000/jour (≈134 €). Assurance, carte ETC, literie et assistance 24h/24 incluses. Prise en charge à 10 min de l'aéroport de Fukuoka.",
+    body: "Location de camping-car au départ de Fukuoka — à partir de ¥22 000/jour (≈134 €). Assurance, literie et assistance 24h/24 incluses. Carte ETC disponible sur demande préalable ; péages facturés séparément. Prise en charge à 10 min de l'aéroport de Fukuoka.",
+    searchTitle: 'Vérifiez les disponibilités pour votre voyage',
+    pickup: 'Date de départ',
+    return: 'Date de retour',
+    guests: 'Voyageurs',
+    guestOptions: ['1 voyageur', '2 voyageurs', '3 voyageurs', '4 voyageurs', '5 voyageurs'],
+    search: 'Voir les dates et les prix',
     view: 'Voir les camping-cars →',
     wa: '💬 Écrivez-nous sur WhatsApp',
     waText: 'Bonjour Karen ! Je viens de lire votre article et je souhaite louer un camping-car.',
@@ -86,7 +98,13 @@ const CTA_I18N = {
   },
   de: {
     ready: 'Bereit, Kyushu im Campervan zu entdecken?',
-    body: 'All-inclusive-Campervan-Vermietung ab Fukuoka — ab ¥22.000/Tag (≈134 €). Versicherung, ETC-Karte, Bettwäsche und 24/7-Support inklusive. Abholung 10 Min. vom Flughafen Fukuoka.',
+    body: 'Campervan-Vermietung ab Fukuoka — ab ¥22.000/Tag (≈134 €). Versicherung, Bettwäsche und 24/7-Support inklusive. Eine ETC-Karte ist nach vorheriger Anfrage verfügbar; Mautgebühren werden separat berechnet. Abholung 10 Min. vom Flughafen Fukuoka.',
+    searchTitle: 'Verfügbarkeit für Ihre Reise prüfen',
+    pickup: 'Abholdatum',
+    return: 'Rückgabedatum',
+    guests: 'Reisende',
+    guestOptions: ['1 Reisender', '2 Reisende', '3 Reisende', '4 Reisende', '5 Reisende'],
+    search: 'Termine & Preise prüfen',
     view: 'Fahrzeuge ansehen →',
     wa: '💬 Auf WhatsApp fragen',
     waText: 'Hallo Karen! Ich habe gerade euren Artikel gelesen und möchte einen Campervan mieten.',
@@ -98,7 +116,13 @@ const CTA_I18N = {
   },
   'zh-Hant': {
     ready: '準備好開露營車遊九州了嗎？',
-    body: '福岡出發全包式露營車出租——每日¥22,000起。含保險、ETC卡、寢具與24小時支援。福岡機場10分鐘即可取車。',
+    body: '福岡出發露營車出租——每日¥22,000起。含保險、寢具與24小時支援。ETC卡可提前申請，過路費另計。福岡機場10分鐘即可取車。',
+    searchTitle: '查詢旅程的實際空車與價格',
+    pickup: '取車日期',
+    return: '還車日期',
+    guests: '旅客人數',
+    guestOptions: ['1位旅客', '2位旅客', '3位旅客', '4位旅客', '5位旅客'],
+    search: '查詢日期與價格',
     view: '查看車輛與價格 →',
     line: 'LINE 諮詢（台灣旅客首選）',
     wa: '💬 WhatsApp 諮詢',
@@ -111,7 +135,13 @@ const CTA_I18N = {
   },
   he: {
     ready: 'מוכנים לטייל בקיושו בקרוואן?',
-    body: 'השכרת קרוואן הכל-כלול מפוקואוקה — החל מ-¥22,000 ליום (≈₪543). ביטוח, כרטיס ETC, מצעים ותמיכה 24/7 כלולים. איסוף 10 דקות משדה התעופה פוקואוקה.',
+    body: 'השכרת קרוואן מפוקואוקה — החל מ-¥22,000 ליום (≈₪543). ביטוח, מצעים ותמיכה באנגלית 24/7 כלולים. כרטיס ETC זמין בהזמנה מראש; אגרות הכביש מחויבות בנפרד. איסוף 10 דקות משדה התעופה פוקואוקה.',
+    searchTitle: 'בדקו זמינות אמיתית לתאריכי הנסיעה',
+    pickup: 'תאריך איסוף',
+    return: 'תאריך החזרה',
+    guests: 'נוסעים',
+    guestOptions: ['נוסע אחד', '2 נוסעים', '3 נוסעים', '4 נוסעים', '5 נוסעים'],
+    search: 'בדיקת תאריכים ומחירים',
     view: 'לצפייה ברכבים →',
     wa: '💬 שאלו אותנו בוואטסאפ',
     waText: "Hi Karen! I just read your article and I'm interested in renting a campervan.",
@@ -158,6 +188,8 @@ function renderArticlePage(article) {
   const faqSchema = extractFaqSchema(article.body);
   const t = CTA_I18N[lang] || CTA_I18N.en;
   const isZh = lang === 'zh-Hant';
+  const routeLang = lang === 'zh-Hant' ? 'zh' : lang;
+  const rentalPath = lang === 'en' ? '/rent/' : `/${routeLang}/rent/`;
 
   return `<!DOCTYPE html>
 <html lang="${lang}"${lang === 'he' ? ' dir="rtl"' : ''}>
@@ -265,12 +297,34 @@ function renderArticlePage(article) {
     <div class="article-cta-box">
       <h3>${t.ready}</h3>
       <p>${t.body}</p>
+      <form class="article-rental-search search-widget" action="${rentalPath}" method="get">
+        <strong class="article-rental-search-title">${t.searchTitle}</strong>
+        <div class="article-rental-search-fields">
+          <label>
+            <span>${t.pickup}</span>
+            <input type="date" name="from" required>
+          </label>
+          <label>
+            <span>${t.return}</span>
+            <input type="date" name="to" required>
+          </label>
+          <label>
+            <span>${t.guests}</span>
+            <select name="guests" required>
+              ${t.guestOptions.map((label, index) => `<option value="${index + 1}"${index === 1 ? ' selected' : ''}>${label}</option>`).join('')}
+            </select>
+          </label>
+          <button type="submit">${t.search} →</button>
+        </div>
+      </form>
+      <div class="article-cta-actions">
       ${isZh
-        ? `<a href="https://lin.ee/YYyRz2f" class="article-cta-btn" target="_blank" rel="noopener">💚 ${t.line}</a>
-      <a href="/rent/" class="article-cta-btn" style="background:transparent;border:2px solid rgba(255,255,255,0.5);margin-left:12px;color:#fff;">${t.view}</a>`
-        : `<a href="/rent/" class="article-cta-btn">${t.view}</a>
-      <a href="https://wa.me/817093757129?text=${encodeURIComponent(t.waText)}" class="article-cta-btn" style="background:transparent;border:2px solid rgba(255,255,255,0.5);margin-left:12px;color:#fff;" target="_blank" rel="noopener">${t.wa}</a>`}
-      <div><a href="/book/" style="display:inline-block;margin-top:14px;color:#fff;text-decoration:underline;font-size:14px;opacity:.9;">📝 ${t.book}</a></div>
+        ? `<a href="https://lin.ee/YYyRz2f" class="article-cta-btn article-cta-btn-secondary" data-track="article_line" target="_blank" rel="noopener">💚 ${t.line}</a>
+      <a href="${rentalPath}" class="article-cta-btn article-cta-btn-secondary" data-track="book_article_view">${t.view}</a>`
+        : `<a href="${rentalPath}" class="article-cta-btn article-cta-btn-secondary" data-track="book_article_view">${t.view}</a>
+      <a href="https://wa.me/817093757129?text=${encodeURIComponent(t.waText)}" class="article-cta-btn article-cta-btn-secondary" data-track="article_whatsapp" target="_blank" rel="noopener">${t.wa}</a>`}
+      </div>
+      <div><a href="/book/" class="article-book-link" data-track="book_article_direct">📝 ${t.book}</a></div>
     </div>
   </div>
 
@@ -336,7 +390,7 @@ function renderArticlePage(article) {
       <h4>${t.floatTitle}</h4>
       <p>${t.floatBody}</p>
     </div>
-    <a href="/rent/" class="floating-cta-btn">${t.floatBtn}</a>
+    <a href="${rentalPath}" class="floating-cta-btn" data-track="book_article_floating">${t.floatBtn}</a>
   </div>
 
   <script>
@@ -373,17 +427,52 @@ function renderArticlePage(article) {
   <script src="/js/nav.js?v=20260719"></script>
 
   <script>
-    // GA4 CTAクリック計測（予約転換の可視化）
+    // Keep date inputs valid without guessing the visitor's travel dates.
     (function(){
-      if (typeof gtag !== 'function') return;
+      var form = document.querySelector('.article-rental-search');
+      if (form) {
+        var from = form.querySelector('[name="from"]');
+        var to = form.querySelector('[name="to"]');
+        var today = new Date();
+        today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+        var minDate = today.toISOString().slice(0, 10);
+        from.min = minDate;
+        to.min = minDate;
+        from.addEventListener('change', function(){
+          to.min = from.value || minDate;
+          if (to.value && to.value < to.min) to.value = '';
+        });
+        form.addEventListener('submit', function(){
+          if (typeof gtag !== 'function') return;
+          var data = new FormData(form);
+          gtag('event', 'rental_search_submitted', {
+            pickup_date: String(data.get('from') || ''),
+            return_date: String(data.get('to') || ''),
+            guests: Number(data.get('guests') || 0),
+            page_path: location.pathname,
+            page_section: 'article_cta'
+          });
+        });
+      }
+
+      // GA4 CTA clicks use the same intent definitions as the rental funnel.
       document.addEventListener('click', function(e){
         var a = e.target && e.target.closest ? e.target.closest('a') : null;
-        if (!a) return;
-        var h = a.href || '';
-        if (h.indexOf('wa.me') > -1) gtag('event', 'whatsapp_click', {event_category: 'cta', page_path: location.pathname});
-        else if (h.indexOf('lin.ee') > -1) gtag('event', 'line_click', {event_category: 'cta', page_path: location.pathname});
-        else if (h.indexOf('/book/') > -1) gtag('event', 'book_link_click', {event_category: 'cta', page_path: location.pathname});
-        else if (h.indexOf('/rent/') > -1) gtag('event', 'rent_link_click', {event_category: 'cta', page_path: location.pathname});
+        if (!a || typeof gtag !== 'function') return;
+        var href = a.getAttribute('href') || '';
+        var trackId = a.getAttribute('data-track') || '';
+        var params = {
+          cta_id: trackId || a.getAttribute('aria-label') || 'article_link',
+          cta_text: (a.textContent || '').trim().slice(0, 80),
+          page_path: location.pathname,
+          page_section: a.closest('.article-cta') ? 'article_cta' : (a.closest('.floating-cta') ? 'floating_cta' : 'other')
+        };
+        if (href.indexOf('wa.me/') !== -1 || href.indexOf('lin.ee/') !== -1) {
+          params.channel = href.indexOf('lin.ee/') !== -1 ? 'line' : 'whatsapp';
+          gtag('event', 'contact_channel_click', params);
+        } else if (trackId.indexOf('book_') === 0) {
+          gtag('event', 'booking_cta_click', params);
+        }
       }, true);
     })();
   </script>
