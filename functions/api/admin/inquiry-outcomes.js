@@ -21,7 +21,7 @@ export async function onRequestGet({ request, env }) {
   const requestedDays = Number.parseInt(new URL(request.url).searchParams.get('days') || '90', 10);
   const days = Math.min(365, Math.max(7, Number.isFinite(requestedDays) ? requestedDays : 90));
   const since = `-${days} days`;
-  const [totals, reasons, channels, recent] = await Promise.all([
+  const [totals, reasons, channels, months, recent] = await Promise.all([
     env.CUSTOMERS_DB.prepare(`
       SELECT COUNT(*) AS inquiries,
              SUM(CASE WHEN outcome = 'won' THEN 1 ELSE 0 END) AS won,
@@ -42,6 +42,17 @@ export async function onRequestGet({ request, env }) {
       GROUP BY channel ORDER BY inquiries DESC
     `).bind(since).all(),
     env.CUSTOMERS_DB.prepare(`
+      SELECT substr(desired_from, 1, 7) AS pickup_month,
+             COUNT(*) AS inquiries,
+             SUM(CASE WHEN outcome = 'won' THEN 1 ELSE 0 END) AS won,
+             SUM(CASE WHEN outcome = 'lost' THEN 1 ELSE 0 END) AS lost,
+             SUM(CASE WHEN outcome = 'lost' AND loss_reason = 'price' THEN 1 ELSE 0 END) AS price_losses,
+             SUM(CASE WHEN outcome = 'lost' AND loss_reason = 'no_availability' THEN 1 ELSE 0 END) AS availability_losses
+      FROM inquiry_outcomes
+      WHERE inquiry_date >= date('now', ?) AND desired_from IS NOT NULL
+      GROUP BY pickup_month ORDER BY pickup_month
+    `).bind(since).all(),
+    env.CUSTOMERS_DB.prepare(`
       SELECT id, inquiry_date, channel, outcome, loss_reason, desired_from, desired_to, guests, vehicle, language
       FROM inquiry_outcomes WHERE inquiry_date >= date('now', ?)
       ORDER BY inquiry_date DESC, id DESC LIMIT 100
@@ -52,6 +63,7 @@ export async function onRequestGet({ request, env }) {
     totals: totals || {},
     loss_reasons: reasons.results || [],
     channels: channels.results || [],
+    pickup_months: months.results || [],
     recent: recent.results || []
   }, { headers: { 'Cache-Control': 'private, no-store' } });
 }

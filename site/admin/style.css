@@ -192,6 +192,12 @@ button { font-family: inherit; }
 .metric-list > div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--hairline); }
 .metric-list > p { color: var(--text-tertiary); padding: 12px 0; }
 .loss-reason-inline { display: block; color: var(--text-secondary); font-size: 0.72rem; }
+.pricing-signal-note { padding: 0 18px 12px; color: var(--text-secondary); font-size: 0.8rem; line-height: 1.55; }
+.pricing-signal-badge { display: inline-flex; align-items: center; padding: 4px 9px; border-radius: 999px; font-size: 0.74rem; font-weight: 700; white-space: nowrap; }
+.pricing-signal-badge.collect { background: var(--bg-grouped); color: var(--text-secondary); }
+.pricing-signal-badge.hold { background: var(--amber-soft); color: #76571f; }
+.pricing-signal-badge.test { background: #e8f6ee; color: #25633d; }
+.pricing-signal-evidence { display: block; min-width: 190px; color: var(--text-secondary); font-size: 0.78rem; line-height: 1.5; }
 
 @keyframes pageIn {
     from { opacity: 0; transform: translateY(6px); }

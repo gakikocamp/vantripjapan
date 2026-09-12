@@ -94,6 +94,13 @@
             </div>
             <p class="analysis-note">検索数だけで自動値上げはしません。満車検索、失注理由、実際の成約を合わせて料金判断に使います。</p>
 
+            <h2 class="section-heading">料金判断アシスタント</h2>
+            <div class="card demand-card">
+                <div class="card-header"><h3><i class="fas fa-scale-balanced"></i> 月別の価格シグナル</h3></div>
+                <p class="pricing-signal-note">検索10件・問い合わせ3件以上を最低条件に、満車率と成約、価格理由の失注を組み合わせます。提案は参考情報で、公開料金は変更しません。</p>
+                <div class="table-responsive"><table class="data-table"><thead><tr><th>利用月</th><th>根拠</th><th>判断</th><th>次のテスト</th></tr></thead><tbody id="pricingSignalsBody"></tbody></table></div>
+            </div>
+
             <h2 class="section-heading">日程検索（直近90日）</h2>
             <div class="stat-tiles demand-tiles">
                 <div class="stat-tile"><span class="tile-num" id="demandSearches">—</span><span class="tile-label">検索</span></div>

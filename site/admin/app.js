@@ -131,6 +131,46 @@ const INQUIRY_CHANNEL_LABELS = { whatsapp: 'WhatsApp', gmail: 'Gmail', form: '�
 const INQUIRY_OUTCOME_LABELS = { open: '対応中', won: '成約', lost: '失注' };
 const INQUIRY_VEHICLE_LABELS = { bongo: 'Bongo', probox: 'Probox', loft: 'Pocket Loft', any: 'どれでも', unsure: '未定' };
 
+function pricingSignal(searchRow, inquiryRow) {
+    const searches = Number(searchRow?.searches || 0);
+    const soldOut = Number(searchRow?.sold_out_searches || 0);
+    const averageAvailable = Number(searchRow?.average_available_vehicles || 0);
+    const inquiries = Number(inquiryRow?.inquiries || 0);
+    const won = Number(inquiryRow?.won || 0);
+    const priceLosses = Number(inquiryRow?.price_losses || 0);
+    const soldOutRate = searches ? soldOut / searches : 0;
+    const priceLossRate = inquiries ? priceLosses / inquiries : 0;
+    const evidence = `検索${searches}・満車${Math.round(soldOutRate * 100)}%・問い合わせ${inquiries}・成約${won}・価格失注${priceLosses}`;
+
+    if (searches < 10 || inquiries < 3) {
+        return { level: 'collect', label: 'データ蓄積', evidence, action: '現行価格を維持し、問い合わせ結果を記録' };
+    }
+    if (priceLossRate >= 0.3) {
+        return { level: 'hold', label: '値上げ保留', evidence, action: '価格説明と商品構成を検証（値下げは利益確認後）' };
+    }
+    if (soldOutRate >= 0.4 && won >= 3) {
+        return { level: 'test', label: '+10%候補', evidence, action: '新規見積もりだけ10%上乗せで2週間テスト' };
+    }
+    if (soldOutRate >= 0.25 && won >= 2) {
+        return { level: 'test', label: '+5%候補', evidence, action: '新規見積もりだけ5%上乗せで2週間テスト' };
+    }
+    if (averageAvailable >= 1.5 && inquiries && won / inquiries < 0.25) {
+        return { level: 'hold', label: 'CVR改善優先', evidence, action: '価格維持で返信速度・車両説明・日程提案を改善' };
+    }
+    return { level: 'hold', label: '価格維持', evidence, action: '成約率と満車率をもう1期間観察' };
+}
+
+function renderPricingSignals(searchMonths, inquiryMonths) {
+    const searchByMonth = Object.fromEntries((searchMonths || []).map(row => [row.pickup_month, row]));
+    const inquiryByMonth = Object.fromEntries((inquiryMonths || []).map(row => [row.pickup_month, row]));
+    const months = [...new Set([...Object.keys(searchByMonth), ...Object.keys(inquiryByMonth)])].filter(Boolean).sort();
+    $('#pricingSignalsBody').innerHTML = months.map(month => {
+        const signal = pricingSignal(searchByMonth[month], inquiryByMonth[month]);
+        return `<tr><td><strong>${month}</strong></td><td><span class="pricing-signal-evidence">${signal.evidence}</span></td>
+            <td><span class="pricing-signal-badge ${signal.level}">${signal.label}</span></td><td>${signal.action}</td></tr>`;
+    }).join('') || '<tr><td colspan="4">検索と問い合わせ結果がたまると、ここに料金判断が表示されます</td></tr>';
+}
+
 window.loadDemand = async function() {
     try {
         const [searches, inquiries] = await Promise.all([
@@ -142,6 +182,7 @@ window.loadDemand = async function() {
         $('#demandSoldOut').textContent = st.sold_out_searches || 0;
         $('#demandUnsupported').textContent = st.unsupported_party_searches || 0;
         $('#demandLeadDays').textContent = st.average_lead_days == null ? '—' : `${st.average_lead_days}日`;
+        renderPricingSignals(searches.pickup_months, inquiries.pickup_months);
         $('#demandMonthsBody').innerHTML = (searches.pickup_months || []).map(row => `<tr>
             <td><strong>${row.pickup_month}</strong></td><td>${row.searches}</td><td>${row.average_rental_days ?? '—'}日</td>
             <td>${row.average_available_vehicles ?? '—'}台</td><td>${row.sold_out_searches || 0}</td>
