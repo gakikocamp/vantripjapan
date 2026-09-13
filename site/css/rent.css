@@ -242,11 +242,22 @@
 }
 
 .hero-eyebrow {
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 7px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: var(--rent-radius-pill);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0.06em;
+    line-height: 1.35;
     opacity: 0;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .hero-eyebrow.anim-slide-up {
@@ -254,33 +265,16 @@
     animation-delay: 0.1s;
 }
 
-/* Brush-stroke highlight on "Starts Here" */
+/* Keep the two-line promise clear without introducing a second type style. */
 .hero-highlight {
     position: relative;
-    color: var(--rent-accent);
-    display: inline-block;
+    color: #F0CDB8;
+    display: block;
+    margin-top: 0.08em;
 }
 
 .hero-highlight::after {
-    content: '';
-    position: absolute;
-    bottom: 2px;
-    left: -4px;
-    right: -4px;
-    height: 12px;
-    background: var(--rent-terracotta);
-    opacity: 0.25;
-    border-radius: 4px;
-    transform: scaleX(0);
-    transform-origin: left;
-    animation: brush-stroke 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 1.2s;
-    z-index: -1;
-}
-
-@keyframes brush-stroke {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
+    content: none;
 }
 
 /* Stat prefix/suffix */
@@ -301,19 +295,24 @@
 }
 
 .rent-hero-text h1 {
-    font-family: var(--font-display);
-    font-size: clamp(36px, 6vw, 64px);
-    font-weight: 400;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    letter-spacing: -0.5px;
+    max-width: 760px;
+    font-family: var(--font-body);
+    font-size: clamp(42px, 5.4vw, 68px);
+    font-weight: 750;
+    line-height: 1.04;
+    margin-bottom: 22px;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
 }
 
 .rent-hero-text .hero-tagline {
-    font-size: 18px;
-    opacity: 0.85;
-    margin-bottom: 32px;
-    line-height: 1.6;
+    max-width: 650px;
+    font-size: 17px;
+    font-weight: 400;
+    opacity: 0.82;
+    margin-bottom: 30px;
+    line-height: 1.7;
+    letter-spacing: -0.01em;
 }
 
 .rent-hero-stats {
@@ -2316,13 +2315,23 @@
     }
 
     .rent-hero-text h1 {
-        font-size: 28px;
-        letter-spacing: -0.5px;
+        font-size: clamp(32px, 9.4vw, 42px);
+        line-height: 1.08;
+        letter-spacing: -0.04em;
     }
 
     .rent-hero-text .hero-tagline {
         font-size: 15px;
+        line-height: 1.6;
         margin-bottom: 24px;
+    }
+
+    .hero-eyebrow {
+        margin-inline: auto;
+        margin-bottom: 16px;
+        padding: 6px 10px;
+        font-size: 11px;
+        letter-spacing: 0.035em;
     }
 
     .rent-hero-stats {
@@ -2616,7 +2625,7 @@
 /* ── Extra small screens ── */
 @media (max-width: 480px) {
     .rent-hero-text h1 {
-        font-size: 24px;
+        font-size: clamp(28px, 8.2vw, 34px);
     }
 
     .rent-hero-stat .stat-number {
