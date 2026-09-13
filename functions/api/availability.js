@@ -10,6 +10,14 @@
  * Merges Google Calendar public iCal feed blocks and D1 database active bookings.
  */
 
+import {
+  VEHICLE_KEYS,
+  buildFullyBookedRanges,
+  mergeOccupancyBlocks,
+  rangeAvailability,
+  vehicleCapacityOnDate
+} from '../_vehicle-inventory.js';
+
 const BLOCKING_STATUSES = ['docs_requested', 'docs_received', 'payment_sent', 'confirmed', 'active'];
 
 function parseICS(icsText) {
@@ -47,6 +55,8 @@ function parseICS(icsText) {
         currentEvent.end = parseICSDate(line);
       } else if (key === 'SUMMARY') {
         currentEvent.summary = value.trim();
+      } else if (key === 'UID') {
+        currentEvent.uid = value.trim();
       }
     }
   }
@@ -79,6 +89,20 @@ function mapSummaryToVehicle(summary) {
   return null;
 }
 
+function calendarBlock(event) {
+  const summary = event.summary || '';
+  const bookingMatch = summary.match(/(?:BOOKING|REQUEST)\s*#\s*(\d+)/i);
+  const blocksWholeClass = /\[\s*BONGO(?:\s+|-)ALL\s*\]/i.test(summary);
+  return {
+    from: event.start,
+    to: event.end,
+    units: blocksWholeClass ? 99 : 1,
+    bookingId: bookingMatch ? bookingMatch[1] : null,
+    eventId: event.uid || null,
+    summary
+  };
+}
+
 async function fetchCalendar(url) {
   if (!url) return null;
   try {
@@ -100,11 +124,7 @@ async function fetchCalendar(url) {
 }
 
 async function getCalendarBlocks(env) {
-  const blocks = {
-    'MAZDA BONGO': [],
-    'TOYOTA PROBOX': [],
-    'DAIHATSU POCKET LOFT': []
-  };
+  const blocks = Object.fromEntries(VEHICLE_KEYS.map(key => [key, []]));
   const sources = [
     { url: env.GOOGLE_CALENDAR_ICS_URL_BONGO, vehicle: 'MAZDA BONGO' },
     { url: env.GOOGLE_CALENDAR_ICS_URL_PROBOX, vehicle: 'TOYOTA PROBOX' },
@@ -125,7 +145,7 @@ async function getCalendarBlocks(env) {
     for (const event of events) {
       const vehicleKey = source.vehicle || mapSummaryToVehicle(event.summary);
       if (vehicleKey && blocks[vehicleKey]) {
-        blocks[vehicleKey].push({ start: event.start, end: event.end, summary: event.summary || '' });
+        blocks[vehicleKey].push(calendarBlock(event));
       }
     }
   }
@@ -166,18 +186,9 @@ export async function onRequestGet({ request, env }) {
       return Response.json({ error: 'Invalid from/to date' }, { status: 400 });
     }
 
-    // 1. Google Calendar Conflicts
-    const calConflicts = [];
-    const vehicleCalEvents = calBlocks[vehicle] || [];
-    for (const event of vehicleCalEvents) {
-      if (event.start < toDate && event.end > fromDate) {
-        calConflicts.push({ from: event.start, to: event.end });
-      }
-    }
-
-    // 2. D1 Database Conflicts
+    // Combine D1 bookings with calendar-only bookings and maintenance blocks.
     const rows = await env.CUSTOMERS_DB.prepare(`
-      SELECT pickup_datetime AS pickup, return_datetime AS dropoff
+      SELECT id, pickup_datetime AS pickup, return_datetime AS dropoff
       FROM bookings
       WHERE vehicle_type = ?
         AND status IN (${placeholders})
@@ -186,19 +197,31 @@ export async function onRequestGet({ request, env }) {
       ORDER BY pickup_datetime
     `).bind(vehicle, ...BLOCKING_STATUSES, to, from).all();
 
-    const dbConflicts = rows.results.map(r => ({
+    const dbBlocks = rows.results.map(r => ({
       from: String(r.pickup).slice(0, 10),
       to: String(r.dropoff).slice(0, 10),
+      units: 1,
+      bookingId: String(r.id)
     }));
-
-    const conflicts = [...calConflicts, ...dbConflicts];
-    const available = conflicts.length > 0 ? false : (availability.complete ? true : null);
-    return Response.json({ available, conflicts, availability }, { headers: cacheHeaders });
+    const calendarBlocks = (calBlocks[vehicle] || []).filter(
+      block => block.from < toDate && block.to > fromDate
+    );
+    const blocks = mergeOccupancyBlocks(dbBlocks, calendarBlocks);
+    const result = rangeAvailability(vehicle, fromDate, toDate, blocks);
+    const available = result.available ? (availability.complete ? true : null) : false;
+    return Response.json({
+      available,
+      remaining: result.remaining,
+      capacity: vehicleCapacityOnDate(vehicle, fromDate),
+      conflicts: blocks.map(({ from, to }) => ({ from, to })),
+      fullyBookedDates: result.fullyBookedDates,
+      availability
+    }, { headers: cacheHeaders });
   }
 
   // Overview: booked ranges per vehicle for the next 6 months
   const rows = await env.CUSTOMERS_DB.prepare(`
-    SELECT vehicle_type AS vehicle, pickup_datetime AS pickup, return_datetime AS dropoff
+    SELECT id, vehicle_type AS vehicle, pickup_datetime AS pickup, return_datetime AS dropoff
     FROM bookings
     WHERE status IN (${placeholders})
       AND return_datetime >= datetime('now')
@@ -206,41 +229,38 @@ export async function onRequestGet({ request, env }) {
     ORDER BY pickup_datetime
   `).bind(...BLOCKING_STATUSES).all();
 
-  const vehicles = {};
-  
-  const addBlock = (veh, fromVal, toVal) => {
-    if (!veh) return;
-    vehicles[veh] = vehicles[veh] || [];
-    const exists = vehicles[veh].some(c => c.from === fromVal && c.to === toVal);
-    if (!exists) {
-      vehicles[veh].push({ from: fromVal, to: toVal });
-    }
-  };
-
-  // Add DB blocks
+  const databaseBlocks = Object.fromEntries(VEHICLE_KEYS.map(key => [key, []]));
   for (const r of rows.results) {
-    const key = r.vehicle || 'UNKNOWN';
-    addBlock(key, String(r.pickup).slice(0, 10), String(r.dropoff).slice(0, 10));
+    const key = r.vehicle;
+    if (!databaseBlocks[key]) continue;
+    databaseBlocks[key].push({
+      from: String(r.pickup).slice(0, 10),
+      to: String(r.dropoff).slice(0, 10),
+      units: 1,
+      bookingId: String(r.id)
+    });
   }
 
-  // Add Google Calendar blocks
   const nowStr = new Date().toISOString().slice(0, 10);
   const sixMonthsLater = new Date();
   sixMonthsLater.setMonth(sixMonthsLater.getMonth() + 6);
   const sixMonthsLaterStr = sixMonthsLater.toISOString().slice(0, 10);
+  const vehicles = {};
+  const occupancy = {};
 
-  for (const vehicleKey of Object.keys(calBlocks)) {
-    for (const event of calBlocks[vehicleKey]) {
-      if (event.end >= nowStr && event.start <= sixMonthsLaterStr) {
-        addBlock(vehicleKey, event.start, event.end);
-      }
-    }
+  for (const vehicleKey of VEHICLE_KEYS) {
+    const calendarBlocks = (calBlocks[vehicleKey] || []).filter(
+      block => block.to >= nowStr && block.from <= sixMonthsLaterStr
+    );
+    const blocks = mergeOccupancyBlocks(databaseBlocks[vehicleKey], calendarBlocks);
+    occupancy[vehicleKey] = blocks.map(({ from, to }) => ({ from, to }));
+    vehicles[vehicleKey] = buildFullyBookedRanges(
+      vehicleKey,
+      nowStr,
+      sixMonthsLaterStr,
+      blocks
+    );
   }
 
-  // Sort ranges chronologically
-  for (const key of Object.keys(vehicles)) {
-    vehicles[key].sort((a, b) => a.from.localeCompare(b.from));
-  }
-
-  return Response.json({ vehicles, availability }, { headers: cacheHeaders });
+  return Response.json({ vehicles, occupancy, availability }, { headers: cacheHeaders });
 }
