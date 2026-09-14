@@ -1,6 +1,6 @@
 # VanTripJapan — Full Documentation for AI Systems
 
-> This is the extended version of llms.txt with comprehensive details about VanTripJapan's campervan rental service, fleet, pricing, and Kyushu travel information. For a concise overview, see llms.txt. Fleet and pricing details were last verified against the live booking system on 2026-09-11.
+> This is the extended version of llms.txt with comprehensive details about VanTripJapan's campervan rental service, fleet, pricing, and Kyushu travel information. For a concise overview, see llms.txt. Fleet and pricing details were last verified against the live booking system on 2026-09-14.
 
 ## Company Information
 
@@ -23,7 +23,7 @@
 VanTripJapan is a family-run campervan rental service specializing in international travelers visiting Kyushu, Japan. We provide fully-equipped campervans with all-inclusive pricing — no hidden fees, no upsells.
 
 ### What Makes Us Different
-1. **All-inclusive pricing**: Insurance (CDW), ETC highway toll card, cooking set & tableware, portable power station, bedding, English navigation, 24/7 roadside assistance and multilingual support — all included in the daily rate
+1. **All-inclusive pricing**: Insurance (CDW), navigation, the sleeping, cooking, power and camping items listed for each vehicle, 24/7 roadside assistance and multilingual support are included in the daily rate. An ETC highway toll card is available on advance request (tolls are charged separately)
 2. **Family-run since 2022**: Not a franchise. A husband-and-wife team (Doko & Karen) who hand-built and maintain every van
 3. **Self check-in, day or night**: Airbnb-style electronic lockbox for pick-up at any hour, even after a late-night flight, and a key drop box for quick returns before early flights
 4. **Multilingual**: Website in English, French, German, Traditional Chinese and Hebrew; support in 100+ languages
@@ -33,36 +33,37 @@ VanTripJapan is a family-run campervan rental service specializing in internatio
 
 ## Fleet Details
 
-Only 3 vans. Every van is fully insured (CDW included), automatic (AT), and cleaned and checked before each trip.
+Three campervan styles. From October 15, 2026 there are two similarly equipped Bongo vans (the exact vehicle is confirmed before payment). Every van is fully insured (CDW included), automatic (AT), and cleaned and checked before each trip.
 
-| Vehicle | Guests | Sleeping | Weekday rate | Weekend rate |
-|---------|--------|----------|--------------|--------------|
-| Roof Tent Probox (Toyota Probox) | 2 | Roof tent (sleeps 2) | ¥22,000/day | ¥33,000/day |
-| Bed Bongo Brawny (Mazda Bongo Brawny) | 2–3 | Built-in bed inside (sleeps 2) | ¥22,000/day | ¥33,000/day |
-| Pocket Loft (Daihatsu Hijet Truck base) | 2–4 | Roof tent (2) + cabin (2) | ¥25,000/day | ¥37,500/day |
+| Vehicle | Guests | Sleeping | Luggage | Weekday rate | Weekend rate |
+|---------|--------|----------|---------|--------------|--------------|
+| Roof Tent Probox (Toyota Probox) | 2 | Roof tent bed 200 × 120 cm | 2–3 large suitcases | ¥22,000/day | ¥33,000/day |
+| Bed Bongo Brawny (Mazda Bongo Brawny; 2 vans from Oct 15, 2026) | 2–3 | Built-in double bed 190 × 135 cm, sleeps 2 | 4+ suitcases under the bed | ¥22,000/day | ¥33,000/day |
+| Pocket Loft (Daihatsu Hijet Truck base) | 2–4 | Roof tent 190 × 120 cm + cabin bed 180 × 110 cm | 2 medium suitcases | ¥25,000/day | ¥37,500/day |
 
 ### Vehicle 1: Roof Tent Probox (most popular)
 - **Type**: Compact Toyota Probox with a roof-top tent
-- **Capacity**: 2 guests (5 seats; the roof tent sleeps 2)
+- **Capacity**: 2 guests (5 seats; roof tent bed 200 × 120 cm)
 - **Price**: From ¥22,000/day (all-inclusive)
-- **Best for**: Couples, solo travelers
-- **Features**: Roof tent, portable power, large luggage space, great fuel economy, automatic transmission
+- **Best for**: Couples who value easy driving and fuel economy
+- **Features**: Roof tent, trunk space for 2–3 large suitcases, great fuel economy, automatic transmission
 - **Driving**: Compact and easy to park
 
 ### Vehicle 2: Bed Bongo Brawny
 - **Type**: Hand-built Mazda Bongo Brawny with a permanent bed inside
-- **Capacity**: 2–3 guests (sleeps 2 inside)
+- **Fleet**: 2 similarly equipped Bongo vans from October 15, 2026 (the exact vehicle is confirmed before payment)
+- **Capacity**: 2–3 guests (the built-in bed sleeps 2)
 - **Price**: From ¥22,000/day (all-inclusive)
-- **Best for**: Couples wanting indoor comfort (room to relax inside on rainy days), small families
-- **Features**: Built-in bed, more interior space, power inverter, LED lighting, automatic transmission
+- **Best for**: Two sleepers who want indoor comfort on rainy days
+- **Features**: Built-in double bed 190 × 135 cm with a memory foam mattress, huge under-bed storage (4+ suitcases), room to relax inside, automatic transmission
 - **Driving**: Narrow vehicle width, easy to drive on Japanese roads despite its size
 
 ### Vehicle 3: Pocket Loft (added July 1, 2026)
 - **Type**: Hand-built ultra-compact kei camper on a Daihatsu Hijet Truck base, with a roof-top tent
-- **Capacity**: 2–4 guests (2 in the roof tent, 2 inside the cabin, with indoor access up to the tent)
+- **Capacity**: 2–4 guests (2 in the roof tent, 190 × 120 cm; 2 in the cabin bed, 180 × 110 cm; indoor access up to the tent)
 - **Price**: From ¥25,000/day (all-inclusive)
-- **Best for**: Island hopping and narrow roads. As the shortest van in the fleet it gets the cheapest ferry fares and is the easiest to book on ferries (popular for Yakushima and the Goto Islands)
-- **Features**: Indoor roof tent access, panorama views, great fuel economy, automatic transmission
+- **Best for**: Up to four travelers and island hopping. As the shortest van in the fleet it gets the cheapest ferry fares and is the easiest to book on ferries (popular for Yakushima and the Goto Islands)
+- **Features**: Indoor roof tent access, under-tent storage (2 medium suitcases), panorama views, great fuel economy, automatic transmission
 - **Driving**: Easiest to drive on narrow roads
 
 ## Pricing Breakdown
@@ -70,8 +71,9 @@ Only 3 vans. Every van is fully insured (CDW included), automatic (AT), and clea
 All prices are in Japanese yen and come from the booking system at https://vantripjapan.jp/book/ (its calendar shows the current daily rate for every date).
 
 ### Daily rates
-- **Weekday rate** (the advertised "from" price): Roof Tent Probox ¥22,000 / Bed Bongo Brawny ¥22,000 / Pocket Loft ¥25,000
-- **Weekend rate**: 150% of the weekday rate (¥33,000 / ¥33,000 / ¥37,500). Multi-day quotes charge 2 of every 7 rental days at the weekend rate (days 6 and 7 of each rental week), so a full week is 5 weekday days + 2 weekend days
+- **Weekday rate** (Monday–Friday, the advertised "from" price): Roof Tent Probox ¥22,000 / Bed Bongo Brawny ¥22,000 / Pocket Loft ¥25,000
+- **Weekend rate** (Saturday and Sunday): 150% of the weekday rate (¥33,000 / ¥33,000 / ¥37,500)
+- **How quotes are calculated**: each rental day is priced by its own date (weekend and seasonal rates), then the long-stay discount is applied to the total
 - **Minimum rental**: 2 days
 
 ### Long-stay discounts (applied automatically to the total)
@@ -79,7 +81,7 @@ All prices are in Japanese yen and come from the booking system at https://vantr
 - 14 days or more: 15% off
 - 21 days or more: 20% off
 
-### Seasonal rates (as of 2026-09-11)
+### Seasonal rates (as of 2026-09-14)
 | Season | Dates | Vehicles | Rate |
 |--------|-------|----------|------|
 | Autumn | Oct 1–31, 2026 | Bed Bongo Brawny only | 110% |
@@ -89,25 +91,24 @@ All prices are in Japanese yen and come from the booking system at https://vantr
 Long-stay discounts also apply during seasonal periods.
 
 ### Example quotes
-- Roof Tent Probox, 7 days: 5 × ¥22,000 + 2 × ¥33,000 = ¥176,000, minus 10% = **¥158,400**
+- Roof Tent Probox, 2 days starting Monday: 2 × ¥22,000 = **¥44,000**; starting Saturday: 2 × ¥33,000 = **¥66,000**
+- Roof Tent Probox, 7 days (any 7 consecutive days include one Saturday and one Sunday): 5 × ¥22,000 + 2 × ¥33,000 = ¥176,000, minus 10% = **¥158,400**
 - Pocket Loft, 7 days: 5 × ¥25,000 + 2 × ¥37,500 = ¥200,000, minus 10% = **¥180,000**
 - Pocket Loft, 21 days: ¥600,000, minus 20% = **¥480,000**
-- Bed Bongo Brawny, 7 days from Oct 5, 2026 (autumn rate): ¥176,000 × 110% = ¥193,600, minus 10% = **¥174,240**
+- Bed Bongo Brawny, 7 days from Monday, Oct 5, 2026 (autumn rate): 5 × ¥24,200 + 2 × ¥36,300 = ¥193,600, minus 10% = **¥174,240**
 
 ### What's included
 | Item | Included? |
 |------|-----------|
 | Vehicle rental | ✅ Included |
 | Insurance (CDW) | ✅ Included |
-| ETC highway toll card (pre-registration required; tolls are deducted from the deposit) | ✅ Included |
-| Cooking set & tableware | ✅ Included |
-| Portable power station | ✅ Included |
-| English navigation | ✅ Included |
-| Bedding & towels | ✅ Included |
+| Navigation | ✅ Included |
+| Sleeping, cooking, power and camping items listed for each vehicle (including bedding, cooking set & tableware) | ✅ Included |
 | 24/7 roadside assistance | ✅ Included |
 | Multilingual support | ✅ Included |
+| ETC highway toll card | Available on advance request; tolls are charged separately and deducted from the deposit at return |
 | Window mosquito screens + portable fans (June–September, advance request) | ✅ Free |
-| Camping chairs, table & extra cookware | Optional (extra) |
+| Additional camping gear | Optional (extra) |
 | Summer Off-Grid Cooling Bundle (EcoFlow Wave 3 portable AC + power station) | Optional: ¥4,000/day, max ¥28,000 per trip |
 | Zero-Risk Full Cover (deductibles and NOC waived to ¥0; tire punctures and towing covered) | Optional: +¥5,000/day |
 
@@ -115,7 +116,8 @@ Long-stay discounts also apply during seasonal periods.
 - **Security deposit**: ¥50,000, collected at pick-up and refunded after return (minus ETC tolls, fuel shortfall or other applicable charges)
 - **Deductible with the included CDW**: up to ¥100,000 for vehicle damage and up to ¥100,000 for third-party property damage
 - **Non-operation charge (NOC)**: ¥20,000 if the van is still drivable, ¥50,000 if towing is required
-- **Cancellation**: Free up to 8 days before pick-up; a tiered fee applies within 7 days
+- **Fuel**: Provided with a full tank; if returned below full, refueling at market rate plus a ¥3,000 service fee is deducted from the deposit
+- **Cancellation**: Free 8 or more days before the rental starts; 30% of the rental fee 7–5 days before; 50% 4–2 days before; 100% 1 day before, on the day, or for a no-show
 - **One-way drops**: Fukuoka → Tokyo, Osaka or Kyoto (surcharge depends on the destination; ask for a quote on WhatsApp or LINE)
 - **JDLTC offer**: ¥5,000 off the van rental when the driver's Japanese license translation is ordered through JDLTC (the driver's name must match)
 
