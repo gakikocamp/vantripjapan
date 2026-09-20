@@ -71,6 +71,10 @@ function isPublicRequest(request) {
   if (path === '/api/cron/send-drip' && method === 'GET') return true;
   // Public: GET cron pickup reminder (CRON_SECRETをエンドポイント内で検証・fail-closed)
   if (path === '/api/cron/pickup-reminder' && method === 'GET') return true;
+  // Public: GET cron review request (CRON_SECRETをエンドポイント内で検証・fail-closed)
+  if (path === '/api/cron/review-request' && method === 'GET') return true;
+  // Public: GET cron status nudge (CRON_SECRETをエンドポイント内で検証・fail-closed)
+  if (path === '/api/cron/status-nudge' && method === 'GET') return true;
   // Public: POST quote request
   if (path === '/api/quote' && method === 'POST') return true;
   // Public: privacy-safe rental search demand capture
