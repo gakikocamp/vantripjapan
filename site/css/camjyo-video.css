@@ -217,3 +217,187 @@ html[dir="rtl"] .camjyo-feature__eyebrow::before {
         transition: none;
     }
 }
+
+/* CAMJYO BAND story page */
+.camjyo-page {
+    background: #fffaf3;
+    color: #27372d;
+}
+
+.camjyo-page__hero {
+    min-height: 72vh;
+    display: grid;
+    place-items: center;
+    padding: 150px 20px 96px;
+    background:
+        linear-gradient(100deg, rgba(20, 37, 27, 0.88), rgba(20, 37, 27, 0.38)),
+        url('/images/camjyo/camp-party-video.webp') center 42% / cover no-repeat;
+    color: #fff;
+}
+
+.camjyo-page__hero-inner {
+    width: min(1080px, 100%);
+}
+
+.camjyo-page__hero .camjyo-feature__eyebrow {
+    color: #f4b48f;
+}
+
+.camjyo-page__hero h1 {
+    max-width: 820px;
+    margin: 0 0 24px;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: clamp(2.9rem, 7vw, 6.6rem);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+}
+
+.camjyo-page__hero p {
+    max-width: 670px;
+    margin: 0 0 32px;
+    color: rgba(255, 255, 255, 0.87);
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    line-height: 1.8;
+}
+
+.camjyo-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.camjyo-page__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 12px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.camjyo-page__button--primary {
+    border-color: #bf4e30;
+    background: #bf4e30;
+}
+
+.camjyo-page__button:hover,
+.camjyo-page__button:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.camjyo-collection {
+    padding: clamp(72px, 9vw, 120px) 20px;
+    background: #fff;
+}
+
+.camjyo-collection__inner {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+}
+
+.camjyo-collection__header {
+    max-width: 720px;
+    margin: 0 auto 48px;
+    text-align: center;
+}
+
+.camjyo-collection__header .camjyo-feature__eyebrow {
+    justify-content: center;
+}
+
+.camjyo-collection__header h2 {
+    margin: 0 0 16px;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: clamp(2.1rem, 5vw, 4rem);
+    font-weight: 500;
+    line-height: 1.08;
+}
+
+.camjyo-collection__header p {
+    margin: 0;
+    color: #657068;
+    line-height: 1.75;
+}
+
+.camjyo-collection__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px 26px;
+}
+
+.camjyo-song {
+    min-width: 0;
+}
+
+.camjyo-song .camjyo-video {
+    border-radius: 16px;
+    box-shadow: 0 18px 42px rgba(39, 55, 45, 0.14);
+}
+
+.camjyo-song h3 {
+    margin: 18px 0 7px;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: 1.45rem;
+    font-weight: 600;
+}
+
+.camjyo-song p {
+    margin: 0;
+    color: #657068;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.camjyo-page__rental {
+    padding: clamp(72px, 9vw, 110px) 20px;
+    background: #27372d;
+    color: #fff;
+    text-align: center;
+}
+
+.camjyo-page__rental-inner {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.camjyo-page__rental h2 {
+    margin: 0 0 16px;
+    font-family: var(--font-serif, Georgia, serif);
+    font-size: clamp(2rem, 4.5vw, 3.6rem);
+    font-weight: 500;
+    line-height: 1.12;
+}
+
+.camjyo-page__rental p {
+    margin: 0 auto 28px;
+    color: rgba(255, 255, 255, 0.76);
+    line-height: 1.75;
+}
+
+@media (max-width: 700px) {
+    .camjyo-page__hero {
+        min-height: 68vh;
+        padding-top: 120px;
+        background-position: 43% center;
+    }
+
+    .camjyo-page__hero h1 {
+        font-size: clamp(2.7rem, 14vw, 4.3rem);
+    }
+
+    .camjyo-collection__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .camjyo-page__actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}

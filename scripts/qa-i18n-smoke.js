@@ -2,7 +2,7 @@
 /**
  * 🧪 i18n スモークQA — デプロイ前の品質ゲート
  *
- * 焼き込み済み言語ページ（fr/de/zh/he × 8ページ）と EN 原本を検査:
+ * 焼き込み済み言語ページ（fr/de/zh/he × 対象ページ）と EN 原本を検査:
  *   - lang属性 / hreflangクラスタ6本 / VTJ_FORCE_LANG / canonical / 翻訳マーカー
  *   - 全 inline <script> の構文 / 全 JSON-LD のパース
  *   - i18n辞書の5言語キー完全一致
@@ -14,12 +14,12 @@ const vm = require("vm");
 
 process.chdir(path.join(__dirname, ".."));
 
-const PAGES = ["", "rent/", "faq/", "rent/bongo/", "rent/loft/", "rent/probox/", "road-trip-planner/", "contact/"];
+const PAGES = ["", "rent/", "camjyo-band/", "faq/", "rent/bongo/", "rent/loft/", "rent/probox/", "road-trip-planner/", "contact/"];
 const LANG_ATTR = { fr: "fr", de: "de", zh: "zh-Hant", he: "he" };
 const EN_PAGES = [
     "site/index.html", "site/rent/index.html", "site/faq/index.html", "site/book/index.html",
     "site/contact/index.html", "site/rent/bongo/index.html", "site/rent/loft/index.html",
-    "site/rent/probox/index.html", "site/road-trip-planner/index.html",
+    "site/rent/probox/index.html", "site/road-trip-planner/index.html", "site/camjyo-band/index.html",
 ];
 
 let fail = 0;

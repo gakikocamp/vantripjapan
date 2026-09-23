@@ -38,6 +38,7 @@ const OG_LOCALE = { fr: "fr_FR", de: "de_DE", zh: "zh_TW", he: "he_IL" };
 const PAGES = [
     "",
     "rent/",
+    "camjyo-band/",
     "faq/",
     "rent/bongo/",
     "rent/loft/",
@@ -58,6 +59,10 @@ const META = {
         "rent/": {
             title: "Location de campervan à Fukuoka — dès 22 000 ¥/jour | VAN TRIP JAPAN",
             desc: "Louez un van aménagé à Fukuoka — assurance, literie et équipement inclus. Prise en charge à 10 min de l'aéroport, explorez Kyushu à votre rythme. Entreprise familiale depuis 2022.",
+        },
+        "camjyo-band/": {
+            title: "Karen & CAMJYO BAND | La musique derrière VAN TRIP JAPAN",
+            desc: "Découvrez Karen, votre hôte chez VAN TRIP JAPAN et chanteuse de CAMJYO BAND. Regardez quatre clips de camping et l’esprit outdoor derrière notre location de vans à Fukuoka.",
         },
         "faq/": {
             title: "FAQ — Location de campervan au Japon | VAN TRIP JAPAN",
@@ -97,6 +102,10 @@ const META = {
             title: "Campervan mieten in Fukuoka — ab 22.000 ¥/Tag | VAN TRIP JAPAN",
             desc: "Campervan in Fukuoka mieten — Versicherung, Bettzeug und Ausrüstung inklusive. Abholung 10 Min. vom Flughafen, Kyushu im eigenen Tempo erkunden. Familienbetrieb seit 2022.",
         },
+        "camjyo-band/": {
+            title: "Karen & CAMJYO BAND | Die Musik hinter VAN TRIP JAPAN",
+            desc: "Lernt Karen kennen, eure Gastgeberin bei VAN TRIP JAPAN und Sängerin von CAMJYO BAND. Vier Camping-Musikvideos und die Outdoor-Seele unserer Campervan-Vermietung in Fukuoka.",
+        },
         "faq/": {
             title: "FAQ — Campervan mieten in Japan | VAN TRIP JAPAN",
             desc: "Häufige Fragen zur Campervan-Miete in Japan: Führerschein (deutsche Führerscheine brauchen eine offizielle Übersetzung, kein internationaler Führerschein), Kosten, Übernachtungsparken, Versicherung und Kyushu-Roadtrips.",
@@ -135,6 +144,10 @@ const META = {
             title: "福岡露營車租借 — 每天22,000日圓起 | VAN TRIP JAPAN",
             desc: "福岡露營車租借 — 保險、寢具與裝備全包。機場10分鐘取車，以自己的步調探索九州。2022年起家族經營。",
         },
+        "camjyo-band/": {
+            title: "Karen 與 CAMJYO BAND | VAN TRIP JAPAN 背後的音樂",
+            desc: "認識 VAN TRIP JAPAN 的在地主人、CAMJYO BAND 主唱 Karen。觀看四支露營音樂影片，感受福岡露營車租借背後的戶外精神。",
+        },
         "faq/": {
             title: "常見問題 — 日本露營車租借 | VAN TRIP JAPAN",
             desc: "日本露營車租借常見問題：駕照（台灣駕照需備日文譯本）、費用、過夜停車、保險與九州公路旅行。",
@@ -172,6 +185,10 @@ const META = {
         "rent/": {
             title: "השכרת קרוואן בפוקואוקה — החל מ-22,000 ין ליום | VAN TRIP JAPAN",
             desc: "השכרת קרוואן בפוקואוקה — ביטוח, מצעים וציוד כלולים. איסוף 10 דקות משדה התעופה. עסק משפחתי מאז 2022.",
+        },
+        "camjyo-band/": {
+            title: "Karen ו־CAMJYO BAND | המוזיקה שמאחורי VAN TRIP JAPAN",
+            desc: "הכירו את קרן, המארחת של VAN TRIP JAPAN והסולנית של CAMJYO BAND. צפו בארבעה קליפים על קמפינג וגלו את רוח הטבע שמאחורי השכרת הקמפרוואנים שלנו בפוקואוקה.",
         },
         "faq/": {
             title: "שאלות נפוצות — השכרת קרוואן ביפן | VAN TRIP JAPAN",
