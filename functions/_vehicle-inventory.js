@@ -77,3 +77,30 @@ export function buildFullyBookedRanges(vehicle, from, to, blocks) {
 
   return ranges;
 }
+
+// カレンがWhatsApp台帳（wa_ledger）で使っている車両名 → サイトの車種キー
+export const LEDGER_VAN_TO_VEHICLE = {
+  bongo1: 'MAZDA BONGO',
+  bongo2: 'MAZDA BONGO',
+  probox: 'TOYOTA PROBOX',
+  pocket: 'DAIHATSU POCKET LOFT'
+};
+
+export function ledgerVanToVehicle(van) {
+  if (!van) return null;
+  return LEDGER_VAN_TO_VEHICLE[String(van).trim().toLowerCase()] || null;
+}
+
+// 台帳とカレンダー/D1は同じ予約を二重に持つことがある。日ごとに多い方を採用すれば、
+// 二重計上で満車に見せることなく、どちらか一方にしか無い予約も取りこぼさない。
+export function combineOccupancySources(from, to, ledgerBlocks, otherBlocks) {
+  const blocks = [];
+  for (let date = from; date < to; date = addDays(date, 1)) {
+    const units = Math.max(
+      occupancyOnDate(ledgerBlocks, date),
+      occupancyOnDate(otherBlocks, date)
+    );
+    if (units > 0) blocks.push({ from: date, to: addDays(date, 1), units });
+  }
+  return blocks;
+}

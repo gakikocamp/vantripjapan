@@ -13,6 +13,8 @@
 import {
   VEHICLE_KEYS,
   buildFullyBookedRanges,
+  combineOccupancySources,
+  ledgerVanToVehicle,
   mergeOccupancyBlocks,
   rangeAvailability,
   vehicleCapacityOnDate
@@ -153,6 +155,46 @@ async function getCalendarBlocks(env) {
   return { blocks, status };
 }
 
+/**
+ * WhatsApp予約台帳（wa_ledger）から稼働中の予約を読む。
+ * 実際の予約はここで管理されているため、カレンダーとD1だけでは空き状況が実態とずれる。
+ * 氏名・連絡先の列は読まない（車種と日付のみ）。
+ */
+async function getLedgerBlocks(env, fromDate, toDate) {
+  const blocks = Object.fromEntries(VEHICLE_KEYS.map(key => [key, []]));
+  let unassigned = 0;
+
+  try {
+    const rows = await env.CUSTOMERS_DB.prepare(`
+      SELECT van, date(start) AS start_date, date(end) AS end_date
+      FROM wa_ledger
+      WHERE (cancelled IS NULL OR CAST(cancelled AS TEXT) <> '1')
+        AND start IS NOT NULL AND end IS NOT NULL
+        AND date(end) > ? AND date(start) < ?
+    `).bind(fromDate, toDate).all();
+
+    for (const row of rows.results) {
+      if (!row.start_date || !row.end_date) continue;
+      const vehicleKey = ledgerVanToVehicle(row.van);
+      if (!vehicleKey || !blocks[vehicleKey]) {
+        // 車種未記入の予約。どの車が埋まるか決まらないので件数だけ返す
+        unassigned++;
+        continue;
+      }
+      blocks[vehicleKey].push({
+        from: String(row.start_date),
+        to: String(row.end_date),
+        units: 1
+      });
+    }
+  } catch (err) {
+    console.error('Failed to read wa_ledger:', err.message || err);
+    return { blocks, unassigned: 0, ok: false };
+  }
+
+  return { blocks, unassigned, ok: true };
+}
+
 export async function onRequestGet({ request, env }) {
   if (!env?.CUSTOMERS_DB) {
     return Response.json({ error: 'Availability service misconfigured' }, { status: 500 });
@@ -206,14 +248,21 @@ export async function onRequestGet({ request, env }) {
     const calendarBlocks = (calBlocks[vehicle] || []).filter(
       block => block.from < toDate && block.to > fromDate
     );
-    const blocks = mergeOccupancyBlocks(dbBlocks, calendarBlocks);
+    const ledger = await getLedgerBlocks(env, fromDate, toDate);
+    if (!ledger.ok) availability.complete = false;
+    availability.ledgerConnected = ledger.ok;
+    availability.unassignedLedgerBookings = ledger.unassigned;
+
+    const sourceBlocks = mergeOccupancyBlocks(dbBlocks, calendarBlocks);
+    const ledgerBlocks = ledger.blocks[vehicle] || [];
+    const blocks = combineOccupancySources(fromDate, toDate, ledgerBlocks, sourceBlocks);
     const result = rangeAvailability(vehicle, fromDate, toDate, blocks);
     const available = result.available ? (availability.complete ? true : null) : false;
     return Response.json({
       available,
       remaining: result.remaining,
       capacity: vehicleCapacityOnDate(vehicle, fromDate),
-      conflicts: blocks.map(({ from, to }) => ({ from, to })),
+      conflicts: [...ledgerBlocks, ...sourceBlocks].map(({ from, to }) => ({ from, to })),
       fullyBookedDates: result.fullyBookedDates,
       availability
     }, { headers: cacheHeaders });
@@ -248,12 +297,19 @@ export async function onRequestGet({ request, env }) {
   const vehicles = {};
   const occupancy = {};
 
+  const ledger = await getLedgerBlocks(env, nowStr, sixMonthsLaterStr);
+  if (!ledger.ok) availability.complete = false;
+  availability.ledgerConnected = ledger.ok;
+  availability.unassignedLedgerBookings = ledger.unassigned;
+
   for (const vehicleKey of VEHICLE_KEYS) {
     const calendarBlocks = (calBlocks[vehicleKey] || []).filter(
       block => block.to >= nowStr && block.from <= sixMonthsLaterStr
     );
-    const blocks = mergeOccupancyBlocks(databaseBlocks[vehicleKey], calendarBlocks);
-    occupancy[vehicleKey] = blocks.map(({ from, to }) => ({ from, to }));
+    const sourceBlocks = mergeOccupancyBlocks(databaseBlocks[vehicleKey], calendarBlocks);
+    const ledgerBlocks = ledger.blocks[vehicleKey] || [];
+    const blocks = combineOccupancySources(nowStr, sixMonthsLaterStr, ledgerBlocks, sourceBlocks);
+    occupancy[vehicleKey] = [...ledgerBlocks, ...sourceBlocks].map(({ from, to }) => ({ from, to }));
     vehicles[vehicleKey] = buildFullyBookedRanges(
       vehicleKey,
       nowStr,
