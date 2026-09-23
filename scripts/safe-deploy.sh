@@ -69,6 +69,28 @@ if [ "$NODE_MAJOR" -lt "$WRANGLER_MIN" ]; then
   echo "  ✅ Node $(node -v) で実行します"
 fi
 
+# このリポジトリは iCloud Drive 上にあり、node_modules の実行ファイルが
+# 同期で消えることがある（esbuild が「別プラットフォーム用」と誤検知して落ちる）。
+# iCloud 外に置いた esbuild を使わせて回避する。
+LOCAL_ESBUILD="node_modules/@esbuild/darwin-arm64/bin/esbuild"
+if [ ! -x "$LOCAL_ESBUILD" ] && [ -z "${ESBUILD_BINARY_PATH:-}" ]; then
+  ESBUILD_VERSION=$(node -p "require('./node_modules/esbuild/package.json').version" 2>/dev/null || echo "")
+  FALLBACK_ESBUILD="$HOME/.vtj-tools/node_modules/@esbuild/darwin-arm64/bin/esbuild"
+  if [ ! -x "$FALLBACK_ESBUILD" ] && [ -n "$ESBUILD_VERSION" ]; then
+    echo "  i  esbuild のバイナリが消えているため iCloud 外に用意します"
+    mkdir -p "$HOME/.vtj-tools"
+    ( cd "$HOME/.vtj-tools" && { [ -f package.json ] || npm init -y >/dev/null 2>&1; } \
+      && npm install "@esbuild/darwin-arm64@${ESBUILD_VERSION}" --no-audit --no-fund >/dev/null 2>&1 ) || true
+  fi
+  if [ -x "$FALLBACK_ESBUILD" ]; then
+    export ESBUILD_BINARY_PATH="$FALLBACK_ESBUILD"
+    echo "  OK esbuild: $FALLBACK_ESBUILD"
+  else
+    echo "esbuild のバイナリを用意できませんでした。npm install をやり直してください"
+    exit 1
+  fi
+fi
+
 # 巻き戻し防止: いま本番に出ているコミットを HEAD が含んでいなければ出さない
 DEPLOYMENTS=$(dc_list_deployments "$PROJECT") || exit 1
 PREV_PROD=$(dc_latest_production "$DEPLOYMENTS") || exit 1
