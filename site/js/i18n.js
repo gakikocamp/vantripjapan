@@ -266,6 +266,14 @@ const translations = {
         "home.fleet.bongo_line": "Sleeps 2 inside · 2 vans from Oct 15 · From ¥22,000/day",
         "home.fleet.loft_line": "Sleeps up to 4 · From ¥25,000/day",
         "home.fleet.cta": "See details →",
+        "camjyo.eyebrow": "Meet your local host",
+        "camjyo.title": "Karen sings about camping, too.",
+        "camjyo.text": "When she isn't helping travelers plan campervan adventures around Kyushu, Karen sings with CAMJYO BAND. “Camp Party” comes from the same love of nature, campfires and time outdoors that inspired VAN TRIP JAPAN.",
+        "camjyo.play": "Play “Camp Party” — CAMJYO BAND",
+        "camjyo.thumbnail_alt": "Karen singing in the Camp Party music video by CAMJYO BAND",
+        "camjyo.watch_youtube": "Watch on YouTube ↗",
+        "camjyo.learn_more": "Discover CAMJYO BAND ↗",
+
         "home.articles_fallback": "Articles are being updated. Check back soon or explore our <a href=\"/rent/\" style=\"color:var(--color-accent);text-decoration:underline;\">rental page</a>.",
         "vehicles.perday": "/day",
 
@@ -1075,6 +1083,14 @@ const translations = {
         "home.fleet.bongo_line": "2 couchages intérieurs · 2 véhicules dès le 15 oct. · dès ¥22 000/j (env. 119 €)",
         "home.fleet.loft_line": "Jusqu'à 4 couchages · dès ¥25 000/j (env. 135 €)",
         "home.fleet.cta": "Voir les détails →",
+        "camjyo.eyebrow": "Rencontrez votre hôte locale",
+        "camjyo.title": "Karen chante aussi le camping.",
+        "camjyo.text": "Lorsqu’elle n’aide pas les voyageurs à préparer leur aventure en van à Kyushu, Karen chante avec CAMJYO BAND. « Camp Party » est né du même amour de la nature, des feux de camp et du plein air qui a inspiré VAN TRIP JAPAN.",
+        "camjyo.play": "Lire « Camp Party » — CAMJYO BAND",
+        "camjyo.thumbnail_alt": "Karen chante dans le clip Camp Party de CAMJYO BAND",
+        "camjyo.watch_youtube": "Voir sur YouTube ↗",
+        "camjyo.learn_more": "Découvrir CAMJYO BAND ↗",
+
         "home.articles_fallback": "Les articles arrivent bientôt — découvrez en attendant notre <a href=\"/fr/rent/\" style=\"color:var(--color-accent);text-decoration:underline;\">page de location</a>.",
         "vehicles.perday": "/jour",
 
@@ -1873,6 +1889,14 @@ const translations = {
         "home.fleet.bongo_line": "2 Schlafplätze innen · 2 Fahrzeuge ab 15. Okt. · ab ¥22.000/Tag (ca. 119 €)",
         "home.fleet.loft_line": "Bis zu 4 Schlafplätze · ab ¥25.000/Tag (ca. 135 €)",
         "home.fleet.cta": "Details ansehen →",
+        "camjyo.eyebrow": "Lernt eure Gastgeberin kennen",
+        "camjyo.title": "Karen singt auch über das Campen.",
+        "camjyo.text": "Wenn sie nicht gerade Reisenden bei der Planung ihres Campervan-Abenteuers durch Kyushu hilft, singt Karen mit CAMJYO BAND. „Camp Party“ entstand aus derselben Liebe zur Natur, zu Lagerfeuern und zur Zeit im Freien, die VAN TRIP JAPAN inspiriert hat.",
+        "camjyo.play": "„Camp Party“ abspielen — CAMJYO BAND",
+        "camjyo.thumbnail_alt": "Karen singt im Musikvideo Camp Party von CAMJYO BAND",
+        "camjyo.watch_youtube": "Auf YouTube ansehen ↗",
+        "camjyo.learn_more": "CAMJYO BAND entdecken ↗",
+
         "home.articles_fallback": "Neue Artikel folgen in Kürze — entdecke inzwischen unsere <a href=\"/de/rent/\" style=\"color:var(--color-accent);text-decoration:underline;\">Mietseite</a>.",
         "vehicles.perday": "/Tag",
 
@@ -2671,6 +2695,14 @@ const translations = {
         "home.fleet.bongo_line": "車內可睡2人・10月15日起提供2輛・每日¥22,000起",
         "home.fleet.loft_line": "最多可睡4人・每日¥25,000起",
         "home.fleet.cta": "查看詳情 →",
+        "camjyo.eyebrow": "認識您的在地主人",
+        "camjyo.title": "Karen 也把露營唱進歌裡。",
+        "camjyo.text": "不忙著協助旅客規劃九州露營車之旅時，Karen 會與 CAMJYO BAND 一起唱歌。〈Camp Party〉源自對大自然、營火與戶外時光的熱愛，而這份熱愛也啟發了 VAN TRIP JAPAN。",
+        "camjyo.play": "播放〈Camp Party〉— CAMJYO BAND",
+        "camjyo.thumbnail_alt": "Karen 在 CAMJYO BAND 的〈Camp Party〉音樂影片中演唱",
+        "camjyo.watch_youtube": "在 YouTube 觀看 ↗",
+        "camjyo.learn_more": "認識 CAMJYO BAND ↗",
+
         "home.articles_fallback": "文章更新中，敬請期待。歡迎先瀏覽<a href=\"/zh/rent/\" style=\"color:var(--color-accent);text-decoration:underline;\">租車頁面</a>。",
         "vehicles.perday": "/天",
 
@@ -3472,6 +3504,14 @@ const translations = {
         "home.fleet.bongo_line": "2 מקומות שינה בפנים · 2 רכבים מ־15 באוקטובר · מ-¥22,000 ליום (כ־₪407)",
         "home.fleet.loft_line": "עד 4 מקומות שינה · מ-¥25,000 ליום (כ־₪463)",
         "home.fleet.cta": "לפרטים →",
+        "camjyo.eyebrow": "הכירו את המארחת המקומית שלכם",
+        "camjyo.title": "קרן גם שרה על קמפינג.",
+        "camjyo.text": "כשהיא לא עוזרת למטיילים לתכנן הרפתקת קמפרוואן בקיושו, קרן שרה עם CAMJYO BAND. השיר „Camp Party” נולד מאותה אהבה לטבע, למדורות ולזמן בחוץ שהעניקה השראה ל־VAN TRIP JAPAN.",
+        "camjyo.play": "ניגון „Camp Party” — CAMJYO BAND",
+        "camjyo.thumbnail_alt": "קרן שרה בקליפ Camp Party של CAMJYO BAND",
+        "camjyo.watch_youtube": "צפייה ב־YouTube ↗",
+        "camjyo.learn_more": "להכיר את CAMJYO BAND ↗",
+
         "home.articles_fallback": "המאמרים בעדכון — בינתיים בקרו ב<a href=\"/he/rent/\" style=\"color:var(--color-accent);text-decoration:underline;\">עמוד ההשכרה</a>.",
         "vehicles.perday": "/יום",
         "compare.badge": "יתרון ברור",
@@ -4109,6 +4149,20 @@ window.switchLang = function(lang) {
         const key = el.getAttribute('data-i18n-placeholder');
         if (dict[key]) {
             el.placeholder = dict[key];
+        }
+    });
+
+    // Update accessible labels and image alternatives
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria-label');
+        if (dict[key]) {
+            el.setAttribute('aria-label', dict[key]);
+        }
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const key = el.getAttribute('data-i18n-alt');
+        if (dict[key]) {
+            el.setAttribute('alt', dict[key]);
         }
     });
 

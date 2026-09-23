@@ -388,6 +388,14 @@ async function bakePage(browser, translations, lang, pagePath) {
                 const key = el.getAttribute("data-i18n-placeholder");
                 if (dict[key]) el.setAttribute("placeholder", dict[key]);
             });
+            document.querySelectorAll("[data-i18n-aria-label]").forEach((el) => {
+                const key = el.getAttribute("data-i18n-aria-label");
+                if (dict[key]) el.setAttribute("aria-label", dict[key]);
+            });
+            document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+                const key = el.getAttribute("data-i18n-alt");
+                if (dict[key]) el.setAttribute("alt", dict[key]);
+            });
             document.querySelectorAll("[data-i18n-wa]").forEach((el) => {
                 const key = el.getAttribute("data-i18n-wa");
                 if (dict[key]) el.setAttribute("href", "https://wa.me/817093757129?text=" + encodeURIComponent(dict[key]));

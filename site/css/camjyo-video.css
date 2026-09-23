@@ -1,0 +1,219 @@
+.camjyo-feature {
+    padding: clamp(64px, 8vw, 104px) 20px;
+    background:
+        radial-gradient(circle at 12% 15%, rgba(196, 112, 75, 0.14), transparent 34%),
+        linear-gradient(145deg, #f8f2e9 0%, #fffaf3 52%, #eef4ee 100%);
+}
+
+.camjyo-feature__inner {
+    width: min(1080px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+    gap: clamp(32px, 6vw, 72px);
+    align-items: center;
+}
+
+.camjyo-feature__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    color: #a54f32;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.camjyo-feature__eyebrow::before {
+    content: '';
+    width: 30px;
+    height: 2px;
+    background: currentColor;
+}
+
+.camjyo-feature__title {
+    margin: 0 0 18px;
+    color: #27372d;
+    font-family: var(--font-serif, var(--font-display, Georgia, serif));
+    font-size: clamp(2rem, 4vw, 3.35rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+}
+
+.camjyo-feature__text {
+    margin: 0 0 24px;
+    color: #59625c;
+    font-size: clamp(0.98rem, 1.6vw, 1.08rem);
+    line-height: 1.8;
+}
+
+.camjyo-feature__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    align-items: center;
+}
+
+.camjyo-feature__link {
+    color: #a54f32;
+    font-size: 0.94rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.camjyo-feature__link:hover,
+.camjyo-feature__link:focus-visible {
+    text-decoration: underline;
+}
+
+.camjyo-video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid rgba(44, 62, 50, 0.12);
+    border-radius: 22px;
+    background: #17231c;
+    box-shadow: 0 24px 60px rgba(39, 55, 45, 0.19);
+}
+
+.camjyo-video__poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    background: #17231c;
+    color: #fff;
+    cursor: pointer;
+}
+
+.camjyo-video__poster img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.45s ease, opacity 0.3s ease;
+}
+
+.camjyo-video__poster::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 48%, rgba(12, 20, 15, 0.7) 100%);
+    pointer-events: none;
+}
+
+.camjyo-video__poster:hover img,
+.camjyo-video__poster:focus-visible img {
+    transform: scale(1.025);
+    opacity: 0.92;
+}
+
+.camjyo-video__poster:focus-visible {
+    outline: 4px solid #f4b48f;
+    outline-offset: -4px;
+}
+
+.camjyo-video__play {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 76px;
+    height: 76px;
+    place-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.82);
+    border-radius: 50%;
+    background: rgba(191, 78, 48, 0.92);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    transform: translate(-50%, -50%);
+}
+
+.camjyo-video__play::before {
+    content: '';
+    width: 0;
+    height: 0;
+    margin-left: 6px;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 19px solid #fff;
+}
+
+.camjyo-video__label {
+    position: absolute;
+    z-index: 2;
+    right: 20px;
+    bottom: 17px;
+    left: 20px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75);
+}
+
+.camjyo-video iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+.story-music {
+    width: min(1000px, 100%);
+    margin: 64px auto 0;
+    padding-top: 48px;
+    border-top: 1px solid var(--rent-border, rgba(44, 62, 50, 0.12));
+}
+
+.story-music .camjyo-feature__inner {
+    width: 100%;
+}
+
+.story-music .camjyo-feature__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+}
+
+html[dir="rtl"] .camjyo-feature__eyebrow::before {
+    order: 2;
+}
+
+@media (max-width: 760px) {
+    .camjyo-feature__inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .camjyo-feature__copy {
+        text-align: center;
+    }
+
+    .camjyo-feature__eyebrow,
+    .camjyo-feature__links {
+        justify-content: center;
+    }
+
+    .camjyo-video {
+        border-radius: 16px;
+    }
+
+    .camjyo-video__play {
+        width: 62px;
+        height: 62px;
+    }
+
+    .story-music {
+        margin-top: 48px;
+        padding-top: 36px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .camjyo-video__poster img {
+        transition: none;
+    }
+}
