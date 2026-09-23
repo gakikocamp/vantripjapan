@@ -12,7 +12,9 @@
 
 ### デプロイ
 - **`scripts/safe-deploy.sh` だけが公式のデプロイ経路。** `npx wrangler pages deploy` を直接実行しないこと
-- safe-deploy は次をすべて強制する: ①作業ツリーがクリーン（=コミット済みでロールバック可能）②セキュリティ監査PASS ③i18n/品質QA PASS ④デプロイ ⑤本番URLのHTTP 200＋言語マーカー実機検証
+- safe-deploy は次をすべて強制する: ①mainブランチ上で作業ツリーがクリーン（=コミット済みでロールバック可能）②セキュリティ監査PASS ③i18n/品質QA PASS ④いまの本番コミットをHEADが含む（巻き戻し防止）→ `--branch main` でデプロイ → wrangler出力とdeployment listで Environment=Production を確認 ⑤本番URLのHTTP 200＋言語マーカー＋今回変わったファイルの中身が手元と一致
+- **main 以外（作業ブランチ・detached HEAD）から出すと Cloudflare Pages では Preview になり、本番は更新されない。** 2026-09-14 に Preview なのに「本番検証PASS」と表示された。作業ブランチの変更は main に取り込んでからデプロイする
+- 本番に何が出ているかの確認: `npx wrangler pages deployment list --project-name vantripjapan`（Node 22 が必要。`nvm use 22`）
 - 問題発生時は Cloudflare Pages のデプロイ履歴から直前版にロールバックできる
 
 ### 秘密情報・PII
