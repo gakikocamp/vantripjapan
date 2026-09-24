@@ -1986,7 +1986,8 @@ function bannedBreakdown() {
 
 const P = {
     en: {
-        title: () => `Is It Legal to Sleep in Your Car in Japan? The Real Rules (${YEAR}) | VAN TRIP JAPAN`,
+        // タイトルは「問い + 即答 + 固有の数字」。曖昧な副題ではCTRが上がらない（2026-09実測1.3%）
+        title: (n, b) => `Can You Sleep in Your Car in Japan? Yes, Except at ${b} of Kyushu's ${n} Roadside Stations | VAN TRIP JAPAN`,
         desc: (n, b) => `Yes — at most Japanese roadside stations, an overnight rest in your vehicle is tolerated. But not everywhere: of the ${n} Michi-no-Eki in Kyushu we checked one by one, ${b} restrict it. Here is what the national rule actually says, which stations say no, and where you are explicitly welcome.`,
         h1: "Is it legal to sleep in your car in Japan?",
         heroSub: "The short answer is yes — at most roadside stations. But “free and legal everywhere” is no longer precise enough to plan a night around.",
@@ -2019,7 +2020,7 @@ const P = {
     },
 
     fr: {
-        title: () => `Dormir dans sa voiture au Japon : est-ce légal ? Les vraies règles (${YEAR}) | VAN TRIP JAPAN`,
+        title: (n, b) => `Dormir dans sa voiture au Japon : oui, sauf dans ${b} des ${n} aires de repos de Kyushu | VAN TRIP JAPAN`,
         desc: (n, b) => `Oui — dans la plupart des aires de repos japonaises, passer la nuit dans son véhicule est toléré. Mais pas partout : sur les ${n} michi-no-eki de Kyushu que nous avons vérifiées une par une, ${b} l'interdisent. Ce que dit vraiment la règle nationale, quelles stations refusent, et où vous êtes explicitement le bienvenu.`,
         h1: "Dormir dans sa voiture au Japon : est-ce légal ?",
         heroSub: "Réponse courte : oui, dans la plupart des aires de repos. Mais « gratuit et légal partout » n'est plus assez précis pour y planifier une nuit.",
@@ -2052,7 +2053,7 @@ const P = {
     },
 
     de: {
-        title: () => `Darf man in Japan im Auto übernachten? Die echten Regeln (${YEAR}) | VAN TRIP JAPAN`,
+        title: (n, b) => `Darf man in Japan im Auto übernachten? Ja, außer an ${b} von ${n} Raststätten in Kyushu | VAN TRIP JAPAN`,
         desc: (n, b) => `Ja — an den meisten japanischen Raststätten wird eine Nacht im Fahrzeug geduldet. Aber nicht überall: Von den ${n} Michi-no-Eki in Kyushu, die wir einzeln geprüft haben, schränken ${b} das Übernachten ein. Was die nationale Regel wirklich sagt, welche Stationen Nein sagen und wo Sie ausdrücklich willkommen sind.`,
         h1: "Darf man in Japan im Auto übernachten?",
         heroSub: "Kurze Antwort: ja, an den meisten Raststätten. Aber „überall kostenlos und erlaubt“ ist nicht mehr genau genug, um eine Nacht darauf zu planen.",
@@ -2085,7 +2086,7 @@ const P = {
     },
 
     zh: {
-        title: () => `在日本可以睡在車上嗎？真正的規則（${YEAR}）| VAN TRIP JAPAN`,
+        title: (n, b) => `在日本可以睡在車上嗎？可以，九州${n}個道之驛只有${b}個不行 | VAN TRIP JAPAN`,
         desc: (n, b) => `可以 — 在大多數日本道之驛，在車內過一夜是被容許的。但並非每一處：我們逐站查證的九州${n}個道之驛中，有${b}個設有限制。本頁說明日本全國規則的實際內容、哪些站點不可過夜，以及哪裡明確歡迎您留宿。`,
         h1: "在日本可以睡在車上嗎？",
         heroSub: "簡短的答案是可以 — 在大多數道之驛。但「到處都免費又合法」已經不夠精確，不足以據此安排過夜。",
@@ -2209,7 +2210,7 @@ function renderPillar(lang) {
 
     writePage(lang, "", shell({
         lang, sub: "", section: PILLAR_SECTION,
-        title: p.title(),
+        title: p.title(n, b.all.length),
         desc: p.desc(n, b.all.length),
         h1: p.h1,
         heroSub: esc(p.heroSub),
