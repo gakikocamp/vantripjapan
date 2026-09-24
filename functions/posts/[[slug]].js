@@ -62,7 +62,7 @@ function detectLang(article) {
 const CTA_I18N = {
   en: {
     ready: 'Ready to explore Kyushu by campervan?',
-    body: 'Campervan rental from Fukuoka — from ¥22,000/day. Insurance, bedding, and 24/7 English support included. An ETC card is available on advance request; tolls are charged separately. Pickup 10 min from Fukuoka Airport.',
+    body: 'Campervan rental from Fukuoka, from ¥22,000 a day. Insurance, bedding, and 24/7 English support included. An ETC card is available on advance request; tolls are charged separately. Pickup 10 min from Fukuoka Airport.',
     searchTitle: 'Check real availability for your trip',
     pickup: 'Pickup date',
     return: 'Return date',
@@ -72,7 +72,7 @@ const CTA_I18N = {
     view: 'View Rental Options →',
     wa: '💬 Ask on WhatsApp',
     waText: "Hi Karen! I just read your article and I'm interested in renting a campervan.",
-    book: 'No-risk booking request — no payment needed',
+    book: 'No-risk booking request. No payment needed',
     floatBadge: 'Fukuoka Airport Pickup',
     floatTitle: 'Explore Japan by Campervan',
     floatBody: 'All-inclusive rental from ¥22,000/day',
@@ -80,7 +80,7 @@ const CTA_I18N = {
   },
   fr: {
     ready: 'Prêt à explorer Kyushu en camping-car ?',
-    body: "Location de camping-car au départ de Fukuoka — à partir de ¥22 000/jour (≈134 €). Assurance, literie et assistance 24h/24 incluses. Carte ETC disponible sur demande préalable ; péages facturés séparément. Prise en charge à 10 min de l'aéroport de Fukuoka.",
+    body: "Location de camping-car au départ de Fukuoka, à partir de ¥22 000/jour (≈134 €). Assurance, literie et assistance 24h/24 incluses. Carte ETC disponible sur demande préalable ; péages facturés séparément. Prise en charge à 10 min de l'aéroport de Fukuoka.",
     searchTitle: 'Vérifiez les disponibilités pour votre voyage',
     pickup: 'Date de départ',
     return: 'Date de retour',
@@ -98,7 +98,7 @@ const CTA_I18N = {
   },
   de: {
     ready: 'Bereit, Kyushu im Campervan zu entdecken?',
-    body: 'Campervan-Vermietung ab Fukuoka — ab ¥22.000/Tag (≈134 €). Versicherung, Bettwäsche und 24/7-Support inklusive. Eine ETC-Karte ist nach vorheriger Anfrage verfügbar; Mautgebühren werden separat berechnet. Abholung 10 Min. vom Flughafen Fukuoka.',
+    body: 'Campervan-Vermietung ab Fukuoka, ab ¥22.000/Tag (≈134 €). Versicherung, Bettwäsche und 24/7-Support inklusive. Eine ETC-Karte ist nach vorheriger Anfrage verfügbar; Mautgebühren werden separat berechnet. Abholung 10 Min. vom Flughafen Fukuoka.',
     searchTitle: 'Verfügbarkeit für Ihre Reise prüfen',
     pickup: 'Abholdatum',
     return: 'Rückgabedatum',
@@ -196,7 +196,7 @@ function renderArticlePage(article) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escHtml(article.title)} — VanTripJapan</title>
+  <title>${escHtml(article.title)} | VAN TRIP JAPAN</title>
   <meta name="description" content="${escHtml(article.excerpt)}">
   <meta property="og:title" content="${escHtml(article.title)}">
   <meta property="og:description" content="${escHtml(article.excerpt)}">
@@ -362,9 +362,9 @@ function renderArticlePage(article) {
       </div>
       <div class="footer-col">
         <h4>Related Services</h4>
-        <a href="https://drive-japan-license.com/" target="_blank">JDLTC — License Translation</a>
-        <a href="https://crystalinsence.com/" target="_blank">Crystal Incense — Incense</a>
-        <a href="https://wagyuninja.tokyo/" target="_blank">WAGYU NINJA — Premium Exports</a>
+        <a href="https://drive-japan-license.com/" target="_blank">JDLTC · License Translation</a>
+        <a href="https://crystalinsence.com/" target="_blank">Crystal Incense · Incense</a>
+        <a href="https://wagyuninja.tokyo/" target="_blank">WAGYU NINJA · Premium Exports</a>
         <a href="https://www.camjyo.com/" target="_blank">キャンプ女子株式会社</a>
       </div>
     </div>
