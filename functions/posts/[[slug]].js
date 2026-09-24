@@ -73,6 +73,7 @@ const CTA_I18N = {
     wa: '💬 Ask on WhatsApp',
     waText: "Hi Karen! I just read your article and I'm interested in renting a campervan.",
     book: 'No-risk booking request. No payment needed',
+    faq: 'Frequently asked questions',
     floatBadge: 'Fukuoka Airport Pickup',
     floatTitle: 'Explore Japan by Campervan',
     floatBody: 'All-inclusive rental from ¥22,000/day',
@@ -91,6 +92,7 @@ const CTA_I18N = {
     wa: '💬 Écrivez-nous sur WhatsApp',
     waText: 'Bonjour Karen ! Je viens de lire votre article et je souhaite louer un camping-car.',
     book: 'Demande de réservation sans engagement',
+    faq: 'Questions fréquentes',
     floatBadge: "Départ aéroport de Fukuoka",
     floatTitle: 'Le Japon en camping-car',
     floatBody: 'Tout compris dès ¥22 000/jour (≈134 €)',
@@ -109,6 +111,7 @@ const CTA_I18N = {
     wa: '💬 Auf WhatsApp fragen',
     waText: 'Hallo Karen! Ich habe gerade euren Artikel gelesen und möchte einen Campervan mieten.',
     book: 'Unverbindliche Buchungsanfrage',
+    faq: 'Häufige Fragen',
     floatBadge: 'Abholung am Flughafen Fukuoka',
     floatTitle: 'Japan im Campervan erleben',
     floatBody: 'All-inclusive ab ¥22.000/Tag (≈134 €)',
@@ -128,6 +131,7 @@ const CTA_I18N = {
     wa: '💬 WhatsApp 諮詢',
     waText: 'Hi Karen! I read your article and would like to rent a campervan.',
     book: '免付款預約申請',
+    faq: '常見問題',
     floatBadge: '福岡機場取車',
     floatTitle: '開露營車環遊九州',
     floatBody: '全包式每日¥22,000起',
@@ -146,6 +150,7 @@ const CTA_I18N = {
     wa: '💬 שאלו אותנו בוואטסאפ',
     waText: "Hi Karen! I just read your article and I'm interested in renting a campervan.",
     book: 'בקשת הזמנה ללא תשלום',
+    faq: 'שאלות נפוצות',
     floatBadge: 'איסוף משדה התעופה פוקואוקה',
     floatTitle: 'יפן בקרוואן',
     floatBody: 'הכל כלול החל מ-¥22,000 ליום',
@@ -159,14 +164,23 @@ function resolveImageUrl(src) {
   return `https://vantripjapan.jp${src.startsWith('/') ? '' : '/'}${src}`;
 }
 
-function extractFaqSchema(body) {
-  if (!body) return '';
-  // Look for FAQ data attribute in article body
+// 本文中の <!--FAQ_SCHEMA:[...]--> を取り出す（壊れていれば空）
+function parseFaq(body) {
+  if (!body) return [];
   const faqMatch = body.match(/<!--FAQ_SCHEMA:(.*?)-->/s);
-  if (!faqMatch) return '';
+  if (!faqMatch) return [];
   try {
-    const faqData = JSON.parse(faqMatch[1]);
-    return `
+    const data = JSON.parse(faqMatch[1]);
+    return Array.isArray(data) ? data.filter((q) => q && q.name && q.acceptedAnswer && q.acceptedAnswer.text) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function extractFaqSchema(body) {
+  const faqData = parseFaq(body);
+  if (!faqData.length) return '';
+  return `
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -174,9 +188,24 @@ function extractFaqSchema(body) {
     "mainEntity": ${JSON.stringify(faqData)}
   }
   </script>`;
-  } catch (e) {
-    return '';
-  }
+}
+
+// FAQPage の中身はページ上に見えていなければならない（Googleの構造化データ要件）。
+// FAQ_SCHEMA はHTMLコメントなので、本文に質問が出ていない記事ではここで表示する。
+// 本文にすでにFAQ欄がある記事（質問の過半数が本文に見える）では二重にしない。
+function renderFaqSection(body, heading) {
+  const faq = parseFaq(body);
+  if (!faq.length) return '';
+  const plain = body.replace(/<!--[\s\S]*?-->/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ');
+  const shown = faq.filter((q) => plain.includes(String(q.name).slice(0, 40))).length;
+  if (shown * 2 > faq.length) return '';
+  const items = faq.map((q) => `
+      <h3>${escHtml(q.name)}</h3>
+      <p>${escHtml(q.acceptedAnswer.text)}</p>`).join('');
+  return `
+    <section class="article-faq">
+      <h2>${escHtml(heading)}</h2>${items}
+    </section>`;
 }
 
 function renderArticlePage(article) {
@@ -289,7 +318,7 @@ function renderArticlePage(article) {
 
   <!-- Article Body -->
   <article class="article-body">
-    ${article.body || ''}
+    ${article.body || ''}${renderFaqSection(article.body || '', t.faq || CTA_I18N.en.faq)}
   </article>
 
   <!-- CTA (多言語・zhはLINEファースト) -->
