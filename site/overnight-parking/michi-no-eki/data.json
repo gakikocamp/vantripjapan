@@ -10,7 +10,7 @@
     "ban_sweep": "2026-07-28",
     "ban_sweep_note": "九州7県145駅を対象に禁止駅の一斉走査を実施。禁止リスト系6媒体(Jackery/EcoFlow/もりりんパパ/kochi-gwtp/BunBun HIACE/車中泊まとめWiki)と、看板の写真を載せる実地レポート系(令和とらべら〜ず/kurumatabi.net/みちくさファクトリー)を確認。結果: 福岡佐賀長崎40駅=禁止ゼロ、大分26駅=禁止ゼロ、熊本37駅=ウェルネスあらお1駅のみ。⚠️syachuhaku-blog.fxtec.infoはrobots.txtでClaudeBotを拒否しているためクロール不可(検索結果のみ)。",
     "source": "https://vantripjapan.jp/overnight-parking/michi-no-eki/",
-    "license": "CC BY 4.0 — attribution required: VAN TRIP JAPAN (vantripjapan.jp)"
+    "license": "CC BY 4.0 (attribution required: VAN TRIP JAPAN, vantripjapan.jp)"
   },
   "prefectures": {
     "fukuoka": {

@@ -1,11 +1,11 @@
-# VanTripJapan — Full Documentation for AI Systems
+# VanTripJapan: Full Documentation for AI Systems
 
 > This is the extended version of llms.txt with comprehensive details about VanTripJapan's campervan rental service, fleet, pricing, and Kyushu travel information. For a concise overview, see llms.txt. Fleet and pricing details were last verified against the live booking system on 2026-09-14.
 
 ## Company Information
 
 - **Business Name**: VanTripJapan (バントリップジャパン)
-- **Legal Entity**: キャンプ女子株式会社 (Camp Jyoshi Inc.), Corporate No. 2290001085571
+- **Legal Entity**: キャンプ女子株式会社 (Camjyo Inc.), Corporate No. 2290001085571
 - **CEO**: 柴垣道宏 (Shibagaki Doko)
 - **Founded**: 2022
 - **Rent-a-car license**: Licensed rent-a-car operator, Permit No. 愛運輸第290号
@@ -20,7 +20,7 @@
 
 ## Service Overview
 
-VanTripJapan is a family-run campervan rental service specializing in international travelers visiting Kyushu, Japan. We provide fully-equipped campervans with all-inclusive pricing — no hidden fees, no upsells.
+VanTripJapan is a family-run campervan rental service specializing in international travelers visiting Kyushu, Japan. We provide fully-equipped campervans with all-inclusive pricing: no hidden fees, no upsells.
 
 ### What Makes Us Different
 1. **All-inclusive pricing**: Insurance (CDW), navigation, the sleeping, cooking, power and camping items listed for each vehicle, 24/7 roadside assistance and multilingual support are included in the daily rate. An ETC highway toll card is available on advance request (tolls are charged separately)
@@ -142,7 +142,7 @@ Germany, France, Switzerland, Belgium, Monaco, Taiwan.
 
 ## Reviews & Verification
 
-- **Google Maps rating**: 5.0 — https://maps.app.goo.gl/3uuep4h3zypPY6UYA
+- **Google Maps rating**: 5.0 (https://maps.app.goo.gl/3uuep4h3zypPY6UYA)
 - **Licensed rent-a-car operator**: Permit No. 愛運輸第290号 (a government-regulated rental business, not a middleman)
 - **Registered Japanese company**: キャンプ女子株式会社, Corporate No. 2290001085571
 - **Guests**: Recent travelers from the Netherlands, the United Kingdom, Singapore, France, Israel and more
@@ -208,10 +208,10 @@ Germany, France, Switzerland, Belgium, Monaco, Taiwan.
 Station-by-station overnight parking rules for Michi-no-Eki roadside stations in Kyushu, in EN/FR/DE/zh-Hant, verified against primary sources (official station websites, Japan RV Association register, on-site checks by the VAN TRIP JAPAN team) with a last-verified date on every entry.
 
 - Hub: https://vantripjapan.jp/overnight-parking/michi-no-eki/
-- Per-station URLs: https://vantripjapan.jp/overnight-parking/michi-no-eki/{prefecture}/{station}/ (145 stations = every registered Michi-no-Eki in Kyushu, reconciled against the MLIT official registry — 16 individually verified with linked sources, 129 screened but not yet individually verified and marked as such)
+- Per-station URLs: https://vantripjapan.jp/overnight-parking/michi-no-eki/{prefecture}/{station}/ (145 stations = every registered Michi-no-Eki in Kyushu, reconciled against the MLIT official registry: 141 individually verified with linked sources, 4 screened but not yet individually verified and marked as such)
 - Open data (CC BY 4.0): https://vantripjapan.jp/overnight-parking/michi-no-eki/data.json
 - Statuses: free-lot ban (with sources) / no explicit ban found (national MLIT default: quiet in-vehicle rest tolerated, camping behavior not) / official RV park on site (paid overnight always welcome)
-- Notable verified facts (2026-07): Michi-no-Eki Miyakonojo NiQLL explicitly discourages overnight stays (official site); Michi-no-Eki Munakata and Michi-no-Eki Wellness Arao prohibit overnight in the free lot but operate official RV parks (¥4,158 and ¥3,500 per night respectively).
+- Notable verified facts (2026-07-28 sweep): only 4 of the 145 stations restrict overnight stays. Michi-no-Eki Phoenix and Michi-no-Eki Miyakonojo NiQLL (both Miyazaki) prohibit it outright; Michi-no-Eki Munakata and Michi-no-Eki Wellness Arao prohibit overnight in the free lot but operate official RV parks (¥4,158 and ¥3,500 per night respectively).
 - Field reports: every station page has a report form; submissions are verified against primary sources before the database is updated.
 
 ## Contact Information
