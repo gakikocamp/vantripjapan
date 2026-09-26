@@ -152,6 +152,30 @@ if (picked.length) process.stdout.write(picked.join("\n") + "\n");
 JS
 }
 
+# Cloudflare の Email Obfuscation は配信時にメールアドレスを「[email protected]」と復号スクリプトへ書き換える
+# （2026-09-26 /rent/terms/ が中身は正しいのに不一致扱いになった）。バイト比較で一致しなかったときだけ、
+# その書き換えを元のアドレスに戻してから比べ直す。それ以外の差があれば不一致のまま。
+_dc_cf_email_equal() {  # <fetched> <local>
+  node - "$1" "$2" <<'JS'
+const fs = require("fs");
+const [fetched, local] = process.argv.slice(2);
+const dec = (hex) => {
+  const k = parseInt(hex.slice(0, 2), 16);
+  let s = "";
+  for (let i = 2; i < hex.length; i += 2) s += "%" + ("0" + (parseInt(hex.slice(i, i + 2), 16) ^ k).toString(16)).slice(-2);
+  return decodeURIComponent(s);
+};
+const body = fs.readFileSync(fetched, "utf8");
+if (!body.includes("/cdn-cgi/")) process.exit(1);
+const restored = body
+  .replace(/<a href="\/cdn-cgi\/l\/email-protection" class="__cf_email__" data-cfemail="([0-9a-f]+)">\[email&#160;protected\]<\/a>/g, (_, h) => dec(h))
+  .replace(/<span class="__cf_email__" data-cfemail="([0-9a-f]+)">\[email&#160;protected\]<\/span>/g, (_, h) => dec(h))
+  .replace(/href="\/cdn-cgi\/l\/email-protection#([0-9a-f]+)"/g, (_, h) => `href="mailto:${dec(h)}"`)
+  .replace(/<script data-cfasync="false" src="\/cdn-cgi\/scripts\/[0-9a-f]+\/cloudflare-static\/email-decode\.min\.js"><\/script>/g, "");
+process.exit(restored === fs.readFileSync(local, "utf8") ? 0 : 1);
+JS
+}
+
 # 対応表の各ファイルを本番から取得し、手元ファイルとバイト単位で比べる。
 # 一致しないもの（中身違い・404 など）はエッジ反映待ちとして 8 秒おきに 3 回まで取り直す。
 # 3xx はリダイレクト規則（site/_redirects）の対象なので比べない。一致件数は _DC_MATCHED に入る。
@@ -167,6 +191,9 @@ _dc_compare() {  # <root> <site_url> <targets.tsv> <work_dir>
         200)
           if cmp -s "$work/body" "${root}/${rel}"; then
             echo "  ✅ 一致 ${url}"
+            _DC_MATCHED=$((_DC_MATCHED + 1))
+          elif _dc_cf_email_equal "$work/body" "${root}/${rel}"; then
+            echo "  ✅ 一致 ${url}（Cloudflare のメール難読化を戻して比較）"
             _DC_MATCHED=$((_DC_MATCHED + 1))
           else
             printf '%s\t%s\t%s\n' "$rel" "$url" "中身が手元のファイルと違う" >> "$work/retry.tsv"
