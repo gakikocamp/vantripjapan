@@ -194,7 +194,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en', completeUrl 
     en: {
       subject: `✅ We received your VanTripJapan booking request (#${bookingId})`,
       wa: `Hi Karen! I just submitted booking request #${bookingId}.`,
-      insFull: 'Zero-Risk Full Cover (+¥5,000/day)', insBasic: 'Basic Cover (Excess applies)',
+      insFull: 'Zero-Risk Full Cover (+¥5,500/day)', insBasic: 'Basic Cover (Excess applies)',
       body: (ins, wa, cal) => [
         `Hi ${name},`, ``,
         `Thank you for your booking request with VanTripJapan! 🚐`, ``,
@@ -229,7 +229,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en', completeUrl 
     fr: {
       subject: `✅ Votre demande de réservation VanTripJapan est bien reçue (#${bookingId})`,
       wa: `Bonjour Karen ! Je viens d'envoyer la demande de réservation #${bookingId}.`,
-      insFull: 'Couverture complète sans risque (+5 000 ¥/jour)', insBasic: 'Couverture de base (franchise applicable)',
+      insFull: 'Couverture complète sans risque (+5 500 ¥/jour)', insBasic: 'Couverture de base (franchise applicable)',
       body: (ins, wa, cal) => [
         `Bonjour ${name},`, ``,
         `Merci pour votre demande de réservation chez VanTripJapan ! 🚐`, ``,
@@ -264,7 +264,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en', completeUrl 
     de: {
       subject: `✅ Ihre VanTripJapan-Buchungsanfrage ist eingegangen (#${bookingId})`,
       wa: `Hallo Karen! Ich habe gerade die Buchungsanfrage #${bookingId} gesendet.`,
-      insFull: 'Null-Risiko-Vollkasko (+5.000 ¥/Tag)', insBasic: 'Basisschutz (Selbstbeteiligung möglich)',
+      insFull: 'Null-Risiko-Vollkasko (+5.500 ¥/Tag)', insBasic: 'Basisschutz (Selbstbeteiligung möglich)',
       body: (ins, wa, cal) => [
         `Hallo ${name},`, ``,
         `vielen Dank für Ihre Buchungsanfrage bei VanTripJapan! 🚐`, ``,
@@ -299,7 +299,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en', completeUrl 
     zh: {
       subject: `✅ VanTripJapan已收到您的預約申請（#${bookingId}）`,
       wa: `Karen您好！我剛送出了預約申請 #${bookingId}。`,
-      insFull: '零風險全險（+5,000日圓/天）', insBasic: '基本保險（含自負額）',
+      insFull: '零風險全包免責方案（+5,500日圓/天）', insBasic: '基本保險（含自負額）',
       body: (ins, wa, cal) => [
         `${name} 您好，`, ``,
         `感謝您向VanTripJapan送出預約申請！🚐`, ``,
@@ -332,7 +332,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en', completeUrl 
     he: {
       subject: `✅ קיבלנו את בקשת ההזמנה שלך ב-VanTripJapan (#${bookingId})`,
       wa: `היי קארן! הרגע שלחתי את בקשת ההזמנה #${bookingId}.`,
-      insFull: 'כיסוי מלא ללא סיכון (+5,000 ין ליום)', insBasic: 'כיסוי בסיסי (השתתפות עצמית)',
+      insFull: 'כיסוי מלא ללא סיכון (+5,500 ין ליום)', insBasic: 'כיסוי בסיסי (השתתפות עצמית)',
       body: (ins, wa, cal) => [
         `שלום ${name},`, ``,
         `תודה על בקשת ההזמנה ב-VanTripJapan! 🚐`, ``,
@@ -422,7 +422,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en', completeUrl 
     `Drivers:  ${data.num_drivers || 1}`,
     `Found us: ${data.referral_source || '—'}`,
     `Gear:     ${data.camping_gear_notes || '—'}`,
-    `Insurance: ${data.full_cover_option ? 'Zero-Risk Full Cover (+¥5,000/day)' : 'Basic Cover'}`,
+    `Insurance: ${data.full_cover_option ? 'Zero-Risk Full Cover (+¥5,500/day)' : 'Basic Cover'}`,
     `JP license translation needed: ${data.translation_needed ? 'YES' : 'no'}`,
     ``,
     `→ Reply via Email: mailto:${email}`,
@@ -513,7 +513,7 @@ async function sendBookingEmails(data, bookingId, env, lang = 'en', completeUrl 
       </tr>
       <tr>
         <td style="padding: 8px; font-weight: bold; border: 1px solid #e2e8f0; color: #4a5568;">加入保険 (Insurance)</td>
-        <td style="padding: 8px; border: 1px solid #e2e8f0; font-weight: bold;">${data.full_cover_option ? 'Zero-Risk フルカバー (+¥5,000/日)' : '標準カバー'}</td>
+        <td style="padding: 8px; border: 1px solid #e2e8f0; font-weight: bold;">${data.full_cover_option ? 'Zero-Risk フルカバー (+¥5,500/日)' : '標準カバー'}</td>
       </tr>
       <tr style="background-color: #f7fafc;">
         <td style="padding: 8px; font-weight: bold; border: 1px solid #e2e8f0; color: #4a5568;">免許翻訳 (JAF Translation)</td>

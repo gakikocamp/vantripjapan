@@ -301,22 +301,22 @@
                 <h4 data-i18n="details.insurance.basic">內建基礎免責補償 (Basic CDW)</h4>
                 <p data-i18n="details.insurance.basic_desc">已包含在租金中。保障車輛與第三人財損責任，但有自負額。</p>
                 <ul style="padding-left: 20px; font-size: 13.5px; color: var(--rent-text-secondary); line-height: 1.6;">
-                    <li>¥0 extra daily charge</li>
-                    <li>Vehicle damage deductible: up to ¥100,000</li>
-                    <li>Property damage deductible: up to ¥100,000</li>
-                    <li>NOC applies in case of downtime (¥20,000 - ¥50,000)</li>
+                    <li data-i18n="details.insurance.b1">每日不另加費 (¥0)</li>
+                    <li data-i18n="details.insurance.b2">車輛損害自負額：最高 ¥100,000</li>
+                    <li data-i18n="details.insurance.b3">第三人財物損害自負額：最高 ¥100,000</li>
+                    <li data-i18n="details.insurance.b4">車輛停駛時收取 NOC：可自行駕駛 ¥20,000，需拖吊 ¥50,000</li>
                 </ul>
             </div>
             <div class="insurance-box premium">
-                <span class="ins-badge">🛡️ RECOMMENDED</span>
+                <span class="ins-badge" data-i18n="details.insurance.badge">🛡️ 推薦</span>
                 <h4 data-i18n="details.insurance.zero_risk">零風險全包免責方案 (Zero-Risk Full Cover)</h4>
-                <p data-i18n="details.insurance.zero_risk_desc">可加購升級。將所有事故自負額及營業損失賠償 (NOC) 降至 ¥0。包含免費拖吊。</p>
+                <p data-i18n="details.insurance.zero_risk_desc">可加購升級 (+¥5,500/日)。所有事故自負額降至 ¥0，第一次事故免收營業損失賠償 (NOC)。包含免費拖吊。</p>
                 <ul style="padding-left: 20px; font-size: 13.5px; color: var(--rent-text-secondary); line-height: 1.6;">
-                    <li>+¥5,000 per day</li>
-                    <li>All deductibles reduced to ¥0</li>
-                    <li>NOC reduced to ¥0</li>
-                    <li>Free emergency towing &amp; roadside assistance</li>
-                    <li>Tire puncture repair coverage</li>
+                    <li data-i18n="details.insurance.z1">每日 +¥5,500</li>
+                    <li data-i18n="details.insurance.z2">所有自負額降至 ¥0</li>
+                    <li data-i18n="details.insurance.z3">第一次事故免收 NOC</li>
+                    <li data-i18n="details.insurance.z4">免費緊急拖吊與道路救援</li>
+                    <li data-i18n="details.insurance.z5">包含輪胎刺穿修理</li>
                 </ul>
             </div>
         </div>
@@ -399,7 +399,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script>window.VTJ_FORCE_LANG='zh';</script><script src="/js/i18n.js?v=20260924a"></script>
+    <script>window.VTJ_FORCE_LANG='zh';</script><script src="/js/i18n.js?v=20260926a"></script>
     <script>
         // Simple Gallery script
         document.querySelectorAll('.detail-thumb').forEach(thumb => {
