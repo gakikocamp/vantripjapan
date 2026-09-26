@@ -4,6 +4,7 @@
  */
 
 import { OVERNIGHT_URLS, OVERNIGHT_LASTMOD } from './lib/overnight-urls.js';
+import { isConsolidated } from './lib/consolidated.js';
 
 const BASE_URL = 'https://vantripjapan.jp';
 
@@ -90,6 +91,8 @@ export async function onRequest(context) {
 
   // 薄い量産記事の重複(pSEO同義語/地名重複)はサイトマップから除外（noindex方針と一致）
   articles = articles.filter(a => !isThinRentalDuplicate(a.slug));
+  // 統合して301で送っている記事も外す
+  articles = articles.filter(a => !isConsolidated(a.slug));
 
   const today = new Date().toISOString().slice(0, 10);
 

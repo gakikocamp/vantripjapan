@@ -1,3 +1,5 @@
+import { isConsolidated } from './lib/consolidated.js';
+
 /**
  * Public articles endpoint — bypasses /api/ middleware
  * GET /public-articles → Returns published VanTripJapan articles
@@ -63,7 +65,7 @@ export async function onRequest(context) {
 
     const { results } = await db.prepare(query).bind(...params).all();
 
-    return new Response(JSON.stringify(results || []), {
+    return new Response(JSON.stringify((results || []).filter((a) => !isConsolidated(a.slug))), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',

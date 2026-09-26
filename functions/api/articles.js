@@ -1,3 +1,5 @@
+import { isConsolidated } from '../lib/consolidated.js';
+
 /**
  * VanTripJapan — Articles API
  *
@@ -84,7 +86,7 @@ async function handleGet(request, env) {
   `;
 
   const { results } = await env.DB.prepare(query).bind(...params).all();
-  return new Response(JSON.stringify(results), {
+  return new Response(JSON.stringify((results || []).filter((a) => !isConsolidated(a.slug))), {
     status: 200,
     headers: {
       'Content-Type': 'application/json',

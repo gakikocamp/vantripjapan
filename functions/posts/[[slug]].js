@@ -1,3 +1,5 @@
+import { CONSOLIDATED, isConsolidated } from '../lib/consolidated.js';
+
 /**
  * VanTripJapan — Dynamic Article Renderer
  * GET /posts/{slug}/ — serves article from D1 database
@@ -519,6 +521,11 @@ export async function onRequest(context) {
     return context.next();
   }
   const slug = slugParts[0];
+
+  // 統合した記事は統合先へ（functions/lib/consolidated.js）
+  if (isConsolidated(slug)) {
+    return Response.redirect(new URL(`/posts/${CONSOLIDATED[slug]}/`, context.request.url).toString(), 301);
+  }
 
   try {
     // First check for redirect articles
