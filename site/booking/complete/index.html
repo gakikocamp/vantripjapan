@@ -32,6 +32,12 @@
   textarea { min-height:70px; resize:vertical; }
   .agree { display:flex; gap:10px; align-items:flex-start; margin-top:16px; font-size:.88rem; }
   .agree input { margin-top:4px; transform:scale(1.2); }
+  .agree.accident label { font-weight:600; }
+  .rules { margin:0 0 10px; padding-left:18px; font-size:.86rem; line-height:1.55; }
+  [dir="rtl"] .rules { padding-left:0; padding-right:18px; }
+  .rules li { margin-bottom:7px; }
+  .rules li:first-child { color:#8C3A3A; background:#FBEAEA; border:1px solid #E5B8B8; border-radius:8px; padding:8px 10px; list-style:none; margin-left:-18px; }
+  [dir="rtl"] .rules li:first-child { margin-left:0; margin-right:-18px; }
   .submit { display:block; width:100%; background:var(--accent); color:#fff; border:none; border-radius:10px; padding:14px; font-size:1rem; font-weight:800; cursor:pointer; margin-top:18px; }
   .submit:disabled { opacity:.5; cursor:not-allowed; }
   .note { font-size:.8rem; color:var(--text-sec); margin-top:8px; }
@@ -63,7 +69,7 @@
       </table>
     </div>
 
-    <div class="card">
+    <div class="card" id="card_docs">
       <h2><span class="badge">1</span> <span id="t_docs"></span></h2>
       <p class="note" id="t_docs_note" style="margin:0 0 10px;"></p>
 
@@ -187,7 +193,7 @@
       <p class="note" id="t_upload_hint"></p>
     </div>
 
-    <div class="card">
+    <div class="card" id="card_details">
       <h2><span class="badge">2</span> <span id="t_details"></span></h2>
 
       <label class="f" id="t_flight"></label>
@@ -203,9 +209,20 @@
       <label class="f" id="t_requests"></label>
       <textarea id="in_special_requests" maxlength="500"></textarea>
 
+    </div>
+
+    <div class="card" id="card_rules">
+      <h2><span class="badge" id="rules_badge">3</span> <span id="t_rules_h"></span></h2>
+      <ul class="rules" id="t_rules"></ul>
+      <p class="note" id="t_rules_link" style="margin-top:0;"></p>
+
       <div class="agree">
         <input type="checkbox" id="in_agree">
         <label for="in_agree" id="t_agree"></label>
+      </div>
+      <div class="agree accident">
+        <input type="checkbox" id="in_accident">
+        <label for="in_accident" id="t_accident"></label>
       </div>
 
       <button class="submit" id="btn_submit" disabled></button>
@@ -248,7 +265,7 @@ const T = {
     d2_q:"Will a second person also drive? *", d2_no:"No — one driver only", d2_yes:"Yes — add a second driver", d2_name:"Additional driver — full name *", d2_country:"Country that issued their license *",
     flight:"Arrival flight number (if flying in)", arrival:"Arrival date & time", adddriver:"Additional driver (full name, if any)",
     emergency:"Emergency contact (name & phone)", requests:"Anything else we should know?",
-    agree:'I agree to the <a href="/rent/terms/" target="_blank">Rental Terms & Conditions</a> *',
+    agree:"I have read and agree to the <a href=\"/rent/terms/\" target=\"_blank\">Rental Terms & Conditions</a> *", accident:"I understand that after any accident, even a small scrape, the driver must call the police (110) from the scene and contact VAN TRIP JAPAN right away. Otherwise the deductible limits and the Zero-Risk cover do not apply. This applies to every driver. *", rules_h:"Key rental rules", rules:["<strong>Accident, even a small scrape: call the police (110) from the scene, then message Karen on WhatsApp right away.</strong> Without a police report, the deductible limits and the Zero-Risk cover do not apply and you pay the full repair cost.", "Security deposit ¥50,000, paid at pick-up and refunded after return (minus highway tolls or fuel, if any).", "Insurance (CDW) is included. After an accident you pay up to ¥100,000 for damage to the van and up to ¥100,000 for damage to other property, plus a Non-Operation Charge (NOC) of ¥20,000, or ¥50,000 if the van has to be towed.", "Optional Zero-Risk cover (+¥5,500/day): no deductibles, and no NOC for the first accident. Ask Karen if you want to add it.", "Cancellation: free up to 8 days before pick-up; 30% of the rental fee 7–5 days before, 50% 4–2 days before, 100% from the day before."], rules_link:"Full details: <a href=\"/rent/terms/\" target=\"_blank\">Rental Terms & Conditions</a> (English)", rc_sub:"We have updated our rental terms. Please read the key rules below and confirm. It takes one minute.", rc_submit:"Confirm", rc_need:"Please tick both boxes to confirm.", rc_done_title:"Thank you!", rc_done_sub:"Your confirmation has been saved. See you in Fukuoka!",
     submit:"Send my details", after:"After this, Karen will double-check everything and send your secure payment link via WhatsApp or email.",
     map_title:"Pick-up location", map_desc:"VAN TRIP JAPAN, Hakozaki, Fukuoka — about 10 minutes by bus or taxi from Hakata Station or Fukuoka Airport.",
     map_link:"Open in Google Maps →",
@@ -277,7 +294,7 @@ const T = {
     d2_q:"Une deuxième personne conduira-t-elle ? *", d2_no:"Non — un seul conducteur", d2_yes:"Oui — ajouter un conducteur", d2_name:"Conducteur additionnel — nom complet *", d2_country:"Pays de délivrance de son permis *",
     flight:"N° de vol d'arrivée (si vous arrivez en avion)", arrival:"Date et heure d'arrivée", adddriver:"Conducteur additionnel (nom complet, le cas échéant)",
     emergency:"Contact d'urgence (nom et téléphone)", requests:"Autre chose à nous signaler ?",
-    agree:'J\'accepte les <a href="/rent/terms/" target="_blank">Conditions de location</a> *',
+    agree:"J'ai lu et j'accepte les <a href=\"/rent/terms/\" target=\"_blank\">Conditions de location</a> *", accident:"Je comprends qu'après tout accident, même une simple éraflure, le conducteur doit appeler la police (110) depuis les lieux et prévenir VAN TRIP JAPAN immédiatement. À défaut, les plafonds de franchise et la Couverture Sans Risque ne s'appliquent pas. Cela vaut pour chaque conducteur. *", rules_h:"Règles essentielles de la location", rules:["<strong>Accident, même une simple éraflure : appelez la police (110) depuis les lieux, puis prévenez Karen sur WhatsApp sans attendre.</strong> Sans déclaration à la police, les plafonds de franchise et la Couverture Sans Risque ne s'appliquent pas, et vous payez la totalité des réparations.", "Caution de 50 000 ¥, versée à la prise en charge et remboursée après le retour (moins les péages ou le carburant éventuels).", "L'assurance (CDW) est incluse. Après un accident, vous payez jusqu'à 100 000 ¥ pour les dégâts du van et jusqu'à 100 000 ¥ pour les dégâts matériels causés à des tiers, plus des frais d'immobilisation (NOC) de 20 000 ¥, ou 50 000 ¥ si le van doit être remorqué.", "Couverture Sans Risque en option (+5 500 ¥/jour, env. 30 €) : aucune franchise, et pas de NOC pour le premier accident. Demandez à Karen si vous souhaitez l'ajouter.", "Annulation : gratuite jusqu'à 8 jours avant la prise en charge ; 30 % du prix de location de 7 à 5 jours avant, 50 % de 4 à 2 jours avant, 100 % à partir de la veille."], rules_link:"Tous les détails : <a href=\"/rent/terms/\" target=\"_blank\">Conditions de location</a> (en anglais)", rc_sub:"Nous avons mis à jour nos conditions de location. Merci de lire les règles essentielles ci-dessous et de confirmer. Cela prend une minute.", rc_submit:"Confirmer", rc_need:"Merci de cocher les deux cases pour confirmer.", rc_done_title:"Merci !", rc_done_sub:"Votre confirmation est enregistrée. À bientôt à Fukuoka !",
     submit:"Envoyer mes informations", after:"Ensuite, Karen vérifiera le tout et vous enverra le lien de paiement sécurisé par WhatsApp ou e-mail.",
     map_title:"Lieu de prise en charge", map_desc:"VAN TRIP JAPAN, Hakozaki, Fukuoka — à environ 10 minutes en bus ou taxi de la gare de Hakata ou de l'aéroport de Fukuoka.",
     map_link:"Ouvrir dans Google Maps →",
@@ -306,7 +323,7 @@ const T = {
     d2_q:"Fährt eine zweite Person? *", d2_no:"Nein — nur ein Fahrer", d2_yes:"Ja — zweiten Fahrer hinzufügen", d2_name:"Zusatzfahrer — vollständiger Name *", d2_country:"Ausstellungsland des Führerscheins *",
     flight:"Ankunftsflugnummer (falls Anreise per Flug)", arrival:"Ankunftsdatum & -zeit", adddriver:"Zusätzlicher Fahrer (vollständiger Name, falls vorhanden)",
     emergency:"Notfallkontakt (Name & Telefon)", requests:"Sonst noch etwas Wichtiges?",
-    agree:'Ich akzeptiere die <a href="/rent/terms/" target="_blank">Mietbedingungen</a> *',
+    agree:"Ich habe die <a href=\"/rent/terms/\" target=\"_blank\">Mietbedingungen</a> gelesen und akzeptiere sie *", accident:"Mir ist bewusst, dass nach jedem Unfall, auch nach einem kleinen Kratzer, der Fahrer vor Ort die Polizei (110) rufen und VAN TRIP JAPAN sofort informieren muss. Sonst gelten die Obergrenzen der Selbstbeteiligung und der Null-Risiko-Schutz nicht. Das gilt für jeden Fahrer. *", rules_h:"Die wichtigsten Mietregeln", rules:["<strong>Unfall, auch nur ein kleiner Kratzer: Rufen Sie vor Ort die Polizei (110) und schreiben Sie Karen danach sofort per WhatsApp.</strong> Ohne Polizeibericht gelten weder die Obergrenzen der Selbstbeteiligung noch der Null-Risiko-Schutz, und Sie tragen die vollen Reparaturkosten.", "Kaution 50.000 ¥, bei Abholung zu zahlen und nach der Rückgabe erstattet (abzüglich eventueller Maut- oder Tankkosten).", "Die Versicherung (CDW) ist inklusive. Nach einem Unfall zahlen Sie bis zu 100.000 ¥ für Schäden am Van und bis zu 100.000 ¥ für Sachschäden Dritter, dazu eine Nutzungsausfallgebühr (NOC) von 20.000 ¥ oder 50.000 ¥, wenn der Van abgeschleppt werden muss.", "Optionaler Null-Risiko-Schutz (+5.500 ¥/Tag, ca. 30 €): keine Selbstbeteiligung und keine NOC beim ersten Unfall. Sagen Sie Karen Bescheid, wenn Sie ihn dazubuchen möchten.", "Stornierung: kostenlos bis 8 Tage vor Abholung; 30 % des Mietpreises 7–5 Tage vorher, 50 % 4–2 Tage vorher, 100 % ab dem Vortag."], rules_link:"Alle Details: <a href=\"/rent/terms/\" target=\"_blank\">Mietbedingungen</a> (auf Englisch)", rc_sub:"Wir haben unsere Mietbedingungen aktualisiert. Bitte lesen Sie die wichtigsten Regeln unten und bestätigen Sie sie. Das dauert eine Minute.", rc_submit:"Bestätigen", rc_need:"Bitte kreuzen Sie beide Kästchen an.", rc_done_title:"Vielen Dank!", rc_done_sub:"Ihre Bestätigung ist gespeichert. Bis bald in Fukuoka!",
     submit:"Angaben senden", after:"Danach prüft Karen alles und sendet Ihnen den sicheren Zahlungslink per WhatsApp oder E-Mail.",
     map_title:"Abholort", map_desc:"VAN TRIP JAPAN, Hakozaki, Fukuoka — ca. 10 Minuten mit Bus oder Taxi vom Bahnhof Hakata oder Flughafen Fukuoka.",
     map_link:"In Google Maps öffnen →",
@@ -335,7 +352,7 @@ const T = {
     d2_q:"是否有第二位駕駛人？ *", d2_no:"沒有——僅一位駕駛", d2_yes:"有——新增第二位駕駛", d2_name:"第二位駕駛——全名 *", d2_country:"其駕照發照國家／地區 *",
     flight:"抵達航班編號（搭機前來時）", arrival:"抵達日期與時間", adddriver:"additional駕駛人（如有，請填全名）",
     emergency:"緊急聯絡人（姓名＋電話）", requests:"其他需要告訴我們的事項",
-    agree:'我同意<a href="/rent/terms/" target="_blank">租賃條款</a> *',
+    agree:"我已閱讀並同意<a href=\"/rent/terms/\" target=\"_blank\">租賃條款</a> *", accident:"我了解發生任何事故（即使只是輕微擦撞）時，駕駛人必須在現場撥打 110 報警並立即聯絡 VAN TRIP JAPAN，否則自負額上限與零風險方案皆不適用。此規定適用於每一位駕駛人。 *", rules_h:"租車重要規則", rules:["<strong>發生事故（即使只是輕微擦撞）：請在現場撥打 110 報警，之後立即透過 WhatsApp 聯絡 Karen。</strong>沒有報警紀錄時，自負額上限與零風險方案皆不適用，修理費用需全額自付。", "押金 ¥50,000，取車時支付，還車後退還（扣除過路費或油資，若有）。", "租金已含保險（CDW）。發生事故時，車輛損害最高自負 ¥100,000、第三人財物損害最高自負 ¥100,000，另收營業損失賠償（NOC）¥20,000，需拖吊時為 ¥50,000。", "可加購零風險全包免責方案（每日 +¥5,500）：自負額為 ¥0，第一次事故免收 NOC。需要時請告訴 Karen。", "取消：取車前 8 天以上免費；7〜5 天前收租金 30%，4〜2 天前 50%，前一天起 100%。"], rules_link:"完整內容：<a href=\"/rent/terms/\" target=\"_blank\">租賃條款</a>（英文）", rc_sub:"我們已更新租賃條款。請閱讀下方的重要規則並確認，只需一分鐘。", rc_submit:"確認", rc_need:"請勾選兩個方框以確認。", rc_done_title:"謝謝！", rc_done_sub:"已收到您的確認。福岡見！",
     submit:"送出資料", after:"送出後，Karen會確認所有內容，並透過WhatsApp／LINE或Email傳送安全付款連結。",
     map_title:"取車地點", map_desc:"VAN TRIP JAPAN（福岡・箱崎）— 從博多站或福岡機場搭巴士／計程車約10分鐘。",
     map_link:"在Google地圖開啟 →",
@@ -364,7 +381,7 @@ const T = {
     d2_q:"האם אדם נוסף ינהג? *", d2_no:"לא — נהג אחד בלבד", d2_yes:"כן — הוספת נהג נוסף", d2_name:"נהג נוסף — שם מלא *", d2_country:"המדינה שהנפיקה את הרישיון שלו *",
     flight:"מספר טיסת הגעה (אם מגיעים בטיסה)", arrival:"תאריך ושעת הגעה", adddriver:"נהג נוסף (שם מלא, אם יש)",
     emergency:"איש קשר לחירום (שם וטלפון)", requests:"עוד משהו שכדאי שנדע?",
-    agree:'אני מסכים/ה ל<a href="/rent/terms/" target="_blank">תנאי ההשכרה</a> *',
+    agree:"קראתי ואני מסכים/ה ל<a href=\"/rent/terms/\" target=\"_blank\">תנאי ההשכרה</a> *", accident:"אני מבין/ה שלאחר כל תאונה, גם שריטה קלה, הנהג/ת חייב/ת להתקשר למשטרה (110) מזירת התאונה ולעדכן את VAN TRIP JAPAN מיד. אחרת תקרת ההשתתפות העצמית והכיסוי ללא סיכון אינם חלים. הכלל חל על כל נהג/ת. *", rules_h:"כללי ההשכרה החשובים", rules:["<strong>תאונה, גם שריטה קלה: התקשרו למשטרה (110) מזירת התאונה, ולאחר מכן עדכנו את Karen מיד בוואטסאפ.</strong> ללא דיווח למשטרה, תקרת ההשתתפות העצמית והכיסוי ללא סיכון אינם חלים, ועלות התיקון המלאה חלה עליכם.", "פיקדון 50,000 ¥, משולם באיסוף ומוחזר לאחר ההחזרה (בניכוי אגרות כביש או דלק, אם יש).", "הביטוח (CDW) כלול. לאחר תאונה תשלמו עד 100,000 ¥ על נזק לוואן ועד 100,000 ¥ על נזק לרכוש של אחרים, ובנוסף דמי השבתה (NOC) של 20,000 ¥, או 50,000 ¥ אם הוואן צריך גרירה.", "כיסוי ללא סיכון בתוספת תשלום (‎+¥5,500 ליום, כ־₪102): ללא השתתפות עצמית, וללא NOC בתאונה הראשונה. ספרו ל-Karen אם תרצו להוסיף אותו.", "ביטול: ללא עלות עד 8 ימים לפני האיסוף; 30% מדמי ההשכרה 7–5 ימים לפני, 50% 4–2 ימים לפני, 100% מהיום שלפני."], rules_link:"כל הפרטים: <a href=\"/rent/terms/\" target=\"_blank\">תנאי ההשכרה</a> (באנגלית)", rc_sub:"עדכנו את תנאי ההשכרה. אנא קראו את הכללים החשובים למטה ואשרו. זה לוקח דקה.", rc_submit:"אישור", rc_need:"יש לסמן את שתי התיבות כדי לאשר.", rc_done_title:"תודה!", rc_done_sub:"האישור נשמר. נתראה בפוקואוקה!",
     submit:"שליחת הפרטים", after:"לאחר מכן קארן תבדוק הכול ותשלח קישור תשלום מאובטח בוואטסאפ או במייל.",
     map_title:"מיקום האיסוף", map_desc:"VAN TRIP JAPAN, האקוזאקי, פוקואוקה — כ-10 דקות באוטובוס או מונית מתחנת האקאטה או משדה התעופה פוקואוקה.",
     map_link:"פתיחה ב-Google Maps ←",
@@ -455,6 +472,10 @@ function applyTexts() {
     t_map_link:'map_link', d_title:'d_title', d_sub:'d_sub', d_map:'d_map' };
   for (const [el, key] of Object.entries(map)) { if ($(el)) $(el).innerHTML = t[key]; }
   $('t_agree').innerHTML = t.agree;
+  $('t_accident').innerHTML = t.accident;
+  $('t_rules_h').textContent = t.rules_h;
+  $('t_rules').innerHTML = t.rules.map((r) => `<li>${r}</li>`).join('');
+  $('t_rules_link').innerHTML = t.rules_link;
   $('btn_submit').textContent = t.submit;
   ['b_front','b_back','b_passport','b_idp','b_translation','b_d2_license_front','b_d2_license_back','b_d2_passport','b_d2_idp','b_d2_translation'].forEach((b) => { if ($(b)) $(b).textContent = t.upload; });
   // 国セレクトを構築（本人+追加ドライバー、主要マーケットを先頭に）
@@ -482,7 +503,11 @@ function refreshChips() {
   refreshSubmit();
 }
 
+// 記入済みで、古い版の規約にしか同意していない人は「同意だけ」の画面にする
+let consentOnly = false;
+
 function refreshSubmit() {
+  if (consentOnly) { $('btn_submit').disabled = !($('in_agree').checked && $('in_accident').checked); return; }
   const req = classify($('in_license_country').value);
   const baseDocs = uploadedDocs.has('license_front') && uploadedDocs.has('license_back') && uploadedDocs.has('passport');
   let drivingOk = false;
@@ -499,7 +524,7 @@ function refreshSubmit() {
     else if (req2 === 'check') drive2 = true;
     d2Ok = !!req2 && req2 !== 'no' && base2 && drive2 && $('in_additional_driver').value.trim().length > 0;
   }
-  const ready = !!req && req !== 'no' && baseDocs && drivingOk && d2Ok && $('in_agree').checked;
+  const ready = !!req && req !== 'no' && baseDocs && drivingOk && d2Ok && $('in_agree').checked && $('in_accident').checked;
   $('btn_submit').disabled = !ready;
 }
 
@@ -515,6 +540,18 @@ async function init() {
     $('v_return').textContent = (b.return || '—').replace('T', ' ');
     (b.docs || []).forEach((d) => uploadedDocs.add(d));
     $('t_title').textContent = b.first_name ? `${t.title} — ${b.first_name}!` : t.title;
+    if (b.details_submitted && !b.consent_current) {
+      consentOnly = true;
+      $('card_docs').classList.add('hidden');
+      $('card_details').classList.add('hidden');
+      $('t_sub').textContent = t.rc_sub;
+      $('rules_badge').textContent = '!';
+      $('btn_submit').textContent = t.rc_submit;
+      $('t_after').textContent = '';
+      $('d_title').textContent = t.rc_done_title;
+      $('d_sub').textContent = t.rc_done_sub;
+      refreshSubmit();
+    }
     refreshChips();
     $('loading').classList.add('hidden');
     $('main').classList.remove('hidden');
@@ -546,6 +583,7 @@ document.querySelectorAll('input[type=file]').forEach((input) => {
 
 $('in_license_country').addEventListener('change', onCountryChange);
 $('in_agree').addEventListener('change', refreshSubmit);
+$('in_accident').addEventListener('change', refreshSubmit);
 document.querySelectorAll('input[name="jdltc"]').forEach((r) => r.addEventListener('change', onCountryChange));
 document.querySelectorAll('input[name="d2"]').forEach((r) => r.addEventListener('change', onD2Change));
 $('in_d2_country').addEventListener('change', onD2CountryChange);
@@ -554,12 +592,17 @@ document.querySelectorAll('input[name="jdltc2"]').forEach((r) => r.addEventListe
 
 $('btn_submit').addEventListener('click', async () => {
   refreshSubmit();
-  if ($('btn_submit').disabled) { alert(t.need); return; }
+  if ($('btn_submit').disabled) { alert(consentOnly ? t.rc_need : t.need); return; }
   $('btn_submit').disabled = true;
   try {
     const res = await fetch(api, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
+      body: JSON.stringify(consentOnly ? {
+        consent_only: true,
+        agree_terms: $('in_agree').checked,
+        accident_ack: $('in_accident').checked,
+        lang,
+      } : {
         flight_number: $('in_flight_number').value,
         arrival_time: $('in_arrival_time').value,
         license_country: $('in_license_country').value,
@@ -575,6 +618,8 @@ $('btn_submit').addEventListener('click', async () => {
         emergency_phone: $('in_emergency_phone').value,
         special_requests: $('in_special_requests').value,
         agree_terms: $('in_agree').checked,
+        accident_ack: $('in_accident').checked,
+        lang,
       }),
     });
     if (!res.ok) throw new Error('submit failed');

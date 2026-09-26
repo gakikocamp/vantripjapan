@@ -35,6 +35,23 @@ function bookingPriceHtml(b) {
 
 // --- Customer origin (language + country) stored in notes JSON at booking time ---
 const LANG_LABELS = { en: '🇬🇧 English', fr: '🇫🇷 Français', de: '🇩🇪 Deutsch', zh: '🇹🇼 中文', he: '🇮🇱 עברית' };
+// 利用規約の版。functions/api/booking-public.js の TERMS_VERSION と必ず揃える。
+const TERMS_VERSION = '2026-09-26';
+// current = 今の版＋事故時のルールに同意 / old = 以前の版で同意（事故ルール未確認）/ none = 未同意
+function consentState(meta) {
+    if (meta?.consent && meta.consent.terms_version === TERMS_VERSION && meta.consent.accident_ack === true) return 'current';
+    if (meta?.consent || meta?.details?.agree_terms) return 'old';
+    return 'none';
+}
+// 出発前なのに今の規約に同意していない（決済・確定・受け渡しの前に同意をもらう対象）
+function needsConsent(b, meta) {
+    if (!['docs_received', 'payment_sent', 'confirmed'].includes(b.status)) return false;
+    const pd = new Date(b.pickup_datetime); pd.setHours(0, 0, 0, 0);
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    if (!isNaN(pd) && pd < today) return false;
+    return consentState(meta || parseBookingMeta(b.notes)) !== 'current';
+}
+
 function parseBookingMeta(notes) {
     if (!notes) return {};
     try { const m = JSON.parse(notes); if (m && typeof m === 'object') return m; } catch (e) { /* not JSON */ }
@@ -302,7 +319,7 @@ function buildGuide(b, meta) {
         steps.push({ n: 1, label: 'Stripeで入金を確認する', href: 'https://dashboard.stripe.com/payments', icon: '💰' });
         steps.push({ n: 2, label: '入金が確認できたら下のボタン', btn: { text: '🎉 確定にする', action: `changeBookingStatus(${b.id},'confirmed')` }, note: '押すと確定メール(カレンダー・受取場所つき)が自動で届きます' });
     } else if (b.status === 'confirmed' && pdDiff === 1) {
-        const msg = `Hi ${first}! Tomorrow is the day! 🎉 Here is how to unlock the van:`;
+        const msg = `Hi ${first}! Tomorrow is the day! 🎉 One important rule before you go: if anything happens on the road, even a small scrape, please call the police (110) from the scene and message me right away. Here is how to unlock the van:`;
         steps.push({ n: 1, label: 'WhatsAppで鍵の開け方を送る(写真つき)', href: wa(msg), icon: '🔑' });
         steps.push({ n: 2, label: 'これで準備完了', note: 'この項目は明日の朝に自動で消えます' });
     } else if (b.status === 'confirmed' && pdDiff === 0) {
@@ -312,6 +329,15 @@ function buildGuide(b, meta) {
         steps.push({ n: 1, label: '車両チェック(傷・忘れ物・ETC利用額)', note: '' });
         steps.push({ n: 2, label: '返却が済んだら下のボタン', btn: { text: '✨ 完了にする', action: `changeBookingStatus(${b.id},'completed')` }, note: '翌日、お客様へお礼とレビューのお願いが自動で届きます' });
     }
+
+    if (needsConsent(b, meta)) {
+        const msg = `Hi ${first}! We've updated our rental terms, including what to do if you have an accident. Please take one minute to read and confirm here 👉 ${b.complete_url || ''}`;
+        steps.unshift(
+            { label: '⚠️ まだ今の利用規約（事故時のルール）に同意していません。先に手続きリンクを送り直してください', btn: { text: '📋 リンクをコピー', action: `copyCompleteLink('${(b.complete_url || '').replace(/'/g, '')}')` }, note: consentState(meta) === 'old' ? '以前の規約には同意済み。リンクを開くと「同意だけ」の画面になります' : 'リンクを開くと記入と同意の画面になります' },
+            { label: wa(msg) ? 'WhatsAppで送る（リンク入りの文面つき）' : 'メールで送る', href: wa(msg) || (b.email ? `mailto:${b.email}` : null), icon: '💬' },
+        );
+    }
+    steps.forEach((st, i) => { st.n = i + 1; });
 
     if (!steps.length) return '';
     const rows = steps.map(st => `
@@ -409,6 +435,7 @@ function nextActionOf(b) {
         ['form_submitted', 'docs_requested', 'docs_received', 'payment_sent', 'confirmed'].includes(b.status)) {
         return { t: '⚠️ 返却済み？「完了にする」を押す', urgent: true };
     }
+    if (needsConsent(b)) return { t: '📝 規約の同意をもらう', urgent: true };
     if (b.status === 'payment_sent') return { t: '💰 入金を確認する', urgent: true };
     if (b.status === 'docs_received') return { t: '💳 決済リンクを送る', urgent: true };
     if (b.status === 'form_submitted') return { t: '📩 返事をする', urgent: true };
@@ -571,6 +598,11 @@ window.openBookingDetail = async function(id) {
                         <i class="fas fa-copy"></i> 手続きリンクをコピー
                     </button>
                     ${meta.details ? '<span style="color:#34d399;font-weight:600;"><i class="fas fa-check-circle"></i> お客様記入済み</span>' : '<span style="color:var(--text-muted);font-size:0.85rem;">未記入（コピーしてWhatsAppに貼ってください）</span>'}
+                    ${consentState(meta) === 'current'
+                        ? `<span style="color:#2F7D4F;font-weight:600;">✅ 利用規約・事故時のルールに同意（${new Date(meta.consent.agreed_at).toLocaleString('ja-JP', { dateStyle: 'short', timeStyle: 'short' })}・${TERMS_VERSION}版）</span>`
+                        : consentState(meta) === 'old'
+                            ? '<span style="color:#B45309;font-weight:600;">⚠️ 以前の規約に同意（事故時のルールは未確認）→ リンクを送り直す</span>'
+                            : '<span style="color:#B91C1C;font-weight:600;">❌ 利用規約に未同意</span>'}
                 </div>
                 ${meta.details ? `
                 <div class="dgrid" style="margin-top:12px;">
@@ -600,6 +632,10 @@ window.openBookingDetail = async function(id) {
 
 window.changeBookingStatus = async function(id, newStatus) {
     const st = STATUS_LABELS[newStatus];
+    const bk = _allBookings.find((x) => String(x.id) === String(id));
+    if (bk && ['payment_sent', 'confirmed', 'active'].includes(newStatus) &&
+        consentState(parseBookingMeta(bk.notes)) !== 'current' &&
+        !confirm('⚠️ このお客様はまだ今の利用規約（事故のときは現場で110番→すぐ連絡）に同意していません。\n\n先に手続きリンクを送り直すのがおすすめです。それでも進めますか？')) return;
     if (!confirm(`ステータスを「${st.label}」に変更しますか？`)) return;
     try {
         await api(`/api/booking?id=${id}`, {

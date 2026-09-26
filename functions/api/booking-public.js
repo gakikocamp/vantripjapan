@@ -3,9 +3,19 @@
  * GET  ?id=N&token=T : 予約の最小情報 + アップロード済み書類の種類（PIIは名のみ）
  * POST ?id=N&token=T : 手続きフォーム送信（追加情報 + 規約同意）→ notes JSONへ保存、
  *                      書類が揃っていれば status を docs_received に進め、Karenへ通知
+ *      consent_only=true : 記入済みの人が新しい版の規約にだけ同意し直す（details は触らない）
  */
 
 import { verifyCompleteToken } from './_complete-token.js';
+
+// 利用規約の版。規約（site/rent/terms/）の中身を変えたら日付を上げる。
+// これより古い版で同意した予約は、手続きページが「同意だけ」の画面になり、管理画面にも警告が出る。
+// site/admin/app.js の TERMS_VERSION と必ず揃えること。
+const TERMS_VERSION = '2026-09-26';
+
+function consentIsCurrent(notes) {
+  return !!(notes?.consent && notes.consent.terms_version === TERMS_VERSION && notes.consent.accident_ack === true);
+}
 
 function ensureBindings(env) {
   if (!env?.CUSTOMERS_DB) return 'Missing binding: CUSTOMERS_DB';
@@ -50,6 +60,7 @@ async function handleGet(request, env) {
     lang: notes.lang || 'en',
     docs: await loadDocTypes(env, id),
     details_submitted: !!notes.details,
+    consent_current: consentIsCurrent(notes),
   });
 }
 
@@ -65,8 +76,41 @@ async function handlePost(request, env) {
   if (!booking) return Response.json({ error: 'Not found' }, { status: 404 });
 
   const body = await request.json();
-  if (!body.agree_terms) {
+  if (!body.agree_terms || !body.accident_ack) {
     return Response.json({ error: 'Terms agreement is required' }, { status: 400 });
+  }
+  // 同意の証跡: どの版に・いつ・事故時のルールも確認したか（IPなどの個人情報は持たない）
+  const consent = {
+    terms_version: TERMS_VERSION,
+    accident_ack: true,
+    agreed_at: new Date().toISOString(),
+    lang: typeof body.lang === 'string' ? body.lang.slice(0, 5) : '',
+  };
+
+  if (body.consent_only) {
+    let cur = {};
+    try { cur = booking.notes ? JSON.parse(booking.notes) : {}; } catch { cur = { legacy: booking.notes }; }
+    if (!cur.details) return Response.json({ error: 'Please complete the full form first' }, { status: 400 });
+    cur.consent = consent;
+    await env.CUSTOMERS_DB.prepare(
+      "UPDATE bookings SET notes = ?, updated_at = datetime('now') WHERE id = ?"
+    ).bind(JSON.stringify(cur), id).run();
+    await env.CUSTOMERS_DB.prepare(
+      'INSERT INTO access_logs (user_email, action, resource, detail) VALUES (?, ?, ?, ?)'
+    ).bind('customer-self-service', 'terms_agreed', `booking/${id}`, `terms ${TERMS_VERSION} + accident rule`).run();
+    if (env.RESEND_API_KEY) {
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          from: 'VanTripJapan <booking@vantripjapan.jp>',
+          to: ['info@vantripjapan.jp'],
+          subject: `✅ 規約に同意: 予約 #${id} ${booking.vehicle_type || ''}`,
+          text: `予約 #${id} のお客様が、新しい利用規約（${TERMS_VERSION}版・事故時は現場で110番）に同意しました。\n\n→ 管理画面: https://vantripjapan.jp/admin/`,
+        }),
+      }).catch((e) => console.error('[BookingPublic Mail]', e?.message));
+    }
+    return Response.json({ status: 'ok', consent_current: true });
   }
 
   // 受け取る項目は許可リスト方式・各500文字まで（自由記述の暴走防止）
@@ -93,6 +137,7 @@ async function handlePost(request, env) {
   let notes = {};
   try { notes = booking.notes ? JSON.parse(booking.notes) : {}; } catch { notes = { legacy: booking.notes }; }
   notes.details = details;
+  notes.consent = consent;
 
   // 免許証の表裏+パスポートが揃っていれば docs_received へ（初期ステータスの場合のみ前進）
   // 追加ドライバー申告時はその人の3点も必須
@@ -132,6 +177,7 @@ async function handlePost(request, env) {
       `Flight: ${details.flight_number || '—'} (arrival: ${details.arrival_time || '—'})`,
       `Additional driver: ${details.additional_driver || '—'}`,
       `Emergency: ${details.emergency_name || '—'} ${details.emergency_phone || ''}`,
+      `Terms: ✅ ${TERMS_VERSION}版に同意（事故時は現場で110番→すぐ連絡、も確認済み）`,
       `Requests: ${details.special_requests || '—'}`,
       ``,
       newStatus === 'docs_received'
