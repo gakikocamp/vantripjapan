@@ -68,3 +68,13 @@ export function quoteRental(base, pickup, days, vehicleType) {
     days
   };
 }
+
+// 桜シーズンの早割がまだ有効なら { year, until } を返す（キャンセル待ちの案内文で使う）
+export function upcomingSakuraEarlyBird(todayIso) {
+  for (const e of VTJ_RATE_DATA) {
+    if (e.key === 'sakura' && e.early && todayIso <= e.early.until) {
+      return { year: Number(e.from.slice(0, 4)), until: e.early.until };
+    }
+  }
+  return null;
+}

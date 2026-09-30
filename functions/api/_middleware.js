@@ -75,6 +75,12 @@ function isPublicRequest(request) {
   if (path === '/api/cron/review-request' && method === 'GET') return true;
   // Public: GET cron status nudge (CRON_SECRETをエンドポイント内で検証・fail-closed)
   if (path === '/api/cron/status-nudge' && method === 'GET') return true;
+  // Public: キャンセル待ち登録（honeypot＋IPレート制限はエンドポイント内）
+  if (path === '/api/waitlist' && method === 'POST') return true;
+  // Public: キャンセル待ちの配信停止（HMACトークンをエンドポイント内で検証）
+  if (path === '/api/waitlist/leave' && method === 'GET') return true;
+  // Public: GET cron waitlist check (CRON_SECRETをエンドポイント内で検証・fail-closed)
+  if (path === '/api/cron/waitlist-check' && method === 'GET') return true;
   // Public: POST quote request
   if (path === '/api/quote' && method === 'POST') return true;
   // Public: privacy-safe rental search demand capture

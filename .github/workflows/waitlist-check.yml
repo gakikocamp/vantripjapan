@@ -1,0 +1,21 @@
+name: Waitlist Check (キャンセル待ちへの空き通知)
+
+on:
+  schedule:
+    # 毎時17分（UTC）— キャンセルで空いた枠を、登録した方へ早めに知らせる
+    - cron: '17 * * * *'
+  workflow_dispatch:
+    # 手動実行用
+
+jobs:
+  waitlist-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call waitlist-check endpoint
+        run: |
+          if [ -z "${{ secrets.CRON_SECRET }}" ]; then
+            echo "::error::CRON_SECRET is not set in GitHub repository secrets"; exit 1
+          fi
+          RESPONSE=$(curl -fsS -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "https://vantripjapan.jp/api/cron/waitlist-check")
+          echo "Response: $RESPONSE"

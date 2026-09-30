@@ -1133,6 +1133,7 @@
                                     </div>
                                 </label>
                             </div>
+                            <div id="bookWaitlist"></div>
                         </div>
                         <!-- Vehicle Preview Card -->
                         <div class="vehicle-preview-card" id="vehiclePreviewCard">
@@ -1368,6 +1369,7 @@
 </div>
 
 <script src="/js/i18n.js?v=20261001a"></script>
+<script src="/js/waitlist.js?v=20261001a"></script>
 <script>
 // i18n helper: bt() は辞書参照のフォールバック付きラッパー（i18n.js は直前で読込済み）。
 function bt(key, fallback) {
@@ -1816,6 +1818,8 @@ function checkVehiclesFilter() {
     const fromDate = pickupVal ? pickupVal.slice(0, 10) : null;
     const toDate = returnVal ? returnVal.slice(0, 10) : null;
 
+    updateBookWaitlist(fromDate, toDate, guests);
+
     Object.keys(VEHICLE_PRICES).forEach(vKey => {
         const config = VEHICLE_PRICES[vKey];
         let disabled = false;
@@ -1872,6 +1876,38 @@ function checkVehiclesFilter() {
                 }
             }
         }
+    });
+}
+
+// 人数に合う車が希望日程ですべて満車なら、キャンセル待ちの登録欄を出す（/js/waitlist.js）
+function updateBookWaitlist(fromDate, toDate, guests) {
+    const holder = document.getElementById('bookWaitlist');
+    if (!holder || !window.VTJWaitlist) return;
+    const SL = { 'TOYOTA PROBOX': 'probox', 'MAZDA BONGO': 'bongo', 'DAIHATSU POCKET LOFT': 'loft' };
+    const compatible = Object.keys(VEHICLE_PRICES).filter(k => guests <= VEHICLE_PRICES[k].maxGuests);
+    const isFull = k => (bookedRanges[k] || []).some(r => r.from < toDate && r.to > fromDate);
+    const show = availabilityComplete && fromDate && toDate && toDate > fromDate &&
+        compatible.length > 0 && compatible.every(isFull);
+    const key = show ? [fromDate, toDate, guests].join('|') : '';
+    if (holder.dataset.key === key) return;
+    holder.dataset.key = key;
+    holder.innerHTML = '';
+    if (!show) return;
+
+    const days = Math.round((Date.parse(toDate) - Date.parse(fromDate)) / 86400000);
+    const langQ = (typeof currentLang !== 'undefined' && currentLang !== 'en') ? '&lang=' + currentLang : '';
+    const nextFree = [];
+    compatible.forEach(k => {
+        const nf = window.VTJWaitlist.nextFree(bookedRanges[k], fromDate, days);
+        if (nf) nextFree.push({
+            slug: SL[k], from: nf.from, to: nf.to,
+            href: '/book/?vehicle=' + SL[k] + '&from=' + nf.from + '&to=' + nf.to + '&guests=' + guests + langQ
+        });
+    });
+    nextFree.sort((a, b) => (a.from < b.from ? -1 : 1));
+    window.VTJWaitlist.mount(holder, {
+        from: fromDate, to: toDate, guests: guests,
+        vehicles: compatible.map(k => SL[k]), nextFree: nextFree, source: 'book_all_full'
     });
 }
 

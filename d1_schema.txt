@@ -174,3 +174,26 @@ Resource location: remote
     }
   }
 ]
+
+-- キャンセル待ち（vtj-customers）2026-10-01
+-- 満車で表示されたお客様の登録。空きが出たら /api/cron/waitlist-check が通知する
+CREATE TABLE IF NOT EXISTS waitlist (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  email TEXT NOT NULL,
+  whatsapp TEXT,
+  pickup_date TEXT NOT NULL,
+  return_date TEXT NOT NULL,
+  guests INTEGER NOT NULL DEFAULT 2,
+  vehicles TEXT NOT NULL,
+  language TEXT NOT NULL DEFAULT 'en',
+  sakura_year INTEGER,
+  autumn_year INTEGER,
+  status TEXT NOT NULL DEFAULT 'waiting',
+  notified_at TEXT,
+  notified_vehicle TEXT,
+  landing_path TEXT,
+  ip_address TEXT,
+  UNIQUE(email, pickup_date, return_date)
+);
+CREATE INDEX IF NOT EXISTS idx_waitlist_status_pickup ON waitlist(status, pickup_date);

@@ -2211,6 +2211,7 @@
     </div>
 
 
+    <script src="/js/waitlist.js?v=20261001a"></script>
     <!-- ═══ KAYAK-style search results mode (?from&to&guests) ═══ -->
     <script>
     (function () {
@@ -2223,6 +2224,10 @@
         if (!(days > 0) || days > 60) return;
 
         var LP = (window.VTJ_FORCE_LANG && window.VTJ_FORCE_LANG !== 'en') ? '/' + window.VTJ_FORCE_LANG : '';
+        // 予約フォームは /book/ だけ（/fr/book/ などは無い）。言語は ?lang= で渡す
+        var BOOK_LANG = (window.VTJ_FORCE_LANG && window.VTJ_FORCE_LANG !== 'en') ? '&lang=' + window.VTJ_FORCE_LANG : '';
+        var WL = window.VTJWaitlist || null;
+        var fullSlugs = [], nextFreeList = [];
         var LOCALES = { en: 'en-US', fr: 'fr-FR', de: 'de-DE', zh: 'zh-TW', he: 'he-IL' };
         var loc = LOCALES[window.VTJ_FORCE_LANG || 'en'] || 'en-US';
         function fdate(d) { try { return d.toLocaleDateString(loc, { month: 'short', day: 'numeric' }); } catch (e) { return d.toISOString().slice(5, 10); } }
@@ -2326,22 +2331,43 @@
                             : '✅ ' + tr('results.available', 'Available for your dates')) + '</div>' + seasonHtml +
                         '<div class="rs-total">¥' + q.total.toLocaleString() + '<small> · ' + days + ' ' + tr('results.days', 'days') + discTxt + '</small></div>' +
                         '<div class="rs-est">' + tr('results.est', 'Estimated total — not a confirmed booking yet. Karen confirms availability & final quote (no payment now).') + '</div>' +
-                        '<a class="rs-select" data-track="select_' + v.slug + '" href="' + LP + '/book/?vehicle=' + v.slug + '&from=' + from + '&to=' + to + '&guests=' + guests + '">' + tr('results.select', 'Request this van →') + '</a>';
+                        '<a class="rs-select" data-track="select_' + v.slug + '" href="/book/?vehicle=' + v.slug + '&from=' + from + '&to=' + to + '&guests=' + guests + BOOK_LANG + '">' + tr('results.select', 'Request this van →') + '</a>';
                 } else {
                     strip.className = 'result-strip full';
+                    fullSlugs.push(v.slug);
+                    var nf = WL ? WL.nextFree((data.vehicles || {})[v.api], from, days) : null;
+                    var nfHref = nf ? LP + '/rent/?from=' + nf.from + '&to=' + nf.to + '&guests=' + guests : '';
+                    if (nf) nextFreeList.push({ slug: v.slug, from: nf.from, to: nf.to, href: nfHref });
                     strip.innerHTML =
                         '<div class="rs-status">❌ ' + tr('results.full', 'Fully booked for these dates') + '</div>' +
+                        (nf ? '<div class="rs-next">' + WL.t('next_free_one', { dates: WL.fmtRange(nf.from, nf.to) }) +
+                            ' · <a href="' + nfHref + '" data-track="next_free_' + v.slug + '">' + WL.t('see_dates') + '</a></div>' : '') +
                         '<a class="rs-wa" target="_blank" rel="noopener" href="https://wa.me/817093757129?text=' +
                         encodeURIComponent('Hi Karen! Is anything available around ' + from + ' - ' + to + '? (' + guests + ' guests)') + '">💬 ' +
-                        tr('results.askother', 'Ask Karen about these dates') + '</a>';
+                        tr('results.askother', 'Ask Karen about these dates') + '</a>' +
+                        (WL ? '<button type="button" class="vtj-wl-open">🔔 ' + WL.t('notify_one') + '</button>' : '');
                 }
                 anchor.parentNode.insertBefore(strip, anchor.nextSibling);
                 card.classList.add('has-result');
+                var openBtn = strip.querySelector('.vtj-wl-open');
+                if (openBtn) openBtn.addEventListener('click', function () {
+                    openBtn.parentNode.removeChild(openBtn);
+                    WL.mount(strip, { from: from, to: to, guests: guests, vehicles: [v.slug], compact: true, source: 'rent_vehicle' });
+                });
                 var sel = strip.querySelector('.rs-select');
                 if (sel && typeof gtag === 'function') {
                     sel.addEventListener('click', function () { gtag('event', 'select_vehicle', { vehicle: v.slug, days: days }); });
                 }
             });
+            var compatibleCount = VEHICLES.filter(function (v) { return guests <= v.cap; }).length;
+            if (WL && !needsVerification && compatibleCount > 0 && fullSlugs.length === compatibleCount) {
+                var holder = document.createElement('div');
+                banner.parentNode.insertBefore(holder, banner.nextSibling);
+                nextFreeList.sort(function (a, b) { return a.from < b.from ? -1 : 1; });
+                WL.mount(holder, { from: from, to: to, guests: guests, vehicles: fullSlugs, nextFree: nextFreeList, source: 'rent_all_full' });
+                // 大きい箱を出したら、各車の「空いたら通知」ボタンは重複になるので外す
+                Array.prototype.forEach.call(document.querySelectorAll('.result-strip.full .vtj-wl-open'), function (b) { b.parentNode.removeChild(b); });
+            }
             var availCount = document.querySelectorAll('.result-strip.ok').length;
             var cnt = banner.querySelector('.srb-count');
             if (cnt) cnt.innerHTML = needsVerification

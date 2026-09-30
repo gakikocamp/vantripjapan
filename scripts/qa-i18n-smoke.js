@@ -43,6 +43,33 @@ for (const l of Object.keys(t)) {
 }
 console.log(`辞書: ${Object.keys(t).join("/")} 各${enCount}キー`);
 
+// キャンセル待ち部品（site/js/waitlist.js）とお客様向けメール（functions/_waitlist.js）も5言語そろっているか
+{
+    const langs = ["en", "fr", "de", "zh", "he"];
+    const wlSrc = fs.readFileSync("site/js/waitlist.js", "utf8");
+    const m = wlSrc.match(/WAITLIST_I18N_START \*\/([\s\S]*?)\/\* WAITLIST_I18N_END/);
+    if (!m) bad("waitlist.js: WAITLIST_I18N マーカーが見つからない");
+    else {
+        const wl = vm.runInNewContext(m[1] + ";I18N");
+        const base = Object.keys(wl.en).sort().join(",");
+        for (const l of langs) {
+            if (!wl[l]) bad(`waitlist.js: ${l} の辞書が無い`);
+            else if (Object.keys(wl[l]).sort().join(",") !== base) bad(`waitlist.js: ${l} のキーが en と一致しない`);
+        }
+    }
+    const mailSrc = fs.readFileSync("functions/_waitlist.js", "utf8");
+    const mm = mailSrc.match(/const EMAIL = (\{[\s\S]*?\n\});/);
+    if (!mm) bad("functions/_waitlist.js: EMAIL 辞書が見つからない");
+    else {
+        const mail = vm.runInNewContext("(" + mm[1] + ")");
+        const base = Object.keys(mail.en).sort().join(",");
+        for (const l of langs) {
+            if (!mail[l] || Object.keys(mail[l]).sort().join(",") !== base) bad(`_waitlist.js メール文面: ${l} のキーが en と一致しない`);
+        }
+    }
+    console.log("キャンセル待ち: 画面・メールとも5言語を検査");
+}
+
 // 焼き込みページ
 let ok = 0;
 for (const lang of Object.keys(LANG_ATTR)) {
