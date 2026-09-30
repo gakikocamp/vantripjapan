@@ -456,7 +456,7 @@ function renderArticlePage(article) {
   </script>
 
   <script src="/js/nav.js?v=20260719"></script>
-  <script src="/js/ask-ai.js?v=20260930a" defer></script>
+  <script src="/js/ask-ai.js?v=20260930b" defer></script>
 
   <script>
     // Keep date inputs valid without guessing the visitor's travel dates.
