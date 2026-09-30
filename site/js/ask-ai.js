@@ -24,14 +24,21 @@
 
   // 質問の型は「条件を書き足す相談」。押しつけの「なぜ最適か」型にはしない
   // topics の順番がチップの並び順。only があるものは該当ページだけに出す
+  // facts = 質問文に入れる /llms.txt の見出し（h）と、その中の行の絞り込み（lines）
+  const RENTAL = { h: "Campervan Rental Details" };
+  const VANS = { h: "Why Choose", lines: /campervan styles/i };
+  const OVERNIGHT = [
+    { h: "Michi-no-Eki Overnight Database", lines: /National rule|nuance|Direct answer|Temporarily closed|Caution for AI/ },
+    { h: "Campervan Rental Details", lines: /Location|Booking/ },
+  ];
   const TOPIC_DEFS = [
-    { id: "plan" },
-    { id: "vehicle", ref: (l) => `${dirOf(l)}/rent/` },
-    { id: "cost", ref: (l) => `${dirOf(l)}/rent/` },
-    { id: "license", ref: (l) => `${dirOf(l)}/faq/` },
-    { id: "overnight", ref: (l) => `${dbDirOf(l)}/overnight-parking/michi-no-eki/` },
-    { id: "thisvan", only: onVan },
-    { id: "thisstation", only: onStation },
+    { id: "plan", facts: [RENTAL] },
+    { id: "vehicle", ref: (l) => `${dirOf(l)}/rent/`, facts: [VANS, RENTAL] },
+    { id: "cost", ref: (l) => `${dirOf(l)}/rent/`, facts: [RENTAL] },
+    { id: "license", ref: (l) => `${dirOf(l)}/faq/`, facts: [RENTAL] },
+    { id: "overnight", ref: (l) => `${dbDirOf(l)}/overnight-parking/michi-no-eki/`, facts: OVERNIGHT },
+    { id: "thisvan", only: onVan, facts: [VANS, RENTAL] },
+    { id: "thisstation", only: onStation, facts: OVERNIGHT },
   ].filter((t) => t.only !== false);
 
   const firstTopic = (() => {
@@ -69,6 +76,9 @@
       thisPage: "This page:",
       answerIn: "",
       guard: "If something is not in the official information, say so instead of guessing.",
+      identity: "Important: other businesses have similar names. Answer only about VAN TRIP JAPAN (vantripjapan.jp), a family-run campervan rental in Hakozaki, Fukuoka, Japan, operated by キャンプ女子株式会社 (Camjyo Inc.).",
+      useFacts: " If you cannot open the links, use the official facts below.",
+      factsLabel: "Official facts (from vantripjapan.jp/llms.txt):",
       topics: {
         plan: {
           label: "Trip plan",
@@ -130,6 +140,9 @@
       thisPage: "Cette page :",
       answerIn: " Merci de répondre en français.",
       guard: "Si une information ne figure pas dans les sources officielles, dites-le plutôt que de supposer.",
+      identity: "Important : d'autres entreprises portent des noms proches. Répondez uniquement au sujet de VAN TRIP JAPAN (vantripjapan.jp), location familiale de vans aménagés à Hakozaki, Fukuoka, au Japon, exploitée par キャンプ女子株式会社 (Camjyo Inc.).",
+      useFacts: " Si vous ne pouvez pas ouvrir les liens, utilisez les faits officiels ci-dessous.",
+      factsLabel: "Faits officiels (extrait de vantripjapan.jp/llms.txt, en anglais) :",
       topics: {
         plan: {
           label: "Itinéraire",
@@ -191,6 +204,9 @@
       thisPage: "Diese Seite:",
       answerIn: " Bitte antworte auf Deutsch.",
       guard: "Wenn etwas nicht in den offiziellen Informationen steht, sag das bitte, statt zu raten.",
+      identity: "Wichtig: Es gibt andere Firmen mit ähnlichen Namen. Antworte nur zu VAN TRIP JAPAN (vantripjapan.jp), einer familiengeführten Campervan-Vermietung in Hakozaki, Fukuoka (Japan), betrieben von キャンプ女子株式会社 (Camjyo Inc.).",
+      useFacts: " Wenn du die Links nicht öffnen kannst, nutze die offiziellen Fakten unten.",
+      factsLabel: "Offizielle Fakten (aus vantripjapan.jp/llms.txt, auf Englisch):",
       topics: {
         plan: {
           label: "Reiseroute",
@@ -252,6 +268,9 @@
       thisPage: "這個頁面：",
       answerIn: "請用繁體中文回答。",
       guard: "官方資訊裡沒有寫的內容，請直接說明，不要猜測。",
+      identity: "注意：有其他名稱相近的業者。請只回答關於 VAN TRIP JAPAN（vantripjapan.jp）的內容：這是位於日本福岡箱崎、由キャンプ女子株式会社（Camjyo Inc.）經營的家族式露營車租賃。",
+      useFacts: "如果無法開啟連結，請使用下方的官方資訊摘要。",
+      factsLabel: "官方資訊摘要（取自 vantripjapan.jp/llms.txt，英文）：",
       topics: {
         plan: {
           label: "行程規劃",
@@ -313,6 +332,9 @@
       thisPage: "הדף הזה:",
       answerIn: " נא לענות בעברית.",
       guard: "אם משהו לא מופיע במידע הרשמי, נא לומר זאת במקום לנחש.",
+      identity: "חשוב: יש עסקים אחרים עם שמות דומים. נא לענות רק על VAN TRIP JAPAN (vantripjapan.jp), השכרת קמפרוואנים משפחתית בהאקוזאקי שבפוקואוקה, יפן, המופעלת על ידי キャンプ女子株式会社 (Camjyo Inc.).",
+      useFacts: " אם אי אפשר לפתוח את הקישורים, נא להשתמש בעובדות הרשמיות שלמטה.",
+      factsLabel: "עובדות רשמיות (מתוך vantripjapan.jp/llms.txt, באנגלית):",
       topics: {
         plan: {
           label: "תכנון מסלול",
@@ -370,6 +392,41 @@
     return path === home || path === "/" ? "" : ORIGIN + path;
   };
 
+  // AIがリンクを開かない（開けない）と、名前だけで検索して似た名前の別の会社の話をしてしまう（2026-09-30 CEO指摘）。
+  // そこで /llms.txt の該当部分を質問文そのものに入れる。事実の正本は llms.txt だけで、ここには書かない
+  const FACTS_MAX = 2300;
+  let llms = null; // null = 未取得、"" = 取得できなかった
+  let llmsLoading = null;
+  const loadLlms = () =>
+    llmsLoading ||
+    (llmsLoading = fetch("/llms.txt", { credentials: "omit" })
+      .then((r) => (r.ok ? r.text() : ""))
+      .catch(() => "")
+      .then((text) => (llms = text)));
+  const pickFacts = (spec) => {
+    if (!llms || !spec) return "";
+    const clean = llms.replace(/<!--[\s\S]*?-->/g, "").replace(/\*\*/g, "");
+    const sections = {};
+    clean.split(/^## /m).slice(1).forEach((sec) => {
+      const nl = sec.indexOf("\n");
+      sections[sec.slice(0, nl).trim()] = sec.slice(nl + 1);
+    });
+    const parts = [];
+    spec.forEach(({ h, lines }) => {
+      const key = Object.keys(sections).find((k) => k.startsWith(h));
+      if (!key) return;
+      const body = sections[key].split("\n").filter((l) => l.trim() && !/^#/.test(l) && (!lines || lines.test(l)));
+      if (body.length) parts.push(body.join("\n"));
+    });
+    if (!parts.length) {
+      const summary = clean.match(/^> (.+)$/m);
+      if (summary) parts.push(summary[1]);
+    }
+    let out = parts.join("\n").trim();
+    if (out.length > FACTS_MAX) out = out.slice(0, out.lastIndexOf("\n", FACTS_MAX)).trim();
+    return out;
+  };
+
   const buildQuestion = (lang, topicId) => {
     const t = L[lang];
     const def = TOPIC_DEFS.find((x) => x.id === topicId) || TOPIC_DEFS[0];
@@ -385,7 +442,9 @@
       `- ${ORIGIN}/llms.txt`,
       `- ${ORIGIN}/llms-full.txt`,
     ].join("\n");
-    return `${topic.ask}${sep}${t.guard}${t.answerIn}\n\n${topic.fields.join("\n")}\n\n${refs}`;
+    const facts = pickFacts(def.facts);
+    const about = facts ? `${t.identity}${t.useFacts}\n\n${t.factsLabel}\n${facts}` : t.identity;
+    return `${topic.ask}${sep}${t.guard}${t.answerIn}\n\n${topic.fields.join("\n")}\n\n${about}\n\n${refs}`;
   };
 
   const enc = encodeURIComponent;
@@ -396,7 +455,8 @@
     { id: "perplexity", name: "Perplexity", href: (q) => `https://www.perplexity.ai/search?q=${enc(q)}`, icon: "M22.3977 7.0896h-2.3106V.0676l-7.5094 6.3542V.1577h-1.1554v6.1966L4.4904 0v7.0896H1.6023v10.3976h2.8882V24l6.932-6.3591v6.2005h1.1554v-6.0469l6.9318 6.1807v-6.4879h2.8882V7.0896zm-3.4657-4.531v4.531h-5.355l5.355-4.531zm-13.2862.0676 4.8691 4.4634H5.6458V2.6262zM2.7576 16.332V8.245h7.8476l-6.1149 6.1147v1.9723H2.7576zm2.8882 5.0404v-3.8852h.0001v-2.6488l5.7763-5.7764v7.0111l-5.7764 5.2993zm12.7086.0248-5.7766-5.1509V9.0618l5.7766 5.7766v6.5588zm2.8882-5.0652h-1.733v-1.9723L13.3948 8.245h7.8478v8.087z" },
   ];
 
-  const MAX_URL = 6000;
+  // 公式情報を入れた分だけ長くなる。各AIの入口（Cloudflare 等）は16KB前後まで受けるので余裕をみて8000文字
+  const MAX_URL = 8000;
   // 画面下の既存の固定要素（WhatsApp・先頭へ・台湾向けLINE・記事の予約カード・/rent/ の下部バーとガイドPDF）
   const AVOID = ".floating-whatsapp, .back-to-top-btn, .floating-line-zh, .floating-cta, .sticky-bar, .floating-guide-badge";
   const track = (name, params = {}) => {
@@ -478,6 +538,7 @@ body.menu-open .vtjai{display:none}
     let lang = pageLang();
     let topic = firstTopic;
     let isOpen = false;
+    let edited = false; // 質問文を手で書き換えたら、あとから届いた公式情報で上書きしない
     let panel, fab, closeBtn, q, toast;
 
     const render = () => {
@@ -521,6 +582,7 @@ body.menu-open .vtjai{display:none}
       q = root.querySelector(".vtjai-q");
       toast = root.querySelector(".vtjai-toast");
       q.value = buildQuestion(lang, topic);
+      edited = false;
       refreshLinks();
       if (isOpen) {
         panel.hidden = false;
@@ -559,7 +621,18 @@ body.menu-open .vtjai{display:none}
       }
     };
 
+    // 公式情報はパネルを開くときに読む（ボタンに触れた時点で先読み）。届いたら質問文を作り直す
+    const withFacts = () => {
+      if (llms !== null) return;
+      loadLlms().then(() => {
+        if (!edited && q) {
+          q.value = buildQuestion(lang, topic);
+          refreshLinks();
+        }
+      });
+    };
     const open = () => {
+      withFacts();
       isOpen = true;
       panel.hidden = false;
       fab.setAttribute("aria-expanded", "true");
@@ -620,12 +693,19 @@ body.menu-open .vtjai{display:none}
       if (e.target.name === "vtjai-topic") {
         topic = e.target.value;
         q.value = buildQuestion(lang, topic);
+        edited = false;
         refreshLinks();
         track("ask_ai_topic", { topic, lang });
       }
     });
+    const prefetch = (e) => { if (e.target.closest && e.target.closest(".vtjai-fab")) withFacts(); };
+    root.addEventListener("pointerover", prefetch);
+    root.addEventListener("focusin", prefetch);
     root.addEventListener("input", (e) => {
-      if (e.target === q) refreshLinks();
+      if (e.target === q) {
+        edited = true;
+        refreshLinks();
+      }
     });
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !panel.hidden) close();
