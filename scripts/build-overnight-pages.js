@@ -1163,7 +1163,7 @@ ${body}
             </div>
         </div>
         <div class="footer-bottom">
-            <span>${nav(lang, "footer.rights") || "© 2026 VAN TRIP JAPAN. Operated by Camp Jyoshi Inc.. All rights reserved."}</span>
+            <span>${nav(lang, "footer.rights") || "© 2026 VAN TRIP JAPAN. Operated by キャンプ女子株式会社 (Camjyo Inc.). All rights reserved."}</span>
         </div>
     </footer>
 
