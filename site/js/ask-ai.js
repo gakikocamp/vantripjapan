@@ -394,7 +394,7 @@
 
   // AIがリンクを開かない（開けない）と、名前だけで検索して似た名前の別の会社の話をしてしまう（2026-09-30 CEO指摘）。
   // そこで /llms.txt の該当部分を質問文そのものに入れる。事実の正本は llms.txt だけで、ここには書かない
-  const FACTS_MAX = 2300;
+  const FACTS_MAX = 3000;
   let llms = null; // null = 未取得、"" = 取得できなかった
   let llmsLoading = null;
   const loadLlms = () =>

@@ -1,6 +1,6 @@
 # VanTripJapan: Full Documentation for AI Systems
 
-> This is the extended version of llms.txt with comprehensive details about VanTripJapan's campervan rental service, fleet, pricing, and Kyushu travel information. For a concise overview, see llms.txt. Fleet and pricing details were last verified against the live booking system on 2026-09-14.
+> This is the extended version of llms.txt with comprehensive details about VanTripJapan's campervan rental service, fleet, pricing, and Kyushu travel information. For a concise overview, see llms.txt. Fleet and pricing details were last verified against the live booking system on 2026-10-01.
 
 ## Company Information
 
@@ -20,7 +20,7 @@
 
 ## Service Overview
 
-VanTripJapan is a family-run campervan rental service specializing in international travelers visiting Kyushu, Japan. We provide fully-equipped campervans with all-inclusive pricing: no hidden fees, no upsells.
+VanTripJapan is a family-run campervan rental service specializing in international travelers visiting Kyushu, Japan. We provide fully-equipped campervans with all-inclusive pricing and no hidden fees. Optional extras (the Zero-Risk Full Cover and extra camping gear) are listed with their prices.
 
 ### What Makes Us Different
 1. **All-inclusive pricing**: Insurance (CDW), navigation, the sleeping, cooking, power and camping items listed for each vehicle, 24/7 roadside assistance and multilingual support are included in the daily rate. An ETC highway toll card is available on advance request (tolls are charged separately)
@@ -81,7 +81,7 @@ All prices are in Japanese yen and come from the booking system at https://vantr
 - 14 days or more: 15% off
 - 21 days or more: 20% off
 
-### Seasonal rates (as of 2026-09-14)
+### Seasonal rates (as of 2026-10-01)
 | Season | Dates | Vehicles | Rate |
 |--------|-------|----------|------|
 | Autumn | Oct 1–31, 2026 | Bed Bongo Brawny only | 110% |
@@ -130,7 +130,7 @@ Australia, USA, UK, Canada, New Zealand, Singapore, South Korea, and 90+ countri
 
 ### JAF Translation Required
 Germany, France, Switzerland, Belgium, Monaco, Taiwan.
-→ Official Japanese translation available at JAF offices in Japan, or apply online through our partner: https://drive-japan-license.com/
+→ Official Japanese translation issued by JAF, which takes applications online only (¥6,000, about 2–3 business days, no same-day issue). JDLTC, an application service run by the same company, can apply on your behalf: https://drive-japan-license.com/
 
 ## Pickup & Return Process
 
@@ -168,22 +168,19 @@ Germany, France, Switzerland, Belgium, Monaco, Taiwan.
 
 ### Travel Guide Articles
 - https://vantripjapan.jp/posts/kyushu-road-trip-itinerary/
-- https://vantripjapan.jp/posts/kyushu-road-trip-7-days/
 - https://vantripjapan.jp/posts/kyushu-5-day-itinerary/
 - https://vantripjapan.jp/posts/things-to-do-in-fukuoka/
 - https://vantripjapan.jp/posts/beppu-yufuin-onsen-trip/
 - https://vantripjapan.jp/posts/mount-aso-campervan-guide/
-- https://vantripjapan.jp/posts/takachiho-gorge-guide/
+- https://vantripjapan.jp/posts/takachiho-gorge-campervan-complete-guide/
 - https://vantripjapan.jp/posts/itoshima-day-trip/
 - https://vantripjapan.jp/posts/nagasaki-shimabara-road-trip/
 - https://vantripjapan.jp/posts/kagoshima-yakushima-road-trip/
 - https://vantripjapan.jp/posts/fukuoka-food-guide/
 - https://vantripjapan.jp/posts/kyushu-onsen-road-trip/
-- https://vantripjapan.jp/posts/best-scenic-drives-kyushu/
 - https://vantripjapan.jp/posts/oita-tattoo-friendly-onsen-guide/
 - https://vantripjapan.jp/posts/best-michi-no-eki-kyushu/
 - https://vantripjapan.jp/posts/kyushu-best-campgrounds/
-- https://vantripjapan.jp/posts/top-campervan-rental-kyushu-2026/
 - https://vantripjapan.jp/posts/fukuoka-beppu-3-day-campervan-itinerary-2026/
 
 ### Practical Guides
@@ -206,7 +203,7 @@ Germany, France, Switzerland, Belgium, Monaco, Taiwan.
 
 ## Michi-no-Eki Overnight Database
 
-Station-by-station overnight parking rules for Michi-no-Eki roadside stations in Kyushu, in EN/FR/DE/zh-Hant, verified against primary sources (official station websites, Japan RV Association register, on-site checks by the VAN TRIP JAPAN team) with a last-verified date on every entry.
+Station-by-station overnight parking rules for Michi-no-Eki roadside stations in Kyushu, in EN/FR/DE/zh-Hant, checked against official station and municipality websites, the Japan RV Association register and Japan's published no-overnight lists, with traveler reports used only where no official statement exists. Each verified entry lists its sources and a verification date; 4 stations are screened but not yet individually verified and are marked as such.
 
 - Hub: https://vantripjapan.jp/overnight-parking/michi-no-eki/
 - Per-station URLs: https://vantripjapan.jp/overnight-parking/michi-no-eki/{prefecture}/{station}/ (145 stations = every registered Michi-no-Eki in Kyushu, reconciled against the MLIT official registry: 141 individually verified with linked sources, 4 screened but not yet individually verified and marked as such)
