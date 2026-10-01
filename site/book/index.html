@@ -1116,7 +1116,7 @@
                                     <img src="/images/rent/vehicles/probox-front.jpg" alt="Toyota Probox with a closed rooftop tent" loading="lazy" width="1024" height="715">
                                     <div class="vehicle-option-info">
                                         <div class="name">🏕️ TOYOTA PROBOX</div>
-                                        <div class="type" data-i18n="book.veh.probox">with RoofTent · Max 2 guests · sleeps 2 on roof</div>
+                                        <div class="type" data-i18n="book.veh.probox">with RoofTent · Max 5 guests · roof tent sleeps 2</div>
                                         <div class="price" id="price-probox" data-i18n="book.price22">¥22,000〜/day</div>
                                         <div class="status-msg" id="status-probox" style="font-size:0.8rem; margin-top:4px;"></div>
                                     </div>
@@ -1368,7 +1368,7 @@
     </p>
 </div>
 
-<script src="/js/i18n.js?v=20261001b"></script>
+<script src="/js/i18n.js?v=20261001c"></script>
 <script src="/js/waitlist.js?v=20261001a"></script>
 <script>
 // i18n helper: bt() は辞書参照のフォールバック付きラッパー（i18n.js は直前で読込済み）。
@@ -1447,15 +1447,15 @@ const DISCOUNT_TIERS = [
 ];
 
 const VEHICLE_PRICES = {
-    'MAZDA BONGO': { base: 22000, maxGuests: 3, img: '/images/rent/vehicles/bongo-mountain.jpg', desc: 'Campervan · Sleeps 2 inside' },
-    'TOYOTA PROBOX': { base: 22000, maxGuests: 2, img: '/images/rent/vehicles/probox-front.jpg', desc: 'with RoofTent · Sleeps 2 on roof' },
+    'MAZDA BONGO': { base: 22000, maxGuests: 3, img: '/images/rent/vehicles/bongo-mountain.jpg', desc: 'Campervan · 3 seats · Sleeps 2 inside' },
+    'TOYOTA PROBOX': { base: 22000, maxGuests: 5, img: '/images/rent/vehicles/probox-front.jpg', desc: 'with RoofTent · 5 seats · Sleeps 2 on roof' },
     'DAIHATSU POCKET LOFT': { base: 25000, maxGuests: 2, img: '/images/rent/vehicles/daihatsu.jpg', desc: 'Pocket Loft with RoofTent · For 2' }
 };
 
 // Vehicle preview card data
 const VEHICLE_PREVIEW = {
     'MAZDA BONGO': { icon: '🚐', name: 'Mazda Bongo', rate: '¥22,000', spec: '3 people · Campervan' },
-    'TOYOTA PROBOX': { icon: '🏕️', name: 'Toyota Probox', rate: '¥22,000', spec: '2 people · Compact' },
+    'TOYOTA PROBOX': { icon: '🏕️', name: 'Toyota Probox', rate: '¥22,000', spec: '5 people · Compact' },
     'DAIHATSU POCKET LOFT': { icon: '🚐', name: 'Daihatsu Pocket Loft', rate: '¥25,000', spec: '2 people · Pocket Loft' }
 };
 

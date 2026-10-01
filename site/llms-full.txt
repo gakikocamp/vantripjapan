@@ -37,13 +37,13 @@ Three campervan styles. From October 15, 2026 there are two similarly equipped B
 
 | Vehicle | Guests | Sleeping | Luggage | Weekday rate | Weekend rate |
 |---------|--------|----------|---------|--------------|--------------|
-| Roof Tent Probox (Toyota Probox) | 2 | Roof tent bed 200 × 120 cm | 2–3 large suitcases | ¥22,000/day | ¥33,000/day |
-| Bed Bongo Brawny (Mazda Bongo Brawny; 2 vans from Oct 15, 2026) | 2–3 | Built-in double bed 190 × 135 cm, sleeps 2 | 4+ suitcases under the bed | ¥22,000/day | ¥33,000/day |
+| Roof Tent Probox (Toyota Probox) | Up to 5 (5 seats) | Roof tent bed 200 × 120 cm | 2–3 large suitcases | ¥22,000/day | ¥33,000/day |
+| Bed Bongo Brawny (Mazda Bongo Brawny; 2 vans from Oct 15, 2026) | Up to 3 | Built-in double bed 190 × 135 cm, sleeps 2 | 4+ suitcases under the bed | ¥22,000/day | ¥33,000/day |
 | Pocket Loft (Daihatsu Hijet Truck base) | 2 | Roof tent 190 × 120 cm + cabin bed 180 × 110 cm | 2 medium suitcases | ¥25,000/day | ¥37,500/day |
 
 ### Vehicle 1: Roof Tent Probox
 - **Type**: Compact Toyota Probox with a roof-top tent
-- **Capacity**: 2 guests (5 seats; roof tent bed 200 × 120 cm)
+- **Capacity**: Up to 5 guests (5 seats); the roof tent bed (200 × 120 cm) sleeps 2
 - **Price**: From ¥22,000/day (all-inclusive)
 - **Best for**: Couples who value easy driving and fuel economy
 - **Features**: Roof tent, trunk space for 2–3 large suitcases, great fuel economy, automatic transmission
@@ -52,7 +52,7 @@ Three campervan styles. From October 15, 2026 there are two similarly equipped B
 ### Vehicle 2: Bed Bongo Brawny
 - **Type**: Hand-built Mazda Bongo Brawny with a permanent bed inside
 - **Fleet**: 2 similarly equipped Bongo vans from October 15, 2026 (the exact vehicle is confirmed before payment)
-- **Capacity**: 2–3 guests (the built-in bed sleeps 2)
+- **Capacity**: Up to 3 guests in either Bongo van; the built-in bed sleeps 2
 - **Price**: From ¥22,000/day (all-inclusive)
 - **Best for**: Two sleepers who want indoor comfort on rainy days
 - **Features**: Built-in double bed 190 × 135 cm with a memory foam mattress, huge under-bed storage (4+ suitcases), room to relax inside, automatic transmission

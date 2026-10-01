@@ -15,7 +15,7 @@ export const LANGS = ['en', 'fr', 'de', 'zh', 'he'];
 
 // サイトの車種キー（slug）と、空き状況APIの車名・定員
 export const WAITLIST_VEHICLES = {
-  probox: { api: 'TOYOTA PROBOX', name: 'Toyota Probox', cap: 2 },
+  probox: { api: 'TOYOTA PROBOX', name: 'Toyota Probox', cap: 5 },
   bongo: { api: 'MAZDA BONGO', name: 'Mazda Bongo', cap: 3 },
   loft: { api: 'DAIHATSU POCKET LOFT', name: 'Daihatsu Pocket Loft', cap: 2 }
 };

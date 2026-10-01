@@ -685,7 +685,7 @@
                         <div class="sidebar-card-title" data-i18n="planner.rec_van_title">Your Recommended Van</div>
                         <img id="rec-van-img" src="/images/rent/vehicles/probox-front.jpg" alt="Recommended Campervan">
                         <h3 id="rec-van-name">Roof Tent Probox</h3>
-                        <p id="rec-van-desc">Compact, extremely fuel-efficient, and easy to park on Kyushu's narrow hot-spring roads. Fits up to 2 guests.</p>
+                        <p id="rec-van-desc">Compact, extremely fuel-efficient, and easy to park on Kyushu's narrow hot-spring roads. Seats up to 5; the roof tent sleeps 2.</p>
                         <a id="rec-van-link" href="/rent/" class="btn-book-van" data-i18n="nav.rent_btn">Rent a Van →</a>
                     </div>
 
@@ -767,7 +767,7 @@
 
     <script src="/js/nav.js?v=20260720j"></script>
     <script src="/js/ask-ai.js?v=20261001a" defer></script>
-    <script src="/js/i18n.js?v=20261001b"></script>
+    <script src="/js/i18n.js?v=20261001c"></script>
 
     <!-- ROUTE PLANNER WIZARD JS LOGIC -->
     <script>
@@ -1081,13 +1081,13 @@
         const vehicles = {
             "probox": {
                 name: "Roof Tent Probox",
-                desc: "Compact, extremely fuel-efficient, and easy to park on Kyushu's narrow hot-spring roads. Perfect for couples or solo travelers (fits 2 guests, roof-tent bed).",
+                desc: "Compact, extremely fuel-efficient, and easy to park on Kyushu's narrow hot-spring roads. Perfect for couples or solo travelers, with 5 seats when you bring more people (the roof tent sleeps 2).",
                 img: "/images/rent/vehicles/probox-front.jpg",
                 id: "Probox"
             },
             "bongo": {
                 name: "Bed Bongo Brawny",
-                desc: "Our hand-built wood cabin cruiser. Spacious interior to relax inside even on rainy days. Narrow width makes it incredibly easy to drive on mountain passes (fits 2-3 guests).",
+                desc: "Our hand-built wood cabin cruiser. Spacious interior to relax inside even on rainy days. Narrow width makes it incredibly easy to drive on mountain passes (fits up to 3 guests; the bed sleeps 2).",
                 img: "/images/rent/vehicles/bongo-mountain.jpg",
                 id: "Bongo"
             },
@@ -1183,7 +1183,7 @@
             // Map vehicle override based on passenger count
             let finalVanKey = route.van;
             if (selections.guests === 'family') {
-                finalVanKey = "bongo"; // Largest capacity (2-3 guests); Pocket Loft seats only 2
+                finalVanKey = "probox"; // Most seats (5); Bongo takes 3, Pocket Loft 2
             } else if (selections.guests === 'solo') {
                 finalVanKey = "probox"; // Roof tent probox is perfect for solo
             }
