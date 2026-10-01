@@ -39,7 +39,7 @@ Three campervan styles. From October 15, 2026 there are two similarly equipped B
 |---------|--------|----------|---------|--------------|--------------|
 | Roof Tent Probox (Toyota Probox) | 2 | Roof tent bed 200 × 120 cm | 2–3 large suitcases | ¥22,000/day | ¥33,000/day |
 | Bed Bongo Brawny (Mazda Bongo Brawny; 2 vans from Oct 15, 2026) | 2–3 | Built-in double bed 190 × 135 cm, sleeps 2 | 4+ suitcases under the bed | ¥22,000/day | ¥33,000/day |
-| Pocket Loft (Daihatsu Hijet Truck base) | 2–4 | Roof tent 190 × 120 cm + cabin bed 180 × 110 cm | 2 medium suitcases | ¥25,000/day | ¥37,500/day |
+| Pocket Loft (Daihatsu Hijet Truck base) | 2 | Roof tent 190 × 120 cm + cabin bed 180 × 110 cm | 2 medium suitcases | ¥25,000/day | ¥37,500/day |
 
 ### Vehicle 1: Roof Tent Probox
 - **Type**: Compact Toyota Probox with a roof-top tent
@@ -60,9 +60,9 @@ Three campervan styles. From October 15, 2026 there are two similarly equipped B
 
 ### Vehicle 3: Pocket Loft (added July 1, 2026)
 - **Type**: Hand-built ultra-compact kei camper on a Daihatsu Hijet Truck base, with a roof-top tent
-- **Capacity**: 2–4 guests (2 in the roof tent, 190 × 120 cm; 2 in the cabin bed, 180 × 110 cm; indoor access up to the tent)
+- **Capacity**: 2 guests (2 seats); sleep in the roof tent (190 × 120 cm) or the cabin bed (180 × 110 cm), with indoor access up to the tent
 - **Price**: From ¥25,000/day (all-inclusive)
-- **Best for**: Up to four travelers and island hopping. As the shortest van in the fleet it gets the cheapest ferry fares and is the easiest to book on ferries (popular for Yakushima and the Goto Islands)
+- **Best for**: Two travelers and island hopping. As the shortest van in the fleet it gets the cheapest ferry fares and is the easiest to book on ferries (popular for Yakushima and the Goto Islands)
 - **Features**: Indoor roof tent access, under-tent storage (2 medium suitcases), panorama views, great fuel economy, automatic transmission
 - **Driving**: Easiest to drive on narrow roads
 

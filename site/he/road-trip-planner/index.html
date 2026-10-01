@@ -757,7 +757,7 @@
 
     <script src="/js/nav.js?v=20260720j"></script>
     <script src="/js/ask-ai.js?v=20261001a" defer=""></script>
-    <script>window.VTJ_FORCE_LANG='he';</script><script src="/js/i18n.js?v=20261001a"></script>
+    <script>window.VTJ_FORCE_LANG='he';</script><script src="/js/i18n.js?v=20261001b"></script>
 
     <!-- ROUTE PLANNER WIZARD JS LOGIC -->
     <script>
@@ -1083,7 +1083,7 @@
             },
             "loft": {
                 name: "Pocket Loft",
-                desc: "Micro-truck explorer with a spacious roof-tent and direct indoor cabin passage. Fits up to 4 guests (2 in tent, 2 inside). Unbeatable fun and easy driving.",
+                desc: "Micro-truck explorer with a spacious roof-tent and direct indoor cabin passage. Fits 2 guests (2 seats), sleeping in the roof tent or the cabin bed. Unbeatable fun and easy driving.",
                 img: "/images/rent/vehicles/daihatsu.jpg",
                 id: "Pocket%20Loft"
             }
@@ -1173,7 +1173,7 @@
             // Map vehicle override based on passenger count
             let finalVanKey = route.van;
             if (selections.guests === 'family') {
-                finalVanKey = "loft"; // Micro truck fits 4 guests
+                finalVanKey = "bongo"; // Largest capacity (2-3 guests); Pocket Loft seats only 2
             } else if (selections.guests === 'solo') {
                 finalVanKey = "probox"; // Roof tent probox is perfect for solo
             }

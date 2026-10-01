@@ -17,7 +17,7 @@ export const LANGS = ['en', 'fr', 'de', 'zh', 'he'];
 export const WAITLIST_VEHICLES = {
   probox: { api: 'TOYOTA PROBOX', name: 'Toyota Probox', cap: 2 },
   bongo: { api: 'MAZDA BONGO', name: 'Mazda Bongo', cap: 3 },
-  loft: { api: 'DAIHATSU POCKET LOFT', name: 'Daihatsu Pocket Loft', cap: 4 }
+  loft: { api: 'DAIHATSU POCKET LOFT', name: 'Daihatsu Pocket Loft', cap: 2 }
 };
 
 const LOCALES = { en: 'en-GB', fr: 'fr-FR', de: 'de-DE', zh: 'zh-TW', he: 'he-IL' };

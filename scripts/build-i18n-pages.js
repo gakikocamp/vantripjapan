@@ -74,7 +74,7 @@ const META = {
         },
         "rent/loft/": {
             title: "Loft à tente de toit — Location de campervan à Fukuoka | VAN TRIP JAPAN",
-            desc: "Notre explorateur ultra-compact à tente de toit. Jusqu'à 4 couchages avec accès direct depuis l'habitacle. Le plus facile à conduire, tarifs de ferry les plus bas.",
+            desc: "Notre explorateur ultra-compact à tente de toit, pour 2 voyageurs (2 places), avec accès direct depuis l'habitacle. Le plus facile à conduire, tarifs de ferry les plus bas.",
         },
         "rent/probox/": {
             title: "Probox compact — Location de van à Fukuoka | VAN TRIP JAPAN",
@@ -116,7 +116,7 @@ const META = {
         },
         "rent/loft/": {
             title: "Dachzelt-Loft — Campervan mieten in Fukuoka | VAN TRIP JAPAN",
-            desc: "Unser ultrakompakter Dachzelt-Explorer. Schlafplätze für bis zu 4 Gäste mit direktem Zugang vom Innenraum. Am leichtesten zu fahren, günstigste Fährtarife.",
+            desc: "Unser ultrakompakter Dachzelt-Explorer für 2 Reisende (2 Sitzplätze), mit direktem Zugang vom Innenraum. Am leichtesten zu fahren, günstigste Fährtarife.",
         },
         "rent/probox/": {
             title: "Kompakter Probox — Van mieten in Fukuoka | VAN TRIP JAPAN",
@@ -158,7 +158,7 @@ const META = {
         },
         "rent/loft/": {
             title: "車頂帳Loft — 福岡露營車租借 | VAN TRIP JAPAN",
-            desc: "超小型車頂帳探險車。最多可睡4人，車內直通車頂帳。最好開，渡輪費率最低。",
+            desc: "超小型車頂帳探險車。2人座，車內直通車頂帳。最好開，渡輪費率最低。",
         },
         "rent/probox/": {
             title: "小型Probox — 福岡露營車租借 | VAN TRIP JAPAN",
@@ -200,7 +200,7 @@ const META = {
         },
         "rent/loft/": {
             title: "לופט עם אוהל גג — השכרת קרוואן בפוקואוקה | VAN TRIP JAPAN",
-            desc: "רכב חקר אולטרה-קומפקטי עם אוהל גג. עד 4 אורחים עם גישה ישירה מהרכב לאוהל. הכי קל לנהיגה, תעריפי המעבורת הזולים ביותר.",
+            desc: "רכב חקר אולטרה-קומפקטי עם אוהל גג ל-2 נוסעים (2 מושבים), עם גישה ישירה מהרכב לאוהל. הכי קל לנהיגה, תעריפי המעבורת הזולים ביותר.",
         },
         "rent/probox/": {
             title: "פרובוקס קומפקטי — השכרת ואן בפוקואוקה | VAN TRIP JAPAN",
