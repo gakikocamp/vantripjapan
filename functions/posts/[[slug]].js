@@ -83,7 +83,7 @@ const CTA_I18N = {
   },
   fr: {
     ready: 'Prêt à explorer Kyushu en camping-car ?',
-    body: "Location de camping-car au départ de Fukuoka, à partir de ¥22 000/jour (≈134 €). Assurance, literie et assistance 24h/24 incluses. Carte ETC disponible sur demande préalable ; péages facturés séparément. Prise en charge à 10 min de l'aéroport de Fukuoka.",
+    body: "Location de camping-car au départ de Fukuoka, à partir de ¥22 000/jour (≈124 €). Assurance, literie et assistance 24h/24 incluses. Carte ETC disponible sur demande préalable ; péages facturés séparément. Prise en charge à 10 min de l'aéroport de Fukuoka.",
     searchTitle: 'Vérifiez les disponibilités pour votre voyage',
     pickup: 'Date de départ',
     return: 'Date de retour',
@@ -97,12 +97,12 @@ const CTA_I18N = {
     faq: 'Questions fréquentes',
     floatBadge: "Départ aéroport de Fukuoka",
     floatTitle: 'Le Japon en camping-car',
-    floatBody: 'Tout compris dès ¥22 000/jour (≈134 €)',
+    floatBody: 'Tout compris dès ¥22 000/jour (≈124 €)',
     floatBtn: 'Voir les tarifs →',
   },
   de: {
     ready: 'Bereit, Kyushu im Campervan zu entdecken?',
-    body: 'Campervan-Vermietung ab Fukuoka, ab ¥22.000/Tag (≈134 €). Versicherung, Bettwäsche und 24/7-Support inklusive. Eine ETC-Karte ist nach vorheriger Anfrage verfügbar; Mautgebühren werden separat berechnet. Abholung 10 Min. vom Flughafen Fukuoka.',
+    body: 'Campervan-Vermietung ab Fukuoka, ab ¥22.000/Tag (≈124 €). Versicherung, Bettwäsche und 24/7-Support inklusive. Eine ETC-Karte ist nach vorheriger Anfrage verfügbar; Mautgebühren werden separat berechnet. Abholung 10 Min. vom Flughafen Fukuoka.',
     searchTitle: 'Verfügbarkeit für Ihre Reise prüfen',
     pickup: 'Abholdatum',
     return: 'Rückgabedatum',
@@ -116,7 +116,7 @@ const CTA_I18N = {
     faq: 'Häufige Fragen',
     floatBadge: 'Abholung am Flughafen Fukuoka',
     floatTitle: 'Japan im Campervan erleben',
-    floatBody: 'All-inclusive ab ¥22.000/Tag (≈134 €)',
+    floatBody: 'All-inclusive ab ¥22.000/Tag (≈124 €)',
     floatBtn: 'Preise ansehen →',
   },
   'zh-Hant': {

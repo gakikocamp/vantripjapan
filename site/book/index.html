@@ -1368,7 +1368,7 @@
     </p>
 </div>
 
-<script src="/js/i18n.js?v=20261001c"></script>
+<script src="/js/i18n.js?v=20261005b"></script>
 <script src="/js/waitlist.js?v=20261001a"></script>
 <script>
 // i18n helper: bt() は辞書参照のフォールバック付きラッパー（i18n.js は直前で読込済み）。
@@ -1386,8 +1386,8 @@ function btLocale() {
 // 2026-07-19更新: 1€≈185円, 1₪(ILS)≈54円。四半期ごとに実勢レート点検。
 function eurHint(yen) {
     const l = (typeof currentLang !== 'undefined' && currentLang) || 'en';
-    if (l === 'fr') return ' (env. €' + Math.round(yen / 185).toLocaleString() + ')';
-    if (l === 'de') return ' (ca. €' + Math.round(yen / 185).toLocaleString() + ')';
+    if (l === 'fr') return ' (env. €' + Math.round(yen / 177).toLocaleString() + ')';
+    if (l === 'de') return ' (ca. €' + Math.round(yen / 177).toLocaleString() + ')';
     if (l === 'he') return ' (כ־₪' + Math.round(yen / 54).toLocaleString() + ')';
     return '';
 }

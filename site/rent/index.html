@@ -605,7 +605,7 @@
                 <div class="micro-proof" style="display: flex; flex-direction: column; gap: 8px; align-items: center; justify-content: center; margin-top: 32px; font-size: 14px; color: var(--rent-text-secondary);">
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <span class="proof-flag">🛡️</span>
-                        <span data-i18n="vehicles.proof1">Every van is fully insured (CDW included) and cleaned &amp; checked before each trip.</span>
+                        <span data-i18n="vehicles.proof1">Every van is insured (CDW included, deductible applies) and cleaned &amp; checked before each trip.</span>
                     </div>
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <span class="proof-flag">🕹️</span>
@@ -1300,7 +1300,7 @@
                         </ul>
                         <a href="https://drive-japan-license.com/" target="_blank" class="license-cta-link" style="display:inline-block; margin-top:12px; padding:10px 20px; background:#1a1a2e; color:#fff; border-radius:8px; text-decoration:none; font-weight:600; font-size:14px; margin-bottom:12px;">📋 <span data-i18n="license.apply_jaf">Apply for JAF Translation Online →</span></a>
                         <div class="license-promo-box" data-i18n="license.special.promo">
-                            💥 <strong>Special Promotion</strong>: Get a <strong>¥5,000 discount (≈ €27)</strong> on your van rental when you use our partner <strong>JDLTC</strong> for your Japanese license translation! (Applicable if the driver's name matches the JDLTC translation order).
+                            💥 <strong>Special Promotion</strong>: Get a <strong>¥5,000 discount (≈ €28)</strong> on your van rental when you use our partner <strong>JDLTC</strong> for your Japanese license translation! (Applicable if the driver's name matches the JDLTC translation order).
                         </div>
                     </div>
                     <div class="license-card green">
@@ -1413,7 +1413,7 @@
                         <div>
                             <h4 style="font-weight: 700; margin-bottom: 8px;" data-i18n="access.hours">🕐 Hours</h4>
                             <p style="font-size: 14px; color: var(--rent-text-secondary);"
-                                data-i18n="access.hoursDetail">Pick-up: 9:00 - 17:00<br>Return: 9:00 -
+                                data-i18n="access.hoursDetail">Pick-up: any time, 24 h (key lockbox)<br>Return: 9:00 -
                                 17:00<br>(Flexible by arrangement)</p>
                         </div>
                     </div>
@@ -1515,7 +1515,7 @@
     <script src="/js/nav.js?v=20260720j"></script>
     <script src="/js/ask-ai.js?v=20261001a" defer></script>
     <script src="/js/rate-calendar.js?v=20260814a"></script>
-    <script src="/js/i18n.js?v=20261001c"></script>
+    <script src="/js/i18n.js?v=20261005b"></script>
     <script src="/js/camjyo-video.js?v=20260923a"></script>
     <script>
         // ── Price Calculator ──
@@ -1531,13 +1531,13 @@
             { minDays: 7,  rate: 0.10, label: '10% OFF'  }
         ];
 
-        // Exchange rates — 2026-07 実勢に更新（四半期ごとに点検）。
-        // 1¥あたりの外貨。USD≈163¥ / EUR≈185¥ / GBP≈218¥ / ILS≈54¥。/book/ の eurHint と整合。
+        // Exchange rates — EUR は 2026-10-02 の ECB 参照レート（176.99円）に更新。他は 2026-07（四半期ごとに点検）。
+        // 1¥あたりの外貨。USD≈163¥ / EUR≈177¥ / GBP≈218¥ / ILS≈54¥。/book/ の eurHint・i18n.js の € 表記と整合。
         var _calcCurrency = 'JPY';
         var EX_RATES = {
             JPY: { symbol: '¥', factor: 1 },
             USD: { symbol: '$', factor: 0.00613 },
-            EUR: { symbol: '€', factor: 0.00541 },
+            EUR: { symbol: '€', factor: 0.00565 },
             GBP: { symbol: '£', factor: 0.00459 },
             ILS: { symbol: '₪', factor: 0.01852 }
         };

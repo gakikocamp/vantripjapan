@@ -33,7 +33,7 @@ VanTripJapan is a family-run campervan rental service specializing in internatio
 
 ## Fleet Details
 
-Three campervan styles. From October 15, 2026 there are two similarly equipped Bongo vans (the exact vehicle is confirmed before payment). Every van is fully insured (CDW included), automatic (AT), and cleaned and checked before each trip.
+Three campervan styles. From October 15, 2026 there are two similarly equipped Bongo vans (the exact vehicle is confirmed before payment). Every van is insured (CDW included; deductibles apply, and the optional Zero-Risk cover reduces them to ¥0), automatic (AT), and cleaned and checked before each trip.
 
 | Vehicle | Guests | Sleeping | Luggage | Weekday rate | Weekend rate |
 |---------|--------|----------|---------|--------------|--------------|
